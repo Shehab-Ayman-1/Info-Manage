@@ -2,6 +2,8 @@
 
     - Determin Admin And Member Pages
 
+    - Edit Selected Product At Create Product And Similar
+
 ```ts
     const { client, user, frontendApi, organization, openUserProfile, getOrganization, createOrganization, setActive } = useClerk();
 
