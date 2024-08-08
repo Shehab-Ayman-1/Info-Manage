@@ -1,7 +1,7 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -13,12 +13,12 @@ import { Input } from "@/ui/input";
 const schema = z.object({
     name: z.string().min(1),
     barcode: z.string().optional(),
-    min: z.number().min(1).int().positive(),
-    max: z.number().min(1).int().positive(),
-    storeCount: z.number().min(1).int().positive(),
-    marketCount: z.number().min(1).int().positive(),
-    purchasePrice: z.number().min(1),
-    sellingPrice: z.number().min(1),
+    min: z.number().min(0).int(),
+    max: z.number().min(0).int(),
+    storeCount: z.number().min(0).int(),
+    marketCount: z.number().min(0).int(),
+    purchasePrice: z.number().min(0),
+    sellingPrice: z.number().min(0),
 });
 
 export type ProductType = z.infer<typeof schema>;

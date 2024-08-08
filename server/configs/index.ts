@@ -7,7 +7,7 @@ export const DBConnection = async () => {
         mongoose.set("strictQuery", true);
 
         if (connect) return;
-        const URL = process.env.DATABASE_URL! || process.env.DATABASE_URI!;
+        const URL = process.env.DATABASE_URI! || process.env.DATABASE_URI!;
         await mongoose.connect(URL, {
             serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
         });

@@ -2,10 +2,6 @@
 
     - Determin Admin And Member Pages
 
-    - pk_test_dHJ1ZS1ncmlmZm9uLTcyLmNsZXJrLmFjY291bnRzLmRldiQ
-
-    - sk_test_XKr9lcCTjT3l8okQMWpQPNR1ncQvvxJZnd0RVTATCK
-
 ```ts
     const { client, user, frontendApi, organization, openUserProfile, getOrganization, createOrganization, setActive } = useClerk();
 
