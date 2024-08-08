@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Merienda:wght@300;400;500;600;700;800;900&family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+@font-face {
+    font-family: "STV";
+    src: url("/stv.ttf") format("truetype");
+}
+
+::-webkit-scrollbar {
+    @apply h-1 w-2;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-primary;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-white;
+}
+
+::selection {
+    @apply bg-primary text-white;
+    text-shadow: 1px 1px black;
+}
+
+.cl-internal-11ttlho {
+    @apply hidden;
+}

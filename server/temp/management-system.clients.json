@@ -1,0 +1,155 @@
+[
+    {
+        "_id": {
+            "$oid": "66b10777f666983634cf7b21"
+        },
+        "orgId": "org_2kJ5KKao0QOc2wgq7IkTfzxHeUm",
+        "name": "Shehab Ayman",
+        "level": "bronze",
+        "levels": [
+            { "name": "bronze", "activeTo": 5000 },
+            { "name": "silver", "activeTo": 15000 },
+            { "name": "gold", "activeTo": 15001 }
+        ],
+        "discounts": 0,
+        "boughtsSalary": 12000,
+        "pendingCosts": 0,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b1077af666983634cf7b24"
+        },
+        "orgId": "org_2kJ5KKao0QOc2wgq7IkTfzxHeUm",
+        "name": "Ahmed Elsayed",
+        "level": "bronze",
+        "levels": [
+            { "name": "bronze", "activeTo": 5000 },
+            { "name": "silver", "activeTo": 15000 },
+            { "name": "gold", "activeTo": 15001 }
+        ],
+        "discounts": 0,
+        "boughtsSalary": 0,
+        "pendingCosts": 0,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b1077df666983634cf7b27"
+        },
+        "orgId": "org_2kJ5KKao0QOc2wgq7IkTfzxHeUm",
+        "name": "Aya Mahmoud",
+        "level": "bronze",
+        "levels": [
+            { "name": "bronze", "activeTo": 5000 },
+            { "name": "silver", "activeTo": 15000 },
+            { "name": "gold", "activeTo": 15001 }
+        ],
+        "discounts": 0,
+        "boughtsSalary": 11000,
+        "pendingCosts": 6000,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b10780f666983634cf7b2a"
+        },
+        "orgId": "org_2kJ5KKao0QOc2wgq7IkTfzxHeUm",
+        "name": "Hesham Mohamed",
+        "level": "bronze",
+        "levels": [
+            { "name": "bronze", "activeTo": 5000 },
+            { "name": "silver", "activeTo": 15000 },
+            { "name": "gold", "activeTo": 15001 }
+        ],
+        "discounts": 0,
+        "boughtsSalary": 0,
+        "pendingCosts": 0,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b10783f666983634cf7b2d"
+        },
+        "orgId": "org_2kJ5KKao0QOc2wgq7IkTfzxHeUm",
+        "name": "Rahma Mostafa",
+        "level": "bronze",
+        "levels": [
+            { "name": "bronze", "activeTo": 5000 },
+            { "name": "silver", "activeTo": 15000 },
+            { "name": "gold", "activeTo": 15001 }
+        ],
+        "discounts": 0,
+        "boughtsSalary": 0,
+        "pendingCosts": 0,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b10787f666983634cf7b30"
+        },
+        "orgId": "org_2kJ5KKao0QOc2wgq7IkTfzxHeUm",
+        "name": "Salma Hammam",
+        "level": "bronze",
+        "levels": [
+            { "name": "bronze", "activeTo": 5000 },
+            { "name": "silver", "activeTo": 15000 },
+            { "name": "gold", "activeTo": 15001 }
+        ],
+        "discounts": 0,
+        "boughtsSalary": 0,
+        "pendingCosts": 0,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b1078af666983634cf7b33"
+        },
+        "orgId": "org_2kJ5KKao0QOc2wgq7IkTfzxHeUm",
+        "name": "Mahmoud Ayman",
+        "level": "bronze",
+        "levels": [
+            { "name": "bronze", "activeTo": 5000 },
+            { "name": "silver", "activeTo": 15000 },
+            { "name": "gold", "activeTo": 15001 }
+        ],
+        "discounts": 0,
+        "boughtsSalary": 0,
+        "pendingCosts": 0,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b10791f666983634cf7b36"
+        },
+        "orgId": "org_2kJ5KKao0QOc2wgq7IkTfzxHeUm",
+        "name": "Mostafa Abd Elstere",
+        "level": "bronze",
+        "levels": [
+            { "name": "bronze", "activeTo": 5000 },
+            { "name": "silver", "activeTo": 15000 },
+            { "name": "gold", "activeTo": 15001 }
+        ],
+        "discounts": 0,
+        "boughtsSalary": 0,
+        "pendingCosts": 0,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b107aaf666983634cf7b39"
+        },
+        "orgId": "org_2kJ5KKao0QOc2wgq7IkTfzxHeUm",
+        "name": "Fady Adel",
+        "level": "bronze",
+        "levels": [
+            { "name": "bronze", "activeTo": 5000 },
+            { "name": "silver", "activeTo": 15000 },
+            { "name": "gold", "activeTo": 15001 }
+        ],
+        "discounts": 0,
+        "boughtsSalary": 0,
+        "pendingCosts": 0,
+        "__v": 0
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "_id": {
+            "$oid": "66b0e4ea799440b0c591f30d"
+        },
+        "orgId": "org_2kJ5KKao0QOc2wgq7IkTfzxHeUm",
+        "name": "مناديل",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b0e4f0799440b0c591f311"
+        },
+        "orgId": "org_2kJ5KKao0QOc2wgq7IkTfzxHeUm",
+        "name": "حفاضات",
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b0e4f9799440b0c591f315"
+        },
+        "orgId": "org_2kJ5KKao0QOc2wgq7IkTfzxHeUm",
+        "name": "مستحضرات تجميل",
+        "__v": 0
+    }
+]

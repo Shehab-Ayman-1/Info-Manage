@@ -1,0 +1,6 @@
+{
+    "tailwindConfig": "./tailwind.config.ts",
+    "plugins": ["prettier-plugin-tailwindcss"],
+    "printWidth": 130,
+    "tabWidth": 4
+}
