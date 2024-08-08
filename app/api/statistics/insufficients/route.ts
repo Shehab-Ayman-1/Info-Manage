@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
 import { DBConnection } from "@/server/configs";
-import { Products, Suppliers } from "@/server/models";
+import { Suppliers } from "@/server/models";
 import { json } from "@/utils/response";
 
 export const GET = async (req: NextRequest) => {
@@ -48,7 +48,7 @@ export const GET = async (req: NextRequest) => {
                     price: `$product.${place}.price`,
                     current_count: `$product.${place}.count`,
                     needed_count: { $subtract: ["$product.max", `$product.${place}.count`] },
-                    total_cost: {
+                    total: {
                         $multiply: [`$product.${place}.price`, { $subtract: ["$product.max", `$product.${place}.count`] }],
                     },
                 },

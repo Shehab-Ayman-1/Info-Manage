@@ -19,7 +19,7 @@ const schema = new Schema<TClient>({
     name: { type: String, required: true, trim: true },
     levels: [
         {
-            name: { type: String, enum: ["bronze", "silver"] },
+            name: { type: String, enum: ["bronze", "silver", "gold"] },
             activeTo: Number,
         },
     ],

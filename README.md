@@ -4,6 +4,10 @@
 
     - Edit Selected Product At Create Product And Similar
 
+    - Delete Min & Max From Products
+
+    - Think About Clients Level
+
 ```ts
     const { client, user, frontendApi, organization, openUserProfile, getOrganization, createOrganization, setActive } = useClerk();
 

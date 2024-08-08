@@ -30,7 +30,7 @@ export const TBody = <TData,>({ rowModel, smallSize, colsLen, totalFor }: TBodyP
                     <TableCell
                         colSpan={colSpan1}
                         className={cn(
-                            "text-center text-xl font-bold text-black print:border-t print:border-t-slate-300",
+                            "text-left text-xl font-bold text-black print:border-t print:border-t-slate-300",
                             smallSize ? "py-2 text-base" : "text-xl",
                         )}
                     >
@@ -39,7 +39,7 @@ export const TBody = <TData,>({ rowModel, smallSize, colsLen, totalFor }: TBodyP
                     <TableCell
                         colSpan={colSpan2}
                         className={cn(
-                            "text-center font-bold text-black print:border-t print:border-t-slate-300",
+                            "text-right font-bold text-black print:border-t print:border-t-slate-300",
                             smallSize ? "py-2 text-base" : "text-xl",
                         )}
                     >

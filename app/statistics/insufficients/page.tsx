@@ -55,9 +55,7 @@ const Insufficients = () => {
                 </div>
             </CardHeader>
 
-            <CardContent>
-                {supplierId && place && <DataTable columns={columns} data={data || []} totalFor="total_cost" />}
-            </CardContent>
+            <CardContent>{supplierId && place && <DataTable columns={columns} data={data || []} totalFor="total" />}</CardContent>
         </Card>
     );
 };
