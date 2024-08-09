@@ -14,7 +14,7 @@ export const Languages = () => {
 
     return (
         <div className="my-6">
-            <h1 className="text-2xl font-bold text-primary">Change Language</h1>
+            <h1 className="text-xl font-bold text-primary sm:text-2xl">Change Language</h1>
             <div className="flex-between">
                 <SelectBox
                     label="Language"

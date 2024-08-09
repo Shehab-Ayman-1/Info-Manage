@@ -15,9 +15,6 @@ type TBodyProps<TData> = {
 export const TBody = <TData,>({ rowModel, smallSize, colsLen, totalFor }: TBodyProps<TData>) => {
     const total = totalFor ? rowModel.rows.reduce((prev, cur: any) => prev + cur?.original?.[totalFor], 0) : 0;
 
-    const colSpan1 = colsLen % 2 ? (colsLen - 1) / 2 : colsLen / 2;
-    const colSpan2 = colsLen - colSpan1;
-
     return (
         <TableBody>
             {!rowModel.rows?.length && <NoResults colSpan={colsLen} />}
@@ -28,22 +25,16 @@ export const TBody = <TData,>({ rowModel, smallSize, colsLen, totalFor }: TBodyP
             {!!totalFor && !!total && (
                 <TableRow className="bg-gradient-heavy">
                     <TableCell
-                        colSpan={colSpan1}
+                        colSpan={colsLen}
                         className={cn(
-                            "text-left text-xl font-bold text-black print:border-t print:border-t-slate-300",
+                            "font-bold text-black print:border-t print:border-t-slate-300",
                             smallSize ? "py-2 text-base" : "text-xl",
                         )}
                     >
-                        Total {totalFor === "total" ? "Costs" : totalFor}
-                    </TableCell>
-                    <TableCell
-                        colSpan={colSpan2}
-                        className={cn(
-                            "text-right font-bold text-black print:border-t print:border-t-slate-300",
-                            smallSize ? "py-2 text-base" : "text-xl",
-                        )}
-                    >
-                        ${total.toLocaleString()}
+                        <div className="flex-around">
+                            <p className="">Total {totalFor === "total" ? "Costs" : totalFor}</p>
+                            <p className="">${total.toLocaleString()}</p>
+                        </div>
                     </TableCell>
                 </TableRow>
             )}

@@ -17,14 +17,15 @@ export const HeaderComponent = <T,>({ column, smallSize }: HeaderComponentProps<
         <Button
             variant="ghost"
             className={cn(
-                "p-0 text-base font-bold text-white hover:bg-primary hover:text-white dark:text-black print:text-black",
+                "text-white hover:bg-primary hover:text-white dark:text-black print:text-black",
+                "p-0 text-sm font-bold sm:text-base",
                 smallSize && "text-sm",
                 name === "ACTIONS" && "print:hidden",
             )}
             onClick={() => column.toggleSorting(isAsc)}
         >
             {name}
-            <ArrowUpDownIcon className="ml-2 size-4 text-white hover:text-white dark:text-black" />
+            <ArrowUpDownIcon className="ml-2 size-3 text-white hover:text-white dark:text-black sm:size-4" />
         </Button>
     );
 };

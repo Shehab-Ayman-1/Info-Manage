@@ -78,7 +78,6 @@ export const useLists = create<ListsType>((set, get) => ({
             const productsList = data.map(({ company, ...product }) => ({ ...company, list: product }));
 
             const groups = makeGroup(productsList);
-            console.log(groups);
             set({ products: { data, groups, isLoading: false, fetcher: this.fetcher } });
         },
     },

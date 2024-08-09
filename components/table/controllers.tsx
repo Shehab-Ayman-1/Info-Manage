@@ -15,10 +15,15 @@ export const Controllers = ({ previousPage, nextPage, getCanPreviousPage, getCan
 
     return (
         <div className="flex-end w-full">
-            <Button variant="outline" className="text-primary" onClick={previousPage} disabled={!canPreviousPage}>
+            <Button
+                variant="outline"
+                className="text-xs text-primary sm:text-sm"
+                onClick={previousPage}
+                disabled={!canPreviousPage}
+            >
                 Previous
             </Button>
-            <Button variant="outline" className="text-primary" onClick={nextPage} disabled={!canNextPage}>
+            <Button variant="outline" className="text-xs text-primary sm:text-sm" onClick={nextPage} disabled={!canNextPage}>
                 Next
             </Button>
         </div>

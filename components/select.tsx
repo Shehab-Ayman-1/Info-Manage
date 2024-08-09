@@ -52,7 +52,7 @@ export const SelectBox = (props: SelectBoxProps) => {
             <Fragment>
                 <SelectTrigger
                     className={cn(
-                        "my-4 w-full border-0 border-b border-b-primary text-lg text-slate-500 dark:text-slate-400",
+                        "my-2 w-full border-0 border-b border-b-primary text-sm text-slate-500 dark:text-slate-400 sm:my-4 sm:text-lg",
                         isSelected && "text-slate-900 dark:text-slate-200",
                         error && "border-b-rose-500 bg-rose-50/50 dark:border-b-rose-200 dark:bg-rose-300/50",
                         className,
@@ -60,7 +60,9 @@ export const SelectBox = (props: SelectBoxProps) => {
                 >
                     <SelectValue placeholder={label} />
                 </SelectTrigger>
-                {error?.message && <p className="mb-6 ml-1 text-sm text-rose-900 dark:text-rose-400">{error?.message}</p>}
+                {error?.message && (
+                    <p className="mb-6 ml-1 text-xs text-rose-900 dark:text-rose-400 sm:text-sm">{error?.message}</p>
+                )}
             </Fragment>
 
             <SelectContent>

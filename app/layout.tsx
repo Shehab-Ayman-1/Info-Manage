@@ -35,9 +35,7 @@ const Layout = async ({ children }: LayoutProps) => {
                     <Header />
                     <Sidebar />
                     <Configrator />
-                    <div className="m-auto mb-16 min-h-[calc(100vh-200px)] max-w-screen-xl p-2 sm:p-4">
-                        {children}
-                    </div>
+                    <div className="m-auto mb-16 min-h-[calc(100vh-200px)] max-w-screen-xl p-2 sm:p-4">{children}</div>
                     <Footer />
                 </Providers>
             </body>

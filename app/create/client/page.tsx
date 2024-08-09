@@ -31,31 +31,37 @@ const Client = ({}: ClientProps) => {
                 <Input placeholder="Client Name" error={errors?.name} {...register("name")} />
 
                 <div className="bronze flex-between">
-                    <h3>Bronze:</h3>
-                    <Input type="number" placeholder="From: ( 0 )" disabled />
-                    <Input
-                        type="number"
-                        placeholder="To:"
-                        error={errors?.bronzeTo}
-                        {...register("bronzeTo", { valueAsNumber: true })}
-                    />
+                    <h3 className="mt-4">Bronze:</h3>
+                    <div className="flex-between !flex-nowrap">
+                        <Input type="number" placeholder="From: ( 0 )" disabled />
+                        <Input
+                            type="number"
+                            placeholder="To:"
+                            error={errors?.bronzeTo}
+                            {...register("bronzeTo", { valueAsNumber: true })}
+                        />
+                    </div>
                 </div>
 
                 <div className="silver flex-between">
-                    <h3>Silver:</h3>
-                    <Input type="number" placeholder="From:" value={bronzeTo} disabled />
-                    <Input
-                        type="number"
-                        placeholder="To:"
-                        error={errors?.silverTo}
-                        {...register("silverTo", { valueAsNumber: true })}
-                    />
+                    <h3 className="mt-4">Silver:</h3>
+                    <div className="flex-between !flex-nowrap">
+                        <Input type="number" placeholder="From:" value={bronzeTo} disabled />
+                        <Input
+                            type="number"
+                            placeholder="To:"
+                            error={errors?.silverTo}
+                            {...register("silverTo", { valueAsNumber: true })}
+                        />
+                    </div>
                 </div>
 
                 <div className="gold flex-between">
-                    <h3>Gold:</h3>
-                    <Input type="number" placeholder="From:" value={silverTo} disabled />
-                    <Input placeholder="To: ( Un Limited )" disabled />
+                    <h3 className="mt-4">Gold:</h3>
+                    <div className="flex-between !flex-nowrap">
+                        <Input type="number" placeholder="From:" value={silverTo} disabled />
+                        <Input placeholder="To: ( Un Limited )" disabled />
+                    </div>
                 </div>
             </CardForm>
         </form>

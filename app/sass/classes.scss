@@ -26,21 +26,21 @@
 
 /* Flex */
 .flex-between {
-    @apply flex items-center justify-between gap-4;
+    @apply flex flex-wrap items-center justify-between gap-2 sm:flex-nowrap sm:gap-4;
 }
 
 .flex-around {
-    @apply flex items-center justify-around gap-4;
+    @apply flex flex-wrap items-center justify-around gap-2 sm:flex-nowrap sm:gap-4;
 }
 
 .flex-center {
-    @apply flex items-center justify-center gap-4;
+    @apply flex flex-wrap items-center justify-center gap-2 sm:flex-nowrap sm:gap-4;
 }
 
 .flex-start {
-    @apply flex items-center gap-4;
+    @apply flex flex-wrap items-center gap-2 sm:flex-nowrap sm:gap-4;
 }
 
 .flex-end {
-    @apply flex items-center justify-end gap-4 text-primary;
+    @apply flex flex-wrap items-center justify-end gap-2 text-primary sm:flex-nowrap sm:gap-4;
 }

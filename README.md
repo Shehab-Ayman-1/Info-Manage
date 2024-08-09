@@ -1,5 +1,7 @@
 # TODO:
 
+    - Enable Ar Language
+
     - Determin Admin And Member Pages
 
     - Edit Selected Product At Create Product And Similar

@@ -22,7 +22,9 @@ export const Sidebar = ({}: SidebarProps) => {
             <SheetContent className="bg-gradient overflow-y-auto">
                 <SheetHeader>
                     <SheetTitle className="text-center text-2xl font-extrabold text-primary">Sidebar</SheetTitle>
-                    <SheetDescription className="text-center">Click & Navigate Between Application Pages</SheetDescription>
+                    <SheetDescription className="text-center text-xs sm:text-base">
+                        Click & Navigate Between Application Pages
+                    </SheetDescription>
                 </SheetHeader>
 
                 <SheetLinks />

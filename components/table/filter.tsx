@@ -14,7 +14,7 @@ export const Filter = <TData,>({ getColumn, filterFor }: FilterProps<TData>) => 
             placeholder={`Filter By ${filterFor}...`}
             value={(getColumn(filterFor)?.getFilterValue() as string) ?? ""}
             onChange={(event) => getColumn(filterFor)?.setFilterValue(event.target.value)}
-            className="max-w-sm text-lg"
+            className="max-w-sm"
         />
     );
 };

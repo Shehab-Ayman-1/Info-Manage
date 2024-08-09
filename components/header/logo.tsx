@@ -20,8 +20,11 @@ export const Logo = ({}: LogoProps) => {
                     width={35}
                     height={35}
                     priority
+                    className="rounded-xl"
                 />
-                <h2 className="text-gradient text-3xl font-extrabold capitalize print:text-black">{organization.name}</h2>
+                <h2 className="text-gradient hidden text-3xl font-extrabold capitalize sm:block print:text-black">
+                    {organization.name}
+                </h2>
             </Link>
         </Button>
     );
