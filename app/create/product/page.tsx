@@ -51,7 +51,7 @@ const Product = ({}: ProductProps) => {
 
         const onSuccess = () => {
             setProducts([]);
-            onReset(["suppliers"]);
+            onReset(["products", "suppliers"]);
             router.push("/");
         };
 
