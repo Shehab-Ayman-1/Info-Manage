@@ -1,4 +1,4 @@
-import { CardForm } from "@/components/CardForm";
+import { CardForm } from "@/components/page-structure/CardForm";
 import { Skeleton } from "@/ui/skeleton";
 
 type ProfileLoadingProps = {};

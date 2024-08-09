@@ -2,7 +2,7 @@
 import { useDelete } from "@/hooks/api/useDelete";
 import { useModel } from "@/hooks/useModel";
 
-import { DialogForm } from "@/components/dialog";
+import { DialogForm } from "@/components/ui/dialog";
 import { Button } from "@/ui/button";
 
 type DeleteDialogProps = {};

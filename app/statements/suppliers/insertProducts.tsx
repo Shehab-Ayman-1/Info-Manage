@@ -8,9 +8,9 @@ import { z } from "zod";
 import { useLists } from "@/hooks/data/useLists";
 import { useModel } from "@/hooks/useModel";
 
-import { SubmitButton } from "@/components/submit-btn";
-import { DialogForm } from "@/components/dialog";
-import { SelectBox } from "@/components/select";
+import { SubmitButton } from "@/components/public/submit-btn";
+import { DialogForm } from "@/components/ui/dialog";
+import { SelectBox } from "@/components/ui/select";
 import { Input } from "@/ui/input";
 
 const schema = z.object({

@@ -7,15 +7,15 @@ import { useRouter } from "next/navigation";
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
 
-import { ShowChoosenProducts } from "@/components/show-choosen-products";
-import { OpenModuleButton } from "@/components/openModuleButton";
+import { ShowChoosenProducts } from "@/components/public/show-choosen-products";
+import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { createSchema } from "@/app/api/create/suppliers/schema";
-import { CardForm } from "@/components/CardForm";
-import { SelectBox } from "@/components/select";
+import { CardForm } from "@/components/page-structure/CardForm";
+import { SelectBox } from "@/components/ui/select";
 import { Input } from "@/ui/input";
 
 import { SchemaType, SupplierDialog } from "./suppier-dialog";
-import { SubmitButton } from "@/components/submit-btn";
+import { SubmitButton } from "@/components/public/submit-btn";
 
 const processes = [
     { _id: "1", value: "old", title: "Old Supplier" },

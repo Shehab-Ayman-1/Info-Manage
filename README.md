@@ -2,13 +2,13 @@
 
     - Enable Ar Language
 
-    - Determin Admin And Member Pages
-
     - Edit Selected Product At Create Product And Similar
 
-    - Delete Min & Max From Products
+    - Add Action To The Clients And Suppliers Page
 
     - Think About Clients Level
+
+    - Add New Page In Statistics Filter Products By Category Or By Company In The Store And The Market In The Same Table
 
 ```ts
     const { client, user, frontendApi, organization, openUserProfile, getOrganization, createOrganization, setActive } = useClerk();

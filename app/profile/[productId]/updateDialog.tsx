@@ -8,8 +8,8 @@ import { useModel } from "@/hooks/useModel";
 import { ProfileType } from "./page";
 
 import { editSchema, EditProfileSchema } from "@/app/api/profile/[productId]/schema";
-import { SubmitButton } from "@/components/submit-btn";
-import { DialogForm } from "@/components/dialog";
+import { SubmitButton } from "@/components/public/submit-btn";
+import { DialogForm } from "@/components/ui/dialog";
 import { Input } from "@/ui/input";
 import { Label } from "@/ui/label";
 

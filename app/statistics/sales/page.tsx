@@ -18,13 +18,11 @@ const Sales = () => {
     if (isPending) return <h1>Loading...</h1>;
     if (error) return <h1>{error?.message}</h1>;
 
-    const [{ year, month }] = data;
-
     return (
         <ChartsForm
             heading="Sales Statistics"
-            chart1={{ heading: "Sales Of The Year", data: year }}
-            chart2={{ heading: "Sales Of The Month", data: month }}
+            chart1={{ heading: "Sales Of The Year", data: data?.[0]?.year || [] }}
+            chart2={{ heading: "Sales Of The Month", data: data?.[0]?.month || [] }}
         />
     );
 };

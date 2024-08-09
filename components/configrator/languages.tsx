@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import { SelectBox } from "@/components/select";
+import { SelectBox } from "@/components/ui/select";
 import { languages } from "@/constants";
 
 export const Languages = () => {

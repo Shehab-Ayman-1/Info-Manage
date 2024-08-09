@@ -1,11 +1,11 @@
+import { Dispatch, SetStateAction } from "react";
 import { ShoppingCartIcon } from "lucide-react";
 
 import { Card, CardContent, CardHeader } from "@/ui/card";
-import { Heading } from "../heading";
-import { Chart } from "../chart";
+import { Group, SelectBox } from "../ui/select";
 import { ChartConfig } from "@/ui/chart";
-import { Group, SelectBox } from "../select";
-import { Dispatch, SetStateAction } from "react";
+import { Heading } from "../public/heading";
+import { Chart } from "../ui/chart";
 
 const configs = {
     desktop: { label: "Purchases", color: "hsl(var(--chart-1))" },

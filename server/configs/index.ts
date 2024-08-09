@@ -8,9 +8,9 @@ export const DBConnection = async () => {
 
         if (connect) return;
         const URL = process.env.DATABASE_URI! || process.env.DATABASE_URI!;
-        await mongoose.connect(URL, {
-            serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
-        });
+
+        // Increase timeout to 30 seconds
+        await mongoose.connect(URL, { serverSelectionTimeoutMS: 30000 });
 
         connect = true;
     } catch (error: any) {

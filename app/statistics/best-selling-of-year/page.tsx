@@ -6,7 +6,7 @@ import { columns } from "./table-columns";
 import { years } from "@/constants";
 
 import { TableForm } from "@/components/page-structure/table-form";
-import { SelectBox } from "@/components/select";
+import { SelectBox } from "@/components/ui/select";
 import { cn } from "@/utils/shadcn";
 
 type BestSellingOfYearProps = {

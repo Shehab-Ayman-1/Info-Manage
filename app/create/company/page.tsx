@@ -6,12 +6,12 @@ import { useEffect } from "react";
 import Image from "next/image";
 
 import { createSchema, CreateCompanySchema } from "@/app/api/create/companies/schema";
-import { CardForm } from "@/components/CardForm";
+import { CardForm } from "@/components/page-structure/CardForm";
 
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
 
-import { SelectBox } from "@/components/select";
+import { SelectBox } from "@/components/ui/select";
 import { Input } from "@/ui/input";
 
 type CompanyProps = {};

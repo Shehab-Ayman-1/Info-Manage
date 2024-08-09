@@ -50,13 +50,13 @@ export const showLinks: NavLinkType[] = [
     },
     {
         Icon: ReceiptTextIcon,
-        title: "Client Bills",
+        title: "Client's Bills",
         href: "/show/clients-bills",
         role: "org:member",
     },
     {
         Icon: ReceiptTextIcon,
-        title: "Suppliers Bills",
+        title: "Supplier's Bills",
         href: "/show/suppliers-debts",
         role: "org:member",
     },

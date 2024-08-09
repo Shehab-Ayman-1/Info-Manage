@@ -4,17 +4,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+import { CardForm } from "@/components/page-structure/CardForm";
 import { methods, place, process } from "@/constants";
-import { CardForm } from "@/components/CardForm";
-import { SelectBox } from "@/components/select";
+import { SelectBox } from "@/components/ui/select";
 
 import { CreateSupplierType, createSchema } from "@/app/api/statements/suppliers/schema";
-import { OpenModuleButton } from "@/components/openModuleButton";
-import { AlertError } from "@/components/alert-error";
+import { OpenModuleButton } from "@/components/public/openModuleButton";
+import { AlertError } from "@/components/ui/alert-error";
 import { DataTable } from "@/components/table";
 
 import { InsertProducts, ProductType } from "./insertProducts";
-import { SubmitButton } from "@/components/submit-btn";
+import { SubmitButton } from "@/components/public/submit-btn";
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
 

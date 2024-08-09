@@ -9,7 +9,6 @@ export type MarketProps = {
     _id: string;
     product: string;
     min: number;
-    max: number;
     count: number;
     price: number;
     total: number;

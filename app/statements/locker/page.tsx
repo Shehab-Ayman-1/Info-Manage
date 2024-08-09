@@ -7,8 +7,8 @@ import { useCreate } from "@/hooks/api/useCreate";
 
 import { CreateLockerSchema, createSchema } from "@/app/api/statements/locker/schema";
 import { lockerMethods, methods } from "@/constants/statements";
-import { CardForm } from "@/components/CardForm";
-import { SelectBox } from "@/components/select";
+import { CardForm } from "@/components/page-structure/CardForm";
+import { SelectBox } from "@/components/ui/select";
 import { Input } from "@/ui/input";
 
 type LockerProps = {};

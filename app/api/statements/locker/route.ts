@@ -2,9 +2,9 @@ import { auth, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
 import { DBConnection } from "@/server/configs";
-import { json } from "@/utils/response";
-import { createSchema } from "./schema";
 import { Transactions } from "@/server/models";
+import { createSchema } from "./schema";
+import { json } from "@/utils/response";
 
 export const POST = async (req: NextRequest) => {
     try {
@@ -19,7 +19,8 @@ export const POST = async (req: NextRequest) => {
 
         if (data.process === "withdraw") {
             const locker = await Transactions.getLockerMoney(orgId);
-            if (data.price > locker.currentAmount) return json(`The Locker Is Not Exist $${data.price}`);
+            console.log(data.price > locker.currentAmount);
+            if (data.price > locker.currentAmount) return json(`The Locker Is Not Exist $${data.price}`, 400);
         }
 
         await Transactions.create({ ...data, orgId, creator: `${user.firstName} ${user.lastName}` });

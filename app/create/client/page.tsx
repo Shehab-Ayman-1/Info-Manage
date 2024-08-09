@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 
 import { ClientCreateSchema, createSchema } from "@/app/api/create/clients/schema";
-import { CardForm } from "@/components/CardForm";
+import { CardForm } from "@/components/page-structure/CardForm";
 import { useCreate } from "@/hooks/api/useCreate";
 import { Input } from "@/ui/input";
 

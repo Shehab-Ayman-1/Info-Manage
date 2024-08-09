@@ -5,17 +5,17 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { createSchema, CreateClientType } from "@/app/api/statements/clients/schema";
-import { OpenModuleButton } from "@/components/openModuleButton";
+import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { InsertProducts, ProductType } from "./insertProducts";
 
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
 import { methods, process } from "@/constants";
 
-import { SubmitButton } from "@/components/submit-btn";
-import { AlertError } from "@/components/alert-error";
-import { CardForm } from "@/components/CardForm";
-import { SelectBox } from "@/components/select";
+import { CardForm } from "@/components/page-structure/CardForm";
+import { SubmitButton } from "@/components/public/submit-btn";
+import { AlertError } from "@/components/ui/alert-error";
+import { SelectBox } from "@/components/ui/select";
 import { DataTable } from "@/components/table";
 import { columns } from "./table-columns";
 import { Input } from "@/ui/input";

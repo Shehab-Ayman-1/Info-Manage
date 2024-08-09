@@ -7,7 +7,7 @@ import { useModel } from "@/hooks/useModel";
 import { useGet } from "@/hooks/api/useGet";
 
 import { ProfileLoading } from "@/components/loading/product-profile";
-import { CardForm } from "@/components/CardForm";
+import { CardForm } from "@/components/page-structure/CardForm";
 import { Label } from "@/ui/label";
 
 import DeleteDialog from "./deleteDialog";

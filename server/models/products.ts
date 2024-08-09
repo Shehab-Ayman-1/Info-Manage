@@ -5,7 +5,6 @@ type TProduct = {
     name: string;
     barcode: string;
     min: number;
-    max: number;
     market: { price: number; count: number; updatedAt: Date };
     store: { price: number; count: number; updatedAt: Date };
     company: any;
@@ -16,7 +15,6 @@ const schema = new Schema<TProduct>({
     barcode: { type: String, trim: true },
 
     min: { type: Number, required: true },
-    max: { type: Number, required: true },
 
     market: {
         price: { type: Number, required: true },

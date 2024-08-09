@@ -15,14 +15,7 @@ type LayoutProps = {
 
 const Layout = async ({ children }: LayoutProps) => {
     const { userId } = auth();
-    if (!userId)
-        return (
-            <html>
-                <body>
-                    <Providers>{children}</Providers>
-                </body>
-            </html>
-        );
+    if (!userId) return <NotSignedIn>{children}</NotSignedIn>;
 
     const orgs = await clerkClient().users.getOrganizationMembershipList({ userId });
     const orgId = orgs?.data[0]?.organization.id;
@@ -34,13 +27,25 @@ const Layout = async ({ children }: LayoutProps) => {
                     <ActiveOrg orgId={orgId} />
                     <Header />
                     <Sidebar />
-                    <Configrator />
                     <div className="m-auto mb-16 min-h-[calc(100vh-200px)] max-w-screen-xl p-2 sm:p-4">{children}</div>
+                    <Configrator />
                     <Footer />
                 </Providers>
             </body>
         </html>
     );
 };
+
+function NotSignedIn({ children }: LayoutProps) {
+    return (
+        <html>
+            <body>
+                <Providers>{children}</Providers>
+            </body>
+        </html>
+    );
+}
+
+NotSignedIn.displayName = "NotSignedIn";
 
 export default Layout;

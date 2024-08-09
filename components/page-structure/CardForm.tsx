@@ -14,7 +14,7 @@ export const CardForm = ({ heading, submitText, disabled, onSubmit, children }: 
     return (
         <Card className="bg-gradient m-auto mt-8 max-w-xl border-slate-400 shadow-lg dark:border-slate-600">
             <CardContent className="">
-                <CardHeader className="bg-gradient-heavy m-auto -mt-8 mb-6 w-[80%] rounded-lg text-center text-xl font-bold text-white !shadow-xl dark:text-black sm:text-2xl">
+                <CardHeader className="bg-gradient-heavy m-auto -mt-16 mb-6 w-[80%] rounded-lg text-center text-xl font-bold text-white !shadow-xl dark:text-black sm:text-2xl">
                     {heading}
                 </CardHeader>
 

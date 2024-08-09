@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useLists } from "@/hooks/data/useLists";
 import { useCreate } from "@/hooks/api/useCreate";
 
-import { CardForm } from "@/components/CardForm";
+import { CardForm } from "@/components/page-structure/CardForm";
 import { Input } from "@/ui/input";
 
 type CategoryProps = {};

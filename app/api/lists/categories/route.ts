@@ -13,7 +13,6 @@ export const GET = async (req: NextRequest) => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const categories = await Categories.find({ orgId }).select(["_id", "name"]);
-
         return json(categories);
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");

@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 import { Card, CardContent, CardHeader } from "@/ui/card";
 import { DataTable } from "@/components/table";
-import { Heading } from "@/components/heading";
+import { Heading } from "@/components/public/heading";
 import { useLists } from "@/hooks/data/useLists";
-import { SelectBox } from "@/components/select";
+import { SelectBox } from "@/components/ui/select";
 import { place as places } from "@/constants";
 import { columns } from "./table-columns";
 

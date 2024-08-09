@@ -37,7 +37,7 @@ export const GET = async (req: NextRequest) => {
             {
                 $match: {
                     $expr: {
-                        $lt: [`$product.${place}.count`, "$product.max"],
+                        $lt: [`$product.${place}.count`, "$product.min"],
                     },
                 },
             },
@@ -47,9 +47,9 @@ export const GET = async (req: NextRequest) => {
                     product: "$product.name",
                     price: `$product.${place}.price`,
                     current_count: `$product.${place}.count`,
-                    needed_count: { $subtract: ["$product.max", `$product.${place}.count`] },
+                    needed_count: { $subtract: ["$product.min", `$product.${place}.count`] },
                     total: {
-                        $multiply: [`$product.${place}.price`, { $subtract: ["$product.max", `$product.${place}.count`] }],
+                        $multiply: [`$product.${place}.price`, { $subtract: ["$product.min", `$product.${place}.count`] }],
                     },
                 },
             },

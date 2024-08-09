@@ -9,8 +9,8 @@ import { useLists } from "@/hooks/data/useLists";
 import { place } from "@/constants";
 
 import { editSchema, EditTransferSchema } from "@/app/api/statements/transfer/schema";
-import { CardForm } from "@/components/CardForm";
-import { SelectBox } from "@/components/select";
+import { CardForm } from "@/components/page-structure/CardForm";
+import { SelectBox } from "@/components/ui/select";
 import { Input } from "@/ui/input";
 
 type TransferProps = {};

@@ -5,14 +5,14 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 
-import { ShowChoosenProducts } from "@/components/show-choosen-products";
+import { ShowChoosenProducts } from "@/components/public/show-choosen-products";
 import { CreateProductSchema } from "@/app/api/create/products/schema";
-import { OpenModuleButton } from "@/components/openModuleButton";
+import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { ProductDialog, ProductType } from "./product-dialog";
 
-import { SubmitButton } from "@/components/submit-btn";
-import { CardForm } from "@/components/CardForm";
-import { SelectBox } from "@/components/select";
+import { CardForm } from "@/components/page-structure/CardForm";
+import { SubmitButton } from "@/components/public/submit-btn";
+import { SelectBox } from "@/components/ui/select";
 
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";

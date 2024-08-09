@@ -13,11 +13,7 @@ export const GET = async (req: NextRequest) => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const companies = await Companies.find()
-            .populate({
-                path: "category",
-                match: { orgId },
-                select: ["_id", "name"],
-            })
+            .populate({ path: "category", match: { orgId }, select: ["_id", "name"] })
             .select(["_id", "name"]);
 
         return json(companies.filter((company) => company?.category));

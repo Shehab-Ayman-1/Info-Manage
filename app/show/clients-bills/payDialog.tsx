@@ -6,7 +6,7 @@ import { z } from "zod";
 import { useUpdate } from "@/hooks/api/useUpdate";
 import { useModel } from "@/hooks/useModel";
 
-import { DialogForm } from "@/components/dialog";
+import { DialogForm } from "@/components/ui/dialog";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
 

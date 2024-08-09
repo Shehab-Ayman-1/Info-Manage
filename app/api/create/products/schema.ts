@@ -14,8 +14,7 @@ export const createSchema = z.object({
             name: z.string().min(1),
             barcode: z.string().optional(),
 
-            min: z.number().int().min(0),
-            max: z.number().int().min(0),
+            min: z.number().int().min(1),
 
             market: z.object(place).optional(),
             store: z.object(place).optional(),

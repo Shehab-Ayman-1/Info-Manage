@@ -5,8 +5,8 @@ import { Dispatch, SetStateAction } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 
-import { SubmitButton } from "@/components/submit-btn";
-import { DialogForm } from "@/components/dialog";
+import { SubmitButton } from "@/components/public/submit-btn";
+import { DialogForm } from "@/components/ui/dialog";
 import { useModel } from "@/hooks/useModel";
 import { Input } from "@/ui/input";
 
@@ -14,7 +14,6 @@ const schema = z.object({
     name: z.string().min(1),
     barcode: z.string().optional(),
     min: z.number().min(0).int(),
-    max: z.number().min(0).int(),
     storeCount: z.number().min(0).int(),
     marketCount: z.number().min(0).int(),
     purchasePrice: z.number().min(0),
@@ -50,23 +49,15 @@ export const ProductDialog = ({ setProducts }: ProductDialogProps) => {
     return (
         <DialogForm heading="Insert Product" description=" Please Fill All The Required Fields To Succefully Create The Account.">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="">
-                    <Input placeholder="Product Name" error={errors?.name} {...register("name")} />
-                    <Input placeholder="Barcode (Optional)" error={errors?.barcode} {...register("barcode")} />
-                </div>
+                <Input placeholder="Product Name" error={errors?.name} {...register("name")} />
 
                 <div className="flex-between">
+                    <Input placeholder="Barcode (Optional)" error={errors?.barcode} {...register("barcode")} />
                     <Input
                         type="number"
                         placeholder="Minimum Limit"
                         error={errors?.min}
                         {...register("min", { valueAsNumber: true })}
-                    />
-                    <Input
-                        type="number"
-                        placeholder="Maximum Limit"
-                        error={errors?.max}
-                        {...register("max", { valueAsNumber: true })}
                     />
                 </div>
 
