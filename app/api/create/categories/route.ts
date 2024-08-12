@@ -10,7 +10,7 @@ export const POST = async (req: NextRequest) => {
     try {
         await DBConnection();
 
-        const { userId, orgId } = auth();
+        const { userId, orgId, orgSlug } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const body = await req.json();
@@ -19,7 +19,7 @@ export const POST = async (req: NextRequest) => {
         const category = await Categories.findOne({ orgId, name });
         if (category) return json("This Category Is Already Exist.", 400);
 
-        await Categories.create({ orgId, name });
+        await Categories.create({ orgId, orgSlug, name });
         return json("Category Was Successfully Created.");
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");

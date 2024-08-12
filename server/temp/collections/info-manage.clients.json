@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "66b547d31711b1cded42fc05"
+  },
+  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "name": "أمير عادل",
+  "level": "bronze",
+  "discounts": 0,
+  "boughtsSalary": 35,
+  "pendingCosts": 0,
+  "__v": 0,
+  "bronzeTo": 50000,
+  "silverTo": 100000
+}]

@@ -3,11 +3,13 @@ import { Schema, model, models, InferSchemaType, Model } from "mongoose";
 type TCategory = {
     _id: string;
     orgId: string;
+    orgSlug: string;
     name: string;
 };
 
 const schema = new Schema<TCategory>({
     orgId: { type: String, required: true, trim: true },
+    orgSlug: { type: String, required: true, trim: true },
     name: { type: String, required: true, trim: true },
 });
 

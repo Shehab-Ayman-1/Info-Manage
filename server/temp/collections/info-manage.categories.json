@@ -1,0 +1,32 @@
+[{
+  "_id": {
+    "$oid": "66b52a7f81d29af226da061d"
+  },
+  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+  "name": "حفاضات",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66b52a8681d29af226da0622"
+  },
+  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+  "name": "فوط صحية",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66b52a8a81d29af226da0627"
+  },
+  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+  "name": "مناديل",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66b53d935423b14979964d47"
+  },
+  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "name": "عصائر",
+  "__v": 0
+}]
