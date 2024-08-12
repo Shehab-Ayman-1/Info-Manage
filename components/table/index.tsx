@@ -55,18 +55,18 @@ export const DataTable = <TData, TValue>({ columns, data, filterFor, totalFor, s
 
     return (
         <Card className="w-full border-none bg-transparent print:border-none">
-            <CardHeader className="flex-between flex-row px-0 py-4 print:hidden">
+            <CardHeader className="flex-between flex-row !p-0 !pt-4 print:hidden">
                 <Filter getColumn={getColumn} filterFor={filterFor} />
             </CardHeader>
 
-            <CardContent className="overflow-hidden rounded-xl border p-2">
+            <CardContent className="overflow-hidden rounded-xl border !p-3">
                 <Table>
                     <THeader headerGroups={headerGroups} />
                     <TBody colsLen={columns.length} totalFor={totalFor} rowModel={rowModel} smallSize={smallSize} />
                 </Table>
             </CardContent>
 
-            <CardFooter className="flex-between gap-4 p-4 print:hidden">
+            <CardFooter className="flex-between gap-4 !p-0 !pt-4 print:hidden">
                 <Controllers
                     previousPage={previousPage}
                     nextPage={nextPage}

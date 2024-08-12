@@ -5,6 +5,7 @@ import * as SelectPrimitive from "@radix-ui/react-select";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
 import { cn } from "@/utils/shadcn";
+import { Label } from "./label";
 
 const Select = SelectPrimitive.Root;
 
@@ -15,21 +16,32 @@ const SelectValue = SelectPrimitive.Value;
 const SelectTrigger = React.forwardRef<
     React.ElementRef<typeof SelectPrimitive.Trigger>,
     React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-    <SelectPrimitive.Trigger
-        ref={ref}
-        className={cn(
-            "flex h-14 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
-            className,
-        )}
-        {...props}
-    >
-        {children}
-        <SelectPrimitive.Icon asChild>
-            <ChevronDown className="h-4 w-4 opacity-50" />
-        </SelectPrimitive.Icon>
-    </SelectPrimitive.Trigger>
-));
+>(({ className, children, error, ...props }, ref) => {
+    const name = props?.name?.replace(/([A-Z])/, " $1").replace("Id", "Name");
+    const label = name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
+    return (
+        <div className="my-2 w-full sm:my-4">
+            <Label className="text-lg">{label}</Label>
+            <SelectPrimitive.Trigger
+                ref={ref}
+                className={cn(
+                    "flex-between h-10 w-full rounded-md border border-t-0 border-input bg-transparent px-3 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-50 sm:h-14 sm:text-lg",
+                    "text-muted-foreground",
+                    "border-x-0 border-b-primary",
+                    error && "border-b-rose-500 bg-rose-50/50 dark:border-b-rose-200 dark:bg-rose-300/50",
+                    className,
+                )}
+                {...props}
+            >
+                {children}
+                <SelectPrimitive.Icon asChild>
+                    <ChevronDown className="h-4 w-4 opacity-50" />
+                </SelectPrimitive.Icon>
+            </SelectPrimitive.Trigger>
+            {error?.message && <p className="ml-1 text-xs text-rose-900 dark:text-rose-400 sm:text-sm">{error.message}</p>}
+        </div>
+    );
+});
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
 const SelectScrollUpButton = React.forwardRef<
@@ -96,11 +108,7 @@ const SelectLabel = React.forwardRef<
     React.ElementRef<typeof SelectPrimitive.Label>,
     React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
 >(({ className, ...props }, ref) => (
-    <SelectPrimitive.Label
-        ref={ref}
-        className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold", className)}
-        {...props}
-    />
+    <SelectPrimitive.Label ref={ref} className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold", className)} {...props} />
 ));
 SelectLabel.displayName = SelectPrimitive.Label.displayName;
 

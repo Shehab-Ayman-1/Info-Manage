@@ -1,7 +1,5 @@
 # TODO:
 
-    - Add Action To The Clients And Suppliers Page
-
     - Think About Clients Level
 
     - Add New Page In Statistics Filter Products By Category Or By Company In The Store And The Market In The Same Table
