@@ -15,7 +15,7 @@ const SelectValue = SelectPrimitive.Value;
 
 const SelectTrigger = React.forwardRef<
     React.ElementRef<typeof SelectPrimitive.Trigger>,
-    React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
+    React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & { error?: { message: string } }
 >(({ className, children, error, ...props }, ref) => {
     const name = props?.name?.replace(/([A-Z])/, " $1").replace("Id", "Name");
     const label = name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
