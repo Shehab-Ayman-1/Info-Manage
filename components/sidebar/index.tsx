@@ -5,13 +5,11 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { useSidebarModel } from "@/hooks/useSidebarModel";
 import { useModel } from "@/hooks/useModel";
 import { SheetLinks } from "./sheet-links";
-import { Button } from "@/ui/button";
 
 type SidebarProps = {};
 
 export const Sidebar = ({}: SidebarProps) => {
     const { open, onOpen } = useSidebarModel();
-    const { onOpen: onOpenModel } = useModel();
 
     return (
         <Sheet open={open} onOpenChange={onOpen}>
@@ -31,23 +29,6 @@ export const Sidebar = ({}: SidebarProps) => {
                 </SheetHeader>
 
                 <SheetLinks />
-
-                <div className="flex-between mt-4">
-                    <Button
-                        variant="outline"
-                        className="h-auto w-full py-4 leading-7"
-                        onClick={() => onOpenModel("backup-model")}
-                    >
-                        Back Up <br /> To Online
-                    </Button>
-                    <Button
-                        variant="outline"
-                        className="h-auto w-full py-4 leading-7"
-                        onClick={() => onOpenModel("restore-model")}
-                    >
-                        Restore <br /> Last Backup
-                    </Button>
-                </div>
             </SheetContent>
         </Sheet>
     );
