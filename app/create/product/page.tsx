@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 
-import { ShowChoosenProducts } from "@/components/public/show-choosen-products";
 import { CreateProductSchema } from "@/app/api/create/products/schema";
 import { OpenModuleButton } from "@/components/public/openModuleButton";
-import { ProductDialog, ProductType } from "./product-dialog";
+import { InsertAndUpdateDialog } from "./insertAndUpdateDialog";
+import { ProductType } from "./schema";
 
 import { CardForm } from "@/components/page-structure/CardForm";
 import { SubmitButton } from "@/components/public/submit-btn";
@@ -16,9 +16,12 @@ import { SelectBox } from "@/components/ui/select";
 
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
+import { DataTable } from "@/components/table";
+import { DeleteDialog } from "./deleteDialog";
+import { columns } from "./table-columns";
 
 const schema = z.object({
-    companyId: z.string().min(1, { message: "Company Is A Required Field" }),
+    companyId: z.string().min(1),
     supplierId: z.string().min(1).optional(),
 });
 
@@ -43,7 +46,7 @@ const Product = ({}: ProductProps) => {
     const onSubmit: SubmitHandler<FieldValues> = ({ companyId, supplierId }) => {
         if (!products.length) return setError("root", { message: "No Products Inserted Yet." });
 
-        const items = products.map(({ marketCount, storeCount, purchasePrice, sellingPrice, ...rest }) => {
+        const items = products.map(({ randomId, marketCount, storeCount, purchasePrice, sellingPrice, ...rest }) => {
             const market = { price: sellingPrice, count: marketCount };
             const store = { price: purchasePrice, count: storeCount };
             return { market, store, ...rest };
@@ -81,11 +84,12 @@ const Product = ({}: ProductProps) => {
                 />
 
                 <OpenModuleButton clearErrors={clearErrors} />
+                {!!products.length && <DataTable columns={columns} data={products} smallSize />}
                 <SubmitButton text="Create" isPending={isPending} />
             </form>
 
-            <ProductDialog setProducts={setProducts} />
-            <ShowChoosenProducts products={products} setProducts={setProducts} />
+            <InsertAndUpdateDialog setProducts={setProducts} />
+            <DeleteDialog setProducts={setProducts} />
             <p className="text-center text-sm text-rose-900">{errors?.root?.message}</p>
         </CardForm>
     );

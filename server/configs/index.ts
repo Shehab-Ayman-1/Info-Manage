@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 let connect = false;
 
 export const DBConnection = async () => {
@@ -7,7 +6,7 @@ export const DBConnection = async () => {
         mongoose.set("strictQuery", true);
 
         if (connect) return;
-        const URL = process.env.DATABASE_URI! || process.env.DATABASE_URI!;
+        const URL = process.env.DATABASE_URL! || process.env.DATABASE_URI!;
 
         // Increase timeout to 30 seconds
         await mongoose.connect(URL, { serverSelectionTimeoutMS: 30000 });

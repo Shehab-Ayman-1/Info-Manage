@@ -1,14 +1,19 @@
 import * as React from "react";
 
 import { cn } from "@/utils/shadcn";
+import { Label } from "./label";
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     error?: Record<string, any> | undefined;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type, error, ...props }, ref) => {
+    const name = props?.name?.replace(/([A-Z])/, " $1");
+    const label = name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
+
     return (
         <div className="my-2 w-full sm:my-4">
+            <Label className="text-lg">{label}</Label>
             <input
                 type={type}
                 className={cn(

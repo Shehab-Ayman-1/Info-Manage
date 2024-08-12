@@ -7,15 +7,18 @@ import { useRouter } from "next/navigation";
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
 
-import { ShowChoosenProducts } from "@/components/public/show-choosen-products";
 import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { createSchema } from "@/app/api/create/suppliers/schema";
 import { CardForm } from "@/components/page-structure/CardForm";
 import { SelectBox } from "@/components/ui/select";
 import { Input } from "@/ui/input";
 
-import { SchemaType, SupplierDialog } from "./suppier-dialog";
+import { InsertDialog } from "./insertDialog";
 import { SubmitButton } from "@/components/public/submit-btn";
+import { SupplierType } from "./schema";
+import { DataTable } from "@/components/table";
+import { columns } from "./table-columns";
+import { DeleteDialog } from "./deleteDialog";
 
 const processes = [
     { _id: "1", value: "old", title: "Old Supplier" },
@@ -29,7 +32,7 @@ const Supplier = ({}: SupplierProps) => {
         resolver: zodResolver(createSchema.omit({ productsIds: true })),
     });
 
-    const [products, setProducts] = useState<SchemaType[]>([]);
+    const [products, setProducts] = useState<SupplierType[]>([]);
     const [process, setProcess] = useState("");
 
     const { mutate, isPending } = useCreate(`/api/create/suppliers?process=${process}`, ["suppliers"]);
@@ -86,6 +89,7 @@ const Supplier = ({}: SupplierProps) => {
                 {process && (
                     <Fragment>
                         <OpenModuleButton clearErrors={clearErrors} />
+                        {!!products.length && <DataTable columns={columns} data={products} smallSize />}
                         <SubmitButton text="Create" isPending={isPending} />
                     </Fragment>
                 )}
@@ -93,8 +97,8 @@ const Supplier = ({}: SupplierProps) => {
                 <p className="text-center text-sm text-rose-900">{errors?.root?.message}</p>
             </form>
 
-            <SupplierDialog setProducts={setProducts} />
-            <ShowChoosenProducts products={products} setProducts={setProducts} />
+            <InsertDialog setProducts={setProducts} />
+            <DeleteDialog setProducts={setProducts} />
         </CardForm>
     );
 };

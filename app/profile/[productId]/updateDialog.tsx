@@ -71,59 +71,30 @@ const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
                 <hr className="my-4 dark:border-slate-500" />
 
                 <div className="flex-between">
-                    <div className="w-full">
-                        <Label className="font-bold">Company:</Label>
-                        <Input placeholder="Company" error={errors?.company} {...register("company")} />
-                    </div>
-                    <div className="w-full">
-                        <Label className="font-bold">Image:</Label>
-                        <Input placeholder="Company Image" error={errors?.image} {...register("image")} />
-                    </div>
+                    <Input placeholder="Company" error={errors?.company} {...register("company")} />
+                    <Input placeholder="Company Image" error={errors?.image} {...register("image")} />
                 </div>
 
                 <div className="flex-between">
-                    <div className="w-full">
-                        <Label className="font-bold">Name:</Label>
-                        <Input placeholder="Name" error={errors?.name} {...register("name")} />
-                    </div>
-                    <div className="w-full">
-                        <Label className="font-bold">Barcode:</Label>
-                        <Input placeholder="Barcode" error={errors?.barcode} {...register("barcode")} />
-                    </div>
+                    <Input placeholder="Name" error={errors?.name} {...register("name")} />
+                    <Input placeholder="Barcode" error={errors?.barcode} {...register("barcode")} />
                 </div>
 
                 <hr className="my-4 dark:border-slate-500" />
 
                 <div className="flex-between">
-                    <div className="w-full">
-                        <Label className="font-bold">Purchase Price:</Label>
-                        <Input
-                            type="number"
-                            placeholder="Purchase Price"
-                            error={errors?.purchasePrice}
-                            {...register("purchasePrice")}
-                        />
-                    </div>
-                    <div className="w-full">
-                        <Label className="font-bold">Sale Price:</Label>
-                        <Input type="number" placeholder="Sale Price" error={errors?.salePrice} {...register("salePrice")} />
-                    </div>
+                    <Input
+                        type="number"
+                        placeholder="Purchase Price"
+                        error={errors?.purchasePrice}
+                        {...register("purchasePrice")}
+                    />
+                    <Input type="number" placeholder="Sale Price" error={errors?.salePrice} {...register("salePrice")} />
                 </div>
 
                 <div className="flex-between">
-                    <div className="w-full">
-                        <Label className="font-bold">Market Count:</Label>
-                        <Input
-                            type="number"
-                            placeholder="Market Count"
-                            error={errors?.marketCount}
-                            {...register("marketCount")}
-                        />
-                    </div>
-                    <div className="w-full">
-                        <Label className="font-bold">Store Count:</Label>
-                        <Input type="number" placeholder="Store Count" error={errors?.storeCount} {...register("storeCount")} />
-                    </div>
+                    <Input type="number" placeholder="Market Count" error={errors?.marketCount} {...register("marketCount")} />
+                    <Input type="number" placeholder="Store Count" error={errors?.storeCount} {...register("storeCount")} />
                 </div>
 
                 <SubmitButton text="Update" isPending={isPending} />

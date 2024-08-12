@@ -1,42 +1,42 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
+import { ProductType, schema } from "./schema";
 import { toast } from "sonner";
-import { z } from "zod";
 
 import { SubmitButton } from "@/components/public/submit-btn";
 import { DialogForm } from "@/components/ui/dialog";
 import { useModel } from "@/hooks/useModel";
 import { Input } from "@/ui/input";
 
-const schema = z.object({
-    name: z.string().min(1),
-    barcode: z.string().optional(),
-    min: z.number().min(0).int(),
-    storeCount: z.number().min(0).int(),
-    marketCount: z.number().min(0).int(),
-    purchasePrice: z.number().min(0),
-    sellingPrice: z.number().min(0),
-});
-
-export type ProductType = z.infer<typeof schema>;
-
-type ProductDialogProps = {
+type InsertAndUpdateDialogProps = {
     setProducts: Dispatch<SetStateAction<ProductType[]>>;
 };
 
-export const ProductDialog = ({ setProducts }: ProductDialogProps) => {
-    const { register, formState, reset, handleSubmit } = useForm({ resolver: zodResolver(schema) });
-    const { onClose } = useModel();
-
+export const InsertAndUpdateDialog = ({ setProducts }: InsertAndUpdateDialogProps) => {
+    const { formState, register, reset, setValue, handleSubmit } = useForm({ resolver: zodResolver(schema) });
+    const { onClose, type, data } = useModel();
     const { errors, isLoading } = formState;
 
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        const values = data as ProductType;
+    useEffect(() => {
+        if (type !== "edit-model" || !data?.product) return;
+        setValue("randomId", data?.product.randomId);
+        setValue("name", data?.product.name);
+        setValue("barcode", data?.product.barcode);
+        setValue("min", data?.product.min);
+        setValue("marketCount", data?.product.marketCount);
+        setValue("storeCount", data?.product.storeCount);
+        setValue("purchasePrice", data?.product.purchasePrice);
+        setValue("sellingPrice", data?.product.sellingPrice);
+    }, [type, data, setValue]);
+
+    if (type === "delete-model") return;
+
+    const onSubmitFn = (values: ProductType) => {
         setProducts((products) => {
             const isExist = products.some((product) => product.name === values.name);
-            if (!isExist) return products.concat(values);
+            if (!isExist) return products.concat({ ...values, randomId: Date.now().toString(16) });
 
             toast.info("This Product Is Already Exist.");
             return products;
@@ -46,8 +46,29 @@ export const ProductDialog = ({ setProducts }: ProductDialogProps) => {
         onClose();
     };
 
+    const onEditFn = (values: ProductType) => {
+        setProducts((products) => {
+            const product = products.find((product) => product.randomId === values.randomId);
+            if (!product) {
+                toast.info("Something Went Wrong");
+                return products;
+            }
+            const newProducts = products.map((product) => (product.randomId === values.randomId ? values : product));
+            return newProducts;
+        });
+
+        reset();
+        onClose();
+    };
+
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        const values = data as ProductType;
+        if (type === "edit-model") onEditFn(values);
+        else onSubmitFn(values);
+    };
+
     return (
-        <DialogForm heading="Insert Product" description=" Please Fill All The Required Fields To Succefully Create The Account.">
+        <DialogForm heading="Insert Product" description="Please Fill All The Required Fields To Succefully Create The Account.">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Input placeholder="Product Name" error={errors?.name} {...register("name")} />
 
@@ -97,4 +118,4 @@ export const ProductDialog = ({ setProducts }: ProductDialogProps) => {
     );
 };
 
-ProductDialog.displayName = "ProductDialog";
+InsertAndUpdateDialog.displayName = "InsertAndUpdateDialog";

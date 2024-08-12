@@ -1,9 +1,5 @@
 # TODO:
 
-    - Enable Ar Language
-
-    - Edit Selected Product At Create Product And Similar
-
     - Add Action To The Clients And Suppliers Page
 
     - Think About Clients Level

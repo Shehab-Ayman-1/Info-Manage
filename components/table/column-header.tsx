@@ -11,7 +11,7 @@ type HeaderComponentProps<T> = {
 
 export const HeaderComponent = <T,>({ column, smallSize }: HeaderComponentProps<T>) => {
     const isAsc = column.getIsSorted() === "asc";
-    const name = column.id.toUpperCase();
+    const name = column.id.replace(/([A-Z])/, "_$1");
 
     return (
         <Button
@@ -24,7 +24,7 @@ export const HeaderComponent = <T,>({ column, smallSize }: HeaderComponentProps<
             )}
             onClick={() => column.toggleSorting(isAsc)}
         >
-            {name}
+            {name.toUpperCase()}
             <ArrowUpDownIcon className="ml-2 size-3 text-white hover:text-white dark:text-black sm:size-4" />
         </Button>
     );

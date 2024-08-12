@@ -2,8 +2,9 @@ import { redirect } from "next/navigation";
 
 type PageNotFoundProps = {};
 
-export const PageNotFound = ({}: PageNotFoundProps) => {
+const PageNotFound = ({}: PageNotFoundProps) => {
     return redirect("/");
 };
 
 PageNotFound.displayName = "PageNotFound";
+export default PageNotFound;

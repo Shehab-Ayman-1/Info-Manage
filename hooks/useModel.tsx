@@ -13,5 +13,5 @@ export const useModel = create<Model>((set) => ({
     type: "",
     data: {},
     onOpen: (type?: string, data?: any) => set({ open: true, data, type: type || "" }),
-    onClose: () => set({ open: false }),
+    onClose: () => set({ open: false, type: "", data: {} }),
 }));

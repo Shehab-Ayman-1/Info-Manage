@@ -19,15 +19,7 @@ export const POST = async (req: NextRequest) => {
         const client = await Clients.findOne({ orgId, name });
         if (client) return json("This Client Is Already Exist.", 400);
 
-        await Clients.create({
-            orgId,
-            name,
-            levels: [
-                { name: "bronze", activeTo: bronzeTo },
-                { name: "silver", activeTo: silverTo },
-                { name: "gold", activeTo: silverTo + 1 },
-            ],
-        });
+        await Clients.create({ orgId, name, bronzeTo, silverTo });
         return json("The Client Was Successfully Created.");
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");

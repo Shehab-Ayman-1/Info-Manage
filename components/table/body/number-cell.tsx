@@ -6,7 +6,7 @@ type NumberCellProps = {
 };
 
 export const NumberCell = ({ row, name }: NumberCellProps) => {
-    const value: number = row.getValue(name);
+    const value: number = row.original[name] || row.getValue(name);
     return value?.toLocaleString();
 };
 
