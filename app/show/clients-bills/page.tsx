@@ -30,7 +30,7 @@ const ClientsBills = () => {
             pageTitle="Clients Bills List"
             columns={columns}
             data={data}
-            filterFor="client"
+            filterBy={['client']}
             totalFor="pending"
             navigate={{ to: "/statements/clients", text: "New Statement" }}
         >

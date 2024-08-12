@@ -20,6 +20,7 @@ import { DataTable } from "@/components/table";
 import { columns } from "./table-columns";
 import { Input } from "@/ui/input";
 import { cn } from "@/utils/shadcn";
+import { DeleteProduct } from "./deleteProduct";
 
 type ClientsProps = {};
 
@@ -109,6 +110,7 @@ const Clients = ({}: ClientsProps) => {
             </form>
 
             <InsertProducts setProducts={setProducts} />
+            <DeleteProduct setProducts={setProducts} />
         </CardForm>
     );
 };

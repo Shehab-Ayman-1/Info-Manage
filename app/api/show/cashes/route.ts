@@ -44,7 +44,7 @@ export const GET = async (req: NextRequest) => {
                 $project: {
                     _id: 0,
                     market: {
-                        $sum: { $multiply: ["$market.count", "$market.price"] },
+                        $sum: { $multiply: ["$market.count", "$store.price"] },
                     },
                     store: {
                         $sum: { $multiply: ["$store.count", "$store.price"] },

@@ -12,7 +12,7 @@ export const List = ({ trigger, links }: ListProps) => {
         "text-base font-extrabold text-primary my-3 px-2 py-4 hover:no-underline hover:bg-primary-50 dark:hover:bg-slate-800 sm:p-4 sm:text-xl";
 
     return (
-        <AccordionItem value={trigger} className="border-b border-b-primary-200 dark:border-b-primary-900">
+        <AccordionItem value={trigger} className="border-b border-b-primary">
             <AccordionTrigger className={triggerStyle}>{trigger}</AccordionTrigger>
             <AccordionContent>
                 {links.map(({ Icon, title, href, role }) => (

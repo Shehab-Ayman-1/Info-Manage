@@ -32,11 +32,12 @@ export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const values = data as SupplierType;
-        const { name: productName } = products.data.find((product) => product._id === values.productId)!;
+        const { name: productName, company } = products.data.find((product) => product._id === values.productId)!;
 
         setProducts((products) => {
             const isExist = products.some((product) => product.productId === values.productId);
-            if (!isExist) return products.concat({ ...values, productName, randomId: Date.now().toString(16) });
+            if (!isExist)
+                return products.concat({ ...values, productName, companyName: company.name, randomId: Date.now().toString(16) });
 
             toast.info("This Product Is Already Exist");
             return products;

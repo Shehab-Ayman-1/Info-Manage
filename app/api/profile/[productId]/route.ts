@@ -24,7 +24,7 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
                 path: "company",
                 select: ["_id", "name", "image"],
             })
-            .select(["-market.updatedAt", "-min",  "-__v"]);
+            .select(["-market.updatedAt", "-min", "-__v"]);
 
         if (!product) return json("This Product Was Not Found.", 400);
         return json([product]);
@@ -54,7 +54,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
             {
                 name,
                 barcode,
-                market: { price: purchasePrice, count: marketCount },
+                market: { price: purchasePrice, count: marketCount, updatedAt: new Date() },
                 store: { price: salePrice, count: storeCount },
             },
         );

@@ -56,7 +56,9 @@ export const useLists = create<ListsType>((set, get) => ({
             const data: Companies["data"] = await response.json();
 
             if (!response.ok) return console.log(data);
-            const companiesList = data.map(({ category, ...company }) => ({ ...category, list: company }));
+            const companiesList = data
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map(({ category, ...company }) => ({ ...category, list: company }));
 
             const groups = makeGroup(companiesList);
             set({ companies: { data, groups, isLoading: false, fetcher: this.fetcher } });
@@ -75,7 +77,9 @@ export const useLists = create<ListsType>((set, get) => ({
             const data: Products["data"] = await response.json();
 
             if (!response.ok) return console.log(data);
-            const productsList = data.map(({ company, ...product }) => ({ ...company, list: product }));
+            const productsList = data
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map(({ company, ...product }) => ({ ...company, list: product }));
 
             const groups = makeGroup(productsList);
             set({ products: { data, groups, isLoading: false, fetcher: this.fetcher } });
@@ -112,7 +116,9 @@ export const useLists = create<ListsType>((set, get) => ({
             const data: Suppliers["data"] = await response.json();
 
             if (!response.ok) return console.log(data);
-            const lists = data.map(({ _id, name }) => ({ _id, value: _id, title: name }));
+            const lists = data
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map(({ _id, name }) => ({ _id, value: _id, title: name }));
 
             set({ suppliers: { data, lists, isLoading: false, fetcher: this.fetcher } });
         },
@@ -129,7 +135,9 @@ export const useLists = create<ListsType>((set, get) => ({
             const supplier = suppliers?.data.find((supplier) => supplier._id === supplierId);
             if (!supplier) return;
 
-            const lists = supplier.products.map(({ _id, name }) => ({ _id, value: _id, title: name }));
+            const lists = supplier.products
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map(({ _id, name }) => ({ _id, value: _id, title: name }));
             set({ productsBySupplier: { data: supplier.products, lists, isLoading: false, fetcher: this.fetcher } });
         },
     },

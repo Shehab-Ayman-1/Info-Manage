@@ -38,8 +38,6 @@ const BillProfile = ({ params }: BillProfileProps) => {
     if (isPending) return <ProfileLoading />;
     if (error) return <h1>{error.message}</h1>;
 
-    console.log(data);
-
     const [{ client, createdAt, total, paid, discount, state, products }] = data;
 
     const styleText = "mb-4 text-xl font-semibold";
@@ -55,7 +53,7 @@ const BillProfile = ({ params }: BillProfileProps) => {
                 </Button>
             </div>
 
-            <div className="my-4 rounded-md bg-white px-4 shadow-md dark:bg-black">
+            <div className="my-4 rounded-md px-4 shadow-md">
                 <DataTable columns={columns} data={products} totalFor="total" />
             </div>
 

@@ -19,7 +19,7 @@ const ClientsList = () => {
             pageTitle="Clients List"
             columns={columns}
             data={data!}
-            filterFor="client"
+            filterBy={['client', 'level']}
             totalFor="pending"
             navigate={{ to: "/create/client", text: "New Client" }}
         >

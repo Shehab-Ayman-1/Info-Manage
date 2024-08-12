@@ -60,7 +60,11 @@ export const POST = async (req: NextRequest) => {
             data.products.map(async ({ productId, soldPrice, count }) => {
                 return await Products.updateOne(
                     { _id: productId },
-                    { "market.price": soldPrice, $inc: { "market.count": -count } },
+                    {
+                        $inc: { "market.count": -count },
+                        "market.price": soldPrice,
+                        "market.updatedAt": new Date(),
+                    },
                 );
             }),
         );

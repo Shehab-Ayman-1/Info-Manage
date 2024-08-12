@@ -9,7 +9,7 @@ import { Heading } from "../public/heading";
 type TableFormProps<TData> = {
     pageTitle: string;
     navigate?: { to: string; text: string };
-    filterFor?: string;
+    filterBy?: string[];
     data: TData[];
     columns: ColumnDef<any>[];
     totalFor?: string;
@@ -19,7 +19,7 @@ type TableFormProps<TData> = {
 export const TableForm = <TData,>({
     pageTitle,
     navigate,
-    filterFor,
+    filterBy,
     columns,
     data,
     totalFor,
@@ -41,7 +41,7 @@ export const TableForm = <TData,>({
                 {children}
 
                 <CardFooter className="p-0 sm:px-4">
-                    {!!data.length && <DataTable columns={columns} data={data} filterFor={filterFor} totalFor={totalFor} />}
+                    {!!data.length && <DataTable columns={columns} data={data} filterBy={filterBy} totalFor={totalFor} />}
                 </CardFooter>
             </CardContent>
         </Card>

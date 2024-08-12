@@ -21,7 +21,7 @@ const LeastSelling = () => {
             pageTitle="Least Selling Products"
             columns={columns}
             data={data || []}
-            filterFor="product"
+            filterBy={["product"]}
             navigate={{
                 text: "Market Products",
                 to: "/show/market",

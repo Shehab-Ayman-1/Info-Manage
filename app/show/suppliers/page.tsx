@@ -19,7 +19,7 @@ const Suppliers = () => {
             pageTitle="Suppliers List"
             columns={columns}
             data={data!}
-            filterFor="supplier"
+            filterBy={["supplier"]}
             totalFor="pending"
             navigate={{ to: "/create/supplier", text: "New Supplier" }}
         >

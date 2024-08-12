@@ -14,7 +14,7 @@ const Overview = ({}: OverviewProps) => {
     return (
         <div className="flex-center flex-col p-6">
             <Image
-                src="/logo.png"
+                src={organization.hasImage ? organization.imageUrl : "/logo.png"}
                 alt="logo"
                 width={300}
                 height={300}

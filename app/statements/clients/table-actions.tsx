@@ -14,15 +14,10 @@ export const Actions = ({ row }: ActionsProps) => {
 
     const items = [
         {
-            Icon: EditIcon,
-            text: "Edit",
-            onClick: (original: any) => onOpen("edit-model", { product: original }),
-        },
-        {
             Icon: Trash2Icon,
             text: "Delete",
             className: { button: "cancel", icon: "cancel" },
-            onClick: (original: any) => onOpen("delete-model", { productId: original._id }),
+            onClick: (original: any) => onOpen("delete-model", { productId: original.productId }),
         },
     ];
 

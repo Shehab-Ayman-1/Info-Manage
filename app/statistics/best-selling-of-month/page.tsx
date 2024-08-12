@@ -42,7 +42,6 @@ const BestSellingOfMonth = ({}: BestSellingOfMonthProps) => {
     return (
         <TableForm
             pageTitle="Best Selling Of The Month"
-            filterFor=""
             data={data || []}
             columns={columns}
             navigate={{ text: "Go To Bills", to: "/show/clients-bills" }}

@@ -6,6 +6,10 @@ import { Actions } from "./table-actions";
 
 export const columns: ColumnDef<any>[] = [
     {
+        accessorKey: "companyName",
+        header: ({ column }) => <HeaderComponent column={column} smallSize />,
+    },
+    {
         accessorKey: "productName",
         header: ({ column }) => <HeaderComponent column={column} smallSize />,
     },

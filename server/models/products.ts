@@ -11,6 +11,7 @@ type TProduct = {
 };
 
 const schema = new Schema<TProduct>({
+    company: { type: Schema.Types.ObjectId, ref: "companies", required: true },
     name: { type: String, required: true, trim: true },
     barcode: { type: String, trim: true },
 
@@ -19,18 +20,12 @@ const schema = new Schema<TProduct>({
     market: {
         price: { type: Number, required: true },
         count: { type: Number, required: true },
-        updatedAt: { type: Date, default: Date.now() },
+        updatedAt: { type: Date, default: new Date() },
     },
 
     store: {
         price: { type: Number, required: true },
         count: { type: Number, required: true },
-    },
-
-    company: {
-        type: Schema.Types.ObjectId,
-        ref: "companies",
-        required: true,
     },
 });
 

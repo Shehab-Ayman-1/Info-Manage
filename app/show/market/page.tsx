@@ -25,7 +25,7 @@ const Market = () => {
             pageTitle="Market Products"
             columns={columns}
             data={data!}
-            filterFor="product"
+            filterBy={['product', 'company', 'category']}
             navigate={{ to: "/statements/clients", text: "New Statement" }}
         />
     );

@@ -25,7 +25,7 @@ const Transactions = () => {
             pageTitle="Transactions List"
             columns={columns}
             data={data!}
-            filterFor="reason"
+            filterBy={["reason"]}
             navigate={{ to: "/statements/locker", text: "New Transaction" }}
         />
     );

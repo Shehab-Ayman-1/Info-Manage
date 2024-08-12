@@ -29,7 +29,6 @@ const BestSellingOfYear = () => {
     return (
         <TableForm
             pageTitle="Best Selling Of The Year"
-            filterFor=""
             data={data || []}
             columns={columns}
             navigate={{ text: "Go To Bills", to: "/show/clients-bills" }}

@@ -16,12 +16,12 @@ import { Filter } from "./filter";
 type DataTableProps<TData, TValue> = {
     columns: ColumnDef<TData, TValue>[];
     data: TData[];
-    filterFor?: string;
+    filterBy?: string[];
     totalFor?: string;
     smallSize?: boolean;
 };
 
-export const DataTable = <TData, TValue>({ columns, data, filterFor, totalFor, smallSize }: DataTableProps<TData, TValue>) => {
+export const DataTable = <TData, TValue>({ columns, data, filterBy, totalFor, smallSize }: DataTableProps<TData, TValue>) => {
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
@@ -54,12 +54,12 @@ export const DataTable = <TData, TValue>({ columns, data, filterFor, totalFor, s
     const rowModel = getRowModel();
 
     return (
-        <Card className="w-full border-none bg-transparent print:border-none">
+        <Card className="w-full border-none bg-transparent">
             <CardHeader className="flex-between flex-row !p-0 !pt-4 print:hidden">
-                <Filter getColumn={getColumn} filterFor={filterFor} />
+                <Filter getColumn={getColumn} filterBy={filterBy} />
             </CardHeader>
 
-            <CardContent className="overflow-hidden rounded-xl border !p-3">
+            <CardContent className="overflow-hidden rounded-xl border border-slate-500 !p-3">
                 <Table>
                     <THeader headerGroups={headerGroups} />
                     <TBody colsLen={columns.length} totalFor={totalFor} rowModel={rowModel} smallSize={smallSize} />

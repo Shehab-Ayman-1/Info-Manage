@@ -19,7 +19,7 @@ type UpdateDialogProps = {
 };
 
 const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
-    const { mutate, isPending } = useUpdate<EditProfileSchema>(`/api/profile/${productId}`, ["profile", "market", "store"]);
+    const { mutate, isPending } = useUpdate<EditProfileSchema>(`/api/profile/${productId}`, [productId, "market", "store"]);
     const [{ company, name, barcode, market, store }] = data;
 
     const { formState, register, watch, handleSubmit } = useForm<EditProfileSchema>({
@@ -87,14 +87,29 @@ const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
                         type="number"
                         placeholder="Purchase Price"
                         error={errors?.purchasePrice}
-                        {...register("purchasePrice")}
+                        {...register("purchasePrice", { valueAsNumber: true })}
                     />
-                    <Input type="number" placeholder="Sale Price" error={errors?.salePrice} {...register("salePrice")} />
+                    <Input
+                        type="number"
+                        placeholder="Sale Price"
+                        error={errors?.salePrice}
+                        {...register("salePrice", { valueAsNumber: true })}
+                    />
                 </div>
 
                 <div className="flex-between">
-                    <Input type="number" placeholder="Market Count" error={errors?.marketCount} {...register("marketCount")} />
-                    <Input type="number" placeholder="Store Count" error={errors?.storeCount} {...register("storeCount")} />
+                    <Input
+                        type="number"
+                        placeholder="Market Count"
+                        error={errors?.marketCount}
+                        {...register("marketCount", { valueAsNumber: true })}
+                    />
+                    <Input
+                        type="number"
+                        placeholder="Store Count"
+                        error={errors?.storeCount}
+                        {...register("storeCount", { valueAsNumber: true })}
+                    />
                 </div>
 
                 <SubmitButton text="Update" isPending={isPending} />

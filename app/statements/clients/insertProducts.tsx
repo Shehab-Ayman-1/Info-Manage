@@ -20,7 +20,7 @@ const schema = z.object({
     count: z.number().int().positive().min(1),
     total: z.number().int().positive().min(1),
     soldPrice: z.number().int().positive().min(1),
-    boughtPrice: z.number().int().positive().min(1),
+    boughtPrice: z.number().int().min(0),
 });
 
 export type ProductType = z.infer<typeof schema>;
@@ -35,7 +35,7 @@ export const InsertProducts = ({ setProducts }: InsertProductsProps) => {
     });
 
     const { products } = useLists();
-    const { onClose } = useModel();
+    const { type, onClose } = useModel();
 
     const { errors, isLoading } = formState;
     const selectedProductId = watch("productId");
@@ -53,6 +53,8 @@ export const InsertProducts = ({ setProducts }: InsertProductsProps) => {
         setValue("soldPrice", product?.soldPrice);
         setValue("companyId", product?.company._id);
     }, [selectedProductId, products, setValue]);
+
+    if (type === "delete-model") return;
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const { productId, companyId, count, boughtPrice, soldPrice } = data as ProductType;

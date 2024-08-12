@@ -28,7 +28,7 @@ const SuppliersDebts = () => {
             pageTitle="Suppliers Bills List"
             columns={columns}
             data={data!}
-            filterFor="supplier"
+            filterBy={["supplier"]}
             totalFor="pending"
             navigate={{ to: "/statements/suppliers", text: "New Statement" }}
         >

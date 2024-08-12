@@ -17,7 +17,7 @@ const Store = () => {
             pageTitle="Store Products"
             columns={columns}
             data={data!}
-            filterFor="product"
+            filterBy={['product', 'company', 'category']}
             navigate={{ to: "/statements/suppliers", text: "New Statement" }}
         />
     );

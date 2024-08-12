@@ -2,14 +2,14 @@
 
     - Think About Clients Level
 
-    - Add New Page In Statistics Filter Products By Category Or By Company In The Store And The Market In The Same Table
+    - Make The Project Work On The Local DB, And Put Backup Button To Upload The Data On The Online DB
 
 ```ts
-    const { client, user, frontendApi, organization, openUserProfile, getOrganization, createOrganization, setActive } = useClerk();
+    const { user, organization, setActive, openUserProfile, getOrganization, createOrganization, client, frontendApi, ...rest } = useClerk();
 
-    const { isLoaded, userInvitations, userMemberships, userSuggestions, setActive, createOrganization } = useOrganizationList();
+    const { setActive, isLoaded, createOrganization, userInvitations, userMemberships, userSuggestions } = useOrganizationList();
 
-    const { actor, isLoaded, getToken, has, isSignedIn, orgId, orgRole, orgSlug, sessionId, signOut, userId } = useAuth();
+    const { userId, has, orgId, orgRole, orgSlug, sessionId, isLoaded, actor, getToken, isSignedIn, signOut } = useAuth();
 
     const { sessions, isLoaded, setActive } = useSessionList();
 
