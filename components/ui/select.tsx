@@ -1,7 +1,6 @@
 "use client";
 import { FieldValues, UseFormSetValue } from "react-hook-form";
 import { LoaderCircleIcon } from "lucide-react";
-import { Fragment, useState } from "react";
 
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/ui/select";
 
@@ -37,21 +36,17 @@ type SelectBoxProps = {
 export const SelectBox = (props: SelectBoxProps) => {
     const { className, defaultValue, setValue, onChange } = props;
     const { name, label, error, items, groups, loading, required = true } = props;
-    const [isSelected, setIsSelected] = useState(false);
 
     const handleChange = (value: string) => {
         onChange?.(value);
         setValue?.(name, value);
-        setIsSelected(true);
     };
 
     return (
         <Select required={required} defaultValue={defaultValue} onValueChange={handleChange}>
-            <Fragment>
-                <SelectTrigger name={name}>
-                    <SelectValue placeholder={label} />
-                </SelectTrigger>
-            </Fragment>
+            <SelectTrigger name={name} className={className} error={error?.[name]}>
+                <SelectValue placeholder={label} />
+            </SelectTrigger>
 
             <SelectContent>
                 {groups?.map((group) => (

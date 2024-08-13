@@ -1,4 +1,4 @@
-import { Schema, model, models, InferSchemaType, Types, Model } from "mongoose";
+import { Schema, model, models, InferSchemaType, Model } from "mongoose";
 
 type TCompany = {
     _id: string;
