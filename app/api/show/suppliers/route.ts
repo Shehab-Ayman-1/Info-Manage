@@ -3,10 +3,10 @@ import { NextRequest } from "next/server";
 
 import { Suppliers } from "@/server/models";
 import { DBConnection } from "@/server/configs";
-import { json } from "@/utils/response";
 import { editSchema } from "./schema";
+import { json } from "@/utils/response";
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
     try {
         await DBConnection();
 

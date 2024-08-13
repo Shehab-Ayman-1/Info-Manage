@@ -1,10 +1,10 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
-import { DBConnection } from "@/server/configs";
 import { Debts, Products, Suppliers, Transactions } from "@/server/models";
-import { json } from "@/utils/response";
+import { DBConnection } from "@/server/configs";
 import { createSchema } from "./schema";
+import { json } from "@/utils/response";
 
 export const POST = async (req: NextRequest) => {
     try {
@@ -16,7 +16,7 @@ export const POST = async (req: NextRequest) => {
         const { firstName, lastName } = await clerkClient().users.getUser(userId);
 
         const body = await req.json();
-        const { supplierId, method, place, process, paid, products } = createSchema.parse(body);
+        const { supplierId, method, place, paid, products } = createSchema.parse(body);
 
         // Check If The Products Total Costs Exist In The Locker ?
         const lockerCash = await Transactions.getLockerMoney(orgId);

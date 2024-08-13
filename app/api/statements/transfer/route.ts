@@ -3,8 +3,8 @@ import { NextRequest } from "next/server";
 
 import { DBConnection } from "@/server/configs";
 import { Products } from "@/server/models";
-import { json } from "@/utils/response";
 import { editSchema } from "./schema";
+import { json } from "@/utils/response";
 
 export const PUT = async (req: NextRequest) => {
     try {

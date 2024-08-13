@@ -6,7 +6,7 @@ import { Clients } from "@/server/models";
 import { json } from "@/utils/response";
 import { editSchema } from "./schema";
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
     try {
         await DBConnection();
 

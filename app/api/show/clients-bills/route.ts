@@ -5,7 +5,7 @@ import { Bills, Clients, Products, Transactions } from "@/server/models";
 import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
     try {
         await DBConnection();
 

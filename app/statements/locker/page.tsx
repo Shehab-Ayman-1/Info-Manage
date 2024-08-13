@@ -20,7 +20,7 @@ const Locker = ({}: LockerProps) => {
     const { errors } = formState;
     const router = useRouter();
 
-    const onSubmit: SubmitHandler<FieldValues> = (data, errors) => {
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const values = data as CreateLockerSchema;
         mutate(values, { onSuccess: () => router.push("/") });
     };

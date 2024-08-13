@@ -13,7 +13,7 @@ export const OrgSwitcher = ({}: OrgSwitcherProps) => {
         <OrganizationSwitcher
             hidePersonal
             organizationProfileMode="modal"
-            afterSelectOrganizationUrl={(org) => {
+            afterSelectOrganizationUrl={() => {
                 queryClient.resetQueries();
                 return "";
             }}

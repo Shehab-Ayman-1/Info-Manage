@@ -2,8 +2,8 @@ import { auth, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 import { Types } from "mongoose";
 
+import { Debts, Suppliers, Transactions } from "@/server/models";
 import { DBConnection } from "@/server/configs";
-import { Bills, Clients, Debts, Suppliers, Transactions } from "@/server/models";
 import { json } from "@/utils/response";
 
 type ResponseType = {

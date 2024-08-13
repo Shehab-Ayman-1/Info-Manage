@@ -1,9 +1,9 @@
 import { RowModel } from "@tanstack/react-table";
 
-import { TableBody, TableCell, TableRow } from "@/ui/table";
+import { TableBody } from "@/ui/table";
 import { RenderRow } from "./body/render-row";
-import { NoResults } from "./body/no-results";
-import { cn } from "@/utils/shadcn";
+import { TableFooter } from "./table-footer";
+import { NoResults } from "./no-results";
 
 type TBodyProps<TData> = {
     rowModel: RowModel<TData>;
@@ -22,22 +22,7 @@ export const TBody = <TData,>({ rowModel, smallSize, colsLen, totalFor }: TBodyP
             {!!rowModel.rows?.length &&
                 rowModel.rows.map((row, index) => <RenderRow key={row.id} row={row} index={index} smallSize={smallSize} />)}
 
-            {!!totalFor && !!total && (
-                <TableRow className="bg-gradient-heavy">
-                    <TableCell
-                        colSpan={colsLen}
-                        className={cn(
-                            "font-bold text-black print:border-t print:border-t-slate-300",
-                            smallSize ? "py-2 text-base" : "text-xl",
-                        )}
-                    >
-                        <div className="flex-around">
-                            <p className="">Total {totalFor === "total" ? "Costs" : totalFor}</p>
-                            <p className="">${total.toLocaleString()}</p>
-                        </div>
-                    </TableCell>
-                </TableRow>
-            )}
+            {!!totalFor && !!total && <TableFooter colsLen={colsLen} smallSize={smallSize} totalFor={totalFor} total={total} />}
         </TableBody>
     );
 };

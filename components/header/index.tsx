@@ -1,5 +1,5 @@
-import { Logo } from "./logo";
 import { NavIcons } from "./navIcons";
+import { Logo } from "./logo";
 
 type HeaderProps = {};
 

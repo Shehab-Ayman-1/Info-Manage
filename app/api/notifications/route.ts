@@ -1,11 +1,10 @@
 import { auth } from "@clerk/nextjs/server";
-import { NextRequest } from "next/server";
 
 import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
 import { Transactions } from "@/server/models";
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
     try {
         await DBConnection();
 

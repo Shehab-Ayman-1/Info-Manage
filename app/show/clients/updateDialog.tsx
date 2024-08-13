@@ -4,13 +4,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 
 import { editSchema, EditSchemaType } from "@/app/api/show/clients/schema";
+import { useUpdate } from "@/hooks/api/useUpdate";
 import { useModel } from "@/hooks/useModel";
-import { ClientType } from "./schema";
 
 import { DialogForm } from "@/components/ui/dialog";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
-import { useUpdate } from "@/hooks/api/useUpdate";
 
 type UpdateDialogProps = {};
 

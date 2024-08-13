@@ -1,6 +1,5 @@
 import { flexRender, HeaderGroup } from "@tanstack/react-table";
 import { TableHead, TableHeader, TableRow } from "@/ui/table";
-import { cn } from "@/utils/shadcn";
 
 type THeaderProps<TData> = {
     headerGroups: HeaderGroup<TData>[];

@@ -2,7 +2,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 
 import { HeaderComponent } from "@/components/table/column-header";
-import { BadgeCell } from "@/components/table/body/level-cell";
 import { DollarCell } from "@/components/table/body/price-cell";
 import { NumberCell } from "@/components/table/body/number-cell";
 

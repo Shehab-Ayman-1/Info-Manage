@@ -13,12 +13,12 @@ import { CardForm } from "@/components/page-structure/CardForm";
 import { SelectBox } from "@/components/ui/select";
 import { Input } from "@/ui/input";
 
-import { InsertDialog } from "./insertDialog";
 import { SubmitButton } from "@/components/public/submit-btn";
-import { SupplierType } from "./schema";
 import { DataTable } from "@/components/table";
-import { columns } from "./table-columns";
 import { DeleteDialog } from "./deleteDialog";
+import { InsertDialog } from "./insertDialog";
+import { SupplierType } from "./schema";
+import { columns } from "./table-columns";
 
 const processes = [
     { _id: "1", value: "old", title: "Old Supplier" },

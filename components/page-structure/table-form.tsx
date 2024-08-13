@@ -3,8 +3,8 @@ import Link from "next/link";
 
 import { Card, CardContent, CardFooter, CardHeader } from "@/ui/card";
 import { DataTable } from "@/components/table";
-import { Button } from "@/ui/button";
 import { Heading } from "../public/heading";
+import { Button } from "@/ui/button";
 
 type TableFormProps<TData> = {
     pageTitle: string;

@@ -1,11 +1,11 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
-import { Debts, Products, ProductType, Suppliers, Transactions } from "@/server/models";
+import { Debts, Products, Suppliers, Transactions } from "@/server/models";
 import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
     try {
         await DBConnection();
 

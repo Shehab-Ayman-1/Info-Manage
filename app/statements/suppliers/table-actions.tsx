@@ -1,7 +1,6 @@
 "use client";
 import { EditIcon, Trash2Icon } from "lucide-react";
 import { Row } from "@tanstack/react-table";
-import { useRouter } from "next/navigation";
 
 import { TableActions } from "@/components/table/table-actions";
 import { useModel } from "@/hooks/useModel";

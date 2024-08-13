@@ -11,7 +11,6 @@ import { editSchema, EditProfileSchema } from "@/app/api/profile/[productId]/sch
 import { SubmitButton } from "@/components/public/submit-btn";
 import { DialogForm } from "@/components/ui/dialog";
 import { Input } from "@/ui/input";
-import { Label } from "@/ui/label";
 
 type UpdateDialogProps = {
     productId: string;

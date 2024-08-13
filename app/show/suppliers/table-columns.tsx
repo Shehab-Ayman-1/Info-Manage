@@ -1,5 +1,6 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
+
 import { HeaderComponent } from "@/components/table/column-header";
 import { DollarCell } from "@/components/table/body/price-cell";
 import { Actions } from "./table-actions";

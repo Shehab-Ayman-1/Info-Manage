@@ -3,12 +3,11 @@ import { useEffect, useState } from "react";
 import { SettingsIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 
-import { SheetContent, SheetDescription, SheetTitle } from "@/ui/sheet";
-import { Sheet, SheetTrigger, SheetHeader } from "@/ui/sheet";
+import { Sheet, SheetTrigger, SheetContent } from "@/ui/sheet";
 import { Button } from "@/ui/button";
 
-import { Languages } from "./languages";
 import { Themes } from "./themes";
+import { Header } from "./header";
 import { Modes } from "./modes";
 
 type ConfigratorProps = {};
@@ -38,18 +37,10 @@ export const Configrator = ({}: ConfigratorProps) => {
             </SheetTrigger>
 
             <SheetContent className="bg-gradient">
-                <SheetHeader>
-                    <SheetTitle className="text-center text-2xl font-extrabold text-primary">Configrator</SheetTitle>
-                    <SheetDescription className="text-center text-xs sm:text-base">
-                        Choose Your Prefer Theme, Mode And Language.
-                    </SheetDescription>
-                </SheetHeader>
+                <Header />
 
                 <Themes setTheme={setTheme} />
-
                 <Modes />
-
-                <Languages />
             </SheetContent>
         </Sheet>
     );

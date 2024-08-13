@@ -1,9 +1,8 @@
 "use client";
 import { ChevronLeftIcon } from "lucide-react";
 
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/ui/sheet";
 import { useSidebarModel } from "@/hooks/useSidebarModel";
-import { useModel } from "@/hooks/useModel";
 import { SheetLinks } from "./sheet-links";
 
 type SidebarProps = {};
@@ -21,13 +20,6 @@ export const Sidebar = ({}: SidebarProps) => {
             </SheetTrigger>
 
             <SheetContent className="bg-gradient overflow-y-auto">
-                <SheetHeader>
-                    <SheetTitle className="text-center text-2xl font-extrabold text-primary">Sidebar</SheetTitle>
-                    <SheetDescription className="text-center text-xs sm:text-base">
-                        Navigate Between Application Pages
-                    </SheetDescription>
-                </SheetHeader>
-
                 <SheetLinks />
             </SheetContent>
         </Sheet>

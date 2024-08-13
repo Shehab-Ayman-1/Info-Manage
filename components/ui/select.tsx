@@ -1,11 +1,9 @@
 "use client";
 import { FieldValues, UseFormSetValue } from "react-hook-form";
+import { LoaderCircleIcon } from "lucide-react";
 import { Fragment, useState } from "react";
 
-import { SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/ui/select";
-import { Select, SelectContent, SelectGroup } from "@/ui/select";
-import { cn } from "@/utils/shadcn";
-import { LoaderCircleIcon } from "lucide-react";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/ui/select";
 
 type ItemProps = {
     _id: string;

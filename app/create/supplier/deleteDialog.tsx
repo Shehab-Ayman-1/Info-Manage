@@ -1,9 +1,10 @@
 "use client";
+import { Dispatch, SetStateAction } from "react";
+import { SupplierType } from "./schema";
+
 import { DialogForm } from "@/components/ui/dialog";
 import { useModel } from "@/hooks/useModel";
 import { Button } from "@/ui/button";
-import { Dispatch, SetStateAction } from "react";
-import { SupplierType } from "./schema";
 
 type DeleteDialogProps = {
     setProducts: Dispatch<SetStateAction<SupplierType[]>>;

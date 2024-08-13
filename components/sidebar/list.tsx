@@ -1,6 +1,6 @@
 import { AccordionContent, AccordionItem, AccordionTrigger } from "@/ui/accordion";
-import { ListItem } from "./listItem";
 import { NavLinkType } from "@/constants";
+import { ListItem } from "./listItem";
 
 type ListProps = {
     trigger: string;

@@ -1,7 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
+
+import { DialogForm } from "@/components/ui/dialog";
 import { ProductType } from "./insertProducts";
 import { useModel } from "@/hooks/useModel";
-import { DialogForm } from "@/components/ui/dialog";
 import { Button } from "@/ui/button";
 
 type DeleteProductProps = {

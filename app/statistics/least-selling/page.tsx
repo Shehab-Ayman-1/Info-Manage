@@ -1,9 +1,9 @@
 "use client";
 import { CardLoading } from "@/components/loading/card";
 
+import { TableForm } from "@/components/page-structure/table-form";
 import { useGet } from "@/hooks/api/useGet";
 import { columns } from "./table-columns";
-import { TableForm } from "@/components/page-structure/table-form";
 
 type LeastSellingProps = {
     product: string;

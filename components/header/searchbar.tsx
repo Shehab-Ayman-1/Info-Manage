@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
 import { useLists } from "@/hooks/data/useLists";
+import { Products } from "@/hooks/data/types";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
-import { Products } from "@/hooks/data/types";
 
 type SearchbarProps = {};
 
