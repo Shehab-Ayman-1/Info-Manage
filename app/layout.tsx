@@ -9,6 +9,10 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import "./sass/index.scss";
 
+export const metadata = {
+    title: "Info Manage",
+};
+
 type LayoutProps = {
     children: React.ReactNode;
 };
