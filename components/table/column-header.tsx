@@ -15,6 +15,7 @@ export const HeaderComponent = <T,>({ column, smallSize }: HeaderComponentProps<
 
     return (
         <Button
+            type="button"
             variant="ghost"
             className={cn(
                 "text-white hover:bg-primary hover:text-white dark:text-black print:text-black",

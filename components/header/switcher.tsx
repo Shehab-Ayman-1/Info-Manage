@@ -1,6 +1,6 @@
 "use client";
-import { OrganizationSwitcher } from "@clerk/nextjs";
 import { useQueryClient } from "@tanstack/react-query";
+import { OrganizationSwitcher } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
 
 type OrgSwitcherProps = {};

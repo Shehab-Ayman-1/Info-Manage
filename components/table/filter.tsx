@@ -28,7 +28,7 @@ export const Filter = <TData,>({ getColumn, filterBy }: FilterProps<TData>) => {
     };
 
     return (
-        <div className="flex-center mb-2 w-full max-w-md">
+        <div className="flex-center mb-2 w-full max-w-md !flex-nowrap">
             <Popover>
                 {filterBy.length > 1 && (
                     <PopoverTrigger>

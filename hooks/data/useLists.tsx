@@ -126,7 +126,7 @@ export const useLists = create<ListsType>((set, get) => ({
 
     productsBySupplier: {
         data: [],
-        lists: [],
+        groups: [],
         isLoading: true,
         fetcher: async function (supplierId) {
             const { suppliers } = get();
@@ -135,10 +135,12 @@ export const useLists = create<ListsType>((set, get) => ({
             const supplier = suppliers?.data.find((supplier) => supplier._id === supplierId);
             if (!supplier) return;
 
-            const lists = supplier.products
+            const productsList = supplier.products
                 .sort((a, b) => a.name.localeCompare(b.name))
-                .map(({ _id, name }) => ({ _id, value: _id, title: name }));
-            set({ productsBySupplier: { data: supplier.products, lists, isLoading: false, fetcher: this.fetcher } });
+                .map(({ company, ...product }) => ({ ...company, list: product }));
+
+            const groups = makeGroup(productsList);
+            set({ productsBySupplier: { data: supplier.products, groups, isLoading: false, fetcher: this.fetcher } });
         },
     },
 

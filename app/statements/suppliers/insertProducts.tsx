@@ -68,7 +68,7 @@ export const InsertProducts = ({ setProducts }: InsertProductsProps) => {
                     label="Choose Product Name"
                     name="productId"
                     loading={productsBySupplier.isLoading}
-                    items={productsBySupplier.lists}
+                    groups={productsBySupplier.groups}
                     error={errors.productId}
                     setValue={setValue}
                 />

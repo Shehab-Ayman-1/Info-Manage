@@ -1,10 +1,10 @@
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
-import { DBConnection } from "@/server/configs";
 import { Companies, Products } from "@/server/models";
-import { json } from "@/utils/response";
+import { DBConnection } from "@/server/configs";
 import { editSchema } from "./schema";
+import { json } from "@/utils/response";
 
 type ResponseType = {
     params: { productId: string };
@@ -54,7 +54,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
             {
                 name,
                 barcode,
-                market: { price: purchasePrice, count: marketCount, updatedAt: new Date() },
+                market: { price: purchasePrice, count: marketCount },
                 store: { price: salePrice, count: storeCount },
             },
         );

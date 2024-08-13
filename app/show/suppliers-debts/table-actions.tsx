@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 import { TableActions } from "@/components/table/table-actions";
 import { useModel } from "@/hooks/useModel";
+import { useOrg } from "@/hooks/useOrg";
 
 type ActionsProps = {
     row: Row<any>;
@@ -12,6 +13,7 @@ type ActionsProps = {
 
 export const Actions = ({ row }: ActionsProps) => {
     const router = useRouter();
+    const { isAdmin } = useOrg();
     const { onOpen } = useModel();
 
     const items = [
@@ -33,7 +35,8 @@ export const Actions = ({ row }: ActionsProps) => {
         },
     ];
 
-    return <TableActions row={row} items={items} />;
+    const availableItems = isAdmin ? items : items.filter((item) => item.text === "Open");
+    return <TableActions row={row} items={availableItems} />;
 };
 
 Actions.displayName = "Actions";

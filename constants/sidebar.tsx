@@ -4,11 +4,14 @@ import { ShoppingCartIcon, TargetIcon, ThumbsDownIcon, UserCheck, UserIcon } fro
 import { BookKeyIcon, StoreIcon, UsersIcon } from "lucide-react";
 import { LayoutDashboardIcon } from "lucide-react";
 
+export type Subscription = "basic" | "premium";
+
 export type NavLinkType = {
     Icon: any;
     title: string;
     href: string;
-    role: "org:admin" | "org:member";
+    userRole: "org:admin" | "org:member";
+    subscriptions: Subscription[];
 };
 
 export const showLinks: NavLinkType[] = [
@@ -16,76 +19,88 @@ export const showLinks: NavLinkType[] = [
         Icon: StoreIcon,
         title: "Market Products",
         href: "/show/market",
-        role: "org:member",
+        userRole: "org:member",
+        subscriptions: ["basic", "premium"],
     },
     {
         Icon: ArchiveRestoreIcon,
         title: "Store Products",
         href: "/show/store",
-        role: "org:member",
+        userRole: "org:member",
+        subscriptions: ["basic", "premium"],
     },
     {
         Icon: ArrowRightLeftIcon,
         title: "Transactions",
         href: "/show/transactions",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["premium"],
     },
     {
         Icon: UsersIcon,
         title: "Clients",
         href: "/show/clients",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["premium"],
     },
     {
         Icon: UsersIcon,
         title: "Suppliers",
         href: "/show/suppliers",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["premium"],
     },
     {
         Icon: BookKeyIcon,
         title: "Total Cashes",
         href: "/show/cashes",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["basic", "premium"], // Basic For Locker, And Intermediate For Market, And Stor]e
     },
     {
         Icon: ReceiptTextIcon,
         title: "Client's Bills",
         href: "/show/clients-bills",
-        role: "org:member",
+        userRole: "org:member",
+        subscriptions: ["premium"],
     },
     {
         Icon: ReceiptTextIcon,
         title: "Supplier's Bills",
         href: "/show/suppliers-debts",
-        role: "org:member",
+        userRole: "org:member",
+        subscriptions: ["premium"],
     },
 ];
 
 export const statementLinks: NavLinkType[] = [
     {
         Icon: HandCoinsIcon,
-        title: "Clients Statement",
+        title: "Client's Statement",
         href: "/statements/clients",
-        role: "org:member",
+        userRole: "org:member",
+        subscriptions: ["basic", "premium"],
     },
     {
         Icon: UsersIcon,
-        title: "Suppliers Statement",
+        title: "Supplier's Statement",
         href: "/statements/suppliers",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["basic", "premium"],
     },
     {
         Icon: ArrowRightLeftIcon,
         title: "Transfer Products",
         href: "/statements/transfer",
-        role: "org:admin",
+        userRole: "org:member",
+        subscriptions: ["basic", "premium"],
     },
     {
         Icon: RocketIcon,
         title: "Locker Withdrawal / Deposit",
         href: "/statements/locker",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["basic", "premium"],
     },
 ];
 
@@ -94,31 +109,36 @@ export const createLinks: NavLinkType[] = [
         Icon: LayoutDashboardIcon,
         title: "Add Category",
         href: "/create/category",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["basic", "premium"],
     },
     {
         Icon: SchoolIcon,
         title: "Add Company",
         href: "/create/company",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["basic", "premium"],
     },
     {
         Icon: TargetIcon,
         title: "Add Product",
         href: "/create/product",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["basic", "premium"],
     },
     {
         Icon: UserIcon,
         title: "Add Supplier",
         href: "/create/supplier",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["basic", "premium"],
     },
     {
         Icon: UserCheck,
         title: "Add Client",
         href: "/create/client",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["basic", "premium"],
     },
 ];
 
@@ -127,54 +147,63 @@ export const statisticsLinks: NavLinkType[] = [
         Icon: ReceiptTextIcon,
         title: "Today Purchases Receipt",
         href: "/statistics/today-purchases",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["premium"],
     },
     {
         Icon: ReceiptTextIcon,
         title: "Today Sales Receipt",
         href: "/statistics/today-sales",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["premium"],
     },
     {
         Icon: ArrowRightLeftIcon,
         title: "Product Movement",
         href: "/statistics/movement",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["premium"],
     },
     {
         Icon: BadgeDollarSignIcon,
         title: "Sales Statistics",
         href: "/statistics/sales",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["premium"],
     },
     {
         Icon: BadgeDollarSignIcon,
         title: "Profits Statistics",
         href: "/statistics/profits",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["premium"],
     },
     {
         Icon: ShoppingCartIcon,
         title: "Insuffients Products",
         href: "/statistics/insufficients",
-        role: "org:admin",
+        userRole: "org:member",
+        subscriptions: ["premium"],
     },
     {
         Icon: ThumbsDownIcon,
         title: "Least Selling",
         href: "/statistics/least-selling",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["premium"],
     },
     {
         Icon: CalendarPlusIcon,
         title: "Best Selling Of The (Month)",
         href: "/statistics/best-selling-of-month",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["premium"],
     },
     {
         Icon: CalendarPlus2Icon,
         title: "Best Selling Of The (Year)",
         href: "/statistics/best-selling-of-year",
-        role: "org:admin",
+        userRole: "org:admin",
+        subscriptions: ["premium"],
     },
 ];

@@ -63,10 +63,11 @@ const Clients = ({}: ClientsProps) => {
     };
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        const { clientId, discount, method, process, paid } = data as CreateClientType;
+        const values = data as CreateClientType;
         if (!products?.length) return setError("root", { message: "No Products Was Selected." });
 
-        mutate({ clientId, discount, method, process, products, paid }, { onSuccess: () => router.push("/") });
+        const filterProducts = products.map(({ company, ...product }) => product);
+        mutate({ ...values, products: filterProducts }, { onSuccess: () => router.push("/") });
     };
 
     return (

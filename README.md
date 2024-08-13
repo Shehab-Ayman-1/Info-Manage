@@ -1,15 +1,14 @@
 # TODO:
 
+    - Subscribe
     - Think About Clients Level
 
-    - Make The Project Work On The Local DB, And Put Backup Button To Upload The Data On The Online DB
-
 ```ts
-    const { user, organization, setActive, openUserProfile, getOrganization, createOrganization, client, frontendApi, ...rest } = useClerk();
+    const { user, setActive, openUserProfile, organization, getOrganization, createOrganization, client, frontendApi, ...rest } = useClerk();
 
-    const { setActive, isLoaded, createOrganization, userInvitations, userMemberships, userSuggestions } = useOrganizationList();
+    const { isLoaded, setActive, createOrganization, userInvitations, userMemberships, userSuggestions } = useOrganizationList();
 
-    const { userId, has, orgId, orgRole, orgSlug, sessionId, isLoaded, actor, getToken, isSignedIn, signOut } = useAuth();
+    const { isLoaded, userId, has, orgId, orgRole, orgSlug, sessionId, actor, getToken, isSignedIn, signOut } = useAuth();
 
     const { sessions, isLoaded, setActive } = useSessionList();
 

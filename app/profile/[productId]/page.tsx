@@ -70,7 +70,7 @@ const ProductProfile = ({ params }: ProductProfileProps) => {
             <div className="flex-between">
                 <div className="w-full">
                     <Label className={labelStyle}>Purchase Price:</Label>
-                    <p className={textStyle}>{market.price}</p>
+                    <p className={textStyle}>{store.price}</p>
                 </div>
 
                 <div className="w-full">

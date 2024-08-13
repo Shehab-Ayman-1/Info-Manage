@@ -38,15 +38,16 @@ const BillProfile = ({ params }: BillProfileProps) => {
     if (isPending) return <ProfileLoading />;
     if (error) return <h1>{error.message}</h1>;
 
-    const [{ client, createdAt, total, paid, discount, state, products }] = data;
+    const [values] = data;
+    if (!values) return;
 
     const styleText = "mb-4 text-xl font-semibold";
     return (
         <section className="">
             <div className="text-center">
                 <div className="flex-between mb-4">
-                    <h1 className={styleText}>Client: {client.name}</h1>
-                    <h1 className={styleText}>Created At: {formatDate(createdAt, "dd / MM / yyyy")}</h1>
+                    <h1 className={styleText}>Client: {values?.client.name}</h1>
+                    <h1 className={styleText}>Created At: {formatDate(values?.createdAt, "dd / MM / yyyy")}</h1>
                 </div>
                 <Button className="w-fit text-xl font-bold print:hidden" size="lg" onClick={print}>
                     Print Receipt
@@ -54,18 +55,18 @@ const BillProfile = ({ params }: BillProfileProps) => {
             </div>
 
             <div className="my-4 rounded-md px-4 shadow-md">
-                <DataTable columns={columns} data={products} totalFor="total" />
+                <DataTable columns={columns} data={values?.products} totalFor="total" />
             </div>
 
             <div className="flex-around flex-wrap md:flex-nowrap">
-                <h1 className={styleText}>Total: ( ${total} )</h1>
-                <h1 className={styleText}>Paid: ( ${paid} )</h1>
-                <h1 className={styleText}>Pending: ( ${total - paid} )</h1>
+                <h1 className={styleText}>Total: ( ${values?.total} )</h1>
+                <h1 className={styleText}>Paid: ( ${values?.paid} )</h1>
+                <h1 className={styleText}>Pending: ( ${values?.total - values?.paid} )</h1>
             </div>
 
             <div className="flex-around flex-wrap md:flex-nowrap">
-                <h1 className={styleText}>Discount: ( ${discount} )</h1>
-                <h1 className={styleText}>State: ( {state} )</h1>
+                <h1 className={styleText}>Discount: ( ${values?.discount} )</h1>
+                <h1 className={styleText}>State: ( {values?.state} )</h1>
             </div>
 
             <div className="flex-center mt-10 w-full flex-col">

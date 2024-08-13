@@ -60,7 +60,7 @@ export type Clients = {
 
 export type ProductsBySupplier = {
     data: Products["data"];
-    lists: List[];
+    groups: Group[];
     isLoading: false | true;
     fetcher: (supplierId: string) => Promise<void>;
 };

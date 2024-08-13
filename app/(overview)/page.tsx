@@ -22,7 +22,7 @@ const Overview = ({}: OverviewProps) => {
                 className="h-[200px] w-[200px] sm:h-[300px] sm:w-[300px]"
             />
 
-            <h1 className="text-4xl font-extrabold text-primary sm:text-6xl">{organization.name}</h1>
+            <h1 className="text-gradient text-4xl font-extrabold text-primary sm:text-6xl">{organization.name}</h1>
 
             <p className="text-center text-xs text-slate-500 sm:text-base">
                 A flexible and powerful platform for managing any data shops,
