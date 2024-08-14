@@ -10,7 +10,7 @@
 
     - Think About Deleting Data After 12 Months
 
-    - Add Image By File Input In Create Company
+    - Add Image By File Input In Create Company.
 
 ```ts
     const { user, setActive, openUserProfile, organization, getOrganization, createOrganization, client, frontendApi, ...rest } = useClerk();
