@@ -15,7 +15,7 @@ export const createSchema = z.object({
             count: z.number().int().min(1),
             total: z.number().int().min(0),
             soldPrice: z.number().int().min(0),
-            boughtPrice: z.number().int().min(0),
+            purchasePrice: z.number().int().min(0),
         }),
     ),
 });

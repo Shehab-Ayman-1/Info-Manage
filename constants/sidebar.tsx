@@ -30,6 +30,13 @@ export const showLinks: NavLinkType[] = [
         subscriptions: ["basic", "premium"],
     },
     {
+        Icon: BookKeyIcon,
+        title: "Total Cashes",
+        href: "/show/cashes",
+        userRole: "org:admin",
+        subscriptions: ["basic", "premium"],
+    },
+    {
         Icon: ArrowRightLeftIcon,
         title: "Transactions",
         href: "/show/transactions",
@@ -49,13 +56,6 @@ export const showLinks: NavLinkType[] = [
         href: "/show/suppliers",
         userRole: "org:admin",
         subscriptions: ["premium"],
-    },
-    {
-        Icon: BookKeyIcon,
-        title: "Total Cashes",
-        href: "/show/cashes",
-        userRole: "org:admin",
-        subscriptions: ["basic", "premium"], // Basic For Locker, And Intermediate For Market, And Stor]e
     },
     {
         Icon: ReceiptTextIcon,

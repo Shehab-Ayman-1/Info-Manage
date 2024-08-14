@@ -28,7 +28,7 @@ const Movement = () => {
     useEffect(() => {
         if (!productId) return;
         const product = products.data.find((product) => product._id === productId);
-        mutate(`product=${product?.name}`);
+        mutate(`productName=${product?.name}&companyId=${product?.company?._id}`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [productId]);
 

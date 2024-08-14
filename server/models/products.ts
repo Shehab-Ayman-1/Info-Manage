@@ -1,6 +1,7 @@
-import { Schema, model, models, InferSchemaType, Model } from "mongoose";
+import { Document, Model, InferSchemaType } from "mongoose";
+import { Schema, models, model } from "mongoose";
 
-type TProduct = {
+type TProduct = Document & {
     _id: string;
     name: string;
     barcode: string;

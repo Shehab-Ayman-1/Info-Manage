@@ -15,8 +15,14 @@ export const Actions = ({ row }: ActionsProps) => {
     const items = [
         {
             Icon: EditIcon,
-            text: "Edit",
+            text: "Edit Supplier",
             onClick: (original: any) => onOpen("update-model", { supplier: original }),
+        },
+        {
+            Icon: EditIcon,
+            text: "Edit Products",
+            onClick: (original: any) =>
+                onOpen("update-products-model", { supplierId: original._id, products: original.products }),
         },
         {
             Icon: Trash2Icon,

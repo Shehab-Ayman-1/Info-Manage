@@ -41,7 +41,7 @@ export const GET = async () => {
                     _id: 1,
                     name: 1,
                     soldPrice: "$market.price",
-                    boughtPrice: "$store.price",
+                    purchasePrice: "$store.price",
                     company: {
                         _id: "$company._id",
                         name: "$company.name",

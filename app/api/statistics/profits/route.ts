@@ -29,8 +29,8 @@ export const GET = async () => {
                     soldPrices: {
                         $sum: { $multiply: ["$products.soldPrice", "$products.count"] },
                     },
-                    boughtPrices: {
-                        $sum: { $multiply: ["$products.boughtPrice", "$products.count"] },
+                    purchasePrices: {
+                        $sum: { $multiply: ["$products.purchasePrice", "$products.count"] },
                     },
                 },
             },
@@ -38,7 +38,7 @@ export const GET = async () => {
                 $project: {
                     _id: 0,
                     month: { $arrayElemAt: [months, { $subtract: ["$_id", 1] }] },
-                    chart_1: { $subtract: ["$soldPrices", "$boughtPrices"] },
+                    chart_1: { $subtract: ["$soldPrices", "$purchasePrices"] },
                 },
             },
         ]);
@@ -60,8 +60,8 @@ export const GET = async () => {
                     soldPrices: {
                         $sum: { $multiply: ["$products.soldPrice", "$products.count"] },
                     },
-                    boughtPrices: {
-                        $sum: { $multiply: ["$products.boughtPrice", "$products.count"] },
+                    purchasePrices: {
+                        $sum: { $multiply: ["$products.purchasePrice", "$products.count"] },
                     },
                 },
             },
@@ -69,7 +69,7 @@ export const GET = async () => {
                 $project: {
                     _id: 0,
                     day: "$_id",
-                    chart_2: { $subtract: ["$soldPrices", "$boughtPrices"] },
+                    chart_2: { $subtract: ["$soldPrices", "$purchasePrices"] },
                 },
             },
         ]);

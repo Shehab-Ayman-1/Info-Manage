@@ -1,6 +1,6 @@
 "use client";
-import { Row } from "@tanstack/react-table";
 import { Trash2Icon } from "lucide-react";
+import { Row } from "@tanstack/react-table";
 
 import { TableActions } from "@/components/table/table-actions";
 import { useModel } from "@/hooks/useModel";
@@ -17,7 +17,7 @@ export const Actions = ({ row }: ActionsProps) => {
             Icon: Trash2Icon,
             text: "Delete",
             className: { button: "cancel", icon: "cancel" },
-            onClick: (original: any) => onOpen("delete-model", { productId: original.productId }),
+            onClick: (original: any) => onOpen("update-products-model", { isDeletedModel: true, productId: original._id }),
         },
     ];
 

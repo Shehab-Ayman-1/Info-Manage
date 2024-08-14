@@ -40,9 +40,7 @@ export const GET = async (req: NextRequest) => {
                 $group: {
                     _id: { name: "$products.name", company: "$products.company.name", companyId: "$products.companyId" },
                     total_sold: {
-                        $sum: {
-                            $multiply: ["$products.count", "$products.soldPrice"],
-                        },
+                        $sum: "$products.count",
                     },
                 },
             },

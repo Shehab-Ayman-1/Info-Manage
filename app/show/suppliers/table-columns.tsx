@@ -22,7 +22,7 @@ export const columns: ColumnDef<any>[] = [
     {
         accessorKey: "products",
         header: HeaderComponent,
-        cell: ({ row }) => row.original.products.map((product: string) => <p key={product}>{product}</p>),
+        cell: ({ row }) => row.original.products.map((product: any) => <p key={product}>{product.name}</p>),
     },
     {
         accessorKey: "actions",

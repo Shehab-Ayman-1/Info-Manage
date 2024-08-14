@@ -103,6 +103,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
 
         // Update The Client Salaries
         await Clients.updateOne({ orgId, _id: bill.client }, { $inc: { pendingCosts: -amount } });
+        await Clients.updateLastRefreshDate({ orgId, clientId: bill.client });
 
         // Create Transaction
         await Transactions.create({

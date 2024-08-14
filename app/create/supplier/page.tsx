@@ -8,15 +8,15 @@ import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
 
 import { OpenModuleButton } from "@/components/public/openModuleButton";
-import { createSchema } from "@/app/api/create/suppliers/schema";
 import { CardForm } from "@/components/page-structure/CardForm";
+import { createSchema } from "@/app/api/create/suppliers/schema";
 import { SelectBox } from "@/components/ui/select";
 import { Input } from "@/ui/input";
 
 import { SubmitButton } from "@/components/public/submit-btn";
 import { DataTable } from "@/components/table";
-import { DeleteDialog } from "./deleteDialog";
-import { InsertDialog } from "./insertDialog";
+import { DeleteDialog } from "./delete-dialog";
+import { InsertDialog } from "./insert-dialog";
 import { SupplierType } from "./schema";
 import { columns } from "./table-columns";
 

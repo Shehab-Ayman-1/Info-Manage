@@ -3,5 +3,5 @@ export type SupplierType = {
     supplier: string;
     phone: string;
     pending: number;
-    products: string[];
+    products: { _id: string; name: string }[];
 };

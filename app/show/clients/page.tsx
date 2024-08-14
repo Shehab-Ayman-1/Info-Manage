@@ -3,8 +3,8 @@ import { TableForm } from "@/components/page-structure/table-form";
 import { CardLoading } from "@/components/loading/card";
 import { useGet } from "@/hooks/api/useGet";
 
-import { UpdateDialog } from "./updateDialog";
-import { DeleteDialog } from "./deleteDialog";
+import { UpdateDialog } from "./update-dialog";
+import { DeleteDialog } from "./delete-dialog";
 import { columns } from "./table-columns";
 import { ClientType } from "./schema";
 
@@ -19,7 +19,7 @@ const ClientsList = () => {
             pageTitle="Clients List"
             columns={columns}
             data={data!}
-            filterBy={['client', 'level']}
+            filterBy={["client", "level"]}
             totalFor="pending"
             navigate={{ to: "/create/client", text: "New Client" }}
         >

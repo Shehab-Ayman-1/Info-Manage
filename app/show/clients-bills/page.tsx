@@ -5,8 +5,8 @@ import { CardLoading } from "@/components/loading/card";
 import { useGet } from "@/hooks/api/useGet";
 import { columns } from "./table-columns";
 
-import { DeleteDialog } from "./deleteDialog";
-import { PayDialog } from "./payDialog";
+import { DeleteDialog } from "./delete-dialog";
+import { PayDialog } from "./pay-dialog";
 
 type BillType = {
     _id: string;
@@ -30,7 +30,7 @@ const ClientsBills = () => {
             pageTitle="Clients Bills List"
             columns={columns}
             data={data}
-            filterBy={['client']}
+            filterBy={["client"]}
             totalFor="pending"
             navigate={{ to: "/statements/clients", text: "New Statement" }}
         >

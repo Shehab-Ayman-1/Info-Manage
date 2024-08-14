@@ -7,7 +7,6 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
     const { userId, orgId } = auth();
-
     if (!userId || !orgId) redirect("/");
 
     return children;

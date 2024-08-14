@@ -1,6 +1,7 @@
-import { InferSchemaType, Model, Schema, model, models } from "mongoose";
+import { Document, Model, InferSchemaType } from "mongoose";
+import { Schema, models, model } from "mongoose";
 
-type Tranasction = {
+type Tranasction = Document & {
     _id: string;
     orgId: string;
     creator: string;

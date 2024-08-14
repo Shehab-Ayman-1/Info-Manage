@@ -1,7 +1,8 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
+
 import { HeaderComponent } from "@/components/table/column-header";
-import { DollarCell } from "@/components/table/body/price-cell";
+import { NumberCell } from "@/components/table/body/number-cell";
 
 export const columns: ColumnDef<any>[] = [
     {
@@ -15,6 +16,6 @@ export const columns: ColumnDef<any>[] = [
     {
         accessorKey: "sold_count",
         header: HeaderComponent,
-        cell: ({ row }) => <DollarCell row={row} name="sold_count" />,
+        cell: ({ row }) => <NumberCell row={row} name="sold_count" />,
     },
 ];

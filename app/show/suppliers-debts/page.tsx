@@ -4,8 +4,8 @@ import { columns } from "./table-columns";
 
 import { TableForm } from "@/components/page-structure/table-form";
 import { CardLoading } from "@/components/loading/card";
-import { DeleteDialog } from "./deleteDialog";
-import { PayDialog } from "./payDialog";
+import { DeleteDialog } from "./delete-dialog";
+import { PayDialog } from "./pay-dialog";
 
 type DebtType = {
     _id: string;

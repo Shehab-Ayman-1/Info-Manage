@@ -1,6 +1,7 @@
-import { Schema, models, model, Model, InferSchemaType } from "mongoose";
+import { Document, Model, InferSchemaType } from "mongoose";
+import { Schema, models, model } from "mongoose";
 
-type TClient = {
+type TClient = Document & {
     _id: string;
     orgId: string;
     name: string;

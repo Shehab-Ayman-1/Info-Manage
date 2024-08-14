@@ -5,13 +5,15 @@ import { DBConnection } from "@/server/configs";
 import { Bills, Debts } from "@/server/models";
 import { json } from "@/utils/response";
 import { months } from "@/constants";
+import { Types } from "mongoose";
 
 export const GET = async (req: NextRequest) => {
     try {
         await DBConnection();
 
         const { searchParams } = new URL(req.url);
-        const name = searchParams.get("product");
+        const productName = searchParams.get("productName");
+        const companyId = searchParams.get("companyId")!;
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
@@ -24,7 +26,8 @@ export const GET = async (req: NextRequest) => {
             {
                 $match: {
                     orgId,
-                    "products.name": name,
+                    "products.name": productName,
+                    "products.companyId": new Types.ObjectId(companyId),
                     createdAt: { $gte: thisYear, $lt: nextYear },
                 },
             },
@@ -46,11 +49,12 @@ export const GET = async (req: NextRequest) => {
             },
         ]);
 
+        // TODO: Increase The Match Strength
         const sales = await Debts.aggregate([
             {
                 $match: {
                     orgId,
-                    "products.name": name,
+                    "products.name": productName,
                     createdAt: { $gte: thisYear, $lt: nextYear },
                 },
             },

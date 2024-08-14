@@ -1,15 +1,15 @@
 import { Dispatch, SetStateAction } from "react";
 
 import { DialogForm } from "@/components/ui/dialog";
-import { ProductType } from "./insertProducts";
+import { ProductType } from "./insert-product";
 import { useModel } from "@/hooks/useModel";
 import { Button } from "@/ui/button";
 
-type DeleteProductProps = {
+type DeleteDialogProps = {
     setProducts: Dispatch<SetStateAction<ProductType[]>>;
 };
 
-export const DeleteProduct = ({ setProducts }: DeleteProductProps) => {
+export const DeleteDialog = ({ setProducts }: DeleteDialogProps) => {
     const { type, data, onClose } = useModel();
     if (type !== "delete-model") return;
 
@@ -32,4 +32,4 @@ export const DeleteProduct = ({ setProducts }: DeleteProductProps) => {
     );
 };
 
-DeleteProduct.displayName = "DeleteProduct";
+DeleteDialog.displayName = "DeleteDialog";

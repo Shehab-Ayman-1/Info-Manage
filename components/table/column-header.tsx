@@ -21,7 +21,7 @@ export const HeaderComponent = <T,>({ column, smallSize }: HeaderComponentProps<
                 "text-white hover:bg-primary hover:text-white dark:text-black print:text-black",
                 "p-0 text-sm font-bold sm:text-base",
                 smallSize && "text-sm",
-                name === "ACTIONS" && "print:hidden",
+                name === "actions" && "print:hidden",
             )}
             onClick={() => column.toggleSorting(isAsc)}
         >

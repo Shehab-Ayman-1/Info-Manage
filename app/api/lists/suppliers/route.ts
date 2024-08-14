@@ -43,7 +43,7 @@ export const GET = async () => {
                         $addToSet: {
                             _id: "$products._id",
                             name: "$products.name",
-                            boughtPrice: "$products.store.price",
+                            purchasePrice: "$products.store.price",
                             soldPrice: "$products.market.price",
                             company: {
                                 _id: "$products.company._id",

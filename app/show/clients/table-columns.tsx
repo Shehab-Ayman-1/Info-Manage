@@ -17,14 +17,24 @@ export const columns: ColumnDef<any>[] = [
         cell: ({ row }) => <DollarCell row={row} name="discounts" />,
     },
     {
-        accessorKey: "boughts",
+        accessorKey: "purchases",
         header: HeaderComponent,
-        cell: ({ row }) => <DollarCell row={row} name="boughts" />,
+        cell: ({ row }) => <DollarCell row={row} name="purchases" />,
     },
     {
         accessorKey: "pending",
         header: HeaderComponent,
         cell: ({ row }) => <DollarCell row={row} name="pending" />,
+    },
+    {
+        accessorKey: "bronzeTo",
+        header: HeaderComponent,
+        cell: ({ row }) => <DollarCell row={row} name="bronzeTo" />,
+    },
+    {
+        accessorKey: "silverTo",
+        header: HeaderComponent,
+        cell: ({ row }) => <DollarCell row={row} name="silverTo" />,
     },
     {
         accessorKey: "level",

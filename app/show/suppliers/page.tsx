@@ -1,12 +1,14 @@
 "use client";
 import { useGet } from "@/hooks/api/useGet";
 import { columns } from "./table-columns";
-import { SupplierType } from "./schema";
+import { SupplierType } from "./types";
 
 import { TableForm } from "@/components/page-structure/table-form";
 import { CardLoading } from "@/components/loading/card";
-import { UpdateDialog } from "./updateDialog";
-import { DeleteDialog } from "./deleteDialog";
+
+import { UpdateProductsDialog } from "./update-product-dialog";
+import { UpdateDialog } from "./update-dialog";
+import { DeleteDialog } from "./delete-dialog";
 
 const Suppliers = () => {
     const { data, isPending, error } = useGet<SupplierType>("/api/show/suppliers", ["suppliers"]);
@@ -25,6 +27,7 @@ const Suppliers = () => {
         >
             <UpdateDialog />
             <DeleteDialog />
+            <UpdateProductsDialog />
         </TableForm>
     );
 };

@@ -1,6 +1,7 @@
-import { InferSchemaType, Model, Schema, model, models } from "mongoose";
+import { Document, Model, InferSchemaType } from "mongoose";
+import { Schema, models, model } from "mongoose";
 
-type TDebt = {
+type TDebt = Document & {
     orgId: string;
     supplier: any;
     createdAt: Date;
@@ -12,7 +13,7 @@ type TDebt = {
     products: {
         name: string;
         count: number;
-        boughtPrice: number;
+        purchasePrice: number;
     }[];
 };
 
@@ -23,6 +24,7 @@ const schema = new Schema<TDebt>({
     paid: { type: Number, default: 0 },
     total: { type: Number, default: 0 },
     state: { type: String, required: true, enum: ["completed", "pending"] },
+    createdAt: { type: Date, default: new Date() },
 
     products: [
         {
@@ -31,8 +33,6 @@ const schema = new Schema<TDebt>({
             price: { type: Number, default: 0 },
         },
     ],
-
-    createdAt: { type: Date, default: Date.now() },
 });
 
 export const Debts = (models.debts as Model<TDebt>) || model<TDebt>("debts", schema);

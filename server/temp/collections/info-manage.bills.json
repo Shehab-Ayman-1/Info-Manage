@@ -1,43 +1,45 @@
-[{
-  "_id": {
-    "$oid": "66b77bdffbc3e094c46469a3"
-  },
-  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
-  "client": {
-    "$oid": "66b547d31711b1cded42fc05"
-  },
-  "paid": 35,
-  "total": 35,
-  "discount": 0,
-  "state": "completed",
-  "products": [
+[
     {
-      "companyId": {
-        "$oid": "66b53e575423b14979964d4d"
-      },
-      "name": "عصير أناناس",
-      "count": 5,
-      "soldPrice": 5,
-      "boughtPrice": 3,
-      "_id": {
-        "$oid": "66b77bdffbc3e094c46469a4"
-      }
-    },
-    {
-      "companyId": {
-        "$oid": "66b53e575423b14979964d4d"
-      },
-      "name": "عصير مانجو",
-      "count": 2,
-      "soldPrice": 5,
-      "boughtPrice": 3,
-      "_id": {
-        "$oid": "66b77bdffbc3e094c46469a5"
-      }
+        "_id": {
+            "$oid": "66b77bdffbc3e094c46469a3"
+        },
+        "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+        "client": {
+            "$oid": "66b547d31711b1cded42fc05"
+        },
+        "paid": 35,
+        "total": 35,
+        "discount": 0,
+        "state": "completed",
+        "products": [
+            {
+                "companyId": {
+                    "$oid": "66b53e575423b14979964d4d"
+                },
+                "name": "عصير أناناس",
+                "count": 5,
+                "soldPrice": 5,
+                "purchasePrice": 3,
+                "_id": {
+                    "$oid": "66b77bdffbc3e094c46469a4"
+                }
+            },
+            {
+                "companyId": {
+                    "$oid": "66b53e575423b14979964d4d"
+                },
+                "name": "عصير مانجو",
+                "count": 2,
+                "soldPrice": 5,
+                "purchasePrice": 3,
+                "_id": {
+                    "$oid": "66b77bdffbc3e094c46469a5"
+                }
+            }
+        ],
+        "createdAt": {
+            "$date": "2024-08-10T12:52:21.907Z"
+        },
+        "__v": 0
     }
-  ],
-  "createdAt": {
-    "$date": "2024-08-10T12:52:21.907Z"
-  },
-  "__v": 0
-}]
+]

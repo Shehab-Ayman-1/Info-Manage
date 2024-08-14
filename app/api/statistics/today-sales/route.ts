@@ -11,9 +11,18 @@ export const GET = async () => {
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
 
+        const startOfDay = new Date();
+        startOfDay.setHours(0, 0, 0, 0);
+
+        const endOfDay = new Date();
+        endOfDay.setHours(23, 59, 59, 999);
+
         const sales = await Bills.aggregate([
             {
-                $match: { orgId },
+                $match: {
+                    orgId,
+                    createdAt: { $gte: startOfDay, $lte: endOfDay },
+                },
             },
             {
                 $lookup: {

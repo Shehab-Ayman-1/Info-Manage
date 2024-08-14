@@ -13,12 +13,13 @@ import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { AlertError } from "@/components/ui/alert-error";
 import { DataTable } from "@/components/table";
 
-import { InsertProducts, ProductType } from "./insertProducts";
-import { SubmitButton } from "@/components/public/submit-btn";
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
-
 import { columns } from "./table-columns";
+
+import { InsertProduct, ProductType } from "./insert-product";
+import { SubmitButton } from "@/components/public/submit-btn";
+import { DeleteDialog } from "./delete-dialog";
 import { Input } from "@/ui/input";
 
 type SuppliersProps = {};
@@ -74,8 +75,6 @@ const Suppliers = ({}: SuppliersProps) => {
         mutate({ ...values, products }, { onSuccess: () => router.push("/") });
     };
 
-    console.log(suppliers);
-
     return (
         <CardForm heading="Supplier Statement">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -114,7 +113,8 @@ const Suppliers = ({}: SuppliersProps) => {
                 <SubmitButton text="Buy" isPending={isPending} />
             </form>
 
-            <InsertProducts setProducts={setProducts} />
+            <InsertProduct setProducts={setProducts} />
+            <DeleteDialog setProducts={setProducts} />
         </CardForm>
     );
 };

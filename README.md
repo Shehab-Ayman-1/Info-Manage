@@ -1,6 +1,5 @@
 # TODO:
 
-    - Subscribe
     - Think About Clients Level
 
 ```ts

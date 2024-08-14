@@ -10,8 +10,8 @@ import { ProfileLoading } from "@/components/loading/product-profile";
 import { CardForm } from "@/components/page-structure/CardForm";
 import { Label } from "@/ui/label";
 
-import DeleteDialog from "./deleteDialog";
-import UpdateDialog from "./updateDialog";
+import DeleteDialog from "./delete-dialog";
+import UpdateDialog from "./update-dialog";
 
 export type ProfileType = {
     company: { _id: string; name: string; image: string };

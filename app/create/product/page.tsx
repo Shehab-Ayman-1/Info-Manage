@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 
-import { CreateProductSchema } from "@/app/api/create/products/schema";
 import { OpenModuleButton } from "@/components/public/openModuleButton";
-import { InsertAndUpdateDialog } from "./insertAndUpdateDialog";
+import { CreateProductSchema } from "@/app/api/create/products/schema";
+import { InsertAndUpdateDialog } from "./insert-update-dialog";
 import { ProductType } from "./schema";
 
 import { CardForm } from "@/components/page-structure/CardForm";
@@ -17,7 +17,7 @@ import { SelectBox } from "@/components/ui/select";
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
 import { DataTable } from "@/components/table";
-import { DeleteDialog } from "./deleteDialog";
+import { DeleteDialog } from "./delete-dialog";
 import { columns } from "./table-columns";
 
 const schema = z.object({

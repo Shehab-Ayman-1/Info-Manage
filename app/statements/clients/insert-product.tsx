@@ -21,16 +21,16 @@ const schema = z.object({
     count: z.number().int().positive().min(1),
     total: z.number().int().positive().min(1),
     soldPrice: z.number().int().positive().min(1),
-    boughtPrice: z.number().int().min(0),
+    purchasePrice: z.number().int().min(0),
 });
 
 export type ProductType = z.infer<typeof schema>;
 
-type InsertProductsProps = {
+type InsertProductProps = {
     setProducts: Dispatch<SetStateAction<ProductType[]>>;
 };
 
-export const InsertProducts = ({ setProducts }: InsertProductsProps) => {
+export const InsertProduct = ({ setProducts }: InsertProductProps) => {
     const { register, setValue, watch, reset, handleSubmit, formState } = useForm({
         resolver: zodResolver(schema.omit({ company: true, name: true, total: true })),
     });
@@ -50,7 +50,7 @@ export const InsertProducts = ({ setProducts }: InsertProductsProps) => {
         if (!selectedProductId) return;
 
         const product = products.data.find((product) => product._id === selectedProductId);
-        setValue("boughtPrice", product?.boughtPrice);
+        setValue("purchasePrice", product?.purchasePrice);
         setValue("soldPrice", product?.soldPrice);
         setValue("companyId", product?.company._id);
     }, [selectedProductId, products, setValue]);
@@ -116,4 +116,4 @@ export const InsertProducts = ({ setProducts }: InsertProductsProps) => {
     );
 };
 
-InsertProducts.displayName = "InsertProducts";
+InsertProduct.displayName = "InsertProduct";

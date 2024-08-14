@@ -76,18 +76,19 @@ export const DELETE = async (req: NextRequest) => {
             }),
         ]);
 
-        // Decreament The Client Boughts Salary, pendingCosts, And Discounts
+        // Decreament The Client purchases Salary, pendingCosts, And Discounts
         await Clients.updateOne(
             { orgId, _id: bill.client },
             {
                 $inc: {
-                    boughtsSalary: -bill.total,
+                    purchasesSalary: -bill.total,
                     pendingCosts: -(bill.total - bill.paid),
                     discounts: -bill.discount,
                 },
             },
         );
         await Clients.updateLevel({ orgId, clientId: bill.client });
+        await Clients.updateLastRefreshDate({ orgId, clientId: bill.client });
 
         // Delete The Bill
         const deleted = await Bills.deleteOne({ orgId, _id: billId });

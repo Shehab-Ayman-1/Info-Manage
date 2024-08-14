@@ -6,21 +6,21 @@ import { useRouter } from "next/navigation";
 
 import { createSchema, CreateClientType } from "@/app/api/statements/clients/schema";
 import { OpenModuleButton } from "@/components/public/openModuleButton";
-import { InsertProducts, ProductType } from "./insertProducts";
+import { InsertProduct, ProductType } from "./insert-product";
 
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
 import { methods, process } from "@/constants";
+import { columns } from "./table-columns";
 
 import { CardForm } from "@/components/page-structure/CardForm";
 import { SubmitButton } from "@/components/public/submit-btn";
 import { AlertError } from "@/components/ui/alert-error";
 import { SelectBox } from "@/components/ui/select";
 import { DataTable } from "@/components/table";
-import { columns } from "./table-columns";
+import { DeleteDialog } from "./delete-dialog";
 import { Input } from "@/ui/input";
 import { cn } from "@/utils/shadcn";
-import { DeleteProduct } from "./deleteProduct";
 
 type ClientsProps = {};
 
@@ -110,8 +110,8 @@ const Clients = ({}: ClientsProps) => {
                 <SubmitButton text="Buy" isPending={isPending} />
             </form>
 
-            <InsertProducts setProducts={setProducts} />
-            <DeleteProduct setProducts={setProducts} />
+            <InsertProduct setProducts={setProducts} />
+            <DeleteDialog setProducts={setProducts} />
         </CardForm>
     );
 };

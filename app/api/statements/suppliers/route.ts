@@ -46,7 +46,7 @@ export const POST = async (req: NextRequest) => {
             creator: `${firstName} ${lastName}`,
         });
 
-        // Update Products Price By The Current Prices, And Increament The Bought Products Count
+        // Update Products Price By The Current Prices, And Increament The Purchase Products Count
         const placePrice = place === "market" ? "market.price" : "store.price";
         const placeCount = place === "market" ? "market.count" : "store.count";
         const promise = await Promise.all(
@@ -60,7 +60,7 @@ export const POST = async (req: NextRequest) => {
         );
         if (promise.includes(0)) return json("Some Of The Products Was Not Updated, Something Went Wrong.", 400);
 
-        // Update Supplier Pending, BoughtSalary Prices
+        // Update Supplier Pending, purchaseSalary Prices
         await Suppliers.updateOne({ _id: supplierId }, { $inc: { pendingCosts: productsTotalCosts - paid } });
 
         // Response

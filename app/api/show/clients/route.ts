@@ -14,7 +14,12 @@ export const GET = async () => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const clients = await Clients.aggregate([
-            { $match: { orgId } },
+            {
+                $match: {
+                    orgId,
+                    name: { $ne: "unknown" },
+                },
+            },
             {
                 $project: {
                     _id: 1,
@@ -23,7 +28,7 @@ export const GET = async () => {
                     bronzeTo: 1,
                     silverTo: 1,
                     client: "$name",
-                    boughts: "$boughtsSalary",
+                    purchases: "$purchasesSalary",
                     pending: "$pendingCosts",
                 },
             },
@@ -50,6 +55,7 @@ export const PUT = async (req: NextRequest) => {
         if (!updated.modifiedCount) return json("Something Went Wrong.", 400);
 
         await Clients.updateLevel({ orgId, clientId });
+        await Clients.updateLastRefreshDate({ orgId, clientId });
         return json("The Client Was Successfully Updated.");
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");

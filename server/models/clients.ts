@@ -1,14 +1,16 @@
-import { Schema, models, model, Model, InferSchemaType } from "mongoose";
+import { Document, Model, InferSchemaType } from "mongoose";
+import { Schema, models, model } from "mongoose";
 
-type TClient = {
+type TClient = Document & {
     _id: string;
     orgId: string;
     name: string;
     level: "bronze" | "silver" | "gold";
     bronzeTo: number;
     silverTo: number;
+    lastRefreshDate: Date;
     discounts: number;
-    boughtsSalary: number;
+    purchasesSalary: number;
     pendingCosts: number;
 };
 
@@ -19,9 +21,10 @@ const schema = new Schema<TClient>({
     level: { type: String, enum: ["bronze", "silver", "gold"], default: "bronze" },
     bronzeTo: { type: Number, required: true },
     silverTo: { type: Number, required: true },
+    lastRefreshDate: { type: Date, default: new Date() },
 
     discounts: { type: Number, default: 0 },
-    boughtsSalary: { type: Number, default: 0 },
+    purchasesSalary: { type: Number, default: 0 },
     pendingCosts: { type: Number, default: 0 },
 });
 
@@ -36,15 +39,35 @@ schema.statics.updateLevel = async function ({ orgId, clientId }: FilterQuery) {
     if (client.level === "gold") return 0;
 
     let level = "bronze";
-    if (client.boughtsSalary >= client.bronzeTo) level = "silver";
-    if (client.boughtsSalary >= client.silverTo) level = "gold";
+    if (client.purchasesSalary >= client.bronzeTo) level = "silver";
+    if (client.purchasesSalary >= client.silverTo) level = "gold";
 
     const updated = await Clients.updateOne({ orgId, _id: clientId }, { level });
     return updated.modifiedCount;
 };
 
+schema.statics.updateLastRefreshDate = async function ({ orgId, clientId }: FilterQuery) {
+    const Clients = this;
+
+    const client: ClientType = await Clients.findOne({ orgId, _id: clientId });
+    if (!client) throw new Error("Something Went Wrong.");
+
+    const currentDate = new Date();
+    const lastRefreshDate = new Date(client.lastRefreshDate);
+
+    const yearsDifference = (currentDate.getFullYear() - lastRefreshDate.getFullYear()) * 12;
+    const monthsDifference = currentDate.getMonth() - lastRefreshDate.getMonth();
+    const dateDiffrence = yearsDifference + monthsDifference;
+
+    if (dateDiffrence >= 3) {
+        client.lastRefreshDate = currentDate;
+        await client.save();
+    }
+};
+
 type ClientsModel = Model<TClient> & {
     updateLevel: (filterQuery: FilterQuery) => Promise<number>;
+    updateLastRefreshDate: (filterQuery: FilterQuery) => Promise<undefined>;
 };
 
 export const Clients = (models.clients as ClientsModel) || model("clients", schema);

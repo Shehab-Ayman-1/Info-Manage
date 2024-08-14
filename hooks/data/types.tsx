@@ -33,7 +33,7 @@ export type Companies = {
 
 export type Products = {
     data: (Item & {
-        boughtPrice: number;
+        purchasePrice: number;
         soldPrice: number;
         company: Item;
     })[];

@@ -1,6 +1,7 @@
 "use client";
 import { TableForm } from "@/components/page-structure/table-form";
 import { CardLoading } from "@/components/loading/card";
+
 import { useGet } from "@/hooks/api/useGet";
 import { columns } from "./table-columns";
 

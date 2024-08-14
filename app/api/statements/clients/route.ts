@@ -69,14 +69,15 @@ export const POST = async (req: NextRequest) => {
             }),
         );
 
-        // Update Client Pending, BoughtSalary Prices
+        // Update Client Pending, purchaseSalary Prices
         await Clients.updateOne(
             { orgId, _id: clientId },
-            { $inc: { boughtsSalary: total, pendingCosts: total - paid, discounts: discount } },
+            { $inc: { purchasesSalary: total, pendingCosts: total - paid, discounts: discount } },
         );
 
         // Update Client Level
         await Clients.updateLevel({ orgId, clientId });
+        await Clients.updateLastRefreshDate({ orgId, clientId });
 
         // Response
         return json("The Statement Was Successfully Created.");

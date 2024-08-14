@@ -1,6 +1,7 @@
-import { Schema, model, models, InferSchemaType, Model } from "mongoose";
+import { Document, Model, InferSchemaType } from "mongoose";
+import { Schema, models, model } from "mongoose";
 
-type TCategory = {
+type TCategory = Document & {
     _id: string;
     orgId: string;
     orgSlug: string;

@@ -24,12 +24,20 @@ export const GET = async () => {
                 },
             },
             {
-                $project: {
-                    _id: 1,
-                    supplier: "$name",
-                    phone: "$phone",
-                    pending: "$pendingCosts",
-                    products: "$products.name",
+                $unwind: "$products",
+            },
+            {
+                $group: {
+                    _id: "$_id",
+                    supplier: { $first: "$name" },
+                    phone: { $first: "$phone" },
+                    pending: { $first: "$pendingCosts" },
+                    products: {
+                        $push: {
+                            _id: "$products._id",
+                            name: "$products.name",
+                        },
+                    },
                 },
             },
         ]);

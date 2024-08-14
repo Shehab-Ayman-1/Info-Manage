@@ -1,6 +1,7 @@
-import { InferSchemaType, Model, Schema, model, models } from "mongoose";
+import { Document, Model, InferSchemaType } from "mongoose";
+import { Schema, models, model } from "mongoose";
 
-type TBill = {
+type TBill = Document & {
     _id: string;
     orgId: string;
     client: any;
@@ -17,7 +18,7 @@ type TBill = {
         name: string;
         count: number;
         soldPrice: number;
-        boughtPrice: number;
+        purchasePrice: number;
     }[];
 };
 
@@ -29,6 +30,7 @@ const schema = new Schema<TBill>({
     total: { type: Number, default: 0 },
     discount: { type: Number, default: 0 },
     state: { type: String, required: true, trim: true, enum: ["completed", "pending"] },
+    createdAt: { type: Date, default: new Date() },
 
     products: [
         {
@@ -36,11 +38,9 @@ const schema = new Schema<TBill>({
             name: { type: String, required: true, trim: true },
             count: { type: Number, required: true },
             soldPrice: { type: Number, required: true },
-            boughtPrice: { type: Number, required: true },
+            purchasePrice: { type: Number, required: true },
         },
     ],
-
-    createdAt: { type: Date, default: Date.now() },
 });
 
 export const Bills = (models.bills as Model<TBill>) || model<TBill>("bills", schema);

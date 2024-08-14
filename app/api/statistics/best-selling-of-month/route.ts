@@ -32,15 +32,21 @@ export const GET = async (req: NextRequest) => {
             {
                 $lookup: {
                     from: "companies",
+                    as: "products.company",
                     localField: "products.companyId",
                     foreignField: "_id",
-                    as: "products.company",
                 },
             },
             {
                 $group: {
-                    _id: { name: "$products.name", company: "$products.company.name", companyId: "$products.companyId" },
-                    sold_count: { $sum: "$products.count" },
+                    _id: {
+                        name: "$products.name",
+                        company: "$products.company.name",
+                        companyId: "$products.companyId",
+                    },
+                    sold_count: {
+                        $sum: "$products.count",
+                    },
                 },
             },
             {

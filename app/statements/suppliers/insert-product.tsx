@@ -15,6 +15,7 @@ import { Input } from "@/ui/input";
 
 const schema = z.object({
     productId: z.string().min(1),
+    company: z.string().min(1),
     name: z.string().min(1),
     price: z.number().int().positive().min(0),
     count: z.number().int().positive().min(0),
@@ -23,17 +24,17 @@ const schema = z.object({
 
 export type ProductType = z.infer<typeof schema>;
 
-type InsertProductsProps = {
+type InsertProductProps = {
     setProducts: Dispatch<SetStateAction<ProductType[]>>;
 };
 
-export const InsertProducts = ({ setProducts }: InsertProductsProps) => {
+export const InsertProduct = ({ setProducts }: InsertProductProps) => {
     const { register, setValue, watch, reset, handleSubmit, formState } = useForm({
-        resolver: zodResolver(schema.omit({ total: true, name: true })),
+        resolver: zodResolver(schema.omit({ total: true, name: true, company: true })),
     });
 
     const { productsBySupplier } = useLists();
-    const { onClose } = useModel();
+    const { type, onClose } = useModel();
 
     const { errors, isLoading } = formState;
     const selectedProductId = watch("productId");
@@ -41,17 +42,18 @@ export const InsertProducts = ({ setProducts }: InsertProductsProps) => {
     useEffect(() => {
         if (!selectedProductId) return;
         const product = productsBySupplier.data.find((product) => product._id === selectedProductId);
-
-        setValue("price", product?.boughtPrice);
+        setValue("price", product?.purchasePrice);
     }, [selectedProductId, productsBySupplier, setValue]);
+
+    if (type === "delete-model") return;
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const { productId, count, price } = data as ProductType;
-        const { name } = productsBySupplier.data.find((product) => product._id === productId)!;
+        const { name, company } = productsBySupplier.data.find((product) => product._id === productId)!;
 
         setProducts((products) => {
             const exist = products.find((product) => product.productId === productId);
-            if (!exist) return products.concat({ productId, name, count, price, total: count * price });
+            if (!exist) return products.concat({ company: company.name, productId, name, count, price, total: count * price });
 
             toast.info("This Product Is Already Exist");
             return products;
@@ -82,7 +84,7 @@ export const InsertProducts = ({ setProducts }: InsertProductsProps) => {
                     />
                     <Input
                         type="number"
-                        placeholder="Bought Price"
+                        placeholder="Purchase Price"
                         error={errors.price}
                         {...register("price", { valueAsNumber: true })}
                     />
@@ -94,4 +96,4 @@ export const InsertProducts = ({ setProducts }: InsertProductsProps) => {
     );
 };
 
-InsertProducts.displayName = "InsertProducts";
+InsertProduct.displayName = "InsertProduct";
