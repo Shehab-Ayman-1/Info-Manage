@@ -27,15 +27,33 @@ export const GET = async () => {
                 $unwind: "$products",
             },
             {
+                $lookup: {
+                    from: "companies",
+                    as: "company",
+                    localField: "products.company",
+                    foreignField: "_id",
+                },
+            },
+            {
+                $unwind: "$company",
+            },
+            {
                 $group: {
                     _id: "$_id",
                     supplier: { $first: "$name" },
                     phone: { $first: "$phone" },
                     pending: { $first: "$pendingCosts" },
+                    companies: {
+                        $addToSet: {
+                            _id: "$company._id",
+                            name: "$company.name",
+                        },
+                    },
                     products: {
                         $push: {
                             _id: "$products._id",
                             name: "$products.name",
+                            company: "$products.company",
                         },
                     },
                 },
