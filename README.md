@@ -2,6 +2,8 @@
 
     - Think About Clients Level
 
+    - Create The Manage Organization Widget Again To Add Delete Member From The Org Members
+
 ```ts
     const { user, setActive, openUserProfile, organization, getOrganization, createOrganization, client, frontendApi, ...rest } = useClerk();
 

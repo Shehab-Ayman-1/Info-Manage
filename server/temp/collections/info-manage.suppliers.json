@@ -57,4 +57,43 @@
     }
   ],
   "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66bb6821b0ec3e07514ecf0e"
+  },
+  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+  "name": "احمد مولفكس",
+  "phone": "01234567890",
+  "pendingCosts": 160000,
+  "products": [
+    {
+      "$oid": "66b5330fde9ee064b220a4a5"
+    },
+    {
+      "$oid": "66b5330fde9ee064b220a4a6"
+    },
+    {
+      "$oid": "66b5330fde9ee064b220a4a7"
+    },
+    {
+      "$oid": "66b5330fde9ee064b220a4a8"
+    },
+    {
+      "$oid": "66b5330fde9ee064b220a4a9"
+    },
+    {
+      "$oid": "66b53321de9ee064b220a4b5"
+    },
+    {
+      "$oid": "66b53321de9ee064b220a4b6"
+    },
+    {
+      "$oid": "66b53321de9ee064b220a4b7"
+    },
+    {
+      "$oid": "66b53321de9ee064b220a4b8"
+    }
+  ],
+  "__v": 0
 }]

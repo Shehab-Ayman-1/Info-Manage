@@ -1,45 +1,141 @@
-[
+[{
+  "_id": {
+    "$oid": "66b77bdffbc3e094c46469a3"
+  },
+  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "client": {
+    "$oid": "66b547d31711b1cded42fc05"
+  },
+  "paid": 35,
+  "total": 35,
+  "discount": 0,
+  "state": "completed",
+  "products": [
     {
-        "_id": {
-            "$oid": "66b77bdffbc3e094c46469a3"
-        },
-        "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
-        "client": {
-            "$oid": "66b547d31711b1cded42fc05"
-        },
-        "paid": 35,
-        "total": 35,
-        "discount": 0,
-        "state": "completed",
-        "products": [
-            {
-                "companyId": {
-                    "$oid": "66b53e575423b14979964d4d"
-                },
-                "name": "عصير أناناس",
-                "count": 5,
-                "soldPrice": 5,
-                "purchasePrice": 3,
-                "_id": {
-                    "$oid": "66b77bdffbc3e094c46469a4"
-                }
-            },
-            {
-                "companyId": {
-                    "$oid": "66b53e575423b14979964d4d"
-                },
-                "name": "عصير مانجو",
-                "count": 2,
-                "soldPrice": 5,
-                "purchasePrice": 3,
-                "_id": {
-                    "$oid": "66b77bdffbc3e094c46469a5"
-                }
-            }
-        ],
-        "createdAt": {
-            "$date": "2024-08-10T12:52:21.907Z"
-        },
-        "__v": 0
+      "companyId": {
+        "$oid": "66b53e575423b14979964d4d"
+      },
+      "name": "عصير أناناس",
+      "count": 5,
+      "soldPrice": 5,
+      "_id": {
+        "$oid": "66b77bdffbc3e094c46469a4"
+      },
+      "purchasePrice": 3
+    },
+    {
+      "companyId": {
+        "$oid": "66b53e575423b14979964d4d"
+      },
+      "name": "عصير مانجو",
+      "count": 2,
+      "soldPrice": 5,
+      "_id": {
+        "$oid": "66b77bdffbc3e094c46469a5"
+      },
+      "purchasePrice": 3
     }
-]
+  ],
+  "createdAt": {
+    "$date": "2024-08-10T12:52:21.907Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66bb7191b0ec3e07514ecf78"
+  },
+  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+  "client": {
+    "$oid": "66bb6ed9b0ec3e07514ecf51"
+  },
+  "paid": 5600,
+  "total": 5600,
+  "discount": 0,
+  "state": "completed",
+  "products": [
+    {
+      "companyId": {
+        "$oid": "66b52c4b81d29af226da0672"
+      },
+      "name": "مقاس 3",
+      "count": 3,
+      "soldPrice": 350,
+      "_id": {
+        "$oid": "66bb7191b0ec3e07514ecf79"
+      },
+      "purchasePrice": 300
+    },
+    {
+      "companyId": {
+        "$oid": "66b52c4b81d29af226da0672"
+      },
+      "name": "مقاس 4",
+      "count": 4,
+      "soldPrice": 450,
+      "_id": {
+        "$oid": "66bb7191b0ec3e07514ecf7a"
+      },
+      "purchasePrice": 400
+    },
+    {
+      "companyId": {
+        "$oid": "66b52c4b81d29af226da0672"
+      },
+      "name": "مقاس 5",
+      "count": 5,
+      "soldPrice": 550,
+      "_id": {
+        "$oid": "66bb7191b0ec3e07514ecf7b"
+      },
+      "purchasePrice": 500
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-07-12T13:33:35.692Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66bbee330d5fe5cbfff2c3c5"
+  },
+  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+  "client": {
+    "$oid": "66bb6ed9b0ec3e07514ecf51"
+  },
+  "paid": 1300,
+  "total": 3300,
+  "discount": 0,
+  "state": "pending",
+  "products": [
+    {
+      "companyId": {
+        "$oid": "66b52c4b81d29af226da0672"
+      },
+      "name": "مقاس 3",
+      "count": 3,
+      "soldPrice": 350,
+      "_id": {
+        "$oid": "66bbee330d5fe5cbfff2c3c6"
+      },
+      "purchasePrice": 300
+    },
+    {
+      "companyId": {
+        "$oid": "66b52c4b81d29af226da0672"
+      },
+      "name": "مقاس 4",
+      "count": 5,
+      "soldPrice": 450,
+      "_id": {
+        "$oid": "66bbee330d5fe5cbfff2c3c7"
+      },
+      "purchasePrice": 400
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-08-13T22:01:38.171Z"
+  },
+  "__v": 0
+}]

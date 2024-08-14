@@ -27,4 +27,139 @@
     "$date": "2024-08-10T12:52:21.905Z"
   },
   "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66bb6aceb0ec3e07514ecf23"
+  },
+  "orgId": "org_2ka8Kn8yXg77XSs9WjNe33zkAYv",
+  "creator": "shehab ayman",
+  "reason": "First Commit",
+  "price": 1000000,
+  "method": "cash",
+  "process": "deposit",
+  "createdAt": {
+    "$date": "2024-08-13T13:33:35.689Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66bb6ae9b0ec3e07514ecf2b"
+  },
+  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+  "creator": "shehab ayman",
+  "reason": "First Commit",
+  "price": 1000000,
+  "method": "cash",
+  "process": "deposit",
+  "createdAt": {
+    "$date": "2024-08-13T13:33:35.689Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66bb6aebb0ec3e07514ecf3a"
+  },
+  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+  "creator": "shehab ayman",
+  "reason": "Supplier Statement",
+  "price": 189600,
+  "method": "cash",
+  "process": "withdraw",
+  "createdAt": {
+    "$date": "2024-08-13T13:33:35.689Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66bb7191b0ec3e07514ecf7d"
+  },
+  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+  "creator": "shehab ayman",
+  "reason": "Client Statement",
+  "price": 5600,
+  "method": "cash",
+  "process": "deposit",
+  "createdAt": {
+    "$date": "2024-08-13T13:33:35.689Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66bbee330d5fe5cbfff2c3c9"
+  },
+  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+  "creator": "shehab ayman",
+  "reason": "Client Statement",
+  "price": 3300,
+  "method": "cash",
+  "process": "deposit",
+  "createdAt": {
+    "$date": "2024-08-13T22:01:38.169Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66bbee6d0d5fe5cbfff2c3d9"
+  },
+  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+  "creator": "shehab ayman",
+  "reason": "Client Bill Payment",
+  "price": 300,
+  "method": "cash",
+  "process": "deposit",
+  "createdAt": {
+    "$date": "2024-08-13T22:01:38.169Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66bbef8f0d5fe5cbfff2c3eb"
+  },
+  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+  "creator": "shehab ayman",
+  "reason": "Supplier Statement",
+  "price": 239000,
+  "method": "cash",
+  "process": "withdraw",
+  "createdAt": {
+    "$date": "2024-08-13T22:01:38.169Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66bbefc80d5fe5cbfff2c406"
+  },
+  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+  "creator": "shehab ayman",
+  "reason": "Supplier Bill Payment",
+  "price": 50000,
+  "method": "cash",
+  "process": "withdraw",
+  "createdAt": {
+    "$date": "2024-08-13T22:01:38.169Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66bbf85be8d249b8c43a0216"
+  },
+  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+  "creator": "shehab ayman",
+  "reason": "Supplier Statement",
+  "price": 12000,
+  "method": "cash",
+  "process": "withdraw",
+  "createdAt": {
+    "$date": "2024-08-13T23:55:39.057Z"
+  },
+  "__v": 0
 }]

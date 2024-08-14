@@ -34,7 +34,7 @@
     "price": 0,
     "count": 0,
     "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
+      "$date": "2024-07-07T20:50:47.373Z"
     }
   },
   "store": {
@@ -1159,15 +1159,15 @@
   "min": 10,
   "max": 20,
   "market": {
-    "price": 0,
-    "count": 0,
+    "price": 100,
+    "count": 50,
     "updatedAt": {
       "$date": "2024-08-08T20:50:47.373Z"
     }
   },
   "store": {
-    "price": 0,
-    "count": 0
+    "price": 100,
+    "count": 100
   },
   "company": {
     "$oid": "66b52c3781d29af226da066b"
@@ -1183,15 +1183,15 @@
   "min": 10,
   "max": 20,
   "market": {
-    "price": 0,
-    "count": 0,
+    "price": 200,
+    "count": 50,
     "updatedAt": {
       "$date": "2024-08-08T20:50:47.373Z"
     }
   },
   "store": {
-    "price": 0,
-    "count": 0
+    "price": 200,
+    "count": 20
   },
   "company": {
     "$oid": "66b52c3781d29af226da066b"
@@ -1207,15 +1207,15 @@
   "min": 10,
   "max": 20,
   "market": {
-    "price": 0,
-    "count": 0,
+    "price": 300,
+    "count": 70,
     "updatedAt": {
       "$date": "2024-08-08T20:50:47.373Z"
     }
   },
   "store": {
-    "price": 0,
-    "count": 0
+    "price": 300,
+    "count": 30
   },
   "company": {
     "$oid": "66b52c3781d29af226da066b"
@@ -1231,15 +1231,15 @@
   "min": 10,
   "max": 20,
   "market": {
-    "price": 0,
-    "count": 0,
+    "price": 500,
+    "count": 50,
     "updatedAt": {
       "$date": "2024-08-08T20:50:47.373Z"
     }
   },
   "store": {
-    "price": 0,
-    "count": 0
+    "price": 500,
+    "count": 50
   },
   "company": {
     "$oid": "66b52c3781d29af226da066b"
@@ -1255,15 +1255,15 @@
   "min": 10,
   "max": 20,
   "market": {
-    "price": 0,
-    "count": 0,
+    "price": 400,
+    "count": 110,
     "updatedAt": {
       "$date": "2024-08-08T20:50:47.373Z"
     }
   },
   "store": {
-    "price": 0,
-    "count": 0
+    "price": 400,
+    "count": 49
   },
   "company": {
     "$oid": "66b52c3781d29af226da066b"
@@ -1286,8 +1286,8 @@
     }
   },
   "store": {
-    "price": 0,
-    "count": 0
+    "price": 600,
+    "count": 60
   },
   "company": {
     "$oid": "66b52c3781d29af226da066b"
@@ -1303,15 +1303,15 @@
   "min": 10,
   "max": 20,
   "market": {
-    "price": 0,
-    "count": 0,
+    "price": 300,
+    "count": 79,
     "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
+      "$date": "2024-08-13T23:37:23.510Z"
     }
   },
   "store": {
-    "price": 0,
-    "count": 0
+    "price": 300,
+    "count": 5
   },
   "company": {
     "$oid": "66b52c4b81d29af226da0672"
@@ -1327,15 +1327,15 @@
   "min": 10,
   "max": 20,
   "market": {
-    "price": 0,
-    "count": 0,
+    "price": 400,
+    "count": 76,
     "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
+      "$date": "2024-08-13T23:37:23.510Z"
     }
   },
   "store": {
-    "price": 0,
-    "count": 0
+    "price": 400,
+    "count": 25
   },
   "company": {
     "$oid": "66b52c4b81d29af226da0672"
@@ -1351,15 +1351,15 @@
   "min": 10,
   "max": 20,
   "market": {
-    "price": 0,
-    "count": 0,
+    "price": 600,
+    "count": 100,
     "updatedAt": {
       "$date": "2024-08-08T20:50:47.373Z"
     }
   },
   "store": {
-    "price": 0,
-    "count": 0
+    "price": 600,
+    "count": 60
   },
   "company": {
     "$oid": "66b52c4b81d29af226da0672"
@@ -1375,15 +1375,15 @@
   "min": 10,
   "max": 20,
   "market": {
-    "price": 0,
-    "count": 0,
+    "price": 500,
+    "count": 80,
     "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
+      "$date": "2024-08-13T14:45:37.902Z"
     }
   },
   "store": {
-    "price": 0,
-    "count": 0
+    "price": 500,
+    "count": 45
   },
   "company": {
     "$oid": "66b52c4b81d29af226da0672"
