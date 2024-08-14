@@ -1,5 +1,5 @@
 "use client";
-import { useOrganization } from "@clerk/nextjs";
+import { useAuth, useClerk, useOrganization } from "@clerk/nextjs";
 import { formatDate } from "date-fns";
 import Image from "next/image";
 
@@ -33,8 +33,9 @@ type BillProfileProps = {
 const BillProfile = ({ params }: BillProfileProps) => {
     const { data, isPending, error } = useGet<ResponseType>(`/api/show/clients-bills/${params.billId}`, [params.billId]);
     const { organization } = useOrganization();
-    if (!organization) return;
+    const { user } = useClerk();
 
+    if (!organization) return;
     if (isPending) return <ProfileLoading />;
     if (error) return <h1>{error.message}</h1>;
 
@@ -78,6 +79,7 @@ const BillProfile = ({ params }: BillProfileProps) => {
                     className="mx-auto block rounded-[100%]"
                 />
                 <h1 className="text-slate-600 dark:text-slate-300">{organization.name} For Trading</h1>
+                <h1 className="text-slate-600 dark:text-slate-300">{user?.fullName}</h1>
             </div>
         </section>
     );
