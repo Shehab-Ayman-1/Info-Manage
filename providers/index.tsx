@@ -13,7 +13,7 @@ export const Providers = ({ children }: ProvidersProps) => {
         <ClerkProvider>
             <DarkTheme attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                 <QueryProvider>
-                    <Toaster richColors />
+                    <Toaster richColors duration={5000} />
                     {children}
                 </QueryProvider>
             </DarkTheme>

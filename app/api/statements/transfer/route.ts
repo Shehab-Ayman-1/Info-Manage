@@ -20,7 +20,8 @@ export const PUT = async (req: NextRequest) => {
         if (!product) return json("The Product Was Not Found.", 400);
 
         const otherPlace = place === "market" ? "store" : "market";
-        if (count > product[otherPlace].count) return json(`This Count Is Not Available In The ${otherPlace}.`, 400);
+        if (count > product[otherPlace].count)
+            return json(`Just Available [${product[otherPlace].count}] In The ${otherPlace}`, 400);
 
         const updated = await Products.updateOne(
             { _id: productId },

@@ -1,7 +1,6 @@
 "use client";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 import { useUpdate } from "@/hooks/api/useUpdate";
@@ -16,11 +15,10 @@ import { Input } from "@/ui/input";
 type TransferProps = {};
 
 const Transfer = ({}: TransferProps) => {
-    const { formState, register, setValue, handleSubmit } = useForm({ resolver: zodResolver(editSchema) });
+    const { formState, register, setValue, reset, handleSubmit } = useForm({ resolver: zodResolver(editSchema) });
     const { mutate, isPending } = useUpdate<EditTransferSchema>("/api/statements/transfer", ["market", "store"]);
 
     const { products } = useLists();
-    const router = useRouter();
 
     const { errors } = formState;
 
@@ -31,8 +29,10 @@ const Transfer = ({}: TransferProps) => {
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const { productId, place, count } = data as EditTransferSchema;
-        mutate({ productId, place, count }, { onSuccess: () => router.push("/") });
+        mutate({ productId, place, count }, { onSuccess: () => reset() });
     };
+
+    console.log(errors);
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>

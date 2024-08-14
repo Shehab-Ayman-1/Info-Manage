@@ -44,7 +44,7 @@ export const SelectBox = (props: SelectBoxProps) => {
 
     return (
         <Select required={required} defaultValue={defaultValue} onValueChange={handleChange}>
-            <SelectTrigger name={name} className={className} error={error?.[name]}>
+            <SelectTrigger name={name} className={className} error={error?.message}>
                 <SelectValue placeholder={label} />
             </SelectTrigger>
 

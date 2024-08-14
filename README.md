@@ -4,6 +4,8 @@
 
     - Create The Manage Organization Widget Again To Add Delete Member From The Org Members
 
+    - Add List Of The Result To The Table Filter
+
 ```ts
     const { user, setActive, openUserProfile, organization, getOrganization, createOrganization, client, frontendApi, ...rest } = useClerk();
 

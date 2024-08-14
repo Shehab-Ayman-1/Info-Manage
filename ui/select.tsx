@@ -15,13 +15,13 @@ const SelectValue = SelectPrimitive.Value;
 
 const SelectTrigger = React.forwardRef<
     React.ElementRef<typeof SelectPrimitive.Trigger>,
-    React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & { error?: { message: string } }
+    React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & { error?: string }
 >(({ className, children, error, ...props }, ref) => {
     const name = props?.name?.replace(/([A-Z])/, " $1").replace("Id", "Name");
     const label = name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
     return (
         <div className="my-2 w-full sm:my-4">
-            <Label className="text-lg">{label}</Label>
+            <Label className={cn("text-lg", error && "text-rose-500")}>{label}</Label>
             <SelectPrimitive.Trigger
                 ref={ref}
                 className={cn(
@@ -38,7 +38,7 @@ const SelectTrigger = React.forwardRef<
                     <ChevronDown className="h-4 w-4 opacity-50" />
                 </SelectPrimitive.Icon>
             </SelectPrimitive.Trigger>
-            {error?.message && <p className="ml-1 text-xs text-rose-900 dark:text-rose-400 sm:text-sm">{error.message}</p>}
+            {error && <p className="ml-1 text-xs text-rose-900 dark:text-rose-400 sm:text-sm">{error}</p>}
         </div>
     );
 });
