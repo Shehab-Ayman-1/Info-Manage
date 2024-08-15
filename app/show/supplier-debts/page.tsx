@@ -17,15 +17,15 @@ type DebtType = {
     created_At: Date;
 };
 
-const SuppliersDebts = () => {
-    const { data, isPending, error } = useGet<DebtType>("/api/show/suppliers-debts", ["debts"]);
+const SupplierDebts = () => {
+    const { data, isPending, error } = useGet<DebtType>("/api/show/supplier-debts", ["debts"]);
 
     if (isPending) return <CardLoading />;
     if (error) return <h1>{error?.message}</h1>;
 
     return (
         <TableForm
-            pageTitle="Suppliers Bills List"
+            pageTitle="Supplier Bills List"
             columns={columns}
             data={data!}
             filterBy={["supplier"]}
@@ -38,5 +38,5 @@ const SuppliersDebts = () => {
     );
 };
 
-SuppliersDebts.displayName = "SuppliersDebts";
-export default SuppliersDebts;
+SupplierDebts.displayName = "SupplierDebts";
+export default SupplierDebts;

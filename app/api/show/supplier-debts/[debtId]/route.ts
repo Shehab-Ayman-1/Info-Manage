@@ -81,8 +81,8 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
         if (debt.state === "completed") return json("This Bill Is Already Finished", 400);
 
         // Check If The Amount In The Locker Cash
-        const lockerCash = await Transactions.getLockerMoney(orgId);
-        if (amount > lockerCash.currentAmount) return json("This Amount Doesn't Exist In The Locker.", 400);
+        const { lockerCash } = await Transactions.getLockerCash(orgId);
+        if (amount > lockerCash) return json("This Amount Doesn't Exist In The Locker.", 400);
 
         // Update The Debt Salaries
         if (amount > debt.total - debt.paid) return json("The Payment Amount Is Greater Than The Pending Amount.", 400);

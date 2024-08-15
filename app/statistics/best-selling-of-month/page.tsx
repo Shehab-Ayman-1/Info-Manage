@@ -25,7 +25,7 @@ const BestSellingOfMonth = ({}: BestSellingOfMonthProps) => {
             pageTitle="Best Selling Of The Month"
             data={data || []}
             columns={columns}
-            navigate={{ text: "Go To Bills", to: "/show/clients-bills" }}
+            navigate={{ text: "Go To Bills", to: "/show/client-bills" }}
         >
             <Input type="month" className="w-fit" onChange={(event) => setMonth(event.target.value)} />
         </TableForm>

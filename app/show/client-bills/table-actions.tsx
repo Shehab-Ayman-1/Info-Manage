@@ -20,22 +20,22 @@ export const Actions = ({ row }: ActionsProps) => {
         {
             Icon: EyeIcon,
             text: "Open",
-            onClick: (original: any) => router.push(`/show/suppliers-debts/${original._id}`),
+            onClick: (original: any) => router.push(`/show/client-bills/${original._id}`),
         },
         {
             Icon: BadgeDollarSignIcon,
             text: "Pay",
-            onClick: (original: any) => onOpen("pay-model", { debtId: original._id }),
+            onClick: (original: any) => onOpen("pay-model", { billId: original._id }),
         },
         {
             Icon: Trash2Icon,
             text: "Delete",
             className: { button: "cancel", icon: "cancel" },
-            onClick: (original: any) => onOpen("delete-model", { debtId: original._id }),
+            onClick: (original: any) => onOpen("delete-model", { billId: original._id }),
         },
     ];
 
-    const availableItems = isAdmin ? items : items.filter((item) => item.text === "Open");
+    const availableItems = isAdmin ? items : items.filter((item) => item.text !== "Delete");
     return <TableActions row={row} items={availableItems} />;
 };
 

@@ -1,16 +1,15 @@
 import { Skeleton } from "@/ui/skeleton";
-import { Card } from "@/ui/card";
 
 type CashesLoadingProps = {};
 
 export const CashesLoading = ({}: CashesLoadingProps) => {
     return (
-        <Card className="mx-auto mt-6 max-w-4xl border-none">
-            <Skeleton className="mt-6 h-16 w-full" />
-            <Skeleton className="mt-6 h-16 w-full" />
-            <Skeleton className="mt-6 h-16 w-full" />
-            <Skeleton className="mt-6 h-16 w-full" />
-        </Card>
+        <div className="flex-between mt-4 !flex-wrap">
+            <Skeleton className="h-36 w-full max-w-sm rounded-md p-4" />
+            <Skeleton className="h-36 w-full max-w-sm rounded-md p-4" />
+            <Skeleton className="h-36 w-full max-w-sm rounded-md p-4" />
+            <Skeleton className="h-36 w-full max-w-sm rounded-md p-4" />
+        </div>
     );
 };
 

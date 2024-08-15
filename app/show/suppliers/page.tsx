@@ -18,7 +18,7 @@ const Suppliers = () => {
 
     return (
         <TableForm
-            pageTitle="Suppliers List"
+            pageTitle="Supplier List"
             columns={columns}
             data={data!}
             filterBy={["supplier"]}

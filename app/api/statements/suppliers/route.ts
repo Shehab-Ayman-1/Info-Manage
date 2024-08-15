@@ -16,17 +16,24 @@ export const POST = async (req: NextRequest) => {
         const { firstName, lastName } = await clerkClient().users.getUser(userId);
 
         const body = await req.json();
-        const { supplierId, method, place, paid, products } = createSchema.parse(body);
+        const { supplierId, method, place, process, paid, products } = createSchema.parse(body);
 
         // Check If The Products Total Costs Exist In The Locker ?
-        const lockerCash = await Transactions.getLockerMoney(orgId);
+        const { lockerCash, lockerVisa } = await Transactions.getLockerCash(orgId);
         const productsTotalCosts = products.reduce((prev, cur) => prev + cur.total, 0);
-        if (method === "cash" && productsTotalCosts > lockerCash.currentAmount)
-            return json("Locker Doesn't Have This Statement Cost.", 400);
 
-        const filterProducts = products.map(({ name, count, price }) => ({ name, count, price }));
+        if (process === "all") {
+            if (method === "cash" && productsTotalCosts > lockerCash)
+                return json("Locker Doesn't Have This Statement Cost.", 400);
+            if (method === "visa" && productsTotalCosts > lockerVisa) return json("Visa Doesn't Have This Statement Cost.", 400);
+        }
+        if (process === "milestone") {
+            if (method === "cash" && paid > lockerCash) return json("Locker Doesn't Have This Paid Cost.", 400);
+            if (method === "visa" && paid > lockerVisa) return json("Visa Doesn't Have This Paid Cost.", 400);
+        }
 
         // Create Bill
+        const filterProducts = products.map(({ name, count, price }) => ({ name, count, price }));
         await Debts.create({
             orgId,
             paid,

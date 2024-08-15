@@ -32,13 +32,12 @@ export const Configrator = ({}: ConfigratorProps) => {
         <Sheet>
             <SheetTrigger asChild className="fixed bottom-14 right-14 z-10 sm:bottom-20 sm:right-20 print:hidden">
                 <Button asChild className="size-12 rounded-full p-2">
-                    <SettingsIcon className="size-12 animate-spin !text-white hover:!text-white" />
+                    <SettingsIcon className="size-12 !text-white hover:!text-white" />
                 </Button>
             </SheetTrigger>
 
             <SheetContent className="bg-gradient">
                 <Header />
-
                 <Themes setTheme={setTheme} />
                 <Modes />
             </SheetContent>

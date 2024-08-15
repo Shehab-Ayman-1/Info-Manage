@@ -31,7 +31,7 @@ const BestSellingOfYear = () => {
             pageTitle="Best Selling Of The Year"
             data={data || []}
             columns={columns}
-            navigate={{ text: "Go To Bills", to: "/show/clients-bills" }}
+            navigate={{ text: "Go To Bills", to: "/show/client-bills" }}
         >
             <SelectBox
                 label="Years"

@@ -20,7 +20,7 @@ export const PayDialog = ({}: PayDialogProps) => {
     const { formState, register, handleSubmit } = useForm({ resolver: zodResolver(schema) });
     const { type, data, onClose } = useModel();
 
-    const { mutate, isPending } = useUpdate(`/api/show/suppliers-debts/${data?.debtId}`, ["debts"]);
+    const { mutate, isPending } = useUpdate(`/api/show/supplier-debts/${data?.debtId}`, ["debts"]);
     const { errors } = formState;
 
     if (type !== "pay-model") return;

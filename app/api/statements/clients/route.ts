@@ -32,7 +32,6 @@ export const POST = async (req: NextRequest) => {
         const paid = process === "all" ? data.paid - discount : data.paid;
         const total = productsTotalCosts - discount;
 
-        // Create New Bill
         await Bills.create({
             orgId,
             paid,
@@ -52,7 +51,7 @@ export const POST = async (req: NextRequest) => {
             process: "deposit",
             creator,
             reason,
-            price: productsTotalCosts,
+            price: paid,
         });
 
         // Update Products Price By The Current Prices, And Dec The Count From The Market

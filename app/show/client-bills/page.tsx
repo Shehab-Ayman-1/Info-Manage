@@ -19,15 +19,15 @@ type BillType = {
     created_At: Date;
 };
 
-const ClientsBills = () => {
-    const { data, isPending, error } = useGet<BillType>("/api/show/clients-bills", ["bills"]);
+const ClientBills = () => {
+    const { data, isPending, error } = useGet<BillType>("/api/show/client-bills", ["bills"]);
 
     if (isPending) return <CardLoading />;
     if (error) return <h1>{error?.message}</h1>;
 
     return (
         <TableForm
-            pageTitle="Clients Bills List"
+            pageTitle="Client Bills List"
             columns={columns}
             data={data}
             filterBy={["client"]}
@@ -40,5 +40,5 @@ const ClientsBills = () => {
     );
 };
 
-ClientsBills.displayName = "ClientsBills";
-export default ClientsBills;
+ClientBills.displayName = "ClientBills";
+export default ClientBills;

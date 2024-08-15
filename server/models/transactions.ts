@@ -26,36 +26,43 @@ const schema = new Schema<Tranasction>({
     createdAt: { type: Date, required: true, trim: true, default: Date.now() },
 });
 
-schema.statics.getLockerMoney = async function (orgId: string) {
+schema.statics.getLockerCash = async function (orgId: string) {
     const Transactions = this;
 
-    const [amount] = await Transactions.aggregate([
-        { $match: { orgId, method: "cash" } },
+    const cashes = await Transactions.aggregate([
+        {
+            $match: { orgId },
+        },
         {
             $group: {
-                _id: null,
-                deposits: {
-                    $sum: {
-                        $cond: [{ $eq: ["$process", "deposit"] }, "$price", 0],
-                    },
-                },
-                withdraws: {
-                    $sum: {
-                        $cond: [{ $eq: ["$process", "withdraw"] }, "$price", 0],
-                    },
-                },
+                _id: { method: "$method", process: "$process" },
+                price: { $sum: "$price" },
+            },
+        },
+        {
+            $project: {
+                _id: 0,
+                method: "$_id.method",
+                process: "$_id.process",
+                price: "$price",
             },
         },
     ]);
+    const cashDeposit = cashes.find((cash) => cash.method === "cash" && cash.process === "deposit");
+    const visaDeposit = cashes.find((cash) => cash.method === "visa" && cash.process === "deposit");
+    const cashWithdraw = cashes.find((cash) => cash.method === "cash" && cash.process === "withdraw");
+    const visaWithdraw = cashes.find((cash) => cash.method === "visa" && cash.process === "withdraw");
 
-    const withdraws = amount?.withdraws || 0;
-    const deposits = amount?.deposits || 0;
+    const data = {
+        lockerCash: cashDeposit.price - cashWithdraw.price || 0,
+        lockerVisa: visaDeposit.price - visaWithdraw.price || 0,
+    };
 
-    return { withdraws, deposits, currentAmount: deposits - withdraws };
+    return data;
 };
 
 type TransactionsModel = Model<Tranasction> & {
-    getLockerMoney: (orgId: string) => Promise<{ deposits: number; withdraws: number; currentAmount: number }>;
+    getLockerCash: (orgId: string) => Promise<{ lockerCash: number; lockerVisa: number }>;
 };
 
 export const Transactions = (models.transactions as TransactionsModel) || model("transactions", schema);

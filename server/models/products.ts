@@ -14,7 +14,7 @@ type TProduct = Document & {
 const schema = new Schema<TProduct>({
     company: { type: Schema.Types.ObjectId, ref: "companies", required: true },
     name: { type: String, required: true, trim: true },
-    barcode: { type: String, trim: true },
+    barcode: { type: String, unique: true, trim: true },
 
     min: { type: Number, required: true },
 

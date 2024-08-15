@@ -8,7 +8,7 @@ import { Button } from "@/ui/button";
 type DeleteDialogProps = {};
 
 export const DeleteDialog = ({}: DeleteDialogProps) => {
-    const { mutate, isPending } = useDelete(`/api/show/suppliers-debts`, ["debts", "store"]);
+    const { mutate, isPending } = useDelete(`/api/show/client-bills`, ["bills", "market"]);
     const { type, data, onClose } = useModel();
     if (type !== "delete-model") return;
 

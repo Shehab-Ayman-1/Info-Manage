@@ -1,71 +1,92 @@
 "use client";
-import { Fragment } from "react";
-
-import { useSubscription } from "@/hooks/useSubscription";
+import { CashesLoading } from "@/components/loading/cashes";
 import { useGet } from "@/hooks/api/useGet";
 
-import { CashesLoading } from "@/components/loading/cashes";
-import { Badge } from "@/ui/badge";
-import { Card } from "@/ui/card";
-
 type CashesProps = {
-    locker: number;
-    market: number;
-    store: number;
+    locker: {
+        cash: number;
+        visa: number;
+    };
+    market: {
+        purchasePrice: number;
+        sellingPrice: number;
+    };
+    store: {
+        purchasePrice: number;
+        sellingPrice: number;
+    };
+    debts: {
+        clients: number;
+        suppliers: number;
+    };
 };
 
 const Cashes = () => {
     const { data, isPending, error } = useGet<CashesProps>("/api/show/cashes", ["cashes"]);
-    const { isSubscribe } = useSubscription(["premium"]);
 
     if (isPending) return <CashesLoading />;
     if (error) return <h3>{error?.message}</h3>;
 
-    const [{ locker, market, store }] = data;
+    const [{ locker, market, store, debts }] = data;
 
     return (
-        <Fragment>
-            <Card className="flex-between bg-gradient-heavy mx-auto mt-6 max-w-4xl p-2 shadow-md sm:p-6">
-                <h1 className="text-xl font-extrabold text-white dark:text-black sm:text-2xl">Locker Cash</h1>
-                <h1 className="text-xl font-extrabold text-white dark:text-black sm:text-2xl">$ {locker.toLocaleString()}</h1>
-            </Card>
+        <div className="flex-between mt-4 !flex-wrap">
+            <div className="w-full max-w-sm rounded-md bg-primary-50 p-4 dark:bg-slate-800">
+                <h1 className="text-xl font-bold text-primary">Details Of Locker</h1>
 
-            <Card className="flex-between bg-gradient-heavy mx-auto my-6 max-w-4xl p-2 shadow-md sm:p-6">
-                <h1 className="text-xl font-extrabold text-white dark:text-black sm:text-2xl">Market Cash</h1>
-                <h1 className="text-xl font-extrabold text-white dark:text-black sm:text-2xl">
-                    {isSubscribe ? `$${market.toLocaleString()}` : "????"}
-                    {!isSubscribe && (
-                        <Badge variant="destructive" className="ml-4">
-                            Premium
-                        </Badge>
-                    )}
-                </h1>
-            </Card>
+                <div className="flex-between my-4">
+                    <h3 className="">Total By Cash: </h3>
+                    <h3 className="">${locker.cash}</h3>
+                </div>
 
-            <Card className="flex-between bg-gradient-heavy mx-auto my-6 max-w-4xl p-2 shadow-md sm:p-6">
-                <h1 className="text-xl font-extrabold text-white dark:text-black sm:text-2xl">Store Cash</h1>
-                <h1 className="text-xl font-extrabold text-white dark:text-black sm:text-2xl">
-                    {isSubscribe ? `$${store.toLocaleString()}` : "????"}
-                    {!isSubscribe && (
-                        <Badge variant="destructive" className="ml-4">
-                            Premium
-                        </Badge>
-                    )}
-                </h1>
-            </Card>
+                <div className="flex-between">
+                    <h3 className="">Total By Visa: </h3>
+                    <h3 className="">${locker.visa}</h3>
+                </div>
+            </div>
 
-            <Card className="flex-between bg-gradient-heavy mx-auto max-w-4xl p-2 shadow-md sm:p-6">
-                <h1 className="text-xl font-extrabold text-white dark:text-black sm:text-2xl">Market & Store Cash</h1>
-                <h1 className="text-xl font-extrabold text-white dark:text-black sm:text-2xl">
-                    {isSubscribe ? `$${(market + store).toLocaleString()}` : "????"}
-                    {!isSubscribe && (
-                        <Badge variant="destructive" className="ml-4">
-                            Premium
-                        </Badge>
-                    )}
-                </h1>
-            </Card>
-        </Fragment>
+            <div className="w-full max-w-sm rounded-md bg-primary-50 p-4 dark:bg-slate-800">
+                <h1 className="text-xl font-bold text-primary">Details Of Market</h1>
+
+                <div className="flex-between my-4">
+                    <h3 className="">Total By Purchase Price: </h3>
+                    <h3 className="">${market.purchasePrice}</h3>
+                </div>
+
+                <div className="flex-between">
+                    <h3 className="">Total By Salling Price: </h3>
+                    <h3 className="">${market.sellingPrice}</h3>
+                </div>
+            </div>
+
+            <div className="w-full max-w-sm rounded-md bg-primary-50 p-4 dark:bg-slate-800">
+                <h1 className="text-xl font-bold text-primary">Details Of Store</h1>
+
+                <div className="flex-between my-4">
+                    <h3 className="">Total By Purchase Price: </h3>
+                    <h3 className="">${store.purchasePrice}</h3>
+                </div>
+
+                <div className="flex-between">
+                    <h3 className="">Total By Salling Price: </h3>
+                    <h3 className="">${store.sellingPrice}</h3>
+                </div>
+            </div>
+
+            <div className="w-full max-w-sm rounded-md bg-primary-50 p-4 dark:bg-slate-800">
+                <h1 className="text-xl font-bold text-primary">Details Of Debts</h1>
+
+                <div className="flex-between my-4">
+                    <h3 className="">Client debts: </h3>
+                    <h3 className="">${debts.clients}</h3>
+                </div>
+
+                <div className="flex-between">
+                    <h3 className="">Supplier Debts: </h3>
+                    <h3 className="">${debts.suppliers}</h3>
+                </div>
+            </div>
+        </div>
     );
 };
 

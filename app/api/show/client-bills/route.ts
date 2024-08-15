@@ -66,8 +66,8 @@ export const DELETE = async (req: NextRequest) => {
         if (!bill) return json("Something Went Wrong.", 400);
 
         // Check If The Locker Contain The Bill Amount
-        const lockerCash = await Transactions.getLockerMoney(orgId);
-        if (bill.paid > lockerCash.currentAmount) return json("Locker Doen't Exist This Bill Cost.", 400);
+        const { lockerCash } = await Transactions.getLockerCash(orgId);
+        if (bill.paid > lockerCash) return json("Locker Doen't Exist This Bill Cost.", 400);
 
         // Return The Bill Products To The Market Usign [ProductName, CompanyId]
         await Promise.all([

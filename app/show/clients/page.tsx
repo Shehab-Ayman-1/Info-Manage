@@ -8,7 +8,7 @@ import { DeleteDialog } from "./delete-dialog";
 import { columns } from "./table-columns";
 import { ClientType } from "./schema";
 
-const ClientsList = () => {
+const ClientList = () => {
     const { data, isPending, error } = useGet<ClientType>("/api/show/clients", ["clients"]);
 
     if (isPending) return <CardLoading />;
@@ -16,7 +16,7 @@ const ClientsList = () => {
 
     return (
         <TableForm
-            pageTitle="Clients List"
+            pageTitle="Client List"
             columns={columns}
             data={data!}
             filterBy={["client", "level"]}
@@ -29,5 +29,5 @@ const ClientsList = () => {
     );
 };
 
-ClientsList.displayName = "ClientsList";
-export default ClientsList;
+ClientList.displayName = "ClientList";
+export default ClientList;

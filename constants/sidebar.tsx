@@ -60,7 +60,7 @@ export const showLinks: NavLinkType[] = [
     {
         Icon: ReceiptTextIcon,
         title: "Client's Bills",
-        href: "/show/clients-bills",
+        href: "/show/client-bills",
         userRole: "org:member",
         subscriptions: ["premium"],
     },

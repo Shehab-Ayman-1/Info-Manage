@@ -18,9 +18,9 @@ export const POST = async (req: NextRequest) => {
         const data = createSchema.parse(body);
 
         if (data.process === "withdraw") {
-            const locker = await Transactions.getLockerMoney(orgId);
-            console.log(data.price > locker.currentAmount);
-            if (data.price > locker.currentAmount) return json(`The Locker Is Not Exist $${data.price}`, 400);
+            const { lockerCash } = await Transactions.getLockerCash(orgId);
+            console.log(data.price > lockerCash);
+            if (data.price > lockerCash) return json(`The Locker Is Not Exist $${data.price}`, 400);
         }
 
         await Transactions.create({ ...data, orgId, creator: `${user.firstName} ${user.lastName}` });
