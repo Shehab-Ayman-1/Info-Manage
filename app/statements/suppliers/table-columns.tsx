@@ -32,7 +32,7 @@ export const columns: ColumnDef<any>[] = [
     },
     {
         accessorKey: "actions",
-        header: ({ column }) => <HeaderComponent column={column} smallSize />,
+        header: ({ column }) => <HeaderComponent column={column} smallSize noPrint />,
         cell: Actions,
     },
 ];

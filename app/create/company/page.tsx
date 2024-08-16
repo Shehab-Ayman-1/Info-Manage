@@ -1,5 +1,6 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { CldUploadWidget } from "next-cloudinary";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
@@ -13,6 +14,7 @@ import { useLists } from "@/hooks/data/useLists";
 
 import { SelectBox } from "@/components/ui/select";
 import { Input } from "@/ui/input";
+import { Button } from "@/ui/button";
 
 type CompanyProps = {};
 
@@ -42,18 +44,34 @@ const Company = ({}: CompanyProps) => {
         mutate(values, { onSuccess });
     };
 
+    const onUpload = (result: any) => {
+        if (result.event === "success") setValue("image", result.info.thumbnail_url);
+    };
+
     const availableImageSrc = image?.startsWith("https://") || image?.startsWith("http://") || image?.startsWith("data:image");
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <CardForm heading="Create Company" submitText="Create" disabled={createPending}>
-                <Image
-                    src={availableImageSrc ? image : "/overview.jpeg"}
-                    alt="car"
-                    width={150}
-                    height={150}
-                    className="m-auto mb-4 block rounded-[100%]"
-                />
+                <div className="mx-auto h-28 w-28 overflow-hidden rounded-[100%]">
+                    <Image
+                        src={availableImageSrc ? image : "/overview.jpeg"}
+                        alt="car"
+                        width={50}
+                        height={50}
+                        className="h-full w-full"
+                    />
+                </div>
+
+                <CldUploadWidget uploadPreset="info-manage" onSuccess={onUpload}>
+                    {({ open: onOpen }) => {
+                        return (
+                            <Button type="button" variant="outline" className="flex-center mx-auto mt-4" onClick={() => onOpen()}>
+                                Upload an Image
+                            </Button>
+                        );
+                    }}
+                </CldUploadWidget>
 
                 <Input type="url" placeholder="Enter Image Link" error={errors?.image} {...register("image")} />
 

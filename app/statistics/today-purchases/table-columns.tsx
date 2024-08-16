@@ -27,7 +27,7 @@ export const columns: ColumnDef<any>[] = [
     },
     {
         accessorKey: "actions",
-        header: HeaderComponent,
+        header: ({ column }) => <HeaderComponent column={column} noPrint />,
         cell: Actions,
     },
 ];

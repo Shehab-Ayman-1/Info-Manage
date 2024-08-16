@@ -47,6 +47,7 @@ export const Filter = <TData,>({ data, filterBy, getColumn }: FilterProps<TData>
 
     const onOptionChange = (item: string) => {
         getColumn(option)?.setFilterValue("");
+        setFilteredList([]);
         setOption(item);
     };
 

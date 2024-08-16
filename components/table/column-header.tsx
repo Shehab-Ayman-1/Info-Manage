@@ -7,9 +7,10 @@ import { cn } from "@/utils/shadcn";
 type HeaderComponentProps<T> = {
     column: Column<T, unknown>;
     smallSize?: boolean;
+    noPrint?: boolean;
 };
 
-export const HeaderComponent = <T,>({ column, smallSize }: HeaderComponentProps<T>) => {
+export const HeaderComponent = <T,>({ column, noPrint, smallSize }: HeaderComponentProps<T>) => {
     const isAsc = column.getIsSorted() === "asc";
     const name = column.id.replace(/([A-Z])/, "_$1");
 
@@ -21,7 +22,7 @@ export const HeaderComponent = <T,>({ column, smallSize }: HeaderComponentProps<
                 "text-white hover:bg-primary hover:text-white dark:text-black print:text-black",
                 "p-0 text-sm font-bold sm:text-base",
                 smallSize && "text-sm",
-                name === "actions" && "print:hidden",
+                noPrint && "print:hidden",
             )}
             onClick={() => column.toggleSorting(isAsc)}
         >

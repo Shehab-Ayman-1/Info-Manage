@@ -7,6 +7,7 @@ import { columns } from "./table-columns";
 
 export type MarketProps = {
     _id: string;
+    barcode: string;
     product: string;
     min: number;
     count: number;
@@ -25,7 +26,7 @@ const Market = () => {
             pageTitle="Market Products"
             columns={columns}
             data={data!}
-            filterBy={["product", "company", "category"]}
+            filterBy={["barcode", "product", "company", "category"]}
             navigate={{ to: "/statements/clients", text: "New Statement" }}
         />
     );

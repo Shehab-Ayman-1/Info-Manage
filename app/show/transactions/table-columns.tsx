@@ -2,9 +2,9 @@
 import { ColumnDef } from "@tanstack/react-table";
 
 import { HeaderComponent } from "@/components/table/column-header";
-import { DateCell } from "@/components/table/body/date-cell";
 import { BadgeCell } from "@/components/table/body/level-cell";
 import { DollarCell } from "@/components/table/body/price-cell";
+import { DateCell } from "@/components/table/body/date-cell";
 
 export const columns: ColumnDef<any>[] = [
     {
@@ -31,8 +31,8 @@ export const columns: ColumnDef<any>[] = [
         cell: ({ row }) => <BadgeCell row={row} name="method" />,
     },
     {
-        accessorKey: "created_At",
-        header: HeaderComponent,
-        cell: ({ row }) => <DateCell row={row} />,
+        accessorKey: "createdAt",
+        header: ({ column }) => <HeaderComponent column={column} noPrint />,
+        cell: ({ row }) => <DateCell row={row} noPrint />,
     },
 ];

@@ -41,7 +41,9 @@ const ProductProfile = ({ params }: ProductProfileProps) => {
     return (
         <CardForm heading="Product Profile">
             <div className="flex-center flex-col">
-                <Image src={company.image} alt="company image" width={128} height={128} className="rounded-[100%]" />
+                <div className="mx-auto h-28 w-28 overflow-hidden rounded-[100%]">
+                    <Image src={company.image} alt="car" width={50} height={50} className="h-full w-full" />
+                </div>
                 <div className="flex-start">
                     <EditIcon className="size-8 !text-orange-500" onClick={() => onOpen("update-profile")} />
                     <Trash2Icon className="size-8 !text-rose-500" onClick={() => onOpen("delete-profile")} />

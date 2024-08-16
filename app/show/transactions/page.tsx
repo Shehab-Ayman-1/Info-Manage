@@ -1,11 +1,15 @@
 "use client";
 import { TableForm } from "@/components/page-structure/table-form";
 import { CardLoading } from "@/components/loading/card";
+import { formatDate } from "date-fns";
+import { useEffect, useState } from "react";
 
-import { useGet } from "@/hooks/api/useGet";
+import { useGetByQuery } from "@/hooks/api/useGetByQuery";
 import { columns } from "./table-columns";
+import { Button } from "@/ui/button";
+import { Input } from "@/ui/input";
 
-type TransactionProps = {
+type TransactionType = {
     _id: string;
     username: string;
     reason: string;
@@ -15,11 +19,20 @@ type TransactionProps = {
     createdAt: Date;
 };
 
+const dateFormate = formatDate(new Date(), "yyyy-MM-dd");
 const Transactions = () => {
-    const { data, isPending, error } = useGet<TransactionProps>("/api/show/transactions", ["transactions"]);
+    const { mutate, data, isPending, error } = useGetByQuery<TransactionType[]>("/api/show/transactions");
+    const [date, setDate] = useState(dateFormate);
+
+    useEffect(() => {
+        if (!date) return;
+        mutate(`date=${date}`);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [date]);
 
     if (isPending) return <CardLoading />;
     if (error) return <h1>{error?.message}</h1>;
+    if (!data) return;
 
     return (
         <TableForm
@@ -28,7 +41,15 @@ const Transactions = () => {
             data={data!}
             filterBy={["reason"]}
             navigate={{ to: "/statements/locker", text: "New Transaction" }}
-        />
+        >
+            <Button className="mx-auto flex text-xl print:hidden" size="lg" onClick={print}>
+                Print Reciept
+            </Button>
+
+            <div className="mt-4 w-fit sm:ml-4">
+                <Input type="date" value={date} name="date" onChange={(event) => setDate(() => event.target.value)} />
+            </div>
+        </TableForm>
     );
 };
 

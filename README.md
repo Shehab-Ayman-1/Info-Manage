@@ -1,21 +1,12 @@
 # TODO:
 
-    - [2] Add Image By File Input In Create Company.
-
-    - [3] Enable Search By Barcode For Any Search Field.
-
-    - [4] Create The Manage Organization Widget Again To Add Delete Member From The Org Members.
-
-    - [5] Transaction Page
-    -- Just Fetch The Transactions Of Selected Day By Date Input.
-    -- Add Print Button To The Transactions Page.
-
-
-    - [6] Create New Tab In The UserButton Widget To Set The Organization Configs
+    - [5] Create New Tab In The UserButton Widget To Set The Organization Configs
     -- Deleting Time Date
     -- BronzeTo, SilverTo
     -- Last Refresh Data Of Clients
     -- Any Minor Things Of The Organization Configs
+
+    - [6] Create The Manage Organization Widget Again To Add Delete Member From The Org Members.
 
     - [7] Think About Deleting Data After 12 Months.
 

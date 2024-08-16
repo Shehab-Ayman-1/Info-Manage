@@ -44,6 +44,7 @@ export const GET = async (req: NextRequest) => {
             {
                 $project: {
                     _id: 1,
+                    barcode: "$barcode",
                     product: "$name",
                     company: "$companyDetails.name",
                     category: "$categoryDetails.name",

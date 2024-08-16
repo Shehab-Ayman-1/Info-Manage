@@ -57,13 +57,13 @@ const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
     return (
         <DialogForm heading="Update Product" description="After The Product Updating, You Can't Undo Any Changes">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="flex-center w-full">
+                <div className="mx-auto h-28 w-28 overflow-hidden rounded-[100%]">
                     <Image
-                        src={availableImageSrc ? image : company.image}
-                        alt="company image"
-                        width={128}
-                        height={128}
-                        className="rounded-md"
+                        src={availableImageSrc ? image : "/overview.jpeg"}
+                        alt="car"
+                        width={50}
+                        height={50}
+                        className="h-full w-full"
                     />
                 </div>
 

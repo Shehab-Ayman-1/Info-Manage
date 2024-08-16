@@ -19,6 +19,10 @@ export const columns: ColumnDef<any>[] = [
         header: HeaderComponent,
     },
     {
+        accessorKey: "barcode",
+        header: HeaderComponent,
+    },
+    {
         accessorKey: "count",
         header: HeaderComponent,
         cell: ({ row }) => <NumberCell row={row} name="count" />,
