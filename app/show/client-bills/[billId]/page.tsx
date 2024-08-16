@@ -1,5 +1,5 @@
 "use client";
-import { useAuth, useClerk, useOrganization } from "@clerk/nextjs";
+import { useClerk, useOrganization } from "@clerk/nextjs";
 import { formatDate } from "date-fns";
 import Image from "next/image";
 
