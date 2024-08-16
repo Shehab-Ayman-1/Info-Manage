@@ -1,22 +1,27 @@
 # TODO:
 
-    - Add List Of The Result To The Table Filter
+    - [1] Add List Of The Result To The Table Filter.
 
-    - Think About Deleting Data After 12 Months
+    - [2] Add Image By File Input In Create Company.
 
-    - Add Image By File Input In Create Company.
+    - [3] Enable Search By Barcode For Any Search Field.
 
-    - Enable Search By Barcode For Any Search Field.
+    - [4] Create The Manage Organization Widget Again To Add Delete Member From The Org Members.
 
-    - Transaction Page
-    -- Just Fetch The Transactions Of Day Selected By Date Input
-    -- Add Print Button To The Transactions Page
+    - [5] Transaction Page
+    -- Just Fetch The Transactions Of Selected Day By Date Input.
+    -- Add Print Button To The Transactions Page.
 
-    - Create New Tab In The UserButton Widget To Set The Organization Configs [Deleting Time Data, BronzeTo, SilverTo, Last Refresh Data Of Clients], And Any Minor Things Of The Organization Configs
 
-    - Create The Manage Organization Widget Again To Add Delete Member From The Org Members
+    - [6] Create New Tab In The UserButton Widget To Set The Organization Configs
+    -- Deleting Time Date
+    -- BronzeTo, SilverTo
+    -- Last Refresh Data Of Clients
+    -- Any Minor Things Of The Organization Configs
 
-    - Think About Clients Level
+    - [7] Think About Deleting Data After 12 Months.
+
+    - [8] Think About Clients Level
 
 ```ts
     const { user, setActive, openUserProfile, organization, getOrganization, createOrganization, client, frontendApi, ...rest } = useClerk();
