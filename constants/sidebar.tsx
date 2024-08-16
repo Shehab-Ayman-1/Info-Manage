@@ -59,15 +59,15 @@ export const showLinks: NavLinkType[] = [
     },
     {
         Icon: ReceiptTextIcon,
-        title: "Client's Bills",
+        title: "Client Bills",
         href: "/show/client-bills",
         userRole: "org:member",
         subscriptions: ["premium"],
     },
     {
         Icon: ReceiptTextIcon,
-        title: "Supplier's Bills",
-        href: "/show/suppliers-debts",
+        title: "Supplier Bills",
+        href: "/show/supplier-debts",
         userRole: "org:member",
         subscriptions: ["premium"],
     },
