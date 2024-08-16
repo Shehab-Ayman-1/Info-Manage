@@ -1,7 +1,5 @@
 # TODO:
 
-    - [1] Add List Of The Result To The Table Filter.
-
     - [2] Add Image By File Input In Create Company.
 
     - [3] Enable Search By Barcode For Any Search Field.

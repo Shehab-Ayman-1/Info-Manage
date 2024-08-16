@@ -49,7 +49,7 @@ export const POST = async (req: NextRequest) => {
             method,
             process: "withdraw",
             reason: "Supplier Statement",
-            price: productsTotalCosts,
+            price: paid,
             creator: `${firstName} ${lastName}`,
         });
 
