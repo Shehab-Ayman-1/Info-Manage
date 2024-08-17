@@ -1,31 +1,29 @@
 "use client";
 import { LogOutIcon, SettingsIcon } from "lucide-react";
 import { useAuth, useClerk, useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
 import { Separator } from "@/ui/separator";
 import { Button } from "@/ui/button";
-import { useRouter } from "next/navigation";
 
 type UserButtonProps = {};
 
 export const UserButton = ({}: UserButtonProps) => {
-    const { openUserProfile, openOrganizationProfile, signOut } = useClerk();
+    const { openUserProfile, signOut } = useClerk();
     const { user } = useUser();
     const { has } = useAuth();
     const router = useRouter();
     if (!user) return;
 
     const onOpen = (method: string) => {
-        if (method === "organization") return openOrganizationProfile({ routing: "virtual" });
-        if (method === "organizationsPage") return router.push("/organizations");
+        if (method === "organization") return router.push("/organizations");
         if (method === "user") return openUserProfile({ routing: "virtual" });
         if (method === "signout") return signOut({ redirectUrl: "/sign-in" });
     };
 
     const isAdmin = has?.({ role: "org:admin" });
-    const isMe = user.primaryEmailAddress?.emailAddress === process.env.NEXT_PUBLIC_EMAIL;
     const btnStyle = "justify-start gap-4 px-4 py-8 text-muted-foreground";
 
     return (
@@ -58,13 +56,6 @@ export const UserButton = ({}: UserButtonProps) => {
                         <Button variant="ghost" className={btnStyle} onClick={() => onOpen("organization")}>
                             <LogOutIcon className="size-5 text-muted-foreground" />
                             Manage Organization
-                        </Button>
-                    )}
-
-                    {isMe && (
-                        <Button variant="ghost" className={btnStyle} onClick={() => onOpen("organizationsPage")}>
-                            <LogOutIcon className="size-5 text-muted-foreground" />
-                            Open Organizations
                         </Button>
                     )}
 

@@ -1,14 +1,18 @@
 # TODO:
 
-    - [5] Create New Tab In The UserButton Widget To Set The Organization Configs
+    - [5] Create The Manage Organization Widget Again To:
+    -- Enable Delete Members From The Org Members.
+    -- Disable Convert Users Role From Member To Admin
+
+    - [6] Create New Tab In The UserButton Widget To Set The Organization Configs
     -- Deleting Time Date
     -- BronzeTo, SilverTo
     -- Last Refresh Data Of Clients
     -- Any Minor Things Of The Organization Configs
 
-    - [6] Create The Manage Organization Widget Again To Add Delete Member From The Org Members.
-
     - [7] Think About Deleting Data After 12 Months.
+
+    - [8] Change The Role From orgRole To User.publicMetadata Custome Role
 
     - [8] Think About Clients Level
 

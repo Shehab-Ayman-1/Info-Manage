@@ -9,12 +9,16 @@ const getData = async (apiUrl: string) => {
         if (!response.ok) throw new Error(data);
         return data;
     } catch (error: any) {
-        toast.error(error.message);
+        const isServerError = error.message === "Unexpected end of JSON input";
+        if (!isServerError) return toast.error(error.message);
         throw new Error(error.message);
     }
 };
 
 export const useGet = <ResponseType,>(apiUrl: string, queryKey: string[]) => {
-    const query = useQuery<ResponseType[], Error>({ queryKey, queryFn: () => getData(apiUrl) });
+    const query = useQuery<ResponseType[], Error>({
+        queryKey,
+        queryFn: () => getData(apiUrl),
+    });
     return query;
 };

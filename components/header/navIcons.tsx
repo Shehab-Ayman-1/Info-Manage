@@ -3,7 +3,7 @@ import { ClerkLoading, ClerkLoaded, useUser } from "@clerk/nextjs";
 import { LoaderCircleIcon } from "lucide-react";
 
 import { Notifications } from "./notifications";
-import { UserButton } from "./userButton";
+import { UserButton } from "./user-button";
 import { OrgSwitcher } from "./switcher";
 import { Searchbar } from "./searchbar";
 

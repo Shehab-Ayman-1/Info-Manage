@@ -23,7 +23,7 @@ export const OpenModuleButton = ({ clearErrors }: OpenModuleButtonProps) => {
             onClick={onInsert}
             className="flex-center m-auto mt-4 font-bold text-primary hover:text-primary"
         >
-            <PlusIcon className="size-6 text-primary" />
+            <PlusIcon className="size-6 !text-primary" />
             Insert Product
         </Button>
     );

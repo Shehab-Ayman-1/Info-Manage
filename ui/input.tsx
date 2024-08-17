@@ -5,15 +5,14 @@ import { Label } from "./label";
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     error?: Record<string, any> | undefined;
-    containerClassName?: string;
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(({ containerClassName, className, type, error, ...props }, ref) => {
+const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type, error, ...props }, ref) => {
     const name = props?.name?.replace(/([A-Z])/, " $1");
     const label = name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
 
     return (
-        <div className={cn("my-2 w-full sm:my-4", containerClassName)}>
+        <div className={cn("my-2 w-full sm:my-4")}>
             <Label className="text-lg">{label}</Label>
             <input
                 type={type}

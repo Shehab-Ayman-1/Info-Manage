@@ -3,7 +3,7 @@ import { Badge } from "@/ui/badge";
 
 type BadgeCell = {
     row: Row<any>;
-    name: "level" | "state" | "process" | "method";
+    name: "level" | "state" | "process" | "method" | "role";
 };
 
 export const BadgeCell = ({ row, name }: BadgeCell) => {
@@ -21,6 +21,9 @@ export const BadgeCell = ({ row, name }: BadgeCell) => {
 
     if (value === "cash") return <Badge className="bg-fuchsia-500 text-white hover:bg-fuchsia-600">{value}</Badge>;
     if (value === "visa") return <Badge className="bg-indigo-500 text-white hover:bg-indigo-600">{value}</Badge>;
+
+    if (value === "admin") return <Badge className="bg-rose-500 text-white hover:bg-rose-600">{value}</Badge>;
+    if (value === "member") return <Badge className="bg-lime-500 text-black hover:bg-lime-600">{value}</Badge>;
 };
 
 BadgeCell.displayName = "BadgeCell";
