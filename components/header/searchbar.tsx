@@ -30,7 +30,7 @@ export const Searchbar = ({}: SearchbarProps) => {
     };
 
     const onClick = (productId: string) => {
-        router.push(`/profile/${productId}`);
+        router.push(`/plateform/profile/${productId}`);
         router.refresh();
         setOpen(!open);
     };

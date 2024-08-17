@@ -37,7 +37,7 @@ const Company = ({}: CompanyProps) => {
 
     const onSubmit = (values: any) => {
         const onSuccess = () => {
-            router.push("/create/product");
+            router.push("/plateform/create/product");
             onReset(["companies"]);
         };
 

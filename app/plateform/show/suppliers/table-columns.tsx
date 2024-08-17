@@ -41,7 +41,7 @@ export const columns: ColumnDef<any>[] = [
                                 return (
                                     <Link
                                         key={product._id}
-                                        href={`/profile/${product._id}`}
+                                        href={`/plateform/profile/${product._id}`}
                                         className="block w-full cursor-pointer rounded-md p-2 text-start text-lg hover:bg-primary-100 hover:text-black"
                                     >
                                         {product.name}
