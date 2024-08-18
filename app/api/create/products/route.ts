@@ -34,7 +34,6 @@ export const POST = async (req: NextRequest) => {
         return json("The Product Was Successfully Created.");
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
-        console.log(errors);
         return json(errors || error.message, 400);
     }
 };

@@ -14,8 +14,8 @@ export const columns: ColumnDef<any>[] = [
         header: HeaderComponent,
     },
     {
-        accessorKey: "sold_count",
+        accessorKey: "totalCount",
         header: HeaderComponent,
-        cell: ({ row }) => <NumberCell row={row} name="sold_count" />,
+        cell: ({ row }) => <NumberCell row={row} name="totalCount" />,
     },
 ];

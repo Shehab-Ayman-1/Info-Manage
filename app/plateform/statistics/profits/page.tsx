@@ -13,7 +13,7 @@ type ProfitsProps = {
 };
 
 const Profits = () => {
-    const { data, isPending, error } = useGet<ProfitsProps>("/api/statistics/profits", ['profits']);
+    const { data, isPending, error } = useGet<ProfitsProps>("/api/statistics/profits", ["profits"]);
 
     if (isPending) return <h1>Loading...</h1>;
     if (error) return <h1>{error.message}</h1>;

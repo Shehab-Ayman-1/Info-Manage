@@ -14,6 +14,7 @@ export const DBConnection = async (forceConnectToOnline: boolean = false) => {
         await mongoose.connect(URL, { serverSelectionTimeoutMS: 3000000 });
 
         connect = true;
+        console.log("DB Connected");
     } catch (error: any) {
         console.log(error.message);
     }

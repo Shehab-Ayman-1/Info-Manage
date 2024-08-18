@@ -5,6 +5,7 @@ import { Debts, Products, Suppliers, Transactions } from "@/server/models";
 import { DBConnection } from "@/server/configs";
 import { createSchema } from "./schema";
 import { json } from "@/utils/response";
+import { getExpireAt } from "@/utils/expireAt";
 
 export const POST = async (req: NextRequest) => {
     try {
@@ -13,19 +14,18 @@ export const POST = async (req: NextRequest) => {
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
 
-        const { firstName, lastName } = await clerkClient().users.getUser(userId);
+        const user = await clerkClient().users.getUser(userId);
 
         const body = await req.json();
         const { supplierId, method, place, process, paid, products } = createSchema.parse(body);
 
         // Check If The Products Total Costs Exist In The Locker ?
         const { lockerCash, lockerVisa } = await Transactions.getLockerCash(orgId);
-        const productsTotalCosts = products.reduce((prev, cur) => prev + cur.total, 0);
+        const productCosts = products.reduce((prev, cur) => prev + cur.total, 0);
 
         if (process === "all") {
-            if (method === "cash" && productsTotalCosts > lockerCash)
-                return json("Locker Doesn't Have This Statement Cost.", 400);
-            if (method === "visa" && productsTotalCosts > lockerVisa) return json("Visa Doesn't Have This Statement Cost.", 400);
+            if (method === "cash" && productCosts > lockerCash) return json("Locker Doesn't Have This Statement Cost.", 400);
+            if (method === "visa" && productCosts > lockerVisa) return json("Visa Doesn't Have This Statement Cost.", 400);
         }
         if (process === "milestone") {
             if (method === "cash" && paid > lockerCash) return json("Locker Doesn't Have This Paid Cost.", 400);
@@ -33,25 +33,14 @@ export const POST = async (req: NextRequest) => {
         }
 
         // Create Bill
-        const filterProducts = products.map(({ name, count, price }) => ({ name, count, price }));
-        await Debts.create({
-            orgId,
-            paid,
-            supplier: supplierId,
-            state: paid >= productsTotalCosts ? "completed" : "pending",
-            total: productsTotalCosts,
-            products: filterProducts,
-        });
+        const expireAt = await getExpireAt();
+        const debtProducts = products.map(({ name, count, price }) => ({ name, count, price }));
+        const state = paid >= productCosts ? "completed" : "pending";
+        await Debts.create({ orgId, paid, state, expireAt, supplier: supplierId, total: productCosts, products: debtProducts });
 
         // Make Transaction
-        await Transactions.create({
-            orgId,
-            method,
-            process: "withdraw",
-            reason: "Supplier Statement",
-            price: paid,
-            creator: `${firstName} ${lastName}`,
-        });
+        const reason = "Supplier Statement";
+        await Transactions.create({ orgId, reason, method, process: "withdraw", price: paid, creator: user.fullName });
 
         // Update Products Price By The Current Prices, And Increament The Purchase Products Count
         const placeCount = place === "market" ? "market.count" : "store.count";
@@ -67,7 +56,7 @@ export const POST = async (req: NextRequest) => {
         if (promise.includes(0)) return json("Some Of The Products Was Not Updated, Something Went Wrong.", 400);
 
         // Update Supplier Pending, purchaseSalary Prices
-        await Suppliers.updateOne({ _id: supplierId }, { $inc: { pendingCosts: productsTotalCosts - paid } });
+        await Suppliers.updateOne({ _id: supplierId }, { $inc: { pendingCosts: productCosts - paid } });
 
         // Response
         return json("The Statement Was Successfully Created.");

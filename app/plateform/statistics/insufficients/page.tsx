@@ -2,13 +2,12 @@
 import { useGetByQuery } from "@/hooks/api/useGetByQuery";
 import { useEffect, useState } from "react";
 
-import { Card, CardContent, CardHeader } from "@/ui/card";
-import { DataTable } from "@/components/table";
-import { Heading } from "@/components/public/heading";
 import { useLists } from "@/hooks/data/useLists";
+import { columns } from "./table-columns";
+
+import { TableForm } from "@/components/page-structure/table-form";
 import { SelectBox } from "@/components/ui/select";
 import { place as places } from "@/constants";
-import { columns } from "./table-columns";
 
 type InsufficientsProps = {
     _id: string;
@@ -32,31 +31,31 @@ const Insufficients = () => {
 
     useEffect(() => {
         if (!supplierId || !place) return;
-
-        const supplier = suppliers.data.find((supplier) => supplier._id === supplierId);
-        mutate(`place=${place}&supplier=${supplier?.name}`);
-    }, [place, supplierId, suppliers, mutate]);
+        mutate(`place=${place}&supplierId=${supplierId}`);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [place, supplierId]);
 
     if (error) return <h1>{error.message}</h1>;
 
     return (
-        <Card>
-            <CardHeader>
-                <Heading title="Insufficients Products" />
-                <div className="flex-between">
-                    <SelectBox
-                        label="Supplier"
-                        name="supplierId"
-                        loading={suppliers.isLoading}
-                        items={suppliers.lists}
-                        onChange={(value) => setSupplierId(value)}
-                    />
-                    <SelectBox label="Place" name="place" items={places} onChange={(value) => setPlace(value)} />
-                </div>
-            </CardHeader>
-
-            <CardContent>{supplierId && place && <DataTable columns={columns} data={data || []} totalFor="total" />}</CardContent>
-        </Card>
+        <TableForm
+            columns={columns}
+            data={data || []}
+            totalFor="total"
+            pageTitle="Insufficients Products"
+            navigate={{ text: "New Statement", to: "/plateform/statements/suppliers" }}
+        >
+            <div className="flex-between">
+                <SelectBox
+                    label="Supplier"
+                    name="supplierId"
+                    loading={suppliers.isLoading}
+                    items={suppliers.lists}
+                    onChange={(value) => setSupplierId(value)}
+                />
+                <SelectBox label="Place" name="place" items={places} onChange={(value) => setPlace(value)} />
+            </div>
+        </TableForm>
     );
 };
 

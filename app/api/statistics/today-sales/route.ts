@@ -19,18 +19,10 @@ export const GET = async () => {
 
         const sales = await Bills.aggregate([
             {
-                $match: {
-                    orgId,
-                    createdAt: { $gte: startOfDay, $lte: endOfDay },
-                },
+                $match: { orgId, createdAt: { $gte: startOfDay, $lte: endOfDay } },
             },
             {
-                $lookup: {
-                    from: "clients",
-                    as: "client",
-                    localField: "client",
-                    foreignField: "_id",
-                },
+                $lookup: { from: "clients", as: "client", localField: "client", foreignField: "_id" },
             },
             {
                 $unwind: "$client",
@@ -38,9 +30,9 @@ export const GET = async () => {
             {
                 $project: {
                     _id: 1,
-                    client: "$client.name",
                     paid: 1,
                     total: 1,
+                    client: "$client.name",
                     pending: { $subtract: ["$total", "$paid"] },
                 },
             },

@@ -12,7 +12,7 @@ export const columns: ColumnDef<any>[] = [
         header: HeaderComponent,
     },
     {
-        accessorKey: "total_sold",
+        accessorKey: "totalCount",
         header: HeaderComponent,
     },
 ];

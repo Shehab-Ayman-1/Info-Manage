@@ -13,40 +13,21 @@ export const GET = async (req: NextRequest) => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const { searchParams } = new URL(req.url);
-        const month = searchParams.get("month")!;
 
+        const month = searchParams.get("month")!;
         const selectedMonth = new Date(month).getMonth() + 1;
+
         const thisMonth = new Date(month);
         const nextMonth = new Date(new Date(month).setMonth(selectedMonth));
 
         const products = await Bills.aggregate([
-            {
-                $match: {
-                    orgId,
-                    createdAt: { $gte: thisMonth, $lt: nextMonth },
-                },
-            },
-            {
-                $unwind: "$products",
-            },
-            {
-                $lookup: {
-                    from: "companies",
-                    as: "products.company",
-                    localField: "products.companyId",
-                    foreignField: "_id",
-                },
-            },
+            { $match: { orgId, createdAt: { $gte: thisMonth, $lt: nextMonth } } },
+            { $unwind: "$products" },
+            { $lookup: { from: "companies", as: "products.company", localField: "products.companyId", foreignField: "_id" } },
             {
                 $group: {
-                    _id: {
-                        name: "$products.name",
-                        company: "$products.company.name",
-                        companyId: "$products.companyId",
-                    },
-                    sold_count: {
-                        $sum: "$products.count",
-                    },
+                    _id: { name: "$products.name", company: "$products.company.name", companyId: "$products.companyId" },
+                    totalCount: { $sum: "$products.count" },
                 },
             },
             {
@@ -54,13 +35,11 @@ export const GET = async (req: NextRequest) => {
                     _id: 0,
                     product: "$_id.name",
                     company: { $arrayElemAt: ["$_id.company", 0] },
-                    sold_count: 1,
+                    totalCount: 1,
                 },
             },
             {
-                $sort: {
-                    sold_count: -1,
-                },
+                $sort: { totalCount: -1 },
             },
         ]);
 

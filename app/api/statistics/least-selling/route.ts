@@ -11,35 +11,21 @@ export const GET = async () => {
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
 
-        const year = new Date().getFullYear();
-        const month = new Date().getMonth();
-        const lastMonth = new Date(`${year}-${month}-1`);
+        const thisMonth = new Date();
+        thisMonth.setDate(1);
 
         const products = await Products.aggregate([
             {
-                $lookup: {
-                    from: "companies",
-                    localField: "company",
-                    foreignField: "_id",
-                    as: "company",
-                },
+                $lookup: { from: "companies", localField: "company", foreignField: "_id", as: "company" },
             },
             {
                 $unwind: "$company",
             },
             {
-                $lookup: {
-                    from: "categories",
-                    localField: "company.category",
-                    foreignField: "_id",
-                    as: "company.category",
-                },
+                $lookup: { from: "categories", localField: "company.category", foreignField: "_id", as: "company.category" },
             },
             {
-                $match: {
-                    "company.category.orgId": orgId,
-                    "market.updatedAt": { $lt: lastMonth },
-                },
+                $match: { "company.category.orgId": orgId, "market.updatedAt": { $lte: thisMonth } },
             },
             {
                 $project: {

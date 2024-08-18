@@ -19,7 +19,6 @@ export const POST = async (req: NextRequest) => {
 
         if (data.process === "withdraw") {
             const { lockerCash } = await Transactions.getLockerCash(orgId);
-            console.log(data.price > lockerCash);
             if (data.price > lockerCash) return json(`The Locker Is Not Exist $${data.price}`, 400);
         }
 

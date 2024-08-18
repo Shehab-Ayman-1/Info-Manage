@@ -18,10 +18,7 @@ export const GET = async () => {
 
         const byYear = await Bills.aggregate([
             {
-                $match: {
-                    orgId,
-                    createdAt: { $gte: thisYear, $lt: nextYear },
-                },
+                $match: { orgId, createdAt: { $gte: thisYear, $lt: nextYear } },
             },
             {
                 $group: {
@@ -30,9 +27,7 @@ export const GET = async () => {
                 },
             },
             {
-                $sort: {
-                    _id: 1,
-                },
+                $sort: { _id: 1 },
             },
             {
                 $project: {
@@ -49,10 +44,7 @@ export const GET = async () => {
 
         const byMonth = await Bills.aggregate([
             {
-                $match: {
-                    orgId,
-                    createdAt: { $gte: thisMonth, $lt: nextMonth },
-                },
+                $match: { orgId, createdAt: { $gte: thisMonth, $lt: nextMonth } },
             },
             {
                 $group: {
@@ -68,9 +60,7 @@ export const GET = async () => {
                 },
             },
             {
-                $sort: {
-                    day: 1,
-                },
+                $sort: { day: 1 },
             },
         ]);
 

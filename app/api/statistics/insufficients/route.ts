@@ -1,5 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
+import { Types } from "mongoose";
 
 import { DBConnection } from "@/server/configs";
 import { Suppliers } from "@/server/models";
@@ -13,33 +14,24 @@ export const GET = async (req: NextRequest) => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const { searchParams } = new URL(req.url);
-        const name = searchParams.get("supplier");
+        const supplierId = searchParams.get("supplierId")!;
         const place = searchParams.get("place") as "market" | "store";
 
         const insufficients = await Suppliers.aggregate([
             {
-                $match: { orgId, name },
+                $match: { orgId, _id: new Types.ObjectId(supplierId) },
             },
             {
                 $unwind: "$products",
             },
             {
-                $lookup: {
-                    from: "products",
-                    as: "product",
-                    localField: "products",
-                    foreignField: "_id",
-                },
+                $lookup: { from: "products", as: "product", localField: "products", foreignField: "_id" },
             },
             {
                 $unwind: "$product",
             },
             {
-                $match: {
-                    $expr: {
-                        $lt: [`$product.${place}.count`, "$product.min"],
-                    },
-                },
+                $match: { $expr: { $lt: [`$product.${place}.count`, "$product.min"] } },
             },
             {
                 $project: {

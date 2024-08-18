@@ -32,8 +32,6 @@ const Transfer = ({}: TransferProps) => {
         mutate({ productId, place, count }, { onSuccess: () => reset() });
     };
 
-    console.log(errors);
-
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <CardForm heading="Transfer Products" submitText="Transfer" disabled={isPending}>

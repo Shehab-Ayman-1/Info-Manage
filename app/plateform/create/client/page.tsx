@@ -7,15 +7,28 @@ import { ClientCreateSchema, createSchema } from "@/app/api/create/clients/schem
 import { CardForm } from "@/components/page-structure/CardForm";
 import { useCreate } from "@/hooks/api/useCreate";
 import { Input } from "@/ui/input";
+import { useOrganization } from "@clerk/nextjs";
+import { useEffect } from "react";
 
 type ClientProps = {};
 
 const Client = ({}: ClientProps) => {
-    const { formState, register, watch, handleSubmit } = useForm({ resolver: zodResolver(createSchema) });
+    const { formState, register, setValue, watch, handleSubmit } = useForm({ resolver: zodResolver(createSchema) });
     const { mutate, isPending } = useCreate<ClientCreateSchema>("/api/create/clients", ["clients"]);
+    const { organization } = useOrganization();
 
     const router = useRouter();
     const { errors } = formState;
+
+    useEffect(() => {
+        if (!organization) return;
+
+        const { bronzeTo, silverTo } = organization.publicMetadata;
+        setValue("bronzeTo", bronzeTo);
+        setValue("silverTo", silverTo);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [organization]);
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const values = data as ClientCreateSchema;
@@ -30,38 +43,29 @@ const Client = ({}: ClientProps) => {
             <CardForm heading="New Client" submitText="Create" disabled={isPending}>
                 <Input placeholder="Client Name" error={errors?.name} {...register("name")} />
 
-                <div className="bronze flex-between">
-                    <h3 className="mt-4">Bronze:</h3>
-                    <div className="flex-between !flex-nowrap">
-                        <Input type="number" placeholder="From: ( 0 )" disabled />
-                        <Input
-                            type="number"
-                            placeholder="To:"
-                            error={errors?.bronzeTo}
-                            {...register("bronzeTo", { valueAsNumber: true })}
-                        />
-                    </div>
+                <div className="bronze flex-between !flex-nowrap">
+                    <Input type="number" name="bronzeFrom" placeholder="From: ( 0 )" disabled />
+                    <Input
+                        type="number"
+                        placeholder="To:"
+                        error={errors?.bronzeTo}
+                        {...register("bronzeTo", { valueAsNumber: true })}
+                    />
                 </div>
 
-                <div className="silver flex-between">
-                    <h3 className="mt-4">Silver:</h3>
-                    <div className="flex-between !flex-nowrap">
-                        <Input type="number" placeholder="From:" value={bronzeTo} disabled />
-                        <Input
-                            type="number"
-                            placeholder="To:"
-                            error={errors?.silverTo}
-                            {...register("silverTo", { valueAsNumber: true })}
-                        />
-                    </div>
+                <div className="silver flex-between !flex-nowrap">
+                    <Input type="number" name="silverFrom" placeholder="From:" value={bronzeTo} disabled />
+                    <Input
+                        type="number"
+                        placeholder="To:"
+                        error={errors?.silverTo}
+                        {...register("silverTo", { valueAsNumber: true })}
+                    />
                 </div>
 
-                <div className="gold flex-between">
-                    <h3 className="mt-4">Gold:</h3>
-                    <div className="flex-between !flex-nowrap">
-                        <Input type="number" placeholder="From:" value={silverTo} disabled />
-                        <Input placeholder="To: ( Un Limited )" disabled />
-                    </div>
+                <div className="gold flex-between !flex-nowrap">
+                    <Input type="number" name="goldFrom" placeholder="From:" value={silverTo} disabled />
+                    <Input name="goldFrom" placeholder="To: ( Un Limited )" disabled />
                 </div>
             </CardForm>
         </form>

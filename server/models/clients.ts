@@ -12,7 +12,6 @@ type TClient = Document & {
     silverTo: number;
 
     lastRefreshDate: Date;
-    createdAt: Date;
 
     discounts: number;
     purchasesSalary: number;
@@ -28,7 +27,6 @@ const schema = new Schema<TClient>({
     silverTo: { type: Number, required: true },
 
     lastRefreshDate: { type: Date, default: new Date() },
-    createdAt: { type: Date, default: new Date() },
 
     discounts: { type: Number, default: 0 },
     pendingCosts: { type: Number, default: 0 },

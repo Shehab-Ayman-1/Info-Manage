@@ -11,18 +11,19 @@ export const GET = async (req: NextRequest) => {
     try {
         await DBConnection();
 
-        const { searchParams } = new URL(req.url);
-        const productName = searchParams.get("productName");
-        const companyId = searchParams.get("companyId")!;
-
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
+
+        const { searchParams } = new URL(req.url);
+        const supplierId = searchParams.get("supplierId")!;
+        const productName = searchParams.get("productName")!;
+        const companyId = searchParams.get("companyId")!;
 
         const year = new Date().getFullYear();
         const thisYear = new Date(`${year}-1-1`);
         const nextYear = new Date(`${year + 1}-1-1`);
 
-        const purchases = await Bills.aggregate([
+        const sales = await Bills.aggregate([
             {
                 $match: {
                     orgId,
@@ -49,17 +50,15 @@ export const GET = async (req: NextRequest) => {
             },
         ]);
 
-        // TODO: Increase The Match Strength
-        const sales = await Debts.aggregate([
+        const purchases = await Debts.aggregate([
             {
-                $match: {
-                    orgId,
-                    "products.name": productName,
-                    createdAt: { $gte: thisYear, $lt: nextYear },
-                },
+                $match: { orgId, createdAt: { $gte: thisYear, $lt: nextYear } },
             },
             {
                 $unwind: "$products",
+            },
+            {
+                $match: { "products.name": productName, supplier: new Types.ObjectId(supplierId) },
             },
             {
                 $group: {
@@ -76,7 +75,7 @@ export const GET = async (req: NextRequest) => {
             },
         ]);
 
-        return json({ purchases, sales });
+        return json({ sales, purchases });
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

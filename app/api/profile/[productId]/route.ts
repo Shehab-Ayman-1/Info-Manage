@@ -62,7 +62,6 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
         return json("The Product Was Successfully Updated.");
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
-        console.log(error.message);
         return json(errors || error.message, 400);
     }
 };

@@ -17,20 +17,12 @@ export const GET = async () => {
         const endOfDay = new Date();
         endOfDay.setHours(23, 59, 59, 999);
 
-        const purchses = await Debts.aggregate([
+        const purchases = await Debts.aggregate([
             {
-                $match: {
-                    orgId,
-                    createdAt: { $gte: startOfDay, $lte: endOfDay },
-                },
+                $match: { orgId, createdAt: { $gte: startOfDay, $lte: endOfDay } },
             },
             {
-                $lookup: {
-                    from: "suppliers",
-                    as: "supplier",
-                    localField: "supplier",
-                    foreignField: "_id",
-                },
+                $lookup: { from: "suppliers", as: "supplier", localField: "supplier", foreignField: "_id" },
             },
             {
                 $unwind: "$supplier",
@@ -46,7 +38,7 @@ export const GET = async () => {
             },
         ]);
 
-        return json(purchses);
+        return json(purchases);
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);
