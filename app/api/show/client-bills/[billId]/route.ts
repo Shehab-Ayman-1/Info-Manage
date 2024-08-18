@@ -82,10 +82,11 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
     try {
         await DBConnection();
 
-        const { userId, orgId } = auth();
+        const { userId, orgId, orgSlug } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const user = await clerkClient().users.getUser(userId);
+        const organization = await clerkClient().organizations.getOrganization({ organizationId: orgId, slug: orgSlug });
 
         const { amount } = await req.json();
         const { billId } = res.params;
@@ -103,7 +104,9 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
 
         // Update The Client Salaries
         await Clients.updateOne({ orgId, _id: bill.client }, { $inc: { pendingCosts: -amount } });
-        await Clients.updateLastRefreshDate({ orgId, clientId: bill.client });
+
+        const refreshAfter = +(organization?.publicMetadata?.refreshClientsPurchases as string)?.split(" ")[0];
+        await Clients.updateLastRefreshDate({ orgId, clientId: bill.client, refreshAfter });
 
         // Create Transaction
         await Transactions.create({

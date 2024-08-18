@@ -4,11 +4,16 @@ import { Schema, models, model } from "mongoose";
 type TClient = Document & {
     _id: string;
     orgId: string;
+
     name: string;
     level: "bronze" | "silver" | "gold";
+
     bronzeTo: number;
     silverTo: number;
+
     lastRefreshDate: Date;
+    createdAt: Date;
+
     discounts: number;
     purchasesSalary: number;
     pendingCosts: number;
@@ -21,17 +26,21 @@ const schema = new Schema<TClient>({
     level: { type: String, enum: ["bronze", "silver", "gold"], default: "bronze" },
     bronzeTo: { type: Number, required: true },
     silverTo: { type: Number, required: true },
+
     lastRefreshDate: { type: Date, default: new Date() },
+    createdAt: { type: Date, default: new Date() },
 
     discounts: { type: Number, default: 0 },
-    purchasesSalary: { type: Number, default: 0 },
     pendingCosts: { type: Number, default: 0 },
+    purchasesSalary: { type: Number, default: 0 },
 });
 
 type FilterQuery = {
     orgId: string;
     clientId: string;
 };
+
+type LastRefreshDate = FilterQuery & { refreshAfter?: number };
 
 schema.statics.updateLevel = async function ({ orgId, clientId }: FilterQuery) {
     const Clients = this;
@@ -46,7 +55,7 @@ schema.statics.updateLevel = async function ({ orgId, clientId }: FilterQuery) {
     return updated.modifiedCount;
 };
 
-schema.statics.updateLastRefreshDate = async function ({ orgId, clientId }: FilterQuery) {
+schema.statics.updateLastRefreshDate = async function ({ orgId, clientId, refreshAfter = 3 }: LastRefreshDate) {
     const Clients = this;
 
     const client: ClientType = await Clients.findOne({ orgId, _id: clientId });
@@ -59,7 +68,7 @@ schema.statics.updateLastRefreshDate = async function ({ orgId, clientId }: Filt
     const monthsDifference = currentDate.getMonth() - lastRefreshDate.getMonth();
     const dateDiffrence = yearsDifference + monthsDifference;
 
-    if (dateDiffrence >= 3) {
+    if (dateDiffrence >= refreshAfter) {
         client.lastRefreshDate = currentDate;
         await client.save();
     }
@@ -67,7 +76,7 @@ schema.statics.updateLastRefreshDate = async function ({ orgId, clientId }: Filt
 
 type ClientsModel = Model<TClient> & {
     updateLevel: (filterQuery: FilterQuery) => Promise<number>;
-    updateLastRefreshDate: (filterQuery: FilterQuery) => Promise<undefined>;
+    updateLastRefreshDate: (filterQuery: LastRefreshDate) => Promise<undefined>;
 };
 
 export const Clients = (models.clients as ClientsModel) || model("clients", schema);

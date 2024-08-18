@@ -1,8 +1,8 @@
 import { auth } from "@clerk/nextjs/server";
 
 import { DBConnection } from "@/server/configs";
-import { json } from "@/utils/response";
 import { Transactions } from "@/server/models";
+import { json } from "@/utils/response";
 
 export const GET = async () => {
     try {

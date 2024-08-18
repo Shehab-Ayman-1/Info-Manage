@@ -1,4 +1,4 @@
-import { auth } from "@clerk/nextjs/server";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
 import { DBConnection } from "@/server/configs";
@@ -45,8 +45,10 @@ export const PUT = async (req: NextRequest) => {
     try {
         await DBConnection();
 
-        const { userId, orgId } = auth();
+        const { userId, orgId, orgSlug } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
+
+        const organization = await clerkClient().organizations.getOrganization({ organizationId: orgId, slug: orgSlug });
 
         const body = await req.json();
         const { clientId, name, bronzeTo, silverTo } = editSchema.parse(body);
@@ -55,7 +57,10 @@ export const PUT = async (req: NextRequest) => {
         if (!updated.modifiedCount) return json("Something Went Wrong.", 400);
 
         await Clients.updateLevel({ orgId, clientId });
-        await Clients.updateLastRefreshDate({ orgId, clientId });
+
+        const refreshAfter = +(organization?.publicMetadata?.refreshClientsPurchases as string)?.split(" ")[0];
+        await Clients.updateLastRefreshDate({ orgId, clientId, refreshAfter });
+
         return json("The Client Was Successfully Updated.");
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");

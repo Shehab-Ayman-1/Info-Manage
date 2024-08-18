@@ -15,7 +15,7 @@ export const OrgSwitcher = ({}: OrgSwitcherProps) => {
             organizationProfileMode="modal"
             afterSelectOrganizationUrl={() => {
                 queryClient.resetQueries();
-                return "";
+                return "afterSelectOrganizationUrl";
             }}
             appearance={{
                 elements: {

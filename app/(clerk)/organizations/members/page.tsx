@@ -49,7 +49,8 @@ const Members = () => {
 
             setData(getData);
         })();
-    }, [organization]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [data, organization]);
 
     return (
         <CardForm heading="Members">

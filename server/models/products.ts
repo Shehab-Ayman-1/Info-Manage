@@ -3,19 +3,21 @@ import { Schema, models, model } from "mongoose";
 
 type TProduct = Document & {
     _id: string;
+    company: any;
     name: string;
+
     barcode: string;
     min: number;
+
     market: { price: number; count: number; updatedAt: Date };
-    store: { price: number; count: number; updatedAt: Date };
-    company: any;
+    store: { price: number; count: number };
 };
 
 const schema = new Schema<TProduct>({
     company: { type: Schema.Types.ObjectId, ref: "companies", required: true },
     name: { type: String, required: true, trim: true },
-    barcode: { type: String, unique: true, trim: true },
 
+    barcode: { type: String, unique: true, trim: true },
     min: { type: Number, required: true },
 
     market: {

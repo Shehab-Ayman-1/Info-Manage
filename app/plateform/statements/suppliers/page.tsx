@@ -31,7 +31,7 @@ const Suppliers = ({}: SuppliersProps) => {
     const { mutate, isPending } = useCreate<CreateSupplierType>("/api/statements/suppliers", ["debts"]);
     const [products, setProducts] = useState<ProductType[]>([]);
 
-    const { suppliers, productsBySupplier } = useLists();
+    const { suppliers, productsBySupplier, onReset } = useLists();
     const { errors } = formState;
 
     const router = useRouter();
@@ -70,9 +70,17 @@ const Suppliers = ({}: SuppliersProps) => {
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         if (!products?.length) return setError("root", { message: "No Products Was Selected." });
-
         const values = data as CreateSupplierType;
-        mutate({ ...values, products }, { onSuccess: () => router.push("/") });
+
+        mutate(
+            { ...values, products },
+            {
+                onSuccess: () => {
+                    router.push("/");
+                    onReset(["suppliers"]);
+                },
+            },
+        );
     };
 
     return (

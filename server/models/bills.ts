@@ -4,13 +4,16 @@ import { Schema, models, model } from "mongoose";
 type TBill = Document & {
     _id: string;
     orgId: string;
+
     client: any;
-    createdAt: Date;
+    state: "completed" | "pending";
 
     paid: number;
     total: number;
     discount: number;
-    state: "completed" | "pending";
+
+    createdAt: Date;
+    expireAt: Date;
 
     products: {
         _id: string;
@@ -24,13 +27,16 @@ type TBill = Document & {
 
 const schema = new Schema<TBill>({
     orgId: { type: String, required: true, trim: true },
+
     client: { type: Schema.Types.ObjectId, ref: "clients", required: true },
+    state: { type: String, required: true, trim: true, enum: ["completed", "pending"] },
 
     paid: { type: Number, default: 0 },
     total: { type: Number, default: 0 },
     discount: { type: Number, default: 0 },
-    state: { type: String, required: true, trim: true, enum: ["completed", "pending"] },
+
     createdAt: { type: Date, default: new Date() },
+    expireAt: { type: Date, required: true, default: Date.now() + 1000 * 60 * 60 * 24 * 365 },
 
     products: [
         {
@@ -42,6 +48,8 @@ const schema = new Schema<TBill>({
         },
     ],
 });
+
+schema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
 
 export const Bills = (models.bills as Model<TBill>) || model<TBill>("bills", schema);
 export type BillType = InferSchemaType<typeof schema>;

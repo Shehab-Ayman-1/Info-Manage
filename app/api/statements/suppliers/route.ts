@@ -54,13 +54,12 @@ export const POST = async (req: NextRequest) => {
         });
 
         // Update Products Price By The Current Prices, And Increament The Purchase Products Count
-        const placePrice = place === "market" ? "market.price" : "store.price";
         const placeCount = place === "market" ? "market.count" : "store.count";
         const promise = await Promise.all(
             products.map(async ({ productId, price, count }) => {
                 const updated = await Products.updateOne(
                     { _id: productId },
-                    { [placePrice]: price, $inc: { [placeCount]: count } },
+                    { "store.price": price, $inc: { [placeCount]: count } },
                 );
                 return updated.modifiedCount;
             }),

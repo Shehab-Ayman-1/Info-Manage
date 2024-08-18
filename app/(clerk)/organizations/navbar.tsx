@@ -13,7 +13,7 @@ type NavbarProps = {};
 
 export const Navbar = ({}: NavbarProps) => {
     return (
-        <header className="flex-between bg-gradient w-full rounded-xl border border-slate-600 p-4 shadow-md">
+        <header className="flex-between bg-gradient mb-12 w-full rounded-xl border border-slate-600 p-4 shadow-md">
             <h1 className="text-gradient text-2xl font-extrabold">Organizations Settings</h1>
             <nav className="">
                 {links.map(({ href, name }, index) => (

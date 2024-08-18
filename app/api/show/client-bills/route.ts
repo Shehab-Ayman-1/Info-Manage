@@ -54,10 +54,11 @@ export const DELETE = async (req: NextRequest) => {
     try {
         await DBConnection();
 
-        const { userId, orgId } = auth();
+        const { userId, orgId, orgSlug } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const user = await clerkClient().users.getUser(userId);
+        const organization = await clerkClient().organizations.getOrganization({ organizationId: orgId, slug: orgSlug });
 
         const { billId } = await req.json();
         if (!billId) return json("Something Went Wrong.", 400);
@@ -88,7 +89,9 @@ export const DELETE = async (req: NextRequest) => {
             },
         );
         await Clients.updateLevel({ orgId, clientId: bill.client });
-        await Clients.updateLastRefreshDate({ orgId, clientId: bill.client });
+
+        const refreshAfter = +(organization?.publicMetadata?.refreshClientsPurchases as string)?.split(" ")[0];
+        await Clients.updateLastRefreshDate({ orgId, clientId: bill.client, refreshAfter });
 
         // Delete The Bill
         const deleted = await Bills.deleteOne({ orgId, _id: billId });

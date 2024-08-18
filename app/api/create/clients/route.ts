@@ -3,8 +3,8 @@ import { NextRequest } from "next/server";
 
 import { DBConnection } from "@/server/configs";
 import { Clients } from "@/server/models";
-import { json } from "@/utils/response";
 import { createSchema } from "./schema";
+import { json } from "@/utils/response";
 
 export const POST = async (req: NextRequest) => {
     try {
