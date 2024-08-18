@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
 import { Separator } from "@/ui/separator";
 import { Button } from "@/ui/button";
+import { PopoverClose } from "@radix-ui/react-popover";
 
 type UserButtonProps = {};
 
@@ -47,22 +48,28 @@ export const UserButton = ({}: UserButtonProps) => {
                 <Separator className="my-4" />
 
                 <div className="flex flex-col sm:w-[400px]">
-                    <Button variant="ghost" className={btnStyle} onClick={() => onOpen("user")}>
-                        <SettingsIcon className="size-5 text-muted-foreground" />
-                        Manage Account
-                    </Button>
+                    <PopoverClose asChild>
+                        <Button variant="ghost" className={btnStyle} onClick={() => onOpen("user")}>
+                            <SettingsIcon className="size-5 text-muted-foreground" />
+                            Manage Account
+                        </Button>
+                    </PopoverClose>
 
                     {isAdmin && (
-                        <Button variant="ghost" className={btnStyle} onClick={() => onOpen("organization")}>
-                            <LogOutIcon className="size-5 text-muted-foreground" />
-                            Manage Organization
-                        </Button>
+                        <PopoverClose asChild>
+                            <Button variant="ghost" className={btnStyle} onClick={() => onOpen("organization")}>
+                                <LogOutIcon className="size-5 text-muted-foreground" />
+                                Manage Organization
+                            </Button>
+                        </PopoverClose>
                     )}
 
-                    <Button variant="ghost" className={btnStyle} onClick={() => onOpen("signout")}>
-                        <LogOutIcon className="size-5 text-muted-foreground" />
-                        Sign Out
-                    </Button>
+                    <PopoverClose asChild>
+                        <Button variant="ghost" className={btnStyle} onClick={() => onOpen("signout")}>
+                            <LogOutIcon className="size-5 text-muted-foreground" />
+                            Sign Out
+                        </Button>
+                    </PopoverClose>
                 </div>
             </PopoverContent>
         </Popover>
