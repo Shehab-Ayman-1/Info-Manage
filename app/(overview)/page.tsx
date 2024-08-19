@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/ui/button";
+import { Alert } from "@/ui/alert";
 
 type OverviewProps = {};
 
@@ -12,6 +13,12 @@ const Overview = ({}: OverviewProps) => {
 
     return (
         <div className="flex-center flex-col p-6">
+            {!organization && (
+                <Alert variant="warning" className="text-center text-xl">
+                    You Cannot Access Any Of Our Services Until The Developer Activates Your Subscription.
+                </Alert>
+            )}
+
             <Image
                 src={organization?.hasImage ? organization.imageUrl : "/logo.png"}
                 alt="logo"
@@ -29,23 +36,25 @@ const Overview = ({}: OverviewProps) => {
                 <br /> stores and monitor statistics with ease and efficiency
             </p>
 
-            <div className="flex-center flex-wrap">
-                <Button
-                    asChild
-                    size="lg"
-                    variant="outline"
-                    className="h-auto bg-transparent px-6 py-2 text-center text-xs sm:px-12 sm:py-4 sm:text-lg"
-                >
-                    <Link href="/plateform/statements/clients">
-                        Client <br /> Statement
-                    </Link>
-                </Button>
-                <Button asChild size="lg" className="h-auto px-6 py-2 text-center text-xs sm:px-12 sm:py-4 sm:text-lg">
-                    <Link href="/plateform/statements/suppliers">
-                        Supplier <br /> Statement
-                    </Link>
-                </Button>
-            </div>
+            {!!organization && (
+                <div className="flex-center flex-wrap">
+                    <Button
+                        asChild
+                        size="lg"
+                        variant="outline"
+                        className="h-auto bg-transparent px-6 py-2 text-center text-xs sm:px-12 sm:py-4 sm:text-lg"
+                    >
+                        <Link href="/plateform/statements/clients">
+                            Client <br /> Statement
+                        </Link>
+                    </Button>
+                    <Button asChild size="lg" className="h-auto px-6 py-2 text-center text-xs sm:px-12 sm:py-4 sm:text-lg">
+                        <Link href="/plateform/statements/suppliers">
+                            Supplier <br /> Statement
+                        </Link>
+                    </Button>
+                </div>
+            )}
         </div>
     );
 };

@@ -1,11 +1,12 @@
 "use client";
 import { ClerkLoading, ClerkLoaded, useUser } from "@clerk/nextjs";
-import { LoaderCircleIcon } from "lucide-react";
+import { CreditCardIcon, LoaderCircleIcon } from "lucide-react";
 
 import { Notifications } from "./notifications";
 import { UserButton } from "./user-button";
 import { OrgSwitcher } from "./switcher";
 import { Searchbar } from "./searchbar";
+import Link from "next/link";
 
 type NavlinksProps = {};
 
@@ -16,7 +17,12 @@ export const NavIcons = ({}: NavlinksProps) => {
     return (
         <div className="flex-end print:hidden">
             <Notifications />
+
             <Searchbar />
+
+            <Link href="/subscription">
+                <CreditCardIcon />
+            </Link>
 
             {isMe && <OrgSwitcher />}
 
