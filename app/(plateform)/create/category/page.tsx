@@ -26,7 +26,7 @@ const Category = ({}: CategoryProps) => {
         if (!category) return;
 
         const onSuccess = () => {
-            router.push("/plateform/create/company");
+            router.push("/create/company");
             onReset(["categories"]);
         };
 

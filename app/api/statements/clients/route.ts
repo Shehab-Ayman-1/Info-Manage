@@ -38,8 +38,8 @@ export const POST = async (req: NextRequest) => {
         const billProducts = data.products.map(({ total, ...product }) => product);
 
         const total = productsTotalCosts - discount;
-        const expireAt = await getExpireAt();
 
+        const expireAt = await getExpireAt();
         await Bills.create({ orgId, paid, total, discount, expireAt, state, client: clientId, products: billProducts });
 
         // Create New Transaction

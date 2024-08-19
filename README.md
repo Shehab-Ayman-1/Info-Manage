@@ -1,7 +1,5 @@
 # TODO:
 
-    - Make A Quick Client Statements For 1 Product By Default Values [unknown, cash, Pay All, Discount(0)]
-
     - Change The Role From orgRole To User.publicMetadata Custome Role
 
     - Think About Clients Level

@@ -16,7 +16,7 @@ export const Actions = ({ row }: ActionsProps) => {
         {
             Icon: EyeIcon,
             text: "Open",
-            onClick: (original: any) => router.push(`/plateform/show/supplier-debts/${original._id}`),
+            onClick: (original: any) => router.push(`/show/supplier-debts/${original._id}`),
         },
     ];
 

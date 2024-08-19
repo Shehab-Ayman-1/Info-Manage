@@ -3,9 +3,9 @@ import { NextRequest } from "next/server";
 
 import { Debts, Products, Suppliers, Transactions } from "@/server/models";
 import { DBConnection } from "@/server/configs";
+import { getExpireAt } from "@/utils/expireAt";
 import { createSchema } from "./schema";
 import { json } from "@/utils/response";
-import { getExpireAt } from "@/utils/expireAt";
 
 export const POST = async (req: NextRequest) => {
     try {
@@ -33,9 +33,10 @@ export const POST = async (req: NextRequest) => {
         }
 
         // Create Bill
-        const expireAt = await getExpireAt();
         const debtProducts = products.map(({ name, count, price }) => ({ name, count, price }));
         const state = paid >= productCosts ? "completed" : "pending";
+        
+        const expireAt = await getExpireAt();
         await Debts.create({ orgId, paid, state, expireAt, supplier: supplierId, total: productCosts, products: debtProducts });
 
         // Make Transaction

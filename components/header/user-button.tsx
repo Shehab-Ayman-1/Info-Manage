@@ -21,7 +21,7 @@ export const UserButton = ({}: UserButtonProps) => {
     const onOpen = (method: string) => {
         if (method === "organization") return router.push("/organizations");
         if (method === "user") return openUserProfile({ routing: "virtual" });
-        if (method === "signout") return signOut({ redirectUrl: "/sign-in" });
+        if (method === "signout") return signOut({ redirectUrl: "/" });
     };
 
     const isAdmin = has?.({ role: "org:admin" });

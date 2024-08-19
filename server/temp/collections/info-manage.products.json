@@ -1,2280 +1,2282 @@
-[{
-  "_id": {
-    "$oid": "66b53091de9ee064b220a3f3"
-  },
-  "name": "مقاس 1",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b0381d29af226da0633"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53091de9ee064b220a3f4"
-  },
-  "name": "مقاس 2",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-07-07T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b0381d29af226da0633"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53091de9ee064b220a3f6"
-  },
-  "name": "مقاس 4",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b0381d29af226da0633"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53091de9ee064b220a3f5"
-  },
-  "name": "مقاس 3",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b0381d29af226da0633"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53091de9ee064b220a3f7"
-  },
-  "name": "مقاس 5",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b0381d29af226da0633"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b530c4de9ee064b220a401"
-  },
-  "name": "مقاس 3",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52ae781d29af226da062d"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b530c4de9ee064b220a402"
-  },
-  "name": "مقاس 4",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52ae781d29af226da062d"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b530c4de9ee064b220a403"
-  },
-  "name": "مقاس 5",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52ae781d29af226da062d"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b530c4de9ee064b220a404"
-  },
-  "name": "مقاس 6",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52ae781d29af226da062d"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b530f9de9ee064b220a410"
-  },
-  "name": "مقاس 4",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b2a81d29af226da063b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b530f9de9ee064b220a40f"
-  },
-  "name": "مقاس 3",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b2a81d29af226da063b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b530f9de9ee064b220a412"
-  },
-  "name": "مقاس 1",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b2a81d29af226da063b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b530f9de9ee064b220a411"
-  },
-  "name": "مقاس 5",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b2a81d29af226da063b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b530f9de9ee064b220a413"
-  },
-  "name": "مقاس 2",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b2a81d29af226da063b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53120de9ee064b220a41d"
-  },
-  "name": "مقاس 3",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b4b2f441e1172571fa5"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53120de9ee064b220a41e"
-  },
-  "name": "مقاس 4",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b4b2f441e1172571fa5"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53120de9ee064b220a41f"
-  },
-  "name": "مقاس 5",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b4b2f441e1172571fa5"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53120de9ee064b220a420"
-  },
-  "name": "مقاس 6",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b4b2f441e1172571fa5"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5315cde9ee064b220a42e"
-  },
-  "name": "مقاس 5",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b7a81d29af226da0645"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5315cde9ee064b220a42d"
-  },
-  "name": "مقاس 4",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b7a81d29af226da0645"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5315cde9ee064b220a430"
-  },
-  "name": "مقاس 2",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b7a81d29af226da0645"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5315cde9ee064b220a42f"
-  },
-  "name": "مقاس 1",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b7a81d29af226da0645"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5315cde9ee064b220a431"
-  },
-  "name": "كراتين مقاس 5",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b7a81d29af226da0645"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5315cde9ee064b220a42c"
-  },
-  "name": "مقاس 3",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b7a81d29af226da0645"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53184de9ee064b220a43e"
-  },
-  "name": "مقاس 4",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b8c81d29af226da064c"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53184de9ee064b220a43d"
-  },
-  "name": "مقاس 3",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b8c81d29af226da064c"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53184de9ee064b220a43f"
-  },
-  "name": "مقاس 5",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b8c81d29af226da064c"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53184de9ee064b220a440"
-  },
-  "name": "مقاس 6",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52b8c81d29af226da064c"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b531b9de9ee064b220a44e"
-  },
-  "name": "مقاس 2",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52baf81d29af226da0653"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b531b9de9ee064b220a44a"
-  },
-  "name": "مقاس 3",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52baf81d29af226da0653"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b531b9de9ee064b220a44b"
-  },
-  "name": "مقاس 4",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52baf81d29af226da0653"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b531b9de9ee064b220a44c"
-  },
-  "name": "مقاس 5",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52baf81d29af226da0653"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b531b9de9ee064b220a44d"
-  },
-  "name": "مقاس 1",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52baf81d29af226da0653"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53209de9ee064b220a471"
-  },
-  "name": "مقاس 3",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b531dcde9ee064b220a45b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53209de9ee064b220a472"
-  },
-  "name": "مقاس 4",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b531dcde9ee064b220a45b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53209de9ee064b220a473"
-  },
-  "name": "مقاس 5",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b531dcde9ee064b220a45b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5323fde9ee064b220a47c"
-  },
-  "name": "مقاس 3",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52bd32f441e1172571fb0"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5323fde9ee064b220a47f"
-  },
-  "name": "مقاس 2",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52bd32f441e1172571fb0"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5323fde9ee064b220a47e"
-  },
-  "name": "مقاس 5",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52bd32f441e1172571fb0"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5323fde9ee064b220a47d"
-  },
-  "name": "مقاس 4",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52bd32f441e1172571fb0"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b532a2de9ee064b220a488"
-  },
-  "name": "جيرمني 18 حفاضة",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c0a81d29af226da065b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b532a2de9ee064b220a489"
-  },
-  "name": "جيرمني 36 حفاضة",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c0a81d29af226da065b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b532a2de9ee064b220a48a"
-  },
-  "name": "فاين بيزك 36 حفاضة",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c0a81d29af226da065b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b532e1de9ee064b220a497"
-  },
-  "name": "مقاس 4",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c2281d29af226da0663"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b532e1de9ee064b220a495"
-  },
-  "name": "مقاس 2",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c2281d29af226da0663"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b532e1de9ee064b220a496"
-  },
-  "name": "مقاس 3",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c2281d29af226da0663"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b532e1de9ee064b220a498"
-  },
-  "name": "مقاس 5",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c2281d29af226da0663"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b532e1de9ee064b220a494"
-  },
-  "name": "مقاس 1",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c2281d29af226da0663"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5330fde9ee064b220a4a5"
-  },
-  "name": "مقاس 1",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 100,
-    "count": 50,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 100,
-    "count": 100
-  },
-  "company": {
-    "$oid": "66b52c3781d29af226da066b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5330fde9ee064b220a4a6"
-  },
-  "name": "مقاس 2",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 200,
-    "count": 50,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 200,
-    "count": 20
-  },
-  "company": {
-    "$oid": "66b52c3781d29af226da066b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5330fde9ee064b220a4a7"
-  },
-  "name": "مقاس 3",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 300,
-    "count": 70,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 300,
-    "count": 30
-  },
-  "company": {
-    "$oid": "66b52c3781d29af226da066b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5330fde9ee064b220a4a9"
-  },
-  "name": "مقاس 5",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 500,
-    "count": 50,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 500,
-    "count": 50
-  },
-  "company": {
-    "$oid": "66b52c3781d29af226da066b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5330fde9ee064b220a4a8"
-  },
-  "name": "مقاس 4",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 400,
-    "count": 110,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 400,
-    "count": 49
-  },
-  "company": {
-    "$oid": "66b52c3781d29af226da066b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5330fde9ee064b220a4aa"
-  },
-  "name": "مقاس 6",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 600,
-    "count": 60
-  },
-  "company": {
-    "$oid": "66b52c3781d29af226da066b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53321de9ee064b220a4b5"
-  },
-  "name": "مقاس 3",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 300,
-    "count": 79,
-    "updatedAt": {
-      "$date": "2024-08-13T23:37:23.510Z"
-    }
-  },
-  "store": {
-    "price": 300,
-    "count": 5
-  },
-  "company": {
-    "$oid": "66b52c4b81d29af226da0672"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53321de9ee064b220a4b6"
-  },
-  "name": "مقاس 4",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 400,
-    "count": 76,
-    "updatedAt": {
-      "$date": "2024-08-13T23:37:23.510Z"
-    }
-  },
-  "store": {
-    "price": 400,
-    "count": 25
-  },
-  "company": {
-    "$oid": "66b52c4b81d29af226da0672"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53321de9ee064b220a4b8"
-  },
-  "name": "مقاس 6",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 600,
-    "count": 100,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 600,
-    "count": 60
-  },
-  "company": {
-    "$oid": "66b52c4b81d29af226da0672"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53321de9ee064b220a4b7"
-  },
-  "name": "مقاس 5",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 500,
-    "count": 80,
-    "updatedAt": {
-      "$date": "2024-08-13T14:45:37.902Z"
-    }
-  },
-  "store": {
-    "price": 500,
-    "count": 45
-  },
-  "company": {
-    "$oid": "66b52c4b81d29af226da0672"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53346de9ee064b220a4c3"
-  },
-  "name": "مقاس 3",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c6181d29af226da067a"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53346de9ee064b220a4c4"
-  },
-  "name": "مقاس 4",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c6181d29af226da067a"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53346de9ee064b220a4c6"
-  },
-  "name": "مقاس 1",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c6181d29af226da067a"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53346de9ee064b220a4c5"
-  },
-  "name": "مقاس 5",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c6181d29af226da067a"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53346de9ee064b220a4c7"
-  },
-  "name": "مقاس 2",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c6181d29af226da067a"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53369de9ee064b220a4d0"
-  },
-  "name": "تريو",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c912f441e1172571fbb"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53369de9ee064b220a4d1"
-  },
-  "name": "تريو حساس",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c912f441e1172571fbb"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53369de9ee064b220a4d2"
-  },
-  "name": "دابل",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52c912f441e1172571fbb"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53380de9ee064b220a4d8"
-  },
-  "name": "تريو",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52ca581d29af226da0684"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5339ede9ee064b220a4dc"
-  },
-  "name": "طويل",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52cd281d29af226da068b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5339ede9ee064b220a4dd"
-  },
-  "name": "طويل جداً",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52cd281d29af226da068b"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b533bbde9ee064b220a4e1"
-  },
-  "name": "دبل طويل جداً",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52ce72f441e1172571fc5"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b533e1de9ee064b220a4e6"
-  },
-  "name": "بكر فاميليا",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52d3c81d29af226da0695"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b533e1de9ee064b220a4e7"
-  },
-  "name": "بكر جود كير",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52d3c81d29af226da0695"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b533f4de9ee064b220a4eb"
-  },
-  "name": "زينه ٢ رول",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52d642f441e1172571fcc"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53407de9ee064b220a4ef"
-  },
-  "name": "هاندي",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52d7e81d29af226da069d"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5342cde9ee064b220a4f4"
-  },
-  "name": "فامليا",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52dae2f441e1172571fd7"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5342cde9ee064b220a4f5"
-  },
-  "name": "هاندي",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52dae2f441e1172571fd7"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5342cde9ee064b220a4f6"
-  },
-  "name": "جود كير",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52dae2f441e1172571fd7"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53464de9ee064b220a4ff"
-  },
-  "name": "زينه",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52dd281d29af226da06a4"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53464de9ee064b220a500"
-  },
-  "name": "فامليا",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52dd281d29af226da06a4"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53464de9ee064b220a502"
-  },
-  "name": "لانا عشره عمر",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52dd281d29af226da06a4"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b53464de9ee064b220a501"
-  },
-  "name": "بابيا",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52dd281d29af226da06a4"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b535cede9ee064b220a51b"
-  },
-  "name": "مبلل مور ٧٢ منديل",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52e5b3d7b68f6a32870de"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b535cede9ee064b220a51c"
-  },
-  "name": "مبلل مور ١٢٠ منديل",
-  "barcode": "",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 0,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-08T20:50:47.373Z"
-    }
-  },
-  "store": {
-    "price": 0,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b52e5b3d7b68f6a32870de"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b541243691f2132801c479"
-  },
-  "name": "عصير أناناس",
-  "barcode": "0002",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 5,
-    "count": 10,
-    "updatedAt": {
-      "$date": "2024-08-08T22:05:20.515Z"
-    }
-  },
-  "store": {
-    "price": 3,
-    "count": 30
-  },
-  "company": {
-    "$oid": "66b53e575423b14979964d4d"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b541243691f2132801c478"
-  },
-  "name": "عصير مانجو",
-  "barcode": "0001",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 5,
-    "count": 28,
-    "updatedAt": {
-      "$date": "2024-08-08T22:05:20.515Z"
-    }
-  },
-  "store": {
-    "price": 3,
-    "count": 50
-  },
-  "company": {
-    "$oid": "66b53e575423b14979964d4d"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b541243691f2132801c47c"
-  },
-  "name": "عصير جوافة",
-  "barcode": "0004",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 5,
-    "count": 5,
-    "updatedAt": {
-      "$date": "2024-08-08T22:05:20.515Z"
-    }
-  },
-  "store": {
-    "price": 3,
-    "count": 30
-  },
-  "company": {
-    "$oid": "66b53e575423b14979964d4d"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b541243691f2132801c47a"
-  },
-  "name": "عصير تفاح",
-  "barcode": "0003",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 5,
-    "count": 15,
-    "updatedAt": {
-      "$date": "2024-08-08T22:05:20.515Z"
-    }
-  },
-  "store": {
-    "price": 3,
-    "count": 1
-  },
-  "company": {
-    "$oid": "66b53e575423b14979964d4d"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b541243691f2132801c47b"
-  },
-  "name": "عصير برتقال",
-  "barcode": "0005",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 5,
-    "count": 5,
-    "updatedAt": {
-      "$date": "2024-08-08T22:05:20.515Z"
-    }
-  },
-  "store": {
-    "price": 3,
-    "count": 1
-  },
-  "company": {
-    "$oid": "66b53e575423b14979964d4d"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5f7a6ac76686bafb17bd6"
-  },
-  "name": "عصير ليمون",
-  "barcode": "0007",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 5,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-09T11:02:17.011Z"
-    }
-  },
-  "store": {
-    "price": 3,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b53e575423b14979964d4d"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5f7a6ac76686bafb17bd7"
-  },
-  "name": "عصير خوخ",
-  "barcode": "0008",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 5,
-    "count": 0,
-    "updatedAt": {
-      "$date": "2024-08-09T11:02:17.011Z"
-    }
-  },
-  "store": {
-    "price": 3,
-    "count": 50
-  },
-  "company": {
-    "$oid": "66b53e575423b14979964d4d"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5f7a6ac76686bafb17bd5"
-  },
-  "name": "عصير بطيخ",
-  "barcode": "0006",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 5,
-    "count": 60,
-    "updatedAt": {
-      "$date": "2024-08-09T11:02:17.011Z"
-    }
-  },
-  "store": {
-    "price": 3,
-    "count": 0
-  },
-  "company": {
-    "$oid": "66b53e575423b14979964d4d"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5f98fac76686bafb17be9"
-  },
-  "name": "عصير مانجو",
-  "barcode": "1001",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 7,
-    "count": 30,
-    "updatedAt": {
-      "$date": "2024-08-09T11:02:17.011Z"
-    }
-  },
-  "store": {
-    "price": 5,
-    "count": 40
-  },
-  "company": {
-    "$oid": "66b5f92eac76686bafb17be1"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5fa5bac76686bafb17bf6"
-  },
-  "name": "عصير أناناس",
-  "barcode": "1002",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 10,
-    "count": 5,
-    "updatedAt": {
-      "$date": "2024-08-09T11:02:17.011Z"
-    }
-  },
-  "store": {
-    "price": 7,
-    "count": 300
-  },
-  "company": {
-    "$oid": "66b5f92eac76686bafb17be1"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b5fb7bf9a8afe99e397534"
-  },
-  "name": "عصير كوكتيل",
-  "barcode": "1003",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 10,
-    "count": 50,
-    "updatedAt": {
-      "$date": "2024-08-09T11:16:49.740Z"
-    }
-  },
-  "store": {
-    "price": 7,
-    "count": 50
-  },
-  "company": {
-    "$oid": "66b5f92eac76686bafb17be1"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66b61b8978e831b32a828a71"
-  },
-  "name": "عصير خوخ",
-  "barcode": "1004",
-  "min": 10,
-  "max": 20,
-  "market": {
-    "price": 10,
-    "count": 20,
-    "updatedAt": {
-      "$date": "2024-08-09T13:24:44.325Z"
-    }
-  },
-  "store": {
-    "price": 7,
-    "count": 50
-  },
-  "company": {
-    "$oid": "66b5f92eac76686bafb17be1"
-  },
-  "__v": 0
-}]
+[
+    {
+        "_id": {
+            "$oid": "66b53091de9ee064b220a3f3"
+        },
+        "name": "مقاس 1",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b0381d29af226da0633"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53091de9ee064b220a3f4"
+        },
+        "name": "مقاس 2",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-07-07T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b0381d29af226da0633"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53091de9ee064b220a3f6"
+        },
+        "name": "مقاس 4",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b0381d29af226da0633"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53091de9ee064b220a3f5"
+        },
+        "name": "مقاس 3",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b0381d29af226da0633"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53091de9ee064b220a3f7"
+        },
+        "name": "مقاس 5",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b0381d29af226da0633"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b530c4de9ee064b220a401"
+        },
+        "name": "مقاس 3",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52ae781d29af226da062d"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b530c4de9ee064b220a402"
+        },
+        "name": "مقاس 4",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52ae781d29af226da062d"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b530c4de9ee064b220a403"
+        },
+        "name": "مقاس 5",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52ae781d29af226da062d"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b530c4de9ee064b220a404"
+        },
+        "name": "مقاس 6",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52ae781d29af226da062d"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b530f9de9ee064b220a410"
+        },
+        "name": "مقاس 4",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b2a81d29af226da063b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b530f9de9ee064b220a40f"
+        },
+        "name": "مقاس 3",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b2a81d29af226da063b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b530f9de9ee064b220a412"
+        },
+        "name": "مقاس 1",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b2a81d29af226da063b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b530f9de9ee064b220a411"
+        },
+        "name": "مقاس 5",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b2a81d29af226da063b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b530f9de9ee064b220a413"
+        },
+        "name": "مقاس 2",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b2a81d29af226da063b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53120de9ee064b220a41d"
+        },
+        "name": "مقاس 3",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b4b2f441e1172571fa5"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53120de9ee064b220a41e"
+        },
+        "name": "مقاس 4",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b4b2f441e1172571fa5"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53120de9ee064b220a41f"
+        },
+        "name": "مقاس 5",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b4b2f441e1172571fa5"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53120de9ee064b220a420"
+        },
+        "name": "مقاس 6",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b4b2f441e1172571fa5"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5315cde9ee064b220a42e"
+        },
+        "name": "مقاس 5",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b7a81d29af226da0645"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5315cde9ee064b220a42d"
+        },
+        "name": "مقاس 4",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b7a81d29af226da0645"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5315cde9ee064b220a430"
+        },
+        "name": "مقاس 2",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b7a81d29af226da0645"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5315cde9ee064b220a42f"
+        },
+        "name": "مقاس 1",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b7a81d29af226da0645"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5315cde9ee064b220a431"
+        },
+        "name": "كراتين مقاس 5",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b7a81d29af226da0645"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5315cde9ee064b220a42c"
+        },
+        "name": "مقاس 3",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b7a81d29af226da0645"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53184de9ee064b220a43e"
+        },
+        "name": "مقاس 4",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b8c81d29af226da064c"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53184de9ee064b220a43d"
+        },
+        "name": "مقاس 3",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b8c81d29af226da064c"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53184de9ee064b220a43f"
+        },
+        "name": "مقاس 5",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b8c81d29af226da064c"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53184de9ee064b220a440"
+        },
+        "name": "مقاس 6",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52b8c81d29af226da064c"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b531b9de9ee064b220a44e"
+        },
+        "name": "مقاس 2",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52baf81d29af226da0653"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b531b9de9ee064b220a44a"
+        },
+        "name": "مقاس 3",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52baf81d29af226da0653"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b531b9de9ee064b220a44b"
+        },
+        "name": "مقاس 4",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52baf81d29af226da0653"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b531b9de9ee064b220a44c"
+        },
+        "name": "مقاس 5",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52baf81d29af226da0653"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b531b9de9ee064b220a44d"
+        },
+        "name": "مقاس 1",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52baf81d29af226da0653"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53209de9ee064b220a471"
+        },
+        "name": "مقاس 3",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b531dcde9ee064b220a45b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53209de9ee064b220a472"
+        },
+        "name": "مقاس 4",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b531dcde9ee064b220a45b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53209de9ee064b220a473"
+        },
+        "name": "مقاس 5",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b531dcde9ee064b220a45b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5323fde9ee064b220a47c"
+        },
+        "name": "مقاس 3",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52bd32f441e1172571fb0"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5323fde9ee064b220a47f"
+        },
+        "name": "مقاس 2",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52bd32f441e1172571fb0"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5323fde9ee064b220a47e"
+        },
+        "name": "مقاس 5",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52bd32f441e1172571fb0"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5323fde9ee064b220a47d"
+        },
+        "name": "مقاس 4",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52bd32f441e1172571fb0"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b532a2de9ee064b220a488"
+        },
+        "name": "جيرمني 18 حفاضة",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c0a81d29af226da065b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b532a2de9ee064b220a489"
+        },
+        "name": "جيرمني 36 حفاضة",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c0a81d29af226da065b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b532a2de9ee064b220a48a"
+        },
+        "name": "فاين بيزك 36 حفاضة",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c0a81d29af226da065b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b532e1de9ee064b220a497"
+        },
+        "name": "مقاس 4",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c2281d29af226da0663"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b532e1de9ee064b220a495"
+        },
+        "name": "مقاس 2",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c2281d29af226da0663"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b532e1de9ee064b220a496"
+        },
+        "name": "مقاس 3",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c2281d29af226da0663"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b532e1de9ee064b220a498"
+        },
+        "name": "مقاس 5",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c2281d29af226da0663"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b532e1de9ee064b220a494"
+        },
+        "name": "مقاس 1",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c2281d29af226da0663"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5330fde9ee064b220a4a5"
+        },
+        "name": "مقاس 1",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 100,
+            "count": 50,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 100,
+            "count": 100
+        },
+        "company": {
+            "$oid": "66b52c3781d29af226da066b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5330fde9ee064b220a4a6"
+        },
+        "name": "مقاس 2",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 200,
+            "count": 50,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 200,
+            "count": 20
+        },
+        "company": {
+            "$oid": "66b52c3781d29af226da066b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5330fde9ee064b220a4a7"
+        },
+        "name": "مقاس 3",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 300,
+            "count": 70,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 300,
+            "count": 30
+        },
+        "company": {
+            "$oid": "66b52c3781d29af226da066b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5330fde9ee064b220a4a9"
+        },
+        "name": "مقاس 5",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 500,
+            "count": 50,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 500,
+            "count": 50
+        },
+        "company": {
+            "$oid": "66b52c3781d29af226da066b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5330fde9ee064b220a4a8"
+        },
+        "name": "مقاس 4",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 400,
+            "count": 110,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 400,
+            "count": 49
+        },
+        "company": {
+            "$oid": "66b52c3781d29af226da066b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5330fde9ee064b220a4aa"
+        },
+        "name": "مقاس 6",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 600,
+            "count": 60
+        },
+        "company": {
+            "$oid": "66b52c3781d29af226da066b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53321de9ee064b220a4b5"
+        },
+        "name": "مقاس 3",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 300,
+            "count": 79,
+            "updatedAt": {
+                "$date": "2024-08-13T23:37:23.510Z"
+            }
+        },
+        "store": {
+            "price": 300,
+            "count": 5
+        },
+        "company": {
+            "$oid": "66b52c4b81d29af226da0672"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53321de9ee064b220a4b6"
+        },
+        "name": "مقاس 4",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 400,
+            "count": 76,
+            "updatedAt": {
+                "$date": "2024-08-13T23:37:23.510Z"
+            }
+        },
+        "store": {
+            "price": 400,
+            "count": 25
+        },
+        "company": {
+            "$oid": "66b52c4b81d29af226da0672"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53321de9ee064b220a4b8"
+        },
+        "name": "مقاس 6",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 600,
+            "count": 100,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 600,
+            "count": 60
+        },
+        "company": {
+            "$oid": "66b52c4b81d29af226da0672"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53321de9ee064b220a4b7"
+        },
+        "name": "مقاس 5",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 500,
+            "count": 80,
+            "updatedAt": {
+                "$date": "2024-08-13T14:45:37.902Z"
+            }
+        },
+        "store": {
+            "price": 500,
+            "count": 45
+        },
+        "company": {
+            "$oid": "66b52c4b81d29af226da0672"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53346de9ee064b220a4c3"
+        },
+        "name": "مقاس 3",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c6181d29af226da067a"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53346de9ee064b220a4c4"
+        },
+        "name": "مقاس 4",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c6181d29af226da067a"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53346de9ee064b220a4c6"
+        },
+        "name": "مقاس 1",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c6181d29af226da067a"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53346de9ee064b220a4c5"
+        },
+        "name": "مقاس 5",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c6181d29af226da067a"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53346de9ee064b220a4c7"
+        },
+        "name": "مقاس 2",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c6181d29af226da067a"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53369de9ee064b220a4d0"
+        },
+        "name": "تريو",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c912f441e1172571fbb"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53369de9ee064b220a4d1"
+        },
+        "name": "تريو حساس",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c912f441e1172571fbb"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53369de9ee064b220a4d2"
+        },
+        "name": "دابل",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52c912f441e1172571fbb"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53380de9ee064b220a4d8"
+        },
+        "name": "تريو",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52ca581d29af226da0684"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5339ede9ee064b220a4dc"
+        },
+        "name": "طويل",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52cd281d29af226da068b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5339ede9ee064b220a4dd"
+        },
+        "name": "طويل جداً",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52cd281d29af226da068b"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b533bbde9ee064b220a4e1"
+        },
+        "name": "دبل طويل جداً",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52ce72f441e1172571fc5"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b533e1de9ee064b220a4e6"
+        },
+        "name": "بكر فاميليا",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52d3c81d29af226da0695"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b533e1de9ee064b220a4e7"
+        },
+        "name": "بكر جود كير",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52d3c81d29af226da0695"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b533f4de9ee064b220a4eb"
+        },
+        "name": "زينه ٢ رول",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52d642f441e1172571fcc"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53407de9ee064b220a4ef"
+        },
+        "name": "هاندي",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52d7e81d29af226da069d"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5342cde9ee064b220a4f4"
+        },
+        "name": "فامليا",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52dae2f441e1172571fd7"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5342cde9ee064b220a4f5"
+        },
+        "name": "هاندي",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52dae2f441e1172571fd7"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5342cde9ee064b220a4f6"
+        },
+        "name": "جود كير",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52dae2f441e1172571fd7"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53464de9ee064b220a4ff"
+        },
+        "name": "زينه",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52dd281d29af226da06a4"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53464de9ee064b220a500"
+        },
+        "name": "فامليا",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52dd281d29af226da06a4"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53464de9ee064b220a502"
+        },
+        "name": "لانا عشره عمر",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52dd281d29af226da06a4"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b53464de9ee064b220a501"
+        },
+        "name": "بابيا",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52dd281d29af226da06a4"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b535cede9ee064b220a51b"
+        },
+        "name": "مبلل مور ٧٢ منديل",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52e5b3d7b68f6a32870de"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b535cede9ee064b220a51c"
+        },
+        "name": "مبلل مور ١٢٠ منديل",
+        "barcode": "",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 0,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-08T20:50:47.373Z"
+            }
+        },
+        "store": {
+            "price": 0,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b52e5b3d7b68f6a32870de"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b541243691f2132801c479"
+        },
+        "name": "عصير أناناس",
+        "barcode": "0002",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 5,
+            "count": 10,
+            "updatedAt": {
+                "$date": "2024-08-08T22:05:20.515Z"
+            }
+        },
+        "store": {
+            "price": 3,
+            "count": 30
+        },
+        "company": {
+            "$oid": "66b53e575423b14979964d4d"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b541243691f2132801c478"
+        },
+        "name": "عصير مانجو",
+        "barcode": "0001",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 5,
+            "count": 28,
+            "updatedAt": {
+                "$date": "2024-08-08T22:05:20.515Z"
+            }
+        },
+        "store": {
+            "price": 3,
+            "count": 50
+        },
+        "company": {
+            "$oid": "66b53e575423b14979964d4d"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b541243691f2132801c47c"
+        },
+        "name": "عصير جوافة",
+        "barcode": "0004",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 5,
+            "count": 5,
+            "updatedAt": {
+                "$date": "2024-08-08T22:05:20.515Z"
+            }
+        },
+        "store": {
+            "price": 3,
+            "count": 30
+        },
+        "company": {
+            "$oid": "66b53e575423b14979964d4d"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b541243691f2132801c47a"
+        },
+        "name": "عصير تفاح",
+        "barcode": "0003",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 5,
+            "count": 15,
+            "updatedAt": {
+                "$date": "2024-08-08T22:05:20.515Z"
+            }
+        },
+        "store": {
+            "price": 3,
+            "count": 1
+        },
+        "company": {
+            "$oid": "66b53e575423b14979964d4d"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b541243691f2132801c47b"
+        },
+        "name": "عصير برتقال",
+        "barcode": "0005",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 5,
+            "count": 5,
+            "updatedAt": {
+                "$date": "2024-08-08T22:05:20.515Z"
+            }
+        },
+        "store": {
+            "price": 3,
+            "count": 1
+        },
+        "company": {
+            "$oid": "66b53e575423b14979964d4d"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5f7a6ac76686bafb17bd6"
+        },
+        "name": "عصير ليمون",
+        "barcode": "0007",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 5,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-09T11:02:17.011Z"
+            }
+        },
+        "store": {
+            "price": 3,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b53e575423b14979964d4d"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5f7a6ac76686bafb17bd7"
+        },
+        "name": "عصير خوخ",
+        "barcode": "0008",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 5,
+            "count": 0,
+            "updatedAt": {
+                "$date": "2024-08-09T11:02:17.011Z"
+            }
+        },
+        "store": {
+            "price": 3,
+            "count": 50
+        },
+        "company": {
+            "$oid": "66b53e575423b14979964d4d"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5f7a6ac76686bafb17bd5"
+        },
+        "name": "عصير بطيخ",
+        "barcode": "0006",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 5,
+            "count": 60,
+            "updatedAt": {
+                "$date": "2024-08-09T11:02:17.011Z"
+            }
+        },
+        "store": {
+            "price": 3,
+            "count": 0
+        },
+        "company": {
+            "$oid": "66b53e575423b14979964d4d"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5f98fac76686bafb17be9"
+        },
+        "name": "عصير مانجو",
+        "barcode": "1001",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 7,
+            "count": 30,
+            "updatedAt": {
+                "$date": "2024-08-09T11:02:17.011Z"
+            }
+        },
+        "store": {
+            "price": 5,
+            "count": 40
+        },
+        "company": {
+            "$oid": "66b5f92eac76686bafb17be1"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5fa5bac76686bafb17bf6"
+        },
+        "name": "عصير أناناس",
+        "barcode": "1002",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 10,
+            "count": 5,
+            "updatedAt": {
+                "$date": "2024-08-09T11:02:17.011Z"
+            }
+        },
+        "store": {
+            "price": 7,
+            "count": 300
+        },
+        "company": {
+            "$oid": "66b5f92eac76686bafb17be1"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b5fb7bf9a8afe99e397534"
+        },
+        "name": "عصير كوكتيل",
+        "barcode": "1003",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 10,
+            "count": 50,
+            "updatedAt": {
+                "$date": "2024-08-09T11:16:49.740Z"
+            }
+        },
+        "store": {
+            "price": 7,
+            "count": 50
+        },
+        "company": {
+            "$oid": "66b5f92eac76686bafb17be1"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66b61b8978e831b32a828a71"
+        },
+        "name": "عصير خوخ",
+        "barcode": "1004",
+        "min": 10,
+        "max": 20,
+        "market": {
+            "price": 10,
+            "count": 20,
+            "updatedAt": {
+                "$date": "2024-08-09T13:24:44.325Z"
+            }
+        },
+        "store": {
+            "price": 7,
+            "count": 50
+        },
+        "company": {
+            "$oid": "66b5f92eac76686bafb17be1"
+        },
+        "__v": 0
+    }
+]

@@ -32,14 +32,12 @@ const Subscription = () => {
     ];
 
     return (
-        <div className="container mx-auto p-4">
-            <h1 className="mb-8 text-4xl font-bold text-primary">Subscription Plans</h1>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-                <SubscriptionCard heading="Basic" cost={500} features={basics} />
-
-                <SubscriptionCard heading="Premium" cost={800} features={premium} />
-
-                <SubscriptionCard heading="Enterprise" cost={1000} features={enterprise} />
+        <div className="">
+            <h1 className="mb-8 text-2xl font-bold text-primary sm:text-4xl">Subscription Plans</h1>
+            <div className="flex flex-wrap items-start justify-center gap-4 sm:justify-between">
+                <SubscriptionCard heading="Basic" features={basics} costs={{ month: 500, year: 5800, life: 45000 }} />
+                <SubscriptionCard heading="Premium" features={premium} costs={{ month: 700, year: 8000, life: 55000 }} />
+                <SubscriptionCard heading="Enterprise" features={enterprise} costs={{ month: 900, year: 10000, life: 65000 }} />
             </div>
         </div>
     );
