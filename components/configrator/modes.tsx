@@ -18,8 +18,8 @@ export const Modes = () => {
     return (
         <div className="my-6">
             <h1 className="text-xl font-bold text-primary sm:text-2xl">Mode Toggler</h1>
-            <SheetClose className="flex-between my-8 w-full">
-                <Button asChild className="w-full py-9 text-sm" variant="outline" onClick={() => setTheme("light")}>
+            <SheetClose className="flex-between my-8 w-full !flex-nowrap">
+                <Button asChild className="w-full py-9" variant="outline" onClick={() => setTheme("light")}>
                     <p>
                         Light <br /> Mode
                     </p>

@@ -30,9 +30,9 @@ export const Configrator = ({}: ConfigratorProps) => {
 
     return (
         <Sheet>
-            <SheetTrigger asChild className="fixed bottom-14 right-14 z-10 sm:bottom-20 sm:right-20 print:hidden">
-                <Button asChild className="size-12 rounded-full p-2">
-                    <SettingsIcon className="size-12 !text-white hover:!text-white" />
+            <SheetTrigger asChild className="fixed bottom-10 right-10 z-10 print:hidden">
+                <Button asChild className="size-10 rounded-full p-2 sm:size-12">
+                    <SettingsIcon className="size-10 !text-white hover:!text-white sm:size-12" />
                 </Button>
             </SheetTrigger>
 
