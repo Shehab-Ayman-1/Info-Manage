@@ -8,6 +8,14 @@
 
     - Think About Clients Level
 
+    Learn Mongoose
+    - pre/post Middlewares
+    - Transactions
+    - Advanced Population
+    - Advanced Aggregation
+    - Advanced Queres
+    - Plugins
+
 ```ts
     const { user, setActive, openUserProfile, organization, getOrganization, createOrganization, client, frontendApi, ...rest } = useClerk();
 
