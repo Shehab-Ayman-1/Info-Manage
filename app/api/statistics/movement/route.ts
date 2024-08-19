@@ -1,11 +1,11 @@
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
+import { Types } from "mongoose";
 
 import { DBConnection } from "@/server/configs";
 import { Bills, Debts } from "@/server/models";
 import { json } from "@/utils/response";
 import { months } from "@/constants";
-import { Types } from "mongoose";
 
 export const GET = async (req: NextRequest) => {
     try {
@@ -16,8 +16,8 @@ export const GET = async (req: NextRequest) => {
 
         const { searchParams } = new URL(req.url);
         const supplierId = searchParams.get("supplierId")!;
+        const productId = searchParams.get("productId")!;
         const productName = searchParams.get("productName")!;
-        const companyId = searchParams.get("companyId")!;
 
         const year = new Date().getFullYear();
         const thisYear = new Date(`${year}-1-1`);
@@ -27,8 +27,7 @@ export const GET = async (req: NextRequest) => {
             {
                 $match: {
                     orgId,
-                    "products.name": productName,
-                    "products.companyId": new Types.ObjectId(companyId),
+                    "products.productId": new Types.ObjectId(productId),
                     createdAt: { $gte: thisYear, $lt: nextYear },
                 },
             },

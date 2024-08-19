@@ -17,12 +17,7 @@ export const GET = async () => {
                 $match: { orgId },
             },
             {
-                $lookup: {
-                    from: "clients",
-                    as: "client",
-                    localField: "client",
-                    foreignField: "_id",
-                },
+                $lookup: { from: "clients", as: "client", localField: "client", foreignField: "_id" },
             },
             {
                 $unwind: "$client",
@@ -40,6 +35,9 @@ export const GET = async () => {
                     pending: { $subtract: ["$total", "$paid"] },
                     created_At: "$createdAt",
                 },
+            },
+            {
+                $sort: { created_At: -1 },
             },
         ]);
 
@@ -70,10 +68,10 @@ export const DELETE = async (req: NextRequest) => {
         const { lockerCash } = await Transactions.getLockerCash(orgId);
         if (bill.paid > lockerCash) return json("Locker Doen't Exist This Bill Cost.", 400);
 
-        // Return The Bill Products To The Market Usign [ProductName, CompanyId]
+        // Return The Bill Products To The Market Usign ProductId
         await Promise.all([
-            bill.products.map(async ({ companyId, name, count }) => {
-                await Products.findOneAndUpdate({ company: companyId, name }, { $inc: { "market.count": count } });
+            bill.products.map(async ({ productId, count }) => {
+                await Products.updateOne({ productId }, { $inc: { "market.count": count } });
             }),
         ]);
 

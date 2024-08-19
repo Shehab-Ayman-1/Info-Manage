@@ -15,7 +15,6 @@ import { Input } from "@/ui/input";
 
 const schema = z.object({
     productId: z.string().min(1),
-    companyId: z.string().min(1),
     company: z.string().min(1),
     name: z.string().min(1),
     count: z.number().int().positive().min(1),
@@ -52,7 +51,6 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
         const product = products.data.find((product) => product._id === selectedProductId);
         setValue("purchasePrice", product?.purchasePrice);
         setValue("soldPrice", product?.soldPrice);
-        setValue("companyId", product?.company._id);
     }, [selectedProductId, products, setValue]);
 
     if (type === "delete-model") return;
@@ -71,10 +69,10 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
             return products.concat({
                 ...product,
                 productId,
-                company: company.name,
                 name,
                 count,
                 soldPrice,
+                company: company.name,
                 total: count * soldPrice,
             });
         });

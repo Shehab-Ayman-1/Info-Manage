@@ -22,9 +22,9 @@ export const POST = async (req: NextRequest) => {
 
         // Check If The Products Count Is Exist In The Market
         const promise = await Promise.all(
-            data.products.map(async ({ name, productId, count }) => {
+            data.products.map(async ({ productId, count }) => {
                 const product = await Products.findById(productId);
-                return count > product!.market.count && name;
+                return count > product!.market.count && product!.name;
             }),
         );
         const promiseValues = promise.filter((item) => item);
@@ -35,7 +35,7 @@ export const POST = async (req: NextRequest) => {
         const paid = process === "all" ? data.paid - discount : data.paid;
 
         const state = paid >= productsTotalCosts - discount ? "completed" : "pending";
-        const billProducts = data.products.map(({ productId, total, ...product }) => product);
+        const billProducts = data.products.map(({ total, ...product }) => product);
 
         const total = productsTotalCosts - discount;
         const expireAt = await getExpireAt();

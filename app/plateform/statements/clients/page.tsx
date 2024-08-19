@@ -25,12 +25,12 @@ import { cn } from "@/utils/shadcn";
 type ClientsProps = {};
 
 const Clients = ({}: ClientsProps) => {
-    const { register, watch, setValue, setError, clearErrors, handleSubmit, formState } = useForm({
+    const { formState, register, watch, setValue, setError, clearErrors, handleSubmit } = useForm({
         resolver: zodResolver(createSchema.omit({ products: true })),
     });
 
-    const [products, setProducts] = useState<ProductType[]>([]);
     const { mutate, isPending } = useCreate<CreateClientType>("/api/statements/clients", ["bills"]);
+    const [products, setProducts] = useState<ProductType[]>([]);
 
     const { clients } = useLists();
     const { errors } = formState;
@@ -66,7 +66,7 @@ const Clients = ({}: ClientsProps) => {
         const values = data as CreateClientType;
         if (!products?.length) return setError("root", { message: "No Products Was Selected." });
 
-        const filterProducts = products.map(({ company, ...product }) => product);
+        const filterProducts = products.map(({ company, name, ...product }) => product);
         mutate({ ...values, products: filterProducts }, { onSuccess: () => router.push("/") });
     };
 

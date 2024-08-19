@@ -18,17 +18,13 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const { billId } = res.params;
+
         const bill = await Bills.aggregate([
             {
                 $match: { orgId, _id: new Types.ObjectId(billId) },
             },
             {
-                $lookup: {
-                    from: "clients",
-                    localField: "client",
-                    foreignField: "_id",
-                    as: "client",
-                },
+                $lookup: { from: "clients", localField: "client", foreignField: "_id", as: "client" },
             },
             {
                 $unwind: "$client",
@@ -37,31 +33,32 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
                 $unwind: "$products",
             },
             {
+                $lookup: { from: "products", localField: "products.productId", foreignField: "_id", as: "products.source" },
+            },
+            {
+                $unwind: "$products.source",
+            },
+            {
                 $lookup: {
                     from: "companies",
-                    as: "products.company",
-                    localField: "products.companyId",
+                    localField: "products.source.company",
                     foreignField: "_id",
+                    as: "products.source.company",
                 },
             },
             {
                 $group: {
                     _id: "$_id",
+                    client: { $first: { name: "$client.name", level: "$client.level" } },
                     paid: { $first: "$paid" },
-                    client: {
-                        $first: {
-                            name: "$client.name",
-                            level: "$client.level",
-                        },
-                    },
                     total: { $first: "$total" },
-                    discount: { $first: "$discount" },
                     state: { $first: "$state" },
+                    discount: { $first: "$discount" },
                     createdAt: { $first: "$createdAt" },
                     products: {
                         $push: {
-                            company: { $first: "$products.company.name" },
-                            product: "$products.name",
+                            company: { $first: "$products.source.company.name" },
+                            product: "$products.source.name",
                             count: "$products.count",
                             price: "$products.soldPrice",
                             total: { $multiply: ["$products.count", "$products.soldPrice"] },
@@ -70,6 +67,8 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
                 },
             },
         ]);
+
+        // 0122 4559 768
 
         return json(bill);
     } catch (error: any) {
@@ -97,10 +96,8 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
 
         // Update The Bill Salaries
         if (amount > bill.total - bill.paid) return json("The Payment Amount Is Greater Than The Pending Amount.", 400);
-        await Bills.updateOne(
-            { orgId, _id: billId },
-            { $inc: { paid: amount }, state: bill.paid + amount >= bill.total ? "completed" : "pending" },
-        );
+        const state = bill.paid + amount >= bill.total ? "completed" : "pending";
+        await Bills.updateOne({ orgId, _id: billId }, { $inc: { paid: amount }, state });
 
         // Update The Client Salaries
         await Clients.updateOne({ orgId, _id: bill.client }, { $inc: { pendingCosts: -amount } });
@@ -109,14 +106,8 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
         await Clients.updateLastRefreshDate({ orgId, clientId: bill.client, refreshAfter });
 
         // Create Transaction
-        await Transactions.create({
-            orgId,
-            price: amount,
-            creator: user.fullName,
-            reason: "Client Bill Payment",
-            method: "cash",
-            process: "deposit",
-        });
+        const reason = "Client Bill Payment";
+        await Transactions.create({ orgId, reason, price: amount, creator: user.fullName, method: "cash", process: "deposit" });
 
         return json("The Payment Was Successfully Done.");
     } catch (error: any) {

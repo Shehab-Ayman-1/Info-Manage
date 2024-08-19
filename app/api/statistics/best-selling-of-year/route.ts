@@ -19,10 +19,23 @@ export const GET = async (req: NextRequest) => {
         const products = await Bills.aggregate([
             { $match: { orgId, createdAt: { $gte: thisYear, $lt: nextYear } } },
             { $unwind: "$products" },
-            { $lookup: { from: "companies", foreignField: "_id", localField: "products.companyId", as: "products.company" } },
+            { $lookup: { from: "products", localField: "products.productId", as: "products.source", foreignField: "_id" } },
+            { $unwind: "$products.source" },
+            {
+                $lookup: {
+                    from: "companies",
+                    localField: "products.source.company",
+                    as: "products.source.company",
+                    foreignField: "_id",
+                },
+            },
             {
                 $group: {
-                    _id: { name: "$products.name", company: "$products.company.name", companyId: "$products.companyId" },
+                    _id: {
+                        name: "$products.source.name",
+                        company: "$products.source.company.name",
+                        companyId: "$products.source.company._id",
+                    },
                     totalCount: { $sum: "$products.count" },
                 },
             },
@@ -36,6 +49,9 @@ export const GET = async (req: NextRequest) => {
             },
             {
                 $sort: { totalCount: -1 },
+            },
+            {
+                $limit: 10,
             },
         ]);
 

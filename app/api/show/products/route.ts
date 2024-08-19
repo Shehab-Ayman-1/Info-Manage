@@ -17,37 +17,27 @@ export const GET = async (req: NextRequest) => {
 
         const products = await Products.aggregate([
             {
-                $lookup: {
-                    from: "companies",
-                    as: "companyDetails",
-                    localField: "company",
-                    foreignField: "_id",
-                },
+                $lookup: { from: "companies", as: "company", localField: "company", foreignField: "_id" },
             },
             {
-                $unwind: "$companyDetails",
+                $unwind: "$company",
             },
             {
-                $lookup: {
-                    from: "categories",
-                    as: "categoryDetails",
-                    localField: "companyDetails.category",
-                    foreignField: "_id",
-                },
+                $lookup: { from: "categories", as: "company.category", localField: "company.category", foreignField: "_id" },
             },
             {
-                $unwind: "$categoryDetails",
+                $unwind: "$company.category",
             },
             {
-                $match: { "categoryDetails.orgId": orgId },
+                $match: { "company.category.orgId": orgId },
             },
             {
                 $project: {
                     _id: 1,
                     barcode: "$barcode",
                     product: "$name",
-                    company: "$companyDetails.name",
-                    category: "$categoryDetails.name",
+                    company: "$company.name",
+                    category: "$company.category.name",
                     count: place === "market" ? "$market.count" : "$store.count",
                     price: place === "market" ? "$market.price" : "$store.price",
                     total: {

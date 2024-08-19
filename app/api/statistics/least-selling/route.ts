@@ -16,13 +16,13 @@ export const GET = async () => {
 
         const products = await Products.aggregate([
             {
-                $lookup: { from: "companies", localField: "company", foreignField: "_id", as: "company" },
+                $lookup: { from: "companies", localField: "company", as: "company", foreignField: "_id" },
             },
             {
                 $unwind: "$company",
             },
             {
-                $lookup: { from: "categories", localField: "company.category", foreignField: "_id", as: "company.category" },
+                $lookup: { from: "categories", localField: "company.category", as: "company.category", foreignField: "_id" },
             },
             {
                 $match: { "company.category.orgId": orgId, "market.updatedAt": { $lte: thisMonth } },

@@ -17,8 +17,7 @@ type TBill = Document & {
 
     products: {
         _id: string;
-        companyId: any;
-        name: string;
+        productId: any;
         count: number;
         soldPrice: number;
         purchasePrice: number;
@@ -40,8 +39,7 @@ const schema = new Schema<TBill>({
 
     products: [
         {
-            companyId: { type: Schema.Types.ObjectId, required: true, ref: "companies" },
-            name: { type: String, required: true, trim: true },
+            productId: { type: Schema.Types.ObjectId, ref: "products", required: true },
             count: { type: Number, required: true },
             soldPrice: { type: Number, required: true },
             purchasePrice: { type: Number, required: true },

@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import { ChartsForm } from "@/components/page-structure/charts-form";
 import { useGetByQuery } from "@/hooks/api/useGetByQuery";
 import { useLists } from "@/hooks/data/useLists";
+
+import { ChartsForm } from "@/components/page-structure/charts-form";
 import { SelectBox } from "@/components/ui/select";
 
 type Data = {
@@ -18,9 +19,9 @@ type ResponseType = {
 
 const Movement = () => {
     const { mutate, data, error } = useGetByQuery<ResponseType>("/api/statistics/movement");
+    const { suppliers, productsBySupplier } = useLists();
     const [supplierId, setSupplierId] = useState("");
     const [productId, setProductId] = useState("");
-    const { suppliers, productsBySupplier } = useLists();
 
     useEffect(() => {
         (async () => await suppliers.fetcher?.())();
@@ -40,9 +41,7 @@ const Movement = () => {
         const product = productsBySupplier.data.find((product) => product._id === productId);
         if (!product) return;
 
-        const { name, company } = product;
-        mutate(`productName=${name}&companyId=${company._id}&supplierId=${supplierId}`);
-
+        mutate(`productName=${product.name}&productId=${product._id}&supplierId=${supplierId}`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [supplierId, productId]);
 

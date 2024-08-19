@@ -74,12 +74,7 @@ export const DELETE = async (req: NextRequest) => {
                     justOne: true,
                 });
                 const productId = (supplier?.products as any)._id;
-                await Products.updateOne(
-                    { _id: productId },
-                    {
-                        $inc: { "store.count": -count },
-                    },
-                );
+                await Products.updateOne({ _id: productId }, { $inc: { "store.count": -count } });
             }),
         ]);
 

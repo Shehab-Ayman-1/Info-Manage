@@ -2,8 +2,6 @@
 
     - Make A Quick Client Statements For 1 Product By Default Values [unknown, cash, Pay All, Discount(0)]
 
-    - In The Bill Products, Convert The Remove The Product Name, And Make It Ref To ProductId From Products Collection
-
     - Change The Role From orgRole To User.publicMetadata Custome Role
 
     - Think About Clients Level
