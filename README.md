@@ -2,6 +2,14 @@
 
     - Change The Role From orgRole To User.publicMetadata Custome Role
 
+    - Add Print Button To All Table Pages
+
+    - المرتجعات
+
+    - Think About Barcode Reader
+
+    - Print In Small Printer
+
     - Think About Clients Level
 
     Learn Mongoose

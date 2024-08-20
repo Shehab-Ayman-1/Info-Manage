@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/ui/button";
-import { Card, CardContent, CardFooter, CardHeader } from "@/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/ui/card";
 import { cn } from "@/utils/shadcn";
 
 type CardFormProps = {
@@ -21,7 +21,7 @@ export const CardForm = ({ heading, submitText, disabled, onSubmit, children }: 
                         "mx-auto -mt-8 mb-6 text-xl sm:-mt-16 sm:text-2xl",
                     )}
                 >
-                    {heading}
+                    <CardTitle>{heading}</CardTitle>
                 </CardHeader>
 
                 {children}

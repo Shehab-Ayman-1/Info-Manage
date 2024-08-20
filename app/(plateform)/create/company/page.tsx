@@ -45,7 +45,7 @@ const Company = ({}: CompanyProps) => {
     };
 
     const onUpload = (result: any) => {
-        if (result.event === "success") setValue("image", result.info.thumbnail_url);
+        if (result.event === "success") setValue("image", result.info.url);
     };
 
     const availableImageSrc = image?.startsWith("https://") || image?.startsWith("http://") || image?.startsWith("data:image");
@@ -53,14 +53,8 @@ const Company = ({}: CompanyProps) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <CardForm heading="Create Company" submitText="Create" disabled={createPending}>
-                <div className="mx-auto h-28 w-28 overflow-hidden rounded-[100%]">
-                    <Image
-                        src={availableImageSrc ? image : "/overview.jpeg"}
-                        alt="car"
-                        width={50}
-                        height={50}
-                        className="h-full w-full"
-                    />
+                <div className="relative mx-auto h-28 w-28 overflow-hidden rounded-[100%]">
+                    <Image src={availableImageSrc ? image : "/overview.jpeg"} className="h-full w-full" alt="car" fill />
                 </div>
 
                 <CldUploadWidget uploadPreset="info-manage" onSuccess={onUpload}>
