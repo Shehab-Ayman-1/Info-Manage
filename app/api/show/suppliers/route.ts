@@ -1,8 +1,8 @@
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
-import { Suppliers } from "@/server/models";
 import { DBConnection } from "@/server/configs";
+import { Suppliers } from "@/server/models";
 import { editSchema } from "./schema";
 import { json } from "@/utils/response";
 
@@ -54,6 +54,7 @@ export const GET = async () => {
                             _id: "$products._id",
                             name: "$products.name",
                             company: "$products.company",
+                            companyName: "$company.name",
                         },
                     },
                 },

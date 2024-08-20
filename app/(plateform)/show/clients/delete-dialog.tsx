@@ -16,7 +16,7 @@ export const DeleteDialog = () => {
     return (
         <DialogForm heading="Delete Product" description="After You Delete The Products, You Will Lose This Client Forever.">
             <div className="flex-end">
-                <Button variant="outline" className="text-black dark:text-white">
+                <Button variant="outline" className="text-black dark:text-white" onClick={onClose}>
                     Cancel
                 </Button>
                 <Button variant="destructive" onClick={onClick} disabled={isPending}>

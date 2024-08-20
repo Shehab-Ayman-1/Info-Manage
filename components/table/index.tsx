@@ -12,6 +12,7 @@ import { Controllers } from "./controllers";
 import { THeader } from "./table-header";
 import { TBody } from "./table-body";
 import { Filter } from "./filter";
+import PaginationCount from "./pagination-count";
 
 type DataTableProps<TData, TValue> = {
     columns: ColumnDef<TData, TValue>[];
@@ -22,8 +23,9 @@ type DataTableProps<TData, TValue> = {
 };
 
 export const DataTable = <TData, TValue>({ columns, data, filterBy, totalFor, smallSize }: DataTableProps<TData, TValue>) => {
-    const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+    const [sorting, setSorting] = useState<SortingState>([]);
+    const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 20 });
 
     const table = useReactTable({
         data,
@@ -36,6 +38,7 @@ export const DataTable = <TData, TValue>({ columns, data, filterBy, totalFor, sm
 
         // Pagination
         getPaginationRowModel: getPaginationRowModel(),
+        onPaginationChange: setPagination,
 
         // Sorting
         onSortingChange: setSorting,
@@ -46,7 +49,7 @@ export const DataTable = <TData, TValue>({ columns, data, filterBy, totalFor, sm
         getFilteredRowModel: getFilteredRowModel(),
 
         // States
-        state: { sorting, columnFilters },
+        state: { sorting, columnFilters, pagination },
     });
 
     const { previousPage, getCanPreviousPage, nextPage, getCanNextPage } = table;
@@ -54,6 +57,9 @@ export const DataTable = <TData, TValue>({ columns, data, filterBy, totalFor, sm
 
     const headerGroups = getHeaderGroups();
     const rowModel = getRowModel();
+
+    const totalPaginationCount = table.getPageCount();
+    const currentPaginationCount = table.getState().pagination.pageIndex + 1;
 
     return (
         <Card className="w-full border-none bg-transparent">
@@ -69,6 +75,7 @@ export const DataTable = <TData, TValue>({ columns, data, filterBy, totalFor, sm
             </CardContent>
 
             <CardFooter className="flex-between gap-4 !p-0 !pt-4 print:hidden">
+                <PaginationCount currentPaginationCount={currentPaginationCount} totalPaginationCount={totalPaginationCount} />
                 <Controllers
                     previousPage={previousPage}
                     nextPage={nextPage}

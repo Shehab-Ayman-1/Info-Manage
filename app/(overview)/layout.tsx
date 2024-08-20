@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
             <div className="sm:p-4">
                 <Header />
             </div>
-            <div className="mx-auto mb-16 min-h-[calc(100vh-200px)] max-w-screen-xl p-2 sm:p-4">{children}</div>
+            <div className="mx-auto mb-16 min-h-[calc(100vh-250px)] max-w-screen-xl p-2 sm:p-4">{children}</div>
         </Fragment>
     );
 };

@@ -1,9 +1,9 @@
 import { auth } from "@clerk/nextjs/server";
+import { NextRequest } from "next/server";
 
 import { DBConnection } from "@/server/configs";
 import { Transactions } from "@/server/models";
 import { json } from "@/utils/response";
-import { NextRequest } from "next/server";
 
 export const GET = async (req: NextRequest) => {
     try {

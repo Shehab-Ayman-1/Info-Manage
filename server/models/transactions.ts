@@ -55,8 +55,8 @@ schema.statics.getLockerCash = async function (orgId: string) {
     const visaWithdraw = cashes.find((cash) => cash.method === "visa" && cash.process === "withdraw");
 
     const data = {
-        lockerCash: cashDeposit?.price - cashWithdraw?.price || 0,
-        lockerVisa: visaDeposit?.price - visaWithdraw?.price || 0,
+        lockerCash: (cashDeposit?.price || 0) - (cashWithdraw?.price || 0),
+        lockerVisa: (visaDeposit?.price || 0) - (visaWithdraw?.price || 0),
     };
 
     return data;

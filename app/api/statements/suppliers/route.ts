@@ -23,6 +23,8 @@ export const POST = async (req: NextRequest) => {
         const { lockerCash, lockerVisa } = await Transactions.getLockerCash(orgId);
         const productCosts = products.reduce((prev, cur) => prev + cur.total, 0);
 
+        console.log(productCosts, lockerCash);
+
         if (process === "all") {
             if (method === "cash" && productCosts > lockerCash) return json("Locker Doesn't Have This Statement Cost.", 400);
             if (method === "visa" && productCosts > lockerVisa) return json("Visa Doesn't Have This Statement Cost.", 400);
@@ -35,7 +37,7 @@ export const POST = async (req: NextRequest) => {
         // Create Bill
         const debtProducts = products.map(({ name, count, price }) => ({ name, count, price }));
         const state = paid >= productCosts ? "completed" : "pending";
-        
+
         const expireAt = await getExpireAt();
         await Debts.create({ orgId, paid, state, expireAt, supplier: supplierId, total: productCosts, products: debtProducts });
 
