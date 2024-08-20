@@ -6,22 +6,21 @@ import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import Image from "next/image";
 
-import { createSchema, CreateCompanySchema } from "@/app/api/create/companies/schema";
-import { CardForm } from "@/components/page-structure/CardForm";
-
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
 
-import { SelectBox } from "@/components/ui/select";
-import { Input } from "@/ui/input";
+import { createSchema, CreateCompanySchema } from "@/app/api/create/companies/schema";
+import { CardForm } from "@/components/page-structure/CardForm";
+import { ComboBox } from "@/components/ui/comboBox";
 import { Button } from "@/ui/button";
+import { Input } from "@/ui/input";
 
 type CompanyProps = {};
 
 type RequestType = CreateCompanySchema;
 
 const Company = ({}: CompanyProps) => {
-    const { register, handleSubmit, watch, setValue, formState } = useForm({ resolver: zodResolver(createSchema) });
+    const { formState, register, watch, setValue, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(createSchema) });
     const { mutate, isPending: createPending } = useCreate<RequestType>("/api/create/companies", []);
 
     const { categories, onReset } = useLists();
@@ -69,13 +68,14 @@ const Company = ({}: CompanyProps) => {
 
                 <Input type="url" placeholder="Enter Image Link" error={errors?.image} {...register("image")} />
 
-                <SelectBox
+                <ComboBox
                     label="Category Name"
                     name="categoryId"
                     loading={categories.isLoading}
                     items={categories.lists}
                     error={errors?.categoryId}
                     setValue={setValue}
+                    clearErrors={clearErrors}
                 />
 
                 <Input placeholder="Company Name" error={errors?.name} {...register("name")} />

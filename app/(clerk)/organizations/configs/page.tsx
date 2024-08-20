@@ -6,13 +6,13 @@ import { useForm } from "react-hook-form";
 import { configsSchema, EditConfigsSchema } from "@/app/api/organizations/schema";
 import { CardForm } from "@/components/page-structure/CardForm";
 import { SubmitButton } from "@/components/public/submit-btn";
-import { SelectBox } from "@/components/ui/select";
+import { ComboBox } from "@/components/ui/comboBox";
 import { useUpdate } from "@/hooks/api/useUpdate";
 import { noOfMonths } from "@/constants";
 import { Input } from "@/ui/input";
 
 const Configs = () => {
-    const { formState, register, setValue, handleSubmit } = useForm({
+    const { formState, register, setValue, clearErrors, handleSubmit } = useForm({
         resolver: zodResolver(configsSchema.omit({ organizationId: true })),
     });
     const { mutate, isPending } = useUpdate<EditConfigsSchema>("/api/organizations");
@@ -45,20 +45,22 @@ const Configs = () => {
                 </div>
 
                 <div className="flex-between">
-                    <SelectBox
+                    <ComboBox
                         label="Remove After"
                         name="removeUnnecessaryData"
                         setValue={setValue}
                         items={noOfMonths}
                         error={errors.removeUnnecessaryData}
+                        clearErrors={clearErrors}
                         defaultValue={organization?.publicMetadata.removeUnnecessaryData as string}
                     />
-                    <SelectBox
+                    <ComboBox
                         label="Refresh After"
                         name="refreshClientsPurchases"
                         setValue={setValue}
                         items={noOfMonths}
                         error={errors.refreshClientsPurchases}
+                        clearErrors={clearErrors}
                         defaultValue={organization?.publicMetadata.refreshClientsPurchases as string}
                     />
                 </div>

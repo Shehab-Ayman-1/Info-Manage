@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 
 import { CardForm } from "@/components/page-structure/CardForm";
 import { methods, place, process } from "@/constants";
-import { SelectBox } from "@/components/ui/select";
 
 import { CreateSupplierType, createSchema } from "@/app/api/statements/suppliers/schema";
 import { OpenModuleButton } from "@/components/public/openModuleButton";
@@ -19,6 +18,7 @@ import { columns } from "./table-columns";
 
 import { InsertProduct, ProductType } from "./insert-product";
 import { SubmitButton } from "@/components/public/submit-btn";
+import { ComboBox } from "@/components/ui/comboBox";
 import { DeleteDialog } from "./delete-dialog";
 import { Input } from "@/ui/input";
 
@@ -87,20 +87,21 @@ const Suppliers = ({}: SuppliersProps) => {
         <CardForm heading="Supplier Statement">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex-between">
-                    <SelectBox
+                    <ComboBox
                         label="Choose Supplier"
                         name="supplierId"
                         loading={suppliers.isLoading}
                         items={suppliers.lists}
                         error={errors?.supplierId}
                         setValue={setValue}
+                        clearErrors={clearErrors}
                     />
-                    <SelectBox label="Choose Place" name="place" error={errors?.place} items={place} setValue={setValue} />
+                    <ComboBox label="Choose Place" name="place" error={errors?.place} items={place} setValue={setValue} />
                 </div>
 
                 <div className="flex-between">
-                    <SelectBox label="Choose Method" name="method" error={errors?.method} items={methods} setValue={setValue} />
-                    <SelectBox
+                    <ComboBox label="Choose Method" name="method" error={errors?.method} items={methods} setValue={setValue} />
+                    <ComboBox
                         label="Choose Process"
                         name="process"
                         error={errors?.process}
@@ -110,14 +111,18 @@ const Suppliers = ({}: SuppliersProps) => {
                 </div>
 
                 {processValue === "milestone" && (
-                    <Input type="number" placeholder="Paid Amount" {...register("paid", { valueAsNumber: true })} />
+                    <Input
+                        type="number"
+                        placeholder="Paid Amount"
+                        error={errors.paid}
+                        {...register("paid", { valueAsNumber: true })}
+                    />
                 )}
 
                 <AlertError root={errors?.root} />
                 <OpenModuleButton clearErrors={clearErrors} />
 
                 {!!products.length && <DataTable columns={columns} data={products} smallSize totalFor="total" />}
-
                 <SubmitButton text="Buy" isPending={isPending} />
             </form>
 

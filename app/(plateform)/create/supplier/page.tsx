@@ -6,19 +6,19 @@ import { useRouter } from "next/navigation";
 
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
+import { columns } from "./table-columns";
 
 import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { CardForm } from "@/components/page-structure/CardForm";
 import { createSchema } from "@/app/api/create/suppliers/schema";
-import { SelectBox } from "@/components/ui/select";
-import { Input } from "@/ui/input";
 
 import { SubmitButton } from "@/components/public/submit-btn";
+import { ComboBox } from "@/components/ui/comboBox";
 import { DataTable } from "@/components/table";
 import { DeleteDialog } from "./delete-dialog";
 import { InsertDialog } from "./insert-dialog";
 import { SupplierType } from "./schema";
-import { columns } from "./table-columns";
+import { Input } from "@/ui/input";
 
 const processes = [
     { _id: "1", value: "old", title: "Old Supplier" },
@@ -65,17 +65,18 @@ const Supplier = ({}: SupplierProps) => {
 
     return (
         <CardForm heading="New Supplier">
-            <SelectBox label="Process" name="process" items={processes} onChange={onProcess} />
+            <ComboBox label="Process" name="process" items={processes} onChange={onProcess} />
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 {process === "old" && (
-                    <SelectBox
+                    <ComboBox
                         label="Choose The Supplier Name"
                         name="supplierId"
                         loading={suppliers.isLoading}
                         items={suppliers.lists}
                         error={errors?.supplierId}
                         setValue={setValue}
+                        clearErrors={clearErrors}
                     />
                 )}
 

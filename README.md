@@ -6,6 +6,8 @@
 
     - Add Print Button To All Table Pages, And Print All The Products, Not Only The Show Products In The Table
 
+    - Add Client Phone Number
+
     - Edit The Notifications To Get The Insufficients Products
 
     - Enable Multi Select To New Supplier

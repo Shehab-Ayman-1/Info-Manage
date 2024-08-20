@@ -12,6 +12,13 @@ export const GET = async () => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const clients = await Clients.find({ orgId }).select(["_id", "name"]);
+
+        const unknown = clients.find((client) => client.name === "unknown");
+        if (!unknown) {
+            const client = await Clients.create({ orgId, name: "unknown", bronzeTo: 1, silverTo: 1 });
+            clients.push(client);
+        }
+
         return json(clients);
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");

@@ -18,7 +18,7 @@ type NotificationsProps = {
 
 export const Notifications = () => {
     const { data, isPending, error } = useGet<NotificationsProps>("/api/notifications", ["notifications"]);
-    if (isPending || error) return;
+    if (isPending || error || !data?.length) return;
 
     const textStyle = (process: "deposit" | "withdraw") =>
         cn(
@@ -33,7 +33,7 @@ export const Notifications = () => {
             </PopoverTrigger>
 
             <PopoverContent className="bg-gradient w-auto md:min-w-96">
-                {data.map((notify, index) => (
+                {data?.map((notify, index) => (
                     <Fragment key={notify._id}>
                         <div className="flex-start cursor-pointer rounded-md px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600">
                             {notify.process === "deposit" ? (

@@ -9,15 +9,15 @@ import { useModel } from "@/hooks/useModel";
 import { schema, SupplierType } from "./schema";
 
 import { SubmitButton } from "@/components/public/submit-btn";
+import { ComboBox } from "@/components/ui/comboBox";
 import { DialogForm } from "@/components/ui/dialog";
-import { SelectBox } from "@/components/ui/select";
 
 type InsertDialogProps = {
     setProducts: Dispatch<SetStateAction<SupplierType[]>>;
 };
 
 export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
-    const { formState, setValue, reset, handleSubmit } = useForm({ resolver: zodResolver(schema) });
+    const { formState, setValue, reset, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(schema) });
     const { errors, isLoading } = formState;
 
     const { type, onClose } = useModel();
@@ -50,13 +50,14 @@ export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
     return (
         <DialogForm heading="Insert Product" description="Append Product To The Choosen Supplier">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <SelectBox
+                <ComboBox
                     label="Product"
                     name="productId"
                     loading={products.isLoading}
                     groups={products.groups}
                     error={errors?.productId}
                     setValue={setValue}
+                    clearErrors={clearErrors}
                 />
                 <SubmitButton text="Insert" isPending={isLoading} />
             </form>

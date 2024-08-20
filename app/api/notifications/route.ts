@@ -11,7 +11,10 @@ export const GET = async () => {
         const { userId, orgId } = auth();
         if (!userId || !orgId) return;
 
-        const notifications = await Transactions.find({ orgId }).limit(5).sort({ createdAt: -1 });
+        const notifications = await Transactions.find({ orgId })
+            .limit(5)
+            .sort({ createdAt: -1 })
+            .select(["-creator", "-orgId", "-__v"]);
         return json(notifications);
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");

@@ -9,8 +9,8 @@ import { useLists } from "@/hooks/data/useLists";
 import { useModel } from "@/hooks/useModel";
 
 import { SubmitButton } from "@/components/public/submit-btn";
+import { ComboBox } from "@/components/ui/comboBox";
 import { DialogForm } from "@/components/ui/dialog";
-import { SelectBox } from "@/components/ui/select";
 import { Input } from "@/ui/input";
 
 const schema = z.object({
@@ -29,7 +29,7 @@ type InsertProductProps = {
 };
 
 export const InsertProduct = ({ setProducts }: InsertProductProps) => {
-    const { register, setValue, watch, reset, handleSubmit, formState } = useForm({
+    const { formState, register, setValue, watch, reset, clearErrors, handleSubmit } = useForm({
         resolver: zodResolver(schema.omit({ total: true, name: true, company: true })),
     });
 
@@ -66,13 +66,14 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
     return (
         <DialogForm heading="Insert Product" description="All Fields Are Required">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <SelectBox
+                <ComboBox
                     label="Choose Product Name"
                     name="productId"
                     loading={productsBySupplier.isLoading}
                     groups={productsBySupplier.groups}
                     error={errors.productId}
                     setValue={setValue}
+                    clearErrors={clearErrors}
                 />
 
                 <div className="flex-between">

@@ -16,7 +16,7 @@ import { columns } from "./table-columns";
 import { CardForm } from "@/components/page-structure/CardForm";
 import { SubmitButton } from "@/components/public/submit-btn";
 import { AlertError } from "@/components/ui/alert-error";
-import { SelectBox } from "@/components/ui/select";
+import { ComboBox } from "@/components/ui/comboBox";
 import { DataTable } from "@/components/table";
 import { DeleteDialog } from "./delete-dialog";
 import { Input } from "@/ui/input";
@@ -74,31 +74,49 @@ const Clients = ({}: ClientsProps) => {
         <CardForm heading="Client Statement">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex-between">
-                    <SelectBox
+                    <ComboBox
                         label="Choose Client"
                         name="clientId"
                         loading={clients.isLoading}
                         items={clients.lists}
                         error={errors?.clientId}
                         setValue={setValue}
+                        clearErrors={clearErrors}
                     />
-                    <SelectBox label="Choose Method" name="method" error={errors?.method} items={methods} setValue={setValue} />
+                    <ComboBox
+                        label="Choose Method"
+                        name="method"
+                        error={errors?.method}
+                        items={methods}
+                        setValue={setValue}
+                        clearErrors={clearErrors}
+                    />
                 </div>
 
                 <div className={cn("flex-between", processValue === "milestone" && "flex-wrap")}>
-                    <SelectBox
+                    <ComboBox
                         label="Choose Process"
                         name="process"
-                        error={errors?.process}
                         items={process}
+                        error={errors?.process}
                         onChange={onProcessChange}
                     />
 
                     <div className="flex-between w-full">
-                        <Input type="number" placeholder="Discount" {...register("discount", { valueAsNumber: true })} />
+                        <Input
+                            type="number"
+                            placeholder="Discount"
+                            error={errors.discount}
+                            {...register("discount", { valueAsNumber: true })}
+                        />
 
                         {processValue === "milestone" && (
-                            <Input type="number" placeholder="Paid Amount" {...register("paid", { valueAsNumber: true })} />
+                            <Input
+                                type="number"
+                                placeholder="Paid Amount"
+                                error={errors.paid}
+                                {...register("paid", { valueAsNumber: true })}
+                            />
                         )}
                     </div>
                 </div>

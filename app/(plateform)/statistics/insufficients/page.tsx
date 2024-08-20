@@ -6,7 +6,7 @@ import { useLists } from "@/hooks/data/useLists";
 import { columns } from "./table-columns";
 
 import { TableForm } from "@/components/page-structure/table-form";
-import { SelectBox } from "@/components/ui/select";
+import { ComboBox } from "@/components/ui/comboBox";
 import { place as places } from "@/constants";
 
 type InsufficientsProps = {
@@ -46,14 +46,14 @@ const Insufficients = () => {
             navigate={{ text: "New Statement", to: "/statements/suppliers" }}
         >
             <div className="flex-between">
-                <SelectBox
+                <ComboBox
                     label="Supplier"
                     name="supplierId"
                     loading={suppliers.isLoading}
                     items={suppliers.lists}
                     onChange={(value) => setSupplierId(value)}
                 />
-                <SelectBox label="Place" name="place" items={places} onChange={(value) => setPlace(value)} />
+                <ComboBox label="Place" name="place" items={places} onChange={(value) => setPlace(value)} />
             </div>
         </TableForm>
     );

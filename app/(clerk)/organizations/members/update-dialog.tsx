@@ -3,13 +3,13 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { SubmitButton } from "@/components/public/submit-btn";
+import { ComboBox } from "@/components/ui/comboBox";
 import { DialogForm } from "@/components/ui/dialog";
-import { SelectBox } from "@/components/ui/select";
 import { useModel } from "@/hooks/useModel";
 import { roles } from "@/constants";
 
 export const UpdateDialog = () => {
-    const { formState, setValue, handleSubmit } = useForm();
+    const { formState, setValue, clearErrors, handleSubmit } = useForm();
     const { organization } = useOrganization();
     const { type, data } = useModel();
 
@@ -28,7 +28,14 @@ export const UpdateDialog = () => {
     return (
         <DialogForm heading="Update Dialog" description="You Can't Undo You Updated Again">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <SelectBox label="Role" name="role" error={errors.role} items={roles} setValue={setValue} />
+                <ComboBox
+                    label="Role"
+                    name="role"
+                    error={errors.role}
+                    items={roles}
+                    setValue={setValue}
+                    clearErrors={clearErrors}
+                />
                 <SubmitButton text="Update" isPending={isLoading} />
             </form>
         </DialogForm>

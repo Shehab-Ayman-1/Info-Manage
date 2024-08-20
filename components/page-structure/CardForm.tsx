@@ -18,10 +18,10 @@ export const CardForm = ({ heading, submitText, disabled, onSubmit, children }: 
                 <CardHeader
                     className={cn(
                         "bg-gradient-heavy w-[80%] rounded-lg text-center font-bold text-white !shadow-xl dark:text-black",
-                        "mx-auto -mt-8 mb-6 text-xl sm:-mt-16 sm:text-2xl",
+                        "mx-auto -mt-8 mb-6 sm:-mt-[4.5rem] sm:!py-10",
                     )}
                 >
-                    <CardTitle>{heading}</CardTitle>
+                    <CardTitle className="text-xl leading-none sm:text-2xl">{heading}</CardTitle>
                 </CardHeader>
 
                 {children}

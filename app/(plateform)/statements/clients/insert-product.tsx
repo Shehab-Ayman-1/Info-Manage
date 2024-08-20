@@ -9,8 +9,8 @@ import { useLists } from "@/hooks/data/useLists";
 import { useModel } from "@/hooks/useModel";
 
 import { SubmitButton } from "@/components/public/submit-btn";
+import { ComboBox } from "@/components/ui/comboBox";
 import { DialogForm } from "@/components/ui/dialog";
-import { SelectBox } from "@/components/ui/select";
 import { Input } from "@/ui/input";
 
 const schema = z.object({
@@ -30,7 +30,7 @@ type InsertProductProps = {
 };
 
 export const InsertProduct = ({ setProducts }: InsertProductProps) => {
-    const { register, setValue, watch, reset, handleSubmit, formState } = useForm({
+    const { formState, register, setValue, watch, reset, clearErrors, handleSubmit } = useForm({
         resolver: zodResolver(schema.omit({ company: true, name: true, total: true })),
     });
 
@@ -81,16 +81,19 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
         onClose();
     };
 
+    console.log(errors);
+
     return (
         <DialogForm heading="Insert Product" description="All Fields Are Required">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <SelectBox
-                    label="Choose Product Name"
+                <ComboBox
+                    label="Product Name"
                     name="productId"
                     loading={products.isLoading}
                     groups={products.groups}
-                    error={errors.productId}
+                    error={errors?.productId}
                     setValue={setValue}
+                    clearErrors={clearErrors}
                 />
 
                 <div className="flex-between">
@@ -103,7 +106,7 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
                     <Input
                         type="number"
                         placeholder="Sold Price"
-                        error={errors.price}
+                        error={errors.soldPrice}
                         {...register("soldPrice", { valueAsNumber: true })}
                     />
                 </div>

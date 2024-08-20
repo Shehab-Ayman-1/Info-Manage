@@ -6,8 +6,8 @@ import { useLists } from "@/hooks/data/useLists";
 import { useModel } from "@/hooks/useModel";
 import { columns } from "./table-columns";
 
+import { ComboBox } from "@/components/ui/comboBox";
 import { DialogForm } from "@/components/ui/dialog";
-import { SelectBox } from "@/components/ui/select";
 import { DataTable } from "@/components/table";
 import { DeleteDialog } from "./delete-dialog";
 import { Button } from "@/ui/button";
@@ -25,11 +25,11 @@ type RequestType = {
 export const UpdateProductsDialog = () => {
     const { mutate, isPending } = useUpdate<RequestType>("/api/show/suppliers/products", ["suppliers"]);
 
-    const { type, data, onClose } = useModel();
     const { products: productsLists, onReset } = useLists();
+    const { type, data, onClose } = useModel();
 
-    const [supplierId, setSupplierId] = useState("");
     const [products, setProducts] = useState<ProductType[]>([]);
+    const [supplierId, setSupplierId] = useState("");
 
     useEffect(() => {
         if (!data?.products?.length || !data?.supplierId) return;
@@ -72,7 +72,7 @@ export const UpdateProductsDialog = () => {
     return (
         <DialogForm heading="Update Products" description="Any Changes Can't Be Undo After Saving">
             <form onSubmit={onSubmit}>
-                <SelectBox label="Product" name="productId" groups={productsLists.groups} onChange={onChange} required={false} />
+                <ComboBox label="Product" name="productId" groups={productsLists.groups} onChange={onChange} />
                 {!!products.length && <DataTable columns={columns} data={products} smallSize />}
 
                 <Button type="submit" className="w-full" disabled={isPending}>

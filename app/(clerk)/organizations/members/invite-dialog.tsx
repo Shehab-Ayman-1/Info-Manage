@@ -6,8 +6,8 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 import { SubmitButton } from "@/components/public/submit-btn";
+import { ComboBox } from "@/components/ui/comboBox";
 import { DialogForm } from "@/components/ui/dialog";
-import { SelectBox } from "@/components/ui/select";
 import { useModel } from "@/hooks/useModel";
 import { roles } from "@/constants";
 import { Input } from "@/ui/input";
@@ -18,7 +18,7 @@ const schema = z.object({
 });
 
 export const InviteDialog = () => {
-    const { formState, register, setValue, handleSubmit } = useForm({ resolver: zodResolver(schema) });
+    const { formState, register, setValue, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(schema) });
     const { organization } = useOrganization();
     const { type, onClose } = useModel();
     const { errors, isLoading } = formState;
@@ -36,8 +36,15 @@ export const InviteDialog = () => {
     return (
         <DialogForm heading="Invite Member" description="Invite All The Member Fields">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Input type="email" placeholder="Email:" {...register("emailAddress")} />
-                <SelectBox label="Role" name="role" error={errors.role} items={roles} setValue={setValue} />
+                <Input type="email" placeholder="Email:" error={errors.emailAddress} {...register("emailAddress")} />
+                <ComboBox
+                    label="Role"
+                    name="role"
+                    items={roles}
+                    error={errors.role}
+                    setValue={setValue}
+                    clearErrors={clearErrors}
+                />
                 <SubmitButton text="Invite" isPending={isLoading} />
             </form>
         </DialogForm>

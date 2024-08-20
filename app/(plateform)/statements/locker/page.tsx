@@ -8,13 +8,13 @@ import { useCreate } from "@/hooks/api/useCreate";
 import { CreateLockerSchema, createSchema } from "@/app/api/statements/locker/schema";
 import { lockerMethods, methods } from "@/constants/statements";
 import { CardForm } from "@/components/page-structure/CardForm";
-import { SelectBox } from "@/components/ui/select";
+import { ComboBox } from "@/components/ui/comboBox";
 import { Input } from "@/ui/input";
 
 type LockerProps = {};
 
 const Locker = ({}: LockerProps) => {
-    const { formState, register, setValue, handleSubmit } = useForm({ resolver: zodResolver(createSchema) });
+    const { formState, register, setValue, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(createSchema) });
     const { mutate, isPending } = useCreate("/api/statements/locker", ["transactions"]);
 
     const { errors } = formState;
@@ -38,8 +38,22 @@ const Locker = ({}: LockerProps) => {
                     />
                 </div>
                 <div className="flex-between">
-                    <SelectBox label="Process" name="process" error={errors?.process} items={lockerMethods} setValue={setValue} />
-                    <SelectBox label="Method" name="method" error={errors?.method} items={methods} setValue={setValue} />
+                    <ComboBox
+                        label="Process"
+                        name="process"
+                        error={errors?.process}
+                        items={lockerMethods}
+                        setValue={setValue}
+                        clearErrors={clearErrors}
+                    />
+                    <ComboBox
+                        label="Method"
+                        name="method"
+                        error={errors?.method}
+                        items={methods}
+                        setValue={setValue}
+                        clearErrors={clearErrors}
+                    />
                 </div>
             </CardForm>
         </form>

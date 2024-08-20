@@ -23,8 +23,6 @@ export const POST = async (req: NextRequest) => {
         const { lockerCash, lockerVisa } = await Transactions.getLockerCash(orgId);
         const productCosts = products.reduce((prev, cur) => prev + cur.total, 0);
 
-        console.log(productCosts, lockerCash);
-
         if (process === "all") {
             if (method === "cash" && productCosts > lockerCash) return json("Locker Doesn't Have This Statement Cost.", 400);
             if (method === "visa" && productCosts > lockerVisa) return json("Visa Doesn't Have This Statement Cost.", 400);

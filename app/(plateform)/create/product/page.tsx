@@ -10,15 +10,15 @@ import { CreateProductSchema } from "@/app/api/create/products/schema";
 import { InsertAndUpdateDialog } from "./insert-update-dialog";
 import { ProductType } from "./schema";
 
-import { CardForm } from "@/components/page-structure/CardForm";
-import { SubmitButton } from "@/components/public/submit-btn";
-import { SelectBox } from "@/components/ui/select";
-
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
+import { columns } from "./table-columns";
+
+import { CardForm } from "@/components/page-structure/CardForm";
+import { SubmitButton } from "@/components/public/submit-btn";
+import { ComboBox } from "@/components/ui/comboBox";
 import { DataTable } from "@/components/table";
 import { DeleteDialog } from "./delete-dialog";
-import { columns } from "./table-columns";
 
 const schema = z.object({
     companyId: z.string().min(1),
@@ -64,23 +64,24 @@ const Product = ({}: ProductProps) => {
     return (
         <CardForm heading="Create Product">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <SelectBox
+                <ComboBox
                     label="Company"
                     name="companyId"
                     loading={companies.isLoading}
                     groups={companies.groups}
                     error={errors.companyId}
                     setValue={setValue}
+                    clearErrors={clearErrors}
                 />
 
-                <SelectBox
+                <ComboBox
                     label="Supplier (Optional)"
                     name="supplierId"
-                    required={false}
                     loading={suppliers.isLoading}
                     items={suppliers.lists}
                     error={errors.supplierId}
                     setValue={setValue}
+                    clearErrors={clearErrors}
                 />
 
                 <OpenModuleButton clearErrors={clearErrors} />

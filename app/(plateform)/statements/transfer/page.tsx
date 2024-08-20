@@ -9,13 +9,13 @@ import { place } from "@/constants";
 
 import { editSchema, EditTransferSchema } from "@/app/api/statements/transfer/schema";
 import { CardForm } from "@/components/page-structure/CardForm";
-import { SelectBox } from "@/components/ui/select";
+import { ComboBox } from "@/components/ui/comboBox";
 import { Input } from "@/ui/input";
 
 type TransferProps = {};
 
 const Transfer = ({}: TransferProps) => {
-    const { formState, register, setValue, reset, handleSubmit } = useForm({ resolver: zodResolver(editSchema) });
+    const { formState, register, setValue, reset, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(editSchema) });
     const { mutate, isPending } = useUpdate<EditTransferSchema>("/api/statements/transfer", ["market", "store"]);
 
     const { products } = useLists();
@@ -36,15 +36,16 @@ const Transfer = ({}: TransferProps) => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <CardForm heading="Transfer Products" submitText="Transfer" disabled={isPending}>
                 <div className="flex-between">
-                    <SelectBox
+                    <ComboBox
                         label="Products"
                         name="productId"
                         loading={products.isLoading}
                         groups={products.groups}
                         error={errors.productId}
                         setValue={setValue}
+                        clearErrors={clearErrors}
                     />
-                    <SelectBox label="Transfer To (Place)" name="place" error={errors.place} items={place} setValue={setValue} />
+                    <ComboBox label="Transfer To (Place)" name="place" error={errors.place} items={place} setValue={setValue} />
                 </div>
 
                 <Input type="number" placeholder="Count" error={errors.count} {...register("count", { valueAsNumber: true })} />

@@ -1,11 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import { useGetByQuery } from "@/hooks/api/useGetByQuery";
-import { useLists } from "@/hooks/data/useLists";
-
 import { ChartsForm } from "@/components/page-structure/charts-form";
-import { SelectBox } from "@/components/ui/select";
+import { useGetByQuery } from "@/hooks/api/useGetByQuery";
+import { ComboBox } from "@/components/ui/comboBox";
+import { useLists } from "@/hooks/data/useLists";
 
 type Data = {
     month: string;
@@ -54,14 +53,14 @@ const Movement = () => {
             chart2={{ heading: "Sales", data: data?.sales || [] }}
         >
             <div className="flex-between">
-                <SelectBox
+                <ComboBox
                     label="Supplier"
                     name="supplierId"
                     loading={suppliers.isLoading}
                     items={suppliers.lists}
                     onChange={(value) => setSupplierId(value)}
                 />
-                <SelectBox
+                <ComboBox
                     label="Product"
                     name="productId"
                     loading={productsBySupplier.isLoading}
