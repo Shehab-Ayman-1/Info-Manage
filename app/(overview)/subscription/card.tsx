@@ -1,10 +1,11 @@
+import { auth, clerkClient } from "@clerk/nextjs/server";
+import { CheckCheckIcon } from "lucide-react";
+
 import { Card } from "@/ui/card";
 import { cn } from "@/utils/shadcn";
-import { CheckCheckIcon } from "lucide-react";
 
 type SubscriptionCardProps = {
     heading: "Basic" | "Premium" | "Enterprise";
-    subscription: "basic" | "premium" | "enterprise";
     costs: {
         month: number;
         year: number;
@@ -15,7 +16,11 @@ type SubscriptionCardProps = {
 
 type Cost = keyof SubscriptionCardProps["costs"];
 
-export const SubscriptionCard = ({ heading, subscription, costs, features }: SubscriptionCardProps) => {
+export const SubscriptionCard = async ({ heading, costs, features }: SubscriptionCardProps) => {
+    const { orgId, orgSlug } = auth();
+    const organization = orgSlug && (await clerkClient().organizations.getOrganization({ organizationId: orgId, slug: orgSlug }));
+    const subscription = (organization as any)?.publicMetadata?.subscription;
+
     return (
         <Card
             className={cn(

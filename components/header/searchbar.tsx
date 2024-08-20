@@ -12,8 +12,8 @@ import { Input } from "@/ui/input";
 type SearchbarProps = {};
 
 export const Searchbar = ({}: SearchbarProps) => {
-    const [open, setOpen] = useState(false);
     const [filteredProducts, setFilteredProducts] = useState<Products["data"]>([]);
+    const [open, setOpen] = useState(false);
     const { products } = useLists();
     const router = useRouter();
 
@@ -41,19 +41,20 @@ export const Searchbar = ({}: SearchbarProps) => {
                 <SearchIcon className="hover:text-slate-500" />
             </PopoverTrigger>
 
-            <PopoverContent className="w-auto rounded-xl border-none shadow-xl" align="end">
-                <Input placeholder="Search " className="w-40 sm:w-96" onChange={onChange} />
+            <PopoverContent align="end" className="w-auto rounded-xl border-none shadow-xl sm:w-[600px]">
+                <Input type="search" placeholder="Search" onChange={onChange} />
 
                 <div className="max-h-96 overflow-y-auto">
                     {(filteredProducts.length ? filteredProducts : products.data).map((product) => (
                         <Button
                             key={product._id}
+                            size="lg"
                             variant="ghost"
                             className="flex-between w-full"
                             onClick={() => onClick(product._id)}
                         >
-                            <p className="px-4 py-6 text-xl">{product.name}</p>
-                            <p className="px-4 py-6 text-xl">{product.company.name}</p>
+                            <p className="text-xl">{product.name}</p>
+                            <p className="text-xl">{product.company.name}</p>
                         </Button>
                     ))}
                 </div>

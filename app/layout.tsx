@@ -5,7 +5,6 @@ import { Providers } from "@/providers";
 
 import { Configrator } from "@/components/configrator";
 import { Sidebar } from "@/components/sidebar";
-import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import "./sass/index.scss";
 
@@ -31,9 +30,8 @@ const Layout = async ({ children }: LayoutProps) => {
             <body className="bg-gradient min-h-screen">
                 <Providers>
                     <ActiveOrg orgId={orgId} />
-                    <Header />
                     <Sidebar />
-                    <div className="m-auto mb-16 min-h-[calc(100vh-200px)] max-w-screen-xl p-2 sm:p-4">{children}</div>
+                    {children}
                     <Configrator />
                     <Footer />
                 </Providers>
@@ -47,9 +45,8 @@ function NotSignedIn({ children }: LayoutProps) {
         <html lang="en" suppressHydrationWarning>
             <body className="bg-gradient min-h-screen">
                 <Providers>
-                    <Header />
-                    <div className="m-auto mb-16 min-h-[calc(100vh-200px)] max-w-screen-xl p-2 sm:p-4">{children}</div>
                     <Configrator />
+                    {children}
                     <Footer />
                 </Providers>
             </body>
@@ -58,5 +55,4 @@ function NotSignedIn({ children }: LayoutProps) {
 }
 
 NotSignedIn.displayName = "NotSignedIn";
-
 export default Layout;

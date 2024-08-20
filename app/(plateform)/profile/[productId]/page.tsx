@@ -12,11 +12,12 @@ import { Label } from "@/ui/label";
 
 import DeleteDialog from "./delete-dialog";
 import UpdateDialog from "./update-dialog";
+import { useOrg } from "@/hooks/useOrg";
 
 export type ProfileType = {
-    company: { _id: string; name: string; image: string };
     name: string;
     barcode: string;
+    company: { _id: string; name: string; image: string };
     market: { price: number; count: number };
     store: { price: number; count: number };
 };
@@ -28,6 +29,7 @@ type ProductProfileProps = {
 const ProductProfile = ({ params }: ProductProfileProps) => {
     const { data, isPending, error } = useGet<ProfileType>(`/api/profile/${params.productId}`, [params.productId]);
     const { onOpen } = useModel();
+    const { isAdmin } = useOrg();
     const router = useRouter();
 
     if (isPending || !data) return <ProfileLoading />;
@@ -44,10 +46,12 @@ const ProductProfile = ({ params }: ProductProfileProps) => {
                 <div className="mx-auto h-28 w-28 overflow-hidden rounded-[100%]">
                     <Image src={company.image} alt="car" width={50} height={50} className="h-full w-full" />
                 </div>
-                <div className="flex-start">
-                    <EditIcon className="size-8 !text-orange-500" onClick={() => onOpen("update-profile")} />
-                    <Trash2Icon className="size-8 !text-rose-500" onClick={() => onOpen("delete-profile")} />
-                </div>
+                {isAdmin && (
+                    <div className="flex-start">
+                        <EditIcon className="size-8 !text-orange-500" onClick={() => onOpen("update-profile")} />
+                        <Trash2Icon className="size-8 !text-rose-500" onClick={() => onOpen("delete-profile")} />
+                    </div>
+                )}
             </div>
 
             <hr className="my-4 dark:border-slate-500" />

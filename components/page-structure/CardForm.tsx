@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/ui/card";
+import { cn } from "@/utils/shadcn";
 
 type CardFormProps = {
     heading: string;
@@ -14,7 +15,12 @@ export const CardForm = ({ heading, submitText, disabled, onSubmit, children }: 
     return (
         <Card className="bg-gradient mx-auto mt-8 w-full max-w-2xl border-slate-400 shadow-lg dark:border-slate-600">
             <CardContent className="">
-                <CardHeader className="bg-gradient-heavy m-auto -mt-16 mb-6 w-[80%] rounded-lg text-center text-xl font-bold text-white !shadow-xl dark:text-black sm:text-2xl">
+                <CardHeader
+                    className={cn(
+                        "bg-gradient-heavy w-[80%] rounded-lg text-center font-bold text-white !shadow-xl dark:text-black",
+                        "mx-auto -mt-8 mb-6 text-xl sm:-mt-16 sm:text-2xl",
+                    )}
+                >
                     {heading}
                 </CardHeader>
 

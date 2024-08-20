@@ -4,17 +4,18 @@ import Link from "next/link";
 import { Button } from "@/ui/button";
 
 const links = [
-    { href: "/organizations", name: "General" },
-    { href: "/organizations/members", name: "Members" },
-    { href: "/organizations/configs", name: "Configs" },
+    { name: "Overview", href: "/" },
+    { name: "General", href: "/organizations" },
+    { name: "Members", href: "/organizations/members" },
+    { name: "Configs", href: "/organizations/configs" },
 ];
 
 type NavbarProps = {};
 
 export const Navbar = ({}: NavbarProps) => {
     return (
-        <header className="flex-between bg-gradient mb-12 w-full rounded-xl border border-slate-600 p-4 shadow-md">
-            <h1 className="text-gradient text-2xl font-extrabold">Organizations Settings</h1>
+        <header className="flex-between bg-gradient mb-12 w-full rounded-xl border border-slate-400 p-4 shadow-md dark:border-slate-600">
+            <h1 className="text-gradient text-2xl font-extrabold">Organization Settings</h1>
             <nav className="">
                 {links.map(({ href, name }, index) => (
                     <Fragment key={name}>

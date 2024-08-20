@@ -1,5 +1,5 @@
 "use client";
-import { useOrganization } from "@clerk/nextjs";
+import { useOrganization, ClerkLoaded } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,9 +14,11 @@ const Overview = ({}: OverviewProps) => {
     return (
         <div className="flex-center flex-col p-6">
             {!organization && (
-                <Alert variant="warning" className="text-center text-xl">
-                    You Cannot Access Any Of Our Services Until The Developer Activates Your Subscription.
-                </Alert>
+                <ClerkLoaded>
+                    <Alert variant="warning" className="text-center text-xl">
+                        You Cannot Access Any Of Our Services Until The Developer Activates Your Subscription.
+                    </Alert>
+                </ClerkLoaded>
             )}
 
             <Image
