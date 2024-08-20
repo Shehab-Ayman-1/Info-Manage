@@ -10,6 +10,7 @@
         "add": "bunx --bun shadcn-ui@latest add"
     },
     "dependencies": {
+        "@clerk/elements": "^0.14.0",
         "@clerk/nextjs": "^5.2.8",
         "@hookform/resolvers": "^3.9.0",
         "@radix-ui/react-accordion": "^1.2.0",
