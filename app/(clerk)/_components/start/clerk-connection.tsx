@@ -12,7 +12,7 @@ type ClerkConnectionProps = {
 export const ClerkConnection = ({ name, Icon, isGlobalLoading }: ClerkConnectionProps) => {
     return (
         <Clerk.Connection asChild name={name}>
-            <Button type="button" size="sm" variant="outline" className="w-full" disabled={isGlobalLoading}>
+            <Button type="button" size="sm" variant="outline" className="w-full min-w-[250px]" disabled={isGlobalLoading}>
                 <Clerk.Loading scope={`provider:${name}`}>
                     {(isLoading) =>
                         isLoading ? (

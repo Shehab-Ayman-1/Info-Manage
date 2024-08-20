@@ -1,8 +1,16 @@
 # TODO:
 
+    - تعديل صفحة الاشتراك علي الاشتراك البريميام و الانتربرايس  لاشتراكات شهرية فقط وتكون عبارة عن باكدجس
+    - يأتي للادمن اشعار بامكانيه تفعيل احدي الاشتراكات مجاناً لمده 3 ايام وبعد ذلك تغلق
+    - قم بوضع متغير جديد في الميتا ديتا للاورجانيزاشن يقوم بتحديد نهايه الاشتراك
+
+    - البضائع السائبه
+
     - Change The Role From orgRole To User.publicMetadata Custome Role
 
-    - Add Print Button To All Table Pages
+    - Add Print Button To All Table Pages, And Print All The Products, Not Only The Show Products In The Table
+
+    - Edit The Notifications To Get The Insufficients Products
 
     - المرتجعات
 

@@ -48,14 +48,15 @@ schema.statics.getLockerCash = async function (orgId: string) {
             },
         },
     ]);
+
     const cashDeposit = cashes.find((cash) => cash.method === "cash" && cash.process === "deposit");
     const visaDeposit = cashes.find((cash) => cash.method === "visa" && cash.process === "deposit");
     const cashWithdraw = cashes.find((cash) => cash.method === "cash" && cash.process === "withdraw");
     const visaWithdraw = cashes.find((cash) => cash.method === "visa" && cash.process === "withdraw");
 
     const data = {
-        lockerCash: cashDeposit.price - cashWithdraw.price || 0,
-        lockerVisa: visaDeposit.price - visaWithdraw.price || 0,
+        lockerCash: cashDeposit?.price - cashWithdraw?.price || 0,
+        lockerVisa: visaDeposit?.price - visaWithdraw?.price || 0,
     };
 
     return data;

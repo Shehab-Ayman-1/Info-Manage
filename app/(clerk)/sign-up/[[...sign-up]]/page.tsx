@@ -19,13 +19,12 @@ export default function SignUpPage() {
                     <Fragment>
                         <SignUp.Step name="start">
                             <CardForm heading="Create Your Account">
-                                <div className="flex-between mb-6">
+                                <div className="flex-between">
                                     <ClerkConnection name="facebook" isGlobalLoading={isGlobalLoading} Icon={FacebookIcon} />
                                     <ClerkConnection name="google" isGlobalLoading={isGlobalLoading} Icon={Icons.google} />
-                                    <ClerkConnection name="microsoft" isGlobalLoading={isGlobalLoading} Icon={Icons.tailwind} />
                                 </div>
 
-                                <p className="mb-4 flex items-center gap-x-4 text-muted-foreground before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
+                                <p className="my-8 flex items-center gap-x-4 text-muted-foreground before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
                                     OR
                                 </p>
 
@@ -36,6 +35,13 @@ export default function SignUpPage() {
                                     isGlobalLoading={isGlobalLoading}
                                     navigate={{ text: "Already Have An Account? Sign In", href: "/sign-in" }}
                                 />
+                            </CardForm>
+                        </SignUp.Step>
+
+                        <SignUp.Step name="continue">
+                            <CardForm heading="Continue Registration">
+                                <ClerkField label="Username" name="username" type="text" />
+                                <ClerkAction isGlobalLoading={isGlobalLoading} />
                             </CardForm>
                         </SignUp.Step>
 

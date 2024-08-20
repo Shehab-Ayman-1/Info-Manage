@@ -3,7 +3,7 @@ import { Input } from "@/ui/input";
 
 type ClerkFieldProps = {
     label: string;
-    name: "emailAddress" | "password" | "identifier";
+    name: "username" | "emailAddress" | "password" | "identifier";
     type: "text" | "email" | "password";
 };
 

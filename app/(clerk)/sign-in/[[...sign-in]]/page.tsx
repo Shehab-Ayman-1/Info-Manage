@@ -6,9 +6,9 @@ import { Fragment } from "react";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/ui/card";
 import { ClerkConnection } from "../../_components/start/clerk-connection";
-import { CardForm } from "@/components/page-structure/CardForm";
 import { ClerkAction } from "../../_components/start/clerk-action";
 import { ClerkField } from "../../_components/start/clerk-field";
+import { CardForm } from "@/components/page-structure/CardForm";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
 import { Label } from "@/ui/label";
@@ -22,27 +22,26 @@ export default function SignInPage() {
                     {(isGlobalLoading) => (
                         <Fragment>
                             <SignIn.Step name="start">
-                                <CardForm heading="Sign in to Info Manage">
+                                <CardForm heading="Sign in">
                                     <div className="flex-between">
                                         <ClerkConnection name="facebook" isGlobalLoading={isGlobalLoading} Icon={FacebookIcon} />
                                         <ClerkConnection name="google" isGlobalLoading={isGlobalLoading} Icon={FacebookIcon} />
-                                        <ClerkConnection name="microsoft" isGlobalLoading={isGlobalLoading} Icon={FacebookIcon} />
                                     </div>
 
-                                    <p className="flex items-center gap-x-3 text-sm text-muted-foreground before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
-                                        or
+                                    <p className="my-8 flex items-center gap-x-3 text-sm text-muted-foreground before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
+                                        OR
                                     </p>
+
+                                    <ClerkField label="Email Address" name="identifier" type="email" />
+
+                                    <ClerkAction
+                                        isGlobalLoading={isGlobalLoading}
+                                        navigate={{
+                                            text: "Don't have an account? Sign up",
+                                            href: "/sign-up",
+                                        }}
+                                    />
                                 </CardForm>
-
-                                <ClerkField label="Email Address" name="identifier" type="email" />
-
-                                <ClerkAction
-                                    isGlobalLoading={isGlobalLoading}
-                                    navigate={{
-                                        text: "Don't have an account? Sign up",
-                                        href: "/sign-up",
-                                    }}
-                                />
                             </SignIn.Step>
 
                             <SignIn.Step name="choose-strategy">

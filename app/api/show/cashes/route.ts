@@ -69,16 +69,16 @@ export const GET = async () => {
                 visa: lockerVisa,
             },
             market: {
-                purchasePrice: productsCashes.marketPurchasePrice,
-                sellingPrice: productsCashes.marketSellingPrice,
+                purchasePrice: productsCashes?.marketPurchasePrice || 0,
+                sellingPrice: productsCashes?.marketSellingPrice || 0,
             },
             store: {
-                purchasePrice: productsCashes.storePurchasePrice,
-                sellingPrice: productsCashes.storeSellingPrice,
+                purchasePrice: productsCashes?.storePurchasePrice || 0,
+                sellingPrice: productsCashes?.storeSellingPrice || 0,
             },
             debts: {
-                clients: clientDebts.pendingCosts,
-                suppliers: supplierDebts.pendingCosts,
+                clients: clientDebts?.pendingCosts || 0,
+                suppliers: supplierDebts?.pendingCosts || 0,
             },
         };
 
