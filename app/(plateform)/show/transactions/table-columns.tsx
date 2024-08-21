@@ -33,6 +33,6 @@ export const columns: ColumnDef<any>[] = [
     {
         accessorKey: "createdAt",
         header: ({ column }) => <HeaderComponent column={column} noPrint />,
-        cell: ({ row }) => <DateCell row={row} noPrint />,
+        cell: ({ row }) => <DateCell row={row} time noPrint />,
     },
 ];

@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 
 import { useGetByQuery } from "@/hooks/api/useGetByQuery";
 import { columns } from "./table-columns";
-import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
 
 type TransactionType = {
@@ -42,10 +41,6 @@ const Transactions = () => {
             filterBy={["reason"]}
             navigate={{ to: "/statements/locker", text: "New Transaction" }}
         >
-            <Button className="mx-auto flex text-xl print:hidden" size="lg" onClick={print}>
-                Print Reciept
-            </Button>
-
             <div className="mt-4 w-fit sm:ml-4">
                 <Input type="date" value={date} name="date" onChange={(event) => setDate(() => event.target.value)} />
             </div>

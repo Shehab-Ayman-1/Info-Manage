@@ -6,11 +6,7 @@ import { cn } from "@/utils/shadcn";
 
 type SubscriptionCardProps = {
     heading: "Basic" | "Premium" | "Enterprise";
-    costs: {
-        month: number;
-        year: number;
-        life: number;
-    };
+    costs: { month: number; year: number; life: number } | { month: number; year: number };
     features: string[];
 };
 
@@ -40,7 +36,7 @@ export const SubscriptionCard = async ({ heading, costs, features }: Subscriptio
 
             <hr className="border-slate-300 dark:border-slate-600" />
 
-            <div className="">
+            <div className="h-full">
                 {features.map((feature, index) => (
                     <h3 key={index} className="flex-start my-8 whitespace-nowrap text-xs sm:text-base">
                         <CheckCheckIcon className="size-4 !text-green-500 sm:size-6" />

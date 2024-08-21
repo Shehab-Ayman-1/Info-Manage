@@ -15,6 +15,7 @@ import { Button } from "@/ui/button";
 export type ProductType = {
     _id: string;
     name: string;
+    companyName: string;
 };
 
 type RequestType = {
@@ -44,11 +45,11 @@ export const UpdateProductsDialog = () => {
     if (type !== "update-products-model") return;
 
     const onChange = (productId: string) => {
-        const { _id, name } = productsLists.data.find((product) => product._id === productId)!;
+        const { _id, name, company } = productsLists.data.find((product) => product._id === productId)!;
 
         setProducts((products) => {
             const isExist = products.some((product) => product._id === productId);
-            if (!isExist) return products.concat({ _id, name });
+            if (!isExist) return products.concat({ _id, name, companyName: company.name });
 
             toast.info("This Product Is Already Exist");
             return products;
@@ -73,6 +74,7 @@ export const UpdateProductsDialog = () => {
         <DialogForm heading="Update Products" description="Any Changes Can't Be Undo After Saving">
             <form onSubmit={onSubmit}>
                 <ComboBox label="Product" name="productId" groups={productsLists.groups} onChange={onChange} />
+
                 {!!products.length && <DataTable columns={columns} data={products} smallSize />}
 
                 <Button type="submit" className="w-full" disabled={isPending}>

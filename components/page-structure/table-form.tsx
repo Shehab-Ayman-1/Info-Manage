@@ -43,6 +43,12 @@ export const TableForm = <TData,>({
                     )}
                 </CardHeader>
 
+                {!!data?.length && (
+                    <Button size="lg" className="flex-center mx-auto text-lg font-bold print:hidden" onClick={print}>
+                        Print Receipt
+                    </Button>
+                )}
+
                 {children}
 
                 <CardFooter className="p-0 sm:px-4">

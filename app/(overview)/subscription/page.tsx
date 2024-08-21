@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { SubscriptionCard } from "./card";
 
 const Subscription = async () => {
@@ -13,7 +14,7 @@ const Subscription = async () => {
     ];
 
     const premium = [
-        "Total Cashes Of Market, Store, And Debts",
+        "Total Market, Store, And Debts Cashes",
         "Locker Transactions",
         "Clients Details",
         "Suppliers Details",
@@ -32,14 +33,14 @@ const Subscription = async () => {
     ];
 
     return (
-        <div className="">
+        <Fragment>
             <h1 className="mb-8 text-2xl font-bold text-primary sm:text-4xl">Subscription Plans</h1>
-            <div className="flex flex-wrap items-start justify-center gap-4 sm:justify-between">
-                <SubscriptionCard heading="Basic" features={basics} costs={{ month: 500, year: 5800, life: 45000 }} />
-                <SubscriptionCard heading="Premium" features={premium} costs={{ month: 700, year: 8000, life: 55000 }} />
-                <SubscriptionCard heading="Enterprise" features={enterprise} costs={{ month: 900, year: 10000, life: 65000 }} />
+            <div className="grid grow grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 xl:grid-cols-3">
+                <SubscriptionCard heading="Basic" features={basics} costs={{ month: 500, year: 5000, life: 25000 }} />
+                <SubscriptionCard heading="Premium" features={premium} costs={{ month: 200, year: 2000 }} />
+                <SubscriptionCard heading="Enterprise" features={enterprise} costs={{ month: 200, year: 2000 }} />
             </div>
-        </div>
+        </Fragment>
     );
 };
 

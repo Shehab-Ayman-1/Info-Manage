@@ -4,7 +4,6 @@ import { columns } from "./table-columns";
 
 import { TableForm } from "@/components/page-structure/table-form";
 import { CardLoading } from "@/components/loading/card";
-import { Button } from "@/ui/button";
 
 type TodaySalesProps = {};
 
@@ -21,13 +20,7 @@ const TodaySales = ({}: TodaySalesProps) => {
             data={data}
             totalFor="total"
             navigate={{ to: "/statements/clients", text: "New Statement" }}
-        >
-            <div className="text-center">
-                <Button className="ml-6 text-lg font-bold print:hidden" size="lg" onClick={print}>
-                    Print Receipt
-                </Button>
-            </div>
-        </TableForm>
+        />
     );
 };
 
