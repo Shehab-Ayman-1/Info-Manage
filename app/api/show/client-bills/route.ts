@@ -5,16 +5,25 @@ import { Bills, Clients, Products, Transactions } from "@/server/models";
 import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
 
-export const GET = async () => {
+export const GET = async (req: NextRequest) => {
     try {
         await DBConnection();
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
 
+        const { searchParams } = new URL(req.url);
+        const date = searchParams.get("date")!;
+
+        const startDate = new Date(date);
+        startDate.setHours(0, 0, 0, 0);
+
+        const endDate = new Date(date);
+        endDate.setHours(23, 59, 59, 999);
+
         const bills = await Bills.aggregate([
             {
-                $match: { orgId },
+                $match: { orgId, createdAt: { $gte: startDate, $lte: endDate } },
             },
             {
                 $lookup: { from: "clients", as: "client", localField: "client", foreignField: "_id" },

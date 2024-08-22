@@ -11,7 +11,7 @@ export const configsSchema = z.object({
     refreshClientsPurchases: z.string().min(1),
 
     subscription: z.enum(["unsubscribe", "basic"]).optional(),
-    additionalSubscription: z.enum(["unsubscribe", "premium", "enterprise"]).optional(),
+    additionalSubscriptions: z.array(z.enum(["premium", "enterprise"])).optional(),
     additionalSubscriptionExpiresAt: z.date().min(new Date(), { message }).optional(),
 });
 

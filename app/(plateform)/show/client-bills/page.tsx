@@ -1,12 +1,14 @@
 "use client";
 import { TableForm } from "@/components/page-structure/table-form";
-import { CardLoading } from "@/components/loading/card";
+import { formatDate } from "date-fns";
+import { useEffect, useState } from "react";
 
-import { useGet } from "@/hooks/api/useGet";
+import { useGetByQuery } from "@/hooks/api/useGetByQuery";
 import { columns } from "./table-columns";
 
 import { DeleteDialog } from "./delete-dialog";
 import { PayDialog } from "./pay-dialog";
+import { Input } from "@/ui/input";
 
 type BillType = {
     _id: string;
@@ -19,21 +21,30 @@ type BillType = {
     created_At: Date;
 };
 
+const dateFormate = formatDate(new Date(), "yyyy-MM-dd");
 const ClientBills = () => {
-    const { data, isPending, error } = useGet<BillType>("/api/show/client-bills", ["bills"]);
+    const { mutate, data, error } = useGetByQuery<BillType[]>("/api/show/client-bills");
+    const [date, setDate] = useState(dateFormate);
 
-    if (isPending) return <CardLoading />;
+    useEffect(() => {
+        mutate(`date=${date}`);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [date]);
+
     if (error) return <h1>{error?.message}</h1>;
 
     return (
         <TableForm
             pageTitle="Client Bills List"
             columns={columns}
-            data={data}
+            data={data || []}
             filterBy={["client"]}
             totalFor="pending"
-            navigate={{ to: "/statements/clients", text: "New Statement" }}
+            navigate={[{ to: "/statements/clients", text: "New Statement" }]}
         >
+            <div className="mt-4 w-fit sm:ml-4">
+                <Input type="date" value={date} name="date" onChange={(event) => setDate(() => event.target.value)} />
+            </div>
             <DeleteDialog />
             <PayDialog />
         </TableForm>

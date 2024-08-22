@@ -43,7 +43,7 @@ const Insufficients = () => {
             data={data || []}
             totalFor="total"
             pageTitle="Insufficients Products"
-            navigate={{ text: "New Statement", to: "/statements/suppliers" }}
+            navigate={[{ text: "New Statement", to: "/statements/suppliers" }]}
         >
             <div className="flex-between">
                 <ComboBox

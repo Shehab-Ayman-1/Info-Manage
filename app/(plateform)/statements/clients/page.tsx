@@ -107,7 +107,7 @@ const Clients = ({}: ClientsProps) => {
                             type="number"
                             placeholder="Discount"
                             error={errors.discount}
-                            {...register("discount", { valueAsNumber: true })}
+                            {...register("discount", { valueAsNumber: true, value: 0 })}
                         />
 
                         {processValue === "milestone" && (

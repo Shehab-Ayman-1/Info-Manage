@@ -19,7 +19,7 @@ const TodaySales = ({}: TodaySalesProps) => {
             columns={columns}
             data={data}
             totalFor="total"
-            navigate={{ to: "/statements/clients", text: "New Statement" }}
+            navigate={[{ text: "New Statement", to: "/statements/clients" }]}
         />
     );
 };

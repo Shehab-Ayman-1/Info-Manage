@@ -20,7 +20,7 @@ type TransactionType = {
 
 const dateFormate = formatDate(new Date(), "yyyy-MM-dd");
 const Transactions = () => {
-    const { mutate, data, isPending, error } = useGetByQuery<TransactionType[]>("/api/show/transactions");
+    const { mutate, data, error } = useGetByQuery<TransactionType[]>("/api/show/transactions");
     const [date, setDate] = useState(dateFormate);
 
     useEffect(() => {
@@ -29,17 +29,15 @@ const Transactions = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [date]);
 
-    if (isPending) return <CardLoading />;
     if (error) return <h1>{error?.message}</h1>;
-    if (!data) return;
 
     return (
         <TableForm
             pageTitle="Transactions List"
             columns={columns}
-            data={data!}
+            data={data || []}
             filterBy={["reason"]}
-            navigate={{ to: "/statements/locker", text: "New Transaction" }}
+            navigate={[{ to: "/statements/locker", text: "New Transaction" }]}
         >
             <div className="mt-4 w-fit sm:ml-4">
                 <Input type="date" value={date} name="date" onChange={(event) => setDate(() => event.target.value)} />

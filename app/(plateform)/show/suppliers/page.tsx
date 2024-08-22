@@ -23,7 +23,7 @@ const Suppliers = () => {
             data={data!}
             filterBy={["supplier"]}
             totalFor="pending"
-            navigate={{ to: "/create/supplier", text: "New Supplier" }}
+            navigate={[{ to: "/create/supplier", text: "New Supplier" }]}
         >
             <UpdateDialog />
             <DeleteDialog />

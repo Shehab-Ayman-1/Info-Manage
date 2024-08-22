@@ -12,7 +12,7 @@ import { Input } from "@/ui/input";
 type SearchbarProps = {};
 
 export const Searchbar = ({}: SearchbarProps) => {
-    const [filteredProducts, setFilteredProducts] = useState<Products["data"]>([]);
+    const [filteredProducts, setFilteredProducts] = useState<Products["data"]>();
     const [open, setOpen] = useState(false);
     const { products } = useLists();
     const router = useRouter();
@@ -45,7 +45,7 @@ export const Searchbar = ({}: SearchbarProps) => {
                 <Input type="search" placeholder="Search" onChange={onChange} />
 
                 <div className="max-h-96 overflow-y-auto">
-                    {(filteredProducts.length ? filteredProducts : products.data).map((product) => (
+                    {(filteredProducts ? filteredProducts : products.data).map((product) => (
                         <Button
                             key={product._id}
                             size="lg"

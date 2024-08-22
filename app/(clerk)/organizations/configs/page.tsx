@@ -14,7 +14,7 @@ import { ComboBox } from "@/components/ui/comboBox";
 import { Input } from "@/ui/input";
 
 const Configs = () => {
-    const { formState, register, setValue, clearErrors, handleSubmit } = useForm({
+    const { formState, watch, register, setValue, clearErrors, handleSubmit } = useForm({
         resolver: zodResolver(configsSchema.omit({ organizationId: true })),
     });
     const { user } = useUser();
@@ -22,8 +22,20 @@ const Configs = () => {
     const { mutate, isPending } = useUpdate<EditConfigsSchema>("/api/organizations");
     const { organization } = useOrganization();
 
+    const additionalSubscriptions = watch("additionalSubscriptions");
+
     const { errors } = formState;
     if (!organization) return;
+
+    const onAdditionalChange = (value: string) => {
+        if (value === "unsubscribe") return setValue("additionalSubscriptions", []);
+        if (additionalSubscriptions === undefined) return setValue("additionalSubscriptions", [value]);
+
+        const newValues = additionalSubscriptions.includes(value)
+            ? additionalSubscriptions.filter((sub: string) => sub !== value)
+            : [...additionalSubscriptions, value].filter((sub) => sub);
+        setValue("additionalSubscriptions", newValues);
+    };
 
     const onSubmit = (data: any) => {
         const publicMetadata = data as EditConfigsSchema;
@@ -83,15 +95,15 @@ const Configs = () => {
                 )}
 
                 {isMe && (
-                    <div className="flex-between">
+                    <div className="">
                         <ComboBox
-                            label="Additional Subscription"
-                            name="additionalSubscription"
+                            label={`Additional Subscription: ${additionalSubscriptions?.join(" | ")}`}
+                            name="additionalSubscriptions"
                             items={additionalSubscription}
                             error={errors.additionalSubscription}
-                            setValue={setValue}
+                            onChange={onAdditionalChange}
                             clearErrors={clearErrors}
-                            defaultValue={organization?.publicMetadata.additionalSubscription as string}
+                            defaultValue={organization?.publicMetadata.additionalSubscriptions as string}
                         />
                         <Input
                             type="date"

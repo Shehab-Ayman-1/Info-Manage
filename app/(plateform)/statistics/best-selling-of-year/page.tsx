@@ -20,7 +20,7 @@ const BestSellingOfYear = () => {
             pageTitle="Best Selling Of The Year"
             data={data || []}
             columns={columns}
-            navigate={{ text: "Go To Bills", to: "/show/client-bills" }}
+            navigate={[{ text: "Go To Bills", to: "/show/client-bills" }]}
         />
     );
 };

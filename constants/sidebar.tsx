@@ -1,6 +1,6 @@
-import { ArchiveRestoreIcon, ArrowRightLeftIcon, BadgeDollarSignIcon, CalendarPlus2Icon } from "lucide-react";
 import { CalendarPlusIcon, HandCoinsIcon, ReceiptTextIcon, RocketIcon, SchoolIcon } from "lucide-react";
 import { ShoppingCartIcon, TargetIcon, ThumbsDownIcon, UserCheck, UserIcon } from "lucide-react";
+import { ArrowRightLeftIcon, BadgeDollarSignIcon, CalendarPlus2Icon } from "lucide-react";
 import { BookKeyIcon, StoreIcon, UsersIcon } from "lucide-react";
 import { LayoutDashboardIcon } from "lucide-react";
 
@@ -20,16 +20,8 @@ export type NavLinkType = {
 export const showLinks: NavLinkType[] = [
     {
         Icon: StoreIcon,
-        title: "Market Products",
-        href: "/show/market",
-        userRole: "org:member",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
-    },
-    {
-        Icon: ArchiveRestoreIcon,
-        title: "Store Products",
-        href: "/show/store",
+        title: "Products",
+        href: "/show/products",
         userRole: "org:member",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium", "enterprise"],
@@ -196,6 +188,7 @@ export const receiptLinks: NavLinkType[] = [
         additionalSubscriptions: ["enterprise"],
     },
 ];
+
 export const statisticsLinks: NavLinkType[] = [
     {
         Icon: BadgeDollarSignIcon,

@@ -19,7 +19,7 @@ const TodayPurchases = () => {
             columns={columns}
             data={data!}
             totalFor="total"
-            navigate={{ to: "/statements/suppliers", text: "New Statement" }}
+            navigate={[{ text: "New Statement", to: "/statements/suppliers" }]}
         />
     );
 };

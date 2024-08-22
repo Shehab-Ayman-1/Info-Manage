@@ -4,6 +4,8 @@
 
     -   Change The Role From orgRole To User.publicMetadata Custome Role
 
+    - Fetch The Products Instead Of Bills In The Today Purchase Receipt, And Today Sales Receipt
+
     -   Think About
         -- Barcode Reader
         -- Print In Small Printer

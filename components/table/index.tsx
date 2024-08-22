@@ -64,7 +64,7 @@ export const DataTable = <TData, TValue>({ columns, data, filterBy, totalFor, sm
     return (
         <Card className="w-full border-none bg-transparent">
             <CardHeader className="flex-between flex-row !p-0 !pt-4 print:hidden">
-                <Filter data={data} getColumn={getColumn} filterBy={filterBy} />
+                <Filter data={data || []} getColumn={getColumn} filterBy={filterBy} />
             </CardHeader>
 
             <CardContent className="overflow-hidden rounded-xl border border-slate-500 !p-3">

@@ -21,7 +21,7 @@ const ClientList = () => {
             data={data!}
             filterBy={["client", "level"]}
             totalFor="pending"
-            navigate={{ to: "/create/client", text: "New Client" }}
+            navigate={[{ to: "/create/client", text: "New Client" }]}
         >
             <UpdateDialog />
             <DeleteDialog />

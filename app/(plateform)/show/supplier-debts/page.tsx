@@ -1,11 +1,14 @@
 "use client";
-import { useGet } from "@/hooks/api/useGet";
+import { useEffect, useState } from "react";
+import { formatDate } from "date-fns";
+
+import { useGetByQuery } from "@/hooks/api/useGetByQuery";
 import { columns } from "./table-columns";
 
 import { TableForm } from "@/components/page-structure/table-form";
-import { CardLoading } from "@/components/loading/card";
 import { DeleteDialog } from "./delete-dialog";
 import { PayDialog } from "./pay-dialog";
+import { Input } from "@/ui/input";
 
 type DebtType = {
     _id: string;
@@ -17,21 +20,30 @@ type DebtType = {
     created_At: Date;
 };
 
+const dateFormate = formatDate(new Date(), "yyyy-MM-dd");
 const SupplierDebts = () => {
-    const { data, isPending, error } = useGet<DebtType>("/api/show/supplier-debts", ["debts"]);
+    const { mutate, data, error } = useGetByQuery<DebtType[]>("/api/show/supplier-debts");
+    const [date, setDate] = useState(dateFormate);
 
-    if (isPending) return <CardLoading />;
+    useEffect(() => {
+        mutate(`date=${date}`);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [date]);
+
     if (error) return <h1>{error?.message}</h1>;
 
     return (
         <TableForm
             pageTitle="Supplier Bills List"
             columns={columns}
-            data={data!}
+            data={data || []}
             filterBy={["supplier"]}
             totalFor="pending"
-            navigate={{ to: "/statements/suppliers", text: "New Statement" }}
+            navigate={[{ text: "New Statement", to: "/statements/suppliers" }]}
         >
+            <div className="mt-4 w-fit sm:ml-4">
+                <Input type="date" value={date} name="date" onChange={(event) => setDate(() => event.target.value)} />
+            </div>
             <DeleteDialog />
             <PayDialog />
         </TableForm>
