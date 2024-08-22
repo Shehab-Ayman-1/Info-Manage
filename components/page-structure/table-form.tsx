@@ -1,10 +1,11 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
+import { PrinterCheckIcon } from "lucide-react";
 import Link from "next/link";
 
 import { Card, CardContent, CardFooter, CardHeader } from "@/ui/card";
+import { Heading } from "@/components/public/heading";
 import { DataTable } from "@/components/table";
-import { Heading } from "../public/heading";
 import { useOrg } from "@/hooks/useOrg";
 import { Button } from "@/ui/button";
 
@@ -23,14 +24,15 @@ export const TableForm = <TData,>(props: TableFormProps<TData>) => {
     const { isAdmin } = useOrg();
 
     return (
-        <Card className="print-bg-transparent print:h-screen">
+        <Card className="print:h-screen print:!px-0">
             <CardContent>
                 <CardHeader className="flex-between px-0 sm:flex-row sm:p-4 print:hidden">
                     <div className="flex flex-col gap-y-6">
                         <Heading title={pageTitle} />
                         {!!data?.length && (
-                            <Button size="lg" className="text-lg font-bold print:hidden" onClick={print}>
-                                Print Receipt
+                            <Button size="lg" className="gap-1 text-lg font-bold print:hidden" onClick={print}>
+                                <PrinterCheckIcon className="size-5 !text-black" />
+                                <span>Print Receipt</span>
                             </Button>
                         )}
                     </div>
@@ -53,7 +55,7 @@ export const TableForm = <TData,>(props: TableFormProps<TData>) => {
 
                 {children}
 
-                <CardFooter className="p-0 sm:px-4">
+                <CardFooter className="p-0 sm:px-4 print:!px-0">
                     <DataTable columns={columns} data={data} filterBy={filterBy} totalFor={totalFor} />
                 </CardFooter>
             </CardContent>

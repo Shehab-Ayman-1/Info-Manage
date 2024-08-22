@@ -26,8 +26,8 @@ export const RenderRow = ({ row, index, smallSize }: RenderRowProps) => {
                     <TableCell
                         key={cell.id}
                         className={cn(
-                            "whitespace-nowrap py-2 text-center text-base print:text-black",
-                            smallSize ? "py-0" : "sm:text-lg",
+                            "whitespace-nowrap px-0 text-center text-sm print:text-black",
+                            smallSize ? "py-0 sm:text-sm" : "py-4 sm:text-base",
                         )}
                     >
                         {TDCell}

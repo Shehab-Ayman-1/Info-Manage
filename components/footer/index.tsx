@@ -1,4 +1,5 @@
-import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "lucide-react";
+import { FacebookIcon, InstagramIcon } from "lucide-react";
+import Link from "next/link";
 
 type FooterProps = {};
 
@@ -7,10 +8,12 @@ export const Footer = ({}: FooterProps) => {
         <footer className="flex-between bg-gradient p-4 print:hidden">
             <h3 className="text-xs font-bold text-slate-500 dark:text-slate-300 sm:text-lg">Create With ❤️ By Shehab Ayman</h3>
             <div className="flex-start">
-                <FacebookIcon className="size-4 !text-slate-500 hover:!text-slate-800 dark:!text-slate-300 dark:hover:!text-slate-500 sm:size-6" />
-                <InstagramIcon className="size-4 !text-slate-500 hover:!text-slate-800 dark:!text-slate-300 dark:hover:!text-slate-500 sm:size-6" />
-                <TwitterIcon className="size-4 !text-slate-500 hover:!text-slate-800 dark:!text-slate-300 dark:hover:!text-slate-500 sm:size-6" />
-                <YoutubeIcon className="size-4 !text-slate-500 hover:!text-slate-800 dark:!text-slate-300 dark:hover:!text-slate-500 sm:size-6" />
+                <Link target="_blank" href="https://www.facebook.com/EngShehabAyman/">
+                    <FacebookIcon className="size-4 !text-slate-500 hover:!text-slate-800 dark:!text-slate-300 dark:hover:!text-slate-500 sm:size-6" />
+                </Link>
+                <Link target="_blank" href="https://www.instagram.com/shehab_ayman2023/">
+                    <InstagramIcon className="size-4 !text-slate-500 hover:!text-slate-800 dark:!text-slate-300 dark:hover:!text-slate-500 sm:size-6" />
+                </Link>
             </div>
         </footer>
     );

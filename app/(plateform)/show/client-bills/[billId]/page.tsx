@@ -9,6 +9,7 @@ import { columns } from "./table-columns";
 import { ProfileLoading } from "@/components/loading/bill-profile";
 import { DataTable } from "@/components/table";
 import { Button } from "@/ui/button";
+import { cn } from "@/utils/shadcn";
 
 type ResponseType = {
     _id: string;
@@ -69,7 +70,7 @@ const BillProfile = ({ params }: BillProfileProps) => {
             <div className="flex-around flex-wrap md:flex-nowrap">
                 <h1 className={styleText}>Discount: ( ${values?.discount} )</h1>
                 <h1 className={styleText}>State: ( {values?.state} )</h1>
-                <h1 className={styleText}>Profits: ( ${values?.billProfits} )</h1>
+                <h1 className={cn(styleText, "print:hidden")}>Profits: ( ${values?.billProfits} )</h1>
             </div>
 
             <div className="flex-center mt-10 w-full flex-col">

@@ -3,5 +3,5 @@ type HeadingProps = {
 };
 
 export const Heading = ({ title }: HeadingProps) => {
-    return <h1 className="text-2xl font-bold text-primary">{title}</h1>;
+    return <h1 className="text-2xl font-bold capitalize text-primary">{title}</h1>;
 };

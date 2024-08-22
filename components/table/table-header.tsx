@@ -13,7 +13,7 @@ export const THeader = <TData,>({ headerGroups }: THeaderProps<TData>) => {
                     {headerGroup.headers.map((header) => {
                         const TdName = flexRender(header.column.columnDef.header, header.getContext());
                         return (
-                            <TableHead key={header.id} className="py-2 text-center">
+                            <TableHead key={header.id} className="px-0 py-2 text-center !text-xs">
                                 {!header.isPlaceholder && TdName}
                             </TableHead>
                         );

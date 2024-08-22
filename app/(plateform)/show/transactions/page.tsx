@@ -1,8 +1,7 @@
 "use client";
 import { TableForm } from "@/components/page-structure/table-form";
-import { CardLoading } from "@/components/loading/card";
-import { formatDate } from "date-fns";
 import { useEffect, useState } from "react";
+import { formatDate } from "date-fns";
 
 import { useGetByQuery } from "@/hooks/api/useGetByQuery";
 import { columns } from "./table-columns";

@@ -79,14 +79,6 @@ export const showLinks: NavLinkType[] = [
 export const statementLinks: NavLinkType[] = [
     {
         Icon: HandCoinsIcon,
-        title: "Quick Client's Statement",
-        href: "/statements/clients/quick-statement",
-        userRole: "org:member",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["premium"],
-    },
-    {
-        Icon: HandCoinsIcon,
         title: "Client's Statement",
         href: "/statements/clients",
         userRole: "org:member",

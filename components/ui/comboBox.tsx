@@ -25,10 +25,10 @@ type ComboBoxProps = {
     loading?: boolean;
     error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>> | undefined;
 
-    defaultValue?: string;
     setValue?: UseFormSetValue<FieldValues>;
     onChange?: (value: string) => void;
 
+    defaultValue?: string;
     clearErrors?: UseFormClearErrors<FieldValues>;
 
     items?: Item[];
