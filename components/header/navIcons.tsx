@@ -21,10 +21,10 @@ export const NavIcons = ({}: NavlinksProps) => {
         <div className="flex-end print:hidden">
             <Searchbar />
             <Notifications />
-            <ReceiptTextIcon onClick={() => onOpen("quick-client-statement-model")} />
+            <ReceiptTextIcon className="hover:text-slate-500" onClick={() => onOpen("quick-client-statement-model")} />
 
             <Link href="/subscription">
-                <CreditCardIcon />
+                <CreditCardIcon className="hover:text-slate-500" />
             </Link>
 
             {isMe && <OrgSwitcher />}
