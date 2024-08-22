@@ -12,6 +12,10 @@ export const columns: ColumnDef<any>[] = [
         header: HeaderComponent,
     },
     {
+        accessorKey: "phone",
+        header: HeaderComponent,
+    },
+    {
         accessorKey: "discounts",
         header: HeaderComponent,
         cell: ({ row }) => <DollarCell row={row} name="discounts" />,

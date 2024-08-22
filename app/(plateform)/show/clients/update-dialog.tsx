@@ -25,6 +25,7 @@ export const UpdateDialog = ({}: UpdateDialogProps) => {
         if (type !== "update-model" || !data.client) return;
         setValue("clientId", data.client._id);
         setValue("name", data.client.client);
+        setValue("phone", data.client.phone);
         setValue("bronzeTo", data.client.bronzeTo);
         setValue("silverTo", data.client.silverTo);
     }, [type, data, setValue]);
@@ -40,6 +41,7 @@ export const UpdateDialog = ({}: UpdateDialogProps) => {
         <DialogForm heading="Update Client" description="Are You Sure, You Can't Undo This Action Again.">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Input placeholder="Client Name" error={errors.name} {...register("name")} />
+                <Input placeholder="Phone" error={errors.phone} {...register("phone")} />
                 <Input placeholder="Bronze To:" error={errors.bronzeTo} {...register("bronzeTo", { valueAsNumber: true })} />
                 <Input placeholder="Silver To:" error={errors.silverTo} {...register("silverTo", { valueAsNumber: true })} />
 

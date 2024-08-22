@@ -1,26 +1,15 @@
 # TODO:
 
-    - يأتي للادمن اشعار بامكانيه تفعيل احدي الاشتراكات مجاناً لمده 3 ايام وبعد ذلك تغلق
-
-    - قم بوضع متغير جديد في الميتا ديتا للاورجانيزاشن يقوم بتحديد نهايه الاشتراك
-
-    - Add Client Phone Number
-
-    -   Add Red Dot To The Notifications Bill
-
-    -   Edit The Notifications To Get The Insufficients Products, And Available Subscriptions
-
-    -   Think About Barcode Reader
-
-    -   Print In Small Printer
-
-    -   Think About Clients Level
+    -   Active Basic Subscription ExpiresAt
 
     -   Change The Role From orgRole To User.publicMetadata Custome Role
 
-    -   المرتجعات
-
-    -   البضائع السائله
+    -   Think About
+        -- Barcode Reader
+        -- Print In Small Printer
+        -- Clients Level
+        -- المرتجعات
+        -- البضائع السائله
 
     Learn Mongoose
 

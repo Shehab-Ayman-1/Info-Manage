@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { Header } from "@/components/header";
 
 type LayoutProps = {
@@ -7,12 +6,12 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
     return (
-        <Fragment>
+        <div className="bg-overview">
             <div className="sm:p-4">
                 <Header />
             </div>
-            <div className="mx-auto mb-16 min-h-[calc(100vh-250px)] max-w-screen-xl p-2 sm:p-4">{children}</div>
-        </Fragment>
+            <div className="mx-auto mb-16 min-h-[calc(100vh-230px)] max-w-screen-xl p-2 sm:p-4">{children}</div>
+        </div>
     );
 };
 

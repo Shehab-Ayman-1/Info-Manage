@@ -5,21 +5,32 @@ import Link from "next/link";
 
 import { Button } from "@/ui/button";
 import { Alert } from "@/ui/alert";
+import { useSubscription } from "@/hooks/useSubscription";
+import { AlertTriangleIcon } from "lucide-react";
 
 type OverviewProps = {};
 
 const Overview = ({}: OverviewProps) => {
     const { organization } = useOrganization();
+    const { isSubscribe } = useSubscription();
 
     return (
-        <div className="flex-center flex-col p-6">
-            {!organization && (
-                <ClerkLoaded>
-                    <Alert variant="warning" className="text-center text-xl">
-                        You Cannot Access Any Of Our Services Until The Developer Activates Your Subscription.
+        <div className="flex-center flex-col">
+            <ClerkLoaded>
+                {!organization && (
+                    <Alert variant="warning" className="text-xl">
+                        <AlertTriangleIcon className="mt-1" />
+                        <span>You Cannot Access Any Of Our Services Until The Developer Activates Your Subscription.</span>
                     </Alert>
-                </ClerkLoaded>
-            )}
+                )}
+
+                {!isSubscribe && (
+                    <Alert variant="warning" className="text-xl">
+                        <AlertTriangleIcon className="mt-1" />
+                        <span>Your Subscription Has Been Suspended, Please Contact Our Customer Service.</span>
+                    </Alert>
+                )}
+            </ClerkLoaded>
 
             <Image
                 src={organization?.hasImage ? organization.imageUrl : "/logo.png"}

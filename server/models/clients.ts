@@ -6,8 +6,9 @@ type TClient = Document & {
     orgId: string;
 
     name: string;
-    level: "bronze" | "silver" | "gold";
+    phone: number;
 
+    level: "bronze" | "silver" | "gold";
     bronzeTo: number;
     silverTo: number;
 
@@ -21,6 +22,7 @@ type TClient = Document & {
 const schema = new Schema<TClient>({
     orgId: { type: String, required: true, trim: true },
     name: { type: String, required: true, trim: true },
+    phone: { type: String, required: true, trim: true },
 
     level: { type: String, enum: ["bronze", "silver", "gold"], default: "bronze" },
     bronzeTo: { type: Number, required: true },

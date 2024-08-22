@@ -15,21 +15,19 @@ export const GET = async () => {
 
         const clients = await Clients.aggregate([
             {
-                $match: {
-                    orgId,
-                    name: { $ne: "unknown" },
-                },
+                $match: { orgId, name: { $ne: "unknown" } },
             },
             {
                 $project: {
                     _id: 1,
-                    discounts: 1,
                     level: 1,
-                    bronzeTo: 1,
+                    phone: 1,
                     silverTo: 1,
+                    bronzeTo: 1,
+                    discounts: 1,
                     client: "$name",
-                    purchases: "$purchasesSalary",
                     pending: "$pendingCosts",
+                    purchases: "$purchasesSalary",
                 },
             },
         ]);
@@ -51,9 +49,9 @@ export const PUT = async (req: NextRequest) => {
         const organization = await clerkClient().organizations.getOrganization({ organizationId: orgId, slug: orgSlug });
 
         const body = await req.json();
-        const { clientId, name, bronzeTo, silverTo } = editSchema.parse(body);
+        const { clientId, name, phone, bronzeTo, silverTo } = editSchema.parse(body);
 
-        const updated = await Clients.updateOne({ orgId, _id: clientId }, { name, bronzeTo, silverTo });
+        const updated = await Clients.updateOne({ orgId, _id: clientId }, { name, phone, bronzeTo, silverTo });
         if (!updated.modifiedCount) return json("Something Went Wrong.", 400);
 
         await Clients.updateLevel({ orgId, clientId });

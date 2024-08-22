@@ -26,7 +26,7 @@ type CashesProps = {
 
 const Cashes = () => {
     const { data, isPending, error } = useGet<CashesProps>("/api/show/cashes", ["cashes"]);
-    const { isSubscribe } = useSubscription(["premium"]);
+    const { isAdditionalSubscribe } = useSubscription(["premium"]);
 
     if (isPending) return <CashesLoading />;
     if (error) return <h3>{error?.message}</h3>;
@@ -37,7 +37,7 @@ const Cashes = () => {
         <div className="flex-between mt-4 !flex-wrap">
             <CashCard
                 heading="Details Of Locker"
-                isSubscribe
+                isAdditionalSubscribe
                 items={[
                     { title: "Total By Cash", value: locker.cash },
                     { title: "Total By Visa", value: locker.visa },
@@ -46,7 +46,7 @@ const Cashes = () => {
 
             <CashCard
                 heading="Details Of Market"
-                isSubscribe={isSubscribe}
+                isAdditionalSubscribe={isAdditionalSubscribe}
                 items={[
                     { title: "Total By Purchase Price", value: market.purchasePrice },
                     { title: "Total By Selling Price", value: market.sellingPrice },
@@ -55,7 +55,7 @@ const Cashes = () => {
 
             <CashCard
                 heading="Details Of Store"
-                isSubscribe={isSubscribe}
+                isAdditionalSubscribe={isAdditionalSubscribe}
                 items={[
                     { title: "Total By Purchase Price", value: store.purchasePrice },
                     { title: "Total By Selling Price", value: store.sellingPrice },
@@ -64,7 +64,7 @@ const Cashes = () => {
 
             <CashCard
                 heading="Details Of Debts"
-                isSubscribe={isSubscribe}
+                isAdditionalSubscribe={isAdditionalSubscribe}
                 items={[
                     { title: "Client Debts", value: debts.clients },
                     { title: "Supplier Debts", value: debts.suppliers },

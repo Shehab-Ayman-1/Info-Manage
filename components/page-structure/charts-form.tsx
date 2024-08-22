@@ -30,7 +30,7 @@ type ChartsFormProps = {
 
 export const ChartsForm = ({ heading, chart1, chart2, children }: ChartsFormProps) => {
     return (
-        <Card className="p-6">
+        <Card className="p-6 print:bg-transparent">
             <CardHeader className="flex-between">
                 <Heading title={heading} />
             </CardHeader>

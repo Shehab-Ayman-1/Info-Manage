@@ -1,62 +1,74 @@
 "use client";
-import { BellIcon, Clock5Icon, CreditCardIcon, HandCoinsIcon } from "lucide-react";
+import { BellIcon, CircleFadingArrowUpIcon, Clock5Icon } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { Fragment } from "react";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
-import { useGet } from "@/hooks/api/useGet";
+import { useSubscription } from "@/hooks/useSubscription";
 import { cn } from "@/utils/shadcn";
 
 type NotificationsProps = {
     _id: string;
     reason: string;
     price: number;
-    process: "deposit" | "withdraw";
-    method: "cash" | "visa";
+    process: "deposit" | "withdraw" | "premium" | "enterprise";
+    method: "cash" | "visa" | "Vodafone Cash";
     createdAt: Date;
 };
 
-export const Notifications = () => {
-    const { data, isPending, error } = useGet<NotificationsProps>("/api/notifications", ["notifications"]);
-    if (isPending || error || !data?.length) return;
+const defaultNotifies: NotificationsProps[] = [
+    {
+        _id: "Premium",
+        reason: "Premium Subscription",
+        price: 200,
+        process: "premium",
+        method: "Vodafone Cash",
+        createdAt: new Date(),
+    },
+    {
+        _id: "EnterPrice",
+        reason: "EnterPrice Subscription",
+        price: 200,
+        process: "enterprise",
+        method: "Vodafone Cash",
+        createdAt: new Date(),
+    },
+];
 
-    const textStyle = (process: "deposit" | "withdraw") =>
-        cn(
-            "text-lg font-bold",
-            process === "deposit" ? "text-green-800 dark:text-green-300" : "text-rose-800 dark:text-rose-300",
-        );
+export const Notifications = () => {
+    const { additionalSubscription } = useSubscription(["premium"]);
+    const subscriptions = defaultNotifies.filter((notify) => notify.process !== additionalSubscription);
+
+    const textStyle = "text-sm font-bold text-amber-800 dark:text-amber-300";
 
     return (
         <Popover>
-            <PopoverTrigger>
+            <PopoverTrigger className="relative">
+                <span className="absolute -top-1 right-0 h-3 w-3 rounded-full bg-red-500" />
                 <BellIcon className="hover:text-slate-500" />
             </PopoverTrigger>
 
             <PopoverContent className="bg-gradient w-auto md:min-w-96">
-                {data?.map((notify, index) => (
+                {subscriptions.map((notify) => (
                     <Fragment key={notify._id}>
                         <div className="flex-start cursor-pointer rounded-md px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600">
-                            {notify.process === "deposit" ? (
-                                <HandCoinsIcon className="size-10 !text-green-500" />
-                            ) : (
-                                <CreditCardIcon className="size-10 !text-rose-500" />
-                            )}
+                            <CircleFadingArrowUpIcon className="size-8 !text-amber-500" />
+
                             <div className="">
-                                <h3 className={textStyle(notify.process)}>{notify.reason}</h3>
+                                <h3 className={textStyle}>{notify.reason}</h3>
 
                                 <div className="flex-between">
-                                    <p className={textStyle(notify.process)}>$ {notify.price}</p>
-                                    <p className={textStyle(notify.process)}>{notify.method}</p>
-                                    <p className={textStyle(notify.process)}>{notify.process}</p>
+                                    <p className={textStyle}>$ {notify.price}</p>
+                                    <p className={textStyle}>{notify.process}</p>
+                                    <p className={textStyle}>{notify.method}</p>
                                 </div>
 
-                                <div className={cn("flex-start text-slate-600 dark:text-slate-300", textStyle(notify.process))}>
-                                    <Clock5Icon className={cn("size-4", textStyle(notify.process))} />
-                                    {formatDistanceToNow(notify.createdAt || Date.now())}
+                                <div className={cn("flex-start text-slate-600 dark:text-slate-300", textStyle)}>
+                                    <Clock5Icon className={cn("size-4", textStyle)} />
+                                    <p>{formatDistanceToNow(notify.createdAt || Date.now())}</p>
                                 </div>
                             </div>
                         </div>
-                        {index !== data.length - 1 && <hr className="border-slate-600" />}
                     </Fragment>
                 ))}
             </PopoverContent>

@@ -16,9 +16,9 @@ export const NavIcons = ({}: NavlinksProps) => {
 
     return (
         <div className="flex-end print:hidden">
-            <Notifications />
-
             <Searchbar />
+
+            <Notifications />
 
             <Link href="/subscription">
                 <CreditCardIcon />

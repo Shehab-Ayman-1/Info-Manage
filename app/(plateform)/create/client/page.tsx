@@ -22,11 +22,10 @@ const Client = ({}: ClientProps) => {
 
     useEffect(() => {
         if (!organization) return;
-
         const { bronzeTo, silverTo } = organization.publicMetadata;
+
         setValue("bronzeTo", bronzeTo);
         setValue("silverTo", silverTo);
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [organization]);
 
@@ -42,8 +41,9 @@ const Client = ({}: ClientProps) => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <CardForm heading="New Client" submitText="Create" disabled={isPending}>
                 <Input placeholder="Client Name" error={errors?.name} {...register("name")} />
+                <Input type="number" placeholder="Phone Number" error={errors?.phone} {...register("phone")} />
 
-                <div className="bronze flex-between !flex-nowrap">
+                <div className="flex-between !flex-nowrap">
                     <Input type="number" name="bronzeFrom" placeholder="From: ( 0 )" disabled />
                     <Input
                         type="number"
@@ -53,7 +53,7 @@ const Client = ({}: ClientProps) => {
                     />
                 </div>
 
-                <div className="silver flex-between !flex-nowrap">
+                <div className="flex-between !flex-nowrap">
                     <Input type="number" name="silverFrom" placeholder="From:" value={bronzeTo} disabled />
                     <Input
                         type="number"
@@ -63,7 +63,7 @@ const Client = ({}: ClientProps) => {
                     />
                 </div>
 
-                <div className="gold flex-between !flex-nowrap">
+                <div className="flex-between !flex-nowrap">
                     <Input type="number" name="goldFrom" placeholder="From:" value={silverTo} disabled />
                     <Input name="goldFrom" placeholder="To: ( Un Limited )" disabled />
                 </div>

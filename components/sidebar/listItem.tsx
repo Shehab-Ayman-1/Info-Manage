@@ -10,8 +10,8 @@ import { NavLinkType } from "@/constants";
 import { Badge } from "@/ui/badge";
 import { cn } from "@/utils/shadcn";
 
-export const ListItem = ({ Icon, title, href, userRole, subscriptions }: NavLinkType) => {
-    const { isSubscribe } = useSubscription(subscriptions);
+export const ListItem = ({ Icon, title, href, userRole, subscriptions, additionalSubscriptions }: NavLinkType) => {
+    const { isAdditionalSubscribe } = useSubscription(additionalSubscriptions, subscriptions);
     const { onOpen } = useSidebarModel();
     const { orgRole } = useAuth();
 
@@ -19,22 +19,25 @@ export const ListItem = ({ Icon, title, href, userRole, subscriptions }: NavLink
 
     const itemStyle = cn(
         "flex-between cursor-pointer border-none p-4 focus-visible:border-none",
-        isAdmin && isSubscribe && "hover:bg-primary-50 dark:hover:bg-slate-800",
+        isAdmin && isAdditionalSubscribe && "hover:bg-primary-50 dark:hover:bg-slate-800",
     );
 
     const titleStyle = cn(
         "text-sm sm:text-base font-bold",
-        isAdmin && isSubscribe ? "!text-slate-600 dark:!text-slate-300" : "!text-slate-400 dark:!text-slate-500",
+        isAdmin && isAdditionalSubscribe ? "!text-slate-600 dark:!text-slate-300" : "!text-slate-400 dark:!text-slate-500",
     );
 
     return (
         <AccordionItem asChild value={title} key={title} className={itemStyle} onClick={() => onOpen(false)}>
-            <Link href={isAdmin && isSubscribe ? href : "/"} className={cn(!isAdmin && !isSubscribe && "pointer-events-auto")}>
+            <Link
+                href={isAdmin && isAdditionalSubscribe ? href : "/"}
+                className={cn(!isAdmin && !isAdditionalSubscribe && "pointer-events-auto")}
+            >
                 <div className="flex-start">
                     <Icon
                         className={cn(
                             "size-4 sm:size-5",
-                            isAdmin && isSubscribe
+                            isAdmin && isAdditionalSubscribe
                                 ? "!text-slate-600 dark:!text-slate-300"
                                 : "!text-slate-400 dark:!text-slate-500",
                         )}
@@ -44,7 +47,12 @@ export const ListItem = ({ Icon, title, href, userRole, subscriptions }: NavLink
 
                 <div className="flex-end">
                     <LockIcon className={cn(isAdmin ? "hidden" : "size-4 !text-rose-500 sm:size-5")} />
-                    {!isSubscribe && <Badge className="bg-rose-500 text-white hover:bg-rose-600">Pro</Badge>}
+                    {!isAdditionalSubscribe &&
+                        additionalSubscriptions.map((name) => (
+                            <Badge key={name} className={cn("text-white", name === "premium" ? "bg-purple-700" : "bg-green-700")}>
+                                {name}
+                            </Badge>
+                        ))}
                 </div>
             </Link>
         </AccordionItem>

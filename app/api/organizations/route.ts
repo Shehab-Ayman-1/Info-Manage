@@ -10,9 +10,17 @@ export const PUT = async (req: NextRequest) => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const body = await req.json();
-        const { organizationId, ...publicMetadata } = configsSchema.parse(body);
 
-        await clerkClient.organizations.updateOrganizationMetadata(organizationId, { publicMetadata });
+        if (body?.additionalSubscriptionExpiresAt) {
+            const additionalSubscriptionExpiresAt = new Date(body.additionalSubscriptionExpiresAt);
+            const { organizationId, ...publicMetadata } = configsSchema.parse({ ...body, additionalSubscriptionExpiresAt });
+
+            await clerkClient.organizations.updateOrganizationMetadata(organizationId, { publicMetadata });
+        } else {
+            const { organizationId, ...publicMetadata } = configsSchema.parse(body);
+            await clerkClient.organizations.updateOrganizationMetadata(organizationId, { publicMetadata });
+        }
+
         return json("The Organization Configs Was Successfully Updated.");
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");

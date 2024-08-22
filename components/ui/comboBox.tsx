@@ -1,7 +1,7 @@
 "use client";
 import type { UseFormClearErrors, UseFormSetError, UseFormSetValue } from "react-hook-form";
 import type { FieldError, FieldErrorsImpl, FieldValues, Merge } from "react-hook-form";
-import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
+import { CheckCheckIcon, ChevronsUpDownIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { CommandInput, CommandItem, CommandList } from "@/ui/command";
@@ -45,6 +45,7 @@ export const ComboBox = (props: ComboBoxProps) => {
 
     useEffect(() => {
         if (!defaultValue) return;
+        setSelectedValue(defaultValue);
         setValue?.(name, defaultValue);
         onChange?.(defaultValue);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -60,19 +61,18 @@ export const ComboBox = (props: ComboBoxProps) => {
     };
 
     return (
-        <div className="flex w-full flex-col">
+        <div className="my-2 flex w-full flex-col">
             <Label className={cn("text-base", error?.message && "text-rose-400")}>{label}</Label>
 
             <Popover open={open} onOpenChange={setOpen}>
                 <CommandTrigger open={open} label={label} selectedValue={selectedValue} />
 
-                <PopoverContent className="w-[500px] p-0">
-                    <Command>
-                        <CommandInput placeholder="Search framework..." />
+                <PopoverContent className="p-0" align="start">
+                    <Command className="sm:w-[520px]">
+                        <CommandInput placeholder={`Search For ${label}`} />
 
-                        <CommandList>
+                        <CommandList className="bg-gradient">
                             {!loading && !items?.length && !groups?.length && <CommandEmpty>No Results Was Found.</CommandEmpty>}
-
                             {loading && !items?.length && !groups?.length && <CommandLoading />}
 
                             {!!items?.length &&
@@ -90,7 +90,7 @@ export const ComboBox = (props: ComboBoxProps) => {
                                 groups.map((group) => (
                                     <CommandGroup key={group._id}>
                                         {!!group.list.length && (
-                                            <h3 className="bg-gradient-heavy !w-full p-2 text-base font-bold text-black">
+                                            <h3 className="bg-gradient-heavy p-2 text-base font-bold text-black">
                                                 {group.label}
                                             </h3>
                                         )}
@@ -160,14 +160,14 @@ function CommandListItem({ value, title, selectedValue, onSelect }: CommandListI
     const hideIcon = (value: string) => (selectedValue === value ? "opacity-100" : "opacity-0");
 
     return (
-        <CommandItem value={value} onSelect={onSelect} className="cursor-pointer text-lg">
-            <CheckIcon className={cn("mr-2 size-4", hideIcon(value))} />
+        <CommandItem value={value} onSelect={onSelect} className="cursor-pointer text-lg capitalize leading-10">
+            <CheckCheckIcon className={cn("mr-2 size-4 !text-green-500", hideIcon(value))} />
             {title}
         </CommandItem>
     );
 }
 
+CommandListItem.displayName = "CommandListItem";
 CommandTrigger.displayName = "CommandTrigger";
 CommandLoading.displayName = "CommandLoading";
-CommandListItem.displayName = "CommandListItem";
 ComboBox.displayName = "ComboBox";

@@ -15,7 +15,7 @@ export const List = ({ trigger, links }: ListProps) => {
         <AccordionItem value={trigger} className="border-b border-b-primary">
             <AccordionTrigger className={triggerStyle}>{trigger}</AccordionTrigger>
             <AccordionContent>
-                {links.map(({ Icon, title, href, userRole, subscriptions }) => (
+                {links.map(({ Icon, title, href, userRole, subscriptions, additionalSubscriptions }) => (
                     <ListItem
                         key={title}
                         Icon={Icon}
@@ -23,6 +23,7 @@ export const List = ({ trigger, links }: ListProps) => {
                         href={href}
                         userRole={userRole}
                         subscriptions={subscriptions}
+                        additionalSubscriptions={additionalSubscriptions}
                     />
                 ))}
             </AccordionContent>

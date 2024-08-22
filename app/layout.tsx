@@ -7,6 +7,8 @@ import { Configrator } from "@/components/configrator";
 import { Sidebar } from "@/components/sidebar";
 import { Footer } from "@/components/footer";
 import "./sass/index.scss";
+import Image from "next/image";
+import { IsSubscription } from "@/utils/subscription";
 
 export const metadata = {
     title: "Info Manage",
@@ -21,16 +23,18 @@ const Layout = async ({ children }: LayoutProps) => {
     if (!userId) return <NotSignedIn>{children}</NotSignedIn>;
 
     const orgs = await clerkClient().users.getOrganizationMembershipList({ userId });
-    const orgId = orgs?.data[0]?.organization.id;
+    const org = orgs?.data[0]?.organization;
 
-    if (!orgId) return <NotSignedIn>{children}</NotSignedIn>;
+    if (!org?.id) return <NotSignedIn>{children}</NotSignedIn>;
 
     return (
         <html lang="en" suppressHydrationWarning>
             <body className="bg-gradient min-h-screen">
                 <Providers>
-                    <ActiveOrg orgId={orgId} />
+                    <ActiveOrg orgId={org.id} />
+                    <IsSubscription />
                     <Sidebar />
+                    <Image src={"/overview.jpeg"} alt="overview" fill className="!fixed -z-10 opacity-10 print:hidden" />
                     {children}
                     <Configrator />
                     <Footer />

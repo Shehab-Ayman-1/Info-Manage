@@ -14,12 +14,12 @@ export const POST = async (req: NextRequest) => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const body = await req.json();
-        const { name, bronzeTo, silverTo } = createSchema.parse(body);
+        const { name, phone, bronzeTo, silverTo } = createSchema.parse(body);
 
         const client = await Clients.findOne({ orgId, name });
         if (client) return json("This Client Is Already Exist.", 400);
 
-        await Clients.create({ orgId, name, bronzeTo, silverTo });
+        await Clients.create({ orgId, name, phone, bronzeTo, silverTo });
         return json("The Client Was Successfully Created.");
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
