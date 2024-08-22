@@ -24,7 +24,7 @@ export const showLinks: NavLinkType[] = [
         href: "/show/market",
         userRole: "org:member",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["unsubscribe"],
+        additionalSubscriptions: ["premium", "enterprise"],
     },
     {
         Icon: ArchiveRestoreIcon,
@@ -32,7 +32,7 @@ export const showLinks: NavLinkType[] = [
         href: "/show/store",
         userRole: "org:member",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["unsubscribe"],
+        additionalSubscriptions: ["premium", "enterprise"],
     },
     {
         Icon: BookKeyIcon,
@@ -40,7 +40,7 @@ export const showLinks: NavLinkType[] = [
         href: "/show/cashes",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["unsubscribe"],
+        additionalSubscriptions: ["premium", "enterprise"],
     },
     {
         Icon: ArrowRightLeftIcon,
@@ -72,7 +72,7 @@ export const showLinks: NavLinkType[] = [
         href: "/show/client-bills",
         userRole: "org:member",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["unsubscribe"],
+        additionalSubscriptions: ["premium", "enterprise"],
     },
     {
         Icon: ReceiptTextIcon,
@@ -80,7 +80,7 @@ export const showLinks: NavLinkType[] = [
         href: "/show/supplier-debts",
         userRole: "org:member",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["unsubscribe"],
+        additionalSubscriptions: ["premium", "enterprise"],
     },
 ];
 
@@ -99,7 +99,7 @@ export const statementLinks: NavLinkType[] = [
         href: "/statements/clients",
         userRole: "org:member",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["unsubscribe"],
+        additionalSubscriptions: ["premium", "enterprise"],
     },
     {
         Icon: UsersIcon,
@@ -107,7 +107,7 @@ export const statementLinks: NavLinkType[] = [
         href: "/statements/suppliers",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["unsubscribe"],
+        additionalSubscriptions: ["premium", "enterprise"],
     },
     {
         Icon: ArrowRightLeftIcon,
@@ -115,7 +115,7 @@ export const statementLinks: NavLinkType[] = [
         href: "/statements/transfer",
         userRole: "org:member",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["unsubscribe"],
+        additionalSubscriptions: ["premium", "enterprise"],
     },
     {
         Icon: RocketIcon,
@@ -123,7 +123,7 @@ export const statementLinks: NavLinkType[] = [
         href: "/statements/locker",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["unsubscribe"],
+        additionalSubscriptions: ["premium", "enterprise"],
     },
 ];
 
@@ -134,7 +134,7 @@ export const createLinks: NavLinkType[] = [
         href: "/create/category",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["unsubscribe"],
+        additionalSubscriptions: ["premium", "enterprise"],
     },
     {
         Icon: SchoolIcon,
@@ -142,7 +142,7 @@ export const createLinks: NavLinkType[] = [
         href: "/create/company",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["unsubscribe"],
+        additionalSubscriptions: ["premium", "enterprise"],
     },
     {
         Icon: TargetIcon,
@@ -150,7 +150,7 @@ export const createLinks: NavLinkType[] = [
         href: "/create/product",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["unsubscribe"],
+        additionalSubscriptions: ["premium", "enterprise"],
     },
     {
         Icon: UserIcon,
@@ -158,7 +158,7 @@ export const createLinks: NavLinkType[] = [
         href: "/create/supplier",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["unsubscribe"],
+        additionalSubscriptions: ["premium", "enterprise"],
     },
     {
         Icon: UserCheck,
@@ -166,11 +166,11 @@ export const createLinks: NavLinkType[] = [
         href: "/create/client",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["unsubscribe"],
+        additionalSubscriptions: ["premium", "enterprise"],
     },
 ];
 
-export const statisticsLinks: NavLinkType[] = [
+export const receiptLinks: NavLinkType[] = [
     {
         Icon: ReceiptTextIcon,
         title: "Today Purchases Receipt",
@@ -188,16 +188,18 @@ export const statisticsLinks: NavLinkType[] = [
         additionalSubscriptions: ["premium"],
     },
     {
-        Icon: ArrowRightLeftIcon,
-        title: "Product Movement",
-        href: "/statistics/movement",
-        userRole: "org:admin",
+        Icon: ShoppingCartIcon,
+        title: "Insuffient Products",
+        href: "/statistics/insufficients",
+        userRole: "org:member",
         subscriptions: ["basic"],
         additionalSubscriptions: ["enterprise"],
     },
+];
+export const statisticsLinks: NavLinkType[] = [
     {
         Icon: BadgeDollarSignIcon,
-        title: "Sales Statistics",
+        title: "Sales",
         href: "/statistics/sales",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -205,17 +207,9 @@ export const statisticsLinks: NavLinkType[] = [
     },
     {
         Icon: BadgeDollarSignIcon,
-        title: "Profits Statistics",
+        title: "Profits",
         href: "/statistics/profits",
         userRole: "org:admin",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["enterprise"],
-    },
-    {
-        Icon: ShoppingCartIcon,
-        title: "Insuffients Products",
-        href: "/statistics/insufficients",
-        userRole: "org:member",
         subscriptions: ["basic"],
         additionalSubscriptions: ["enterprise"],
     },
@@ -223,6 +217,14 @@ export const statisticsLinks: NavLinkType[] = [
         Icon: ThumbsDownIcon,
         title: "Least Selling",
         href: "/statistics/least-selling",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["enterprise"],
+    },
+    {
+        Icon: ArrowRightLeftIcon,
+        title: "Product Movement",
+        href: "/statistics/movement",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["enterprise"],

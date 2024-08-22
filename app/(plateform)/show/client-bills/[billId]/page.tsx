@@ -18,6 +18,7 @@ type ResponseType = {
     discount: number;
     state: string;
     createdAt: Date;
+    billProfits: number;
     products: {
         company: string;
         product: string;
@@ -68,6 +69,7 @@ const BillProfile = ({ params }: BillProfileProps) => {
             <div className="flex-around flex-wrap md:flex-nowrap">
                 <h1 className={styleText}>Discount: ( ${values?.discount} )</h1>
                 <h1 className={styleText}>State: ( {values?.state} )</h1>
+                <h1 className={styleText}>Profits: ( ${values?.billProfits} )</h1>
             </div>
 
             <div className="flex-center mt-10 w-full flex-col">

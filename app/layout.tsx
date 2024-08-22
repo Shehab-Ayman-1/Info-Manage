@@ -34,7 +34,7 @@ const Layout = async ({ children }: LayoutProps) => {
                     <ActiveOrg orgId={org.id} />
                     <IsSubscription />
                     <Sidebar />
-                    <Image src={"/overview.jpeg"} alt="overview" fill className="!fixed -z-10 opacity-10 print:hidden" />
+                    <Image src={"/overview.jpeg"} alt="overview" fill className="!fixed -z-10 opacity-5 print:hidden" />
                     {children}
                     <Configrator />
                     <Footer />

@@ -11,14 +11,14 @@ type NotificationsProps = {
     _id: string;
     reason: string;
     price: number;
-    process: "deposit" | "withdraw" | "premium" | "enterprise";
-    method: "cash" | "visa" | "Vodafone Cash";
+    process: "premium" | "enterprise";
+    method: "Vodafone Cash";
     createdAt: Date;
 };
 
-const defaultNotifies: NotificationsProps[] = [
+const notifies: NotificationsProps[] = [
     {
-        _id: "Premium",
+        _id: "premium",
         reason: "Premium Subscription",
         price: 200,
         process: "premium",
@@ -26,7 +26,7 @@ const defaultNotifies: NotificationsProps[] = [
         createdAt: new Date(),
     },
     {
-        _id: "EnterPrice",
+        _id: "enterprise",
         reason: "EnterPrice Subscription",
         price: 200,
         process: "enterprise",
@@ -37,18 +37,25 @@ const defaultNotifies: NotificationsProps[] = [
 
 export const Notifications = () => {
     const { additionalSubscription } = useSubscription(["premium"]);
-    const subscriptions = defaultNotifies.filter((notify) => notify.process !== additionalSubscription);
+    const subscriptions =
+        notifies?.length === additionalSubscription?.length
+            ? []
+            : notifies.filter((notify) => additionalSubscription?.some((sub) => sub !== notify.process));
 
     const textStyle = "text-sm font-bold text-amber-800 dark:text-amber-300";
 
     return (
         <Popover>
             <PopoverTrigger className="relative">
-                <span className="absolute -top-1 right-0 h-3 w-3 rounded-full bg-red-500" />
+                {!!subscriptions.length && (
+                    <span className="flex-center absolute -right-1 -top-2 block size-4 rounded-full bg-red-500 text-xs leading-none text-white">
+                        {subscriptions.length}
+                    </span>
+                )}
                 <BellIcon className="hover:text-slate-500" />
             </PopoverTrigger>
 
-            <PopoverContent className="bg-gradient w-auto md:min-w-96">
+            <PopoverContent className="bg-gradient w-auto md:min-w-96" align="end">
                 {subscriptions.map((notify) => (
                     <Fragment key={notify._id}>
                         <div className="flex-start cursor-pointer rounded-md px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600">
@@ -71,6 +78,8 @@ export const Notifications = () => {
                         </div>
                     </Fragment>
                 ))}
+
+                {!subscriptions.length && <h3 className="">No Inbox Notifications.</h3>}
             </PopoverContent>
         </Popover>
     );

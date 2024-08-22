@@ -6,7 +6,7 @@ type TClient = Document & {
     orgId: string;
 
     name: string;
-    phone: number;
+    phone: string;
 
     level: "bronze" | "silver" | "gold";
     bronzeTo: number;
@@ -22,15 +22,16 @@ type TClient = Document & {
 const schema = new Schema<TClient>({
     orgId: { type: String, required: true, trim: true },
     name: { type: String, required: true, trim: true },
-    phone: { type: String, required: true, trim: true },
 
     level: { type: String, enum: ["bronze", "silver", "gold"], default: "bronze" },
+    phone: { type: String, required: true, trim: true },
+
     bronzeTo: { type: Number, required: true },
     silverTo: { type: Number, required: true },
 
     lastRefreshDate: { type: Date, default: new Date() },
-
     discounts: { type: Number, default: 0 },
+
     pendingCosts: { type: Number, default: 0 },
     purchasesSalary: { type: Number, default: 0 },
 });
@@ -40,7 +41,9 @@ type FilterQuery = {
     clientId: string;
 };
 
-type LastRefreshDate = FilterQuery & { refreshAfter?: number };
+type LastRefreshDate = FilterQuery & {
+    refreshAfter?: number;
+};
 
 schema.statics.updateLevel = async function ({ orgId, clientId }: FilterQuery) {
     const Clients = this;

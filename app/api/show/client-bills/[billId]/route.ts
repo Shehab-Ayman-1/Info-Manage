@@ -2,8 +2,8 @@ import { auth, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 import { Types } from "mongoose";
 
-import { DBConnection } from "@/server/configs";
 import { Bills, Clients, Transactions } from "@/server/models";
+import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
 
 type ResponseType = {
@@ -55,6 +55,16 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
                     state: { $first: "$state" },
                     discount: { $first: "$discount" },
                     createdAt: { $first: "$createdAt" },
+
+                    billProfits: {
+                        $sum: {
+                            $subtract: [
+                                { $multiply: ["$products.count", "$products.soldPrice"] },
+                                { $multiply: ["$products.count", "$products.purchasePrice"] },
+                            ],
+                        },
+                    },
+
                     products: {
                         $push: {
                             company: { $first: "$products.source.company.name" },
@@ -67,8 +77,6 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
                 },
             },
         ]);
-
-        // 0122 4559 768
 
         return json(bill);
     } catch (error: any) {

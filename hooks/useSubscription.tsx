@@ -10,20 +10,21 @@ export const useSubscription = (
 
     const meta = organization?.publicMetadata;
     const subscription = meta?.subscription as Subscription;
+    const isSubscribe = subscriptions.includes(subscription);
 
-    const additionalSubscription = meta?.additionalSubscription as AdditionalSubscription;
+    const addSubscriptions = meta?.additionalSubscriptions as AdditionalSubscription[];
     const additionalSubscriptionExpiresAt = meta?.additionalSubscriptionExpiresAt as string;
 
     const now = new Date().getTime();
     const isExpires = now > new Date(additionalSubscriptionExpiresAt).getTime();
 
-    const isSubscribe = subscriptions.includes(subscription);
-    const isAdditionalSubscribe = !isExpires && additionalSubscriptions.includes(additionalSubscription);
+    const subscriptionExist = additionalSubscriptions.some((sub) => addSubscriptions?.includes(sub));
+    const isAdditionalSubscribe = !isExpires && subscriptionExist;
 
     return {
         subscription,
         isSubscribe: isSubscribe && subscription !== "unsubscribe",
-        additionalSubscription,
+        additionalSubscription: addSubscriptions,
         isAdditionalSubscribe: isAdditionalSubscribe,
     };
 };
