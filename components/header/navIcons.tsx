@@ -21,7 +21,7 @@ export const NavIcons = ({}: NavlinksProps) => {
         <div className="flex-end print:hidden">
             <Searchbar />
             <Notifications />
-            <ReceiptTextIcon onClick={() => onOpen("quick-client-statement")} />
+            <ReceiptTextIcon onClick={() => onOpen("quick-client-statement-model")} />
 
             <Link href="/subscription">
                 <CreditCardIcon />

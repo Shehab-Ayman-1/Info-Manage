@@ -38,20 +38,13 @@ export type StatementType = z.infer<typeof schema>;
 type ProductType = z.infer<typeof productSchema>;
 type RequestType = Omit<StatementType, "products"> & Pick<CreateClientType, "products">;
 
+const defaultProduct = { productId: "", name: "", company: "", count: 0, purchasePrice: 0, soldPrice: 0, total: 0 };
 export const QuickClientStatement = () => {
-    const { formState, watch, setValue, handleSubmit } = useForm<StatementType>({ resolver: zodResolver(schema) });
+    const { formState, watch, reset, setValue, handleSubmit } = useForm<StatementType>({ resolver: zodResolver(schema) });
     const { mutate, isPending } = useCreate<RequestType>("/api/statements/clients", ["bills"]);
-    const [product, setProduct] = useState<ProductType[0]>({
-        company: "",
-        count: 0,
-        name: "",
-        productId: "",
-        purchasePrice: 0,
-        soldPrice: 0,
-        total: 0,
-    });
+    const [product, setProduct] = useState<ProductType[0]>(defaultProduct);
     const { clients, products: productLists } = useLists();
-    const { onClose } = useModel();
+    const { type, onClose } = useModel();
 
     const choosenProducts = watch("products");
 
@@ -92,6 +85,8 @@ export const QuickClientStatement = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [product?.productId]);
 
+    if (type !== "quick-client-statement-model") return;
+
     const handleInsertProduct = () => {
         const prod = choosenProducts?.find((prod) => prod.productId === product.productId);
 
@@ -102,7 +97,7 @@ export const QuickClientStatement = () => {
         if (!productList) return toast.info("Something Went Wrong.");
 
         const { name, company, purchasePrice, soldPrice } = productList;
-        const newProducts = choosenProducts?.concat({
+        const newProduct = {
             productId: product.productId,
             company: company.name,
             name,
@@ -110,16 +105,28 @@ export const QuickClientStatement = () => {
             purchasePrice,
             count: product.count,
             total: product.count * soldPrice,
-        });
+        };
+        const newProducts = choosenProducts?.concat(newProduct);
 
-        setValue("products", newProducts || []);
+        setValue("products", newProducts || [newProduct]);
         setProduct((product) => ({ ...product, count: 0 }));
     };
 
     const onSubmit: SubmitHandler<StatementType> = (values) => {
         const filterProducts = values.products.map(({ company, name, ...product }) => product);
-        mutate({ ...values, products: filterProducts });
+        mutate(
+            { ...values, products: filterProducts },
+            {
+                onSuccess: () => {
+                    setProduct(defaultProduct);
+                    reset();
+                    onClose();
+                },
+            },
+        );
     };
+
+    console.log(formState.errors);
 
     return (
         <DialogForm heading="Quick Client Statement" description="Create A New Client Statement With One Click">
