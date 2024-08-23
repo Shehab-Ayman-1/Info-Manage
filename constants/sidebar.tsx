@@ -17,79 +17,13 @@ export type NavLinkType = {
     additionalSubscriptions: AdditionalSubscription[];
 };
 
-export const showLinks: NavLinkType[] = [
+// New Tabs
+export const productLists: NavLinkType[] = [
     {
         Icon: StoreIcon,
-        title: "Products",
+        title: "Market & Store Products",
         href: "/show/products",
         userRole: "org:member",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
-    },
-    {
-        Icon: BookKeyIcon,
-        title: "Total Cashes",
-        href: "/show/cashes",
-        userRole: "org:admin",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
-    },
-    {
-        Icon: ArrowRightLeftIcon,
-        title: "Transactions",
-        href: "/show/transactions",
-        userRole: "org:admin",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["premium"],
-    },
-    {
-        Icon: UsersIcon,
-        title: "Clients",
-        href: "/show/clients",
-        userRole: "org:admin",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["premium"],
-    },
-    {
-        Icon: UsersIcon,
-        title: "Suppliers",
-        href: "/show/suppliers",
-        userRole: "org:admin",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["premium"],
-    },
-    {
-        Icon: ReceiptTextIcon,
-        title: "Client Bills",
-        href: "/show/client-bills",
-        userRole: "org:member",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
-    },
-    {
-        Icon: ReceiptTextIcon,
-        title: "Supplier Bills",
-        href: "/show/supplier-debts",
-        userRole: "org:member",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
-    },
-];
-
-export const statementLinks: NavLinkType[] = [
-    {
-        Icon: HandCoinsIcon,
-        title: "Client's Statement",
-        href: "/statements/clients",
-        userRole: "org:member",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
-    },
-    {
-        Icon: UsersIcon,
-        title: "Supplier's Statement",
-        href: "/statements/suppliers",
-        userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium", "enterprise"],
     },
@@ -102,59 +36,13 @@ export const statementLinks: NavLinkType[] = [
         additionalSubscriptions: ["premium", "enterprise"],
     },
     {
-        Icon: RocketIcon,
-        title: "Locker Withdrawal / Deposit",
-        href: "/statements/locker",
-        userRole: "org:admin",
+        Icon: ShoppingCartIcon,
+        title: "Insuffient Products",
+        href: "/statistics/insufficients",
+        userRole: "org:member",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
+        additionalSubscriptions: ["enterprise"],
     },
-];
-
-export const createLinks: NavLinkType[] = [
-    {
-        Icon: LayoutDashboardIcon,
-        title: "Add Category",
-        href: "/create/category",
-        userRole: "org:admin",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
-    },
-    {
-        Icon: SchoolIcon,
-        title: "Add Company",
-        href: "/create/company",
-        userRole: "org:admin",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
-    },
-    {
-        Icon: TargetIcon,
-        title: "Add Product",
-        href: "/create/product",
-        userRole: "org:admin",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
-    },
-    {
-        Icon: UserIcon,
-        title: "Add Supplier",
-        href: "/create/supplier",
-        userRole: "org:admin",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
-    },
-    {
-        Icon: UserCheck,
-        title: "Add Client",
-        href: "/create/client",
-        userRole: "org:admin",
-        subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
-    },
-];
-
-export const receiptLinks: NavLinkType[] = [
     {
         Icon: ReceiptTextIcon,
         title: "Today Purchases Receipt",
@@ -172,12 +60,125 @@ export const receiptLinks: NavLinkType[] = [
         additionalSubscriptions: ["premium"],
     },
     {
-        Icon: ShoppingCartIcon,
-        title: "Insuffient Products",
-        href: "/statistics/insufficients",
+        Icon: LayoutDashboardIcon,
+        title: "Add New Category",
+        href: "/create/category",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium", "enterprise"],
+    },
+    {
+        Icon: SchoolIcon,
+        title: "Add New Company",
+        href: "/create/company",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium", "enterprise"],
+    },
+    {
+        Icon: TargetIcon,
+        title: "Add New Product",
+        href: "/create/product",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium", "enterprise"],
+    },
+];
+
+export const clientLists: NavLinkType[] = [
+    {
+        Icon: UsersIcon,
+        title: "Show Clients",
+        href: "/show/clients",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium"],
+    },
+    {
+        Icon: ReceiptTextIcon,
+        title: "Show Bills",
+        href: "/show/client-bills",
         userRole: "org:member",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["enterprise"],
+        additionalSubscriptions: ["premium", "enterprise"],
+    },
+    {
+        Icon: UserCheck,
+        title: "Add New Client",
+        href: "/create/client",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium", "enterprise"],
+    },
+    {
+        Icon: HandCoinsIcon,
+        title: "Add New Statement",
+        href: "/statements/clients",
+        userRole: "org:member",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium", "enterprise"],
+    },
+];
+
+export const supplierLists: NavLinkType[] = [
+    {
+        Icon: UsersIcon,
+        title: "Show Suppliers",
+        href: "/show/suppliers",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium"],
+    },
+    {
+        Icon: ReceiptTextIcon,
+        title: "Show Bills",
+        href: "/show/supplier-debts",
+        userRole: "org:member",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium", "enterprise"],
+    },
+    {
+        Icon: UserIcon,
+        title: "Add New Supplier",
+        href: "/create/supplier",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium", "enterprise"],
+    },
+    {
+        Icon: UsersIcon,
+        title: "Add New Statement",
+        href: "/statements/suppliers",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium", "enterprise"],
+    },
+];
+
+export const financeLists: NavLinkType[] = [
+    {
+        Icon: BookKeyIcon,
+        title: "Total Cashes",
+        href: "/show/cashes",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium", "enterprise"],
+    },
+    {
+        Icon: ArrowRightLeftIcon,
+        title: "Transactions",
+        href: "/show/transactions",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium"],
+    },
+    {
+        Icon: RocketIcon,
+        title: "Locker Withdrawal / Deposit",
+        href: "/statements/locker",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium", "enterprise"],
     },
 ];
 

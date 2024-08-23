@@ -13,7 +13,7 @@ export const DeleteDialog = ({ products, setValue }: DeleteDialogProps) => {
     const { type, data } = useModel();
 
     useEffect(() => {
-        if (type !== "quick-client-statement-delete-model" || !data.isDeleteAble) return;
+        if (type !== "quick-client-statement-model" || !data?.isDeleteAble) return;
         const newProducts = products.filter((product) => product.productId !== data.productId);
         setValue("products", newProducts);
         // eslint-disable-next-line react-hooks/exhaustive-deps

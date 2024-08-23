@@ -18,7 +18,7 @@ export const Actions = ({ row }: ActionsProps) => {
             text: "Delete",
             className: { button: "cancel", icon: "cancel" },
             onClick: (original: any) =>
-                onOpen("quick-client-statement-delete-model", { productId: original.productId, isDeleteAble: true }),
+                onOpen("quick-client-statement-model", { productId: original.productId, isDeleteAble: true }),
         },
     ];
 

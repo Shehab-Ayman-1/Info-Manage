@@ -14,7 +14,7 @@ export const Sidebar = ({}: SidebarProps) => {
         <Sheet open={open} onOpenChange={onOpen}>
             <SheetTrigger
                 onClick={() => onOpen(true)}
-                className="fixed right-0 top-1/2 -translate-y-1/2 rounded-l-3xl bg-primary px-px py-16 transition-all hover:px-2 print:hidden"
+                className="fixed right-0 top-1/2 -translate-y-1/2 rounded-l-3xl bg-primary px-px py-16 transition-all hover:px-2 lg:hidden print:hidden"
             >
                 <ChevronLeftIcon className="text-white hover:text-white dark:!text-black" />
             </SheetTrigger>

@@ -1,4 +1,4 @@
-import { showLinks, statementLinks, createLinks, statisticsLinks, receiptLinks } from "@/constants";
+import { productLists, clientLists, supplierLists, financeLists, statisticsLinks } from "@/constants";
 import { Accordion } from "@/ui/accordion";
 import { List } from "./list";
 
@@ -7,10 +7,10 @@ type SheetLinksProps = {};
 export const SheetLinks = ({}: SheetLinksProps) => {
     return (
         <Accordion collapsible type="single" className="w-full">
-            <List trigger="Show" links={showLinks} />
-            <List trigger="Statements" links={statementLinks} />
-            <List trigger="Creates" links={createLinks} />
-            <List trigger="Receipts" links={receiptLinks} />
+            <List trigger="Products" links={productLists} />
+            <List trigger="Clients" links={clientLists} />
+            <List trigger="Suppliers" links={supplierLists} />
+            <List trigger="Finances" links={financeLists} />
             <List trigger="Statistics" links={statisticsLinks} />
         </Accordion>
     );

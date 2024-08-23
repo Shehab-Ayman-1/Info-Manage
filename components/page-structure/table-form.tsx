@@ -31,7 +31,7 @@ export const TableForm = <TData,>(props: TableFormProps<TData>) => {
                         <Heading title={pageTitle} />
                         {!!data?.length && (
                             <Button size="lg" className="gap-1 text-lg font-bold print:hidden" onClick={print}>
-                                <PrinterCheckIcon className="size-5 !text-black" />
+                                <PrinterCheckIcon className="size-5 !text-white dark:!text-black" />
                                 <span>Print Receipt</span>
                             </Button>
                         )}

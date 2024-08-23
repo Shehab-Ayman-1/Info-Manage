@@ -5,9 +5,9 @@ import Link from "next/link";
 
 import { QuickClientStatement } from "./quick-client-statement";
 import { useModel } from "@/hooks/useModel";
+import { UserButton } from "./user/user-button";
+import { OrgSwitcher } from "./user/switcher";
 import { Notifications } from "./notifications";
-import { UserButton } from "./user-button";
-import { OrgSwitcher } from "./switcher";
 import { Searchbar } from "./searchbar";
 
 type NavlinksProps = {};
