@@ -11,9 +11,15 @@ export const PUT = async (req: NextRequest) => {
 
         const body = await req.json();
 
-        if (body?.additionalSubscriptionExpiresAt) {
+        if (body?.subscriptionExpiresAt && body?.additionalSubscriptionExpiresAt) {
+            const subscriptionExpiresAt = new Date(body.subscriptionExpiresAt);
             const additionalSubscriptionExpiresAt = new Date(body.additionalSubscriptionExpiresAt);
-            const { organizationId, ...publicMetadata } = configsSchema.parse({ ...body, additionalSubscriptionExpiresAt });
+
+            const { organizationId, ...publicMetadata } = configsSchema.parse({
+                ...body,
+                additionalSubscriptionExpiresAt,
+                subscriptionExpiresAt,
+            });
 
             await clerkClient.organizations.updateOrganizationMetadata(organizationId, { publicMetadata });
         } else {

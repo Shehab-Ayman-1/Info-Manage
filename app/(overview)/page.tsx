@@ -17,7 +17,7 @@ const Overview = ({}: OverviewProps) => {
     return (
         <div className="flex-center flex-col">
             <ClerkLoaded>
-                {(!isSubscribe || !organization) && (
+                {!isSubscribe && (
                     <Alert variant="warning" className="text-xl">
                         <AlertTriangleIcon className="mt-1" />
                         <span>Your Subscription Has Been Suspended, Please Contact Our Customer Service.</span>

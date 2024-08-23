@@ -1,3 +1,5 @@
+import { Badge } from "@/ui/badge";
+
 type CashCardProps = {
     heading: string;
     isAdditionalSubscribe?: boolean;
@@ -14,8 +16,14 @@ export const CashCard = ({ heading, isAdditionalSubscribe, items }: CashCardProp
 
             {items.map((item, index) => (
                 <div key={index} className="flex-between my-4">
-                    <h3 className="">{isAdditionalSubscribe ? item.title : "????"} </h3>
-                    <h3 className="">${isAdditionalSubscribe ? item.value.toLocaleString() : "????"}</h3>
+                    <h3 className="">{item.title}</h3>
+                    <h3 className="">
+                        {isAdditionalSubscribe ? (
+                            `$${item.value.toLocaleString()}`
+                        ) : (
+                            <Badge className="bg-purple-800 text-white">Premium</Badge>
+                        )}
+                    </h3>
                 </div>
             ))}
         </div>

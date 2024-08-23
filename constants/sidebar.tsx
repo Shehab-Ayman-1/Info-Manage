@@ -25,7 +25,7 @@ export const productLists: NavLinkType[] = [
         href: "/products",
         userRole: "org:member",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
+        additionalSubscriptions: [],
     },
     {
         Icon: ArrowRightLeftIcon,
@@ -33,7 +33,7 @@ export const productLists: NavLinkType[] = [
         href: "/products/transfer",
         userRole: "org:member",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
+        additionalSubscriptions: ["premium"],
     },
     {
         Icon: ShoppingCartIcon,
@@ -65,7 +65,7 @@ export const productLists: NavLinkType[] = [
         href: "/products/add-category",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
+        additionalSubscriptions: [],
     },
     {
         Icon: SchoolIcon,
@@ -73,7 +73,7 @@ export const productLists: NavLinkType[] = [
         href: "/products/add-company",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
+        additionalSubscriptions: [],
     },
     {
         Icon: TargetIcon,
@@ -81,7 +81,7 @@ export const productLists: NavLinkType[] = [
         href: "/products/add-product",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
+        additionalSubscriptions: [],
     },
 ];
 
@@ -100,7 +100,7 @@ export const clientLists: NavLinkType[] = [
         href: "/clients/bills",
         userRole: "org:member",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
+        additionalSubscriptions: [],
     },
     {
         Icon: UserCheck,
@@ -108,7 +108,7 @@ export const clientLists: NavLinkType[] = [
         href: "/clients/add-client",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
+        additionalSubscriptions: [],
     },
     {
         Icon: HandCoinsIcon,
@@ -116,7 +116,7 @@ export const clientLists: NavLinkType[] = [
         href: "/clients/statement",
         userRole: "org:member",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
+        additionalSubscriptions: [],
     },
 ];
 
@@ -135,7 +135,7 @@ export const supplierLists: NavLinkType[] = [
         href: "/suppliers/bills",
         userRole: "org:member",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
+        additionalSubscriptions: [],
     },
     {
         Icon: UserIcon,
@@ -143,7 +143,7 @@ export const supplierLists: NavLinkType[] = [
         href: "/suppliers/add-supplier",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
+        additionalSubscriptions: [],
     },
     {
         Icon: UsersIcon,
@@ -151,7 +151,7 @@ export const supplierLists: NavLinkType[] = [
         href: "/suppliers/statement",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
+        additionalSubscriptions: [],
     },
 ];
 
@@ -162,7 +162,7 @@ export const financeLists: NavLinkType[] = [
         href: "/finances",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
+        additionalSubscriptions: [],
     },
     {
         Icon: ArrowRightLeftIcon,
@@ -178,7 +178,7 @@ export const financeLists: NavLinkType[] = [
         href: "/finances/locker",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium", "enterprise"],
+        additionalSubscriptions: [],
     },
 ];
 
