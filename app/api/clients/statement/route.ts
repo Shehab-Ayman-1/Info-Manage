@@ -1,7 +1,7 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
-import { Bills, Clients, Products, Transactions } from "@/server/models";
+import { ClientBills, Clients, Products, Transactions } from "@/server/models";
 import { getExpireAt } from "@/utils/expireAt";
 import { DBConnection } from "@/server/configs";
 import { createSchema } from "./schema";
@@ -40,7 +40,7 @@ export const POST = async (req: NextRequest) => {
         const total = productsTotalCosts - discount;
 
         const expireAt = await getExpireAt();
-        await Bills.create({ orgId, paid, total, discount, expireAt, state, client: clientId, products: billProducts });
+        await ClientBills.create({ orgId, paid, total, discount, expireAt, state, client: clientId, products: billProducts });
 
         // Create New Transaction
         const reason = "Client Statement";

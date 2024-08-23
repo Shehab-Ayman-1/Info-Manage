@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 
 import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
-import { Bills } from "@/server/models";
+import { ClientBills } from "@/server/models";
 import { months } from "@/constants";
 
 export const GET = async () => {
@@ -16,7 +16,7 @@ export const GET = async () => {
         const thisYear = new Date(`${year}-1-1`);
         const nextYear = new Date(`${year + 1}-1-1`);
 
-        const byYear = await Bills.aggregate([
+        const byYear = await ClientBills.aggregate([
             {
                 $match: { orgId, createdAt: { $gte: thisYear, $lt: nextYear } },
             },
@@ -47,7 +47,7 @@ export const GET = async () => {
         const thisMonth = new Date(`${year}-${month}-1`);
         const nextMonth = new Date(`${year}-${month + 1}-1`);
 
-        const byMonth = await Bills.aggregate([
+        const byMonth = await ClientBills.aggregate([
             {
                 $match: { orgId, createdAt: { $gte: thisMonth, $lt: nextMonth } },
             },

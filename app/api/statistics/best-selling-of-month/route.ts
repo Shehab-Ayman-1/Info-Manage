@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
 import { DBConnection } from "@/server/configs";
-import { Bills } from "@/server/models";
+import { ClientBills } from "@/server/models";
 import { json } from "@/utils/response";
 
 export const GET = async (req: NextRequest) => {
@@ -20,7 +20,7 @@ export const GET = async (req: NextRequest) => {
         const thisMonth = new Date(month);
         const nextMonth = new Date(new Date(month).setMonth(selectedMonth));
 
-        const products = await Bills.aggregate([
+        const products = await ClientBills.aggregate([
             { $match: { orgId, createdAt: { $gte: thisMonth, $lt: nextMonth } } },
             { $unwind: "$products" },
             { $lookup: { from: "products", as: "products.source", localField: "products.productId", foreignField: "_id" } },

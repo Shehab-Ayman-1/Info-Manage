@@ -1,7 +1,7 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
-import { Bills, Clients, Products, Transactions } from "@/server/models";
+import { ClientBills, Clients, Products, Transactions } from "@/server/models";
 import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
 
@@ -21,7 +21,7 @@ export const GET = async (req: NextRequest) => {
         const endDate = new Date(date);
         endDate.setHours(23, 59, 59, 999);
 
-        const bills = await Bills.aggregate([
+        const bills = await ClientBills.aggregate([
             {
                 $match: { orgId, createdAt: { $gte: startDate, $lte: endDate } },
             },
@@ -70,7 +70,7 @@ export const DELETE = async (req: NextRequest) => {
         const { billId } = await req.json();
         if (!billId) return json("Something Went Wrong.", 400);
 
-        const bill = await Bills.findById(billId);
+        const bill = await ClientBills.findById(billId);
         if (!bill) return json("Something Went Wrong.", 400);
 
         // Check If The Locker Contain The Bill Amount
@@ -101,7 +101,7 @@ export const DELETE = async (req: NextRequest) => {
         await Clients.updateLastRefreshDate({ orgId, clientId: bill.client, refreshAfter });
 
         // Delete The Bill
-        const deleted = await Bills.deleteOne({ orgId, _id: billId });
+        const deleted = await ClientBills.deleteOne({ orgId, _id: billId });
         if (!deleted.deletedCount) return json("Something Went Wrong.", 400);
 
         // Create New Transaction
