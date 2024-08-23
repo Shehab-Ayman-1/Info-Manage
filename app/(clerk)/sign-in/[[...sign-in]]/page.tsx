@@ -36,10 +36,7 @@ export default function SignInPage() {
 
                                     <ClerkAction
                                         isGlobalLoading={isGlobalLoading}
-                                        navigate={{
-                                            text: "Don't have an account? Sign up",
-                                            href: "/sign-up",
-                                        }}
+                                        navigate={{ text: "Don't have an account? Sign up", href: "/sign-up" }}
                                     />
                                 </CardForm>
                             </SignIn.Step>

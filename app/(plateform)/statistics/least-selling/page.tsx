@@ -22,7 +22,7 @@ const LeastSelling = () => {
             columns={columns}
             data={data || []}
             filterBy={["product"]}
-            navigate={[{ text: "Market Products", to: "/show/market" }]}
+            navigate={[{ text: "Market Products", to: "/products" }]}
         />
     );
 };

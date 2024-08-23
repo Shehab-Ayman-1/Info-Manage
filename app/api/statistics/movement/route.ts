@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
 import { Types } from "mongoose";
 
 import { DBConnection } from "@/server/configs";
-import { Bills, Debts } from "@/server/models";
+import { ClientBills, SupplierBills } from "@/server/models";
 import { json } from "@/utils/response";
 import { months } from "@/constants";
 
@@ -23,7 +23,7 @@ export const GET = async (req: NextRequest) => {
         const thisYear = new Date(`${year}-1-1`);
         const nextYear = new Date(`${year + 1}-1-1`);
 
-        const sales = await Bills.aggregate([
+        const sales = await ClientBills.aggregate([
             {
                 $match: {
                     orgId,
@@ -49,7 +49,7 @@ export const GET = async (req: NextRequest) => {
             },
         ]);
 
-        const purchases = await Debts.aggregate([
+        const purchases = await SupplierBills.aggregate([
             {
                 $match: { orgId, createdAt: { $gte: thisYear, $lt: nextYear } },
             },

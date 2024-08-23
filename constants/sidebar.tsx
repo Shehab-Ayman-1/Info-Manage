@@ -22,7 +22,7 @@ export const productLists: NavLinkType[] = [
     {
         Icon: StoreIcon,
         title: "Market & Store Products",
-        href: "/show/products",
+        href: "/products",
         userRole: "org:member",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium", "enterprise"],
@@ -30,7 +30,7 @@ export const productLists: NavLinkType[] = [
     {
         Icon: ArrowRightLeftIcon,
         title: "Transfer Products",
-        href: "/statements/transfer",
+        href: "/products/transfer",
         userRole: "org:member",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium", "enterprise"],
@@ -38,7 +38,7 @@ export const productLists: NavLinkType[] = [
     {
         Icon: ShoppingCartIcon,
         title: "Insuffient Products",
-        href: "/statistics/insufficients",
+        href: "/products/insufficients",
         userRole: "org:member",
         subscriptions: ["basic"],
         additionalSubscriptions: ["enterprise"],
@@ -46,7 +46,7 @@ export const productLists: NavLinkType[] = [
     {
         Icon: ReceiptTextIcon,
         title: "Today Purchases Receipt",
-        href: "/statistics/today-purchases",
+        href: "/products/today-purchases",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium"],
@@ -54,7 +54,7 @@ export const productLists: NavLinkType[] = [
     {
         Icon: ReceiptTextIcon,
         title: "Today Sales Receipt",
-        href: "/statistics/today-sales",
+        href: "/products/today-sales",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium"],
@@ -62,7 +62,7 @@ export const productLists: NavLinkType[] = [
     {
         Icon: LayoutDashboardIcon,
         title: "Add New Category",
-        href: "/create/category",
+        href: "/products/add-category",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium", "enterprise"],
@@ -70,7 +70,7 @@ export const productLists: NavLinkType[] = [
     {
         Icon: SchoolIcon,
         title: "Add New Company",
-        href: "/create/company",
+        href: "/products/add-company",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium", "enterprise"],
@@ -78,7 +78,7 @@ export const productLists: NavLinkType[] = [
     {
         Icon: TargetIcon,
         title: "Add New Product",
-        href: "/create/product",
+        href: "/products/add-product",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium", "enterprise"],
@@ -89,7 +89,7 @@ export const clientLists: NavLinkType[] = [
     {
         Icon: UsersIcon,
         title: "Show Clients",
-        href: "/show/clients",
+        href: "/clients",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium"],
@@ -97,7 +97,7 @@ export const clientLists: NavLinkType[] = [
     {
         Icon: ReceiptTextIcon,
         title: "Show Bills",
-        href: "/show/client-bills",
+        href: "/clients/bills",
         userRole: "org:member",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium", "enterprise"],
@@ -105,7 +105,7 @@ export const clientLists: NavLinkType[] = [
     {
         Icon: UserCheck,
         title: "Add New Client",
-        href: "/create/client",
+        href: "/clients/add-client",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium", "enterprise"],
@@ -113,7 +113,7 @@ export const clientLists: NavLinkType[] = [
     {
         Icon: HandCoinsIcon,
         title: "Add New Statement",
-        href: "/statements/clients",
+        href: "/clients/statement",
         userRole: "org:member",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium", "enterprise"],
@@ -124,7 +124,7 @@ export const supplierLists: NavLinkType[] = [
     {
         Icon: UsersIcon,
         title: "Show Suppliers",
-        href: "/show/suppliers",
+        href: "/suppliers",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium"],
@@ -132,7 +132,7 @@ export const supplierLists: NavLinkType[] = [
     {
         Icon: ReceiptTextIcon,
         title: "Show Bills",
-        href: "/show/supplier-debts",
+        href: "/suppliers/bills",
         userRole: "org:member",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium", "enterprise"],
@@ -140,7 +140,7 @@ export const supplierLists: NavLinkType[] = [
     {
         Icon: UserIcon,
         title: "Add New Supplier",
-        href: "/create/supplier",
+        href: "/suppliers/add-supplier",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium", "enterprise"],
@@ -148,7 +148,7 @@ export const supplierLists: NavLinkType[] = [
     {
         Icon: UsersIcon,
         title: "Add New Statement",
-        href: "/statements/suppliers",
+        href: "/suppliers/statement",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium", "enterprise"],
@@ -159,7 +159,7 @@ export const financeLists: NavLinkType[] = [
     {
         Icon: BookKeyIcon,
         title: "Total Cashes",
-        href: "/show/cashes",
+        href: "/finances",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium", "enterprise"],
@@ -167,7 +167,7 @@ export const financeLists: NavLinkType[] = [
     {
         Icon: ArrowRightLeftIcon,
         title: "Transactions",
-        href: "/show/transactions",
+        href: "/finances/transactions",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium"],
@@ -175,7 +175,7 @@ export const financeLists: NavLinkType[] = [
     {
         Icon: RocketIcon,
         title: "Locker Withdrawal / Deposit",
-        href: "/statements/locker",
+        href: "/finances/locker",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium", "enterprise"],

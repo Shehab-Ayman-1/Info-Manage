@@ -4,5 +4,5 @@ export * from "./products";
 export * from "./clients";
 export * from "./suppliers";
 export * from "./transactions";
-export * from "./bills";
-export * from "./debts";
+export * from "./client-bills";
+export * from "./supplier-bills";

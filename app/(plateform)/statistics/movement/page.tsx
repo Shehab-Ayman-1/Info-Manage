@@ -1,10 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import { ChartsForm } from "@/components/page-structure/charts-form";
 import { useGetByQuery } from "@/hooks/api/useGetByQuery";
-import { ComboBox } from "@/components/ui/comboBox";
 import { useLists } from "@/hooks/data/useLists";
+
+import { ChartsForm } from "@/components/page-structure/charts-form";
+import { ComboBox } from "@/components/ui/comboBox";
 
 type Data = {
     month: string;

@@ -32,7 +32,7 @@ const Layout = async ({ children }: LayoutProps) => {
             <body className="bg-gradient min-h-screen">
                 <Providers>
                     <ActiveOrg orgId={org.id} />
-                    <IsSubscription />
+                    {/* <IsSubscription /> */}
                     <Sidebar />
                     <Image src={"/overview.jpeg"} alt="overview" fill className="!fixed -z-10 opacity-5 print:hidden" />
                     {children}

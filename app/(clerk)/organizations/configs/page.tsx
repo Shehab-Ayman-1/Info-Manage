@@ -7,7 +7,7 @@ import { formatDate } from "date-fns";
 import { noOfMonths, subscriptions, additionalSubscription } from "@/constants";
 import { useUpdate } from "@/hooks/api/useUpdate";
 
-import { configsSchema, EditConfigsSchema } from "@/app/api/organizations/schema";
+import { configsSchema, EditConfigsSchema } from "@/app/api/organizations/configs/schema";
 import { CardForm } from "@/components/page-structure/CardForm";
 import { SubmitButton } from "@/components/public/submit-btn";
 import { ComboBox } from "@/components/ui/comboBox";
@@ -19,7 +19,7 @@ const Configs = () => {
     });
     const { user } = useUser();
 
-    const { mutate, isPending } = useUpdate<EditConfigsSchema>("/api/organizations");
+    const { mutate, isPending } = useUpdate<EditConfigsSchema>("/api/organizations/configs");
     const { organization } = useOrganization();
 
     const additionalSubscriptions = watch("additionalSubscriptions");

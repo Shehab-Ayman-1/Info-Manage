@@ -58,7 +58,7 @@ export const Notifications = () => {
             <PopoverContent className="bg-gradient w-auto md:min-w-96" align="end">
                 {subscriptions.map((notify) => (
                     <Fragment key={notify._id}>
-                        <div className="flex-start cursor-pointer rounded-md px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600">
+                        <div className="flex-start cursor-pointer rounded-md px-4 py-2 hover:bg-primary-100 dark:hover:bg-slate-600">
                             <CircleFadingArrowUpIcon className="size-8 !text-amber-500" />
 
                             <div className="">

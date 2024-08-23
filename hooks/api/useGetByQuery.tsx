@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
 const getData = async <ResponseType,>(apiUrl: string, queries: string) => {
@@ -13,11 +13,13 @@ const getData = async <ResponseType,>(apiUrl: string, queries: string) => {
     }
 };
 
-export const useGetByQuery = <ResponseType,>(apiUrl: string) => {
+export const useGetByQuery = <ResponseType,>(apiUrl: string, revalidateQueryKeys?: string[]) => {
+    const queryClient = useQueryClient();
+
     const mutation = useMutation<ResponseType, Error, string>({
         mutationFn: (queries) => getData<ResponseType>(apiUrl, queries),
         onSuccess: () => {
-            toast.success("Successfully Analyse Product.");
+            revalidateQueryKeys?.forEach((query) => queryClient.invalidateQueries({ queryKey: [query] }));
         },
         onError: (error) => {
             toast.error(error.message);

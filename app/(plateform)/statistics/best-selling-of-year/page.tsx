@@ -1,7 +1,8 @@
 "use client";
-import { TableForm } from "@/components/page-structure/table-form";
 import { useGet } from "@/hooks/api/useGet";
 import { columns } from "./table-columns";
+
+import { TableForm } from "@/components/page-structure/table-form";
 import { CardLoading } from "@/components/loading/card";
 
 type BestSellingOfYearProps = {
@@ -20,7 +21,7 @@ const BestSellingOfYear = () => {
             pageTitle="Best Selling Of The Year"
             data={data || []}
             columns={columns}
-            navigate={[{ text: "Go To Bills", to: "/show/client-bills" }]}
+            navigate={[{ text: "Go To Bills", to: "/clients/bills" }]}
         />
     );
 };

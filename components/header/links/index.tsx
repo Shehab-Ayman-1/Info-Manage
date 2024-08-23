@@ -15,18 +15,18 @@ type NavLinksProps = {};
 
 export const NavLinks = ({}: NavLinksProps) => {
     return (
-        <nav className="flex-between !hidden lg:!flex">
+        <nav className="flex-between !hidden xl:!flex">
             {navLinks.map((nav) => (
                 <HoverCard key={nav.heading} closeDelay={0} openDelay={0}>
                     <HoverCardTrigger className="flex cursor-pointer items-center gap-1">
                         {nav.heading}
                         <ChevronDownIcon className="size-4 hover:text-slate-700" />
                     </HoverCardTrigger>
-                    <HoverCardContent className="bg-gradient min-w-fit" alignOffset={120}>
+                    <HoverCardContent className="bg-gradient min-w-fit">
                         {nav.links.map(({ Icon, ...link }) => (
                             <Link
-                                key={link.title}
                                 href={link.href}
+                                key={link.title}
                                 className="flex-start w-full cursor-pointer whitespace-nowrap rounded-md p-2 text-start text-lg hover:bg-primary-100 hover:text-black"
                             >
                                 <Icon />

@@ -10,15 +10,14 @@ import { useLists } from "@/hooks/data/useLists";
 import { useModel } from "@/hooks/useModel";
 import { columns } from "./table-columns";
 
-import { CreateClientType } from "@/app/api/statements/clients/schema";
-import { createSchema } from "@/app/api/statements/clients/schema";
+import { CreateClientType, createSchema } from "@/app/api/clients/statement/schema";
 import { SubmitButton } from "@/components/public/submit-btn";
 import { ComboBox } from "@/components/ui/comboBox";
 import { DialogForm } from "@/components/ui/dialog";
 import { DataTable } from "@/components/table";
+import { DeleteDialog } from "./delete-dialog";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
-import { DeleteDialog } from "./delete-dialog";
 
 const productSchema = z.array(
     z.object({
@@ -41,7 +40,7 @@ type RequestType = Omit<StatementType, "products"> & Pick<CreateClientType, "pro
 const defaultProduct = { productId: "", name: "", company: "", count: 0, purchasePrice: 0, soldPrice: 0, total: 0 };
 export const QuickClientStatement = () => {
     const { formState, watch, reset, setValue, handleSubmit } = useForm<StatementType>({ resolver: zodResolver(schema) });
-    const { mutate, isPending } = useCreate<RequestType>("/api/statements/clients", ["bills"]);
+    const { mutate, isPending } = useCreate<RequestType>("/api/clients/statement", ["bills"]);
     const [product, setProduct] = useState<ProductType[0]>(defaultProduct);
     const { clients, products: productLists } = useLists();
     const { type, onClose } = useModel();
