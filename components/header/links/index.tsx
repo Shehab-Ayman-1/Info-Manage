@@ -18,11 +18,12 @@ export const NavLinks = ({}: NavLinksProps) => {
         <nav className="flex-between !hidden xl:!flex">
             {navLinks.map((nav) => (
                 <HoverCard key={nav.heading} closeDelay={0} openDelay={0}>
-                    <HoverCardTrigger className="flex cursor-pointer items-center gap-1">
+                    <HoverCardTrigger className="flex cursor-pointer items-center gap-1 py-2">
                         {nav.heading}
                         <ChevronDownIcon className="size-4 hover:text-slate-700" />
                     </HoverCardTrigger>
-                    <HoverCardContent className="bg-gradient min-w-fit">
+
+                    <HoverCardContent className="bg-gradient min-w-fit" sideOffset={-1}>
                         {nav.links.map((link) => (
                             <Item key={link.title} {...link} />
                         ))}

@@ -33,7 +33,7 @@ export const productLists: NavLinkType[] = [
         href: "/products/transfer",
         userRole: "org:member",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium"],
+        additionalSubscriptions: [],
     },
     {
         Icon: ShoppingCartIcon,
