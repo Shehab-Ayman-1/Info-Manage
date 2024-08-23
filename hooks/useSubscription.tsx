@@ -32,7 +32,7 @@ export const useSubscription = (allowedAdditionals: AdditionalSubscription[] = [
     const isAdditionalsExpires = now > new Date(additionalsDate).getTime();
 
     // Exists
-    const isAdditionalsExists = additionals.some((allowed) => allowedAdditionals?.includes(allowed));
+    const isAdditionalsExists = additionals?.some((allowed) => allowedAdditionals?.includes(allowed));
     const isMainExists = subscriptions.includes(main);
 
     // Is Subscribe
