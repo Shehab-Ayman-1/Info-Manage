@@ -1,6 +1,6 @@
 "use client";
-import { LockIcon } from "lucide-react";
 import { useAuth } from "@clerk/nextjs";
+import { LockIcon } from "lucide-react";
 import Link from "next/link";
 
 import { useSubscription } from "@/hooks/useSubscription";

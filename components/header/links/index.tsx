@@ -1,6 +1,8 @@
+"use client";
+import { ChevronDownIcon } from "lucide-react";
+
 import { clientLists, financeLists, productLists, statisticsLinks, supplierLists } from "@/constants";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/ui/hover-card";
-import { ChevronDownIcon } from "lucide-react";
 import { Item } from "./item";
 
 export const navLinks = [
@@ -23,7 +25,7 @@ export const NavLinks = ({}: NavLinksProps) => {
                         <ChevronDownIcon className="size-4 hover:text-slate-700" />
                     </HoverCardTrigger>
 
-                    <HoverCardContent className="bg-gradient min-w-fit" sideOffset={-1}>
+                    <HoverCardContent sideOffset={-1} className="bg-gradient min-w-fit border-slate-300 dark:border-slate-600">
                         {nav.links.map((link) => (
                             <Item key={link.title} {...link} />
                         ))}

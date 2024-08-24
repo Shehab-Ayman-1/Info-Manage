@@ -49,5 +49,5 @@ const schema = new Schema<TClientBill>({
 
 schema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
 
-export const ClientBills = (models.bills as Model<TClientBill>) || model<TClientBill>("bills", schema);
+export const ClientBills = (models.client_bills as Model<TClientBill>) || model<TClientBill>("client_bills", schema);
 export type ClientBillType = InferSchemaType<typeof schema>;
