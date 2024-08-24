@@ -3,8 +3,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useOrganization } from "@clerk/nextjs";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { z } from "zod";
+import { toast } from "sonner";
 import Image from "next/image";
+import { z } from "zod";
 
 import { useModel } from "@/hooks/useModel";
 import { LeaveDialog } from "./leave-dialog";
@@ -48,9 +49,10 @@ const OrganizationsLists = () => {
         };
     };
 
-    const onSubmit = (data: any) => {
+    const onSubmit = async (data: any) => {
         const { name, slug } = data;
-        organization.update({ name, slug });
+        await organization.update({ name, slug });
+        toast.success("The Organization Was Updated.");
     };
 
     return (
