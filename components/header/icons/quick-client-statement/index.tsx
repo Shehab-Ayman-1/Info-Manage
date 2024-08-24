@@ -24,10 +24,10 @@ const productSchema = z.array(
         productId: z.string().min(1),
         company: z.string().min(1),
         name: z.string().min(1),
-        count: z.number().int().positive().min(1),
-        total: z.number().int().positive().min(1),
-        soldPrice: z.number().int().positive().min(1),
-        purchasePrice: z.number().int().min(0),
+        count: z.number().int().positive(),
+        total: z.number().positive(),
+        soldPrice: z.number().positive(),
+        purchasePrice: z.number().min(0),
     }),
 );
 

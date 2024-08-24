@@ -18,7 +18,11 @@ type UpdateDialogProps = {
 };
 
 export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
-    const { mutate, isPending } = useUpdate<EditProfileSchema>(`/api/profile/product/${productId}`, [productId, "market", "store"]);
+    const { mutate, isPending } = useUpdate<EditProfileSchema>(`/api/profile/product/${productId}`, [
+        productId,
+        "market",
+        "store",
+    ]);
     const [{ company, name, barcode, market, store }] = data;
 
     const { formState, register, watch, handleSubmit } = useForm<EditProfileSchema>({
@@ -53,6 +57,8 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
         };
         mutate({ ...values, image: availableImageSrc ? values.image : company.image }, { onSuccess });
     };
+
+    console.log(errors);
 
     return (
         <DialogForm heading="Update Product" description="After The Product Updating, You Can't Undo Any Changes">

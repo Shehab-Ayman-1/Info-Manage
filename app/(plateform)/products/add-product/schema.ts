@@ -4,9 +4,9 @@ export const schema = z.object({
     randomId: z.string().optional(),
     name: z.string().min(1),
     barcode: z.string().optional(),
-    min: z.number().int().min(1),
-    storeCount: z.number().min(0).int(),
-    marketCount: z.number().min(0).int(),
+    min: z.number().int().positive(),
+    storeCount: z.number().int().min(0),
+    marketCount: z.number().int().min(0),
     purchasePrice: z.number().min(0),
     sellingPrice: z.number().min(0),
 });

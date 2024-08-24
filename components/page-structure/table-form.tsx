@@ -1,6 +1,8 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
+import { useReactToPrint } from "react-to-print";
 import { PrinterCheckIcon } from "lucide-react";
+import { useState } from "react";
 import Link from "next/link";
 
 import { Card, CardContent, CardFooter, CardHeader } from "@/ui/card";
@@ -21,16 +23,29 @@ type TableFormProps<TData> = {
 
 export const TableForm = <TData,>(props: TableFormProps<TData>) => {
     const { pageTitle, navigate, filterBy, columns, data, totalFor, children } = props;
+    const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 19 });
     const { isAdmin } = useOrg();
 
+    const onPrint = useReactToPrint({
+        onAfterPrint: () => setPagination((pagination) => ({ ...pagination, pageSize: 19 })),
+        content: () => document.getElementById("data-table"),
+        documentTitle: pageTitle,
+        pageStyle: "p-4 border border-slate-500",
+    });
+
+    const onPrintTrigger = () => {
+        setPagination((pagination) => ({ ...pagination, pageSize: 1e6 }));
+        setTimeout(onPrint, 0);
+    };
+
     return (
-        <Card className="print:h-screen print:!px-0">
+        <Card className="">
             <CardContent>
-                <CardHeader className="flex-between px-0 sm:flex-row sm:p-4 print:hidden">
+                <CardHeader className="flex-between px-0 sm:flex-row sm:p-4">
                     <div className="flex flex-col gap-y-6">
                         <Heading title={pageTitle} />
                         {!!data?.length && (
-                            <Button size="lg" className="gap-1 text-lg font-bold print:hidden" onClick={print}>
+                            <Button size="lg" className="gap-1 text-lg font-bold" onClick={onPrintTrigger}>
                                 <PrinterCheckIcon className="size-5 !text-white dark:!text-black" />
                                 <span>Print Receipt</span>
                             </Button>
@@ -55,8 +70,15 @@ export const TableForm = <TData,>(props: TableFormProps<TData>) => {
 
                 {children}
 
-                <CardFooter className="p-0 sm:px-4 print:!px-0">
-                    <DataTable columns={columns} data={data} filterBy={filterBy} totalFor={totalFor} />
+                <CardFooter className="p-0 sm:px-4">
+                    <DataTable
+                        columns={columns}
+                        data={data}
+                        filterBy={filterBy}
+                        totalFor={totalFor}
+                        pagination={pagination}
+                        setPagination={setPagination}
+                    />
                 </CardFooter>
             </CardContent>
         </Card>

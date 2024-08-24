@@ -4,16 +4,16 @@ export const createSchema = z.object({
     clientId: z.string().min(1),
     method: z.enum(["cash", "visa"]),
     process: z.enum(["all", "milestone"]),
-    paid: z.number().int().min(0),
-    discount: z.number().int().min(0),
+    paid: z.number().positive(),
+    discount: z.number().positive(),
 
     products: z.array(
         z.object({
             productId: z.string().min(1),
-            count: z.number().int().min(1),
-            total: z.number().int().min(0),
-            soldPrice: z.number().int().min(0),
-            purchasePrice: z.number().int().min(0),
+            count: z.number().int().positive(),
+            total: z.number().positive(),
+            soldPrice: z.number().positive(),
+            purchasePrice: z.number().positive(),
         }),
     ),
 });

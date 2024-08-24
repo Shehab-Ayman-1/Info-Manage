@@ -18,7 +18,7 @@ export const NavIcons = ({}: NavlinksProps) => {
     const isMe = user?.primaryEmailAddress?.emailAddress === process.env.NEXT_PUBLIC_EMAIL;
 
     return (
-        <div className="flex-end print:hidden">
+        <div className="flex-end">
             <Searchbar />
             <Notifications />
             <ReceiptTextIcon className="hover:text-slate-500" onClick={() => onOpen("quick-client-statement-model")} />

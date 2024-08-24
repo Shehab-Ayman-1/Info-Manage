@@ -13,7 +13,7 @@ import { Input } from "@/ui/input";
 type PayDialogProps = {};
 
 const schema = z.object({
-    amount: z.number().int().min(1),
+    amount: z.number().int().positive(),
 });
 
 export const PayDialog = ({}: PayDialogProps) => {

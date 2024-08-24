@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/ui/button";
 import { NavIcons } from "./icons";
 import { NavLinks } from "./links";
-import { Logo } from "./logo/logo";
+import { Logo } from "./logo";
 
 type HeaderProps = {};
 

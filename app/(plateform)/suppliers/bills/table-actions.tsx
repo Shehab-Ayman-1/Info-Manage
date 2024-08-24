@@ -20,7 +20,7 @@ export const Actions = ({ row }: ActionsProps) => {
         {
             Icon: EyeIcon,
             text: "Open",
-            onClick: (original: any) => router.push(`/profile/bills/${original._id}`),
+            onClick: (original: any) => router.push(`/profile/supplier/${original._id}`),
         },
         {
             Icon: BadgeDollarSignIcon,

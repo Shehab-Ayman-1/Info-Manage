@@ -3,7 +3,7 @@ type PaginationCountProps = {
     currentPaginationCount: number;
 };
 
-const PaginationCount = ({ totalPaginationCount, currentPaginationCount }: PaginationCountProps) => {
+export const PaginationCount = ({ totalPaginationCount, currentPaginationCount }: PaginationCountProps) => {
     if (totalPaginationCount <= 1) return;
 
     return (
@@ -14,4 +14,3 @@ const PaginationCount = ({ totalPaginationCount, currentPaginationCount }: Pagin
 };
 
 PaginationCount.displayName = "PaginationCount";
-export default PaginationCount;

@@ -17,9 +17,9 @@ const schema = z.object({
     productId: z.string().min(1),
     company: z.string().min(1),
     name: z.string().min(1),
-    price: z.number().int().positive().min(0),
-    count: z.number().int().positive().min(0),
-    total: z.number().int().positive().min(0),
+    count: z.number().int().positive(),
+    price: z.number().positive(),
+    total: z.number().positive(),
 });
 
 export type ProductType = z.infer<typeof schema>;

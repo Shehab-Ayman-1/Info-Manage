@@ -5,7 +5,7 @@ type FooterProps = {};
 
 export const Footer = ({}: FooterProps) => {
     return (
-        <footer className="flex-between bg-gradient p-4 print:hidden">
+        <footer className="flex-between bg-gradient p-4">
             <h3 className="text-xs font-bold text-slate-500 dark:text-slate-300 sm:text-lg">Create With ❤️ By Shehab Ayman</h3>
             <div className="flex-start">
                 <Link target="_blank" href="https://www.facebook.com/EngShehabAyman/">

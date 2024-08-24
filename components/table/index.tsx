@@ -1,18 +1,16 @@
 "use client";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
-import { ColumnDef, getFilteredRowModel, useReactTable } from "@tanstack/react-table";
-import { getCoreRowModel, getPaginationRowModel } from "@tanstack/react-table";
-import { SortingState, getSortedRowModel } from "@tanstack/react-table";
-import { ColumnFiltersState } from "@tanstack/react-table";
+import { useReactTable, ColumnDef, getFilteredRowModel, getCoreRowModel, getPaginationRowModel } from "@tanstack/react-table";
+import { ColumnFiltersState, SortingState, getSortedRowModel } from "@tanstack/react-table";
 
 import { Card, CardContent, CardFooter, CardHeader } from "@/ui/card";
-import { Table } from "@/ui/table";
+import { PaginationCount } from "./pagination-count";
 import { Controllers } from "./controllers";
 import { THeader } from "./table-header";
 import { TBody } from "./table-body";
+import { Table } from "@/ui/table";
 import { Filter } from "./filter";
-import PaginationCount from "./pagination-count";
 
 type DataTableProps<TData, TValue> = {
     columns: ColumnDef<TData, TValue>[];
@@ -20,12 +18,21 @@ type DataTableProps<TData, TValue> = {
     filterBy?: string[];
     totalFor?: string;
     smallSize?: boolean;
+    pagination?: { pageIndex: number; pageSize: number };
+    setPagination?: Dispatch<SetStateAction<{ pageIndex: number; pageSize: number }>>;
 };
 
-export const DataTable = <TData, TValue>({ columns, data, filterBy, totalFor, smallSize }: DataTableProps<TData, TValue>) => {
+export const DataTable = <TData, TValue>({
+    columns,
+    data,
+    filterBy,
+    totalFor,
+    smallSize,
+    pagination = { pageIndex: 0, pageSize: 1e6 },
+    setPagination,
+}: DataTableProps<TData, TValue>) => {
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [sorting, setSorting] = useState<SortingState>([]);
-    const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 20 });
 
     const table = useReactTable({
         data,
@@ -63,18 +70,18 @@ export const DataTable = <TData, TValue>({ columns, data, filterBy, totalFor, sm
 
     return (
         <Card className="w-full border-none bg-transparent">
-            <CardHeader className="flex-between flex-row !p-0 !pt-4 print:hidden">
+            <CardHeader className="flex-between flex-row !p-0 !pt-4">
                 <Filter data={data || []} getColumn={getColumn} filterBy={filterBy} />
             </CardHeader>
 
             <CardContent className="overflow-hidden rounded-xl border border-slate-500 !p-3">
-                <Table>
+                <Table id="data-table">
                     <THeader headerGroups={headerGroups} />
                     <TBody colsLen={columns.length} totalFor={totalFor} rowModel={rowModel} smallSize={smallSize} />
                 </Table>
             </CardContent>
 
-            <CardFooter className="flex-between gap-4 !p-0 !pt-4 print:hidden">
+            <CardFooter className="flex-between gap-4 !p-0 !pt-4">
                 <PaginationCount currentPaginationCount={currentPaginationCount} totalPaginationCount={totalPaginationCount} />
                 <Controllers
                     previousPage={previousPage}

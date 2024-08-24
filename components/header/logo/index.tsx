@@ -1,8 +1,8 @@
 "use client";
+import { useOrganization } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 
-import { useOrganization } from "@clerk/nextjs";
 import { Button } from "@/ui/button";
 
 type LogoProps = {};
@@ -21,7 +21,7 @@ export const Logo = ({}: LogoProps) => {
                     priority
                     className="rounded-xl"
                 />
-                <h2 className="text-gradient hidden text-3xl font-extrabold capitalize sm:block print:text-black">
+                <h2 className="text-gradient hidden text-3xl font-extrabold capitalize sm:block">
                     {organization?.name || "Info Manage"}
                 </h2>
             </Link>

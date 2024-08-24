@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const place = {
-    price: z.number().int().min(0),
+    price: z.number().positive(),
     count: z.number().int().min(0),
     updatedAt: z.date().optional(),
 };
@@ -13,9 +13,7 @@ export const createSchema = z.object({
         z.object({
             name: z.string().min(1),
             barcode: z.string().optional(),
-
-            min: z.number().int().min(1),
-
+            min: z.number().int().positive(),
             market: z.object(place).optional(),
             store: z.object(place).optional(),
         }),

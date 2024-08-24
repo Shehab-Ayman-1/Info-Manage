@@ -7,6 +7,8 @@ import { Providers } from "@/providers";
 import { Configrator } from "@/components/configrator";
 import { Sidebar } from "@/components/sidebar";
 import "./sass/index.scss";
+import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
+import { Icons } from "@/ui/icons";
 
 export const metadata = {
     title: "Info Manage",
@@ -29,11 +31,17 @@ const Layout = async ({ children }: LayoutProps) => {
         <html lang="en" suppressHydrationWarning>
             <body className="bg-gradient min-h-screen">
                 <Providers>
-                    <ActiveOrg orgId={org.id} />
-                    <Sidebar />
-                    <Image src={"/overview.jpeg"} alt="overview" fill className="!fixed -z-10 opacity-5 print:hidden" />
-                    {children}
-                    <Configrator />
+                    <ClerkLoading>
+                        <Icons.spinner className="fixed left-1/2 top-1/2 size-16 animate-spin" />
+                    </ClerkLoading>
+
+                    <ClerkLoaded>
+                        <ActiveOrg orgId={org.id} />
+                        <Sidebar />
+                        {children}
+                        <Image src="/overview.jpeg" alt="overview" fill className="!fixed -z-10 opacity-5" />
+                        <Configrator />
+                    </ClerkLoaded>
                 </Providers>
             </body>
         </html>

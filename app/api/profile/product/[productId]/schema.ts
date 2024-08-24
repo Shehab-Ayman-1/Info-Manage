@@ -7,10 +7,10 @@ export const editSchema = z.object({
     name: z.string().min(1),
     barcode: z.string().optional(),
 
-    purchasePrice: z.number().int().positive().min(1),
-    salePrice: z.number().int().positive().min(1),
-    marketCount: z.number().int().positive().min(1),
-    storeCount: z.number().int().positive().min(1),
+    purchasePrice: z.number().min(0),
+    salePrice: z.number().min(0),
+    marketCount: z.number().int().min(0),
+    storeCount: z.number().int().min(0),
 });
 
 export type EditProfileSchema = z.infer<typeof editSchema>;

@@ -9,7 +9,7 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
     return (
         <SubscribeProvider>
-            <div className="sm:p-4">
+            <div className="p-1 sm:p-4">
                 <Header />
             </div>
 
