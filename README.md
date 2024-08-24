@@ -1,28 +1,22 @@
 # TODO:
 
-    -   Active Basic Subscription ExpiresAt
+    - Change The Role From orgRole To User.publicMetadata Custome Role
 
-    -   Change The Role From orgRole To User.publicMetadata Custome Role
-
-    -   Fetch The Products Instead Of Bills In The Today Purchase Receipt, And Today Sales Receipt
-
-    -   Connect Between Multible Branches
-
-    -   Think About
+    - Think About
         -- Barcode Reader
         -- Print In Small Printer
         -- Clients Level
+        -- Connect Between Multible Branches
         -- المرتجعات
         -- البضائع السائله
 
-    Learn Mongoose
-
-    -   pre/post Middlewares
-    -   Transactions
-    -   Advanced Population
-    -   Advanced Aggregation
-    -   Advanced Queres
-    -   Plugins
+    - Learn Mongoose
+        -- pre/post Middlewares
+        -- Transactions
+        -- Advanced Population
+        -- Advanced Aggregation
+        -- Advanced Queres
+        -- Plugins
 
 ```ts
     const { user, setActive, openUserProfile, organization, getOrganization, createOrganization, client, frontendApi, ...rest } = useClerk();

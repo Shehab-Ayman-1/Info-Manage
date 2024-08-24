@@ -22,18 +22,25 @@ export const GET = async () => {
                 $match: { orgId, createdAt: { $gte: startOfDay, $lte: endOfDay } },
             },
             {
-                $lookup: { from: "clients", as: "client", localField: "client", foreignField: "_id" },
+                $unwind: "$products",
             },
             {
-                $unwind: "$client",
+                $lookup: { from: "products", as: "products.source", localField: "products.productId", foreignField: "_id" },
             },
             {
-                $project: {
-                    _id: 1,
-                    paid: 1,
-                    total: 1,
-                    client: "$client.name",
-                    pending: { $subtract: ["$total", "$paid"] },
+                $unwind: "$products.source",
+            },
+            {
+                $group: {
+                    _id: "$products.productId",
+                    product: { $first: "$products.source.name" },
+                    count: { $sum: "$products.count" },
+                    totalSolds: { $sum: "$total" },
+                    profits: {
+                        $sum: {
+                            $subtract: ["$total", { $multiply: ["$products.count", "$products.purchasePrice"] }],
+                        },
+                    },
                 },
             },
         ]);

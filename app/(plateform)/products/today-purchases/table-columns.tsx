@@ -3,31 +3,21 @@ import { ColumnDef } from "@tanstack/react-table";
 
 import { HeaderComponent } from "@/components/table/column-header";
 import { DollarCell } from "@/components/table/body/price-cell";
-import { Actions } from "./table-actions";
+import { NumberCell } from "@/components/table/body/number-cell";
 
 export const columns: ColumnDef<any>[] = [
     {
-        accessorKey: "supplier",
+        accessorKey: "product",
         header: HeaderComponent,
     },
     {
-        accessorKey: "paid",
+        accessorKey: "count",
         header: HeaderComponent,
-        cell: ({ row }) => <DollarCell row={row} name="paid" />,
+        cell: ({ row }) => <NumberCell row={row} name="count" />,
     },
     {
-        accessorKey: "pending",
+        accessorKey: "totalPurchases",
         header: HeaderComponent,
-        cell: ({ row }) => <DollarCell row={row} name="pending" />,
-    },
-    {
-        accessorKey: "total",
-        header: HeaderComponent,
-        cell: ({ row }) => <DollarCell row={row} name="total" />,
-    },
-    {
-        accessorKey: "actions",
-        header: ({ column }) => <HeaderComponent column={column} noPrint />,
-        cell: Actions,
+        cell: ({ row }) => <DollarCell row={row} name="totalPurchases" />,
     },
 ];

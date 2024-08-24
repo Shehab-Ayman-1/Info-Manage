@@ -18,7 +18,8 @@ const TodaySales = ({}: TodaySalesProps) => {
             pageTitle="Today Sales"
             columns={columns}
             data={data}
-            totalFor="total"
+            filterBy={["product"]}
+            totalFor="totalSolds"
             navigate={[{ text: "New Statement", to: "/clients/statement" }]}
         />
     );
