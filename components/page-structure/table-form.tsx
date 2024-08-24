@@ -23,11 +23,11 @@ type TableFormProps<TData> = {
 
 export const TableForm = <TData,>(props: TableFormProps<TData>) => {
     const { pageTitle, navigate, filterBy, columns, data, totalFor, children } = props;
-    const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 19 });
+    const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 20 });
     const { isAdmin } = useOrg();
 
     const onPrint = useReactToPrint({
-        onAfterPrint: () => setPagination((pagination) => ({ ...pagination, pageSize: 19 })),
+        onAfterPrint: () => setPagination((pagination) => ({ ...pagination, pageSize: 20 })),
         content: () => document.getElementById("data-table"),
         documentTitle: pageTitle,
         pageStyle: "p-4 border border-slate-500",
