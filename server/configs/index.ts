@@ -6,7 +6,7 @@ export const DBConnection = async (forceConnectToOnline: boolean = false) => {
         mongoose.set("strictQuery", true);
 
         if (connect) return;
-        const locale = process.env.DATABASE_URI!;
+        const locale = process.env.DATABASE_URL!;
         const online = process.env.DATABASE_URI!;
         const URL = forceConnectToOnline ? online : locale || online;
 

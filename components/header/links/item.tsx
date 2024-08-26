@@ -45,14 +45,13 @@ export const Item = ({ title, href, Icon, userRole, subscriptions, additionalSub
             </div>
 
             <div className="flex-end">
-                <LockIcon className={cn(isAdmin ? "hidden" : "size-4 !text-rose-500 sm:size-5")} />
-
                 {!isAdditionalSubscribe &&
                     additionalSubscriptions.map((name) => (
                         <Badge key={name} className={cn("text-white", name === "premium" ? "bg-purple-800" : "bg-green-700")}>
                             {name}
                         </Badge>
                     ))}
+                <LockIcon className={cn(isAdmin ? "hidden" : "size-4 !text-rose-500 sm:size-5")} />
             </div>
         </Link>
     );

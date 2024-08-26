@@ -28,7 +28,7 @@ export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    if (type === "delete-model") return;
+    if (type !== "insert-product-model") return;
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const values = data as SupplierType;

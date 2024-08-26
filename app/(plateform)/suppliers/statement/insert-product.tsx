@@ -45,7 +45,7 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
         setValue("price", product?.purchasePrice);
     }, [selectedProductId, productsBySupplier, setValue]);
 
-    if (type === "delete-model") return;
+    if (type !== "insert-product-model") return;
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const { productId, count, price } = data as ProductType;

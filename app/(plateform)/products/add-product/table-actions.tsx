@@ -16,7 +16,7 @@ export const Actions = ({ row }: ActionsProps) => {
         {
             Icon: EditIcon,
             text: "Edit",
-            onClick: (original: any) => onOpen("edit-model", { product: original }),
+            onClick: (original: any) => onOpen("edit-products-model", { product: original }),
         },
         {
             Icon: Trash2Icon,

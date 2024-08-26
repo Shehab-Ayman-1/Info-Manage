@@ -25,32 +25,35 @@ export const columns: ColumnDef<any>[] = [
     {
         accessorKey: "company",
         header: HeaderComponent,
-        cell: ({ row }) =>
-            row.original?.companies.map((company: any) => (
-                <Popover key={company._id}>
-                    <PopoverTrigger asChild>
-                        <Button className="mx-auto my-2 block text-base" size="sm">
-                            {company.name}
-                        </Button>
-                    </PopoverTrigger>
+        cell: ({ row }) => (
+            <div className="flex-center !flex-wrap">
+                {(row.original?.companies).map((company: any) => (
+                    <Popover key={company._id}>
+                        <PopoverTrigger asChild>
+                            <Button size="sm" className="">
+                                {company.name}
+                            </Button>
+                        </PopoverTrigger>
 
-                    <PopoverContent>
-                        {row.original.products
-                            .filter((product: any) => product.company === company._id)
-                            .map((product: any) => {
-                                return (
-                                    <Link
-                                        key={product._id}
-                                        href={`/profile/product/${product._id}`}
-                                        className="block w-full cursor-pointer rounded-md p-2 text-start text-lg hover:bg-primary-100 hover:text-black"
-                                    >
-                                        {product.name}
-                                    </Link>
-                                );
-                            })}
-                    </PopoverContent>
-                </Popover>
-            )),
+                        <PopoverContent>
+                            {row.original.products
+                                .filter((product: any) => product.company === company._id)
+                                .map((product: any) => {
+                                    return (
+                                        <Link
+                                            key={product._id}
+                                            href={`/profile/product/${product._id}`}
+                                            className="block w-full cursor-pointer rounded-md p-2 text-start text-lg hover:bg-primary-100 hover:text-black"
+                                        >
+                                            {product.name}
+                                        </Link>
+                                    );
+                                })}
+                        </PopoverContent>
+                    </Popover>
+                ))}
+            </div>
+        ),
     },
     {
         accessorKey: "actions",

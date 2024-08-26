@@ -84,7 +84,7 @@ const Product = ({}: ProductProps) => {
                     clearErrors={clearErrors}
                 />
 
-                <OpenModuleButton clearErrors={clearErrors} />
+                <OpenModuleButton type="insert-products-model" clearErrors={clearErrors} />
                 {!!products.length && <DataTable columns={columns} data={products} smallSize />}
                 <SubmitButton text="Create" isPending={isPending} />
             </form>

@@ -88,7 +88,7 @@ export const productLists: NavLinkType[] = [
 export const clientLists: NavLinkType[] = [
     {
         Icon: UsersIcon,
-        title: "Show Clients",
+        title: "Clients List",
         href: "/clients",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -108,7 +108,7 @@ export const clientLists: NavLinkType[] = [
         href: "/clients/add-client",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: [],
+        additionalSubscriptions: ["premium"],
     },
     {
         Icon: HandCoinsIcon,
@@ -116,14 +116,14 @@ export const clientLists: NavLinkType[] = [
         href: "/clients/statement",
         userRole: "org:member",
         subscriptions: ["basic"],
-        additionalSubscriptions: [],
+        additionalSubscriptions: ["premium"],
     },
 ];
 
 export const supplierLists: NavLinkType[] = [
     {
         Icon: UsersIcon,
-        title: "Show Suppliers",
+        title: "Suppliers List",
         href: "/suppliers",
         userRole: "org:admin",
         subscriptions: ["basic"],

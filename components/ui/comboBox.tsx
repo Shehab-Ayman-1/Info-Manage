@@ -1,6 +1,6 @@
 "use client";
 import type { UseFormClearErrors, UseFormSetValue } from "react-hook-form";
-import type { FieldError, FieldErrorsImpl, FieldValues, Merge } from "react-hook-form";
+import type { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 import { CheckCheckIcon, ChevronsUpDownIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -25,11 +25,11 @@ type ComboBoxProps = {
     loading?: boolean;
     error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>> | undefined;
 
-    setValue?: UseFormSetValue<FieldValues>;
+    setValue?: UseFormSetValue<any>;
     onChange?: (value: string) => void;
 
     defaultValue?: string;
-    clearErrors?: UseFormClearErrors<FieldValues>;
+    clearErrors?: UseFormClearErrors<any>;
 
     items?: Item[];
     groups?: { _id: string; label: string; list: Item[] }[];
@@ -47,7 +47,7 @@ export const ComboBox = (props: ComboBoxProps) => {
         setValue?.(name, defaultValue);
         onChange?.(defaultValue);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [defaultValue]);
 
     const onSelect = ({ value, title }: Item) => {
         setSelectedValue(title);

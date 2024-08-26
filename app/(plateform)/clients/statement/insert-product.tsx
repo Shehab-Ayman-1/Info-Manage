@@ -53,7 +53,7 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
         setValue("soldPrice", product?.soldPrice);
     }, [selectedProductId, products, setValue]);
 
-    if (type === "delete-model") return;
+    if (type !== "insert-products-model") return;
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const { productId, count, soldPrice, ...product } = data as ProductType;
@@ -80,8 +80,6 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
         reset();
         onClose();
     };
-
-    console.log(errors);
 
     return (
         <DialogForm heading="Insert Product" description="All Fields Are Required">

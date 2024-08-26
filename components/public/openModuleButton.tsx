@@ -5,15 +5,16 @@ import { useModel } from "@/hooks/useModel";
 import { Button } from "@/ui/button";
 
 type OpenModuleButtonProps = {
+    type?: string;
     clearErrors: UseFormClearErrors<FieldValues>;
 };
 
-export const OpenModuleButton = ({ clearErrors }: OpenModuleButtonProps) => {
+export const OpenModuleButton = ({ type, clearErrors }: OpenModuleButtonProps) => {
     const { onOpen } = useModel();
 
     const onInsert = () => {
         clearErrors("root");
-        onOpen();
+        onOpen(type);
     };
 
     return (

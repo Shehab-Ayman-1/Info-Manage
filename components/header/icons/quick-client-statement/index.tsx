@@ -18,6 +18,7 @@ import { DataTable } from "@/components/table";
 import { DeleteDialog } from "./delete-dialog";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
+import { methods } from "@/constants";
 
 const productSchema = z.array(
     z.object({
@@ -39,12 +40,15 @@ type RequestType = Omit<StatementType, "products"> & Pick<CreateClientType, "pro
 
 const defaultProduct = { productId: "", name: "", company: "", count: 0, purchasePrice: 0, soldPrice: 0, total: 0 };
 export const QuickClientStatement = () => {
-    const { formState, watch, reset, setValue, handleSubmit } = useForm<StatementType>({ resolver: zodResolver(schema) });
+    const { formState, watch, reset, setValue, clearErrors, handleSubmit } = useForm<StatementType>({
+        resolver: zodResolver(schema),
+    });
     const { mutate, isPending } = useCreate<RequestType>("/api/clients/statement", ["bills"]);
     const [product, setProduct] = useState<ProductType[0]>(defaultProduct);
     const { clients, products: productLists } = useLists();
     const { type, onClose } = useModel();
 
+    const { errors } = formState;
     const choosenProducts = watch("products");
 
     useEffect(() => {
@@ -60,8 +64,6 @@ export const QuickClientStatement = () => {
 
         setValue("clientId", client._id);
         setValue("discount", 0);
-
-        setValue("method", "cash");
         setValue("process", "all");
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -113,23 +115,27 @@ export const QuickClientStatement = () => {
 
     const onSubmit: SubmitHandler<StatementType> = (values) => {
         const filterProducts = values.products.map(({ company, name, ...product }) => product);
-        mutate(
-            { ...values, products: filterProducts },
-            {
-                onSuccess: () => {
-                    setProduct(defaultProduct);
-                    reset();
-                    onClose();
-                },
-            },
-        );
-    };
+        const onSuccess = () => {
+            setProduct(defaultProduct);
+            reset();
+            onClose();
+        };
 
-    console.log(formState.errors);
+        mutate({ ...values, products: filterProducts }, { onSuccess });
+    };
 
     return (
         <DialogForm heading="Quick Client Statement" description="Create A New Client Statement With One Click">
             <form onSubmit={handleSubmit(onSubmit)} className="max-w-xl overflow-x-auto">
+                <ComboBox
+                    label="Choose Method"
+                    name="method"
+                    error={errors?.method}
+                    items={methods}
+                    setValue={setValue}
+                    clearErrors={clearErrors}
+                />
+
                 <ComboBox
                     label="Product Name"
                     name="productId"
@@ -137,6 +143,7 @@ export const QuickClientStatement = () => {
                     loading={productLists.isLoading}
                     onChange={(value) => setProduct((product) => ({ ...product!, productId: value }))}
                 />
+
                 <div className="flex-between">
                     <Input
                         type="number"
@@ -164,10 +171,10 @@ export const QuickClientStatement = () => {
                     </Button>
                 </div>
 
-                <p className="text-center text-xs text-rose-500">{formState.errors.products && "No Products Was Selected."}</p>
+                <p className="text-center text-xs text-rose-500">{errors.products && "No Products Was Selected."}</p>
 
                 {!!choosenProducts?.length && (
-                    <DataTable columns={columns} data={choosenProducts || []} smallSize totalFor="total" />
+                    <DataTable columns={columns} data={choosenProducts || []} totalFor="total" smallSize />
                 )}
                 <SubmitButton text="Submit" isPending={isPending} />
 

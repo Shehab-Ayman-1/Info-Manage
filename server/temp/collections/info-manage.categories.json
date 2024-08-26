@@ -24,9 +24,28 @@
 },
 {
   "_id": {
-    "$oid": "66b53d935423b14979964d47"
+    "$oid": "66c481075766fb92f8a81817"
   },
   "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "orgSlug": "abo-elwafa",
   "name": "عصائر",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66c494148414e386a3693410"
+  },
+  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "orgSlug": "abo-elwafa",
+  "name": "عطارة",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66c4964b8414e386a369341e"
+  },
+  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "orgSlug": "abo-elwafa",
+  "name": "معلبات",
   "__v": 0
 }]

@@ -89,7 +89,7 @@ const Supplier = ({}: SupplierProps) => {
 
                 {process && (
                     <Fragment>
-                        <OpenModuleButton clearErrors={clearErrors} />
+                        <OpenModuleButton type="insert-product-model" clearErrors={clearErrors} />
                         {!!products.length && <DataTable columns={columns} data={products} smallSize />}
                         <SubmitButton text="Create" isPending={isPending} />
                     </Fragment>

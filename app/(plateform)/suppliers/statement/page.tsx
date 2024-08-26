@@ -120,9 +120,9 @@ const Suppliers = ({}: SuppliersProps) => {
                 )}
 
                 <AlertError root={errors?.root} />
-                <OpenModuleButton clearErrors={clearErrors} />
+                <OpenModuleButton type="insert-product-model" clearErrors={clearErrors} />
 
-                {!!products.length && <DataTable columns={columns} data={products} smallSize totalFor="total" />}
+                {!!products.length && <DataTable columns={columns} data={products} totalFor="total" smallSize />}
                 <SubmitButton text="Buy" isPending={isPending} />
             </form>
 

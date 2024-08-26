@@ -1,7 +1,7 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Dispatch, SetStateAction, useEffect } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { ProductType, schema } from "./schema";
 import { toast } from "sonner";
 
@@ -20,18 +20,18 @@ export const InsertAndUpdateDialog = ({ setProducts }: InsertAndUpdateDialogProp
     const { errors, isLoading } = formState;
 
     useEffect(() => {
-        if (type !== "edit-model" || !data?.product) return;
-        setValue("randomId", data?.product.randomId);
-        setValue("name", data?.product.name);
-        setValue("barcode", data?.product.barcode);
-        setValue("min", data?.product.min);
-        setValue("marketCount", data?.product.marketCount);
-        setValue("storeCount", data?.product.storeCount);
-        setValue("purchasePrice", data?.product.purchasePrice);
-        setValue("sellingPrice", data?.product.sellingPrice);
+        if (type !== "edit-products-model" || !data?.product) return;
+        setValue("min", data.product.min);
+        setValue("name", data.product.name);
+        setValue("barcode", data.product.barcode);
+        setValue("randomId", data.product.randomId);
+        setValue("storeCount", data.product.storeCount);
+        setValue("sellingPrice", data.product.sellingPrice);
+        setValue("marketCount", data.product.marketCount);
+        setValue("purchasePrice", data.product.purchasePrice);
     }, [type, data, setValue]);
 
-    if (type === "delete-model") return;
+    if (type !== "insert-products-model" && type !== "edit-products-model") return;
 
     const onSubmitFn = (values: ProductType) => {
         setProducts((products) => {
@@ -63,12 +63,15 @@ export const InsertAndUpdateDialog = ({ setProducts }: InsertAndUpdateDialogProp
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const values = data as ProductType;
-        if (type === "edit-model") onEditFn(values);
+        if (type === "edit-products-model") onEditFn(values);
         else onSubmitFn(values);
     };
 
     return (
-        <DialogForm heading="Insert Product" description="Please Fill All The Required Fields To Succefully Create The Account.">
+        <DialogForm
+            heading={type === "edit-products-model" ? "Update Product" : "Insert Product"}
+            description="Please Fill All The Required Fields To Succefully Create The Account."
+        >
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Input placeholder="Product Name" error={errors?.name} {...register("name")} />
 

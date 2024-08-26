@@ -1,14 +1,12 @@
 # TODO:
 
-    - Change The Role From orgRole To User.publicMetadata Custome Role
-
     - Think About
-        -- Barcode Reader
-        -- Print In Small Printer
-        -- Clients Level
-        -- Connect Between Multible Branches
-        -- المرتجعات
+        -- جهاز قراءة الباركود
+        -- البرينتر الصغيرة
+        -- تفعيل خطه شرائح العملاء
+        -- الربط بين اكثر من فرع
         -- البضائع السائله
+        -- المرتجعات
 
     - Learn Mongoose
         -- pre/post Middlewares

@@ -2,10 +2,10 @@ import { z } from "zod";
 
 export const createSchema = z.object({
     clientId: z.string().min(1),
+    paid: z.number().positive(),
+    discount: z.number().min(0),
     method: z.enum(["cash", "visa"]),
     process: z.enum(["all", "milestone"]),
-    paid: z.number().positive(),
-    discount: z.number().positive(),
 
     products: z.array(
         z.object({

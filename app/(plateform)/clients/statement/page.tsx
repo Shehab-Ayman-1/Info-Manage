@@ -43,11 +43,11 @@ const Clients = ({}: ClientsProps) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    // Auto Get Total Products Total Price
     useEffect(() => {
-        // Auto Get Total Products Total Price
         if (processValue === "milestone") return;
-
         const productsTotalPrice = products.reduce((prev, cur) => prev + cur?.total, 0);
+
         setValue("paid", productsTotalPrice);
     }, [products, setValue, processValue]);
 
@@ -122,7 +122,7 @@ const Clients = ({}: ClientsProps) => {
                 </div>
 
                 <AlertError root={errors?.root} />
-                <OpenModuleButton clearErrors={clearErrors} />
+                <OpenModuleButton type="insert-products-model" clearErrors={clearErrors} />
 
                 {!!products.length && <DataTable columns={columns} data={products} smallSize totalFor="total" />}
                 <SubmitButton text="Buy" isPending={isPending} />
