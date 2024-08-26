@@ -37,7 +37,7 @@ export const productLists: NavLinkType[] = [
     },
     {
         Icon: ShoppingCartIcon,
-        title: "Insuffient Products",
+        title: "Insufficient Products",
         href: "/products/insufficients",
         userRole: "org:member",
         subscriptions: ["basic"],
@@ -170,7 +170,7 @@ export const financeLists: NavLinkType[] = [
         href: "/finances/transactions",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: ["premium"],
+        additionalSubscriptions: [],
     },
     {
         Icon: RocketIcon,

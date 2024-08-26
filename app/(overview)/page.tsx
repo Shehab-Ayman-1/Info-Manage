@@ -1,12 +1,12 @@
 "use client";
 import { useOrganization, ClerkLoaded } from "@clerk/nextjs";
+import { AlertTriangleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { useSubscription } from "@/hooks/useSubscription";
 import { Button } from "@/ui/button";
 import { Alert } from "@/ui/alert";
-import { useSubscription } from "@/hooks/useSubscription";
-import { AlertTriangleIcon } from "lucide-react";
 
 type OverviewProps = {};
 

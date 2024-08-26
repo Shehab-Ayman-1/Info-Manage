@@ -19,7 +19,7 @@ type InsufficientsProps = {
 };
 
 const Insufficients = () => {
-    const { mutate, data, error } = useGetByQuery<InsufficientsProps[]>("/api/statistics/insufficients");
+    const { mutate, data, error } = useGetByQuery<InsufficientsProps[]>("/api/products/insufficients");
     const [supplierId, setSupplierId] = useState("");
     const [place, setPlace] = useState("");
     const { suppliers } = useLists();
@@ -41,8 +41,8 @@ const Insufficients = () => {
         <TableForm
             columns={columns}
             data={data || []}
-            totalFor="total"
-            pageTitle="Insufficients Products"
+            totalFor="totalNeeded"
+            pageTitle="Insufficient Products"
             navigate={[{ text: "New Statement", to: "/suppliers/statement" }]}
         >
             <div className="flex-between">
@@ -50,7 +50,7 @@ const Insufficients = () => {
                     label="Supplier"
                     name="supplierId"
                     loading={suppliers.isLoading}
-                    items={suppliers.lists}
+                    items={[{ _id: "all", value: "all", title: "All" }, ...suppliers.lists]}
                     onChange={(value) => setSupplierId(value)}
                 />
                 <ComboBox label="Place" name="place" items={places} onChange={(value) => setPlace(value)} />

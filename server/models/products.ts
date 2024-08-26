@@ -7,6 +7,7 @@ type TProduct = Document & {
     name: string;
 
     barcode: string;
+    unit: "packet" | "liters";
     min: number;
 
     market: { price: number; count: number; updatedAt: Date };
@@ -18,6 +19,7 @@ const schema = new Schema<TProduct>({
     name: { type: String, required: true, trim: true },
 
     barcode: { type: String, unique: true, trim: true },
+    unit: { type: String, required: true, trim: true, enum: ["packet", "liter"] },
     min: { type: Number, required: true },
 
     market: {

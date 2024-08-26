@@ -7,7 +7,15 @@ import { DollarCell } from "@/components/table/body/price-cell";
 
 export const columns: ColumnDef<any>[] = [
     {
+        accessorKey: "company",
+        header: HeaderComponent,
+    },
+    {
         accessorKey: "product",
+        header: HeaderComponent,
+    },
+    {
+        accessorKey: "barcode",
         header: HeaderComponent,
     },
     {
@@ -21,13 +29,13 @@ export const columns: ColumnDef<any>[] = [
         cell: ({ row }) => <NumberCell row={row} name="current_count" />,
     },
     {
-        accessorKey: "needed_count",
+        accessorKey: "minimum",
         header: HeaderComponent,
-        cell: ({ row }) => <NumberCell row={row} name="needed_count" />,
+        cell: ({ row }) => <NumberCell row={row} name="minimum" />,
     },
     {
-        accessorKey: "total",
+        accessorKey: "totalNeeded",
         header: HeaderComponent,
-        cell: ({ row }) => <DollarCell row={row} name="total" />,
+        cell: ({ row }) => <DollarCell row={row} name="totalNeeded" />,
     },
 ];

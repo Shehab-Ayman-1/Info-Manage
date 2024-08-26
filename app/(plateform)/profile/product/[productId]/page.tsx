@@ -17,6 +17,7 @@ import { UpdateDialog } from "./update-dialog";
 export type ProfileType = {
     name: string;
     barcode: string;
+    min: number;
     company: { _id: string; name: string; image: string };
     market: { price: number; count: number };
     store: { price: number; count: number };
@@ -35,7 +36,7 @@ const ProductProfile = ({ params }: ProductProfileProps) => {
     if (isPending || !data) return <ProfileLoading />;
     if (error) return router.push("/");
 
-    const [{ company, name, barcode, market, store }] = data;
+    const [{ company, name, barcode, min, market, store }] = data;
 
     const labelStyle = "text-xl font-bold text-primary";
     const textStyle = "bg-primary-100 text-xl font-bold px-4 py-2 rounded-md shadow dark:text-black";
@@ -66,9 +67,15 @@ const ProductProfile = ({ params }: ProductProfileProps) => {
                 <p className={textStyle}>{name}</p>
             </div>
 
-            <div className="">
-                <Label className={labelStyle}>Barcode:</Label>
-                <p className={textStyle}>{barcode || "No Barcode"}</p>
+            <div className="flex-between">
+                <div className="w-full">
+                    <Label className={labelStyle}>Barcode:</Label>
+                    <p className={textStyle}>{barcode || "No Barcode"}</p>
+                </div>
+                <div className="w-full">
+                    <Label className={labelStyle}>Minimum:</Label>
+                    <p className={textStyle}>{min || "Not Declared"}</p>
+                </div>
             </div>
 
             <hr className="my-4 dark:border-slate-500" />

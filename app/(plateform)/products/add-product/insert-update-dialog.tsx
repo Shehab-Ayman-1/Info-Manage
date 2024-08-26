@@ -6,17 +6,19 @@ import { ProductType, schema } from "./schema";
 import { toast } from "sonner";
 
 import { SubmitButton } from "@/components/public/submit-btn";
+import { ComboBox } from "@/components/ui/comboBox";
 import { DialogForm } from "@/components/ui/dialog";
 import { useModel } from "@/hooks/useModel";
 import { Input } from "@/ui/input";
+import { units } from "@/constants";
 
 type InsertAndUpdateDialogProps = {
     setProducts: Dispatch<SetStateAction<ProductType[]>>;
 };
 
 export const InsertAndUpdateDialog = ({ setProducts }: InsertAndUpdateDialogProps) => {
-    const { formState, register, reset, setValue, handleSubmit } = useForm({ resolver: zodResolver(schema) });
-    const { onClose, type, data } = useModel();
+    const { formState, register, reset, setValue, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(schema) });
+    const { type, data, onClose } = useModel();
     const { errors, isLoading } = formState;
 
     useEffect(() => {
@@ -73,15 +75,25 @@ export const InsertAndUpdateDialog = ({ setProducts }: InsertAndUpdateDialogProp
             description="Please Fill All The Required Fields To Succefully Create The Account."
         >
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Input placeholder="Product Name" error={errors?.name} {...register("name")} />
+                <div className="flex-between">
+                    <Input placeholder="Product Name" error={errors?.name} {...register("name")} />
+                    <Input placeholder="Barcode (Optional)" error={errors?.barcode} {...register("barcode")} />
+                </div>
 
                 <div className="flex-between">
-                    <Input placeholder="Barcode (Optional)" error={errors?.barcode} {...register("barcode")} />
                     <Input
                         type="number"
                         placeholder="Minimum Limit"
                         error={errors?.min}
                         {...register("min", { valueAsNumber: true })}
+                    />
+                    <ComboBox
+                        label="Unit"
+                        name="unit"
+                        items={units}
+                        error={errors.unit}
+                        setValue={setValue}
+                        clearErrors={clearErrors}
                     />
                 </div>
 

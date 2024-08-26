@@ -4,6 +4,8 @@ import { ColumnDef } from "@tanstack/react-table";
 import { HeaderComponent } from "@/components/table/column-header";
 import { NumberCell } from "@/components/table/body/number-cell";
 import { DollarCell } from "@/components/table/body/price-cell";
+import Link from "next/link";
+import { Button } from "@/ui/button";
 
 export const columns: ColumnDef<any>[] = [
     {
@@ -17,6 +19,13 @@ export const columns: ColumnDef<any>[] = [
     {
         accessorKey: "product",
         header: HeaderComponent,
+        cell: ({ row }) => {
+            return (
+                <Button asChild variant="ghost" className="hover:bg-slate-300 hover:text-black">
+                    <Link href={`/profile/product/${row.original._id}`}>{row.original.product}</Link>
+                </Button>
+            );
+        },
     },
     {
         accessorKey: "barcode",

@@ -24,7 +24,7 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
                 path: "company",
                 select: ["_id", "name", "image"],
             })
-            .select(["-market.updatedAt", "-min", "-__v"]);
+            .select(["-market.updatedAt", "-__v"]);
 
         if (!product) return json("This Product Was Not Found.", 400);
         return json([product]);

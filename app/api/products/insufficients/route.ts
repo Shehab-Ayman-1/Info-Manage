@@ -19,7 +19,7 @@ export const GET = async (req: NextRequest) => {
 
         const insufficients = await Suppliers.aggregate([
             {
-                $match: { orgId, _id: new Types.ObjectId(supplierId) },
+                $match: supplierId === "all" ? { orgId } : { orgId, _id: new Types.ObjectId(supplierId) },
             },
             {
                 $unwind: "$products",
@@ -34,13 +34,21 @@ export const GET = async (req: NextRequest) => {
                 $match: { $expr: { $lt: [`$product.${place}.count`, "$product.min"] } },
             },
             {
+                $lookup: { from: "companies", as: "product.company", localField: "product.company", foreignField: "_id" },
+            },
+            {
+                $unwind: "$product.company",
+            },
+            {
                 $project: {
                     _id: 1,
                     product: "$product.name",
+                    company: "$product.company.name",
+                    barcode: "$product.barcode",
+                    minimum: "$product.min",
                     price: `$product.${place}.price`,
                     current_count: `$product.${place}.count`,
-                    needed_count: { $subtract: ["$product.min", `$product.${place}.count`] },
-                    total: {
+                    totalNeeded: {
                         $multiply: [`$product.${place}.price`, { $subtract: ["$product.min", `$product.${place}.count`] }],
                     },
                 },

@@ -49,3 +49,16 @@ export const lockerMethods = [
         title: "Deposit To Locker",
     },
 ];
+
+export const units = [
+    {
+        _id: "f11d8d9b-5bfd-561b-868f-33cdde2540a1",
+        value: "packet",
+        title: "Packet",
+    },
+    {
+        _id: "f98ea77b-e11c-51ef-bcca-8f0021747d3d",
+        value: "liter",
+        title: "Liter",
+    },
+];
