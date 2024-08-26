@@ -8,7 +8,7 @@ import { cn } from "@/utils/shadcn";
 
 type SubscriptionCardProps = {
     heading: "Basic" | "Premium" | "Enterprise";
-    costs: { month: number; year: number; life: number } | { month: number; year: number };
+    costs: { month: number; year: number; life: number } | { month: number; halfYear: number; year: number };
     features: {
         label: string;
         description: string;
@@ -40,7 +40,7 @@ export const SubscriptionCard = async ({ heading, costs, features }: Subscriptio
             <div className="flex-between my-4 !flex-wrap sm:my-8">
                 {Object.keys(costs).map((cost) => (
                     <p key={cost} className="text-center text-base text-slate-600 dark:text-slate-300">
-                        ${costs[cost as Cost].toLocaleString()} / {cost}
+                        ${costs[cost as Cost].toLocaleString()} / {cost === "halfYear" ? "6 months" : cost}
                     </p>
                 ))}
             </div>
