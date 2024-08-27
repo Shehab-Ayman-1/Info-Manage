@@ -34,17 +34,15 @@ export const GET = async (req: NextRequest) => {
             {
                 $project: {
                     _id: 1,
-                    barcode: "$barcode",
+                    unit: 1,
+                    barcode: 1,
                     product: "$name",
                     company: "$company.name",
                     category: "$company.category.name",
-                    count: place === "market" ? "$market.count" : "$store.count",
-                    price: place === "market" ? "$market.price" : "$store.price",
+                    count: `$${place}.count`,
+                    price: `$${place}.price`,
                     total: {
-                        $multiply: [
-                            place === "market" ? "$market.count" : "$store.count",
-                            place === "market" ? "$market.price" : "$store.price",
-                        ],
+                        $multiply: [`$${place}.count`, `$${place}.price`],
                     },
                 },
             },

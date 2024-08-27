@@ -1,5 +1,6 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
+import mongoose from "mongoose";
 
 import { ClientBills, Clients, Products, Transactions } from "@/server/models";
 import { getExpireAt } from "@/utils/expireAt";
@@ -8,8 +9,11 @@ import { createSchema } from "./schema";
 import { json } from "@/utils/response";
 
 export const POST = async (req: NextRequest) => {
+    const session = await mongoose.startSession();
+
     try {
         await DBConnection();
+        session.startTransaction();
 
         const { userId, orgId, orgSlug } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
@@ -23,12 +27,15 @@ export const POST = async (req: NextRequest) => {
         // Check If The Products Count Is Exist In The Market
         const promise = await Promise.all(
             data.products.map(async ({ productId, count }) => {
-                const product = await Products.findById(productId);
+                const product = await Products.findById(productId).session(session);
                 return count > product!.market.count && product!.name;
             }),
         );
         const promiseValues = promise.filter((item) => item);
-        if (promiseValues.length) return json(`Not Enough ${promiseValues.join(" | ")}`, 400);
+        if (promiseValues.length) {
+            await session.abortTransaction();
+            return json(`Not Enough ${promiseValues.join(" | ")}`, 400);
+        }
 
         // Create Bill
         const productsTotalCosts = data.products.reduce((prev, cur) => prev + cur.total, 0);
@@ -38,13 +45,16 @@ export const POST = async (req: NextRequest) => {
         const billProducts = data.products.map(({ total, ...product }) => product);
 
         const total = productsTotalCosts - discount;
-
         const expireAt = await getExpireAt();
-        await ClientBills.create({ orgId, paid, total, discount, expireAt, state, client: clientId, products: billProducts });
+        await ClientBills.create([{ orgId, paid, total, discount, expireAt, state, client: clientId, products: billProducts }], {
+            session,
+        });
 
         // Create New Transaction
         const reason = "Client Statement";
-        await Transactions.create({ orgId, reason, method, process: "deposit", creator: user.fullName, price: paid });
+        await Transactions.create([{ orgId, reason, method, process: "deposit", creator: user.fullName, price: paid }], {
+            session,
+        });
 
         // Update Products Price By The Current Prices, And Dec The Count From The Market
         await Promise.all(
@@ -52,6 +62,7 @@ export const POST = async (req: NextRequest) => {
                 return await Products.updateOne(
                     { _id: productId },
                     { "market.price": soldPrice, "market.updatedAt": new Date(), $inc: { "market.count": -count } },
+                    { session },
                 );
             }),
         );
@@ -60,18 +71,22 @@ export const POST = async (req: NextRequest) => {
         await Clients.updateOne(
             { orgId, _id: clientId },
             { $inc: { purchasesSalary: total, pendingCosts: total - paid, discounts: discount } },
+            { session },
         );
 
-        // Update Client Level
-        await Clients.updateLevel({ orgId, clientId });
-
+        // Update Client Level & RefreshDate
         const refreshAfter = +(organization?.publicMetadata?.refreshClientsPurchases as string)?.split(" ")[0];
         await Clients.updateLastRefreshDate({ orgId, clientId, refreshAfter });
+        await Clients.updateLevel({ orgId, clientId });
 
         // Response
+        await session.commitTransaction();
         return json("The Statement Was Successfully Created.");
     } catch (error: any) {
+        await session.abortTransaction();
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);
+    } finally {
+        session.endSession();
     }
 };

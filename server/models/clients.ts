@@ -45,7 +45,7 @@ type LastRefreshDate = FilterQuery & {
     refreshAfter?: number;
 };
 
-schema.statics.updateLevel = async function ({ orgId, clientId }: FilterQuery) {
+schema.statics.updateLevel = async function ({ orgId, clientId }) {
     const Clients = this;
     const client: ClientType = await Clients.findOne({ orgId, _id: clientId });
     if (client.level === "gold") return 0;
@@ -58,7 +58,7 @@ schema.statics.updateLevel = async function ({ orgId, clientId }: FilterQuery) {
     return updated.modifiedCount;
 };
 
-schema.statics.updateLastRefreshDate = async function ({ orgId, clientId, refreshAfter = 3 }: LastRefreshDate) {
+schema.statics.updateLastRefreshDate = async function ({ orgId, clientId, refreshAfter = 3 }) {
     const Clients = this;
 
     const client: ClientType = await Clients.findOne({ orgId, _id: clientId });

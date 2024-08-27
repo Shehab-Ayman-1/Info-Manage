@@ -42,9 +42,10 @@ export const GET = async (req: NextRequest) => {
             {
                 $project: {
                     _id: 1,
-                    product: "$product.name",
                     company: "$product.company.name",
+                    product: "$product.name",
                     barcode: "$product.barcode",
+                    unit: "$product.unit",
                     minimum: "$product.min",
                     price: `$product.${place}.price`,
                     current_count: `$product.${place}.count`,

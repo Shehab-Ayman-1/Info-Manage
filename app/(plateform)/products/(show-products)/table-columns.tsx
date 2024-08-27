@@ -34,7 +34,7 @@ export const columns: ColumnDef<any>[] = [
     {
         accessorKey: "count",
         header: HeaderComponent,
-        cell: ({ row }) => <NumberCell row={row} name="count" />,
+        cell: ({ row }) => <NumberCell row={row} name="count" showUnit />,
     },
     {
         accessorKey: "price",

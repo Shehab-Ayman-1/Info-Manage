@@ -49,6 +49,7 @@ export const QuickClientStatement = () => {
     const { type, onClose } = useModel();
 
     const { errors } = formState;
+    const clientId = watch("clientId");
     const choosenProducts = watch("products");
 
     useEffect(() => {
@@ -57,17 +58,17 @@ export const QuickClientStatement = () => {
     }, []);
 
     useEffect(() => {
-        if (!clients.data.length) return;
-
+        if (!clients.data.length || clientId) return;
         const client = clients.data.find((client) => client.name === "unknown");
-        if (!client) return onClose();
 
+        if (!client) return onClose();
         setValue("clientId", client._id);
+
         setValue("discount", 0);
         setValue("process", "all");
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [clients]);
+    }, [clients, clientId]);
 
     useEffect(() => {
         if (!choosenProducts?.length) return;

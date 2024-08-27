@@ -26,7 +26,7 @@ export const columns: ColumnDef<any>[] = [
     {
         accessorKey: "current_count",
         header: HeaderComponent,
-        cell: ({ row }) => <NumberCell row={row} name="current_count" />,
+        cell: ({ row }) => <NumberCell row={row} name="current_count" showUnit />,
     },
     {
         accessorKey: "minimum",
