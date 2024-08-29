@@ -15,7 +15,7 @@ export const GET = async () => {
 
         const unknown = clients.find((client) => client.name === "unknown");
         if (!unknown) {
-            const client = await Clients.create({ orgId, name: "unknown", phone: "01234567890", bronzeTo: 1, silverTo: 1 });
+            const client = await Clients.create({ orgId, name: "unknown", phone: "01234567890", bronzeTo: 1, silverTo: 1,  });
             clients.push(client);
         }
 

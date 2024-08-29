@@ -18,7 +18,7 @@ export const Item = ({ title, href, Icon, userRole, subscriptions, additionalSub
         <Link
             href={isAdmin && isAdditionalSubscribe ? href : "/"}
             className={cn(
-                "flex-between cursor-pointer whitespace-nowrap border-none p-4 focus-visible:border-none",
+                "flex-between group cursor-pointer whitespace-nowrap border-none p-4 focus-visible:border-none",
                 isAdmin && isAdditionalSubscribe && "hover:bg-primary-50 dark:hover:bg-slate-800",
                 (!isAdmin || !isAdditionalSubscribe) && "pointer-events-none",
             )}

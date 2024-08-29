@@ -1,5 +1,5 @@
 "use client";
-import type { Companies, Products, Clients, Suppliers, Categories } from "./types";
+import type { Companies, Products, Clients, Suppliers, Categories, Bills } from "./types";
 import type { ListsType, Group, MakeGroupData } from "./types";
 import { create } from "zustand";
 
@@ -124,6 +124,24 @@ export const useLists = create<ListsType>((set, get) => ({
         },
     },
 
+    bills: {
+        data: [],
+        lists: [],
+        isLoading: true,
+        fetcher: async function () {
+            const { bills } = get();
+            if (bills.data.length) return;
+
+            const response = await fetch("/api/lists/bills");
+            const data: Bills["data"] = await response.json();
+
+            if (!response.ok) return console.log(data);
+            const lists = data.map(({ _id, name }) => ({ _id, value: _id, title: name }));
+
+            set({ bills: { data, lists, isLoading: false, fetcher: this.fetcher } });
+        },
+    },
+
     productsBySupplier: {
         data: [],
         groups: [],
@@ -135,12 +153,30 @@ export const useLists = create<ListsType>((set, get) => ({
             const supplier = suppliers?.data.find((supplier) => supplier._id === supplierId);
             if (!supplier) return;
 
-            const productsList = supplier.products
+            const productLists = supplier.products
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map(({ company, ...product }) => ({ ...company, list: product }));
 
-            const groups = makeGroup(productsList);
+            const groups = makeGroup(productLists);
             set({ productsBySupplier: { data: supplier.products, groups, isLoading: false, fetcher: this.fetcher } });
+        },
+    },
+
+    productsByBill: {
+        data: [],
+        lists: [],
+        isLoading: true,
+        fetcher: async function (billBarcode) {
+            const { bills } = get();
+            if (!bills.data.length) await bills.fetcher?.();
+
+            console.log(bills);
+
+            const bill = bills.data.find((bill) => bill.barcode === billBarcode);
+            if (!bill) return;
+
+            const lists = bill.products.map(({ name }) => ({ _id: `${billBarcode}`, value: `${billBarcode}`, title: name }));
+            set({ productsByBill: { data: bill.products, lists, isLoading: false, fetcher: this.fetcher } });
         },
     },
 

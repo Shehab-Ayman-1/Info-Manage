@@ -15,6 +15,7 @@ import { cn } from "@/utils/shadcn";
 
 type ResponseType = {
     _id: string;
+    barcode: number;
     client: { name: string; level: string };
     paid: number;
     total: number;
@@ -56,8 +57,10 @@ const BillProfile = ({ params }: BillProfileProps) => {
             <div className="text-center">
                 <div className="flex-between mb-4">
                     <h1 className={styleText}>Client: {values.client.name}</h1>
+                    {values.state !== "restore" && <h1 className={styleText}>Barcode: {values.barcode.toLocaleString()}</h1>}
                     <h1 className={styleText}>Created At: {formatDate(values.createdAt, "dd / MM / yyyy")}</h1>
                 </div>
+
                 <Button size="lg" className="w-fit gap-1 text-lg font-bold print:hidden" onClick={onPrint}>
                     <PrinterCheckIcon className="size-5 !text-white dark:!text-black" />
                     Print Receipt

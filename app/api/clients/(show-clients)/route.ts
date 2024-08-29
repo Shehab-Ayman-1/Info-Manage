@@ -39,6 +39,7 @@ export const GET = async () => {
     }
 };
 
+// Update Bill
 export const PUT = async (req: NextRequest) => {
     try {
         await DBConnection();
@@ -66,6 +67,7 @@ export const PUT = async (req: NextRequest) => {
     }
 };
 
+// Delete Bill
 export const DELETE = async (req: NextRequest) => {
     try {
         await DBConnection();

@@ -33,7 +33,7 @@ export const NavLinks = ({}: NavLinksProps) => {
                     open={open.state && open.index === index}
                     onOpenChange={() => onClick(index)}
                 >
-                    <HoverCardTrigger className="flex cursor-pointer items-center gap-1 py-2">
+                    <HoverCardTrigger className="flex cursor-pointer items-center gap-1 py-2 hover:text-slate-500">
                         {nav.heading}
                         <ChevronDownIcon className="size-4 hover:text-slate-700" />
                     </HoverCardTrigger>
@@ -41,6 +41,9 @@ export const NavLinks = ({}: NavLinksProps) => {
                     <HoverCardContent sideOffset={-1} className="bg-gradient min-w-fit border-slate-300 dark:border-slate-600">
                         {nav.links.map((link) => (
                             <div key={link.title} onClick={() => onClick(index)}>
+                                {(link.title === "Today Purchases Receipt" || link.title === "Add New Category") && (
+                                    <hr className="border-slate-500" />
+                                )}
                                 <Item {...link} />
                             </div>
                         ))}

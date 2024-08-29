@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 import { formatDate } from "date-fns";
 
 import { TableForm } from "@/components/page-structure/table-form";
-import { useGetByQuery } from "@/hooks/api/useGetByQuery";
+import { useGet } from "@/hooks/api/useGet";
 import { columns } from "./table-columns";
 
-import { DeleteDialog } from "./delete-dialog";
 import { PayDialog } from "./pay-dialog";
 import { Input } from "@/ui/input";
 
@@ -23,13 +22,12 @@ type BillType = {
 
 const dateFormate = formatDate(new Date(), "yyyy-MM-dd");
 const ClientBills = () => {
-    const { mutate, data, error } = useGetByQuery<BillType[]>("/api/clients/bills");
     const [date, setDate] = useState(dateFormate);
+    const { refetch, data, error } = useGet<BillType>(`/api/clients/bills?date=${date}`, ["client-bills"]);
 
     useEffect(() => {
-        mutate(`date=${date}`);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [date]);
+        refetch();
+    }, [date, refetch]);
 
     if (error) return <h1>{error?.message}</h1>;
 
@@ -40,12 +38,11 @@ const ClientBills = () => {
             data={data || []}
             filterBy={["client"]}
             totalFor="pending"
-            navigate={[{ text: "New Statement", to: "/clients/statement" }]}
+            navigate={[{ text: "New Statement", to: "/clients/statements/new" }]}
         >
             <div className="mt-4 w-fit sm:ml-4">
                 <Input type="date" value={date} name="date" onChange={(event) => setDate(() => event.target.value)} />
             </div>
-            <DeleteDialog />
             <PayDialog />
         </TableForm>
     );

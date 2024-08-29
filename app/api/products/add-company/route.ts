@@ -3,8 +3,8 @@ import { auth } from "@clerk/nextjs/server";
 
 import { DBConnection } from "@/server/configs";
 import { Companies } from "@/server/models";
-import { json } from "@/utils/response";
 import { createSchema } from "./schema";
+import { json } from "@/utils/response";
 
 export const POST = async (req: NextRequest) => {
     try {

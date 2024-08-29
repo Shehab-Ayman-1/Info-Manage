@@ -1,12 +1,12 @@
 import { CalendarPlusIcon, HandCoinsIcon, ReceiptTextIcon, RocketIcon, SchoolIcon } from "lucide-react";
-import { ShoppingCartIcon, TargetIcon, ThumbsDownIcon, UserCheck, UserIcon } from "lucide-react";
 import { ArrowRightLeftIcon, BadgeDollarSignIcon, CalendarPlus2Icon } from "lucide-react";
+import { ShoppingCartIcon, TargetIcon, ThumbsDownIcon, UserCheck } from "lucide-react";
 import { BookKeyIcon, StoreIcon, UsersIcon } from "lucide-react";
 import { LayoutDashboardIcon } from "lucide-react";
 
+export type AdditionalSubscription = "unsubscribe" | "premium" | "enterprise";
 export type Subscription = "unsubscribe" | "basic";
 export type UserRole = "org:admin" | "org:member";
-export type AdditionalSubscription = "unsubscribe" | "premium" | "enterprise";
 
 export type NavLinkType = {
     Icon: any;
@@ -103,18 +103,26 @@ export const clientLists: NavLinkType[] = [
         additionalSubscriptions: [],
     },
     {
-        Icon: UserCheck,
-        title: "Add New Client",
-        href: "/clients/add-client",
-        userRole: "org:admin",
+        Icon: HandCoinsIcon,
+        title: "New Statement",
+        href: "/clients/statements/new",
+        userRole: "org:member",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium"],
     },
     {
         Icon: HandCoinsIcon,
-        title: "Add New Statement",
-        href: "/clients/statement",
+        title: "Restore Statement",
+        href: "/clients/statements/restore",
         userRole: "org:member",
+        subscriptions: ["basic"],
+        additionalSubscriptions: [],
+    },
+    {
+        Icon: UserCheck,
+        title: "Add New Client",
+        href: "/clients/add-client",
+        userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium"],
     },
@@ -138,17 +146,25 @@ export const supplierLists: NavLinkType[] = [
         additionalSubscriptions: [],
     },
     {
-        Icon: UserIcon,
-        title: "Add New Supplier",
-        href: "/suppliers/add-supplier",
+        Icon: HandCoinsIcon,
+        title: "New Statement",
+        href: "/suppliers/statements/new",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: [],
     },
     {
-        Icon: UsersIcon,
-        title: "Add New Statement",
-        href: "/suppliers/statement",
+        Icon: HandCoinsIcon,
+        title: "Restore Statement",
+        href: "/suppliers/statements/restore",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: [],
+    },
+    {
+        Icon: UserCheck,
+        title: "Add New Supplier",
+        href: "/suppliers/add-supplier",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: [],

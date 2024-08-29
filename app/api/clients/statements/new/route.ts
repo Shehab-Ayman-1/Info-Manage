@@ -46,15 +46,31 @@ export const POST = async (req: NextRequest) => {
 
         const total = productsTotalCosts - discount;
         const expireAt = await getExpireAt();
-        await ClientBills.create([{ orgId, paid, total, discount, expireAt, state, client: clientId, products: billProducts }], {
-            session,
-        });
+        await ClientBills.create(
+            [
+                {
+                    orgId,
+                    client: clientId,
+                    barcode: Date.now(),
+                    type: "sale",
+                    paid,
+                    total,
+                    discount,
+                    expireAt,
+                    state,
+                    products: billProducts,
+                    createdAt: new Date(),
+                },
+            ],
+            { session },
+        );
 
         // Create New Transaction
         const reason = "Client Statement";
-        await Transactions.create([{ orgId, reason, method, process: "deposit", creator: user.fullName, price: paid }], {
-            session,
-        });
+        await Transactions.create(
+            [{ orgId, reason, method, process: "deposit", creator: user.fullName, price: paid, createdAt: new Date() }],
+            { session },
+        );
 
         // Update Products Price By The Current Prices, And Dec The Count From The Market
         await Promise.all(

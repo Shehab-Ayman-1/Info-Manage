@@ -39,17 +39,28 @@ export const POST = async (req: NextRequest) => {
         const expireAt = await getExpireAt();
         await SupplierBills.create({
             orgId,
+            barcode: Date.now(),
+            type: "purchase",
             paid,
             state,
             expireAt,
             supplier: supplierId,
             total: productCosts,
             products: billProducts,
+            createdAt: new Date(),
         });
 
         // Make Transaction
         const reason = "Supplier Statement";
-        await Transactions.create({ orgId, reason, method, process: "withdraw", price: paid, creator: user.fullName });
+        await Transactions.create({
+            orgId,
+            reason,
+            method,
+            process: "withdraw",
+            price: paid,
+            creator: user.fullName,
+            createdAt: new Date(),
+        });
 
         // Update Products Price By The Current Prices, And Increament The Purchase Products Count
         const placeCount = place === "market" ? "market.count" : "store.count";

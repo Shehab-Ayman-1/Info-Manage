@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { createSchema, CreateClientType } from "@/app/api/clients/statement/schema";
+import { createSchema, CreateClientType } from "@/app/api/clients/statements/new/schema";
 import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { InsertProduct, ProductType } from "./insert-product";
 
@@ -29,7 +29,7 @@ const Clients = ({}: ClientsProps) => {
         resolver: zodResolver(createSchema.omit({ products: true })),
     });
 
-    const { mutate, isPending } = useCreate<CreateClientType>("/api/clients/statement", ["bills"]);
+    const { mutate, isPending } = useCreate<CreateClientType>("/api/clients/statements/new", ["client-bills"]);
     const [products, setProducts] = useState<ProductType[]>([]);
 
     const { clients } = useLists();

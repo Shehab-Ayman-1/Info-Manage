@@ -8,7 +8,7 @@ import { CardLoading } from "@/components/loading/card";
 type TodayPurchasesProps = {};
 
 const TodayPurchases = () => {
-    const { data, isPending, error } = useGet<TodayPurchasesProps>("/api/products/today-purchases", ["purchases"]);
+    const { data, isPending, error } = useGet<TodayPurchasesProps>("/api/products/today-purchases", ["supplier-bills"]);
 
     if (isPending) return <CardLoading />;
     if (error) return <h1>{error?.message}</h1>;
@@ -20,7 +20,7 @@ const TodayPurchases = () => {
             data={data!}
             filterBy={["product"]}
             totalFor="totalPurchases"
-            navigate={[{ text: "New Statement", to: "/suppliers/statement" }]}
+            navigate={[{ text: "New Statement", to: "/suppliers/statements/new" }]}
         />
     );
 };

@@ -102,6 +102,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
             reason: "Supplier Bill Payment",
             process: "withdraw",
             method: "cash",
+            createdAt: new Date(),
         });
 
         return json("The Payment Was Successfully Done.");

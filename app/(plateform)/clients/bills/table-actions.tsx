@@ -1,5 +1,5 @@
 "use client";
-import { BadgeDollarSignIcon, EyeIcon, Trash2Icon } from "lucide-react";
+import { BadgeDollarSignIcon, EyeIcon } from "lucide-react";
 import { Row } from "@tanstack/react-table";
 import { useRouter } from "next/navigation";
 
@@ -26,12 +26,6 @@ export const Actions = ({ row }: ActionsProps) => {
             Icon: BadgeDollarSignIcon,
             text: "Pay",
             onClick: (original: any) => onOpen("pay-model", { billId: original._id }),
-        },
-        {
-            Icon: Trash2Icon,
-            text: "Delete",
-            className: { button: "cancel", icon: "cancel" },
-            onClick: (original: any) => onOpen("delete-model", { billId: original._id }),
         },
     ];
 

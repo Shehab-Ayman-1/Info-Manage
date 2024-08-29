@@ -1,5 +1,7 @@
 # TODO:
 
+    - Add Profits To The Client Props And Set The Trophies  Depend On This Profits
+
     - Think About
         -- البضائع السائله
         -- جهاز قراءة الباركود

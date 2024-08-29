@@ -6,7 +6,10 @@ type TSupplierBill = Document & {
     orgId: string;
 
     supplier: any;
+    barcode: number;
+
     state: "completed" | "pending";
+    type: "purchase" | "restore";
 
     paid: number;
     total: number;
@@ -25,7 +28,10 @@ const schema = new Schema<TSupplierBill>({
     orgId: { type: String, required: true, trim: true },
 
     supplier: { type: Schema.Types.ObjectId, ref: "suppliers", required: true },
+    barcode: { type: Number, required: true, default: Date.now() },
+
     state: { type: String, required: true, enum: ["completed", "pending"] },
+    type: { type: String, required: true, enum: ["purchase", "restore"], default: "purchase" },
 
     paid: { type: Number, default: 0 },
     total: { type: Number, default: 0 },

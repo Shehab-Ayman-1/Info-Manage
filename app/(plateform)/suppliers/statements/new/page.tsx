@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { CardForm } from "@/components/page-structure/CardForm";
 import { methods, place, process } from "@/constants";
 
-import { CreateSupplierType, createSchema } from "@/app/api/suppliers/statement/schema";
+import { CreateSupplierType, createSchema } from "@/app/api/suppliers/statements/new/schema";
 import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { AlertError } from "@/components/ui/alert-error";
 import { DataTable } from "@/components/table";
@@ -28,7 +28,7 @@ const Suppliers = ({}: SuppliersProps) => {
     const { register, watch, setValue, setError, clearErrors, handleSubmit, formState } = useForm({
         resolver: zodResolver(createSchema.omit({ products: true })),
     });
-    const { mutate, isPending } = useCreate<CreateSupplierType>("/api/suppliers/statement", ["supplier-bills"]);
+    const { mutate, isPending } = useCreate<CreateSupplierType>("/api/suppliers/statements/new", ["supplier-bills"]);
     const [products, setProducts] = useState<ProductType[]>([]);
 
     const { suppliers, productsBySupplier, onReset } = useLists();

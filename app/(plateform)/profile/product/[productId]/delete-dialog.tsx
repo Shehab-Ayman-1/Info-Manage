@@ -13,7 +13,7 @@ type DeleteDialogProps = {
 };
 
 export const DeleteDialog = ({ productId }: DeleteDialogProps) => {
-    const { mutate, isPending } = useDelete(`/api/profile/products/${productId}`, ["market", "store"]);
+    const { mutate, isPending } = useDelete(`/api/profile/product/${productId}`, ["products"]);
     const router = useRouter();
 
     const { type, onClose } = useModel();
@@ -22,15 +22,12 @@ export const DeleteDialog = ({ productId }: DeleteDialogProps) => {
     if (type !== "delete-profile") return;
 
     const onConfirm = () => {
-        mutate(
-            {},
-            {
-                onSuccess: () => {
-                    router.push("/");
-                    onReset(["products", "suppliers"]);
-                },
+        mutate(null, {
+            onSuccess: () => {
+                router.push("/");
+                onReset(["products", "suppliers"]);
             },
-        );
+        });
         onClose();
     };
 

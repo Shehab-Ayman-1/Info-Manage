@@ -50,6 +50,7 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
                 $group: {
                     _id: "$_id",
                     client: { $first: { name: "$client.name", level: "$client.level" } },
+                    barcode: { $first: "$barcode" },
                     paid: { $first: "$paid" },
                     total: { $first: "$total" },
                     state: { $first: "$state" },
@@ -115,7 +116,15 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
 
         // Create Transaction
         const reason = "Client Bill Payment";
-        await Transactions.create({ orgId, reason, price: amount, creator: user.fullName, method: "cash", process: "deposit" });
+        await Transactions.create({
+            orgId,
+            reason,
+            price: amount,
+            creator: user.fullName,
+            method: "cash",
+            process: "deposit",
+            createdAt: new Date(),
+        });
 
         return json("The Payment Was Successfully Done.");
     } catch (error: any) {

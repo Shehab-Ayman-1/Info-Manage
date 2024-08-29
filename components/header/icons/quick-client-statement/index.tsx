@@ -10,7 +10,7 @@ import { useLists } from "@/hooks/data/useLists";
 import { useModel } from "@/hooks/useModel";
 import { columns } from "./table-columns";
 
-import { CreateClientType, createSchema } from "@/app/api/clients/statement/schema";
+import { CreateClientType, createSchema } from "@/app/api/clients/statements/new/schema";
 import { SubmitButton } from "@/components/public/submit-btn";
 import { ComboBox } from "@/components/ui/comboBox";
 import { DialogForm } from "@/components/ui/dialog";
@@ -43,7 +43,7 @@ export const QuickClientStatement = () => {
     const { formState, watch, reset, setValue, clearErrors, handleSubmit } = useForm<StatementType>({
         resolver: zodResolver(schema),
     });
-    const { mutate, isPending } = useCreate<RequestType>("/api/clients/statement", ["bills"]);
+    const { mutate, isPending } = useCreate<RequestType>("/api/clients/statements/new", ["client-bills"]);
     const [product, setProduct] = useState<ProductType[0]>(defaultProduct);
     const { clients, products: productLists } = useLists();
     const { type, onClose } = useModel();

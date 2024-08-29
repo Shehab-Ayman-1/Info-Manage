@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { MutationKey, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
 const getData = async <ResponseType,>(apiUrl: string, queries: string) => {
@@ -13,7 +13,7 @@ const getData = async <ResponseType,>(apiUrl: string, queries: string) => {
     }
 };
 
-export const useGetByQuery = <ResponseType,>(apiUrl: string, revalidateQueryKeys?: string[]) => {
+export const useGetByQuery = <ResponseType,>(apiUrl: string, revalidateQueryKeys?: MutationKey) => {
     const queryClient = useQueryClient();
 
     const mutation = useMutation<ResponseType, Error, string>({

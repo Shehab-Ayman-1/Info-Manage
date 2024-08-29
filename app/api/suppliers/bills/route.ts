@@ -103,6 +103,7 @@ export const DELETE = async (req: NextRequest) => {
             method: "cash",
             price: bill.paid,
             creator: user.fullName,
+            createdAt: new Date(),
         });
 
         // Response

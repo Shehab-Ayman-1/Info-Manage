@@ -22,7 +22,7 @@ type BillType = {
 
 const dateFormate = formatDate(new Date(), "yyyy-MM-dd");
 const SupplierBills = () => {
-    const { mutate, data, error } = useGetByQuery<BillType[]>("/api/suppliers/bills");
+    const { mutate, data, error } = useGetByQuery<BillType[]>("/api/suppliers/bills", ["supplier-bills"]);
     const [date, setDate] = useState(dateFormate);
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const SupplierBills = () => {
             data={data || []}
             filterBy={["supplier"]}
             totalFor="pending"
-            navigate={[{ text: "New Statement", to: "/suppliers/statement" }]}
+            navigate={[{ text: "New Statement", to: "/suppliers/statements/new" }]}
         >
             <div className="mt-4 w-fit sm:ml-4">
                 <Input type="date" value={date} name="date" onChange={(event) => setDate(() => event.target.value)} />

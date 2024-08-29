@@ -35,7 +35,7 @@ const Market = () => {
             data={data || []}
             filterBy={["barcode", "product", "company", "category"]}
             navigate={[
-                { text: "New Statement", to: "/clients/statement" },
+                { text: "New Statement", to: "/clients/statements/new" },
                 { text: "Transfer Product", to: "/products/transfer" },
             ]}
         >

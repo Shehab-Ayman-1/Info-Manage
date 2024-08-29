@@ -1,19 +1,21 @@
-"use client";
-import { useDelete } from "@/hooks/api/useDelete";
-import { useModel } from "@/hooks/useModel";
+import { Dispatch, SetStateAction } from "react";
 
 import { DialogForm } from "@/components/ui/dialog";
+import { ProductType } from "./insert-product";
+import { useModel } from "@/hooks/useModel";
 import { Button } from "@/ui/button";
 
-type DeleteDialogProps = {};
+type DeleteDialogProps = {
+    setProducts: Dispatch<SetStateAction<ProductType[]>>;
+};
 
-export const DeleteDialog = ({}: DeleteDialogProps) => {
-    const { mutate, isPending } = useDelete(`/api/clients/bills`, ["bills", "market"]);
+export const DeleteDialog = ({ setProducts }: DeleteDialogProps) => {
     const { type, data, onClose } = useModel();
     if (type !== "delete-model") return;
 
     const onConfirm = () => {
-        mutate(data, { onSuccess: onClose });
+        setProducts((products) => products.filter((product) => product.productId !== data.productId));
+        onClose();
     };
 
     return (
@@ -22,7 +24,7 @@ export const DeleteDialog = ({}: DeleteDialogProps) => {
                 <Button variant="outline" className="w-fit text-black dark:text-white" onClick={onClose}>
                     Cancel
                 </Button>
-                <Button variant="destructive" className="w-fit" onClick={onConfirm} disabled={isPending}>
+                <Button variant="destructive" className="w-fit" onClick={onConfirm}>
                     Confirm
                 </Button>
             </div>

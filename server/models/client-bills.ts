@@ -6,14 +6,17 @@ type TClientBill = Document & {
     orgId: string;
 
     client: any;
-    state: "completed" | "pending";
+    barcode: number;
 
+    state: "completed" | "pending" | "restore";
+    type: "sale" | "restore";
+
+    discount: number;
     paid: number;
     total: number;
-    discount: number;
 
-    createdAt: Date;
     expireAt: Date;
+    createdAt: Date;
 
     products: {
         _id: string;
@@ -28,14 +31,17 @@ const schema = new Schema<TClientBill>({
     orgId: { type: String, required: true, trim: true },
 
     client: { type: Schema.Types.ObjectId, ref: "clients", required: true },
-    state: { type: String, required: true, trim: true, enum: ["completed", "pending"] },
+    barcode: { type: Number, default: Date.now() },
 
-    paid: { type: Number, default: 0 },
-    total: { type: Number, default: 0 },
+    state: { type: String, required: true, trim: true, enum: ["completed", "pending", "restore"] },
+    type: { type: String, required: true, trim: true, enum: ["sale", "restore"], default: "sale" },
+
     discount: { type: Number, default: 0 },
+    total: { type: Number, default: 0 },
+    paid: { type: Number, default: 0 },
 
-    createdAt: { type: Date, default: new Date() },
     expireAt: { type: Date, required: true, default: Date.now() + 1000 * 60 * 60 * 24 * 365 },
+    createdAt: { type: Date, default: new Date() },
 
     products: [
         {

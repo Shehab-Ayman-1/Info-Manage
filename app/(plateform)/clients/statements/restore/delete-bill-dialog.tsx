@@ -1,19 +1,22 @@
-"use client";
 import { useDelete } from "@/hooks/api/useDelete";
 import { useModel } from "@/hooks/useModel";
 
 import { DialogForm } from "@/components/ui/dialog";
 import { Button } from "@/ui/button";
+import { useRouter } from "next/navigation";
 
-type DeleteDialogProps = {};
-
-export const DeleteDialog = ({}: DeleteDialogProps) => {
-    const { mutate, isPending } = useDelete(`/api/suppliers/bills`, ["supplier-bills", "products"]);
+export const DeleteBillDialog = () => {
+    const { mutate, isPending } = useDelete("/api/clients/statements/restore", []);
     const { type, data, onClose } = useModel();
-    if (type !== "delete-model") return;
+    const router = useRouter();
+    if (type !== "delete-bill-model") return;
 
     const onConfirm = () => {
-        mutate(data, { onSuccess: onClose });
+        const onSuccess = () => {
+            onClose();
+            router.push("/");
+        };
+        mutate({ billBarcode: data.billBarcode }, { onSuccess });
     };
 
     return (
@@ -22,7 +25,7 @@ export const DeleteDialog = ({}: DeleteDialogProps) => {
                 <Button variant="outline" className="w-fit text-black dark:text-white" onClick={onClose}>
                     Cancel
                 </Button>
-                <Button variant="destructive" className="w-fit" onClick={onConfirm} disabled={isPending}>
+                <Button variant="destructive" className="w-fit" disabled={isPending} onClick={onConfirm}>
                     Confirm
                 </Button>
             </div>
@@ -30,4 +33,4 @@ export const DeleteDialog = ({}: DeleteDialogProps) => {
     );
 };
 
-DeleteDialog.displayName = "DeleteDialog";
+DeleteBillDialog.displayName = "DeleteBillDialog";

@@ -50,12 +50,12 @@ const Overview = ({}: OverviewProps) => {
                         variant="outline"
                         className="h-auto bg-transparent px-6 py-2 text-center text-xs sm:px-12 sm:py-4 sm:text-lg"
                     >
-                        <Link href="/clients/statement">
+                        <Link href="/clients/statements/new">
                             Client <br /> Statement
                         </Link>
                     </Button>
                     <Button asChild size="lg" className="h-auto px-6 py-2 text-center text-xs sm:px-12 sm:py-4 sm:text-lg">
-                        <Link href="/suppliers/statement">
+                        <Link href="/suppliers/statements/new">
                             Supplier <br /> Statement
                         </Link>
                     </Button>

@@ -22,7 +22,7 @@ export const POST = async (req: NextRequest) => {
             if (data.price > lockerCash) return json(`The Locker Is Not Exist $${data.price}`, 400);
         }
 
-        await Transactions.create({ ...data, orgId, creator: `${user.firstName} ${user.lastName}` });
+        await Transactions.create({ ...data, orgId, creator: `${user.firstName} ${user.lastName}`, createdAt: new Date() });
         return json("The Transaction Was Successfully Created");
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
