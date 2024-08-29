@@ -19,7 +19,7 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
 
         const { billId } = res.params;
 
-        const bill = await ClientBills.aggregate([
+        const [bill] = await ClientBills.aggregate([
             {
                 $match: { orgId, _id: new Types.ObjectId(billId) },
             },

@@ -11,7 +11,7 @@ import { DeleteDialog } from "./delete-dialog";
 import { SupplierType } from "./types";
 
 const Suppliers = () => {
-    const { data, isPending, error } = useGet<SupplierType>("/api/suppliers", ["suppliers"]);
+    const { data, isPending, error } = useGet<SupplierType[]>("/api/suppliers", ["suppliers"]);
 
     if (isPending) return <CardLoading />;
     if (error) return <h1>{error?.message}</h1>;
@@ -20,9 +20,9 @@ const Suppliers = () => {
         <TableForm
             pageTitle="Supplier List"
             columns={columns}
-            data={data!}
-            filterBy={["supplier"]}
+            data={data}
             totalFor="pending"
+            filterBy={["supplier"]}
             navigate={[{ text: "New Supplier", to: "/suppliers/add-supplier" }]}
         >
             <UpdateDialog />

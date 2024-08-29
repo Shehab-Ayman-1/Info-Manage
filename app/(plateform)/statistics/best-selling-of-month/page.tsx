@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { formatDate } from "date-fns";
 
 import { useGetByQuery } from "@/hooks/api/useGetByQuery";
 import { columns } from "./table-columns";
@@ -11,7 +12,7 @@ type BestSellingOfMonthProps = {};
 
 const BestSellingOfMonth = ({}: BestSellingOfMonthProps) => {
     const { mutate, data, error } = useGetByQuery<BestSellingOfMonthProps[]>("/api/statistics/best-selling-of-month");
-    const [month, setMonth] = useState("");
+    const [month, setMonth] = useState(formatDate(new Date(), "yyyy-MM"));
 
     useEffect(() => {
         if (!month) return;
@@ -28,7 +29,7 @@ const BestSellingOfMonth = ({}: BestSellingOfMonthProps) => {
             columns={columns}
             navigate={[{ text: "Go To Bills", to: "/clients/bills" }]}
         >
-            <Input type="month" className="w-fit" onChange={(event) => setMonth(event.target.value)} />
+            <Input type="month" className="w-fit" value={month} onChange={(event) => setMonth(event.target.value)} />
         </TableForm>
     );
 };

@@ -5,10 +5,15 @@ import { columns } from "./table-columns";
 import { TableForm } from "@/components/page-structure/table-form";
 import { CardLoading } from "@/components/loading/card";
 
-type TodaySalesProps = {};
+type TodaySalesProps = {
+    product: string;
+    count: number;
+    totalSolds: number;
+    profits: number;
+};
 
-const TodaySales = ({}: TodaySalesProps) => {
-    const { data, isPending, error } = useGet<[]>("/api/products/today-sales", ["client-bills"]);
+const TodaySales = () => {
+    const { data, isPending, error } = useGet<TodaySalesProps[]>("/api/products/today-sales", ["client-bills"]);
 
     if (isPending) return <CardLoading />;
     if (error) return <h1>{error?.message}</h1>;

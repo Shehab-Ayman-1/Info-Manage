@@ -1,4 +1,5 @@
 "use client";
+import { CardLoading } from "@/components/loading/card";
 import { ChartsForm } from "@/components/page-structure/charts-form";
 import { useGet } from "@/hooks/api/useGet";
 
@@ -7,18 +8,18 @@ type Data = {
     desktop: number;
 };
 
-type ProfitsProps = {
+type ProfitsType = {
     year: Data[];
     month: Data[];
 };
 
 const Profits = () => {
-    const { data, isPending, error } = useGet<ProfitsProps>("/api/statistics/profits", ["profits"]);
+    const { data, isPending, error } = useGet<ProfitsType>("/api/statistics/profits", ["profits"]);
 
-    if (isPending) return <h1>Loading...</h1>;
+    if (isPending) return <CardLoading />;
     if (error) return <h1>{error.message}</h1>;
 
-    const [{ year, month }] = data;
+    const { year, month } = data;
 
     return (
         <ChartsForm

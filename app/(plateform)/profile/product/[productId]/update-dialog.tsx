@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useUpdate } from "@/hooks/api/useUpdate";
 import { useLists } from "@/hooks/data/useLists";
 import { useModel } from "@/hooks/useModel";
-import { ProfileType } from "./page";
+import { ProductProfileType } from "./page";
 
 import { editSchema, EditProfileSchema } from "@/app/api/profile/product/[productId]/schema";
 import { SubmitButton } from "@/components/public/submit-btn";
@@ -14,7 +14,7 @@ import { Input } from "@/ui/input";
 
 type UpdateDialogProps = {
     productId: string;
-    data: ProfileType[];
+    data: ProductProfileType;
 };
 
 export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
@@ -23,7 +23,7 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
         "market",
         "store",
     ]);
-    const [{ company, name, barcode, market, store }] = data;
+    const { company, name, barcode, market, store } = data;
 
     const { formState, register, watch, handleSubmit } = useForm<EditProfileSchema>({
         resolver: zodResolver(editSchema),
@@ -57,8 +57,6 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
         };
         mutate({ ...values, image: availableImageSrc ? values.image : company.image }, { onSuccess });
     };
-
-    console.log(errors);
 
     return (
         <DialogForm heading="Update Product" description="After The Product Updating, You Can't Undo Any Changes">

@@ -1,8 +1,8 @@
 import { auth } from "@clerk/nextjs/server";
 
 import { DBConnection } from "@/server/configs";
-import { json } from "@/utils/response";
 import { ClientBills } from "@/server/models";
+import { json } from "@/utils/response";
 import { months } from "@/constants";
 
 export const GET = async () => {
@@ -74,7 +74,7 @@ export const GET = async () => {
             },
         ]);
 
-        return json([{ year: byYear, month: byMonth }]);
+        return json({ year: byYear, month: byMonth });
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

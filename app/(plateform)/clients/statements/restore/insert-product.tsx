@@ -42,7 +42,7 @@ export const InsertProduct = ({ billBarcode, setProducts }: InsertProductProps) 
     const { formState, register, setValue, watch, reset, clearErrors, handleSubmit } = useForm({
         resolver: zodResolver(schema.omit({ company: true, name: true, total: true })),
     });
-    const { data, isPending } = useGet<ProductResponse>(`/api/clients/statements/restore/${billBarcode}`, []);
+    const { data, isPending } = useGet<ProductResponse[]>(`/api/clients/statements/restore/${billBarcode}`, []);
 
     const { type, onClose } = useModel();
 

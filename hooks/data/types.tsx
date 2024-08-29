@@ -58,38 +58,11 @@ export type Clients = {
     fetcher: () => Promise<void>;
 };
 
-export type Bills = {
-    data: (Item & {
-        barcode: number;
-        products: (Item & {
-            productId: string;
-            purchasePrice: number;
-            soldPrice: number;
-            count: number;
-        })[];
-    })[];
-    lists: List[];
-    isLoading: false | true;
-    fetcher: () => Promise<void>;
-};
-
 export type ProductsBySupplier = {
     data: Products["data"];
     groups: Group[];
     isLoading: false | true;
     fetcher: (supplierId: string) => Promise<void>;
-};
-
-export type ProductsByBill = {
-    data: (Item & {
-        productId: string;
-        purchasePrice: number;
-        soldPrice: number;
-        count: number;
-    })[];
-    lists: List[];
-    isLoading: false | true;
-    fetcher: (billBarcode: number) => Promise<void>;
 };
 
 export type ListsType = {
@@ -98,10 +71,8 @@ export type ListsType = {
     products: Products;
     clients: Clients;
     suppliers: Suppliers;
-    bills: Bills;
     productsBySupplier: ProductsBySupplier;
-    productsByBill: ProductsByBill;
-    onReset: (keys: ("categories" | "companies" | "products" | "suppliers" | "clients" | "bills")[]) => void;
+    onReset: (keys: ("categories" | "companies" | "products" | "suppliers" | "clients")[]) => void;
 };
 
 export type SetType = (

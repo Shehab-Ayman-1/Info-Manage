@@ -18,4 +18,4 @@ export const createSchema = z.object({
     ),
 });
 
-export type CreateSupplierType = z.infer<typeof createSchema>;
+export type RestoreSupplierType = z.infer<typeof createSchema>;

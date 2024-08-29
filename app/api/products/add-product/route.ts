@@ -30,7 +30,6 @@ export const POST = async (req: NextRequest) => {
             }),
         );
         const promiseResult = promise.filter((item) => !item?.isExist).map((item) => item.name);
-        console.log(promiseResult);
         if (promiseResult.length) {
             await session.abortTransaction();
             return json(`These Products Are Already Exists, ${promiseResult.join(" | ")}`, 400);

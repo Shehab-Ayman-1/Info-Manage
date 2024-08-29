@@ -27,7 +27,7 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
             .select(["-market.updatedAt", "-__v"]);
 
         if (!product) return json("This Product Was Not Found.", 400);
-        return json([product]);
+        return json(product);
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

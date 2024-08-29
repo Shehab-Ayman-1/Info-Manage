@@ -23,7 +23,7 @@ type BillType = {
 const dateFormate = formatDate(new Date(), "yyyy-MM-dd");
 const ClientBills = () => {
     const [date, setDate] = useState(dateFormate);
-    const { refetch, data, error } = useGet<BillType>(`/api/clients/bills?date=${date}`, ["client-bills"]);
+    const { data, error, refetch } = useGet<BillType[]>(`/api/clients/bills?date=${date}`, ["client-bills"]);
 
     useEffect(() => {
         refetch();

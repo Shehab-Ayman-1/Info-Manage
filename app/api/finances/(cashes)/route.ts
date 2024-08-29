@@ -82,7 +82,7 @@ export const GET = async () => {
             },
         };
 
-        return json([data]);
+        return json(data);
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

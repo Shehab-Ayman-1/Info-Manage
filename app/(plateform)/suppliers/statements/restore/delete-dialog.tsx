@@ -11,7 +11,6 @@ type DeleteDialogProps = {
 
 export const DeleteDialog = ({ setProducts }: DeleteDialogProps) => {
     const { type, data, onClose } = useModel();
-
     if (type !== "delete-model") return;
 
     const onConfirm = () => {

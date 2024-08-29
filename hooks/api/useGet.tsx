@@ -16,9 +16,6 @@ const getData = async (apiUrl: string) => {
 };
 
 export const useGet = <ResponseType,>(apiUrl: string, queryKey: string[]) => {
-    const query = useQuery<ResponseType[], Error>({
-        queryKey,
-        queryFn: () => getData(apiUrl),
-    });
+    const query = useQuery<ResponseType, Error>({ queryKey, queryFn: () => getData(apiUrl) });
     return query;
 };

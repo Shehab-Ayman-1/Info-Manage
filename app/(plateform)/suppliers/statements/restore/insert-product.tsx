@@ -18,8 +18,9 @@ const schema = z.object({
     company: z.string().min(1),
     name: z.string().min(1),
     count: z.number().int().positive(),
-    price: z.number().positive(),
     total: z.number().positive(),
+    soldPrice: z.number().positive(),
+    purchasePrice: z.number().min(0),
 });
 
 export type ProductType = z.infer<typeof schema>;
@@ -30,7 +31,7 @@ type InsertProductProps = {
 
 export const InsertProduct = ({ setProducts }: InsertProductProps) => {
     const { formState, register, setValue, watch, reset, clearErrors, handleSubmit } = useForm({
-        resolver: zodResolver(schema.omit({ total: true, name: true, company: true })),
+        resolver: zodResolver(schema.omit({ company: true, name: true, total: true })),
     });
 
     const { productsBySupplier } = useLists();
@@ -41,22 +42,36 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
 
     useEffect(() => {
         if (!selectedProductId) return;
+
         const product = productsBySupplier.data.find((product) => product._id === selectedProductId);
-        setValue("price", product?.purchasePrice);
+        if (!product) return;
+
+        setValue("purchasePrice", product.purchasePrice);
+        setValue("soldPrice", product.soldPrice);
     }, [selectedProductId, productsBySupplier, setValue]);
 
-    if (type !== "insert-product-model") return;
+    if (type !== "insert-products-model") return;
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        const { productId, count, price } = data as ProductType;
+        const { productId, count, soldPrice, ...product } = data as ProductType;
         const { name, company } = productsBySupplier.data.find((product) => product._id === productId)!;
 
         setProducts((products) => {
-            const exist = products.find((product) => product.productId === productId);
-            if (!exist) return products.concat({ company: company.name, productId, name, count, price, total: count * price });
+            const exist = products.find((item) => item.productId === productId);
+            if (exist) {
+                toast.info("This Product Is Already Exist");
+                return products;
+            }
 
-            toast.info("This Product Is Already Exist");
-            return products;
+            return products.concat({
+                ...product,
+                productId,
+                name,
+                count,
+                soldPrice,
+                company: company.name,
+                total: count * soldPrice,
+            });
         });
 
         reset();
@@ -67,11 +82,11 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
         <DialogForm heading="Insert Product" description="All Fields Are Required">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <ComboBox
-                    label="Choose Product Name"
+                    label="Product Name"
                     name="productId"
                     loading={productsBySupplier.isLoading}
                     groups={productsBySupplier.groups}
-                    error={errors.productId}
+                    error={errors?.productId}
                     setValue={setValue}
                     clearErrors={clearErrors}
                 />
@@ -85,9 +100,9 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
                     />
                     <Input
                         type="number"
-                        placeholder="Purchase Price"
-                        error={errors.price}
-                        {...register("price", { valueAsNumber: true })}
+                        placeholder="Sold Price"
+                        error={errors.soldPrice}
+                        {...register("soldPrice", { valueAsNumber: true })}
                     />
                 </div>
 

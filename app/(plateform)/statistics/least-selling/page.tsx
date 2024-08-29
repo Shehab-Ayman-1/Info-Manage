@@ -5,13 +5,13 @@ import { TableForm } from "@/components/page-structure/table-form";
 import { useGet } from "@/hooks/api/useGet";
 import { columns } from "./table-columns";
 
-type LeastSellingProps = {
+type LeastSellingType = {
     product: string;
     last_sold: Date;
 };
 
 const LeastSelling = () => {
-    const { data, isPending, error } = useGet<LeastSellingProps>("/api/statistics/least-selling", ["least-selling"]);
+    const { data, isPending, error } = useGet<LeastSellingType[]>("/api/statistics/least-selling", ["least-selling"]);
 
     if (isPending) return <CardLoading />;
     if (error) return <h1>{error.message}</h1>;
@@ -20,7 +20,7 @@ const LeastSelling = () => {
         <TableForm
             pageTitle="Least Selling Products"
             columns={columns}
-            data={data || []}
+            data={data}
             filterBy={["product"]}
             navigate={[{ text: "Market Products", to: "/products" }]}
         />

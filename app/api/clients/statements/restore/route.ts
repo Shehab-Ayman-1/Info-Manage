@@ -26,6 +26,9 @@ export const POST = async (req: NextRequest) => {
         const bill = await ClientBills.findOne({ barcode: billBarcode });
         if (!bill) return json("Wrong Barcode.", 400);
 
+        const productsTotalCosts = products.reduce((prev, cur) => prev + cur.total, 0);
+        const billProducts = products.map(({ total, ...product }) => product);
+
         // Check If The Products Count Is Exist In The Bill Products
         const isUnableProducts = products.some(({ count }) => {
             const unableProducts = bill.products.filter((product) => count > product.count);
@@ -37,6 +40,13 @@ export const POST = async (req: NextRequest) => {
             return json(`Some Products Count Is Not Exist In The Client Bill`, 400);
         }
 
+        // Check If The Locker Contain Restored Products Salary
+        const { lockerCash } = await Transactions.getLockerCash(orgId);
+        if (productsTotalCosts > lockerCash) {
+            await session.abortTransaction();
+            return json("Locker Doesn't Exist The Restored Total Products Costs.", 400);
+        }
+
         // Return The Products To The Market
         await Promise.all(
             products.map(async ({ productId, count }) => {
@@ -45,9 +55,6 @@ export const POST = async (req: NextRequest) => {
         );
 
         // Create Client Bill
-        const productsTotalCosts = products.reduce((prev, cur) => prev + cur.total, 0);
-        const billProducts = products.map(({ total, ...product }) => product);
-
         const expireAt = await getExpireAt();
         await ClientBills.create(
             [
@@ -77,7 +84,7 @@ export const POST = async (req: NextRequest) => {
                     method: "cash",
                     process: "deposit",
                     creator: user.fullName,
-                    price: productsTotalCosts,
+                    price: -productsTotalCosts,
                     createdAt: new Date(),
                 },
             ],
@@ -92,7 +99,7 @@ export const POST = async (req: NextRequest) => {
 
         // Response
         await session.commitTransaction();
-        return json("The Statement Was Successfully Created.");
+        return json("The Statement Was Successfully Restored.");
     } catch (error: any) {
         await session.abortTransaction();
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");

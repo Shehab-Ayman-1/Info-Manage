@@ -18,17 +18,12 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const { billId } = res.params;
-        const bill = await SupplierBills.aggregate([
+        const [bill] = await SupplierBills.aggregate([
             {
                 $match: { orgId, _id: new Types.ObjectId(billId) },
             },
             {
-                $lookup: {
-                    from: "suppliers",
-                    localField: "supplier",
-                    foreignField: "_id",
-                    as: "supplier",
-                },
+                $lookup: { from: "suppliers", localField: "supplier", foreignField: "_id", as: "supplier" },
             },
             {
                 $unwind: "$supplier",

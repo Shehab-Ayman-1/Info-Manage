@@ -23,6 +23,16 @@ export const NavLinks = ({}: NavLinksProps) => {
         setOpen((open) => ({ state: !open.state, index }));
     };
 
+    const seperateBefore = [
+        "Today Purchases Receipt",
+        "Add New Category",
+        "New Statement",
+        "Add New Client",
+        "Add New Supplier",
+        "Least Selling",
+        "Best Selling Of The (Month)",
+    ];
+
     return (
         <nav className="flex-between !hidden xl:!flex">
             {navLinks.map((nav, index) => (
@@ -41,9 +51,7 @@ export const NavLinks = ({}: NavLinksProps) => {
                     <HoverCardContent sideOffset={-1} className="bg-gradient min-w-fit border-slate-300 dark:border-slate-600">
                         {nav.links.map((link) => (
                             <div key={link.title} onClick={() => onClick(index)}>
-                                {(link.title === "Today Purchases Receipt" || link.title === "Add New Category") && (
-                                    <hr className="border-slate-500" />
-                                )}
+                                {seperateBefore.includes(link.title) && <hr className="border-slate-500" />}
                                 <Item {...link} />
                             </div>
                         ))}

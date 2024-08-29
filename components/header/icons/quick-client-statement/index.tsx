@@ -83,7 +83,6 @@ export const QuickClientStatement = () => {
         const prod = productLists.data.find((prod) => prod._id === product.productId);
 
         setProduct((product) => ({ ...product, soldPrice: prod?.soldPrice || 0 }));
-        console.log(product);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [product?.productId]);
 

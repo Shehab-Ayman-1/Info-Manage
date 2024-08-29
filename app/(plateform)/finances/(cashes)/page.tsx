@@ -30,8 +30,9 @@ const Cashes = () => {
 
     if (isPending) return <CashesLoading />;
     if (error) return <h3>{error?.message}</h3>;
+    if (!data) return;
 
-    const [{ locker, market, store, debts }] = data;
+    const { locker, market, store, debts } = data;
 
     return (
         <div className="flex-between mt-4 !flex-wrap">

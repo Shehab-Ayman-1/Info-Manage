@@ -1,4 +1,5 @@
 import { clerkClient, auth } from "@clerk/nextjs/server";
+import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import Image from "next/image";
 
 import { ActiveOrg } from "@/utils/activeOrg";
@@ -6,9 +7,8 @@ import { Providers } from "@/providers";
 
 import { Configrator } from "@/components/configrator";
 import { Sidebar } from "@/components/sidebar";
-import "./sass/index.scss";
-import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import { Icons } from "@/ui/icons";
+import "./sass/index.scss";
 
 export const metadata = {
     title: "Info Manage",
@@ -32,7 +32,7 @@ const Layout = async ({ children }: LayoutProps) => {
             <body className="bg-gradient min-h-screen">
                 <Providers>
                     <ClerkLoading>
-                        <Icons.spinner className="fixed left-1/2 top-1/2 size-16 animate-spin" />
+                        <Icons.spinner className="fixed left-[calc(50%-32px)] top-[calc(50%-32px)] size-16 animate-spin" />
                     </ClerkLoading>
 
                     <ClerkLoaded>

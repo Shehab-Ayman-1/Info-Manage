@@ -26,6 +26,7 @@ const Market = () => {
         mutate(`place=${location}`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]);
+
     if (error) return <h1>{error?.message}</h1>;
 
     return (
