@@ -4,11 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/ui/button";
+import { useTranslations } from "next-intl";
 
 type LogoProps = {};
 
 export const Logo = ({}: LogoProps) => {
     const { organization } = useOrganization();
+    const text = useTranslations("header");
 
     return (
         <Button asChild variant="ghost" className="flex-start hover:bg-transparent">
@@ -22,7 +24,7 @@ export const Logo = ({}: LogoProps) => {
                     className="rounded-xl"
                 />
                 <h2 className="text-gradient hidden text-3xl font-extrabold capitalize sm:block">
-                    {organization?.name || "Info Manage"}
+                    {organization?.name || text("brand")}
                 </h2>
             </Link>
         </Button>

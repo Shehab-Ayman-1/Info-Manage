@@ -1,9 +1,9 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 
 import { ComboBox } from "@/components/ui/comboBox";
 import { languages } from "@/constants";
-import { useLocale } from "next-intl";
 
 export const Languages = () => {
     const router = useRouter();

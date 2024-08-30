@@ -1,5 +1,6 @@
-import { clerkClient, auth } from "@clerk/nextjs/server";
 import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
+import { clerkClient, auth } from "@clerk/nextjs/server";
+import { getLocale } from "next-intl/server";
 import Image from "next/image";
 
 import { ActiveOrg } from "@/utils/activeOrg";
@@ -9,7 +10,6 @@ import { Configrator } from "@/components/configrator";
 import { Sidebar } from "@/components/sidebar";
 import { Icons } from "@/ui/icons";
 import "./sass/index.scss";
-import { getLocale } from "next-intl/server";
 
 export const metadata = {
     title: "Info Manage",

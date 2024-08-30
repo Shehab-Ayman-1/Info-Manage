@@ -4,8 +4,8 @@ import { useOrganization } from "@clerk/nextjs";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import Image from "next/image";
 import { z } from "zod";
+import Image from "next/image";
 
 import { useModel } from "@/hooks/useModel";
 import { LeaveDialog } from "./leave-dialog";

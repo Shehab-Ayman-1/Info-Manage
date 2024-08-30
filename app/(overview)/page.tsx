@@ -12,7 +12,7 @@ import { Alert } from "@/ui/alert";
 type OverviewProps = {};
 
 const Overview = ({}: OverviewProps) => {
-    // const text = useTranslations("overview");
+    const text = useTranslations();
     const { organization } = useOrganization();
     const { isSubscribe } = useSubscription();
 
@@ -36,12 +36,11 @@ const Overview = ({}: OverviewProps) => {
             />
 
             <h1 className="text-gradient text-4xl font-extrabold text-primary sm:text-6xl">
-                {organization?.name || "Info Manage"}
+                {organization?.name || text("header.brand")}
             </h1>
 
             <p className="text-center text-xs text-slate-500 sm:text-base">
-                A flexible and powerful platform for managing any data shops,
-                <br /> stores and monitor statistics with ease and efficiency
+                {text.rich("overview.description", { br: () => <br /> })}
             </p>
 
             {!!organization && (
@@ -52,13 +51,11 @@ const Overview = ({}: OverviewProps) => {
                         variant="outline"
                         className="h-auto bg-transparent px-6 py-2 text-center text-xs sm:px-12 sm:py-4 sm:text-lg"
                     >
-                        <Link href="/clients/statements/new">
-                            Client <br /> Statement
-                        </Link>
+                        <Link href="/clients/statements/new">{text.rich("overview.client-statement", { br: () => <br /> })}</Link>
                     </Button>
                     <Button asChild size="lg" className="h-auto px-6 py-2 text-center text-xs sm:px-12 sm:py-4 sm:text-lg">
                         <Link href="/suppliers/statements/new">
-                            Supplier <br /> Statement
+                            {text.rich("overview.supplier-statement", { br: () => <br /> })}
                         </Link>
                     </Button>
                 </div>

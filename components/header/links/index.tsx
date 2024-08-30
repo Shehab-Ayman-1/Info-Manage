@@ -1,4 +1,5 @@
 "use client";
+import { useLocale, useTranslations } from "next-intl";
 import { ChevronDownIcon } from "lucide-react";
 import { useState } from "react";
 
@@ -18,6 +19,8 @@ type NavLinksProps = {};
 
 export const NavLinks = ({}: NavLinksProps) => {
     const [open, setOpen] = useState({ state: false, index: 0 });
+    const text = useTranslations("header.navbar");
+    const locale = useLocale();
 
     const onClick = (index: number) => {
         setOpen((open) => ({ state: !open.state, index }));
@@ -44,8 +47,9 @@ export const NavLinks = ({}: NavLinksProps) => {
                     onOpenChange={() => onClick(index)}
                 >
                     <HoverCardTrigger className="flex cursor-pointer items-center gap-1 py-2 hover:text-slate-500">
-                        {nav.heading}
-                        <ChevronDownIcon className="size-4 hover:text-slate-700" />
+                        {locale === "ar" && <ChevronDownIcon className="mt-2 size-4 hover:text-slate-700" />}
+                        {text(`${nav.heading}.heading`)}
+                        {locale === "en" && <ChevronDownIcon className="mt-1 size-4 hover:text-slate-700" />}
                     </HoverCardTrigger>
 
                     <HoverCardContent sideOffset={-1} className="bg-gradient min-w-fit border-slate-300 dark:border-slate-600">

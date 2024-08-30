@@ -1,4 +1,6 @@
 {
+    "public": {},
+
     "header": {
         "brand": "منظومتي",
         "navbar": {
@@ -45,5 +47,12 @@
                 "best-selling-of-the-year": "الافضل مبيعاً في (العام)"
             }
         }
+    },
+
+    "overview": {
+        "brande": "منظومتي",
+        "description": "منظومة مرنة وقوية لإدارة كل انواع بيانات، <br></br> تخزين ومراقبة الإحصائيات بسهولة وكفاءة",
+        "client-statement": "فاتورة <br></br> عميل",
+        "supplier-statement": "فاتورة <br></br> مورد"
     }
 }
