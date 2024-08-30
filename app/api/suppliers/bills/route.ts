@@ -87,9 +87,9 @@ export const DELETE = async (req: NextRequest) => {
             }),
         ]);
 
-        // Decreament The Supplier pendingCosts
+        // Decreament The Supplier pending
         if (bill.total - bill.paid > 0)
-            await Suppliers.updateOne({ orgId, _id: bill.supplier }, { $inc: { pendingCosts: -(bill.total - bill.paid) } });
+            await Suppliers.updateOne({ orgId, _id: bill.supplier }, { $inc: { pending: -(bill.total - bill.paid) } });
 
         // Delete The Supplier Bill
         const deleted = await SupplierBills.deleteOne({ orgId, _id: billId });

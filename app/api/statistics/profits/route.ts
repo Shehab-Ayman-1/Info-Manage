@@ -18,7 +18,7 @@ export const GET = async () => {
 
         const byYear = await ClientBills.aggregate([
             {
-                $match: { orgId, createdAt: { $gte: thisYear, $lt: nextYear } },
+                $match: { orgId, type: "sale", createdAt: { $gte: thisYear, $lt: nextYear } },
             },
             {
                 $unwind: "$products",
@@ -49,7 +49,7 @@ export const GET = async () => {
 
         const byMonth = await ClientBills.aggregate([
             {
-                $match: { orgId, createdAt: { $gte: thisMonth, $lt: nextMonth } },
+                $match: { orgId, type: "sale", createdAt: { $gte: thisMonth, $lt: nextMonth } },
             },
             {
                 $unwind: "$products",

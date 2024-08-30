@@ -87,7 +87,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
         );
 
         // Update The Supplier Salaries
-        await Suppliers.updateOne({ orgId, _id: bill.supplier }, { $inc: { pendingCosts: -amount } });
+        await Suppliers.updateOne({ orgId, _id: bill.supplier }, { $inc: { pending: -amount } });
 
         // Create Transaction
         await Transactions.create({

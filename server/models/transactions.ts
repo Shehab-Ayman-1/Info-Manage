@@ -5,25 +5,30 @@ type Tranasction = Document & {
     _id: string;
     orgId: string;
     creator: string;
-
-    reason: string;
-    price: number;
+    total: number;
     method: "cash" | "visa";
     process: "withdraw" | "deposit";
-
-    createdAt: Date;
+    history: {
+        _id: string;
+        reason: string;
+        price: number;
+        createdAt: Date;
+    }[];
 };
 
 const schema = new Schema<Tranasction>({
     orgId: { type: String, required: true, trim: true },
     creator: { type: String, required: true, trim: true },
-
-    reason: { type: String, required: true, trim: true },
-    price: { type: Number, required: true, default: 0 },
     method: { type: String, required: true, trim: true, enum: ["cash", "visa"] },
     process: { type: String, required: true, trim: true, enum: ["withdraw", "deposit"] },
-
-    createdAt: { type: Date, required: true, trim: true, default: Date.now() },
+    total: { type: Number, required: true, default: 0 },
+    history: [
+        {
+            reason: { type: String, required: true, trim: true },
+            price: { type: Number, required: true, default: 0 },
+            createdAt: { type: Date, required: true, trim: true, default: new Date() },
+        },
+    ],
 });
 
 schema.statics.getLockerCash = async function (orgId: string) {

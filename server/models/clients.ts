@@ -15,8 +15,8 @@ type TClient = Document & {
     lastRefreshDate: Date;
 
     discounts: number;
-    purchasesSalary: number;
-    pendingCosts: number;
+    purchases: number;
+    pending: number;
 };
 
 const schema = new Schema<TClient>({
@@ -32,8 +32,8 @@ const schema = new Schema<TClient>({
     lastRefreshDate: { type: Date, default: new Date() },
     discounts: { type: Number, default: 0 },
 
-    pendingCosts: { type: Number, default: 0 },
-    purchasesSalary: { type: Number, default: 0 },
+    pending: { type: Number, default: 0 },
+    purchases: { type: Number, default: 0 },
 });
 
 type FilterQuery = {
@@ -51,8 +51,8 @@ schema.statics.updateLevel = async function ({ orgId, clientId }) {
     if (client.level === "gold") return 0;
 
     let level = "bronze";
-    if (client.purchasesSalary >= client.bronzeTo) level = "silver";
-    if (client.purchasesSalary >= client.silverTo) level = "gold";
+    if (client.purchases >= client.bronzeTo) level = "silver";
+    if (client.purchases >= client.silverTo) level = "gold";
 
     const updated = await Clients.updateOne({ orgId, _id: clientId }, { level });
     return updated.modifiedCount;

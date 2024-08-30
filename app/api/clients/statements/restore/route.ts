@@ -23,7 +23,13 @@ export const POST = async (req: NextRequest) => {
         const body = await req.json();
         const { billBarcode, products } = createSchema.parse(body);
 
-        const bill = await ClientBills.findOne({ barcode: billBarcode });
+        const isRestoredBefore = await ClientBills.countDocuments({ orgId, barcode: billBarcode }, { session });
+        if (isRestoredBefore > 1) {
+            await session.abortTransaction();
+            return json("Can't Restored The Same Bill Multible Times.", 400);
+        }
+
+        const bill = await ClientBills.findOne({ orgId, barcode: billBarcode });
         if (!bill) return json("Wrong Barcode.", 400);
 
         const productsTotalCosts = products.reduce((prev, cur) => prev + cur.total, 0);
@@ -61,7 +67,7 @@ export const POST = async (req: NextRequest) => {
                 {
                     orgId,
                     client: bill.client,
-                    barcode: Date.now(),
+                    barcode: billBarcode,
                     paid: productsTotalCosts,
                     total: productsTotalCosts,
                     products: billProducts,
@@ -92,7 +98,7 @@ export const POST = async (req: NextRequest) => {
         );
 
         // Update purchaseSalary Prices
-        await Clients.updateOne({ orgId, _id: bill.client }, { $inc: { purchasesSalary: -productsTotalCosts } }, { session });
+        await Clients.updateOne({ orgId, _id: bill.client }, { $inc: { purchases: -productsTotalCosts } }, { session });
 
         // Update Client Level
         await Clients.updateLevel({ orgId, clientId: bill.client });
@@ -144,10 +150,10 @@ export const DELETE = async (req: NextRequest) => {
             return json("Product(s) Not Return To The Market Again");
         }
 
-        // Decreament The Client purchases Salary, pendingCosts, And Discounts
+        // Decreament The Client purchases Salary, pending, And Discounts
         await Clients.updateOne(
             { orgId, _id: bill.client },
-            { $inc: { purchasesSalary: -bill.total, pendingCosts: -(bill.total - bill.paid), discounts: -bill.discount } },
+            { $inc: { purchases: -bill.total, pending: -(bill.total - bill.paid), discounts: -bill.discount } },
             { session },
         );
         await Clients.updateLevel({ orgId, clientId: bill.client });

@@ -23,6 +23,11 @@ export const Actions = ({ row }: ActionsProps) => {
             onClick: (original: any) => router.push(`/profile/client/${original._id}`),
         },
         {
+            Icon: EyeIcon,
+            text: "Edit",
+            onClick: (original: any) => onOpen("edit-bill-model", { original }),
+        },
+        {
             Icon: BadgeDollarSignIcon,
             text: "Pay",
             onClick: (original: any) => onOpen("pay-model", { billId: original._id }),

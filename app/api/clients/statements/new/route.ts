@@ -68,7 +68,17 @@ export const POST = async (req: NextRequest) => {
         // Create New Transaction
         const reason = "Client Statement";
         await Transactions.create(
-            [{ orgId, reason, method, process: "deposit", creator: user.fullName, price: paid, createdAt: new Date() }],
+            [
+                {
+                    orgId,
+                    creator: user.fullName,
+                    process: "deposit",
+                    method,
+                    reason,
+                    price: paid,
+                    createdAt: new Date(),
+                },
+            ],
             { session },
         );
 
@@ -84,9 +94,17 @@ export const POST = async (req: NextRequest) => {
         );
 
         // Update Client Pending, purchaseSalary Prices
+        const totalProfits = data.products.reduce((prev, cur) => prev + cur.count * (cur.soldPrice - cur.purchasePrice), 0);
         await Clients.updateOne(
             { orgId, _id: clientId },
-            { $inc: { purchasesSalary: total, pendingCosts: total - paid, discounts: discount } },
+            {
+                $inc: {
+                    totalProfits,
+                    purchases: total,
+                    pending: total - paid,
+                    discounts: discount,
+                },
+            },
             { session },
         );
 

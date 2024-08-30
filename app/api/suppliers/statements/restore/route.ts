@@ -87,7 +87,7 @@ export const POST = async (req: NextRequest) => {
         // Update Client Pending Prices
         await Suppliers.updateOne(
             { orgId, _id: supplierId },
-            { $inc: { pendingCosts: -(productsTotalCosts - paid) } },
+            { $inc: { pending: -(productsTotalCosts - paid) } },
             { session },
         );
 

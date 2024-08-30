@@ -76,7 +76,7 @@ export const POST = async (req: NextRequest) => {
         if (promise.includes(0)) return json("Some Of The Products Was Not Updated, Something Went Wrong.", 400);
 
         // Update Supplier Pending, purchaseSalary Prices
-        await Suppliers.updateOne({ _id: supplierId }, { $inc: { pendingCosts: productCosts - paid } });
+        await Suppliers.updateOne({ _id: supplierId }, { $inc: { pending: productCosts - paid } });
 
         // Response
         return json("The Statement Was Successfully Created.");

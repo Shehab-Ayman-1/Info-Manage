@@ -7,14 +7,14 @@ type TSupplier = Document & {
     name: string;
     phone: string;
     products: string[];
-    pendingCosts: number;
+    pending: number;
 };
 
 const schema = new Schema<TSupplier>({
     orgId: { type: String, required: true, trim: true },
     name: { type: String, required: true, trim: true },
     phone: { type: String, required: true, trim: true },
-    pendingCosts: { type: Number, default: 0 },
+    pending: { type: Number, default: 0 },
     products: [{ type: Schema.Types.ObjectId, ref: "products", required: true }],
 });
 

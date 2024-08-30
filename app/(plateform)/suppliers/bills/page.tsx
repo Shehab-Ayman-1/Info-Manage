@@ -14,9 +14,9 @@ type BillType = {
     _id: string;
     supplier: string;
     state: string;
-    total: string;
-    paid: string;
-    pending: string;
+    total: number;
+    paid: number;
+    pending: number;
     created_At: Date;
 };
 

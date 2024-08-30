@@ -1,106 +1,108 @@
-[{
-  "_id": {
-    "$oid": "66c4dbc27805d425d639a26c"
-  },
-  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
-  "name": "أمير عادل",
-  "level": "bronze",
-  "bronzeTo": 10000,
-  "silverTo": 20000,
-  "lastRefreshDate": {
-    "$date": "2024-08-20T17:54:12.082Z"
-  },
-  "discounts": 15,
-  "pendingCosts": 0,
-  "purchasesSalary": 451,
-  "__v": 0,
-  "phone": "01554566092"
-},
-{
-  "_id": {
-    "$oid": "66c5162796b71b80e99c3c53"
-  },
-  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
-  "name": "unknown",
-  "level": "gold",
-  "bronzeTo": 1,
-  "silverTo": 1,
-  "lastRefreshDate": {
-    "$date": "2024-08-20T19:20:32.963Z"
-  },
-  "discounts": 0,
-  "pendingCosts": 0,
-  "purchasesSalary": 1427,
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66c594e2f4ae496dab7a60e4"
-  },
-  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
-  "name": "unknown",
-  "level": "bronze",
-  "bronzeTo": 1,
-  "silverTo": 1,
-  "lastRefreshDate": {
-    "$date": "2024-08-21T07:18:55.958Z"
-  },
-  "discounts": 0,
-  "pendingCosts": 0,
-  "purchasesSalary": 0,
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66c5afd8208c7460ec67633f"
-  },
-  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
-  "name": "Shehab Ayman",
-  "phone": "01067421381",
-  "level": "silver",
-  "bronzeTo": 10000,
-  "silverTo": 20000,
-  "lastRefreshDate": {
-    "$date": "2024-08-21T09:07:21.630Z"
-  },
-  "discounts": 0,
-  "pendingCosts": 0,
-  "purchasesSalary": 10400,
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66c88717dea2bec869f410b0"
-  },
-  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
-  "name": "سامر سامي",
-  "level": "bronze",
-  "phone": "01124693049",
-  "bronzeTo": 10000,
-  "silverTo": 20000,
-  "lastRefreshDate": {
-    "$date": "2024-08-23T12:49:55.298Z"
-  },
-  "discounts": 35,
-  "pendingCosts": 0,
-  "purchasesSalary": 95,
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66c8878ddea2bec869f410b9"
-  },
-  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
-  "name": "أمير سامي",
-  "level": "bronze",
-  "phone": "01123696665",
-  "bronzeTo": 10000,
-  "silverTo": 20000,
-  "lastRefreshDate": {
-    "$date": "2024-08-23T12:49:55.298Z"
-  },
-  "discounts": 5,
-  "pendingCosts": 0,
-  "purchasesSalary": 145,
-  "__v": 0
-}]
+[
+    {
+        "_id": {
+            "$oid": "66c4dbc27805d425d639a26c"
+        },
+        "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+        "name": "أمير عادل",
+        "level": "bronze",
+        "bronzeTo": 10000,
+        "silverTo": 20000,
+        "lastRefreshDate": {
+            "$date": "2024-08-20T17:54:12.082Z"
+        },
+        "discounts": 15,
+        "pending": 0,
+        "purchases": 451,
+        "__v": 0,
+        "phone": "01554566092"
+    },
+    {
+        "_id": {
+            "$oid": "66c5162796b71b80e99c3c53"
+        },
+        "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+        "name": "unknown",
+        "level": "gold",
+        "bronzeTo": 1,
+        "silverTo": 1,
+        "lastRefreshDate": {
+            "$date": "2024-08-20T19:20:32.963Z"
+        },
+        "discounts": 0,
+        "pending": 0,
+        "purchases": 1427,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66c594e2f4ae496dab7a60e4"
+        },
+        "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+        "name": "unknown",
+        "level": "bronze",
+        "bronzeTo": 1,
+        "silverTo": 1,
+        "lastRefreshDate": {
+            "$date": "2024-08-21T07:18:55.958Z"
+        },
+        "discounts": 0,
+        "pending": 0,
+        "purchases": 0,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66c5afd8208c7460ec67633f"
+        },
+        "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+        "name": "Shehab Ayman",
+        "phone": "01067421381",
+        "level": "silver",
+        "bronzeTo": 10000,
+        "silverTo": 20000,
+        "lastRefreshDate": {
+            "$date": "2024-08-21T09:07:21.630Z"
+        },
+        "discounts": 0,
+        "pending": 0,
+        "purchases": 10400,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66c88717dea2bec869f410b0"
+        },
+        "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+        "name": "سامر سامي",
+        "level": "bronze",
+        "phone": "01124693049",
+        "bronzeTo": 10000,
+        "silverTo": 20000,
+        "lastRefreshDate": {
+            "$date": "2024-08-23T12:49:55.298Z"
+        },
+        "discounts": 35,
+        "pending": 0,
+        "purchases": 95,
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "66c8878ddea2bec869f410b9"
+        },
+        "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+        "name": "أمير سامي",
+        "level": "bronze",
+        "phone": "01123696665",
+        "bronzeTo": 10000,
+        "silverTo": 20000,
+        "lastRefreshDate": {
+            "$date": "2024-08-23T12:49:55.298Z"
+        },
+        "discounts": 5,
+        "pending": 0,
+        "purchases": 145,
+        "__v": 0
+    }
+]

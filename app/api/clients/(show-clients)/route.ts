@@ -25,9 +25,9 @@ export const GET = async () => {
                     silverTo: 1,
                     bronzeTo: 1,
                     discounts: 1,
+                    pending: 1,
+                    purchases: 1,
                     client: "$name",
-                    pending: "$pendingCosts",
-                    purchases: "$purchasesSalary",
                 },
             },
         ]);

@@ -12,6 +12,7 @@ import { CardForm } from "@/components/page-structure/CardForm";
 import { SubmitButton } from "@/components/public/submit-btn";
 import { ComboBox } from "@/components/ui/comboBox";
 import { Input } from "@/ui/input";
+import { useEffect } from "react";
 
 const Configs = () => {
     const resolver = zodResolver(configsSchema.omit({ organizationId: true }));
@@ -23,6 +24,10 @@ const Configs = () => {
     const { user } = useUser();
 
     const additionalSubscriptions = watch("additionalSubscriptions");
+
+    useEffect(() => {
+        setValue("additionalSubscriptions", organization?.publicMetadata.additionalSubscriptions || []);
+    }, [organization, setValue]);
 
     if (!organization) return;
 
@@ -45,6 +50,8 @@ const Configs = () => {
 
     const subscriptionExpiresAtMetadata = organization?.publicMetadata?.subscriptionExpiresAt;
     const additionalExpiresAtMetadata = organization?.publicMetadata?.additionalSubscriptionExpiresAt;
+
+    console.log(additionalExpiresAtMetadata);
 
     const isMe = user?.primaryEmailAddress?.emailAddress === process.env.NEXT_PUBLIC_EMAIL;
     return (
@@ -115,13 +122,12 @@ const Configs = () => {
                 {isMe && (
                     <div className="">
                         <ComboBox
-                            label={`Additional Subscription: ${additionalSubscriptions?.join(" | ")}`}
+                            label={`Additional Subscription: ${additionalSubscriptions?.join(" | ") || ""}`}
                             name="additionalSubscriptions"
                             items={additionalSubscription}
                             error={errors.additionalSubscription}
                             onChange={onAdditionalChange}
                             clearErrors={clearErrors}
-                            defaultValue={organization?.publicMetadata.additionalSubscriptions as string}
                         />
                         <Input
                             type="date"

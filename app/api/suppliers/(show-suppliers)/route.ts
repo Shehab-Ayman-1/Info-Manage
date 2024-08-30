@@ -42,7 +42,7 @@ export const GET = async () => {
                     _id: "$_id",
                     supplier: { $first: "$name" },
                     phone: { $first: "$phone" },
-                    pending: { $first: "$pendingCosts" },
+                    pending: { $first: "$pending" },
                     companies: {
                         $addToSet: {
                             _id: "$company._id",

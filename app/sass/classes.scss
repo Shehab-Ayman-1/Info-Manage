@@ -14,7 +14,7 @@
 }
 
 .bg-gradient-heavy {
-    @apply border-b border-b-primary bg-gradient-to-br from-primary-300 to-primary-900;
+    @apply bg-gradient-to-br from-primary-300 to-primary-900;
     @apply border-b-2 border-b-primary;
 }
 

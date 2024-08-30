@@ -48,7 +48,7 @@ export const GET = async () => {
             {
                 $group: {
                     _id: null,
-                    pendingCosts: { $sum: "$pendingCosts" },
+                    pending: { $sum: "$pending" },
                 },
             },
         ]);
@@ -58,7 +58,7 @@ export const GET = async () => {
             {
                 $group: {
                     _id: null,
-                    pendingCosts: { $sum: "$pendingCosts" },
+                    pending: { $sum: "$pending" },
                 },
             },
         ]);
@@ -77,8 +77,8 @@ export const GET = async () => {
                 sellingPrice: productsCashes?.storeSellingPrice || 0,
             },
             debts: {
-                clients: clientDebts?.pendingCosts || 0,
-                suppliers: supplierDebts?.pendingCosts || 0,
+                clients: clientDebts?.pending || 0,
+                suppliers: supplierDebts?.pending || 0,
             },
         };
 

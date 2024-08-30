@@ -21,7 +21,7 @@ export const GET = async (req: NextRequest) => {
         const nextMonth = new Date(new Date(month).setMonth(selectedMonth));
 
         const products = await ClientBills.aggregate([
-            { $match: { orgId, createdAt: { $gte: thisMonth, $lt: nextMonth } } },
+            { $match: { orgId, type: "sale", createdAt: { $gte: thisMonth, $lt: nextMonth } } },
             { $unwind: "$products" },
             { $lookup: { from: "products", as: "products.source", localField: "products.productId", foreignField: "_id" } },
             { $unwind: "$products.source" },

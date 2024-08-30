@@ -27,6 +27,7 @@ export const GET = async (req: NextRequest) => {
             {
                 $match: {
                     orgId,
+                    type: "sale",
                     "products.productId": new Types.ObjectId(productId),
                     createdAt: { $gte: thisYear, $lt: nextYear },
                 },
@@ -51,7 +52,7 @@ export const GET = async (req: NextRequest) => {
 
         const purchases = await SupplierBills.aggregate([
             {
-                $match: { orgId, createdAt: { $gte: thisYear, $lt: nextYear } },
+                $match: { orgId, type: "purchase", createdAt: { $gte: thisYear, $lt: nextYear } },
             },
             {
                 $unwind: "$products",

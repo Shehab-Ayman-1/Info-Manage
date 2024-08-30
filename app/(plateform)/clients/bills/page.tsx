@@ -13,10 +13,10 @@ type BillType = {
     _id: string;
     client: string;
     state: string;
-    total: string;
-    paid: string;
-    pending: string;
-    discount: string;
+    total: number;
+    paid: number;
+    pending: number;
+    discount: number;
     created_At: Date;
 };
 
