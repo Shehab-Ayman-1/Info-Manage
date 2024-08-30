@@ -96,15 +96,29 @@ export const DELETE = async (req: NextRequest) => {
         if (!deleted.deletedCount) return json("Something Went Wrong.", 400);
 
         // Create New Transaction
-        await Transactions.create({
-            orgId,
-            reason: "Canceled Supplier Bill",
-            process: "deposit",
-            method: "cash",
-            price: bill.paid,
-            creator: user.fullName,
-            createdAt: new Date(),
-        });
+        await Transactions.updateOne(
+            {
+                orgId,
+                method: "cash",
+                process: "deposit",
+            },
+            {
+                $inc: { total: bill.paid },
+                $push: {
+                    history: {
+                        $slice: -20,
+                        $each: [
+                            {
+                                reason: "Canceled Supplier Bill",
+                                creator: user.fullName,
+                                price: bill.paid,
+                                createdAt: new Date(),
+                            },
+                        ],
+                    },
+                },
+            },
+        );
 
         // Response
         return json("The Product Was Deleted Successfully.");

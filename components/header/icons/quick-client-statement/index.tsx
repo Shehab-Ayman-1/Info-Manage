@@ -73,18 +73,19 @@ export const QuickClientStatement = () => {
     useEffect(() => {
         if (!choosenProducts?.length) return;
         const paid = choosenProducts.reduce((prev, cur) => prev + cur.count * cur.soldPrice, 0);
+        console.log(paid);
 
         setValue("paid", paid);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [choosenProducts]);
 
     useEffect(() => {
-        if (!product?.productId) return;
+        if (!product.productId) return;
         const prod = productLists.data.find((prod) => prod._id === product.productId);
 
         setProduct((product) => ({ ...product, soldPrice: prod?.soldPrice || 0 }));
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [product?.productId]);
+    }, [product.productId]);
 
     if (type !== "quick-client-statement-model") return;
 
@@ -92,7 +93,7 @@ export const QuickClientStatement = () => {
         const prod = choosenProducts?.find((prod) => prod.productId === product.productId);
 
         if (prod) return toast.info("This Product Is Already Inserted.");
-        if (!product.count || !product.soldPrice) return toast.info("Product Count And Sold Price Are Required.");
+        if (!product.count || !product.soldPrice) return toast.info("Product Count & Sold Price Are Required.");
 
         const productList = productLists.data.find((prod) => prod._id === product.productId);
         if (!productList) return toast.info("Something Went Wrong.");
@@ -110,7 +111,7 @@ export const QuickClientStatement = () => {
         const newProducts = choosenProducts?.concat(newProduct);
 
         setValue("products", newProducts || [newProduct]);
-        setProduct((product) => ({ ...product, count: 0 }));
+        setProduct(() => defaultProduct);
     };
 
     const onSubmit: SubmitHandler<StatementType> = (values) => {
@@ -141,7 +142,7 @@ export const QuickClientStatement = () => {
                     name="productId"
                     groups={productLists.groups}
                     loading={productLists.isLoading}
-                    onChange={(value) => setProduct((product) => ({ ...product!, productId: value }))}
+                    onChange={(value) => setProduct((product) => ({ ...product, productId: value }))}
                 />
 
                 <div className="flex-between">
@@ -149,15 +150,15 @@ export const QuickClientStatement = () => {
                         type="number"
                         name="count"
                         placeholder="Count"
-                        value={product?.count}
-                        onChange={(event) => setProduct((product) => ({ ...product!, count: +event.target.value }))}
+                        value={product.count || ""}
+                        onChange={(event) => setProduct((product) => ({ ...product, count: +event.target.value }))}
                     />
                     <Input
                         type="number"
                         name="soldPrice"
                         placeholder="Sold Price"
-                        value={product?.soldPrice}
-                        onChange={(event) => setProduct((product) => ({ ...product!, soldPrice: +event.target.value }))}
+                        value={product.soldPrice}
+                        onChange={(event) => setProduct((product) => ({ ...product, soldPrice: +event.target.value }))}
                     />
 
                     <Button

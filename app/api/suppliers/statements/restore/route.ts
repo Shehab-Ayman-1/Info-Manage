@@ -61,9 +61,29 @@ export const POST = async (req: NextRequest) => {
         );
 
         // Create New Transaction
-        const reason = "Supplier Restore Statement";
-        await Transactions.create(
-            [{ orgId, reason, method, process: "deposit", creator: user.fullName, price: paid, createdAt: new Date() }],
+
+        await Transactions.updateOne(
+            {
+                orgId,
+                method,
+                process: "deposit",
+            },
+            {
+                $inc: { total: paid },
+                $push: {
+                    history: {
+                        $slice: -20,
+                        $each: [
+                            {
+                                reason: "Supplier Restore Statement",
+                                creator: user.fullName,
+                                price: paid,
+                                createdAt: new Date(),
+                            },
+                        ],
+                    },
+                },
+            },
             { session },
         );
 
@@ -85,11 +105,7 @@ export const POST = async (req: NextRequest) => {
         }
 
         // Update Client Pending Prices
-        await Suppliers.updateOne(
-            { orgId, _id: supplierId },
-            { $inc: { pending: -(productsTotalCosts - paid) } },
-            { session },
-        );
+        await Suppliers.updateOne({ orgId, _id: supplierId }, { $inc: { pending: -(productsTotalCosts - paid) } }, { session });
 
         // Response
         await session.commitTransaction();

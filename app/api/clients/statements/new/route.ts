@@ -31,6 +31,7 @@ export const POST = async (req: NextRequest) => {
                 return count > product!.market.count && product!.name;
             }),
         );
+
         const promiseValues = promise.filter((item) => item);
         if (promiseValues.length) {
             await session.abortTransaction();
@@ -65,22 +66,31 @@ export const POST = async (req: NextRequest) => {
             { session },
         );
 
-        // Create New Transaction
-        const reason = "Client Statement";
-        await Transactions.create(
-            [
-                {
-                    orgId,
-                    creator: user.fullName,
-                    process: "deposit",
-                    method,
-                    reason,
-                    price: paid,
-                    createdAt: new Date(),
+        // Add New Transaction
+        await Transactions.updateOne(
+            {
+                orgId,
+                method,
+                process: "deposit",
+            },
+            {
+                $inc: { total: paid },
+                $push: {
+                    history: {
+                        $slice: -20,
+                        $each: [
+                            {
+                                creator: user.fullName,
+                                reason: "Client Statement",
+                                price: paid,
+                                createdAt: new Date(),
+                            },
+                        ],
+                    },
                 },
-            ],
+            },
             { session },
-        );
+        ).session(session);
 
         // Update Products Price By The Current Prices, And Dec The Count From The Market
         await Promise.all(

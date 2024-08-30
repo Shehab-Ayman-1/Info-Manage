@@ -22,17 +22,21 @@ export const GET = async (req: NextRequest) => {
 
         const transactions = await Transactions.aggregate([
             {
-                $match: { orgId, createdAt: { $gte: startDate, $lte: endDate } },
+                $match: { orgId, "history.createdAt": { $gte: startDate, $lte: endDate } },
             },
+            {
+                $unwind: "$history",
+            },
+
             {
                 $project: {
                     _id: 1,
-                    creator: 1,
-                    reason: 1,
-                    price: 1,
                     method: 1,
                     process: 1,
-                    createdAt: 1,
+                    creator: "$history.creator",
+                    reason: "$history.reason",
+                    price: "$history.price",
+                    createdAt: "$history.createdAt",
                 },
             },
         ]);

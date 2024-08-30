@@ -51,16 +51,30 @@ export const POST = async (req: NextRequest) => {
         });
 
         // Make Transaction
-        const reason = "Supplier Statement";
-        await Transactions.create({
-            orgId,
-            reason,
-            method,
-            process: "withdraw",
-            price: paid,
-            creator: user.fullName,
-            createdAt: new Date(),
-        });
+
+        await Transactions.updateOne(
+            {
+                orgId,
+                method,
+                process: "withdraw",
+            },
+            {
+                $inc: { total: paid },
+                $push: {
+                    history: {
+                        $slice: -20,
+                        $each: [
+                            {
+                                reason: "Supplier Statement",
+                                creator: user.fullName,
+                                price: paid,
+                                createdAt: new Date(),
+                            },
+                        ],
+                    },
+                },
+            },
+        );
 
         // Update Products Price By The Current Prices, And Increament The Purchase Products Count
         const placeCount = place === "market" ? "market.count" : "store.count";

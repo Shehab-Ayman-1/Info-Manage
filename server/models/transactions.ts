@@ -1,15 +1,15 @@
-import { Document, Model, InferSchemaType } from "mongoose";
-import { Schema, models, model } from "mongoose";
+import { auth } from "@clerk/nextjs/server";
+import { Document, Model, InferSchemaType, Schema, models, model } from "mongoose";
 
 type Tranasction = Document & {
     _id: string;
     orgId: string;
-    creator: string;
     total: number;
     method: "cash" | "visa";
     process: "withdraw" | "deposit";
     history: {
         _id: string;
+        creator: string;
         reason: string;
         price: number;
         createdAt: Date;
@@ -18,12 +18,12 @@ type Tranasction = Document & {
 
 const schema = new Schema<Tranasction>({
     orgId: { type: String, required: true, trim: true },
-    creator: { type: String, required: true, trim: true },
     method: { type: String, required: true, trim: true, enum: ["cash", "visa"] },
     process: { type: String, required: true, trim: true, enum: ["withdraw", "deposit"] },
     total: { type: Number, required: true, default: 0 },
     history: [
         {
+            creator: { type: String, required: true, trim: true },
             reason: { type: String, required: true, trim: true },
             price: { type: Number, required: true, default: 0 },
             createdAt: { type: Date, required: true, trim: true, default: new Date() },
@@ -39,9 +39,12 @@ schema.statics.getLockerCash = async function (orgId: string) {
             $match: { orgId },
         },
         {
+            $unwind: "$history",
+        },
+        {
             $group: {
                 _id: { method: "$method", process: "$process" },
-                price: { $sum: "$price" },
+                price: { $sum: "$history.price" },
             },
         },
         {
@@ -66,6 +69,24 @@ schema.statics.getLockerCash = async function (orgId: string) {
 
     return data;
 };
+
+schema.pre("updateOne", async function (next) {
+    const { userId, orgId } = auth();
+    if (!userId || !orgId) return next(new Error("Org ID OR User ID Is Not Defined."));
+
+    const Transactions = this.model;
+    const transactions = await Transactions.countDocuments({ orgId });
+
+    if (!transactions)
+        await Transactions.create([
+            { orgId, method: "cash", process: "withdraw", total: 0, history: [] },
+            { orgId, method: "visa", process: "withdraw", total: 0, history: [] },
+            { orgId, method: "cash", process: "deposit", total: 0, history: [] },
+            { orgId, method: "visa", process: "deposit", total: 0, history: [] },
+        ]);
+
+    next();
+});
 
 type TransactionsModel = Model<Tranasction> & {
     getLockerCash: (orgId: string) => Promise<{ lockerCash: number; lockerVisa: number }>;

@@ -116,15 +116,29 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
 
         // Create Transaction
         const reason = "Client Bill Payment";
-        await Transactions.create({
-            orgId,
-            reason,
-            price: amount,
-            creator: user.fullName,
-            method: "cash",
-            process: "deposit",
-            createdAt: new Date(),
-        });
+        await Transactions.updateOne(
+            {
+                orgId,
+                method: "cash",
+                process: "deposit",
+            },
+            {
+                $inc: { total: amount },
+                $push: {
+                    history: {
+                        $slice: -20,
+                        $each: [
+                            {
+                                creator: user.fullName,
+                                reason,
+                                price: amount,
+                                createdAt: new Date(),
+                            },
+                        ],
+                    },
+                },
+            },
+        );
 
         return json("The Payment Was Successfully Done.");
     } catch (error: any) {

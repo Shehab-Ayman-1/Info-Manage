@@ -90,15 +90,29 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
         await Suppliers.updateOne({ orgId, _id: bill.supplier }, { $inc: { pending: -amount } });
 
         // Create Transaction
-        await Transactions.create({
-            orgId,
-            price: amount,
-            creator: user.fullName,
-            reason: "Supplier Bill Payment",
-            process: "withdraw",
-            method: "cash",
-            createdAt: new Date(),
-        });
+        await Transactions.updateOne(
+            {
+                orgId,
+                method: "cash",
+                process: "withdraw",
+            },
+            {
+                $inc: { total: amount },
+                $push: {
+                    history: {
+                        $slice: -20,
+                        $each: [
+                            {
+                                reason: "Supplier Bill Payment",
+                                creator: user.fullName,
+                                price: amount,
+                                createdAt: new Date(),
+                            },
+                        ],
+                    },
+                },
+            },
+        );
 
         return json("The Payment Was Successfully Done.");
     } catch (error: any) {

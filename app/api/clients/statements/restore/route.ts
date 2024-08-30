@@ -82,18 +82,28 @@ export const POST = async (req: NextRequest) => {
         );
 
         // Create New Transaction
-        await Transactions.create(
-            [
-                {
-                    orgId,
-                    reason: "Restored Client Statement",
-                    method: "cash",
-                    process: "deposit",
-                    creator: user.fullName,
-                    price: -productsTotalCosts,
-                    createdAt: new Date(),
+        await Transactions.updateOne(
+            {
+                orgId,
+                method: "cash",
+                process: "withdraw",
+            },
+            {
+                $inc: { total: productsTotalCosts },
+                $push: {
+                    history: {
+                        $slice: -20,
+                        $each: [
+                            {
+                                reason: "Restored Client Statement",
+                                creator: user.fullName,
+                                price: productsTotalCosts,
+                                createdAt: new Date(),
+                            },
+                        ],
+                    },
                 },
-            ],
+            },
             { session },
         );
 
@@ -117,6 +127,7 @@ export const POST = async (req: NextRequest) => {
 
 export const DELETE = async (req: NextRequest) => {
     const session = await mongoose.startSession();
+
     try {
         await DBConnection();
         session.startTransaction();
@@ -165,18 +176,28 @@ export const DELETE = async (req: NextRequest) => {
         await ClientBills.deleteOne({ orgId, _id: bill._id }, { session });
 
         // Create New Transaction
-        await Transactions.create(
-            [
-                {
-                    orgId,
-                    reason: "Canceled Client Bill",
-                    process: "withdraw",
-                    method: "cash",
-                    price: bill.paid,
-                    creator: user.fullName,
-                    createdAt: new Date(),
+        await Transactions.updateOne(
+            {
+                orgId,
+                method: "cash",
+                process: "withdraw",
+            },
+            {
+                $inc: { total: bill.paid },
+                $push: {
+                    history: {
+                        $slice: -20,
+                        $each: [
+                            {
+                                reason: "Canceled Client Bill",
+                                creator: user.fullName,
+                                price: bill.paid,
+                                createdAt: new Date(),
+                            },
+                        ],
+                    },
                 },
-            ],
+            },
             { session },
         );
 
