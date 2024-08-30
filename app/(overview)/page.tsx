@@ -12,7 +12,7 @@ import { Alert } from "@/ui/alert";
 type OverviewProps = {};
 
 const Overview = ({}: OverviewProps) => {
-    const text = useTranslations("profile");
+    // const text = useTranslations("overview");
     const { organization } = useOrganization();
     const { isSubscribe } = useSubscription();
 
@@ -37,7 +37,6 @@ const Overview = ({}: OverviewProps) => {
 
             <h1 className="text-gradient text-4xl font-extrabold text-primary sm:text-6xl">
                 {organization?.name || "Info Manage"}
-                {text("title")}
             </h1>
 
             <p className="text-center text-xs text-slate-500 sm:text-base">

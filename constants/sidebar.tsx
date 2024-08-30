@@ -21,7 +21,7 @@ export type NavLinkType = {
 export const productLists: NavLinkType[] = [
     {
         Icon: StoreIcon,
-        title: "Market & Store Products",
+        title: "market-and-store",
         href: "/products",
         userRole: "org:member",
         subscriptions: ["basic"],
@@ -29,7 +29,7 @@ export const productLists: NavLinkType[] = [
     },
     {
         Icon: ArrowRightLeftIcon,
-        title: "Transfer Products",
+        title: "transfer",
         href: "/products/transfer",
         userRole: "org:member",
         subscriptions: ["basic"],
@@ -37,7 +37,7 @@ export const productLists: NavLinkType[] = [
     },
     {
         Icon: ShoppingCartIcon,
-        title: "Insufficient Products",
+        title: "insufficient",
         href: "/products/insufficients",
         userRole: "org:member",
         subscriptions: ["basic"],
@@ -45,7 +45,7 @@ export const productLists: NavLinkType[] = [
     },
     {
         Icon: ReceiptTextIcon,
-        title: "Today Purchases Receipt",
+        title: "today-puchases",
         href: "/products/today-purchases",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -53,7 +53,7 @@ export const productLists: NavLinkType[] = [
     },
     {
         Icon: ReceiptTextIcon,
-        title: "Today Sales Receipt",
+        title: "today-sales",
         href: "/products/today-sales",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -61,7 +61,7 @@ export const productLists: NavLinkType[] = [
     },
     {
         Icon: LayoutDashboardIcon,
-        title: "Add New Category",
+        title: "add-category",
         href: "/products/add-category",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -69,7 +69,7 @@ export const productLists: NavLinkType[] = [
     },
     {
         Icon: SchoolIcon,
-        title: "Add New Company",
+        title: "add-company",
         href: "/products/add-company",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -77,7 +77,7 @@ export const productLists: NavLinkType[] = [
     },
     {
         Icon: TargetIcon,
-        title: "Add New Product",
+        title: "add-product",
         href: "/products/add-product",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -88,7 +88,7 @@ export const productLists: NavLinkType[] = [
 export const clientLists: NavLinkType[] = [
     {
         Icon: UsersIcon,
-        title: "Clients List",
+        title: "clients-list",
         href: "/clients",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -96,7 +96,7 @@ export const clientLists: NavLinkType[] = [
     },
     {
         Icon: ReceiptTextIcon,
-        title: "Show Bills",
+        title: "show-bills",
         href: "/clients/bills",
         userRole: "org:member",
         subscriptions: ["basic"],
@@ -104,7 +104,7 @@ export const clientLists: NavLinkType[] = [
     },
     {
         Icon: HandCoinsIcon,
-        title: "New Statement",
+        title: "new-statement",
         href: "/clients/statements/new",
         userRole: "org:member",
         subscriptions: ["basic"],
@@ -112,7 +112,7 @@ export const clientLists: NavLinkType[] = [
     },
     {
         Icon: HandCoinsIcon,
-        title: "Restore Statement",
+        title: "restore-statement",
         href: "/clients/statements/restore",
         userRole: "org:member",
         subscriptions: ["basic"],
@@ -120,7 +120,7 @@ export const clientLists: NavLinkType[] = [
     },
     {
         Icon: UserCheck,
-        title: "Add New Client",
+        title: "add-client",
         href: "/clients/add-client",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -131,7 +131,7 @@ export const clientLists: NavLinkType[] = [
 export const supplierLists: NavLinkType[] = [
     {
         Icon: UsersIcon,
-        title: "Suppliers List",
+        title: "suppliers-list",
         href: "/suppliers",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -139,7 +139,7 @@ export const supplierLists: NavLinkType[] = [
     },
     {
         Icon: ReceiptTextIcon,
-        title: "Show Bills",
+        title: "show-bills",
         href: "/suppliers/bills",
         userRole: "org:member",
         subscriptions: ["basic"],
@@ -147,7 +147,7 @@ export const supplierLists: NavLinkType[] = [
     },
     {
         Icon: HandCoinsIcon,
-        title: "New Statement",
+        title: "new-statement",
         href: "/suppliers/statements/new",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -155,7 +155,7 @@ export const supplierLists: NavLinkType[] = [
     },
     {
         Icon: HandCoinsIcon,
-        title: "Restore Statement",
+        title: "restore-statement",
         href: "/suppliers/statements/restore",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -163,7 +163,7 @@ export const supplierLists: NavLinkType[] = [
     },
     {
         Icon: UserCheck,
-        title: "Add New Supplier",
+        title: "add-supplier",
         href: "/suppliers/add-supplier",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -174,7 +174,7 @@ export const supplierLists: NavLinkType[] = [
 export const financeLists: NavLinkType[] = [
     {
         Icon: BookKeyIcon,
-        title: "Total Cashes",
+        title: "cashes",
         href: "/finances",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -182,7 +182,7 @@ export const financeLists: NavLinkType[] = [
     },
     {
         Icon: ArrowRightLeftIcon,
-        title: "Transactions",
+        title: "transactions",
         href: "/finances/transactions",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -190,7 +190,7 @@ export const financeLists: NavLinkType[] = [
     },
     {
         Icon: RocketIcon,
-        title: "Locker Withdrawal / Deposit",
+        title: "locker-withdraw-deposit",
         href: "/finances/locker",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -201,7 +201,7 @@ export const financeLists: NavLinkType[] = [
 export const statisticsLinks: NavLinkType[] = [
     {
         Icon: BadgeDollarSignIcon,
-        title: "Sales",
+        title: "sales",
         href: "/statistics/sales",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -209,7 +209,7 @@ export const statisticsLinks: NavLinkType[] = [
     },
     {
         Icon: BadgeDollarSignIcon,
-        title: "Profits",
+        title: "profits",
         href: "/statistics/profits",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -217,7 +217,7 @@ export const statisticsLinks: NavLinkType[] = [
     },
     {
         Icon: ThumbsDownIcon,
-        title: "Least Selling",
+        title: "least-selling",
         href: "/statistics/least-selling",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -225,7 +225,7 @@ export const statisticsLinks: NavLinkType[] = [
     },
     {
         Icon: ArrowRightLeftIcon,
-        title: "Product Movement",
+        title: "product-movement",
         href: "/statistics/movement",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -233,7 +233,7 @@ export const statisticsLinks: NavLinkType[] = [
     },
     {
         Icon: CalendarPlusIcon,
-        title: "Best Selling Of The (Month)",
+        title: "best-selling-of-the-month",
         href: "/statistics/best-selling-of-month",
         userRole: "org:admin",
         subscriptions: ["basic"],
@@ -241,7 +241,7 @@ export const statisticsLinks: NavLinkType[] = [
     },
     {
         Icon: CalendarPlus2Icon,
-        title: "Best Selling Of The (Year)",
+        title: "best-selling-of-the-year",
         href: "/statistics/best-selling-of-year",
         userRole: "org:admin",
         subscriptions: ["basic"],

@@ -1,0 +1,49 @@
+{
+    "header": {
+        "brand": "منظومتي",
+        "navbar": {
+            "products": {
+                "heading": "المنتجات",
+                "market-and-store": "منتجات المتجر والمخزن",
+                "transfer": "تحويل منتجات",
+                "insufficient": "المنتجات الناقصه",
+                "today-puchases": "كشف مشتريات اليوم",
+                "today-sales": "كشف مبيعات اليوم",
+                "add-category": "اضافه قسم جديد",
+                "add-company": "اضافه شركه جديدة",
+                "add-product": "اضافه منتج جديد"
+            },
+            "clients": {
+                "heading": "العملاء",
+                "clients-list": "قائمة العملاء",
+                "show-bills": "عرض الفواتير",
+                "new-statement": "فاتورة جديدة",
+                "restore-statement": "فاتورة مرتجع",
+                "add-client": "اضافه عميل جديد"
+            },
+            "suppliers": {
+                "heading": "الموردين",
+                "suppliers-list": "قائمه الموردين",
+                "show-bills": "عرض الفواتير",
+                "new-statement": "فاتورة جديدة",
+                "restore-statement": "فاتورة مرتجع",
+                "add-supplier": "اضافه مورد جديد"
+            },
+            "finances": {
+                "heading": "الماليات",
+                "cashes": "اجمالي الكاشات",
+                "transactions": "المعاملات",
+                "locker-withdraw-deposit": "سحب او ايداع من الخزنة"
+            },
+            "statistics": {
+                "heading": "الاحصائيات",
+                "sales": "المبيعات",
+                "profits": "الارباح",
+                "least-selling": "الاقل مبيعاً",
+                "product-movement": "حركة المنتج",
+                "best-selling-of-the-month": "الافضل مبيعاً في (الشهر)",
+                "best-selling-of-the-year": "الافضل مبيعاً في (العام)"
+            }
+        }
+    }
+}

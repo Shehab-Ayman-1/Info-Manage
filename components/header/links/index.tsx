@@ -7,11 +7,11 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/ui/hover-card";
 import { Item } from "./item";
 
 export const navLinks = [
-    { heading: "Products", links: productLists },
-    { heading: "Clients", links: clientLists },
-    { heading: "Suppliers", links: supplierLists },
-    { heading: "Finances", links: financeLists },
-    { heading: "Statistics", links: statisticsLinks },
+    { heading: "products", links: productLists },
+    { heading: "clients", links: clientLists },
+    { heading: "suppliers", links: supplierLists },
+    { heading: "finances", links: financeLists },
+    { heading: "statistics", links: statisticsLinks },
 ];
 
 type NavLinksProps = {};
@@ -52,7 +52,7 @@ export const NavLinks = ({}: NavLinksProps) => {
                         {nav.links.map((link) => (
                             <div key={link.title} onClick={() => onClick(index)}>
                                 {seperateBefore.includes(link.title) && <hr className="border-slate-500" />}
-                                <Item {...link} />
+                                <Item heading={nav.heading} {...link} />
                             </div>
                         ))}
                     </HoverCardContent>

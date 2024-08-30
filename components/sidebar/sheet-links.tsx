@@ -7,11 +7,11 @@ type SheetLinksProps = {};
 export const SheetLinks = ({}: SheetLinksProps) => {
     return (
         <Accordion collapsible type="single" className="w-full">
-            <List trigger="Products" links={productLists} />
-            <List trigger="Clients" links={clientLists} />
-            <List trigger="Suppliers" links={supplierLists} />
-            <List trigger="Finances" links={financeLists} />
-            <List trigger="Statistics" links={statisticsLinks} />
+            <List trigger="products" links={productLists} />
+            <List trigger="clients" links={clientLists} />
+            <List trigger="suppliers" links={supplierLists} />
+            <List trigger="finances" links={financeLists} />
+            <List trigger="statistics" links={statisticsLinks} />
         </Accordion>
     );
 };

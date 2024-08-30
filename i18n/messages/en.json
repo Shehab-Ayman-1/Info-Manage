@@ -1,0 +1,49 @@
+{
+    "header": {
+        "brand": "Info Manage",
+        "navbar": {
+            "products": {
+                "heading": "Products",
+                "market-and-store": "Market & Store Products",
+                "transfer": "Transfer Products",
+                "insufficient": "Insufficient Products",
+                "today-puchases": "Today Purchases Receipt",
+                "today-sales": "Today Sales Receipt",
+                "add-category": "Add New Category",
+                "add-company": "Add New Company",
+                "add-product": "Add New Product"
+            },
+            "clients": {
+                "heading": "Clients",
+                "clients-list": "Clients Lists",
+                "show-bills": "Show Bills",
+                "new-statement": "New Statement",
+                "restore-statement": "Restore Statement",
+                "add-client": "Add New Client"
+            },
+            "suppliers": {
+                "heading": "Suppliers",
+                "suppliers-list": "Suppliers List",
+                "show-bills": "Show Bills",
+                "new-statement": "New Statement",
+                "restore-statement": "Restore Statement",
+                "add-supplier": "Add New Supplier"
+            },
+            "finances": {
+                "heading": "Finances",
+                "cashes": "Total Cashes",
+                "transactions": "Transactions",
+                "locker-withdraw-deposit": "Locker Withdraw & Deposit"
+            },
+            "statistics": {
+                "heading": "Statistics",
+                "sales": "Sales",
+                "profits": "Profits",
+                "least-selling": "Least Selling",
+                "product-movement": "Product Movement",
+                "best-selling-of-the-month": "Best Selling Of The (Month)",
+                "best-selling-of-the-year": "Best Selling Of The (Year)"
+            }
+        }
+    }
+}

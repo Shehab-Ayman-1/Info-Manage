@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { useAuth } from "@clerk/nextjs";
 import { LockIcon } from "lucide-react";
 import Link from "next/link";
@@ -10,8 +11,13 @@ import { NavLinkType } from "@/constants";
 import { Badge } from "@/ui/badge";
 import { cn } from "@/utils/shadcn";
 
-export const ListItem = ({ Icon, title, href, userRole, subscriptions, additionalSubscriptions }: NavLinkType) => {
+type ItemType = NavLinkType & {
+    heading: string;
+};
+
+export const ListItem = ({ Icon, heading, title, href, userRole, subscriptions, additionalSubscriptions }: ItemType) => {
     const { isAdditionalSubscribe } = useSubscription(additionalSubscriptions, subscriptions);
+    const text = useTranslations("header.navbar");
     const { onOpen } = useSidebarModel();
     const { orgRole } = useAuth();
 
@@ -42,7 +48,7 @@ export const ListItem = ({ Icon, title, href, userRole, subscriptions, additiona
                                 : "!text-slate-400 dark:!text-slate-500",
                         )}
                     />
-                    <h3 className={titleStyle}>{title}</h3>
+                    <h3 className={titleStyle}>{text(`${heading}.${title}`)}</h3>
                 </div>
 
                 <div className="flex-end">

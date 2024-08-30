@@ -1,15 +1,21 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { useAuth } from "@clerk/nextjs";
 import { LockIcon } from "lucide-react";
 import Link from "next/link";
 
 import { useSubscription } from "@/hooks/useSubscription";
 import { NavLinkType } from "@/constants";
-import { cn } from "@/utils/shadcn";
 import { Badge } from "@/ui/badge";
+import { cn } from "@/utils/shadcn";
 
-export const Item = ({ title, href, Icon, userRole, subscriptions, additionalSubscriptions }: NavLinkType) => {
+type ItemProps = NavLinkType & {
+    heading: string;
+};
+
+export const Item = ({ heading, title, href, Icon, userRole, subscriptions, additionalSubscriptions }: ItemProps) => {
     const { isAdditionalSubscribe } = useSubscription(additionalSubscriptions, subscriptions);
+    const text = useTranslations("header.navbar");
     const { orgRole } = useAuth();
 
     const isAdmin = orgRole === "org:admin" || orgRole === userRole;
@@ -40,7 +46,7 @@ export const Item = ({ title, href, Icon, userRole, subscriptions, additionalSub
                             : "!text-slate-400 dark:!text-slate-500",
                     )}
                 >
-                    {title}
+                    {text(`${heading}.${title}`)}
                 </h3>
             </div>
 
