@@ -9,6 +9,7 @@ import { Configrator } from "@/components/configrator";
 import { Sidebar } from "@/components/sidebar";
 import { Icons } from "@/ui/icons";
 import "./sass/index.scss";
+import { getLocale } from "next-intl/server";
 
 export const metadata = {
     title: "Info Manage",
@@ -27,8 +28,10 @@ const Layout = async ({ children }: LayoutProps) => {
 
     if (!org?.id) return <NotSignedIn>{children}</NotSignedIn>;
 
+    const locale = await getLocale();
+
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html suppressHydrationWarning lang={locale}>
             <body className="bg-gradient min-h-screen">
                 <Providers>
                     <ClerkLoading>

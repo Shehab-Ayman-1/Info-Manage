@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 import { Sheet, SheetTrigger, SheetContent } from "@/ui/sheet";
 import { Button } from "@/ui/button";
 
+import { Languages } from "./languages";
 import { Themes } from "./themes";
 import { Header } from "./header";
 import { Modes } from "./modes";
@@ -40,6 +41,7 @@ export const Configrator = ({}: ConfigratorProps) => {
                 <Header />
                 <Themes setTheme={setTheme} />
                 <Modes />
+                <Languages />
             </SheetContent>
         </Sheet>
     );

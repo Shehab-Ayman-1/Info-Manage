@@ -1,6 +1,7 @@
 "use client";
 import { useOrganization, ClerkLoaded } from "@clerk/nextjs";
 import { AlertTriangleIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,6 +12,7 @@ import { Alert } from "@/ui/alert";
 type OverviewProps = {};
 
 const Overview = ({}: OverviewProps) => {
+    const text = useTranslations("profile");
     const { organization } = useOrganization();
     const { isSubscribe } = useSubscription();
 
@@ -35,6 +37,7 @@ const Overview = ({}: OverviewProps) => {
 
             <h1 className="text-gradient text-4xl font-extrabold text-primary sm:text-6xl">
                 {organization?.name || "Info Manage"}
+                {text("title")}
             </h1>
 
             <p className="text-center text-xs text-slate-500 sm:text-base">
