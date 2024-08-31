@@ -16,5 +16,8 @@ export default getRequestConfig(async () => {
         return { ...acc, ...fileContents };
     }, {});
 
-    return { locale, messages };
+    return {
+        locale,
+        messages,
+    };
 });
