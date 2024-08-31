@@ -48,7 +48,7 @@ export const GET = async (req: NextRequest) => {
                     unit: "$product.unit",
                     minimum: "$product.min",
                     price: `$product.${place}.price`,
-                    current_count: `$product.${place}.count`,
+                    currentCount: `$product.${place}.count`,
                     totalNeeded: {
                         $multiply: [`$product.${place}.price`, { $subtract: ["$product.min", `$product.${place}.count`] }],
                     },

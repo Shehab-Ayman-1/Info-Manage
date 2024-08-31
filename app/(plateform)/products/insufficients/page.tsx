@@ -1,5 +1,6 @@
 "use client";
 import { useGetByQuery } from "@/hooks/api/useGetByQuery";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 import { useLists } from "@/hooks/data/useLists";
@@ -23,6 +24,8 @@ const Insufficients = () => {
     const [supplierId, setSupplierId] = useState("");
     const [place, setPlace] = useState("");
     const { suppliers } = useLists();
+    const text = useTranslations();
+    const locale = useLocale();
 
     useEffect(() => {
         (async () => await suppliers.fetcher?.())();
@@ -42,18 +45,25 @@ const Insufficients = () => {
             columns={columns}
             data={data || []}
             totalFor="totalNeeded"
-            pageTitle="Insufficient Products"
-            navigate={[{ text: "New Statement", to: "/suppliers/statements/new" }]}
+            pageTitle={text("pages.insufficient-products.heading")}
+            navigate={[{ text: "new-statement", to: "/suppliers/statements/new" }]}
         >
             <div className="flex-between">
                 <ComboBox
-                    label="Supplier"
+                    label="choose-supplier"
                     name="supplierId"
+                    useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
                     loading={suppliers.isLoading}
-                    items={[{ _id: "all", value: "all", title: "All" }, ...suppliers.lists]}
+                    items={[{ _id: "all", value: "all", title: locale === "en" ? "All" : "الكل" }, ...suppliers.lists]}
                     onChange={(value) => setSupplierId(value)}
                 />
-                <ComboBox label="Place" name="place" items={places} onChange={(value) => setPlace(value)} />
+                <ComboBox
+                    label="place"
+                    name="place"
+                    useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
+                    items={places}
+                    onChange={(value) => setPlace(value)}
+                />
             </div>
         </TableForm>
     );

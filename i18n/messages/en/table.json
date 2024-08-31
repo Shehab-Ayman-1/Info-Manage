@@ -22,10 +22,13 @@
         "actions": "Actions",
         "print": "Price",
 
-        "buttons": {
-            "new-statement": "New Statement",
-            "transfer": "Transfer"
-        },
+        "total-purchases": "Total Purchases",
+        "current-count": "Current Count",
+        "total-needed": "Total Needed",
+        "minimum": "Minimum",
+
+        "total-solds": "Total Solds",
+        "profits": "Profits",
 
         "filter-by": {
             "barcode": "Barcode",

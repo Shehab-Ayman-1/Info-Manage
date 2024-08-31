@@ -24,9 +24,9 @@ export const columns: ColumnDef<any>[] = [
         cell: ({ row }) => <DollarCell row={row} name="price" />,
     },
     {
-        accessorKey: "current_count",
+        accessorKey: "currentCount",
         header: HeaderComponent,
-        cell: ({ row }) => <NumberCell row={row} name="current_count" showUnit />,
+        cell: ({ row }) => <NumberCell row={row} name="currentCount" showUnit />,
     },
     {
         accessorKey: "minimum",

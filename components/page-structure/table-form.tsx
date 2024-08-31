@@ -25,7 +25,7 @@ type TableFormProps<TData> = {
 export const TableForm = <TData,>(props: TableFormProps<TData>) => {
     const { pageTitle, navigate, filterBy, columns, data, totalFor, children } = props;
     const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 20 });
-    const t = useTranslations("table");
+    const t = useTranslations();
     const { isAdmin } = useOrg();
 
     const onPrint = useReactToPrint({
@@ -49,7 +49,7 @@ export const TableForm = <TData,>(props: TableFormProps<TData>) => {
                         {!!data?.length && (
                             <Button size="lg" className="gap-1 text-lg font-bold" onClick={onPrintTrigger}>
                                 <PrinterCheckIcon className="size-5 !text-white dark:!text-black" />
-                                <span>{t("print")}</span>
+                                <span>{t("table.print")}</span>
                             </Button>
                         )}
                     </div>
@@ -59,8 +59,8 @@ export const TableForm = <TData,>(props: TableFormProps<TData>) => {
                             isAdmin &&
                             navigate.map(({ text, to }, index) => (
                                 <Button
-                                    asChild
                                     key={index}
+                                    asChild
                                     size="lg"
                                     className="hidden w-full text-base font-bold sm:inline-flex"
                                 >

@@ -27,6 +27,18 @@
             "heading": "Add New Product",
             "submit": "Create",
             "optional-supplier": "Supplier Name (Optional)"
+        },
+
+        "insufficient-products": {
+            "heading": "Insufficient Products"
+        },
+
+        "today-purchases": {
+            "heading": "Today Purchases Receipt"
+        },
+
+        "today-sales": {
+            "heading": "Today Sales Receipt"
         }
     }
 }

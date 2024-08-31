@@ -17,6 +17,8 @@ export const HeaderComponent = <T,>({ column, noPrint, smallSize }: HeaderCompon
     const isAsc = column.getIsSorted() === "asc";
     const name = column.id.replace(/([A-Z])/, "-$1").toLowerCase();
 
+    console.log(name);
+
     return (
         <Button
             type="button"

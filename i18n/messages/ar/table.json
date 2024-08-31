@@ -21,10 +21,13 @@
         "actions": "المزيد",
         "print": "طباعه",
 
-        "buttons": {
-            "new-statement": "كشف حساب جديد",
-            "transfer": "تحويل منتجات"
-        },
+        "total-purchases": "اجمالي المشتريات",
+        "current-count": "العدد الحالي",
+        "total-needed": "الاجمالي المطلوب",
+        "minimum": "الحد الادني",
+
+        "total-solds": "اجمالي المبيعات",
+        "profits": "الارباح",
 
         "filter-by": {
             "barcode": "الباركود",

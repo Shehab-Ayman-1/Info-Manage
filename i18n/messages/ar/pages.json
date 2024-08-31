@@ -27,6 +27,18 @@
             "heading": "اضافه منتج جديد",
             "submit": "انشاء",
             "optional-supplier": "اسم المورد (اختياري)"
+        },
+
+        "insufficient-products": {
+            "heading": "المنتجات الناقصه"
+        },
+
+        "today-purchases": {
+            "heading": "كشف مشتريات اليوم"
+        },
+
+        "today-sales": {
+            "heading": "كشف مبيعات اليوم"
         }
     }
 }
