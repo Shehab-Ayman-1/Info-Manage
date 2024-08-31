@@ -1,21 +1,22 @@
 "use client";
-import { LogOutIcon, SettingsIcon } from "lucide-react";
 import { useAuth, useClerk, useUser } from "@clerk/nextjs";
+import { LogOutIcon, SettingsIcon } from "lucide-react";
+import { PopoverClose } from "@radix-ui/react-popover";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
 import { Separator } from "@/ui/separator";
 import { Button } from "@/ui/button";
-import { PopoverClose } from "@radix-ui/react-popover";
 
 type UserButtonProps = {};
 
 export const UserButton = ({}: UserButtonProps) => {
     const { openUserProfile, signOut } = useClerk();
-    const { user } = useUser();
     const { has } = useAuth();
+    const { user } = useUser();
     const router = useRouter();
+
     if (!user) return;
 
     const onOpen = (method: string) => {

@@ -1,0 +1,20 @@
+{
+    "table": {
+        "category": "Category",
+        "company": "Company",
+        "name": "Name",
+
+        "barcode": "Barcode",
+        "count": "Count",
+        "sold-price": "Sold Price",
+
+        "cash": "Cash",
+        "visa": "Visa",
+
+        "costs": "Costs",
+        "pending": "Pending",
+
+        "actions": "Actions",
+        "total": "Total"
+    }
+}

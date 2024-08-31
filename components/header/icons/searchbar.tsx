@@ -1,7 +1,9 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { SearchIcon } from "lucide-react";
+import { Loader2Icon, SearchIcon } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
+import { useTranslations } from "next-intl";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
 import { useLists } from "@/hooks/data/useLists";
@@ -15,6 +17,8 @@ export const Searchbar = ({}: SearchbarProps) => {
     const [filteredProducts, setFilteredProducts] = useState<Products["data"]>();
     const [open, setOpen] = useState(false);
     const { products } = useLists();
+
+    const text = useTranslations("public");
     const router = useRouter();
 
     useEffect(() => {
@@ -42,9 +46,16 @@ export const Searchbar = ({}: SearchbarProps) => {
             </PopoverTrigger>
 
             <PopoverContent align="end" className="w-auto rounded-xl border-none shadow-xl sm:w-[600px]">
-                <Input type="search" placeholder="Search" onChange={onChange} />
+                <Input type="search" placeholder="search" onChange={onChange} />
 
                 <div className="max-h-96 overflow-y-auto">
+                    {products.isLoading && (
+                        <h3 className="flex-start">
+                            <Loader2Icon className="size-6 animate-spin" />
+                            {text("loading")}
+                        </h3>
+                    )}
+
                     {(filteredProducts ? filteredProducts : products.data).map((product) => (
                         <Button
                             key={product._id}

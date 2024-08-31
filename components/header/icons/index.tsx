@@ -4,8 +4,8 @@ import { ClerkLoading, ClerkLoaded, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 
 import { QuickClientStatement } from "./quick-client-statement";
-import { useModel } from "@/hooks/useModel";
 import { UserButton } from "./user/user-button";
+import { useModel } from "@/hooks/useModel";
 import { OrgSwitcher } from "./user/switcher";
 import { Notifications } from "./notifications";
 import { Searchbar } from "./searchbar";

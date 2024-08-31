@@ -1,7 +1,7 @@
 "use client";
 import { MoreHorizontalIcon } from "lucide-react";
-import { useEffect, useState } from "react";
 import { Row } from "@tanstack/react-table";
+import { useTranslations } from "next-intl";
 
 import { DropdownMenuItem, DropdownMenuContent } from "@/ui/dropdown-menu";
 import { DropdownMenu, DropdownMenuTrigger } from "@/ui/dropdown-menu";
@@ -19,13 +19,7 @@ type TableActionsProps = {
 };
 
 export const TableActions = ({ row, items }: TableActionsProps) => {
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    if (!mounted) return;
+    const t = useTranslations("public");
 
     return (
         <DropdownMenu>
@@ -55,7 +49,7 @@ export const TableActions = ({ row, items }: TableActionsProps) => {
                                     : className?.button,
                             )}
                         />
-                        {text}
+                        {t(text)}
                     </DropdownMenuItem>
                 ))}
             </DropdownMenuContent>

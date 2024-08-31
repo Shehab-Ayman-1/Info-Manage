@@ -1,0 +1,41 @@
+{
+    "public": {
+        "choose-category": "Choose Category",
+        "category": "Category",
+
+        "choose-comany": "Choose Company",
+        "company": "Company",
+
+        "choose-product": "Choose Product",
+        "productId": "Product Name",
+        "product": "Product",
+
+        "choose-method": "Choose Method",
+        "method": "Method",
+
+        "choose-place": "Choose Place",
+        "place": "Place",
+
+        "count": "Count",
+        "price": "Price",
+
+        "purchase-price": "Purchase Price",
+        "sold-price": "Sold Price",
+
+        "insert": "Insert",
+        "submit": "Submit",
+
+        "delete": "Delete",
+        "search": "Search ...",
+
+        "loading": "Loading ...",
+        "print": "Print",
+
+        "market": "Market",
+        "store": "Store",
+
+        "language": "Language",
+        "ar": "Arabic",
+        "en": "English"
+    }
+}

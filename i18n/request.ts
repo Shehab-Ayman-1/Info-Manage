@@ -1,14 +1,20 @@
 import { getRequestConfig } from "next-intl/server";
 import { cookies } from "next/headers";
+import path from "path";
+import fs from "fs";
 
 export default getRequestConfig(async () => {
-    // Provide a static locale, fetch a user setting,
-    // read from `cookies()`, `headers()`, etc.
-
-    // Read the locale from the NEXT_LOCALE cookie
     const cookieLocale = cookies().get("NEXT_LOCALE")?.value;
     const locale = cookieLocale || "en";
 
-    const messages = (await import(`./messages/${locale}.json`)).default;
+    const dir = path.join(process.cwd(), "i18n", "messages", locale);
+    const files = fs.readdirSync(dir);
+
+    const messages = files.reduce((acc, file) => {
+        const filePath = path.join(dir, file);
+        const fileContents = JSON.parse(fs.readFileSync(filePath, "utf8"));
+        return { ...acc, ...fileContents };
+    }, {});
+
     return { locale, messages };
 });

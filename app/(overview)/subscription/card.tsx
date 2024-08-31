@@ -1,5 +1,7 @@
-import { auth, clerkClient } from "@clerk/nextjs/server";
+"use client";
+import { useOrganization } from "@clerk/nextjs";
 import { CheckCheckIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/ui/tooltip";
 import { Badge } from "@/ui/badge";
@@ -7,23 +9,21 @@ import { Card } from "@/ui/card";
 import { cn } from "@/utils/shadcn";
 
 type SubscriptionCardProps = {
-    heading: "Basic" | "Premium" | "Enterprise";
+    heading: "basic" | "premium" | "enterprise";
     costs: { month: number; year: number; life: number } | { month: number; halfYear: number; year: number };
-    features: {
-        label: string;
-        description: string;
-    }[];
+    features: string[];
 };
 
 type Cost = keyof SubscriptionCardProps["costs"];
 
-export const SubscriptionCard = async ({ heading, costs, features }: SubscriptionCardProps) => {
-    const { orgId, orgSlug } = auth();
-    const organization = orgSlug && (await clerkClient().organizations.getOrganization({ organizationId: orgId, slug: orgSlug }));
-    const subscription = (organization as any)?.publicMetadata?.subscription;
-    const additionalSubscriptions = (organization as any)?.publicMetadata?.additionalSubscriptions;
+export const SubscriptionCard = ({ heading, costs, features }: SubscriptionCardProps) => {
+    const text = useTranslations("subscriptions");
+    const { organization } = useOrganization();
 
-    const isSubscribe = subscription === heading.toLowerCase() || additionalSubscriptions?.includes(heading.toLowerCase());
+    const subscription = organization?.publicMetadata?.subscription as string;
+    const additionalSubscriptions = organization?.publicMetadata?.additionalSubscriptions as string[];
+
+    const isSubscribe = subscription === heading || additionalSubscriptions?.includes(heading.toLowerCase());
 
     return (
         <Card
@@ -34,13 +34,14 @@ export const SubscriptionCard = async ({ heading, costs, features }: Subscriptio
         >
             <div className="">
                 {isSubscribe && <Badge className="absolute right-2 top-2 bg-green-800 text-white">Active</Badge>}
-                <h2 className="text-center text-2xl font-bold sm:text-4xl">{heading}</h2>
+                <h2 className="mt-4 text-center text-2xl font-bold sm:text-4xl">{heading.toUpperCase()}</h2>
             </div>
 
             <div className="flex-between my-4 !flex-wrap sm:my-8">
                 {Object.keys(costs).map((cost) => (
                     <p key={cost} className="text-center text-base text-slate-600 dark:text-slate-300">
-                        ${costs[cost as Cost].toLocaleString()} / {cost === "halfYear" ? "6 months" : cost}
+                        ${costs[cost as Cost].toLocaleString()} /{" "}
+                        {cost === "halfYear" ? text("durations.half-year") : text(`durations.${cost}`)}
                     </p>
                 ))}
             </div>
@@ -53,9 +54,9 @@ export const SubscriptionCard = async ({ heading, costs, features }: Subscriptio
                         <Tooltip key={index}>
                             <TooltipTrigger className="flex-start my-8 whitespace-nowrap text-xs sm:text-base">
                                 <CheckCheckIcon className="size-4 !text-green-500 sm:size-6" />
-                                {feature.label}
+                                {text(`${heading}.${feature}.label`)}
                             </TooltipTrigger>
-                            <TooltipContent>{feature.description}</TooltipContent>
+                            <TooltipContent>{text(`${heading}.${feature}.description`)}</TooltipContent>
                         </Tooltip>
                     ))}
                 </TooltipProvider>

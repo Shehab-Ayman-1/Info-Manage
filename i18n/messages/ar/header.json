@@ -1,6 +1,4 @@
 {
-    "public": {},
-
     "header": {
         "brand": "منظومتي",
         "navbar": {
@@ -48,11 +46,11 @@
             }
         }
     },
-
-    "overview": {
-        "brande": "منظومتي",
-        "description": "منظومة مرنة وقوية لإدارة كل انواع بيانات، <br></br> تخزين ومراقبة الإحصائيات بسهولة وكفاءة",
-        "client-statement": "فاتورة <br></br> عميل",
-        "supplier-statement": "فاتورة <br></br> مورد"
+    "sidebar": {
+        "heading": "قائمة التنقل",
+        "description": "تنقل بين القوائم بسهولة"
+    },
+    "notifications": {
+        "no-notifies": "لا يوجد رسائل"
     }
 }

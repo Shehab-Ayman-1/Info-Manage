@@ -1,6 +1,7 @@
 "use client";
 import { BellIcon, CircleFadingArrowUpIcon, Clock5Icon } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
+import { useTranslations } from "next-intl";
 import { Fragment } from "react";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
@@ -37,10 +38,12 @@ const notifies: NotificationsProps[] = [
 
 export const Notifications = () => {
     const { additionalSubscription } = useSubscription(["premium"]);
-    const subscriptions =
-        notifies?.length === additionalSubscription?.length
-            ? []
-            : notifies.filter((notify) => additionalSubscription?.some((sub) => sub !== notify.process));
+    const text = useTranslations("notifications");
+
+    const matchLen = notifies?.length === additionalSubscription?.length;
+    const subscriptions = matchLen
+        ? []
+        : notifies.filter((notify) => additionalSubscription?.some((sub) => sub !== notify.process));
 
     const textStyle = "text-sm font-bold text-amber-800 dark:text-amber-300";
 
@@ -65,7 +68,7 @@ export const Notifications = () => {
                                 <h3 className={textStyle}>{notify.reason}</h3>
 
                                 <div className="flex-between">
-                                    <p className={textStyle}>$ {notify.price}</p>
+                                    <p className={textStyle}>${notify.price}</p>
                                     <p className={textStyle}>{notify.process}</p>
                                     <p className={textStyle}>{notify.method}</p>
                                 </div>
@@ -79,7 +82,7 @@ export const Notifications = () => {
                     </Fragment>
                 ))}
 
-                {!subscriptions.length && <h3 className="">No Inbox Notifications.</h3>}
+                {!subscriptions.length && <h3 className="">{text("no-notifies")}</h3>}
             </PopoverContent>
         </Popover>
     );

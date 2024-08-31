@@ -1,7 +1,8 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -16,9 +17,9 @@ import { ComboBox } from "@/components/ui/comboBox";
 import { DialogForm } from "@/components/ui/dialog";
 import { DataTable } from "@/components/table";
 import { DeleteDialog } from "./delete-dialog";
+import { methods } from "@/constants";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
-import { methods } from "@/constants";
 
 const productSchema = z.array(
     z.object({
@@ -48,9 +49,10 @@ export const QuickClientStatement = () => {
     const { clients, products: productLists } = useLists();
     const { type, onClose } = useModel();
 
-    const { errors } = formState;
-    const clientId = watch("clientId");
+    const text = useTranslations();
     const choosenProducts = watch("products");
+    const clientId = watch("clientId");
+    const { errors } = formState;
 
     useEffect(() => {
         (async () => clients.fetcher())();
@@ -126,10 +128,10 @@ export const QuickClientStatement = () => {
     };
 
     return (
-        <DialogForm heading="Quick Client Statement" description="Create A New Client Statement With One Click">
+        <DialogForm heading={text("quick-client-statement.heading")} description={text("quick-client-statement.description")}>
             <form onSubmit={handleSubmit(onSubmit)} className="max-w-xl overflow-x-auto">
                 <ComboBox
-                    label="Choose Method"
+                    label="choose-method"
                     name="method"
                     error={errors?.method}
                     items={methods}
@@ -138,7 +140,7 @@ export const QuickClientStatement = () => {
                 />
 
                 <ComboBox
-                    label="Product Name"
+                    label="choose-product"
                     name="productId"
                     groups={productLists.groups}
                     loading={productLists.isLoading}
@@ -149,26 +151,18 @@ export const QuickClientStatement = () => {
                     <Input
                         type="number"
                         name="count"
-                        placeholder="Count"
                         value={product.count || ""}
                         onChange={(event) => setProduct((product) => ({ ...product, count: +event.target.value }))}
                     />
                     <Input
                         type="number"
                         name="soldPrice"
-                        placeholder="Sold Price"
                         value={product.soldPrice}
                         onChange={(event) => setProduct((product) => ({ ...product, soldPrice: +event.target.value }))}
                     />
 
-                    <Button
-                        type="button"
-                        size="sm"
-                        variant="outline"
-                        className="mx-auto flex py-12"
-                        onClick={handleInsertProduct}
-                    >
-                        Insert
+                    <Button type="button" variant="outline" className="mx-auto flex py-12" onClick={handleInsertProduct}>
+                        {text("public.insert")}
                     </Button>
                 </div>
 
@@ -177,7 +171,7 @@ export const QuickClientStatement = () => {
                 {!!choosenProducts?.length && (
                     <DataTable columns={columns} data={choosenProducts || []} totalFor="total" smallSize />
                 )}
-                <SubmitButton text="Submit" isPending={isPending} />
+                <SubmitButton text="submit" isPending={isPending} />
 
                 <DeleteDialog products={choosenProducts} setValue={setValue} />
             </form>

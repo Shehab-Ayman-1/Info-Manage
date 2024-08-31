@@ -1,0 +1,41 @@
+{
+    "public": {
+        "choose-category": "اختار القسم",
+        "category": "القسم",
+
+        "choose-comany": "اختار الشركة",
+        "company": "الشركة",
+
+        "choose-product": "اختار المنتج",
+        "productId": "المنتج",
+        "product": "المنتج",
+
+        "choose-method": "اختار وسيلة الدفع",
+        "method": "وسيلة الدفع",
+
+        "choose-place": "اختار المكان",
+        "place": "المكان",
+
+        "count": "العدد",
+        "price": "السعر",
+
+        "purchase-price": "سعر الشراء",
+        "sold-price": "سعر البيع",
+
+        "insert": "اضافه",
+        "submit": "انشاء",
+
+        "delete": "حذف",
+        "search": "البحث ...",
+
+        "loading": "تحميل ...",
+        "print": "طباعه",
+
+        "market": "المحل",
+        "store": "المخزن",
+
+        "language": "اللغه",
+        "ar": "عربي",
+        "en": "انجليزي"
+    }
+}

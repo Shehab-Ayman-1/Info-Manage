@@ -11,6 +11,7 @@ import { Button } from "@/ui/button";
 import { Icons } from "@/ui/icons";
 import { Label } from "@/ui/label";
 import { cn } from "@/utils/shadcn";
+import { useLocale, useTranslations } from "next-intl";
 
 type Item = {
     _id: string;
@@ -37,9 +38,11 @@ type ComboBoxProps = {
 
 export const ComboBox = (props: ComboBoxProps) => {
     const { label, name, loading, error, items, groups, defaultValue, setValue, clearErrors, onChange } = props;
-
     const [selectedValue, setSelectedValue] = useState(defaultValue || "");
     const [open, setOpen] = useState(false);
+
+    const text = useTranslations("public");
+    const locale = useLocale();
 
     useEffect(() => {
         if (!defaultValue) return;
@@ -58,19 +61,21 @@ export const ComboBox = (props: ComboBoxProps) => {
         clearErrors?.(name);
     };
 
+    console.log({ name, label, selectedValue });
+
     return (
         <div className="my-2 flex w-full flex-col">
-            <Label className={cn("text-base", error?.message && "text-rose-400")}>{label}</Label>
+            <Label className={cn("text-base", error?.message && "text-rose-400")}>{text(label)}</Label>
 
             <Popover open={open} onOpenChange={setOpen}>
                 <CommandTrigger open={open} label={label} selectedValue={selectedValue} />
 
                 <PopoverContent className="p-0" align="start">
                     <Command className="sm:w-[520px]">
-                        <CommandInput placeholder={`Search For ${label}`} />
+                        <CommandInput placeholder={`${locale === "en" ? "Search For" : "البحث عن"} ${text(name)}`} />
 
                         <CommandList className="bg-gradient">
-                            {!loading && !items?.length && !groups?.length && <CommandEmpty>No Results Was Found.</CommandEmpty>}
+                            {!loading && !items?.length && !groups?.length && <CommandEmpty>No Results.</CommandEmpty>}
                             {loading && !items?.length && !groups?.length && <CommandLoading />}
 
                             {!!items?.length &&
@@ -123,6 +128,8 @@ type CommandTriggerProps = {
 };
 
 function CommandTrigger({ selectedValue, label, open }: CommandTriggerProps) {
+    const text = useTranslations("public");
+
     return (
         <PopoverTrigger asChild>
             <Button
@@ -131,7 +138,7 @@ function CommandTrigger({ selectedValue, label, open }: CommandTriggerProps) {
                 aria-expanded={open}
                 className="flex-between w-full border-b border-b-primary !py-8 text-base text-slate-400"
             >
-                {selectedValue || label}
+                {selectedValue ? selectedValue : text(label)}
                 <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </Button>
         </PopoverTrigger>
@@ -139,10 +146,12 @@ function CommandTrigger({ selectedValue, label, open }: CommandTriggerProps) {
 }
 
 function CommandLoading() {
+    const text = useTranslations("public");
+
     return (
         <CommandItem className="flex-start">
             <Icons.spinner className="mr-2 size-6 animate-spin" />
-            Loading...
+            {text("loading")}
         </CommandItem>
     );
 }
@@ -159,7 +168,7 @@ function CommandListItem({ value, title, selectedValue, onSelect }: CommandListI
 
     return (
         <CommandItem value={value} onSelect={onSelect} className="cursor-pointer text-lg capitalize leading-10">
-            <CheckCheckIcon className={cn("mr-2 size-4 !text-green-500", hideIcon(value))} />
+            <CheckCheckIcon className={cn("mx-2 size-4 !text-green-500", hideIcon(value))} />
             {title}
         </CommandItem>
     );

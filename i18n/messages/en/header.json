@@ -1,6 +1,4 @@
 {
-    "public": {},
-
     "header": {
         "brand": "Info Manage",
         "navbar": {
@@ -48,11 +46,11 @@
             }
         }
     },
-
-    "overview": {
-        "brande": "Info Manage",
-        "description": "A flexible and powerful platform for managing any data shops, <br></br> stores and monitor statistics with ease and efficiency",
-        "client-statement": "Client <br></br> Statement",
-        "supplier-statement": "Supplier <br></br> Statement"
+    "sidebar": {
+        "heading": "Sidebar",
+        "description": "Easy To Navigate Between Pages"
+    },
+    "notifications": {
+        "no-notifies": "No Inbox Notifications."
     }
 }

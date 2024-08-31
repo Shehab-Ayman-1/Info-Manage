@@ -17,7 +17,7 @@ export const Languages = () => {
     return (
         <div className="mt-6">
             <h1 className="text-xl font-bold text-primary sm:text-2xl">Languages</h1>
-            <ComboBox label="Languages" name="language" items={languages} onChange={onChange} defaultValue={locale} />
+            <ComboBox label="language" name="language" items={languages} onChange={onChange} defaultValue={locale} />
         </div>
     );
 };

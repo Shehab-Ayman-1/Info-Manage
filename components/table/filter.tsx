@@ -1,8 +1,9 @@
 import { PopoverClose } from "@radix-ui/react-popover";
+import { ElementRef, useRef, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { MoreHorizontalIcon } from "lucide-react";
 import { useOnClickOutside } from "usehooks-ts";
 import { Column } from "@tanstack/react-table";
-import { ElementRef, useRef, useState } from "react";
 
 import { Popover, PopoverTrigger, PopoverContent } from "@/ui/popover";
 import { Button } from "@/ui/button";
@@ -19,6 +20,8 @@ export const Filter = <TData,>({ data, filterBy, getColumn }: FilterProps<TData>
     const [filteredList, setFilteredList] = useState<any[]>([]);
     const [option, setOption] = useState(filterBy?.[0]);
     const [open, setOpen] = useState(false);
+    const locale = useLocale();
+    const text = useTranslations("public");
 
     const listRef = useRef<ElementRef<"div">>(null);
     useOnClickOutside(listRef, () => setOpen(false));
@@ -71,7 +74,7 @@ export const Filter = <TData,>({ data, filterBy, getColumn }: FilterProps<TData>
                             onClick={() => onOptionChange(item)}
                             className="block w-full cursor-pointer rounded-md p-2 text-start text-lg hover:bg-primary-100 hover:text-black"
                         >
-                            {item}
+                            {text(item)}
                         </PopoverClose>
                     ))}
                 </PopoverContent>
@@ -80,9 +83,9 @@ export const Filter = <TData,>({ data, filterBy, getColumn }: FilterProps<TData>
             <div className="relative w-full">
                 <Input
                     value={value || ""}
-                    placeholder={`Filter By ${option} ...`}
                     onChange={onInputChange}
                     onFocus={() => setOpen(true)}
+                    placeholder={locale === "en" ? `Filter By ${option} ...` : `البحث بواسطة ${text(option)}`}
                 />
                 <div
                     ref={listRef}

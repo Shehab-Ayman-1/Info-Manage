@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { ArrowUpDownIcon } from "lucide-react";
 import { Column } from "@tanstack/react-table";
 
@@ -11,23 +12,25 @@ type HeaderComponentProps<T> = {
 };
 
 export const HeaderComponent = <T,>({ column, noPrint, smallSize }: HeaderComponentProps<T>) => {
+    const text = useTranslations("table");
+
     const isAsc = column.getIsSorted() === "asc";
-    const name = column.id.replace(/([A-Z])/, "_$1");
+    const name = column.id.replace(/([A-Z])/, "-$1").toLowerCase();
 
     return (
         <Button
             type="button"
             variant="ghost"
+            onClick={() => column.toggleSorting(isAsc)}
             className={cn(
                 "!p-0 font-bold text-black hover:bg-transparent hover:text-black print:text-black",
                 "text-sm sm:text-base print:text-xs",
                 smallSize && "sm:!text-sm",
                 noPrint && "print:hidden",
             )}
-            onClick={() => column.toggleSorting(isAsc)}
         >
-            {name.toUpperCase()}
-            <ArrowUpDownIcon className="ml-2 size-3 text-white hover:text-white dark:text-black sm:size-4" />
+            {text(name)}
+            <ArrowUpDownIcon className="mx-1 size-3 text-white hover:text-white dark:text-black sm:size-4 rtl:mt-2" />
         </Button>
     );
 };
