@@ -1,11 +1,4 @@
 {
-    "builds": [
-        {
-            "src": "next.config.mjs",
-            "use": "@vercel/next"
-        }
-    ],
-
     "functions": {
         "api/**/*.ts": {
             "includeFiles": "i18n/messages/**"
