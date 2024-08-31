@@ -1,0 +1,11 @@
+{
+    "buttons": {
+        "new-statement": "New Statement",
+        "transfer": "Transfer Products",
+        "new-client": "New Client",
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "update": "Update",
+        "create": "Create"
+    }
+}

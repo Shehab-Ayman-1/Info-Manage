@@ -1,7 +1,9 @@
 {
     "pages": {
-        "market": "Market Products",
-        "store": "Store Products",
+        "products": {
+            "market": "Market Products",
+            "store": "Store Products"
+        },
 
         "transfer": {
             "heading": "Transfer Statement",
@@ -39,6 +41,24 @@
 
         "today-sales": {
             "heading": "Today Sales Receipt"
+        },
+
+        "client-lists": {
+            "heading": "Client Lists"
+        },
+
+        "add-new-client": {
+            "heading": "Add New Client",
+            "bronze-from": "Bronze From ( 0 )",
+            "bronze-to": "Bronze To",
+            "silver-from": "Silver From",
+            "silver-to": "Silver To",
+            "gold-from": "Gold From",
+            "gold-to": "Gold To ( Unlimited )"
+        },
+
+        "client-bills": {
+            "heading": "Client Bills List"
         }
     }
 }

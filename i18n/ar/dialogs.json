@@ -1,0 +1,48 @@
+{
+    "dialogs": {
+        "quick-client-statement": {
+            "heading": "كشف حساب عميل سريع",
+            "description": "انشأء كسف حساب عميل بضغطه واحده"
+        },
+
+        "add-product": {
+            "insert-dialog": {
+                "insert-heading": "اضافه منتج",
+                "update-heading": "تعديل منتج",
+                "description": "يجب اضافه كل حقول الادخال لاتمام عمليه الاضافه بنجاح",
+                "optional-barcode": "البار كود (اختياري)",
+                "minimum": "الحد الادني",
+                "unit": "الكمية",
+                "packet": "عبوة",
+                "liter": "لتر",
+                "market-count": "العدد في المحل",
+                "store-count": "العدد في المخزن",
+                "selling-price": "سعر البيع",
+                "purchase-price": "سعر البيع"
+            }
+        },
+
+        "show-clients": {
+            "delete-dialog": {
+                "heading": "حذف العميل",
+                "description": "بعد حذف هذا العميل لا يمكنك استرجاعه مرة اخري."
+            },
+            "update-dialog": {
+                "heading": "تعديل العميل",
+                "description": "هل انت متأكد ، لن تتمكن من اعاده بيانات العميل مرة اخري."
+            }
+        },
+
+        "client-bills": {
+            "payment-dialog": {
+                "heading": "دفعه ماليه",
+                "description": "قم بعمل دفعه ماليه لتسديد جزء من الفاتورة بالتقسيط",
+                "payment-amount": "المبلغ المدفوع"
+            },
+            "update-dialog": {
+                "heading": "تعديل فاتورة العميل",
+                "description": "لا يمكنك استرجاع اي من البيانات التي سيتم تغيرها بمجرد التاكيد"
+            }
+        }
+    }
+}

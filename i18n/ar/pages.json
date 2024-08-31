@@ -1,7 +1,9 @@
 {
     "pages": {
-        "market": "منتجات المحل",
-        "store": "منتجات المخزن",
+        "products": {
+            "market": "منتجات المحل",
+            "store": "منتجات المخزن"
+        },
 
         "transfer": {
             "heading": "كشف تحويل",
@@ -39,6 +41,24 @@
 
         "today-sales": {
             "heading": "كشف مبيعات اليوم"
+        },
+
+        "client-lists": {
+            "heading": "قائمه العملاء"
+        },
+
+        "add-new-client": {
+            "heading": "اضافه عميل جديد",
+            "bronze-from": "البرونزية من ( 0 )",
+            "bronze-to": "البرونزية الي",
+            "silver-from": "الفضية من",
+            "silver-to": "الفضية الي",
+            "gold-from": "الذهبية من",
+            "gold-to": "الذهبية الي ( ما لا نهايه )"
+        },
+
+        "client-bills": {
+            "heading": "قائمة فواتير العملاء"
         }
     }
 }

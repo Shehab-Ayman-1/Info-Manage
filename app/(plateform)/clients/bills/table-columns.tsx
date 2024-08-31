@@ -38,7 +38,7 @@ export const columns: ColumnDef<any>[] = [
         cell: ({ row }) => <DollarCell row={row} name="total" />,
     },
     {
-        accessorKey: "created_At",
+        accessorKey: "createdAt",
         header: HeaderComponent,
         cell: ({ row }) => <DateCell row={row} time />,
     },

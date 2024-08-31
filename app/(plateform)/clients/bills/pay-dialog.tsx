@@ -1,6 +1,7 @@
 "use client";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { z } from "zod";
 
 import { useUpdate } from "@/hooks/api/useUpdate";
@@ -19,6 +20,7 @@ const schema = z.object({
 export const PayDialog = ({}: PayDialogProps) => {
     const { formState, register, handleSubmit } = useForm({ resolver: zodResolver(schema) });
     const { type, data, onClose } = useModel();
+    const text = useTranslations();
 
     const { mutate, isPending } = useUpdate(`/api/clients/bills/${data?.billId}`, ["client-bills"]);
     const { errors } = formState;
@@ -31,20 +33,24 @@ export const PayDialog = ({}: PayDialogProps) => {
     };
 
     return (
-        <DialogForm heading="Pay Amount" description="Make New Payment Transaction">
+        <DialogForm
+            heading={text("dialogs.client-bills.payment-dialog.heading")}
+            description={text("dialogs.client-bills.payment-dialog.description")}
+        >
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Input
                     type="number"
-                    placeholder="Payment Amount"
+                    placeholder="payment-amount"
+                    useTranslate={{ placeholder: "dialogs.client-bills.payment-dialog" }}
                     error={errors?.amount}
                     {...register("amount", { valueAsNumber: true })}
                 />
                 <div className="flex-end">
                     <Button type="button" variant="outline" className="text-black dark:text-white" onClick={onClose}>
-                        Cancel
+                        {text("buttons.cancel")}
                     </Button>
                     <Button type="submit" disabled={isPending}>
-                        Confirm
+                        {text("buttons.confirm")}
                     </Button>
                 </div>
             </form>

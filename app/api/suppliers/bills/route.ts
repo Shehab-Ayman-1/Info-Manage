@@ -46,7 +46,7 @@ export const GET = async (req: NextRequest) => {
                     state: 1,
 
                     pending: { $subtract: ["$total", "$paid"] },
-                    created_At: "$createdAt",
+                    createdAt: "$createdAt",
                 },
             },
         ]);

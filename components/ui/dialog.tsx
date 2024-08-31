@@ -15,12 +15,11 @@ export const DialogForm = ({ heading, description, className, children }: Dialog
 
     return (
         <Dialog open={open} onOpenChange={onClose}>
-            <DialogContent className="bg-gradient max-h-[90vh] overflow-y-auto">
-                <DialogHeader>
+            <DialogContent className="bg-gradient max-h-[80vh] overflow-y-auto">
+                <DialogHeader className="rtl:items-start">
                     <DialogTitle className={cn("text-2xl font-bold text-primary", className)}>{heading}</DialogTitle>
                     <DialogDescription className="text-slate-500">{description}</DialogDescription>
                 </DialogHeader>
-
                 {children}
             </DialogContent>
         </Dialog>

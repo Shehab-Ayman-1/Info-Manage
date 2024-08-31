@@ -31,7 +31,7 @@ const Market = () => {
 
     return (
         <TableForm
-            pageTitle={location === "market" ? "pages.market" : "pages.store"}
+            pageTitle={location === "market" ? "pages.products.market" : "pages.products.store"}
             columns={columns}
             data={data || []}
             filterBy={["barcode", "product", "company", "category"]}
@@ -40,7 +40,7 @@ const Market = () => {
                 { text: "transfer", to: "/products/transfer" },
             ]}
         >
-            <div className="max-w-64 sm:ml-4">
+            <div className="max-w-64 sm:mx-4">
                 <ComboBox
                     label="choose-place"
                     name="place"

@@ -3,6 +3,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useOrganization } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 
 import { ClientCreateSchema, createSchema } from "@/app/api/clients/add-client/schema";
@@ -17,8 +18,9 @@ const Client = ({}: ClientProps) => {
     const { mutate, isPending } = useCreate<ClientCreateSchema>("/api/clients/add-client", ["clients"]);
     const { organization } = useOrganization();
 
-    const router = useRouter();
+    const text = useTranslations();
     const { errors } = formState;
+    const router = useRouter();
 
     useEffect(() => {
         if (!organization) return;
@@ -39,33 +41,64 @@ const Client = ({}: ClientProps) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <CardForm heading="New Client" submitText="Create" disabled={isPending}>
-                <Input placeholder="Client Name" error={errors?.name} {...register("name")} />
-                <Input type="number" placeholder="Phone Number" error={errors?.phone} {...register("phone")} />
+            <CardForm heading={text("pages.add-new-client.heading")} submitText={text("buttons.create")} disabled={isPending}>
+                <Input
+                    placeholder="client-name"
+                    useTranslate={{ placeholder: "public" }}
+                    error={errors?.name}
+                    {...register("name")}
+                />
+                <Input
+                    type="number"
+                    placeholder="phone"
+                    useTranslate={{ placeholder: "public" }}
+                    error={errors?.phone}
+                    {...register("phone")}
+                />
 
                 <div className="flex-between !flex-nowrap">
-                    <Input type="number" name="bronzeFrom" placeholder="From: ( 0 )" disabled />
                     <Input
                         type="number"
-                        placeholder="To:"
+                        placeholder="bronze-from"
+                        useTranslate={{ placeholder: "pages.add-new-client" }}
+                        value=""
+                        disabled
+                    />
+                    <Input
+                        type="number"
+                        placeholder="bronze-to"
+                        useTranslate={{ placeholder: "pages.add-new-client" }}
                         error={errors?.bronzeTo}
                         {...register("bronzeTo", { valueAsNumber: true })}
                     />
                 </div>
 
                 <div className="flex-between !flex-nowrap">
-                    <Input type="number" name="silverFrom" placeholder="From:" value={bronzeTo} disabled />
                     <Input
                         type="number"
-                        placeholder="To:"
+                        placeholder="silver-from"
+                        useTranslate={{ placeholder: "pages.add-new-client" }}
+                        value={bronzeTo || ""}
+                        disabled
+                    />
+                    <Input
+                        type="number"
+                        placeholder="silver-to"
+                        useTranslate={{ placeholder: "pages.add-new-client" }}
                         error={errors?.silverTo}
                         {...register("silverTo", { valueAsNumber: true })}
                     />
                 </div>
 
                 <div className="flex-between !flex-nowrap">
-                    <Input type="number" name="goldFrom" placeholder="From:" value={silverTo} disabled />
-                    <Input name="goldFrom" placeholder="To: ( Un Limited )" disabled />
+                    <Input
+                        type="number"
+                        placeholder="gold-from"
+                        useTranslate={{ placeholder: "pages.add-new-client" }}
+                        value={silverTo || ""}
+                        disabled
+                    />
+                    <Input placeholder="gold-to" useTranslate={{ placeholder: "pages.add-new-client" }} disabled />
                 </div>
             </CardForm>
         </form>

@@ -32,7 +32,7 @@ export const GET = async () => {
                     _id: "$_id",
                     company: "$company.name",
                     product: "$name",
-                    last_sold: "$market.updatedAt",
+                    lastSold: "$market.updatedAt",
                 },
             },
         ]);

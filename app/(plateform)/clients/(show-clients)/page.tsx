@@ -1,4 +1,6 @@
 "use client";
+import { useTranslations } from "next-intl";
+
 import { TableForm } from "@/components/page-structure/table-form";
 import { CardLoading } from "@/components/loading/card";
 import { useGet } from "@/hooks/api/useGet";
@@ -10,18 +12,19 @@ import { ClientType } from "./schema";
 
 const ClientList = () => {
     const { data, isPending, error } = useGet<ClientType[]>("/api/clients", ["clients"]);
+    const text = useTranslations();
 
     if (isPending) return <CardLoading />;
     if (error) return <h1>{error?.message}</h1>;
 
     return (
         <TableForm
-            pageTitle="Client List"
-            columns={columns}
+            pageTitle={text("pages.client-lists.heading")}
             data={data}
-            filterBy={["client", "level"]}
+            columns={columns}
             totalFor="pending"
-            navigate={[{ text: "New Client", to: "/clients/add-client" }]}
+            filterBy={["client", "level"]}
+            navigate={[{ text: "new-client", to: "/clients/add-client" }]}
         >
             <UpdateDialog />
             <DeleteDialog />

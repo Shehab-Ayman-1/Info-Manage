@@ -14,9 +14,9 @@ type InsufficientsProps = {
     _id: string;
     product: string;
     price: number;
-    current_count: number;
-    needed_count: number;
-    total_cost: number;
+    currentCount: number;
+    neededCount: number;
+    totalCost: number;
 };
 
 const Insufficients = () => {

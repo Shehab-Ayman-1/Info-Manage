@@ -20,6 +20,29 @@
                 "selling-price": "Selling Price",
                 "puchase-price": "Purchase Price"
             }
+        },
+
+        "show-clients": {
+            "delete-dialog": {
+                "heading": "Delete Client",
+                "description": "After You Delete The Products, You Will Lose This Client Forever."
+            },
+            "update-dialog": {
+                "heading": "Update Client",
+                "description": "Are You Sure, You Can't Undo This Action Again."
+            }
+        },
+
+        "client-bills": {
+            "payment-dialog": {
+                "heading": "Payment Amount",
+                "description": "Create A New Payment Transaction",
+                "payment-amount": "Payment Amount"
+            },
+            "update-dialog": {
+                "heading": "Update Client Bill",
+                "description": "You Can't Return Any Changes On The Bill After Confirming."
+            }
         }
     }
 }

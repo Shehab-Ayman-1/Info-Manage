@@ -29,11 +29,26 @@
         "total-solds": "اجمالي المبيعات",
         "profits": "الارباح",
 
+        "client": "العميل",
+        "phone": "الهاتف",
+        "discounts": "الخصومات",
+        "purchases": "المشتريات",
+        "bronze-to": "البرونزيه الي",
+        "silver-to": "الفضية الي",
+        "level": "الطبقه",
+
+        "state": "الحالة",
+        "paid": "المدفوع",
+        "discount": "الخصم",
+        "created-at": "تم الانشاء في",
+
         "filter-by": {
             "barcode": "الباركود",
             "product": "المنتج",
             "company": "الشركة",
-            "category": "القسم"
+            "category": "القسم",
+            "client": "العميل",
+            "level": "الطبقه"
         }
     }
 }

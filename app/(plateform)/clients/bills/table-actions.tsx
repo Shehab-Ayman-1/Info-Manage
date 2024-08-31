@@ -1,5 +1,5 @@
 "use client";
-import { BadgeDollarSignIcon, EyeIcon } from "lucide-react";
+import { BadgeDollarSignIcon, EditIcon, EyeIcon } from "lucide-react";
 import { Row } from "@tanstack/react-table";
 import { useRouter } from "next/navigation";
 
@@ -19,17 +19,17 @@ export const Actions = ({ row }: ActionsProps) => {
     const items = [
         {
             Icon: EyeIcon,
-            text: "Open",
+            text: "open",
             onClick: (original: any) => router.push(`/profile/client/${original._id}`),
         },
         {
-            Icon: EyeIcon,
-            text: "Edit",
+            Icon: EditIcon,
+            text: "edit",
             onClick: (original: any) => onOpen("edit-bill-model", { original }),
         },
         {
             Icon: BadgeDollarSignIcon,
-            text: "Pay",
+            text: "pay",
             onClick: (original: any) => onOpen("pay-model", { billId: original._id }),
         },
     ];

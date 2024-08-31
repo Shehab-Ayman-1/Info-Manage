@@ -10,7 +10,7 @@ type DateCellProps = {
 };
 
 export const DateCell = ({ row, time, noPrint }: DateCellProps) => {
-    const date = row.original?.createdAt || row.original?.created_At || row.original?.last_sold;
+    const date = row.original?.createdAt || row.original?.lastSold;
     if (!date) return;
 
     const formatted = time ? formatDate(date, "hh:mm:ss a") : formatDate(date, "dd / MM / yyyy");

@@ -14,7 +14,7 @@ export const columns: ColumnDef<any>[] = [
         header: HeaderComponent,
     },
     {
-        accessorKey: "last_sold",
+        accessorKey: "lastSold",
         header: HeaderComponent,
         cell: ({ row }) => <DateCell row={row} />,
     },

@@ -30,11 +30,26 @@
         "total-solds": "Total Solds",
         "profits": "Profits",
 
+        "client": "Client",
+        "phone": "Phone",
+        "discounts": "Discounts",
+        "purchases": "Purchases",
+        "bronze-to": "Bronze To",
+        "silver-to": "Silver To",
+        "level": "Level",
+
+        "state": "State",
+        "paid": "Paid",
+        "discount": "Discount",
+        "created-at": "Created At",
+
         "filter-by": {
             "barcode": "Barcode",
             "product": "Product",
             "company": "Company",
-            "category": "Category"
+            "category": "Category",
+            "client": "Client",
+            "level": "Level"
         }
     }
 }

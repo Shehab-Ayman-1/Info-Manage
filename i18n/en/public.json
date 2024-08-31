@@ -32,6 +32,7 @@
         "place": "Place",
 
         "count": "Count",
+        "price": "Price",
 
         "purchase-price": "Purchase Price",
         "sold-price": "Sold Price",
@@ -40,20 +41,29 @@
         "submit": "Submit",
 
         "delete": "Delete",
-        "search": "Search ...",
+        "edit": "Edit",
+
+        "pay": "Payment",
+        "open": "Open",
 
         "loading": "Loading ...",
-        "print": "Print",
+        "search": "Search ...",
 
         "market": "Market",
         "store": "Store",
 
         "language": "Language",
-        "ar": "Arabic",
+        "print": "Print",
+
         "en": "English",
+        "ar": "Arabic",
 
         "cash": "Cash",
         "visa": "Visa",
+
+        "phone": "Phone Number",
+        "bronze-to": "Bronze To",
+        "silver-to": "Silver To",
 
         "create": "Create",
         "open-insert-products-model": "Insert New Product"

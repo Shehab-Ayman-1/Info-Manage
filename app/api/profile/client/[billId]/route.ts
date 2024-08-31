@@ -41,9 +41,9 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
             {
                 $lookup: {
                     from: "companies",
+                    as: "products.source.company",
                     localField: "products.source.company",
                     foreignField: "_id",
-                    as: "products.source.company",
                 },
             },
             {

@@ -1,0 +1,11 @@
+{
+    "buttons": {
+        "new-statement": "كشف حساب جديد",
+        "transfer": "تحويل منتجات",
+        "new-client": "عميل جديد",
+        "confirm": "تأكيد",
+        "cancel": "الغاء",
+        "update": "تعديل",
+        "create": "انشاء"
+    }
+}

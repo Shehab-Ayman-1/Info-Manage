@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { formatDate } from "date-fns";
 
 import { TableForm } from "@/components/page-structure/table-form";
@@ -8,6 +9,7 @@ import { columns } from "./table-columns";
 
 import { PayDialog } from "./pay-dialog";
 import { Input } from "@/ui/input";
+import { UpdateDialog } from "./update-dialog";
 
 type BillType = {
     _id: string;
@@ -17,13 +19,14 @@ type BillType = {
     paid: number;
     pending: number;
     discount: number;
-    created_At: Date;
+    createdAt: Date;
 };
 
 const dateFormate = formatDate(new Date(), "yyyy-MM-dd");
 const ClientBills = () => {
     const [date, setDate] = useState(dateFormate);
     const { data, error, refetch } = useGet<BillType[]>(`/api/clients/bills?date=${date}`, ["client-bills"]);
+    const text = useTranslations("pages");
 
     useEffect(() => {
         refetch();
@@ -33,17 +36,18 @@ const ClientBills = () => {
 
     return (
         <TableForm
-            pageTitle="Client Bills List"
+            pageTitle={text("client-bills.heading")}
             columns={columns}
             data={data || []}
-            filterBy={["client"]}
             totalFor="pending"
-            navigate={[{ text: "New Statement", to: "/clients/statements/new" }]}
+            filterBy={["client"]}
+            navigate={[{ text: "new-statement", to: "/clients/statements/new" }]}
         >
-            <div className="mt-4 w-fit sm:ml-4">
+            <div className="mt-4 w-fit sm:mx-4">
                 <Input type="date" value={date} name="date" onChange={(event) => setDate(() => event.target.value)} />
             </div>
             <PayDialog />
+            <UpdateDialog />
         </TableForm>
     );
 };

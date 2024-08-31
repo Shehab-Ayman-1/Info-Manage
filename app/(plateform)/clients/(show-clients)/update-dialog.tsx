@@ -1,6 +1,7 @@
 "use client";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 
 import { editSchema, EditSchemaType } from "@/app/api/clients/(show-clients)/schema";
@@ -14,11 +15,10 @@ import { Input } from "@/ui/input";
 type UpdateDialogProps = {};
 
 export const UpdateDialog = ({}: UpdateDialogProps) => {
+    const { formState, register, setValue, handleSubmit } = useForm({ resolver: zodResolver(editSchema) });
     const { mutate, isPending } = useUpdate<EditSchemaType>("/api/clients", ["clients"]);
-    const { formState, register, setValue, handleSubmit } = useForm({
-        resolver: zodResolver(editSchema),
-    });
     const { type, data, onClose } = useModel();
+    const text = useTranslations();
     const { errors } = formState;
 
     useEffect(() => {
@@ -38,15 +38,36 @@ export const UpdateDialog = ({}: UpdateDialogProps) => {
     };
 
     return (
-        <DialogForm heading="Update Client" description="Are You Sure, You Can't Undo This Action Again.">
+        <DialogForm
+            heading={text("dialogs.show-clients.update-dialog.heading")}
+            description={text("dialogs.show-clients.update-dialog.description")}
+        >
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Input placeholder="Client Name" error={errors.name} {...register("name")} />
-                <Input placeholder="Phone" error={errors.phone} {...register("phone")} />
-                <Input placeholder="Bronze To:" error={errors.bronzeTo} {...register("bronzeTo", { valueAsNumber: true })} />
-                <Input placeholder="Silver To:" error={errors.silverTo} {...register("silverTo", { valueAsNumber: true })} />
+                <Input
+                    placeholder="client-name"
+                    useTranslate={{ placeholder: "public" }}
+                    error={errors.name}
+                    {...register("name")}
+                />
+
+                <Input placeholder="phone" useTranslate={{ placeholder: "public" }} error={errors.phone} {...register("phone")} />
+
+                <Input
+                    placeholder="bronze-to"
+                    useTranslate={{ placeholder: "public" }}
+                    error={errors.bronzeTo}
+                    {...register("bronzeTo", { valueAsNumber: true })}
+                />
+
+                <Input
+                    placeholder="silver-to"
+                    useTranslate={{ placeholder: "public" }}
+                    error={errors.silverTo}
+                    {...register("silverTo", { valueAsNumber: true })}
+                />
 
                 <Button type="submit" className="w-full" disabled={isPending}>
-                    Update
+                    {text("buttons.update")}
                 </Button>
             </form>
         </DialogForm>

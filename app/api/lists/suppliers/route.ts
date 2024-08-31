@@ -16,9 +16,9 @@ export const GET = async () => {
             {
                 $lookup: {
                     from: "products",
+                    as: "products",
                     localField: "products",
                     foreignField: "_id",
-                    as: "products",
                 },
             },
             {

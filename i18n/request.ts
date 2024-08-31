@@ -8,7 +8,7 @@ export default getRequestConfig(async () => {
     const files = ["header", "overview", "pages", "public", "buttons", "dialogs", "subscriptions", "table", "footer"];
 
     const messages = files.reduce(async (accumelator, file) => {
-        const fileContent = (await import(`@/i18n/messages/${locale}/${file}.json`)).default;
+        const fileContent = (await import(`@/i18n/${locale}/${file}.json`)).default;
         const previousValues = await accumelator;
         return { ...previousValues, ...fileContent };
     }, {});

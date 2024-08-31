@@ -17,7 +17,7 @@ type BillType = {
     total: number;
     paid: number;
     pending: number;
-    created_At: Date;
+    createdAt: Date;
 };
 
 const dateFormate = formatDate(new Date(), "yyyy-MM-dd");

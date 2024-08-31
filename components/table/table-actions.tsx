@@ -35,7 +35,7 @@ export const TableActions = ({ row, items }: TableActionsProps) => {
                         onClick={() => onClick(row?.original)}
                         key={text}
                         className={cn(
-                            "cursor-pointer text-lg font-bold",
+                            "cursor-pointer text-lg font-bold rtl:flex-row-reverse",
                             className?.button === "cancel"
                                 ? "group !text-rose-500 hover:!bg-rose-100 dark:hover:!bg-rose-500 dark:hover:!text-rose-100"
                                 : className?.button,
@@ -43,7 +43,7 @@ export const TableActions = ({ row, items }: TableActionsProps) => {
                     >
                         <Icon
                             className={cn(
-                                "mr-2 size-6",
+                                "mx-2 size-6 rtl:size-5",
                                 className?.icon === "cancel"
                                     ? "!text-rose-500 dark:group-hover:!text-rose-100"
                                     : className?.button,

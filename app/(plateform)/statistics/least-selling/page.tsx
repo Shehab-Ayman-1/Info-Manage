@@ -7,7 +7,7 @@ import { columns } from "./table-columns";
 
 type LeastSellingType = {
     product: string;
-    last_sold: Date;
+    lastSold: Date;
 };
 
 const LeastSelling = () => {
