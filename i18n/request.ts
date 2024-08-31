@@ -1,20 +1,17 @@
 import { getRequestConfig } from "next-intl/server";
 import { cookies } from "next/headers";
-import path from "path";
-import fs from "fs";
 
 export default getRequestConfig(async () => {
     const cookieLocale = cookies().get("NEXT_LOCALE")?.value;
 
     const locale = cookieLocale || "en";
 
-    const dir = path.join(process.cwd(), "i18n", "messages", locale);
-    const files = fs.readdirSync(dir);
+    const files = ["buttons", "dialogs", "footer", "header", "overview", "pages", "public", "subscriptions", "table"];
 
-    const messages = files.reduce((acc, file) => {
-        const filePath = path.join(dir, file);
-        const fileContents = JSON.parse(fs.readFileSync(filePath, "utf8"));
-        return { ...acc, ...fileContents };
+    const messages = await files.reduce(async (acc, file) => {
+        const fileContents = (await import(`@/i18n/messages/${locale}/${file}.json`)).default;
+        const previousValues = await acc;
+        return { ...previousValues, ...fileContents };
     }, {});
 
     return {
