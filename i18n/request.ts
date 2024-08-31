@@ -7,7 +7,7 @@ export default getRequestConfig(async () => {
     const cookieLocale = cookies().get("NEXT_LOCALE")?.value;
     const locale = cookieLocale || "en";
 
-    const dir = path.join("i18n", "messages", locale);
+    const dir = `./messages/${locale}`;
     const files = fs.readdirSync(dir);
 
     const messages = files.reduce((acc, file) => {
