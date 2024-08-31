@@ -1,6 +1,6 @@
 {
     "functions": {
-        "api/**/*.ts": {
+        "app/api/**/*.ts": {
             "includeFiles": "i18n/messages/**"
         }
     }
