@@ -26,13 +26,13 @@ export const NavLinks = ({}: NavLinksProps) => {
     };
 
     const seperateBefore = [
-        "Today Purchases Receipt",
-        "Add New Category",
-        "New Statement",
-        "Add New Client",
-        "Add New Supplier",
-        "Least Selling",
-        "Best Selling Of The (Month)",
+        "today-purchases",
+        "add-category",
+        "new-statement",
+        "add-client",
+        "add-supplier",
+        "least-selling",
+        "best-selling-of-the-month",
     ];
 
     return (

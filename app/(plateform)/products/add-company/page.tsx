@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { CldUploadWidget } from "next-cloudinary";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 import Image from "next/image";
 
@@ -24,6 +25,7 @@ const Company = ({}: CompanyProps) => {
     const { mutate, isPending: createPending } = useCreate<RequestType>("/api/products/add-company", []);
 
     const { categories, onReset } = useLists();
+    const text = useTranslations();
     const router = useRouter();
 
     const { errors } = formState;
@@ -43,34 +45,36 @@ const Company = ({}: CompanyProps) => {
         mutate(values, { onSuccess });
     };
 
-    const onUpload = (result: any) => {
-        if (result.event === "success") setValue("image", result.info.url);
-    };
-
+    const onUpload = (result: any) => result.event === "success" && setValue("image", result.info.url);
     const availableImageSrc = image?.startsWith("https://") || image?.startsWith("http://") || image?.startsWith("data:image");
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <CardForm heading="Create Company" submitText="Create" disabled={createPending}>
+            <CardForm heading={text("pages.add-company.heading")} submitText={text("public.create")} disabled={createPending}>
                 <div className="relative mx-auto h-28 w-28 overflow-hidden rounded-[100%]">
                     <Image src={availableImageSrc ? image : "/overview.jpeg"} className="h-full w-full" alt="car" fill />
                 </div>
 
                 <CldUploadWidget uploadPreset="info-manage" onSuccess={onUpload}>
-                    {({ open: onOpen }) => {
-                        return (
-                            <Button type="button" variant="outline" className="flex-center mx-auto mt-4" onClick={() => onOpen()}>
-                                Upload an Image
-                            </Button>
-                        );
-                    }}
+                    {({ open: onOpen }) => (
+                        <Button type="button" variant="outline" className="flex-center mx-auto mt-4" onClick={() => onOpen()}>
+                            {text("pages.add-company.upload-button")}
+                        </Button>
+                    )}
                 </CldUploadWidget>
 
-                <Input type="url" placeholder="Enter Image Link" error={errors?.image} {...register("image")} />
+                <Input
+                    type="url"
+                    placeholder="image-url"
+                    useTranslate={{ placeholder: "pages.add-company" }}
+                    error={errors?.image}
+                    {...register("image")}
+                />
 
                 <ComboBox
-                    label="Category Name"
+                    label="choose-category"
                     name="categoryId"
+                    useTranslate={{ name: "public", trigger: "public", customeTrigger: true, justPlaceholder: true }}
                     loading={categories.isLoading}
                     items={categories.lists}
                     error={errors?.categoryId}
@@ -78,7 +82,12 @@ const Company = ({}: CompanyProps) => {
                     clearErrors={clearErrors}
                 />
 
-                <Input placeholder="Company Name" error={errors?.name} {...register("name")} />
+                <Input
+                    placeholder="company-name"
+                    useTranslate={{ placeholder: "public" }}
+                    error={errors?.name}
+                    {...register("name")}
+                />
             </CardForm>
         </form>
     );

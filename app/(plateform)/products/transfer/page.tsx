@@ -1,6 +1,7 @@
 "use client";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 
 import { useUpdate } from "@/hooks/api/useUpdate";
@@ -18,8 +19,8 @@ const Transfer = ({}: TransferProps) => {
     const { formState, register, setValue, reset, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(editSchema) });
     const { mutate, isPending } = useUpdate<EditTransferSchema>("/api/products/transfer", ["market", "store"]);
 
+    const text = useTranslations();
     const { products } = useLists();
-
     const { errors } = formState;
 
     useEffect(() => {
@@ -34,21 +35,35 @@ const Transfer = ({}: TransferProps) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <CardForm heading="Transfer Products" submitText="Transfer" disabled={isPending}>
+            <CardForm heading={text("pages.transfer.heading")} submitText={text("pages.transfer.submit")} disabled={isPending}>
                 <div className="flex-between">
                     <ComboBox
-                        label="Products"
+                        label="choose-product"
                         name="productId"
+                        useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
                         loading={products.isLoading}
                         groups={products.groups}
                         error={errors.productId}
                         setValue={setValue}
                         clearErrors={clearErrors}
                     />
-                    <ComboBox label="Transfer To (Place)" name="place" error={errors.place} items={place} setValue={setValue} />
+                    <ComboBox
+                        label="transfer-to"
+                        name="place"
+                        useTranslate={{ label: "pages.transfer", trigger: "pages.transfer", name: "public", item: "public" }}
+                        error={errors.place}
+                        items={place}
+                        setValue={setValue}
+                    />
                 </div>
 
-                <Input type="number" placeholder="Count" error={errors.count} {...register("count", { valueAsNumber: true })} />
+                <Input
+                    type="number"
+                    label="count"
+                    useTranslate={{ label: "public" }}
+                    error={errors.count}
+                    {...register("count", { valueAsNumber: true })}
+                />
             </CardForm>
         </form>
     );

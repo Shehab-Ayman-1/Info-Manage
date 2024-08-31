@@ -1,8 +1,9 @@
 "use client";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { z } from "zod";
 
 import { CreateProductSchema } from "@/app/api/products/add-product/schema";
@@ -35,6 +36,7 @@ const Product = ({}: ProductProps) => {
     const [products, setProducts] = useState<ProductType[]>([]);
 
     const { companies, suppliers, onReset } = useLists();
+    const text = useTranslations();
     const router = useRouter();
 
     useEffect(() => {
@@ -62,11 +64,17 @@ const Product = ({}: ProductProps) => {
     };
 
     return (
-        <CardForm heading="Create Product">
+        <CardForm heading={text("pages.add-product.heading")}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <ComboBox
-                    label="Company"
+                    label={text("public.company-name")}
                     name="companyId"
+                    useTranslate={{
+                        label: "public",
+                        name: "public",
+                        customeTrigger: true,
+                        justPlaceholder: true,
+                    }}
                     loading={companies.isLoading}
                     groups={companies.groups}
                     error={errors.companyId}
@@ -75,8 +83,15 @@ const Product = ({}: ProductProps) => {
                 />
 
                 <ComboBox
-                    label="Supplier (Optional)"
+                    label="optional-supplier"
                     name="supplierId"
+                    useTranslate={{
+                        label: "pages.add-product",
+                        trigger: "pages.add-product",
+                        name: "public",
+                        customeTrigger: true,
+                        justPlaceholder: true,
+                    }}
                     loading={suppliers.isLoading}
                     items={suppliers.lists}
                     error={errors.supplierId}
@@ -86,7 +101,7 @@ const Product = ({}: ProductProps) => {
 
                 <OpenModuleButton type="insert-products-model" clearErrors={clearErrors} />
                 {!!products.length && <DataTable columns={columns} data={products} smallSize />}
-                <SubmitButton text="Create" isPending={isPending} />
+                <SubmitButton text="create" isPending={isPending} />
             </form>
 
             <InsertAndUpdateDialog setProducts={setProducts} />

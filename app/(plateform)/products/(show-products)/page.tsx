@@ -44,8 +44,9 @@ const Market = () => {
                 <ComboBox
                     label="choose-place"
                     name="place"
-                    defaultValue="market"
                     items={place}
+                    defaultValue="market"
+                    useTranslate={{ label: "public", trigger: "public", item: "public", name: "public" }}
                     onChange={(value) => setLocation(value)}
                 />
             </div>

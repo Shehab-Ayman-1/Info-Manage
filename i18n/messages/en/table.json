@@ -2,19 +2,36 @@
     "table": {
         "category": "Category",
         "company": "Company",
+        "product": "Product",
         "name": "Name",
 
         "barcode": "Barcode",
         "count": "Count",
-        "sold-price": "Sold Price",
 
         "cash": "Cash",
         "visa": "Visa",
 
+        "purchase-price": "Purchase Price",
+        "sold-price": "Sold Price",
+
+        "price": "Price",
         "costs": "Costs",
         "pending": "Pending",
+        "total": "Total",
 
         "actions": "Actions",
-        "total": "Total"
+        "print": "Price",
+
+        "buttons": {
+            "new-statement": "New Statement",
+            "transfer": "Transfer"
+        },
+
+        "filter-by": {
+            "barcode": "Barcode",
+            "product": "Product",
+            "company": "Company",
+            "category": "Category"
+        }
     }
 }

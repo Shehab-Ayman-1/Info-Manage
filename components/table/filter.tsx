@@ -20,8 +20,8 @@ export const Filter = <TData,>({ data, filterBy, getColumn }: FilterProps<TData>
     const [filteredList, setFilteredList] = useState<any[]>([]);
     const [option, setOption] = useState(filterBy?.[0]);
     const [open, setOpen] = useState(false);
+    const text = useTranslations("table");
     const locale = useLocale();
-    const text = useTranslations("public");
 
     const listRef = useRef<ElementRef<"div">>(null);
     useOnClickOutside(listRef, () => setOpen(false));
@@ -74,7 +74,7 @@ export const Filter = <TData,>({ data, filterBy, getColumn }: FilterProps<TData>
                             onClick={() => onOptionChange(item)}
                             className="block w-full cursor-pointer rounded-md p-2 text-start text-lg hover:bg-primary-100 hover:text-black"
                         >
-                            {text(item)}
+                            {text(`filter-by.${item}`)}
                         </PopoverClose>
                     ))}
                 </PopoverContent>
@@ -85,7 +85,7 @@ export const Filter = <TData,>({ data, filterBy, getColumn }: FilterProps<TData>
                     value={value || ""}
                     onChange={onInputChange}
                     onFocus={() => setOpen(true)}
-                    placeholder={locale === "en" ? `Filter By ${option} ...` : `البحث بواسطة ${text(option)}`}
+                    placeholder={locale === "en" ? `Filter By ${option} ...` : `البحث بواسطة ${text(`filter-by.${option}`)}`}
                 />
                 <div
                     ref={listRef}

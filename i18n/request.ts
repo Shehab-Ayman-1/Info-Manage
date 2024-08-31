@@ -3,10 +3,9 @@ import { cookies } from "next/headers";
 
 export default getRequestConfig(async () => {
     const cookieLocale = cookies().get("NEXT_LOCALE")?.value;
-
     const locale = cookieLocale || "en";
 
-    const files = ["buttons", "dialogs", "footer", "header", "overview", "pages", "public", "subscriptions", "table"];
+    const files = ["header", "overview", "pages", "public", "buttons", "dialogs", "footer", "subscriptions", "table"];
 
     const messages = files.reduce(async (accumelator, file) => {
         const fileContents = (await import(`@/i18n/messages/${locale}/${file}.json`)).default;
@@ -14,8 +13,5 @@ export default getRequestConfig(async () => {
         return { ...previousValues, ...fileContents };
     }, {});
 
-    return {
-        locale,
-        messages,
-    };
+    return { locale, messages };
 });

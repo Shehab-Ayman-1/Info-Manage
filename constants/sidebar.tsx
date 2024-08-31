@@ -45,7 +45,7 @@ export const productLists: NavLinkType[] = [
     },
     {
         Icon: ReceiptTextIcon,
-        title: "today-puchases",
+        title: "today-purchases",
         href: "/products/today-purchases",
         userRole: "org:admin",
         subscriptions: ["basic"],

@@ -2,21 +2,29 @@
 import type { UseFormClearErrors, UseFormSetValue } from "react-hook-form";
 import type { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 import { CheckCheckIcon, ChevronsUpDownIcon } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
-import { CommandInput, CommandItem, CommandList } from "@/ui/command";
-import { Command, CommandEmpty, CommandGroup } from "@/ui/command";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
 import { Button } from "@/ui/button";
 import { Icons } from "@/ui/icons";
 import { Label } from "@/ui/label";
 import { cn } from "@/utils/shadcn";
-import { useLocale, useTranslations } from "next-intl";
 
 type Item = {
     _id: string;
     value: string;
     title: string;
+};
+
+type UseTranslate = {
+    label?: string;
+    name?: string;
+    item?: string;
+    trigger?: string;
+    justPlaceholder?: boolean;
+    customeTrigger?: boolean;
 };
 
 type ComboBoxProps = {
@@ -28,20 +36,21 @@ type ComboBoxProps = {
 
     setValue?: UseFormSetValue<any>;
     onChange?: (value: string) => void;
+    clearErrors?: UseFormClearErrors<any>;
 
     defaultValue?: string;
-    clearErrors?: UseFormClearErrors<any>;
+    useTranslate?: UseTranslate;
 
     items?: Item[];
     groups?: { _id: string; label: string; list: Item[] }[];
 };
 
 export const ComboBox = (props: ComboBoxProps) => {
-    const { label, name, loading, error, items, groups, defaultValue, setValue, clearErrors, onChange } = props;
+    const { label, name, loading, error, items, groups, defaultValue, useTranslate, setValue, clearErrors, onChange } = props;
     const [selectedValue, setSelectedValue] = useState(defaultValue || "");
     const [open, setOpen] = useState(false);
 
-    const text = useTranslations("public");
+    const text = useTranslations();
     const locale = useLocale();
 
     useEffect(() => {
@@ -61,21 +70,25 @@ export const ComboBox = (props: ComboBoxProps) => {
         clearErrors?.(name);
     };
 
-    console.log({ name, label, selectedValue });
-
     return (
         <div className="my-2 flex w-full flex-col">
-            <Label className={cn("text-base", error?.message && "text-rose-400")}>{text(label)}</Label>
+            {!useTranslate?.justPlaceholder && (
+                <Label className={cn("text-base", error?.message && "text-rose-400")}>
+                    {useTranslate?.label ? text(`${useTranslate.label}.${label}`) : label}
+                </Label>
+            )}
 
             <Popover open={open} onOpenChange={setOpen}>
-                <CommandTrigger open={open} label={label} selectedValue={selectedValue} />
+                <CommandTrigger open={open} label={label} selectedValue={selectedValue} useTranslate={useTranslate} />
 
                 <PopoverContent className="p-0" align="start">
                     <Command className="sm:w-[520px]">
-                        <CommandInput placeholder={`${locale === "en" ? "Search For" : "البحث عن"} ${text(name)}`} />
+                        <CommandInput
+                            placeholder={`${locale === "en" ? "Search For" : "البحث عن"} ${useTranslate?.name ? text(`${useTranslate.name}.${name}`) : name}`}
+                        />
 
                         <CommandList className="bg-gradient">
-                            {!loading && !items?.length && !groups?.length && <CommandEmpty>No Results.</CommandEmpty>}
+                            {!loading && !items?.length && !groups?.length && <CommandEmpty>{text("no-results")}.</CommandEmpty>}
                             {loading && !items?.length && !groups?.length && <CommandLoading />}
 
                             {!!items?.length &&
@@ -84,6 +97,7 @@ export const ComboBox = (props: ComboBoxProps) => {
                                         key={item._id}
                                         title={item.title}
                                         value={item.title}
+                                        useTranslate={useTranslate}
                                         selectedValue={selectedValue}
                                         onSelect={() => onSelect(item)}
                                     />
@@ -103,6 +117,7 @@ export const ComboBox = (props: ComboBoxProps) => {
                                                 key={list._id}
                                                 title={list.title}
                                                 value={list.title}
+                                                useTranslate={useTranslate}
                                                 selectedValue={selectedValue}
                                                 onSelect={() => onSelect(list)}
                                             />
@@ -122,13 +137,17 @@ export const ComboBox = (props: ComboBoxProps) => {
 };
 
 type CommandTriggerProps = {
+    useTranslate?: UseTranslate;
     selectedValue: string;
     label: string;
     open: boolean;
 };
 
-function CommandTrigger({ selectedValue, label, open }: CommandTriggerProps) {
-    const text = useTranslations("public");
+function CommandTrigger({ useTranslate, selectedValue, label, open }: CommandTriggerProps) {
+    const text = useTranslations();
+
+    const isCustomeTrigger = useTranslate?.trigger && useTranslate?.customeTrigger;
+    const isNotCustomeTrigger = useTranslate?.trigger && !useTranslate?.customeTrigger;
 
     return (
         <PopoverTrigger asChild>
@@ -138,10 +157,34 @@ function CommandTrigger({ selectedValue, label, open }: CommandTriggerProps) {
                 aria-expanded={open}
                 className="flex-between w-full border-b border-b-primary !py-8 text-base text-slate-400"
             >
-                {selectedValue ? selectedValue : text(label)}
-                <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                {isNotCustomeTrigger
+                    ? text(`${useTranslate.trigger}.${selectedValue || label}`)
+                    : isCustomeTrigger
+                      ? selectedValue || text(`${useTranslate?.trigger}.${label}`)
+                      : selectedValue || label}
+                <ChevronsUpDownIcon className="mx-2 size-4 opacity-50" />
             </Button>
         </PopoverTrigger>
+    );
+}
+
+type CommandListItemProps = {
+    useTranslate?: UseTranslate;
+    selectedValue: string;
+    value: string;
+    title: string;
+    onSelect: (value: string) => void;
+};
+
+function CommandListItem({ useTranslate, selectedValue, value, title, onSelect }: CommandListItemProps) {
+    const hideIcon = (value: string) => (selectedValue === value ? "opacity-100" : "opacity-0");
+    const text = useTranslations();
+
+    return (
+        <CommandItem value={value} onSelect={onSelect} className="cursor-pointer text-lg capitalize leading-10">
+            <CheckCheckIcon className={cn("mx-2 size-4 !text-green-500", hideIcon(value))} />
+            {useTranslate?.item ? text(`${useTranslate.item}.${title}`) : title}
+        </CommandItem>
     );
 }
 
@@ -152,24 +195,6 @@ function CommandLoading() {
         <CommandItem className="flex-start">
             <Icons.spinner className="mr-2 size-6 animate-spin" />
             {text("loading")}
-        </CommandItem>
-    );
-}
-
-type CommandListItemProps = {
-    value: string;
-    title: string;
-    selectedValue: string;
-    onSelect: (value: string) => void;
-};
-
-function CommandListItem({ value, title, selectedValue, onSelect }: CommandListItemProps) {
-    const hideIcon = (value: string) => (selectedValue === value ? "opacity-100" : "opacity-0");
-
-    return (
-        <CommandItem value={value} onSelect={onSelect} className="cursor-pointer text-lg capitalize leading-10">
-            <CheckCheckIcon className={cn("mx-2 size-4 !text-green-500", hideIcon(value))} />
-            {title}
         </CommandItem>
     );
 }

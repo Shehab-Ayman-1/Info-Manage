@@ -1,6 +1,25 @@
 {
-    "quick-client-statement": {
-        "heading": "Quick Client Statement",
-        "description": "Create A New Client Statement With One Click"
+    "dialogs": {
+        "quick-client-statement": {
+            "heading": "Quick Client Statement",
+            "description": "Create A New Client Statement With One Click"
+        },
+
+        "add-product": {
+            "insert-dialog": {
+                "insert-heading": "Insert Product",
+                "update-heading": "Update Product",
+                "description": "Please Fill All The Required Fields To Succefully Create The Account.",
+                "optional-barcode": "Barcode (Optional)",
+                "minimum": "Minimum Limit",
+                "unit": "Quantity",
+                "packet": "Packet",
+                "liter": "Liter",
+                "market-count": "Market Count",
+                "store-count": "Store Count",
+                "selling-price": "Selling Price",
+                "puchase-price": "Purchase Price"
+            }
+        }
     }
 }

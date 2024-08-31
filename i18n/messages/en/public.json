@@ -1,14 +1,29 @@
 {
     "public": {
         "choose-category": "Choose Category",
+        "category-name": "Category Name",
+        "categoryId": "Category Name",
         "category": "Category",
 
         "choose-comany": "Choose Company",
+        "company-name": "Company Name",
+        "companyId": "Company Name",
         "company": "Company",
 
         "choose-product": "Choose Product",
+        "product-name": "Product Name",
         "productId": "Product Name",
         "product": "Product",
+
+        "choose-client": "Choose Client",
+        "client-name": "Client Name",
+        "clientId": "Client Name",
+        "client": "Client",
+
+        "choose-supplier": "Choose Supplier",
+        "supplier-name": "Supplier Name",
+        "supplierId": "Supplier Name",
+        "supplier": "Supplier",
 
         "choose-method": "Choose Method",
         "method": "Method",
@@ -17,7 +32,6 @@
         "place": "Place",
 
         "count": "Count",
-        "price": "Price",
 
         "purchase-price": "Purchase Price",
         "sold-price": "Sold Price",
@@ -36,6 +50,12 @@
 
         "language": "Language",
         "ar": "Arabic",
-        "en": "English"
+        "en": "English",
+
+        "cash": "Cash",
+        "visa": "Visa",
+
+        "create": "Create",
+        "open-insert-products-model": "Insert New Product"
     }
 }

@@ -1,4 +1,6 @@
+"use client";
 import { FieldValues, UseFormClearErrors } from "react-hook-form";
+import { useTranslations } from "next-intl";
 import { PlusIcon } from "lucide-react";
 
 import { useModel } from "@/hooks/useModel";
@@ -11,6 +13,7 @@ type OpenModuleButtonProps = {
 
 export const OpenModuleButton = ({ type, clearErrors }: OpenModuleButtonProps) => {
     const { onOpen } = useModel();
+    const text = useTranslations("public");
 
     const onInsert = () => {
         clearErrors("root");
@@ -25,7 +28,7 @@ export const OpenModuleButton = ({ type, clearErrors }: OpenModuleButtonProps) =
             className="flex-center m-auto mt-4 font-bold text-primary hover:text-primary"
         >
             <PlusIcon className="size-6 !text-primary" />
-            Insert Product
+            {text("open-insert-products-model")}
         </Button>
     );
 };

@@ -2,19 +2,35 @@
     "table": {
         "category": "القسم",
         "company": "الشركة",
+        "product": "المنتج",
         "name": "الاسم",
 
         "barcode": "الباركود",
         "count": "العدد",
-        "sold-price": "سعر البيع",
 
         "cash": "كاش",
         "visa": "فيزا",
 
+        "sold-price": "سعر البيع",
+        "purchase-price": "سعر الشراء",
+        "price": "السعر",
         "costs": "التكاليف",
         "pending": "المتبقي",
+        "total": "الاجمالي",
 
         "actions": "المزيد",
-        "total": "الاجمالي"
+        "print": "طباعه",
+
+        "buttons": {
+            "new-statement": "كشف حساب جديد",
+            "transfer": "تحويل منتجات"
+        },
+
+        "filter-by": {
+            "barcode": "الباركود",
+            "product": "المنتج",
+            "company": "الشركة",
+            "category": "القسم"
+        }
     }
 }

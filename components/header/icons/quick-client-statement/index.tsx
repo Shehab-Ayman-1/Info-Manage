@@ -49,9 +49,9 @@ export const QuickClientStatement = () => {
     const { clients, products: productLists } = useLists();
     const { type, onClose } = useModel();
 
-    const text = useTranslations();
     const choosenProducts = watch("products");
     const clientId = watch("clientId");
+    const text = useTranslations();
     const { errors } = formState;
 
     useEffect(() => {
@@ -100,16 +100,17 @@ export const QuickClientStatement = () => {
         const productList = productLists.data.find((prod) => prod._id === product.productId);
         if (!productList) return toast.info("Something Went Wrong.");
 
-        const { name, company, purchasePrice, soldPrice } = productList;
+        const { name, company, purchasePrice } = productList;
         const newProduct = {
             productId: product.productId,
             company: company.name,
             name,
-            soldPrice,
             purchasePrice,
             count: product.count,
-            total: product.count * soldPrice,
+            soldPrice: product.soldPrice,
+            total: product.count * product.soldPrice,
         };
+
         const newProducts = choosenProducts?.concat(newProduct);
 
         setValue("products", newProducts || [newProduct]);
@@ -128,7 +129,10 @@ export const QuickClientStatement = () => {
     };
 
     return (
-        <DialogForm heading={text("quick-client-statement.heading")} description={text("quick-client-statement.description")}>
+        <DialogForm
+            heading={text("dialogs.quick-client-statement.heading")}
+            description={text("dialogs.quick-client-statement.description")}
+        >
             <form onSubmit={handleSubmit(onSubmit)} className="max-w-xl overflow-x-auto">
                 <ComboBox
                     label="choose-method"
@@ -137,6 +141,7 @@ export const QuickClientStatement = () => {
                     items={methods}
                     setValue={setValue}
                     clearErrors={clearErrors}
+                    useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                 />
 
                 <ComboBox
@@ -145,20 +150,23 @@ export const QuickClientStatement = () => {
                     groups={productLists.groups}
                     loading={productLists.isLoading}
                     onChange={(value) => setProduct((product) => ({ ...product, productId: value }))}
+                    useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
                 />
 
                 <div className="flex-between">
                     <Input
                         type="number"
-                        name="count"
+                        label="count"
                         value={product.count || ""}
                         onChange={(event) => setProduct((product) => ({ ...product, count: +event.target.value }))}
+                        useTranslate={{ label: "public" }}
                     />
                     <Input
                         type="number"
-                        name="soldPrice"
-                        value={product.soldPrice}
+                        label="sold-price"
+                        value={product.soldPrice || ""}
                         onChange={(event) => setProduct((product) => ({ ...product, soldPrice: +event.target.value }))}
+                        useTranslate={{ label: "public" }}
                     />
 
                     <Button type="button" variant="outline" className="mx-auto flex py-12" onClick={handleInsertProduct}>
@@ -167,12 +175,9 @@ export const QuickClientStatement = () => {
                 </div>
 
                 <p className="text-center text-xs text-rose-500">{errors.products && "No Products Was Selected."}</p>
+                {!!choosenProducts?.length && <DataTable columns={columns} data={choosenProducts} totalFor="total" smallSize />}
 
-                {!!choosenProducts?.length && (
-                    <DataTable columns={columns} data={choosenProducts || []} totalFor="total" smallSize />
-                )}
                 <SubmitButton text="submit" isPending={isPending} />
-
                 <DeleteDialog products={choosenProducts} setValue={setValue} />
             </form>
         </DialogForm>

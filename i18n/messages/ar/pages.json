@@ -1,6 +1,32 @@
 {
     "pages": {
         "market": "منتجات المحل",
-        "store": "منتجات المخزن"
+        "store": "منتجات المخزن",
+
+        "transfer": {
+            "heading": "كشف تحويل",
+            "transfer-to": "التحويل الي (المكان)",
+            "market": "الي المحل",
+            "store": "الي المخزن",
+            "submit": "تحويل"
+        },
+
+        "add-category": {
+            "heading": "اضافه قسم جديد",
+            "submit": "انشاء"
+        },
+
+        "add-company": {
+            "heading": "اضافه شركة جديدة",
+            "submit": "انشاء",
+            "upload-button": "تحميل صورة جديدة",
+            "image-url": "ادخل رابط الصورة"
+        },
+
+        "add-product": {
+            "heading": "اضافه منتج جديد",
+            "submit": "انشاء",
+            "optional-supplier": "اسم المورد (اختياري)"
+        }
     }
 }

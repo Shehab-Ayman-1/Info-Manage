@@ -11,6 +11,7 @@ import { DialogForm } from "@/components/ui/dialog";
 import { useModel } from "@/hooks/useModel";
 import { Input } from "@/ui/input";
 import { units } from "@/constants";
+import { useTranslations } from "next-intl";
 
 type InsertAndUpdateDialogProps = {
     setProducts: Dispatch<SetStateAction<ProductType[]>>;
@@ -20,6 +21,7 @@ export const InsertAndUpdateDialog = ({ setProducts }: InsertAndUpdateDialogProp
     const { formState, register, reset, setValue, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(schema) });
     const { type, data, onClose } = useModel();
     const { errors, isLoading } = formState;
+    const text = useTranslations();
 
     useEffect(() => {
         if (type !== "edit-products-model" || !data?.product) return;
@@ -71,25 +73,47 @@ export const InsertAndUpdateDialog = ({ setProducts }: InsertAndUpdateDialogProp
 
     return (
         <DialogForm
-            heading={type === "edit-products-model" ? "Update Product" : "Insert Product"}
-            description="Please Fill All The Required Fields To Succefully Create The Account."
+            description={text("dialogs.add-product.insert-dialog.description")}
+            heading={
+                type === "edit-products-model"
+                    ? text("dialogs.add-product.insert-dialog.update-heading")
+                    : text("dialogs.add-product.insert-dialog.insert-heading")
+            }
         >
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex-between">
-                    <Input placeholder="Product Name" error={errors?.name} {...register("name")} />
-                    <Input placeholder="Barcode (Optional)" error={errors?.barcode} {...register("barcode")} />
+                    <Input
+                        placeholder="product-name"
+                        useTranslate={{ placeholder: "public" }}
+                        error={errors?.name}
+                        {...register("name")}
+                    />
+                    <Input
+                        placeholder="optional-barcode"
+                        useTranslate={{ placeholder: "dialogs.add-product.insert-dialog" }}
+                        error={errors?.barcode}
+                        {...register("barcode")}
+                    />
                 </div>
 
                 <div className="flex-between">
                     <Input
                         type="number"
-                        placeholder="Minimum Limit"
+                        placeholder="minimum"
+                        useTranslate={{ placeholder: "dialogs.add-product.insert-dialog" }}
                         error={errors?.min}
                         {...register("min", { valueAsNumber: true })}
                     />
                     <ComboBox
-                        label="Unit"
+                        label="unit"
                         name="unit"
+                        useTranslate={{
+                            label: "dialogs.add-product.insert-dialog",
+                            trigger: "dialogs.add-product.insert-dialog",
+                            name: "dialogs.add-product.insert-dialog",
+                            item: "dialogs.add-product.insert-dialog",
+                            justPlaceholder: true,
+                        }}
                         items={units}
                         error={errors.unit}
                         setValue={setValue}
@@ -100,13 +124,15 @@ export const InsertAndUpdateDialog = ({ setProducts }: InsertAndUpdateDialogProp
                 <div className="flex-between">
                     <Input
                         type="number"
-                        placeholder="Market Count"
+                        placeholder="market-count"
+                        useTranslate={{ placeholder: "dialogs.add-product.insert-dialog" }}
                         error={errors?.marketCount}
                         {...register("marketCount", { valueAsNumber: true })}
                     />
                     <Input
                         type="number"
-                        placeholder="Store Count"
+                        placeholder="store-count"
+                        useTranslate={{ placeholder: "dialogs.add-product.insert-dialog" }}
                         error={errors?.storeCount}
                         {...register("storeCount", { valueAsNumber: true })}
                     />
@@ -115,19 +141,21 @@ export const InsertAndUpdateDialog = ({ setProducts }: InsertAndUpdateDialogProp
                 <div className="flex-between">
                     <Input
                         type="number"
-                        placeholder="Purchase Price"
+                        placeholder="purchase-price"
+                        useTranslate={{ placeholder: "dialogs.add-product.insert-dialog" }}
                         error={errors?.purchasePrice}
                         {...register("purchasePrice", { valueAsNumber: true })}
                     />
                     <Input
                         type="number"
-                        placeholder="Selling Price"
+                        placeholder="selling-price"
+                        useTranslate={{ placeholder: "dialogs.add-product.insert-dialog" }}
                         error={errors?.sellingPrice}
                         {...register("sellingPrice", { valueAsNumber: true })}
                     />
                 </div>
 
-                <SubmitButton text="Insert" isPending={isLoading} />
+                <SubmitButton text="insert" isPending={isLoading} />
             </form>
         </DialogForm>
     );

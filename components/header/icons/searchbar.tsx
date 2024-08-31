@@ -46,7 +46,7 @@ export const Searchbar = ({}: SearchbarProps) => {
             </PopoverTrigger>
 
             <PopoverContent align="end" className="w-auto rounded-xl border-none shadow-xl sm:w-[600px]">
-                <Input type="search" placeholder="search" onChange={onChange} />
+                <Input type="search" placeholder={text("search")} onChange={onChange} />
 
                 <div className="max-h-96 overflow-y-auto">
                     {products.isLoading && (

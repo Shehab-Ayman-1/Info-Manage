@@ -1,6 +1,32 @@
 {
     "pages": {
         "market": "Market Products",
-        "store": "Store Products"
+        "store": "Store Products",
+
+        "transfer": {
+            "heading": "Transfer Statement",
+            "transfer-to": "Transfer To (Place)",
+            "market": "To Market",
+            "store": "To Store",
+            "submit": "Transfer"
+        },
+
+        "add-category": {
+            "heading": "Add New Category",
+            "submit": "Create"
+        },
+
+        "add-company": {
+            "heading": "Add New Company",
+            "submit": "Create",
+            "upload-button": "Upload An Image",
+            "image-url": "Enter Image URL"
+        },
+
+        "add-product": {
+            "heading": "Add New Product",
+            "submit": "Create",
+            "optional-supplier": "Supplier Name (Optional)"
+        }
     }
 }

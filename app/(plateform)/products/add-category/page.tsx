@@ -8,6 +8,7 @@ import { useCreate } from "@/hooks/api/useCreate";
 import { CreateCategorySchema } from "@/app/api/products/add-category/schema";
 import { CardForm } from "@/components/page-structure/CardForm";
 import { Input } from "@/ui/input";
+import { useTranslations } from "next-intl";
 
 type CategoryProps = {};
 
@@ -15,6 +16,7 @@ const Category = ({}: CategoryProps) => {
     const { mutate, isPending } = useCreate<CreateCategorySchema>("/api/products/add-category", []);
     const [category, setCategory] = useState("");
     const { onReset } = useLists();
+    const text = useTranslations();
     const router = useRouter();
 
     const onChange = (event: any) => {
@@ -35,8 +37,8 @@ const Category = ({}: CategoryProps) => {
 
     return (
         <form onSubmit={onSubmit}>
-            <CardForm heading="Create Category" submitText="Create" disabled={isPending}>
-                <Input placeholder="Category Name" onChange={onChange} disabled={isPending} />
+            <CardForm heading={text("pages.add-category.heading")} submitText={text("public.create")} disabled={isPending}>
+                <Input label="category-name" useTranslate={{ label: "public" }} onChange={onChange} disabled={isPending} />
             </CardForm>
         </form>
     );
