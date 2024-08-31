@@ -5,6 +5,7 @@ import fs from "fs";
 
 export default getRequestConfig(async () => {
     const cookieLocale = cookies().get("NEXT_LOCALE")?.value;
+
     const locale = cookieLocale || "en";
 
     const dir = path.join(process.cwd(), "i18n", "messages", locale);
