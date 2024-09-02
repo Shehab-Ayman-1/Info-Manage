@@ -15,7 +15,7 @@ export const Actions = ({ row }: ActionsProps) => {
     const items = [
         {
             Icon: Trash2Icon,
-            text: "Delete",
+            text: "delete",
             className: { button: "cancel", icon: "cancel" },
             onClick: (original: any) => onOpen("update-products-model", { isDeletedModel: true, productId: original._id }),
         },

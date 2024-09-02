@@ -31,20 +31,20 @@
         "choose-place": "Choose Place",
         "place": "Place",
 
+        "old-supplier": "Old Supplier",
+        "new-supplier": "New Supplier",
+
+        "pay-all": "Pay All",
+        "by-milestone": "By Milestone",
+
         "count": "Count",
         "price": "Price",
 
         "purchase-price": "Purchase Price",
         "sold-price": "Sold Price",
 
-        "insert": "Insert",
-        "submit": "Submit",
-
-        "delete": "Delete",
-        "edit": "Edit",
-
-        "pay": "Payment",
-        "open": "Open",
+        "market-count": "Market Count",
+        "store-count": "Store Count",
 
         "loading": "Loading ...",
         "search": "Search ...",
@@ -53,8 +53,6 @@
         "store": "Store",
 
         "language": "Language",
-        "print": "Print",
-
         "en": "English",
         "ar": "Arabic",
 
@@ -62,10 +60,18 @@
         "visa": "Visa",
 
         "phone": "Phone Number",
+        "barcode": "Barcode",
+
         "bronze-to": "Bronze To",
         "silver-to": "Silver To",
 
-        "create": "Create",
-        "open-insert-products-model": "Insert New Product"
+        "discount": "Discount",
+        "open-insert-products-model": "Insert New Product",
+
+        "print-receipt": "Print Receipt",
+
+        "restore": "Restore",
+        "completed": "Completed",
+        "pending": "Pending"
     }
 }

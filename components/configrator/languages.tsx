@@ -10,6 +10,9 @@ export const Languages = () => {
     const locale = useLocale();
 
     const onChange = (lang: string) => {
+        const cookie = document.cookie.split("; ").find((cookie) => cookie.startsWith("NEXT_LOCALE"));
+        if (!cookie) return;
+
         document.cookie = `NEXT_LOCALE=${lang};`;
         router.refresh();
     };
@@ -17,7 +20,14 @@ export const Languages = () => {
     return (
         <div className="mt-6">
             <h1 className="text-xl font-bold text-primary sm:text-2xl">Languages</h1>
-            <ComboBox label="language" name="language" items={languages} onChange={onChange} defaultValue={locale} />
+            <ComboBox
+                label="language"
+                name="language"
+                useTranslate={{ label: "public", name: "public", justPlaceholder: true }}
+                items={languages}
+                onChange={onChange}
+                defaultValue={locale}
+            />
         </div>
     );
 };

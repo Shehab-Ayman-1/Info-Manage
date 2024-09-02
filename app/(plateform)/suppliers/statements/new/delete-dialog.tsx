@@ -1,3 +1,5 @@
+"use client";
+import { useTranslations } from "next-intl";
 import { Dispatch, SetStateAction } from "react";
 
 import { DialogForm } from "@/components/ui/dialog";
@@ -11,6 +13,7 @@ type DeleteDialogProps = {
 
 export const DeleteDialog = ({ setProducts }: DeleteDialogProps) => {
     const { type, data, onClose } = useModel();
+    const text = useTranslations();
 
     if (type !== "delete-model") return;
 
@@ -20,13 +23,16 @@ export const DeleteDialog = ({ setProducts }: DeleteDialogProps) => {
     };
 
     return (
-        <DialogForm heading="Delete Bill" description="Are You Sure, You Can't Undo This Bill After Deleting">
+        <DialogForm
+            heading={text("dialogs.new-supplier-statement.delete-dialog.heading")}
+            description={text("dialogs.new-supplier-statement.delete-dialog.description")}
+        >
             <div className="flex-end">
                 <Button variant="outline" className="w-fit text-black dark:text-white" onClick={onClose}>
-                    Cancel
+                    {text("buttons.cancel")}
                 </Button>
                 <Button variant="destructive" className="w-fit" onClick={onConfirm}>
-                    Confirm
+                    {text("buttons.confirm")}
                 </Button>
             </div>
         </DialogForm>

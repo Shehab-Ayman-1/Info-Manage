@@ -4,6 +4,8 @@
 
     - Think About New Way About Transactions Collection
 
+    - Change Text From [Bill -> invoice], [restore, refund]
+
     - Think About
         -- البضائع السائله
         -- تفعيل خطه شرائح العملاء

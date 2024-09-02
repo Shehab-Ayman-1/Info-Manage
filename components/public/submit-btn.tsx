@@ -10,7 +10,7 @@ type SubmitButtonProps = {
 };
 
 export const SubmitButton = ({ text, isPending, className }: SubmitButtonProps) => {
-    const t = useTranslations("public");
+    const t = useTranslations("buttons");
 
     return (
         <Button

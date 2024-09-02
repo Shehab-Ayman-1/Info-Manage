@@ -1,14 +1,12 @@
 "use client";
 import { useOrganization } from "@clerk/nextjs";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/ui/button";
-import { useTranslations } from "next-intl";
 
-type LogoProps = {};
-
-export const Logo = ({}: LogoProps) => {
+export const Logo = () => {
     const { organization } = useOrganization();
     const text = useTranslations("header");
 
@@ -20,7 +18,6 @@ export const Logo = ({}: LogoProps) => {
                     alt="logo"
                     width={35}
                     height={35}
-                    priority
                     className="rounded-xl"
                 />
                 <h2 className="text-gradient hidden text-3xl font-extrabold capitalize sm:block">

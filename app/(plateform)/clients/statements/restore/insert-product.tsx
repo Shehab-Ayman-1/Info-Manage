@@ -12,6 +12,7 @@ import { SubmitButton } from "@/components/public/submit-btn";
 import { ComboBox } from "@/components/ui/comboBox";
 import { DialogForm } from "@/components/ui/dialog";
 import { Input } from "@/ui/input";
+import { useTranslations } from "next-intl";
 
 const schema = z.object({
     productId: z.string().min(1),
@@ -42,22 +43,25 @@ export const InsertProduct = ({ billBarcode, setProducts }: InsertProductProps) 
     const { formState, register, setValue, watch, reset, clearErrors, handleSubmit } = useForm({
         resolver: zodResolver(schema.omit({ company: true, name: true, total: true })),
     });
-    const { data, isPending } = useGet<ProductResponse[]>(`/api/clients/statements/restore/${billBarcode}`, []);
+    const { data, isPending } = useGet<ProductResponse[]>(`/api/clients/statements/restore/${billBarcode}`, [billBarcode]);
 
     const { type, onClose } = useModel();
+    const text = useTranslations();
 
+    const productId = watch("productId");
+    const soldPrice = watch("soldPrice");
     const { errors, isLoading } = formState;
-    const selectedProductId = watch("productId");
 
     useEffect(() => {
-        if (!selectedProductId || !data) return;
-        const product = data.find((product) => product.productId === selectedProductId);
+        if (!productId || !data) return;
+
+        const product = data.find((product) => product.productId === productId);
         if (!product) return;
 
         setValue("count", product.count);
         setValue("purchasePrice", product.purchasePrice);
         setValue("soldPrice", product.soldPrice);
-    }, [data, selectedProductId, setValue]);
+    }, [data, productId, setValue]);
 
     if (type !== "insert-bill-products-model") return;
 
@@ -83,11 +87,15 @@ export const InsertProduct = ({ billBarcode, setProducts }: InsertProductProps) 
     const productLists = data?.map(({ productId, productName }) => ({ _id: productId, value: productId, title: productName }));
 
     return (
-        <DialogForm heading="Insert Product" description="All Fields Are Required">
+        <DialogForm
+            heading={text("dialogs.restore-client-statement.insert-dialog.heading")}
+            description={text("dialogs.restore-client-statement.insert-dialog.description")}
+        >
             <form onSubmit={handleSubmit(onSubmit)}>
                 <ComboBox
-                    label="Product Name"
+                    label="choose-product"
                     name="productId"
+                    useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
                     loading={isPending}
                     items={productLists || []}
                     error={errors?.productId}
@@ -98,19 +106,22 @@ export const InsertProduct = ({ billBarcode, setProducts }: InsertProductProps) 
                 <div className="flex-between">
                     <Input
                         type="number"
-                        placeholder="Count"
+                        label="count"
+                        useTranslate={{ label: "public" }}
                         error={errors.count}
                         {...register("count", { valueAsNumber: true })}
                     />
                     <Input
                         type="number"
-                        placeholder="Sold Price"
+                        label="sold-price"
+                        useTranslate={{ label: "public" }}
+                        className="pointer-events-none opacity-50"
                         error={errors.soldPrice}
-                        {...register("soldPrice", { valueAsNumber: true, disabled: true })}
+                        {...register("soldPrice", { valueAsNumber: true, value: soldPrice })}
                     />
                 </div>
 
-                <SubmitButton text="Buy" isPending={isLoading} />
+                <SubmitButton text="insert" isPending={isLoading} />
             </form>
         </DialogForm>
     );

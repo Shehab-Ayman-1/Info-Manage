@@ -1,11 +1,34 @@
 {
     "buttons": {
         "new-statement": "كشف حساب جديد",
+        "new-transaction": "معاملة جديدة",
         "transfer": "تحويل منتجات",
+
+        "new-supplier": "مورد جديد",
         "new-client": "عميل جديد",
+
         "confirm": "تأكيد",
         "cancel": "الغاء",
+
+        "submit": "انشاء",
         "update": "تعديل",
-        "create": "انشاء"
+
+        "create": "انشاء",
+        "insert": "اضافه",
+
+        "buy": "شراء",
+        "sale": "بيع",
+
+        "delete": "حذف",
+        "edit": "تعديل",
+
+        "open": "فتح",
+        "pay": "دفعه ماليه",
+
+        "print": "طباعه",
+        "restore": "استرجاع",
+
+        "edit-supplier": "تعديل المورد",
+        "edit-products": "تعديل المنتجات"
     }
 }

@@ -1,11 +1,34 @@
 {
     "buttons": {
         "new-statement": "New Statement",
+        "new-transaction": "New Transaction",
         "transfer": "Transfer Products",
+
+        "new-supplier": "New Supplier",
         "new-client": "New Client",
+
         "confirm": "Confirm",
         "cancel": "Cancel",
+
+        "create": "Create",
+        "insert": "Insert",
+
+        "submit": "Submit",
         "update": "Update",
-        "create": "Create"
+
+        "buy": "Buy",
+        "sale": "Sale",
+
+        "delete": "Delete",
+        "edit": "Edit",
+
+        "open": "Open",
+        "pay": "Payment",
+
+        "print": "Print",
+        "restore": "Restore",
+
+        "edit-supplier": "Edit Supplier",
+        "edit-products": "Edit Products"
     }
 }

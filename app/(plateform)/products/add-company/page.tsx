@@ -50,7 +50,7 @@ const Company = ({}: CompanyProps) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <CardForm heading={text("pages.add-company.heading")} submitText={text("public.create")} disabled={createPending}>
+            <CardForm heading={text("pages.add-company.heading")} submitText={text("buttons.create")} disabled={createPending}>
                 <div className="relative mx-auto h-28 w-28 overflow-hidden rounded-[100%]">
                     <Image src={availableImageSrc ? image : "/overview.jpeg"} className="h-full w-full" alt="car" fill />
                 </div>

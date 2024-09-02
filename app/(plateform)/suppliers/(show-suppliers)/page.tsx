@@ -18,12 +18,12 @@ const Suppliers = () => {
 
     return (
         <TableForm
-            pageTitle="Supplier List"
+            pageTitle="pages.supplier-lists.heading"
             columns={columns}
             data={data}
             totalFor="pending"
             filterBy={["supplier"]}
-            navigate={[{ text: "New Supplier", to: "/suppliers/add-supplier" }]}
+            navigate={[{ text: "new-statement", to: "/suppliers/add-supplier" }]}
         >
             <UpdateDialog />
             <DeleteDialog />

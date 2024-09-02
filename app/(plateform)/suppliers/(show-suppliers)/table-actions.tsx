@@ -15,18 +15,18 @@ export const Actions = ({ row }: ActionsProps) => {
     const items = [
         {
             Icon: EditIcon,
-            text: "Edit Supplier",
+            text: "edit-supplier",
             onClick: (original: any) => onOpen("update-model", { supplier: original }),
         },
         {
             Icon: EditIcon,
-            text: "Edit Products",
+            text: "edit-products",
             onClick: (original: any) =>
                 onOpen("update-products-model", { supplierId: original._id, products: original.products }),
         },
         {
             Icon: Trash2Icon,
-            text: "Delete",
+            text: "delete",
             className: { button: "cancel", icon: "cancel" },
             onClick: (original: any) => onOpen("delete-model", { supplierId: original._id }),
         },

@@ -19,17 +19,17 @@ export const Actions = ({ row }: ActionsProps) => {
     const items = [
         {
             Icon: EyeIcon,
-            text: "Open",
+            text: "open",
             onClick: (original: any) => router.push(`/profile/supplier/${original._id}`),
         },
         {
             Icon: BadgeDollarSignIcon,
-            text: "Pay",
+            text: "pay",
             onClick: (original: any) => onOpen("pay-model", { billId: original._id }),
         },
         {
             Icon: Trash2Icon,
-            text: "Delete",
+            text: "delete",
             className: { button: "cancel", icon: "cancel" },
             onClick: (original: any) => onOpen("delete-model", { billId: original._id }),
         },

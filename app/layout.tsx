@@ -27,12 +27,11 @@ const Layout = async ({ children }: LayoutProps) => {
     const org = orgs?.data[0]?.organization;
 
     if (!org?.id) return <NotSignedIn>{children}</NotSignedIn>;
-
     const locale = await getLocale();
 
     return (
         <html suppressHydrationWarning lang={locale} dir={locale === "en" ? "ltr" : "rtl"}>
-            <body className="bg-gradient min-h-screen">
+            <body className="bg-gradient relative min-h-screen w-full max-w-[100vw] overflow-x-auto">
                 <Providers>
                     <ClerkLoading>
                         <Icons.spinner className="fixed left-[calc(50%-32px)] top-[calc(50%-32px)] size-16 animate-spin" />

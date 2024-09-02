@@ -1,4 +1,6 @@
+"use client";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { useUpdate } from "@/hooks/api/useUpdate";
@@ -25,6 +27,7 @@ type RequestType = {
 
 export const UpdateProductsDialog = () => {
     const { mutate, isPending } = useUpdate<RequestType>("/api/suppliers/products", ["suppliers"]);
+    const text = useTranslations();
 
     const { products: productsLists, onReset } = useLists();
     const { type, data, onClose } = useModel();
@@ -33,14 +36,14 @@ export const UpdateProductsDialog = () => {
     const [supplierId, setSupplierId] = useState("");
 
     useEffect(() => {
+        (async () => productsLists.fetcher?.())();
+    }, [productsLists]);
+
+    useEffect(() => {
         if (!data?.products?.length || !data?.supplierId) return;
         setProducts(data.products);
         setSupplierId(data.supplierId);
     }, [data]);
-
-    useEffect(() => {
-        (async () => productsLists.fetcher?.())();
-    }, [productsLists]);
 
     if (type !== "update-products-model") return;
 
@@ -71,14 +74,22 @@ export const UpdateProductsDialog = () => {
     };
 
     return (
-        <DialogForm heading="Update Products" description="Any Changes Can't Be Undo After Saving">
+        <DialogForm
+            heading={text("dialogs.show-suppliers.update-products-dialog.heading")}
+            description={text("dialogs.show-suppliers.update-products-dialog.description")}
+        >
             <form onSubmit={onSubmit}>
-                <ComboBox label="Product" name="productId" groups={productsLists.groups} onChange={onChange} />
-
+                <ComboBox
+                    label="choose-product"
+                    name="productId"
+                    useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
+                    groups={productsLists.groups}
+                    onChange={onChange}
+                />
                 {!!products.length && <DataTable columns={columns} data={products} smallSize />}
 
                 <Button type="submit" className="w-full" disabled={isPending}>
-                    Update
+                    {text("buttons.update")}
                 </Button>
             </form>
 

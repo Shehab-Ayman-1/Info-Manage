@@ -11,7 +11,6 @@ export const DBConnection = async () => {
         await mongoose.connect(local! || online!, { serverSelectionTimeoutMS: 3e6 });
 
         connect = true;
-        console.log("DB Connected");
     } catch (error: any) {
         console.log(error.message);
     }

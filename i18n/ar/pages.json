@@ -59,6 +59,73 @@
 
         "client-bills": {
             "heading": "قائمة فواتير العملاء"
+        },
+
+        "new-client-statement": {
+            "heading": "كشف حساب للعميل"
+        },
+
+        "restore-client-statement": {
+            "heading": "كشف استرجاع للعميل",
+            "cancel-bill-btn": "الغاء الفاتورة"
+        },
+
+        "supplier-lists": {
+            "heading": "قائمة الموردين"
+        },
+
+        "add-supplier": {
+            "heading": "اضافه مورد جديد"
+        },
+
+        "supplier-bills": {
+            "heading": "فواتير الموردين"
+        },
+
+        "new-supplier-statement": {
+            "heading": "كشف حساب مورد"
+        },
+
+        "restore-supplier-statement": {
+            "heading": "كشف استرجاع للمورد"
+        },
+
+        "cashes": {
+            "locker": {
+                "heading": "تفاصيل الخزنة",
+                "cash": "اجمالي الكاش",
+                "visa": "اجمالي الفيزا"
+            },
+            "market": {
+                "heading": "تفاصيل المحل",
+                "purchases": "الاجمالي حسب سعر الشراء",
+                "sales": "الاجمالي حسب سعر البيع"
+            },
+            "store": {
+                "heading": "تفاصيل المخزن",
+                "purchases": "الاجمالي حسب سعر الشراء",
+                "sales": "الاجمالي حسب سعر البيع"
+            },
+            "debts": {
+                "heading": "تفاصيل المديونيات",
+                "clients": "مديونيات العملاء",
+                "suppliers": "مديونيات الموردين"
+            }
+        },
+
+        "transactions": {
+            "heading": "قائمة المعاملات"
+        },
+
+        "locker": {
+            "heading": "سحب او ايداع",
+            "process": "العملية",
+            "withdraw-from-locker": "سحب من الخزنة",
+            "deposit-to-locker": "ايداع الي الخزنة"
+        },
+
+        "product-profile": {
+            "heading": "عرض المنتج"
         }
     }
 }

@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
 import { formatDate } from "date-fns";
 
 import { TableForm } from "@/components/page-structure/table-form";
@@ -26,7 +25,6 @@ const dateFormate = formatDate(new Date(), "yyyy-MM-dd");
 const ClientBills = () => {
     const [date, setDate] = useState(dateFormate);
     const { data, error, refetch } = useGet<BillType[]>(`/api/clients/bills?date=${date}`, ["client-bills"]);
-    const text = useTranslations("pages");
 
     useEffect(() => {
         refetch();
@@ -36,7 +34,7 @@ const ClientBills = () => {
 
     return (
         <TableForm
-            pageTitle={text("client-bills.heading")}
+            pageTitle="pages.client-bills.heading"
             columns={columns}
             data={data || []}
             totalFor="pending"

@@ -1,6 +1,4 @@
 "use client";
-import { useTranslations } from "next-intl";
-
 import { useGet } from "@/hooks/api/useGet";
 import { columns } from "./table-columns";
 
@@ -15,14 +13,13 @@ type TodayPurchasesProps = {
 
 const TodayPurchases = () => {
     const { data, isPending, error } = useGet<TodayPurchasesProps[]>("/api/products/today-purchases", ["supplier-bills"]);
-    const text = useTranslations("pages");
 
     if (isPending) return <CardLoading />;
     if (error) return <h1>{error?.message}</h1>;
 
     return (
         <TableForm
-            pageTitle={text("today-purchases.heading")}
+            pageTitle="today-purchases.heading"
             columns={columns}
             data={data}
             filterBy={["product"]}

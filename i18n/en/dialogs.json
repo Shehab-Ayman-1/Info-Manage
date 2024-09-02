@@ -36,12 +36,113 @@
         "client-bills": {
             "payment-dialog": {
                 "heading": "Payment Amount",
-                "description": "Create A New Payment Transaction",
+                "description": "Make A New Payment Transaction",
                 "payment-amount": "Payment Amount"
             },
             "update-dialog": {
                 "heading": "Update Client Bill",
                 "description": "You Can't Return Any Changes On The Bill After Confirming."
+            }
+        },
+
+        "new-client-statement": {
+            "insert-dialog": {
+                "heading": "Insert Product",
+                "description": "Please Fill All The Required Fields To Insert The New Product."
+            },
+            "delete-dialog": {
+                "heading": "Remove Product",
+                "description": "Are You Sure, You Want To Remove This Product"
+            }
+        },
+
+        "restore-client-statement": {
+            "insert-dialog": {
+                "heading": "Insert Product",
+                "description": "Please Fill All The Required Fields To Insert The New Product."
+            },
+            "remove-dialog": {
+                "heading": "Remove Product",
+                "description": "Are You Sure, You Want To Remove This Product"
+            },
+            "delete-dialog": {
+                "heading": "Delete Bill",
+                "description": "Are You Sure, You Want To Delete This Bill"
+            }
+        },
+
+        "show-suppliers": {
+            "delete-dialog": {
+                "heading": "Delete Supplier",
+                "description": "Are You Sure, You Can't Undo This Action Again."
+            },
+            "update-supplier-dialog": {
+                "heading": "Update Supplier",
+                "description": "Are You Sure, You Can't Undo This Action Again."
+            },
+            "update-products-dialog": {
+                "heading": "Update Products",
+                "description": "Are You Sure, You Can't Undo This Action Again."
+            }
+        },
+
+        "add-supplier": {
+            "insert-dialog": {
+                "heading": "Insert Product",
+                "description": "Please Fill All The Required Fields To Insert The New Product."
+            },
+            "delete-dialog": {
+                "heading": "Remove Product",
+                "description": "Are You Sure, You Want To Remove This Product"
+            }
+        },
+
+        "supplier-bills": {
+            "payment-dialog": {
+                "heading": "Payment Amount",
+                "description": "Make A New Payment Transaction",
+                "payment-amount": "Payment Amount"
+            },
+            "delete-dialog": {
+                "heading": "Delete Bill",
+                "description": "Are You Sure, You Want To Delete This Bill"
+            }
+        },
+
+        "new-supplier-statement": {
+            "insert-dialog": {
+                "heading": "Insert Product",
+                "description": "Please Fill All The Required Fields To Insert The New Product."
+            },
+            "delete-dialog": {
+                "heading": "Remove Product",
+                "description": "Are You Sure, You Want To Remove This Product"
+            }
+        },
+
+        "restore-supplier-statement": {
+            "insert-dialog": {
+                "heading": "Insert Product",
+                "description": "Please Fill All The Required Fields To Insert The New Product."
+            },
+            "remove-dialog": {
+                "heading": "Remove Product",
+                "description": "Are You Sure, You Want To Remove This Product"
+            },
+            "delete-dialog": {
+                "heading": "Delete Bill",
+                "description": "Are You Sure, You Want To Delete This Bill"
+            }
+        },
+
+        "product-profile": {
+            "update-dialog": {
+                "heading": "Update Product",
+                "description": "Are You Sure, You Want To Update This Product"
+            },
+            "delete-dialog": {
+                "heading": "Delete Product",
+                "description": "Are You Sure, You Want To Delete This Product"
             }
         }
     }

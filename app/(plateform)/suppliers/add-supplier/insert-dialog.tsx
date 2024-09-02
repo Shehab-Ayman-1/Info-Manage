@@ -2,6 +2,7 @@
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { useLists } from "@/hooks/data/useLists";
@@ -19,6 +20,7 @@ type InsertDialogProps = {
 export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
     const { formState, setValue, reset, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(schema) });
     const { errors, isLoading } = formState;
+    const text = useTranslations();
 
     const { type, onClose } = useModel();
     const { products } = useLists();
@@ -48,18 +50,22 @@ export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
     };
 
     return (
-        <DialogForm heading="Insert Product" description="Append Product To The Choosen Supplier">
+        <DialogForm
+            heading={text("dialogs.add-supplier.insert-dialog.heading")}
+            description={text("dialogs.add-supplier.insert-dialog.description")}
+        >
             <form onSubmit={handleSubmit(onSubmit)}>
                 <ComboBox
-                    label="Product"
+                    label="product-name"
                     name="productId"
+                    useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
                     loading={products.isLoading}
                     groups={products.groups}
                     error={errors?.productId}
                     setValue={setValue}
                     clearErrors={clearErrors}
                 />
-                <SubmitButton text="Insert" isPending={isLoading} />
+                <SubmitButton text="insert" isPending={isLoading} />
             </form>
         </DialogForm>
     );

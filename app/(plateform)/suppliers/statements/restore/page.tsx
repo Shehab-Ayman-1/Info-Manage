@@ -1,8 +1,9 @@
 "use client";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 import { createSchema, RestoreSupplierType } from "@/app/api/suppliers/statements/restore/schema";
 import { OpenModuleButton } from "@/components/public/openModuleButton";
@@ -37,6 +38,7 @@ const Clients = ({}: ClientsProps) => {
 
     const processValue = watch("process");
     const supplierId = watch("supplierId");
+    const text = useTranslations();
     const router = useRouter();
 
     useEffect(() => {
@@ -81,12 +83,13 @@ const Clients = ({}: ClientsProps) => {
     };
 
     return (
-        <CardForm heading="Supplier Restore Statement">
+        <CardForm heading={text("pages.restore-supplier-statement.heading")}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex-between">
                     <ComboBox
-                        label="Choose Supplier"
+                        label="choose-supplier"
                         name="supplierId"
+                        useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
                         loading={suppliers.isLoading}
                         items={suppliers.lists}
                         error={errors.supplierId}
@@ -94,8 +97,9 @@ const Clients = ({}: ClientsProps) => {
                         clearErrors={clearErrors}
                     />
                     <ComboBox
-                        label="Choose Method"
+                        label="choose-method"
                         name="method"
+                        useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                         error={errors.method}
                         items={methods}
                         setValue={setValue}
@@ -105,16 +109,18 @@ const Clients = ({}: ClientsProps) => {
 
                 <div className={cn("flex-between", processValue === "milestone" && "flex-wrap")}>
                     <ComboBox
-                        label="Choose Process"
+                        label="choose-process"
                         name="process"
+                        useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                         items={process}
                         error={errors.process}
                         onChange={onProcessChange}
                     />
                     <div className="flex-between w-full">
                         <ComboBox
-                            label="Place"
+                            label="choose-place"
                             name="place"
+                            useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                             items={place}
                             error={errors.place}
                             setValue={setValue}
@@ -123,7 +129,8 @@ const Clients = ({}: ClientsProps) => {
                         {processValue === "milestone" && (
                             <Input
                                 type="number"
-                                placeholder="Amount"
+                                label="pay"
+                                useTranslate={{ label: "buttons" }}
                                 error={errors.paid}
                                 {...register("paid", { valueAsNumber: true })}
                             />
@@ -135,7 +142,7 @@ const Clients = ({}: ClientsProps) => {
                 <OpenModuleButton type="insert-products-model" clearErrors={clearErrors} />
 
                 {!!products.length && <DataTable columns={columns} data={products} totalFor="total" smallSize />}
-                <SubmitButton text="Buy" isPending={isPending} />
+                <SubmitButton text="restore" isPending={isPending} />
             </form>
 
             <InsertProduct setProducts={setProducts} />

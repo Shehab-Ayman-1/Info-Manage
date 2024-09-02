@@ -23,14 +23,8 @@ export const POST = async (req: NextRequest) => {
         const body = await req.json();
         const { billBarcode, products } = createSchema.parse(body);
 
-        const isRestoredBefore = await ClientBills.countDocuments({ orgId, barcode: billBarcode }, { session });
-        if (isRestoredBefore > 1) {
-            await session.abortTransaction();
-            return json("Can't Restored The Same Bill Multible Times.", 400);
-        }
-
-        const bill = await ClientBills.findOne({ orgId, barcode: billBarcode });
-        if (!bill) return json("Wrong Barcode.", 400);
+        const bill = await ClientBills.findOne({ orgId, type: "sale", barcode: billBarcode });
+        if (!bill) return json("The Client Bill Not Found.", 400);
 
         const productsTotalCosts = products.reduce((prev, cur) => prev + cur.total, 0);
         const billProducts = products.map(({ total, ...product }) => product);

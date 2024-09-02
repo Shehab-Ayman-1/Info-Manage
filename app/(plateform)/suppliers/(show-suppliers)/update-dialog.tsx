@@ -1,6 +1,7 @@
 "use client";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 
 import { useUpdate } from "@/hooks/api/useUpdate";
@@ -17,6 +18,7 @@ export const UpdateDialog = ({}: UpdateDialogProps) => {
     const { mutate, isPending } = useUpdate<EditSchemaType>("/api/suppliers", ["suppliers"]);
     const { formState, register, setValue, handleSubmit } = useForm({ resolver: zodResolver(editSchema) });
     const { type, data, onClose } = useModel();
+    const text = useTranslations();
     const { errors } = formState;
 
     useEffect(() => {
@@ -34,13 +36,28 @@ export const UpdateDialog = ({}: UpdateDialogProps) => {
     };
 
     return (
-        <DialogForm heading="Update Supplier" description="Are You Sure, You Can't Undo This Action Again.">
+        <DialogForm
+            heading={text("dialogs.show-suppliers.update-supplier-dialog.heading")}
+            description={text("dialogs.show-suppliers.update-supplier-dialog.description")}
+        >
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Input placeholder="Supplier Name" error={errors.name} {...register("name")} />
-                <Input type="number" placeholder="Phone Number:" error={errors.phone} {...register("phone")} />
+                <Input
+                    type="text"
+                    label="supplier-name"
+                    useTranslate={{ label: "public" }}
+                    error={errors.name}
+                    {...register("name")}
+                />
+                <Input
+                    type="number"
+                    label="phone"
+                    useTranslate={{ label: "public" }}
+                    error={errors.phone}
+                    {...register("phone")}
+                />
 
                 <Button type="submit" className="w-full" disabled={isPending}>
-                    Update
+                    {text("buttons.update")}
                 </Button>
             </form>
         </DialogForm>

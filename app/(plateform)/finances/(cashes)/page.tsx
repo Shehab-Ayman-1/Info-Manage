@@ -1,6 +1,7 @@
 "use client";
 import { useSubscription } from "@/hooks/useSubscription";
 import { useGet } from "@/hooks/api/useGet";
+import { useTranslations } from "next-intl";
 
 import { CashesLoading } from "@/components/loading/cashes";
 import { CashCard } from "./card";
@@ -27,6 +28,7 @@ type CashesProps = {
 const Cashes = () => {
     const { data, isPending, error } = useGet<CashesProps>("/api/finances", ["cashes"]);
     const { isAdditionalSubscribe } = useSubscription(["premium"]);
+    const text = useTranslations();
 
     if (isPending) return <CashesLoading />;
     if (error) return <h3>{error?.message}</h3>;
@@ -37,38 +39,38 @@ const Cashes = () => {
     return (
         <div className="flex-between mt-4 !flex-wrap">
             <CashCard
-                heading="Details Of Locker"
+                heading={text("pages.cashes.locker.heading")}
                 isAdditionalSubscribe
                 items={[
-                    { title: "Total By Cash", value: locker.cash },
-                    { title: "Total By Visa", value: locker.visa },
+                    { title: text("pages.cashes.locker.cash"), value: locker.cash },
+                    { title: text("pages.cashes.locker.visa"), value: locker.visa },
                 ]}
             />
 
             <CashCard
-                heading="Details Of Market"
+                heading={text("pages.cashes.market.heading")}
                 isAdditionalSubscribe={isAdditionalSubscribe}
                 items={[
-                    { title: "Total By Purchase Price", value: market.purchasePrice },
-                    { title: "Total By Selling Price", value: market.sellingPrice },
+                    { title: text("pages.cashes.market.purchases"), value: market.purchasePrice },
+                    { title: text("pages.cashes.market.sales"), value: market.sellingPrice },
                 ]}
             />
 
             <CashCard
-                heading="Details Of Store"
+                heading={text("pages.cashes.store.heading")}
                 isAdditionalSubscribe={isAdditionalSubscribe}
                 items={[
-                    { title: "Total By Purchase Price", value: store.purchasePrice },
-                    { title: "Total By Selling Price", value: store.sellingPrice },
+                    { title: text("pages.cashes.store.purchases"), value: store.purchasePrice },
+                    { title: text("pages.cashes.store.sales"), value: store.sellingPrice },
                 ]}
             />
 
             <CashCard
-                heading="Details Of Debts"
+                heading={text("pages.cashes.debts.heading")}
                 isAdditionalSubscribe={isAdditionalSubscribe}
                 items={[
-                    { title: "Client Debts", value: debts.clients },
-                    { title: "Supplier Debts", value: debts.suppliers },
+                    { title: text("pages.cashes.debts.clients"), value: debts.clients },
+                    { title: text("pages.cashes.debts.suppliers"), value: debts.suppliers },
                 ]}
             />
         </div>

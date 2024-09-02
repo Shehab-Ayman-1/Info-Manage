@@ -32,13 +32,13 @@ const Transactions = () => {
 
     return (
         <TableForm
-            pageTitle="Transactions List"
+            pageTitle="pages.transactions.heading"
             columns={columns}
             data={data || []}
             filterBy={["reason"]}
-            navigate={[{ text: "New Transaction", to: "/finances/locker" }]}
+            navigate={[{ text: "new-transaction", to: "/finances/locker" }]}
         >
-            <div className="mt-4 w-fit sm:ml-4">
+            <div className="mt-4 w-fit sm:mx-4">
                 <Input type="date" value={date} name="date" onChange={(event) => setDate(() => event.target.value)} />
             </div>
         </TableForm>

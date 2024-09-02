@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { useLists } from "@/hooks/data/useLists";
@@ -8,7 +9,6 @@ import { useCreate } from "@/hooks/api/useCreate";
 import { CreateCategorySchema } from "@/app/api/products/add-category/schema";
 import { CardForm } from "@/components/page-structure/CardForm";
 import { Input } from "@/ui/input";
-import { useTranslations } from "next-intl";
 
 type CategoryProps = {};
 
@@ -37,7 +37,7 @@ const Category = ({}: CategoryProps) => {
 
     return (
         <form onSubmit={onSubmit}>
-            <CardForm heading={text("pages.add-category.heading")} submitText={text("public.create")} disabled={isPending}>
+            <CardForm heading={text("pages.add-category.heading")} submitText={text("buttons.create")} disabled={isPending}>
                 <Input label="category-name" useTranslate={{ label: "public" }} onChange={onChange} disabled={isPending} />
             </CardForm>
         </form>

@@ -32,16 +32,35 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
                 $unwind: "$products.source",
             },
             {
+                $group: {
+                    _id: "$products.productId",
+                    productName: { $first: "$products.source.name" },
+                    purchasePrice: { $first: "$products.purchasePrice" },
+                    soldPrice: { $first: "$products.soldPrice" },
+                    saleCount: {
+                        $sum: {
+                            $cond: [{ $eq: ["$type", "sale"] }, "$products.count", 0],
+                        },
+                    },
+                    restoreCount: {
+                        $sum: {
+                            $cond: [{ $eq: ["$type", "restore"] }, "$products.count", 0],
+                        },
+                    },
+                },
+            },
+            {
                 $project: {
                     _id: 0,
-                    productId: "$products.productId",
-                    productName: "$products.source.name",
-                    purchasePrice: "$products.purchasePrice",
-                    soldPrice: "$products.soldPrice",
-                    count: "$products.count",
+                    productId: "$_id",
+                    productName: 1,
+                    purchasePrice: 1,
+                    soldPrice: 1,
+                    count: { $subtract: ["$saleCount", "$restoreCount"] },
                 },
             },
         ]);
+
 
         return json(clientBills);
     } catch (error: any) {

@@ -2,6 +2,7 @@
 import { useClerk, useOrganization, ClerkLoaded } from "@clerk/nextjs";
 import { useReactToPrint } from "react-to-print";
 import { PrinterCheckIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { formatDate } from "date-fns";
 import Image from "next/image";
 
@@ -39,6 +40,7 @@ const BillProfile = ({ params }: BillProfileProps) => {
     const { data, isPending, error } = useGet<BillProfileType>(`/api/profile/client/${params.billId}`, [params.billId]);
     const { organization } = useOrganization();
     const { user } = useClerk();
+    const text = useTranslations();
 
     const onPrint = useReactToPrint({
         content: () => document.getElementById("client-bill"),
@@ -55,14 +57,22 @@ const BillProfile = ({ params }: BillProfileProps) => {
         <section id="client-bill">
             <div className="text-center">
                 <div className="flex-between mb-4">
-                    <h1 className={styleText}>Client: {data.client.name}</h1>
-                    {data.state !== "restore" && <h1 className={styleText}>Barcode: {data.barcode.toLocaleString()}</h1>}
-                    <h1 className={styleText}>Created At: {formatDate(data.createdAt, "dd / MM / yyyy")}</h1>
+                    <h1 className={styleText}>
+                        {text("public.client")}: {data.client.name}
+                    </h1>
+                    {data.state !== "restore" && (
+                        <h1 className={styleText}>
+                            {text("public.barcode")}: {data.barcode.toLocaleString()}
+                        </h1>
+                    )}
+                    <h1 className={styleText}>
+                        {text("table.created-at")}: {formatDate(data.createdAt, "dd / MM / yyyy")}
+                    </h1>
                 </div>
 
-                <Button size="lg" className="w-fit gap-1 text-lg font-bold print:hidden" onClick={onPrint}>
+                <Button size="lg" className="w-fit gap-2 text-lg font-bold print:hidden" onClick={onPrint}>
                     <PrinterCheckIcon className="size-5 !text-white dark:!text-black" />
-                    Print Receipt
+                    {text("public.print-receipt")}
                 </Button>
             </div>
 
@@ -71,15 +81,27 @@ const BillProfile = ({ params }: BillProfileProps) => {
             </div>
 
             <div className="flex-around flex-wrap md:flex-nowrap">
-                <h1 className={styleText}>Total: ( ${data.total} )</h1>
-                <h1 className={styleText}>Paid: ( ${data.paid} )</h1>
-                <h1 className={styleText}>Pending: ( ${data.total - data.paid} )</h1>
+                <h1 className={styleText}>
+                    {text("table.total")}: ( ${data.total} )
+                </h1>
+                <h1 className={styleText}>
+                    {text("table.paid")}: ( ${data.paid} )
+                </h1>
+                <h1 className={styleText}>
+                    {text("table.pending")}: ( ${data.total - data.paid} )
+                </h1>
             </div>
 
             <div className="flex-around flex-wrap md:flex-nowrap">
-                <h1 className={styleText}>Discount: ( ${data.discount} )</h1>
-                <h1 className={styleText}>State: ( {data.state} )</h1>
-                <h1 className={cn(styleText, "print:hidden")}>Profits: ( ${data.billProfits} )</h1>
+                <h1 className={styleText}>
+                    {text("table.discount")}: ( ${data.discount} )
+                </h1>
+                <h1 className={styleText}>
+                    {text("table.state")}: ( {text(`public.${data.state}`)} )
+                </h1>
+                <h1 className={cn(styleText, "print:hidden")}>
+                    {text("table.profits")}: ( ${data.billProfits} )
+                </h1>
             </div>
 
             <ClerkLoaded>

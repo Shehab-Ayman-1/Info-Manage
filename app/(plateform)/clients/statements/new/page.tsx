@@ -3,6 +3,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 import { createSchema, CreateClientType } from "@/app/api/clients/statements/new/schema";
 import { OpenModuleButton } from "@/components/public/openModuleButton";
@@ -36,6 +37,7 @@ const Clients = ({}: ClientsProps) => {
     const { errors } = formState;
 
     const processValue = watch("process");
+    const text = useTranslations();
     const router = useRouter();
 
     useEffect(() => {
@@ -71,12 +73,13 @@ const Clients = ({}: ClientsProps) => {
     };
 
     return (
-        <CardForm heading="Client Statement">
+        <CardForm heading={text("pages.new-client-statement.heading")}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex-between">
                     <ComboBox
-                        label="Choose Client"
+                        label="choose-client"
                         name="clientId"
+                        useTranslate={{ label: "public", trigger: "public", name: "public", customeTrigger: true }}
                         loading={clients.isLoading}
                         items={clients.lists}
                         error={errors?.clientId}
@@ -84,8 +87,9 @@ const Clients = ({}: ClientsProps) => {
                         clearErrors={clearErrors}
                     />
                     <ComboBox
-                        label="Choose Method"
+                        label="choose-method"
                         name="method"
+                        useTranslate={{ label: "public", trigger: "public", name: "public", item: "public" }}
                         error={errors?.method}
                         items={methods}
                         setValue={setValue}
@@ -95,8 +99,9 @@ const Clients = ({}: ClientsProps) => {
 
                 <div className={cn("flex-between", processValue === "milestone" && "flex-wrap")}>
                     <ComboBox
-                        label="Choose Process"
+                        label="choose-process"
                         name="process"
+                        useTranslate={{ label: "public", trigger: "public", name: "public", item: "public" }}
                         items={process}
                         error={errors?.process}
                         onChange={onProcessChange}
@@ -105,7 +110,8 @@ const Clients = ({}: ClientsProps) => {
                     <div className="flex-between w-full">
                         <Input
                             type="number"
-                            placeholder="Discount"
+                            label="discount"
+                            useTranslate={{ label: "public" }}
                             error={errors.discount}
                             {...register("discount", { valueAsNumber: true, value: 0 })}
                         />
@@ -113,7 +119,8 @@ const Clients = ({}: ClientsProps) => {
                         {processValue === "milestone" && (
                             <Input
                                 type="number"
-                                placeholder="Paid Amount"
+                                label="pay"
+                                useTranslate={{ label: "buttons" }}
                                 error={errors.paid}
                                 {...register("paid", { valueAsNumber: true })}
                             />
@@ -125,7 +132,7 @@ const Clients = ({}: ClientsProps) => {
                 <OpenModuleButton type="insert-products-model" clearErrors={clearErrors} />
 
                 {!!products.length && <DataTable columns={columns} data={products} smallSize totalFor="total" />}
-                <SubmitButton text="Buy" isPending={isPending} />
+                <SubmitButton text="buy" isPending={isPending} />
             </form>
 
             <InsertProduct setProducts={setProducts} />

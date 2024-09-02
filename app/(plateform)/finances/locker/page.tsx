@@ -2,6 +2,7 @@
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 import { useCreate } from "@/hooks/api/useCreate";
 
@@ -19,6 +20,7 @@ const Locker = ({}: LockerProps) => {
 
     const { errors } = formState;
     const router = useRouter();
+    const text = useTranslations();
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const values = data as CreateLockerSchema;
@@ -27,28 +29,31 @@ const Locker = ({}: LockerProps) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <CardForm heading="Withdraw OR Deposit" submitText="Submit" disabled={isPending}>
+            <CardForm heading={text("pages.locker.heading")} submitText={text("buttons.submit")} disabled={isPending}>
                 <div className="flex-between">
-                    <Input placeholder="Reason" error={errors?.reason} {...register("reason")} />
+                    <Input label="reason" useTranslate={{ label: "table" }} error={errors?.reason} {...register("reason")} />
                     <Input
                         type="number"
-                        placeholder="Price"
+                        label="price"
+                        useTranslate={{ label: "public" }}
                         error={errors?.price}
                         {...register("price", { valueAsNumber: true })}
                     />
                 </div>
                 <div className="flex-between">
                     <ComboBox
-                        label="Process"
+                        label="process"
                         name="process"
+                        useTranslate={{ label: "public", name: "public", trigger: "pages.locker", item: "pages.locker" }}
                         error={errors?.process}
                         items={lockerMethods}
                         setValue={setValue}
                         clearErrors={clearErrors}
                     />
                     <ComboBox
-                        label="Method"
+                        label="method"
                         name="method"
+                        useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                         error={errors?.method}
                         items={methods}
                         setValue={setValue}

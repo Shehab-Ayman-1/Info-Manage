@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 import { useDelete } from "@/hooks/api/useDelete";
 import { useLists } from "@/hooks/data/useLists";
@@ -14,35 +15,35 @@ type DeleteDialogProps = {
 
 export const DeleteDialog = ({ productId }: DeleteDialogProps) => {
     const { mutate, isPending } = useDelete(`/api/profile/product/${productId}`, ["products"]);
-    const router = useRouter();
-
     const { type, onClose } = useModel();
     const { onReset } = useLists();
+
+    const text = useTranslations();
+    const router = useRouter();
 
     if (type !== "delete-profile") return;
 
     const onConfirm = () => {
-        mutate(null, {
-            onSuccess: () => {
-                router.push("/");
-                onReset(["products", "suppliers"]);
-            },
-        });
+        const onSuccess = () => {
+            router.push("/");
+            onReset(["products", "suppliers"]);
+        };
+
+        mutate(null, { onSuccess });
         onClose();
     };
 
     return (
         <DialogForm
-            heading="Delete Product"
-            description="Are You Sure, You Can't Undo This Product After Deleting"
-            className="text-black dark:text-white"
+            heading={text("dialogs.product-profile.delete-dialog.heading")}
+            description={text("dialogs.product-profile.delete-dialog.description")}
         >
             <div className="flex-end">
                 <Button variant="outline" className="w-fit text-black dark:text-white" onClick={onClose}>
-                    Cancel
+                    {text("buttons.cancel")}
                 </Button>
                 <Button variant="destructive" className="w-fit" onClick={onConfirm} disabled={isPending}>
-                    Confirm
+                    {text("buttons.confirm")}
                 </Button>
             </div>
         </DialogForm>

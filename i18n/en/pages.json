@@ -59,6 +59,73 @@
 
         "client-bills": {
             "heading": "Client Bills List"
+        },
+
+        "new-client-statement": {
+            "heading": "New Client Statement"
+        },
+
+        "restore-client-statement": {
+            "heading": "Restore Client Statement",
+            "cancel-bill-btn": "Cancel Bill"
+        },
+
+        "supplier-lists": {
+            "heading": "Supplier Lists"
+        },
+
+        "add-supplier": {
+            "heading": "Add New Supplier"
+        },
+
+        "supplier-bills": {
+            "heading": "Supplier Bills"
+        },
+
+        "new-supplier-statement": {
+            "heading": "New Supplier Statement"
+        },
+
+        "restore-supplier-statement": {
+            "heading": "Restore Supplier Statement"
+        },
+
+        "cashes": {
+            "locker": {
+                "heading": "Details Of Locker",
+                "cash": "Total By Cash",
+                "visa": "Total By Visa"
+            },
+            "market": {
+                "heading": "Details Of Market",
+                "purchases": "Total By Purchase Price",
+                "sales": "Total By Selling Price"
+            },
+            "store": {
+                "heading": "Details Of Store",
+                "purchases": "Total By Purchase Price",
+                "sales": "Total By Selling Price"
+            },
+            "debts": {
+                "heading": "Details Of Debts",
+                "clients": "Client Debts",
+                "suppliers": "Supplier Debts"
+            }
+        },
+
+        "transactions": {
+            "heading": "Transaction Lists"
+        },
+
+        "locker": {
+            "heading": "Withdraw OR Deposit",
+            "process": "Process",
+            "withdraw-from-locker": "Withdraw From Locker",
+            "deposit-to-locker": "Deposit To Locker"
+        },
+
+        "product-profile": {
+            "heading": "Product Profile"
         }
     }
 }

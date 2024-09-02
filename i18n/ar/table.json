@@ -1,54 +1,74 @@
 {
     "table": {
         "category": "القسم",
-        "company": "الشركة",
-        "product": "المنتج",
-        "name": "الاسم",
 
-        "barcode": "الباركود",
+        "company-name": "الشركة",
+        "company": "الشركة",
+
+        "product-name": "اسم المنتج",
+        "product": "المنتج",
+        "name": "المنتج",
+
+        "current-count": "العدد الحالي",
         "count": "العدد",
 
         "cash": "كاش",
         "visa": "فيزا",
 
-        "sold-price": "سعر البيع",
+        "total-purchases": "اجمالي المشتريات",
         "purchase-price": "سعر الشراء",
-        "price": "السعر",
+
         "costs": "التكاليف",
+        "price": "السعر",
+
         "pending": "المتبقي",
         "total": "الاجمالي",
 
         "actions": "المزيد",
         "print": "طباعه",
 
-        "total-purchases": "اجمالي المشتريات",
-        "current-count": "العدد الحالي",
+        "purchases": "المشتريات",
+
         "total-needed": "الاجمالي المطلوب",
         "minimum": "الحد الادني",
 
         "total-solds": "اجمالي المبيعات",
-        "profits": "الارباح",
+        "sold-price": "سعر البيع",
 
+        "profits": "الارباح",
+        "paid": "المدفوع",
+
+        "supplier": "المورد",
         "client": "العميل",
+
+        "barcode": "الباركود",
         "phone": "الهاتف",
+
         "discounts": "الخصومات",
-        "purchases": "المشتريات",
+        "discount": "الخصم",
+
         "bronze-to": "البرونزيه الي",
         "silver-to": "الفضية الي",
         "level": "الطبقه",
 
         "state": "الحالة",
-        "paid": "المدفوع",
-        "discount": "الخصم",
         "created-at": "تم الانشاء في",
 
+        "creator": "المستخدم",
+        "reason": "السبب",
+
+        "process": "العملية",
+        "method": "وسيلة الدفع",
+
         "filter-by": {
-            "barcode": "الباركود",
-            "product": "المنتج",
-            "company": "الشركة",
             "category": "القسم",
+            "company": "الشركة",
+            "product": "المنتج",
+            "barcode": "الباركود",
+            "supplier": "المورد",
             "client": "العميل",
-            "level": "الطبقه"
+            "level": "الطبقه",
+            "reason": "السبب"
         }
     }
 }

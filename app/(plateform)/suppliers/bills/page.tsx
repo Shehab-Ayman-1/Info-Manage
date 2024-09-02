@@ -34,14 +34,14 @@ const SupplierBills = () => {
 
     return (
         <TableForm
-            pageTitle="Supplier Bills List"
+            pageTitle="pages.supplier-bills.heading"
             columns={columns}
             data={data || []}
-            filterBy={["supplier"]}
             totalFor="pending"
-            navigate={[{ text: "New Statement", to: "/suppliers/statements/new" }]}
+            filterBy={["supplier"]}
+            navigate={[{ text: "new-statement", to: "/suppliers/statements/new" }]}
         >
-            <div className="mt-4 w-fit sm:ml-4">
+            <div className="mt-4 w-fit sm:mx-4">
                 <Input type="date" value={date} name="date" onChange={(event) => setDate(() => event.target.value)} />
             </div>
             <DeleteDialog />

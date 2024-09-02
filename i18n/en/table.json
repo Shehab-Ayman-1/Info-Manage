@@ -1,55 +1,74 @@
 {
     "table": {
         "category": "Category",
-        "company": "Company",
-        "product": "Product",
-        "name": "Name",
 
-        "barcode": "Barcode",
+        "company-name": "Company",
+        "company": "Company",
+
+        "product-name": "Product Name",
+        "product": "Product",
+        "name": "Product",
+
+        "current-count": "Current Count",
         "count": "Count",
 
         "cash": "Cash",
         "visa": "Visa",
 
+        "total-purchases": "Total Purchases",
         "purchase-price": "Purchase Price",
-        "sold-price": "Sold Price",
 
-        "price": "Price",
         "costs": "Costs",
+        "price": "Price",
+
         "pending": "Pending",
         "total": "Total",
 
         "actions": "Actions",
-        "print": "Price",
+        "print": "Print",
 
-        "total-purchases": "Total Purchases",
-        "current-count": "Current Count",
+        "purchases": "Purchases",
+
         "total-needed": "Total Needed",
         "minimum": "Minimum",
 
         "total-solds": "Total Solds",
-        "profits": "Profits",
+        "sold-price": "Sold Price",
 
+        "profits": "Profits",
+        "paid": "Paid",
+
+        "supplier": "Supplier",
         "client": "Client",
+
+        "barcode": "Barcode",
         "phone": "Phone",
+
         "discounts": "Discounts",
-        "purchases": "Purchases",
+        "discount": "Discount",
+
         "bronze-to": "Bronze To",
         "silver-to": "Silver To",
         "level": "Level",
 
         "state": "State",
-        "paid": "Paid",
-        "discount": "Discount",
         "created-at": "Created At",
 
+        "creator": "Creator",
+        "reason": "Reason",
+
+        "process": "Process",
+        "method": "Method",
+
         "filter-by": {
-            "barcode": "Barcode",
-            "product": "Product",
-            "company": "Company",
             "category": "Category",
+            "company": "Company",
+            "product": "Product",
+            "barcode": "Barcode",
+            "supplier": "Supplier",
             "client": "Client",
-            "level": "Level"
+            "level": "Level",
+            "reason": "Reason"
         }
     }
 }

@@ -3,6 +3,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
@@ -21,8 +22,8 @@ import { SupplierType } from "./schema";
 import { Input } from "@/ui/input";
 
 const processes = [
-    { _id: "1", value: "old", title: "Old Supplier" },
-    { _id: "2", value: "new", title: "New Supplier" },
+    { _id: "1", value: "old", title: "old-supplier" },
+    { _id: "2", value: "new", title: "new-supplier" },
 ];
 
 type SupplierProps = {};
@@ -38,8 +39,9 @@ const Supplier = ({}: SupplierProps) => {
     const { mutate, isPending } = useCreate(`/api/suppliers/add-supplier?process=${process}`, ["suppliers"]);
     const { suppliers, onReset } = useLists();
 
-    const { errors } = formState;
+    const text = useTranslations();
     const router = useRouter();
+    const { errors } = formState;
 
     useEffect(() => {
         (async () => await suppliers.fetcher?.())();
@@ -64,14 +66,21 @@ const Supplier = ({}: SupplierProps) => {
     };
 
     return (
-        <CardForm heading="New Supplier">
-            <ComboBox label="Process" name="process" items={processes} onChange={onProcess} />
+        <CardForm heading={text("pages.add-supplier.heading")}>
+            <ComboBox
+                label="choose-process"
+                name="process"
+                useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
+                items={processes}
+                onChange={onProcess}
+            />
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 {process === "old" && (
                     <ComboBox
-                        label="Choose The Supplier Name"
+                        label="supplier-name"
                         name="supplierId"
+                        useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
                         loading={suppliers.isLoading}
                         items={suppliers.lists}
                         error={errors?.supplierId}
@@ -82,8 +91,20 @@ const Supplier = ({}: SupplierProps) => {
 
                 {process === "new" && (
                     <Fragment>
-                        <Input placeholder="Supplier Name" error={errors?.name} {...register("name")} />
-                        <Input type="number" placeholder="Phone Number" error={errors?.phone} {...register("phone")} />
+                        <Input
+                            type="text"
+                            label="supplier-name"
+                            useTranslate={{ label: "public" }}
+                            error={errors?.name}
+                            {...register("name")}
+                        />
+                        <Input
+                            type="number"
+                            label="phone"
+                            useTranslate={{ label: "public" }}
+                            error={errors?.phone}
+                            {...register("phone")}
+                        />
                     </Fragment>
                 )}
 
@@ -91,7 +112,7 @@ const Supplier = ({}: SupplierProps) => {
                     <Fragment>
                         <OpenModuleButton type="insert-product-model" clearErrors={clearErrors} />
                         {!!products.length && <DataTable columns={columns} data={products} smallSize />}
-                        <SubmitButton text="Create" isPending={isPending} />
+                        <SubmitButton text="create" isPending={isPending} />
                     </Fragment>
                 )}
 

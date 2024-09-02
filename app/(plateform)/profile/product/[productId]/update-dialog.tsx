@@ -1,5 +1,7 @@
+"use client";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 import { useUpdate } from "@/hooks/api/useUpdate";
@@ -18,11 +20,7 @@ type UpdateDialogProps = {
 };
 
 export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
-    const { mutate, isPending } = useUpdate<EditProfileSchema>(`/api/profile/product/${productId}`, [
-        productId,
-        "market",
-        "store",
-    ]);
+    const { mutate, isPending } = useUpdate<EditProfileSchema>(`/api/profile/product/${productId}`, [productId, "products"]);
     const { company, name, barcode, market, store } = data;
 
     const { formState, register, watch, handleSubmit } = useForm<EditProfileSchema>({
@@ -43,6 +41,7 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
     const { type, onClose } = useModel();
     const { onReset } = useLists();
     const { errors } = formState;
+    const text = useTranslations();
 
     if (type !== "update-profile") return;
 
@@ -59,7 +58,10 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
     };
 
     return (
-        <DialogForm heading="Update Product" description="After The Product Updating, You Can't Undo Any Changes">
+        <DialogForm
+            heading={text("dialogs.product-profile.update-dialog.heading")}
+            description={text("dialogs.product-profile.update-dialog.description")}
+        >
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mx-auto h-28 w-28 overflow-hidden rounded-[100%]">
                     <Image
@@ -74,13 +76,37 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
                 <hr className="my-4 dark:border-slate-500" />
 
                 <div className="flex-between">
-                    <Input placeholder="Company" error={errors?.company} {...register("company")} />
-                    <Input placeholder="Company Image" error={errors?.image} {...register("image")} />
+                    <Input
+                        type="text"
+                        label="company"
+                        useTranslate={{ label: "public" }}
+                        error={errors?.company}
+                        {...register("company")}
+                    />
+                    <Input
+                        type="url"
+                        label="image-url"
+                        useTranslate={{ label: "pages.add-company" }}
+                        error={errors?.image}
+                        {...register("image")}
+                    />
                 </div>
 
                 <div className="flex-between">
-                    <Input placeholder="Name" error={errors?.name} {...register("name")} />
-                    <Input placeholder="Barcode" error={errors?.barcode} {...register("barcode")} />
+                    <Input
+                        type="text"
+                        label="product"
+                        useTranslate={{ label: "public" }}
+                        error={errors?.name}
+                        {...register("name")}
+                    />
+                    <Input
+                        type="text"
+                        label="barcode"
+                        useTranslate={{ label: "public" }}
+                        error={errors?.barcode}
+                        {...register("barcode")}
+                    />
                 </div>
 
                 <hr className="my-4 dark:border-slate-500" />
@@ -88,13 +114,15 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
                 <div className="flex-between">
                     <Input
                         type="number"
-                        placeholder="Purchase Price"
+                        label="purchase-price"
+                        useTranslate={{ label: "public" }}
                         error={errors?.purchasePrice}
                         {...register("purchasePrice", { valueAsNumber: true })}
                     />
                     <Input
                         type="number"
-                        placeholder="Sale Price"
+                        label="sold-price"
+                        useTranslate={{ label: "public" }}
                         error={errors?.salePrice}
                         {...register("salePrice", { valueAsNumber: true })}
                     />
@@ -103,19 +131,21 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
                 <div className="flex-between">
                     <Input
                         type="number"
-                        placeholder="Market Count"
+                        label="market-count"
+                        useTranslate={{ label: "public" }}
                         error={errors?.marketCount}
                         {...register("marketCount", { valueAsNumber: true })}
                     />
                     <Input
                         type="number"
-                        placeholder="Store Count"
+                        label="store-count"
+                        useTranslate={{ label: "public" }}
                         error={errors?.storeCount}
                         {...register("storeCount", { valueAsNumber: true })}
                     />
                 </div>
 
-                <SubmitButton text="Update" isPending={isPending} />
+                <SubmitButton text="update" isPending={isPending} />
             </form>
         </DialogForm>
     );

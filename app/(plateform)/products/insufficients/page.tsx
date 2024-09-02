@@ -1,6 +1,6 @@
 "use client";
 import { useGetByQuery } from "@/hooks/api/useGetByQuery";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 
 import { useLists } from "@/hooks/data/useLists";
@@ -24,7 +24,6 @@ const Insufficients = () => {
     const [supplierId, setSupplierId] = useState("");
     const [place, setPlace] = useState("");
     const { suppliers } = useLists();
-    const text = useTranslations();
     const locale = useLocale();
 
     useEffect(() => {
@@ -42,10 +41,10 @@ const Insufficients = () => {
 
     return (
         <TableForm
+            pageTitle="pages.insufficient-products.heading"
             columns={columns}
             data={data || []}
             totalFor="totalNeeded"
-            pageTitle={text("pages.insufficient-products.heading")}
             navigate={[{ text: "new-statement", to: "/suppliers/statements/new" }]}
         >
             <div className="flex-between">

@@ -28,8 +28,17 @@
         "choose-method": "اختار وسيلة الدفع",
         "method": "وسيلة الدفع",
 
+        "choose-process": "اختار نوع العملية",
+        "process": "العملية",
+
         "choose-place": "اختار المكان",
         "place": "المكان",
+
+        "old-supplier": "مورد قديم",
+        "new-supplier": "مورد جديد",
+
+        "by-milestone": "دفع بالتقسيط",
+        "pay-all": "دفع كامل",
 
         "count": "العدد",
         "price": "السعر",
@@ -37,14 +46,8 @@
         "purchase-price": "سعر الشراء",
         "sold-price": "سعر البيع",
 
-        "insert": "اضافه",
-        "submit": "انشاء",
-
-        "delete": "حذف",
-        "edit": "تعديل",
-
-        "pay": "دفعه ماليه",
-        "open": "فتح",
+        "market-count": "العدد المحل",
+        "store-count": "العدد المخزن",
 
         "loading": "تحميل ...",
         "search": "البحث ...",
@@ -53,8 +56,6 @@
         "store": "المخزن",
 
         "language": "اللغه",
-        "print": "طباعه",
-
         "en": "انجليزي",
         "ar": "عربي",
 
@@ -62,10 +63,18 @@
         "visa": "فيزا",
 
         "phone": "رقم الهاتف",
+        "barcode": "الباركود",
+
         "bronze-to": "البرونزية الي",
         "silver-to": "الفضية الي",
 
-        "create": "انشاء",
-        "open-insert-products-model": "اضافه منتج جديد"
+        "discount": "الخصم",
+        "open-insert-products-model": "اضافه منتج جديد",
+
+        "print-receipt": "طباعه الفاتورة",
+
+        "restore": "مرتجع",
+        "completed": "مكتمل",
+        "pending": "قيد الدفع"
     }
 }

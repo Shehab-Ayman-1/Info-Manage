@@ -19,7 +19,7 @@ type TableActionsProps = {
 };
 
 export const TableActions = ({ row, items }: TableActionsProps) => {
-    const t = useTranslations("public");
+    const t = useTranslations("buttons");
 
     return (
         <DropdownMenu>

@@ -27,13 +27,15 @@ const Overview = ({}: OverviewProps) => {
                 )}
             </ClerkLoaded>
 
-            <Image
-                src={organization?.hasImage ? organization.imageUrl : "/logo.png"}
-                alt="logo"
-                width={300}
-                height={300}
-                className="h-[200px] w-[200px] sm:h-[300px] sm:w-[300px]"
-            />
+            <div className="relative h-[200px] w-[200px] sm:h-[300px] sm:w-[300px]">
+                <Image
+                    src={organization?.hasImage ? organization.imageUrl : "/logo.png"}
+                    className="h-auto w-auto"
+                    alt="logo"
+                    priority
+                    fill
+                />
+            </div>
 
             <h1 className="text-gradient text-4xl font-extrabold text-primary sm:text-6xl">
                 {organization?.name || text("header.brand")}
