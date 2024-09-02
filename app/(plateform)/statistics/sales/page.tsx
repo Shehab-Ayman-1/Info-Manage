@@ -21,9 +21,9 @@ const Sales = () => {
 
     return (
         <ChartsForm
-            heading="Sales Statistics"
-            chart1={{ heading: "Sales Of The Year", data: data.year }}
-            chart2={{ heading: "Sales Of The Month", data: data.month }}
+            heading="pages.statistics.sales.heading"
+            chart1={{ heading: "pages.statistics.sales.chart-1", data: data.year }}
+            chart2={{ heading: "pages.statistics.sales.chart-2", data: data.month }}
         />
     );
 };

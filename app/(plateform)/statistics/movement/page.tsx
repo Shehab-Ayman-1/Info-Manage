@@ -49,21 +49,23 @@ const Movement = () => {
 
     return (
         <ChartsForm
-            heading="Product Movement"
-            chart1={{ heading: "Purchases", data: data?.purchases || [] }}
-            chart2={{ heading: "Sales", data: data?.sales || [] }}
+            heading="pages.statistics.movement.heading"
+            chart1={{ heading: "pages.statistics.movement.chart-1", data: data?.purchases || [] }}
+            chart2={{ heading: "pages.statistics.movement.chart-2", data: data?.sales || [] }}
         >
             <div className="flex-between">
                 <ComboBox
-                    label="Supplier"
+                    label="choose-supplier"
                     name="supplierId"
+                    useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
                     loading={suppliers.isLoading}
                     items={suppliers.lists}
                     onChange={(value) => setSupplierId(value)}
                 />
                 <ComboBox
-                    label="Product"
+                    label="choose-product"
                     name="productId"
+                    useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
                     loading={productsBySupplier.isLoading}
                     groups={productsBySupplier.groups}
                     onChange={(value) => setProductId(value)}

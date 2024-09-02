@@ -2,6 +2,9 @@
     "buttons": {
         "new-statement": "كشف حساب جديد",
         "new-transaction": "معاملة جديدة",
+        "market-products": "منتجات المحل",
+
+        "open-bill-lists": "فتح قائمة الفواتير",
         "transfer": "تحويل منتجات",
 
         "new-supplier": "مورد جديد",

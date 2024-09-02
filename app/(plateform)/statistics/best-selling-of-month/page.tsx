@@ -24,10 +24,10 @@ const BestSellingOfMonth = ({}: BestSellingOfMonthProps) => {
 
     return (
         <TableForm
-            pageTitle="Best Selling Of The Month"
+            pageTitle="pages.statistics.best-selling-of-the-month.heading"
             data={data || []}
             columns={columns}
-            navigate={[{ text: "Go To Bills", to: "/clients/bills" }]}
+            navigate={[{ text: "open-bill-lists", to: "/clients/bills" }]}
         >
             <Input type="month" className="w-fit" value={month} onChange={(event) => setMonth(event.target.value)} />
         </TableForm>

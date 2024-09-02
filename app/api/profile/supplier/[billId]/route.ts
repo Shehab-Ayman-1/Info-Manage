@@ -100,7 +100,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
                 $inc: { total: amount },
                 $push: {
                     history: {
-                        $slice: -20,
+                        $slice: -100,
                         $each: [
                             {
                                 reason: "Supplier Bill Payment",

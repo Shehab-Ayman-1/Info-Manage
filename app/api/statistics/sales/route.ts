@@ -64,7 +64,7 @@ export const GET = async () => {
             },
         ]);
 
-        return json([{ year: byYear, month: byMonth }]);
+        return json({ year: byYear, month: byMonth });
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

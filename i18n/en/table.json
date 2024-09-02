@@ -9,14 +9,18 @@
         "product": "Product",
         "name": "Product",
 
+        "total-count": "Total Count",
         "current-count": "Current Count",
         "count": "Count",
 
-        "cash": "Cash",
-        "visa": "Visa",
-
         "total-purchases": "Total Purchases",
         "purchase-price": "Purchase Price",
+
+        "purchases": "Purchases",
+        "last-sold": "Last Sold",
+
+        "cash": "Cash",
+        "visa": "Visa",
 
         "costs": "Costs",
         "price": "Price",
@@ -26,8 +30,6 @@
 
         "actions": "Actions",
         "print": "Print",
-
-        "purchases": "Purchases",
 
         "total-needed": "Total Needed",
         "minimum": "Minimum",

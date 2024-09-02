@@ -24,7 +24,7 @@ const schema = new Schema<TClient>({
     name: { type: String, required: true, trim: true },
 
     level: { type: String, enum: ["bronze", "silver", "gold"], default: "bronze" },
-    phone: { type: String, required: true, trim: true },
+    phone: { type: String, required: [true, "Phone Number Is Required Field"], trim: true },
 
     bronzeTo: { type: Number, required: true },
     silverTo: { type: Number, required: true },

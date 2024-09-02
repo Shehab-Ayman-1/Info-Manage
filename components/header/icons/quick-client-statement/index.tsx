@@ -48,11 +48,11 @@ export const QuickClientStatement = () => {
     const [product, setProduct] = useState<ProductType[0]>(defaultProduct);
     const { clients, products: productLists } = useLists();
     const { type, onClose } = useModel();
+    const { errors } = formState;
 
     const choosenProducts = watch("products");
     const clientId = watch("clientId");
     const text = useTranslations();
-    const { errors } = formState;
 
     useEffect(() => {
         (async () => clients.fetcher())();
@@ -157,20 +157,20 @@ export const QuickClientStatement = () => {
                     <Input
                         type="number"
                         label="count"
+                        useTranslate={{ label: "public" }}
                         value={product.count || ""}
                         onChange={(event) => setProduct((product) => ({ ...product, count: +event.target.value }))}
-                        useTranslate={{ label: "public" }}
                     />
                     <Input
                         type="number"
                         label="sold-price"
+                        useTranslate={{ label: "public" }}
                         value={product.soldPrice || ""}
                         onChange={(event) => setProduct((product) => ({ ...product, soldPrice: +event.target.value }))}
-                        useTranslate={{ label: "public" }}
                     />
 
                     <Button type="button" variant="outline" className="mx-auto flex py-12" onClick={handleInsertProduct}>
-                        {text("public.insert")}
+                        {text("buttons.insert")}
                     </Button>
                 </div>
 

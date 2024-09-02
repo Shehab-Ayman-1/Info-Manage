@@ -3,8 +3,8 @@ import { NextRequest } from "next/server";
 import mongoose from "mongoose";
 
 import { ClientBills, Clients, Products, Transactions } from "@/server/models";
-import { getExpireAt } from "@/utils/expireAt";
 import { DBConnection } from "@/server/configs";
+import { getExpireAt } from "@/utils/expireAt";
 import { createSchema } from "./schema";
 import { json } from "@/utils/response";
 
@@ -68,16 +68,12 @@ export const POST = async (req: NextRequest) => {
 
         // Add New Transaction
         await Transactions.updateOne(
-            {
-                orgId,
-                method,
-                process: "deposit",
-            },
+            { orgId, method, process: "deposit" },
             {
                 $inc: { total: paid },
                 $push: {
                     history: {
-                        $slice: -20,
+                        $slice: -100,
                         $each: [
                             {
                                 creator: user.fullName,

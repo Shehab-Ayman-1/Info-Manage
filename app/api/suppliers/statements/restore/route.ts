@@ -72,7 +72,7 @@ export const POST = async (req: NextRequest) => {
                 $inc: { total: paid },
                 $push: {
                     history: {
-                        $slice: -20,
+                        $slice: -100,
                         $each: [
                             {
                                 reason: "Supplier Restore Statement",

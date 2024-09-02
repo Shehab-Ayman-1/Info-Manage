@@ -1,5 +1,6 @@
 "use client";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
+import { useTranslations } from "next-intl";
 
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/ui/chart";
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card";
@@ -16,6 +17,8 @@ type ChartProps = {
 };
 
 export const Chart = ({ Icon, title, className, data, configs }: ChartProps) => {
+    const text = useTranslations();
+
     return (
         <Card className={className}>
             <CardHeader>
@@ -24,8 +27,8 @@ export const Chart = ({ Icon, title, className, data, configs }: ChartProps) => 
                         <Icon className="size-12 text-white hover:text-white" />
                     </div>
                     <div className="">
-                        <h1>{title}</h1>
-                        <p className="mt-1.5 text-sm text-slate-400">Track Your Statistics And Satisfied</p>
+                        <h1>{text(title)}</h1>
+                        <p className="mt-1.5 text-sm text-slate-400">{text("pages.statistics.track")}</p>
                     </div>
                 </CardTitle>
             </CardHeader>
@@ -34,6 +37,7 @@ export const Chart = ({ Icon, title, className, data, configs }: ChartProps) => 
                 <ChartContainer config={configs}>
                     <AreaChart accessibilityLayer data={data} margin={{ left: 12, right: 12 }}>
                         <CartesianGrid vertical={false} />
+
                         {data?.[0]?.month ? (
                             <XAxis dataKey="month" tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
                         ) : (
@@ -55,21 +59,21 @@ export const Chart = ({ Icon, title, className, data, configs }: ChartProps) => 
 
                         <Area
                             dataKey="chart_1"
-                            type="natural"
-                            fill="url(#fillMobile)"
                             fillOpacity={0.4}
-                            stroke="var(--color-mobile)"
                             stackId="a"
+                            type="bump"
+                            fill="url(#fillMobile)"
+                            stroke="var(--color-mobile)"
                             className="pointer-events-none"
                         />
 
                         <Area
                             dataKey="chart_2"
-                            type="natural"
-                            fill="url(#fillDesktop)"
                             fillOpacity={0.4}
-                            stroke="var(--color-desktop)"
                             stackId="a"
+                            type="bump"
+                            fill="url(#fillDesktop)"
+                            stroke="var(--color-desktop)"
                             className="pointer-events-none"
                         />
                     </AreaChart>

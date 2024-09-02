@@ -126,6 +126,34 @@
 
         "product-profile": {
             "heading": "Product Profile"
+        },
+
+        "statistics": {
+            "track": "Track Your Statistics And Satisfied",
+            "sales": {
+                "heading": "Sales Statistics",
+                "chart-1": "Sales Of The Year",
+                "chart-2": "Sales Of The Month"
+            },
+            "profits": {
+                "heading": "Profits Statistics",
+                "chart-1": "Profits Of The Year",
+                "chart-2": "Profits Of The Month"
+            },
+            "least-selling": {
+                "heading": "Least Selling Products"
+            },
+            "movement": {
+                "heading": "Product Movement",
+                "chart-1": "Sales",
+                "chart-2": "Purchases"
+            },
+            "best-selling-of-the-year": {
+                "heading": "Best Selling Of The Year"
+            },
+            "best-selling-of-the-month": {
+                "heading": "Best Selling Of The Month"
+            }
         }
     }
 }

@@ -9,14 +9,18 @@
         "product": "المنتج",
         "name": "المنتج",
 
+        "total-count": "العدد الكلي",
         "current-count": "العدد الحالي",
         "count": "العدد",
 
-        "cash": "كاش",
-        "visa": "فيزا",
-
         "total-purchases": "اجمالي المشتريات",
         "purchase-price": "سعر الشراء",
+
+        "purchases": "المشتريات",
+        "last-sold": "اخر عملية بيع",
+
+        "cash": "كاش",
+        "visa": "فيزا",
 
         "costs": "التكاليف",
         "price": "السعر",
@@ -26,8 +30,6 @@
 
         "actions": "المزيد",
         "print": "طباعه",
-
-        "purchases": "المشتريات",
 
         "total-needed": "الاجمالي المطلوب",
         "minimum": "الحد الادني",

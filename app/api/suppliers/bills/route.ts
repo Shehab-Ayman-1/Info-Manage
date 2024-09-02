@@ -106,7 +106,7 @@ export const DELETE = async (req: NextRequest) => {
                 $inc: { total: bill.paid },
                 $push: {
                     history: {
-                        $slice: -20,
+                        $slice: -100,
                         $each: [
                             {
                                 reason: "Canceled Supplier Bill",

@@ -1,6 +1,6 @@
 "use client";
-import { CardLoading } from "@/components/loading/card";
 import { ChartsForm } from "@/components/page-structure/charts-form";
+import { CardLoading } from "@/components/loading/card";
 import { useGet } from "@/hooks/api/useGet";
 
 type Data = {
@@ -23,9 +23,9 @@ const Profits = () => {
 
     return (
         <ChartsForm
-            heading="Profits Statistics"
-            chart1={{ heading: "Profits Of The Year", data: year }}
-            chart2={{ heading: "Profits Of The Month", data: month }}
+            heading="pages.statistics.profits.heading"
+            chart1={{ heading: "pages.statistics.profits.chart-1", data: year }}
+            chart2={{ heading: "pages.statistics.profits.chart-2", data: month }}
         />
     );
 };

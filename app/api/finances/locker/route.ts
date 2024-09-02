@@ -32,7 +32,7 @@ export const POST = async (req: NextRequest) => {
                 $inc: { total: price },
                 $push: {
                     history: {
-                        $slice: -20,
+                        $slice: -100,
                         $each: [
                             {
                                 creator: user.fullName,

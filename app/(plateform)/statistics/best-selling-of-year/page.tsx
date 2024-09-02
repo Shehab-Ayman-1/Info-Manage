@@ -18,10 +18,10 @@ const BestSellingOfYear = () => {
 
     return (
         <TableForm
-            pageTitle="Best Selling Of The Year"
+            pageTitle="pages.statistics.best-selling-of-the-year.heading"
             data={data}
             columns={columns}
-            navigate={[{ text: "Go To Bills", to: "/clients/bills" }]}
+            navigate={[{ text: "open-bill-lists", to: "/clients/bills" }]}
         />
     );
 };

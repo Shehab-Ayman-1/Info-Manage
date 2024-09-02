@@ -2,8 +2,8 @@ import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 import { Types } from "mongoose";
 
-import { DBConnection } from "@/server/configs";
 import { ClientBills, SupplierBills } from "@/server/models";
+import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
 import { months } from "@/constants";
 

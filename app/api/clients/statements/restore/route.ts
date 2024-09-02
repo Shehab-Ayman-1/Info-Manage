@@ -86,7 +86,7 @@ export const POST = async (req: NextRequest) => {
                 $inc: { total: productsTotalCosts },
                 $push: {
                     history: {
-                        $slice: -20,
+                        $slice: -100,
                         $each: [
                             {
                                 reason: "Restored Client Statement",
@@ -180,7 +180,7 @@ export const DELETE = async (req: NextRequest) => {
                 $inc: { total: bill.paid },
                 $push: {
                     history: {
-                        $slice: -20,
+                        $slice: -100,
                         $each: [
                             {
                                 reason: "Canceled Client Bill",

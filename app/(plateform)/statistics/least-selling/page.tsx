@@ -18,11 +18,11 @@ const LeastSelling = () => {
 
     return (
         <TableForm
-            pageTitle="Least Selling Products"
+            pageTitle="pages.statistics.least-selling.heading"
             columns={columns}
             data={data}
             filterBy={["product"]}
-            navigate={[{ text: "Market Products", to: "/products" }]}
+            navigate={[{ text: "market-products", to: "/products" }]}
         />
     );
 };

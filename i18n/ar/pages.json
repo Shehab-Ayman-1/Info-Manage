@@ -126,6 +126,34 @@
 
         "product-profile": {
             "heading": "عرض المنتج"
+        },
+
+        "statistics": {
+            "track": "تتبع احصائياتك بكل سهولة",
+            "sales": {
+                "heading": "احصائيات المبيعات",
+                "chart-1": "مبيعات هذا العام",
+                "chart-2": "مبيعات هذا الشهر"
+            },
+            "profits": {
+                "heading": "احصائيات الارباح",
+                "chart-1": "ارباح هذا العام",
+                "chart-2": "ارباح هذا الشهر"
+            },
+            "least-selling": {
+                "heading": "المنتجات الاقل مبيعاً"
+            },
+            "movement": {
+                "heading": "بيان حركة المنتج",
+                "chart-1": "المبيعات",
+                "chart-2": "المشتريات"
+            },
+            "best-selling-of-the-year": {
+                "heading": "الافضل مبيعاً في العام"
+            },
+            "best-selling-of-the-month": {
+                "heading": "الافضل مبيعاً في الشهر"
+            }
         }
     }
 }

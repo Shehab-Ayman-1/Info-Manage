@@ -1,4 +1,4 @@
-import { ShoppingCartIcon } from "lucide-react";
+import { ChartColumnIncreasingIcon, ChartSplineIcon } from "lucide-react";
 
 import { Card, CardContent, CardHeader } from "@/ui/card";
 import { Heading } from "@/components/public/heading";
@@ -30,8 +30,8 @@ type ChartsFormProps = {
 
 export const ChartsForm = ({ heading, chart1, chart2, children }: ChartsFormProps) => {
     return (
-        <Card className="p-6">
-            <CardHeader className="flex-between">
+        <Card className="p-3 sm:p-6">
+            <CardHeader className="text-center">
                 <Heading title={heading} />
             </CardHeader>
 
@@ -40,19 +40,13 @@ export const ChartsForm = ({ heading, chart1, chart2, children }: ChartsFormProp
             {!!(chart1.data?.length || chart2.data?.length) && (
                 <CardContent className="flex-between">
                     <Chart
-                        Icon={ShoppingCartIcon}
+                        Icon={ChartColumnIncreasingIcon}
                         title={chart1.heading}
                         data={chart1.data}
-                        className="w-1/2"
                         configs={configs}
-                    />
-                    <Chart
-                        Icon={ShoppingCartIcon}
-                        title={chart2.heading}
-                        data={chart2.data}
                         className="w-1/2"
-                        configs={configs}
                     />
+                    <Chart Icon={ChartSplineIcon} title={chart2.heading} data={chart2.data} configs={configs} className="w-1/2" />
                 </CardContent>
             )}
         </Card>
