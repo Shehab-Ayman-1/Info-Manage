@@ -2,9 +2,10 @@ import { getRequestConfig } from "next-intl/server";
 import { cookies } from "next/headers";
 
 export default getRequestConfig(async () => {
-    const cookieLocale = cookies().get("NEXT_LOCALE")?.value;
-    const locale = cookieLocale || "en";
+    const cookie = cookies().get("NEXT_LOCALE")?.value;
+    if (!cookie) cookies().set("NEXT_LOCALE", "ar");
 
+    const locale = cookie || "ar";
     const files = ["header", "overview", "pages", "public", "buttons", "dialogs", "subscriptions", "table", "footer"];
 
     const messages = files.reduce(async (accumelator, file) => {
