@@ -10,9 +10,6 @@ export const Languages = () => {
     const locale = useLocale();
 
     const onChange = (lang: string) => {
-        const cookie = document.cookie.split("; ").find((cookie) => cookie.startsWith("NEXT_LOCALE"));
-        if (!cookie) return;
-
         document.cookie = `NEXT_LOCALE=${lang};`;
         router.refresh();
     };
