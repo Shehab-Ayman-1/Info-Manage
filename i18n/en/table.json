@@ -69,8 +69,10 @@
         "method": "Method",
 
         "solds": "Solds",
+        "needed": "Needed",
 
         "filter-by": {
+            "heading": "Filter By",
             "category": "Category",
             "company": "Company",
             "product": "Product",

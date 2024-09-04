@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { useSidebarModel } from "@/hooks/useSidebarModel";
 import { useSubscription } from "@/hooks/useSubscription";
+
 import { AccordionItem } from "@/ui/accordion";
 import { NavLinkType } from "@/constants";
 import { Badge } from "@/ui/badge";

@@ -69,8 +69,10 @@
         "method": "وسيلة الدفع",
 
         "solds": "المبيعات",
+        "needed": "المطلوب",
 
         "filter-by": {
+            "heading": "البحث بواسطة",
             "category": "القسم",
             "company": "الشركة",
             "product": "المنتج",

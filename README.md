@@ -2,8 +2,6 @@
 
     - Add Profits To The Client Props And Set The Trophies  Depend On This Profits
 
-    - Think About New Way About Transactions Collection
-
     - Change Text From [Bill -> invoice], [restore, refund]
 
     - Update Bill

@@ -1,4 +1,5 @@
 export const languages = [
-    { _id: "1", value: "en", title: "en" },
-    { _id: "2", value: "ar", title: "ar" },
+    { _id: "en", value: "en", title: "en" },
+    { _id: "ar", value: "ar", title: "ar" },
+    { _id: "ge", value: "ge", title: "ge" },
 ];

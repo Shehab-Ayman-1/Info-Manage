@@ -30,7 +30,7 @@ const Layout = async ({ children }: LayoutProps) => {
     const locale = await getLocale();
 
     return (
-        <html suppressHydrationWarning lang={locale} dir={locale === "en" ? "ltr" : "rtl"}>
+        <html suppressHydrationWarning lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
             <body className="bg-gradient relative min-h-screen w-full max-w-[100vw] overflow-x-auto">
                 <Providers>
                     <ClerkLoading>

@@ -129,7 +129,6 @@ export const useLists = create<ListsType>((set, get) => ({
         isLoading: true,
         fetcher: async function (supplierId) {
             const { suppliers } = get();
-            console.log(suppliers);
             if (!suppliers.data.length) await suppliers.fetcher?.();
 
             const supplier = suppliers?.data.find((supplier) => supplier._id === supplierId);

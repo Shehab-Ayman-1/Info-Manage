@@ -1,0 +1,37 @@
+{
+    "buttons": {
+        "new-statement": "Neuer Kontoauszug",
+        "new-transaction": "Neue Transaktion",
+        "market-products": "Marktprodukte",
+
+        "open-bill-lists": "Offene Rechnungslisten",
+        "transfer": "Produkte übertragen",
+
+        "new-supplier": "Neuer Lieferant",
+        "new-client": "Neuer Kunde",
+
+        "confirm": "Bestätigen",
+        "cancel": "Abbrechen",
+
+        "create": "Erstellen",
+        "insert": "Einfügen",
+
+        "submit": "Einreichen",
+        "update": "Aktualisieren",
+
+        "buy": "Kaufen",
+        "sale": "Verkauf",
+
+        "delete": "Löschen",
+        "edit": "Bearbeiten",
+
+        "open": "Öffnen",
+        "pay": "Zahlung",
+
+        "print": "Drucken",
+        "restore": "Wiederherstellen",
+
+        "edit-supplier": "Lieferant bearbeiten",
+        "edit-products": "Produkte bearbeiten"
+    }
+}

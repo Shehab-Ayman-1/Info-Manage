@@ -51,8 +51,6 @@ const Configs = () => {
     const subscriptionExpiresAtMetadata = organization?.publicMetadata?.subscriptionExpiresAt;
     const additionalExpiresAtMetadata = organization?.publicMetadata?.additionalSubscriptionExpiresAt;
 
-    console.log(additionalExpiresAtMetadata);
-
     const isMe = user?.primaryEmailAddress?.emailAddress === process.env.NEXT_PUBLIC_EMAIL;
     return (
         <CardForm heading="Configs">

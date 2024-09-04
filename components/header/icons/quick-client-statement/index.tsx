@@ -77,7 +77,6 @@ export const QuickClientStatement = () => {
     useEffect(() => {
         if (!choosenProducts?.length) return;
         const paid = choosenProducts.reduce((prev, cur) => prev + cur.count * cur.soldPrice, 0);
-        console.log(paid);
 
         setValue("paid", paid);
         // eslint-disable-next-line react-hooks/exhaustive-deps

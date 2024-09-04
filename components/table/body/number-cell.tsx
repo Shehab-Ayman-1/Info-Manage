@@ -9,8 +9,9 @@ type NumberCellProps = {
 
 export const NumberCell = ({ row, name, showUnit }: NumberCellProps) => {
     const text = useTranslations("public");
-    const value: number = row.original[name] || row.getValue(name);
-    const unitValue: string = row.original.unit || row.getValue("unit");
+
+    const value: number = row.original[name];
+    const unitValue: string = row.original.unit;
 
     return `${value?.toLocaleString()} ${showUnit ? text(unitValue) : ""}`;
 };

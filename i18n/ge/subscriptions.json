@@ -1,0 +1,117 @@
+{
+    "subscriptions": {
+        "heading": "Abonnementpläne",
+        "durations": {
+            "month": "Monat",
+            "half-year": "6 Monate",
+            "year": "Jahr",
+            "life": "Lebenslang"
+        },
+        "basic": {
+            "market-products": {
+                "label": "Marktprodukte",
+                "description": "Alle Produkte des Marktes anzeigen"
+            },
+            "store-products": {
+                "label": "Lagerprodukte",
+                "description": "Alle Produkte des Lagers anzeigen"
+            },
+            "total-locker-cashes": {
+                "label": "Gesamtkassenbestand",
+                "description": "Den aktuellen Gesamtkassenbestand des Schließfachs anzeigen"
+            },
+            "transfer": {
+                "label": "Übertragung zwischen Markt & Lager",
+                "description": "Produkte vom Markt ins Lager und vom Lager in den Markt übertragen"
+            },
+            "client-bills": {
+                "label": "Kundenrechnungen",
+                "description": "Alle Kundenrechnungen anzeigen, mit der Möglichkeit, die Rechnungsdetails zu öffnen"
+            },
+            "supplier-bills": {
+                "label": "Lieferantenrechnungen",
+                "description": "Alle Lieferantenrechnungen anzeigen, mit der Möglichkeit, die Rechnungsdetails zu öffnen"
+            },
+            "quick-client-statement": {
+                "label": "Schnelle Kundenerklärung",
+                "description": "Eine schnelle Kundenerklärung mit Bargeld- oder Visa-Prozess erstellen"
+            },
+            "supplier-statement": {
+                "label": "Lieferantenerklärung",
+                "description": "Eine neue Lieferantenerklärung mit Meilenstein- oder Alles-bezahlt-Methoden und Bargeld- oder Visa-Prozess erstellen"
+            },
+            "locker-withdraw-and-deposit": {
+                "label": "Schließfach Abheben & Einzahlen",
+                "description": "Beliebige Beträge vom/zum Schließfach abheben/einzahlen"
+            }
+        },
+        "premium": {
+            "today-purchase-receipt": {
+                "label": "Heutiger Einkaufsbeleg",
+                "description": "Alle Einkaufsprodukte des aktuellen Tages anzeigen"
+            },
+            "today-sales-receipt": {
+                "label": "Heutiger Verkaufsbeleg",
+                "description": "Alle Verkaufsprodukte des aktuellen Tages anzeigen"
+            },
+            "total-market-and-store-cashes": {
+                "label": "Gesamtkassenbestand von Markt & Lager",
+                "description": "Alle Gesamtkassenbestände von Markt und Lager nach Verkaufs- und Einkaufspreisen anzeigen"
+            },
+            "total-debt-cashes": {
+                "label": "Gesamtschulden",
+                "description": "Alle Gesamtschulden der Kunden oder Lieferanten anzeigen"
+            },
+            "locker-transactions": {
+                "label": "Schließfachtransaktionen",
+                "description": "Alle im System durchgeführten Transaktionen anzeigen, ähnlich wie Kundenerklärung, Lieferantenerklärung, stornierte Rechnung und Rechnungszahlungen"
+            },
+            "supplier-details": {
+                "label": "Lieferantendetails",
+                "description": "Alle ausstehenden Kosten, Telefonnummern und Lieferantenprodukte anzeigen"
+            },
+            "client-details": {
+                "label": "Kundendetails",
+                "description": "Alle ausstehenden Kosten, Einkaufskosten, Telefonnummer, Rabatte und Stufen der Kunden anzeigen"
+            },
+            "active-client-layers": {
+                "label": "Aktive Kundenebenen",
+                "description": "Die Kundenstufe navigiert zwischen Bronze-, Silber- und Gold-Ebene"
+            },
+            "advanced-client-statement": {
+                "label": "Erweiterte Kundenerklärung",
+                "description": "Eine neue Kundenerklärung mit allen Details wie Kundenname, Methode (Bargeld - Prozess), Prozess (Alles bezahlen - Meilenstein) und Rabatt auf die Rechnung erstellen"
+            }
+        },
+        "enterprise": {
+            "product-sales-and-profits": {
+                "label": "Produktverkäufe und -gewinne",
+                "description": "Die Verkaufs- und Gewinnbewegungserklärung für die Produkte anzeigen"
+            },
+            "sales-statistics": {
+                "label": "Verkaufsstatistiken",
+                "description": "Die Produktverkäufe für jeden Tag im Monat und jeden Monat im Jahr anzeigen"
+            },
+            "profits-statistics": {
+                "label": "Gewinnstatistiken",
+                "description": "Die Produktgewinne für jeden Tag im Monat und jeden Monat im Jahr anzeigen"
+            },
+            "insufficient-products": {
+                "label": "Unzureichende Produkte",
+                "description": "Die unzureichenden Produkte nach gewähltem Lieferantennamen anzeigen"
+            },
+            "least-selling-products": {
+                "label": "Am wenigsten verkaufte Produkte",
+                "description": "Die am wenigsten verkauften Produkte anzeigen"
+            },
+            "best-selling-of-the-month": {
+                "label": "Bestseller des Monats",
+                "description": "Die Bestseller des Monats anzeigen"
+            },
+            "best-selling-of-the-year": {
+                "label": "Bestseller des Jahres",
+                "description": "Die Bestseller des Jahres anzeigen"
+            }
+        }
+    }
+}

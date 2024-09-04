@@ -39,12 +39,12 @@ export const Chart = ({ Icon, title, className, data, configs }: ChartProps) => 
                         <CartesianGrid vertical={false} />
 
                         {data?.[0]?.month ? (
-                            <XAxis dataKey="month" tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
+                            <XAxisComponent dataKey="month" tickFormatter={(value) => value.slice(0, 3)} />
                         ) : (
-                            <XAxis dataKey="day" tickMargin={8} />
+                            <XAxisComponent dataKey="day" />
                         )}
 
-                        <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+                        <ChartTooltip content={<ChartTooltipContent />} />
 
                         <defs>
                             <linearGradient id="fillDesktop" x1="0" y1="0" x2="0" y2="1">
@@ -82,3 +82,14 @@ export const Chart = ({ Icon, title, className, data, configs }: ChartProps) => 
         </Card>
     );
 };
+
+type XAxisComponent = {
+    dataKey: string;
+    tickFormatter?: (value: any, index: number) => string;
+};
+
+const XAxisComponent = ({ dataKey, tickFormatter }: XAxisComponent) => {
+    return <XAxis dataKey={dataKey} tickMargin={8} tickFormatter={tickFormatter} />;
+};
+
+XAxisComponent.displayName = "XAxisComponent";

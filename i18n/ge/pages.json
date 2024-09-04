@@ -1,0 +1,159 @@
+{
+    "pages": {
+        "products": {
+            "market": "Marktprodukte",
+            "store": "Lagerprodukte"
+        },
+
+        "transfer": {
+            "heading": "Überweisungserklärung",
+            "transfer-to": "Übertragen nach (Ort)",
+            "market": "Zum Markt",
+            "store": "Zum Lager",
+            "submit": "Übertragen"
+        },
+
+        "add-category": {
+            "heading": "Neue Kategorie hinzufügen",
+            "submit": "Erstellen"
+        },
+
+        "add-company": {
+            "heading": "Neues Unternehmen hinzufügen",
+            "submit": "Erstellen",
+            "upload-button": "Ein Bild hochladen",
+            "image-url": "Bild-URL eingeben"
+        },
+
+        "add-product": {
+            "heading": "Neues Produkt hinzufügen",
+            "submit": "Erstellen",
+            "optional-supplier": "Lieferantenname (optional)"
+        },
+
+        "insufficient-products": {
+            "heading": "Unzureichende Produkte"
+        },
+
+        "today-purchases": {
+            "heading": "Heutiger Einkaufsbeleg"
+        },
+
+        "today-sales": {
+            "heading": "Heutiger Verkaufsbeleg"
+        },
+
+        "client-lists": {
+            "heading": "Kundenlisten"
+        },
+
+        "add-new-client": {
+            "heading": "Neuen Kunden hinzufügen",
+            "bronze-from": "Bronze ab (0)",
+            "bronze-to": "Bronze bis",
+            "silver-from": "Silber ab",
+            "silver-to": "Silber bis",
+            "gold-from": "Gold ab",
+            "gold-to": "Gold bis (unbegrenzt)"
+        },
+
+        "client-bills": {
+            "heading": "Kundenrechnungen"
+        },
+
+        "new-client-statement": {
+            "heading": "Neue Kundenerklärung"
+        },
+
+        "restore-client-statement": {
+            "heading": "Kundenerklärung wiederherstellen",
+            "cancel-bill-btn": "Rechnung stornieren"
+        },
+
+        "supplier-lists": {
+            "heading": "Lieferantenlisten"
+        },
+
+        "add-supplier": {
+            "heading": "Neuen Lieferanten hinzufügen"
+        },
+
+        "supplier-bills": {
+            "heading": "Lieferantenrechnungen"
+        },
+
+        "new-supplier-statement": {
+            "heading": "Neue Lieferantenerklärung"
+        },
+
+        "restore-supplier-statement": {
+            "heading": "Lieferantenerklärung wiederherstellen"
+        },
+
+        "cashes": {
+            "locker": {
+                "heading": "Details des Schließfachs",
+                "cash": "Gesamtbetrag in bar",
+                "visa": "Gesamtbetrag per Visa"
+            },
+            "market": {
+                "heading": "Details des Marktes",
+                "purchases": "Gesamtbetrag nach Einkaufspreis",
+                "sales": "Gesamtbetrag nach Verkaufspreis"
+            },
+            "store": {
+                "heading": "Details des Lagers",
+                "purchases": "Gesamtbetrag nach Einkaufspreis",
+                "sales": "Gesamtbetrag nach Verkaufspreis"
+            },
+            "debts": {
+                "heading": "Details der Schulden",
+                "clients": "Kundenschulden",
+                "suppliers": "Lieferantenschulden"
+            }
+        },
+
+        "transactions": {
+            "heading": "Transaktionslisten"
+        },
+
+        "locker": {
+            "heading": "Abheben oder Einzahlen",
+            "process": "Prozess",
+            "withdraw-from-locker": "Vom Schließfach abheben",
+            "deposit-to-locker": "Im Schließfach einzahlen"
+        },
+
+        "product-profile": {
+            "heading": "Produktprofil"
+        },
+
+        "statistics": {
+            "track": "Verfolgen Sie Ihre Statistiken und sind zufrieden",
+            "sales": {
+                "heading": "Verkaufsstatistiken",
+                "chart-1": "Verkäufe des Jahres",
+                "chart-2": "Verkäufe des Monats"
+            },
+            "profits": {
+                "heading": "Gewinnstatistiken",
+                "chart-1": "Gewinne des Jahres",
+                "chart-2": "Gewinne des Monats"
+            },
+            "least-selling": {
+                "heading": "Am wenigsten verkaufte Produkte"
+            },
+            "movement": {
+                "heading": "Produktbewegung",
+                "chart-1": "Verkäufe",
+                "chart-2": "Einkäufe"
+            },
+            "best-selling-of-the-year": {
+                "heading": "Bestseller des Jahres"
+            },
+            "best-selling-of-the-month": {
+                "heading": "Bestseller des Monats"
+            }
+        }
+    }
+}

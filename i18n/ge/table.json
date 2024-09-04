@@ -1,0 +1,86 @@
+{
+    "table": {
+        "category": "Kategorie",
+
+        "company-name": "Unternehmen",
+        "company": "Unternehmen",
+
+        "product-name": "Produktname",
+        "product": "Produkt",
+        "name": "Produkt",
+
+        "total-count": "Gesamtanzahl",
+        "current-count": "Aktuelle Anzahl",
+        "count": "Anzahl",
+
+        "market-count": "Marktanzahl",
+        "store-count": "Lageranzahl",
+
+        "total-purchases": "Gesamteinkäufe",
+        "purchase-price": "Einkaufspreis",
+
+        "total-selling": "Gesamtverkauf",
+        "selling-price": "Verkaufspreis",
+
+        "purchases": "Einkäufe",
+        "last-sold": "Zuletzt verkauft",
+
+        "cash": "Bargeld",
+        "visa": "Visa",
+
+        "costs": "Kosten",
+        "price": "Preis",
+
+        "pending": "Ausstehend",
+        "total": "Gesamt",
+
+        "actions": "Aktionen",
+        "print": "Drucken",
+
+        "total-needed": "Gesamtbedarf",
+        "minimum": "Minimum",
+
+        "total-solds": "Gesamtverkäufe",
+        "sold-price": "Verkaufspreis",
+
+        "profits": "Gewinne",
+        "paid": "Bezahlt",
+
+        "supplier": "Lieferant",
+        "client": "Kunde",
+
+        "barcode": "Barcode",
+        "phone": "Telefon",
+
+        "discounts": "Rabatte",
+        "discount": "Rabatt",
+
+        "bronze-to": "Bronze bis",
+        "silver-to": "Silber bis",
+        "level": "Stufe",
+
+        "state": "Status",
+        "created-at": "Erstellt am",
+
+        "creator": "Ersteller",
+        "reason": "Grund",
+
+        "process": "Prozess",
+        "method": "Methode",
+
+        "solds": "Verkäufe",
+        "needed": "Benötigt",
+
+        "filter-by": {
+            "heading": "Filtern nach",
+            "category": "Kategorie",
+            "company": "Unternehmen",
+            "product": "Produkt",
+            "barcode": "Barcode",
+            "supplier": "Lieferant",
+            "client": "Kunde",
+            "level": "Stufe",
+            "reason": "Grund"
+        }
+    }
+}

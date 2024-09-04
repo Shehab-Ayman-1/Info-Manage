@@ -26,8 +26,7 @@ export const RenderRow = ({ row, index, smallSize }: RenderRowProps) => {
                 const TDCell = flexRender(cell.column.columnDef.cell, cell.getContext());
                 const key = cell.row.original[cell.column.columnDef.accessorKey];
 
-                const product =
-                    typeof key === "string" && key.split(" ||| ") && key.split(" ||| ").length > 1 && key.split(" ||| ")[0];
+                const product = typeof key === "string" && key?.split(" ||| ")?.length > 1 && key?.split(" ||| ")?.[0];
 
                 const isPerson = cell.column.id === "client" || cell.column.id === "supplier";
                 const isUnknown = cell.row.original.client === "unknown" || cell.row.original.supplier === "unknown";

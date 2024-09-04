@@ -31,6 +31,7 @@ const Movement = () => {
     useEffect(() => {
         if (!supplierId) return;
         setProductId("");
+
         (async () => await productsBySupplier.fetcher?.(supplierId))();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [supplierId]);

@@ -1,0 +1,56 @@
+{
+    "header": {
+        "brand": "Info Manage",
+        "navbar": {
+            "products": {
+                "heading": "Produkte",
+                "market-and-store": "Markt- & Lager produkte",
+                "transfer": "Produkte übertragen",
+                "insufficient": "Unzureichende Produkte",
+                "today-purchases": "Heutiger Einkaufsbeleg",
+                "today-sales": "Heutiger Verkaufsbeleg",
+                "add-category": "Neue Kategorie hinzufügen",
+                "add-company": "Neues Unternehmen hinzufügen",
+                "add-product": "Neues Produkt hinzufügen"
+            },
+            "clients": {
+                "heading": "Kunden",
+                "clients-list": "Kundenlisten",
+                "show-bills": "Rechnungen anzeigen",
+                "new-statement": "Neue Erklärung",
+                "restore-statement": "Erklärung wiederherstellen",
+                "add-client": "Neuen Kunden hinzufügen"
+            },
+            "suppliers": {
+                "heading": "Lieferanten",
+                "suppliers-list": "Lieferantenliste",
+                "show-bills": "Rechnungen anzeigen",
+                "new-statement": "Neue Erklärung",
+                "restore-statement": "Erklärung wiederherstellen",
+                "add-supplier": "Neuen Lieferanten hinzufügen"
+            },
+            "finances": {
+                "heading": "Finanzen",
+                "cashes": "Gesamtkassen",
+                "transactions": "Transaktionen",
+                "locker-withdraw-deposit": "Schließfach Abheben & Einzahlen"
+            },
+            "statistics": {
+                "heading": "Statistiken",
+                "sales": "Verkäufe",
+                "profits": "Gewinne",
+                "least-selling": "Am wenigsten verkaufte Produkte",
+                "product-movement": "Produktbewegung",
+                "best-selling-of-the-month": "Bestseller des Monats",
+                "best-selling-of-the-year": "Bestseller des Jahres"
+            }
+        }
+    },
+    "sidebar": {
+        "heading": "Seitenleiste",
+        "description": "Einfach zwischen den Seiten navigieren"
+    },
+    "notifications": {
+        "no-notifies": "Keine Posteingangsbenachrichtigungen."
+    }
+}

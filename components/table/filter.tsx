@@ -85,7 +85,7 @@ export const Filter = <TData,>({ data, filterBy, getColumn }: FilterProps<TData>
                     value={value || ""}
                     onChange={onInputChange}
                     onFocus={() => setOpen(true)}
-                    placeholder={locale === "en" ? `Filter By ${option} ...` : `البحث بواسطة ${text(`filter-by.${option}`)}`}
+                    placeholder={`${text("filter-by.heading")} ${text(`filter-by.${option}`)}`}
                 />
                 <div
                     ref={listRef}

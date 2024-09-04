@@ -25,7 +25,6 @@ const Category = ({}: CategoryProps) => {
     const onSubmit = (data: any) => {
         const values = data as CreateCategorySchema;
 
-        console.log("run");
         const onSuccess = () => {
             router.push("/products/add-company");
             onReset(["categories"]);

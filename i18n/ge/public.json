@@ -1,0 +1,88 @@
+{
+    "public": {
+        "choose-category": "Kategorie wählen",
+        "category-name": "Kategoriename",
+        "categoryId": "Kategoriename",
+        "category": "Kategorie",
+
+        "choose-comany": "Unternehmen wählen",
+        "company-name": "Unternehmensname",
+        "companyId": "Unternehmensname",
+        "company": "Unternehmen",
+
+        "choose-product": "Produkt wählen",
+        "product-name": "Produktname",
+        "productId": "Produktname",
+        "product": "Produkt",
+
+        "choose-client": "Kunde wählen",
+        "client-name": "Kundenname",
+        "clientId": "Kundenname",
+        "client": "Kunde",
+
+        "choose-supplier": "Lieferant wählen",
+        "supplier-name": "Lieferantenname",
+        "supplierId": "Lieferantenname",
+        "supplier": "Lieferant",
+
+        "choose-method": "Methode wählen",
+        "method": "Methode",
+
+        "choose-place": "Ort wählen",
+        "place": "Ort",
+
+        "choose-unit": "Menge wählen",
+        "unit": "Menge",
+
+        "old-supplier": "Alter Lieferant",
+        "new-supplier": "Neuer Lieferant",
+
+        "packet": "Paket",
+        "liter": "Liter",
+        "kilo": "Kilo",
+
+        "pay-all": "Alles bezahlen",
+        "by-milestone": "Nach Meilenstein",
+
+        "count": "Anzahl",
+        "price": "Preis",
+
+        "purchase-price": "Einkaufspreis",
+        "sold-price": "Verkaufspreis",
+
+        "market-count": "Marktanzahl",
+        "store-count": "Lageranzahl",
+
+        "loading": "Laden ...",
+        "search": "Suchen ...",
+
+        "previous": "Vorherige",
+        "next": "Nächste",
+
+        "market": "Markt",
+        "store": "Lager",
+
+        "language": "Sprache",
+        "en": "Englisch",
+        "ar": "Arabisch",
+
+        "cash": "Bargeld",
+        "visa": "Visa",
+
+        "phone": "Telefonnummer",
+        "barcode": "Barcode",
+
+        "bronze-to": "Bronze bis",
+        "silver-to": "Silber bis",
+
+        "discount": "Rabatt",
+        "open-insert-products-model": "Neues Produkt einfügen",
+
+        "print-receipt": "Beleg drucken",
+        "unknown": "unbekannt",
+
+        "restore": "Wiederherstellen",
+        "completed": "Abgeschlossen",
+        "pending": "Ausstehend"
+    }
+}
