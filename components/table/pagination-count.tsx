@@ -1,4 +1,5 @@
-import { useLocale } from "next-intl";
+"use client";
+import { useTranslations } from "next-intl";
 
 type PaginationCountProps = {
     totalPaginationCount: number;
@@ -6,12 +7,12 @@ type PaginationCountProps = {
 };
 
 export const PaginationCount = ({ totalPaginationCount, currentPaginationCount }: PaginationCountProps) => {
-    const locale = useLocale();
+    const text = useTranslations("table");
     if (totalPaginationCount <= 1) return;
 
     return (
         <h3 className="whitespace-nowrap text-primary">
-            {locale === "en" ? "Page" : "الصفحة"} {currentPaginationCount} {locale === "en" ? "of" : "من"} {totalPaginationCount}
+            {text("table-pagination", { currentPaginationCount, totalPaginationCount })}
         </h3>
     );
 };

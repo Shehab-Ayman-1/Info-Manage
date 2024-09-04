@@ -2,8 +2,8 @@
 import type { UseFormClearErrors, UseFormSetValue } from "react-hook-form";
 import type { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 import { CheckCheckIcon, ChevronsUpDownIcon } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
@@ -51,7 +51,6 @@ export const ComboBox = (props: ComboBoxProps) => {
     const [open, setOpen] = useState(false);
 
     const text = useTranslations();
-    const locale = useLocale();
 
     useEffect(() => {
         if (!defaultValue) return;
@@ -84,7 +83,7 @@ export const ComboBox = (props: ComboBoxProps) => {
                 <PopoverContent className="p-0" align="start">
                     <Command className="sm:w-[520px]">
                         <CommandInput
-                            placeholder={`${locale === "en" ? "Search For" : "البحث عن"} ${useTranslate?.name ? text(`${useTranslate.name}.${name}`) : name}`}
+                            placeholder={`${text("public.search")} ${useTranslate?.name ? text(`${useTranslate.name}.${name}`) : name}`}
                         />
 
                         <CommandList className="bg-gradient">

@@ -1,9 +1,9 @@
 import { PopoverClose } from "@radix-ui/react-popover";
 import { ElementRef, useRef, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
 import { MoreHorizontalIcon } from "lucide-react";
 import { useOnClickOutside } from "usehooks-ts";
 import { Column } from "@tanstack/react-table";
+import { useTranslations } from "next-intl";
 
 import { Popover, PopoverTrigger, PopoverContent } from "@/ui/popover";
 import { Button } from "@/ui/button";
@@ -21,7 +21,6 @@ export const Filter = <TData,>({ data, filterBy, getColumn }: FilterProps<TData>
     const [option, setOption] = useState(filterBy?.[0]);
     const [open, setOpen] = useState(false);
     const text = useTranslations("table");
-    const locale = useLocale();
 
     const listRef = useRef<ElementRef<"div">>(null);
     useOnClickOutside(listRef, () => setOpen(false));

@@ -1,5 +1,6 @@
 {
     "table": {
+        "table-pagination": "Page {currentPaginationCount} Of {totalPaginationCount}",
         "category": "Category",
 
         "company-name": "Company",

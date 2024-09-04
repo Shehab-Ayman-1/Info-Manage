@@ -1,5 +1,6 @@
 {
     "table": {
+        "table-pagination": "الصفحة {currentPaginationCount} من {totalPaginationCount}",
         "category": "القسم",
 
         "company-name": "الشركة",
