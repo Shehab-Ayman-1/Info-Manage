@@ -12,7 +12,9 @@ type TableFooterProps = {
 
 export const TableFooter = ({ colsLen, smallSize, totalFor, total }: TableFooterProps) => {
     const text = useTranslations("table");
-    const name = totalFor === "total" ? text("costs") : totalFor.includes("total") ? totalFor.slice(5) : text(totalFor);
+
+    const notTotal = totalFor.includes("total") ? text(totalFor.slice(5).toLowerCase()) : text(totalFor);
+    const name = totalFor === "total" ? text("costs") : notTotal;
 
     return (
         <TableRow className="bg-gradient-heavy">

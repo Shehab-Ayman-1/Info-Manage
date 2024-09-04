@@ -2,6 +2,7 @@
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -39,6 +40,7 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
 
     const { errors, isLoading } = formState;
     const selectedProductId = watch("productId");
+    const text = useTranslations();
 
     useEffect(() => {
         if (!selectedProductId) return;
@@ -79,11 +81,15 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
     };
 
     return (
-        <DialogForm heading="Insert Product" description="All Fields Are Required">
+        <DialogForm
+            heading={text("dialogs.restore-supplier-statement.insert-dialog.heading")}
+            description={text("dialogs.restore-supplier-statement.insert-dialog.description")}
+        >
             <form onSubmit={handleSubmit(onSubmit)}>
                 <ComboBox
-                    label="Product Name"
+                    label="choose-product"
                     name="productId"
+                    useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
                     loading={productsBySupplier.isLoading}
                     groups={productsBySupplier.groups}
                     error={errors?.productId}
@@ -94,19 +100,21 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
                 <div className="flex-between">
                     <Input
                         type="number"
-                        placeholder="Count"
+                        label="count"
+                        useTranslate={{ label: "public" }}
                         error={errors.count}
                         {...register("count", { valueAsNumber: true })}
                     />
                     <Input
                         type="number"
-                        placeholder="Sold Price"
+                        label="sold-price"
+                        useTranslate={{ label: "public" }}
                         error={errors.soldPrice}
                         {...register("soldPrice", { valueAsNumber: true })}
                     />
                 </div>
 
-                <SubmitButton text="Buy" isPending={isLoading} />
+                <SubmitButton text="insert" isPending={isLoading} />
             </form>
         </DialogForm>
     );

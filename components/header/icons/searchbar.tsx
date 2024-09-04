@@ -2,14 +2,15 @@
 import { Loader2Icon, SearchIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-
 import { useTranslations } from "next-intl";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
+import { Tooltip } from "@/components/ui/tooltip";
 import { useLists } from "@/hooks/data/useLists";
 import { Products } from "@/hooks/data/types";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
+import { useKey } from "react-use";
 
 type SearchbarProps = {};
 
@@ -27,9 +28,9 @@ export const Searchbar = ({}: SearchbarProps) => {
     }, []);
 
     const onChange = (event: any) => {
-        const filtered = products.data.filter((product) => {
-            return product.name.includes(event.target.value) || product.company.name.includes(event.target.value);
-        });
+        const filtered = products.data.filter(
+            (product) => product.company.name.includes(event.target.value) || product.name.includes(event.target.value),
+        );
         setFilteredProducts(filtered);
     };
 
@@ -39,10 +40,15 @@ export const Searchbar = ({}: SearchbarProps) => {
         setOpen(!open);
     };
 
+    const onOpen = () => setOpen(!open);
+    useKey((event) => event.ctrlKey && event.key.toLowerCase() === "f", onOpen);
+
     return (
-        <Popover open={open} onOpenChange={() => setOpen(!open)}>
+        <Popover open={open} onOpenChange={onOpen}>
             <PopoverTrigger>
-                <SearchIcon className="hover:text-slate-500" />
+                <Tooltip content="CTRL + F">
+                    <SearchIcon className="hover:text-slate-500" />
+                </Tooltip>
             </PopoverTrigger>
 
             <PopoverContent align="end" className="w-auto rounded-xl border-none shadow-xl sm:w-[600px]">
@@ -56,7 +62,7 @@ export const Searchbar = ({}: SearchbarProps) => {
                         </h3>
                     )}
 
-                    {(filteredProducts ? filteredProducts : products.data).map((product) => (
+                    {(filteredProducts || products.data).map((product) => (
                         <Button
                             key={product._id}
                             size="lg"
@@ -64,7 +70,7 @@ export const Searchbar = ({}: SearchbarProps) => {
                             className="flex-between w-full"
                             onClick={() => onClick(product._id)}
                         >
-                            <p className="text-xl">{product.name}</p>
+                            <p className="text-xl">{product.name.split(" ||| ")?.[0]}</p>
                             <p className="text-xl">{product.company.name}</p>
                         </Button>
                     ))}

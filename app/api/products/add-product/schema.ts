@@ -13,7 +13,7 @@ export const createSchema = z.object({
         z.object({
             name: z.string().min(1),
             barcode: z.string().optional(),
-            unit: z.enum(["packet", "liter"]),
+            unit: z.enum(["packet", "liter", "kilo"]),
             min: z.number().int().positive(),
             market: z.object(place).optional(),
             store: z.object(place).optional(),

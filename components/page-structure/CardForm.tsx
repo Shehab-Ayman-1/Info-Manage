@@ -2,16 +2,21 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/ui/card";
 import { Button } from "@/ui/button";
 import { cn } from "@/utils/shadcn";
+import { useRef } from "react";
+import { useKey } from "react-use";
 
 type CardFormProps = {
-    heading: string;
     submitText?: string;
+    heading: string;
     disabled?: boolean;
-    onSubmit?: (event: any) => void;
     children: React.ReactNode;
+    onSubmit?: (event: any) => void;
 };
 
-export const CardForm = ({ heading, submitText, disabled, onSubmit, children }: CardFormProps) => {
+export const CardForm = ({ heading, submitText, disabled, children, onSubmit }: CardFormProps) => {
+    const ref = useRef<HTMLButtonElement>(null);
+    useKey("Enter", () => ref.current?.click());
+
     return (
         <Card className="bg-gradient mx-auto mt-8 w-full max-w-2xl border-slate-400 shadow-lg dark:border-slate-600">
             <CardContent className="">
@@ -29,9 +34,10 @@ export const CardForm = ({ heading, submitText, disabled, onSubmit, children }: 
                 {submitText && (
                     <CardFooter className="mt-6 p-0 pt-4">
                         <Button
+                            className="w-full text-base sm:text-lg"
                             type="submit"
                             size="lg"
-                            className="w-full text-base sm:text-lg"
+                            ref={ref}
                             disabled={disabled}
                             onSubmit={onSubmit}
                         >

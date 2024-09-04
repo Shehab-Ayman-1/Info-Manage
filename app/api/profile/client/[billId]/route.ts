@@ -3,6 +3,7 @@ import { NextRequest } from "next/server";
 import { Types } from "mongoose";
 
 import { ClientBills, Clients, Transactions } from "@/server/models";
+import { getTranslations } from "@/utils/getTranslations";
 import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
 
@@ -92,6 +93,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
 
         const { userId, orgId, orgSlug } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
+        const text = await getTranslations("profile.client.put");
 
         const user = await clerkClient().users.getUser(userId);
         const organization = await clerkClient().organizations.getOrganization({ organizationId: orgId, slug: orgSlug });
@@ -100,11 +102,11 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
         const { billId } = res.params;
 
         const bill = await ClientBills.findById(billId);
-        if (!bill) return json("Something Went Wrong", 400);
-        if (bill.state === "completed") return json("This Bill Is Already Finished", 400);
+        if (!bill) return json(text("wrong"), 400);
+        if (bill.state === "completed") return json(text("already-exist"), 400);
 
         // Update The Bill Salaries
-        if (amount > bill.total - bill.paid) return json("The Payment Amount Is Greater Than The Pending Amount.", 400);
+        if (amount > bill.total - bill.paid) return json(text("salary-check"), 400);
         const state = bill.paid + amount >= bill.total ? "completed" : "pending";
         await ClientBills.updateOne({ orgId, _id: billId }, { $inc: { paid: amount }, state });
 
@@ -140,7 +142,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
             },
         );
 
-        return json("The Payment Was Successfully Done.");
+        return json(text("success"));
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

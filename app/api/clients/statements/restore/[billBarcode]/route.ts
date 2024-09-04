@@ -1,9 +1,9 @@
 import { NextRequest } from "next/server";
 
 import { DBConnection } from "@/server/configs";
+import { ClientBills } from "@/server/models";
 import { auth } from "@clerk/nextjs/server";
 import { json } from "@/utils/response";
-import { ClientBills } from "@/server/models";
 
 type ResponseType = {
     params: { billBarcode: string };
@@ -60,7 +60,6 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
                 },
             },
         ]);
-
 
         return json(clientBills);
     } catch (error: any) {

@@ -4,6 +4,7 @@ import { NextRequest } from "next/server";
 import { SupplierBills, Products, Suppliers, Transactions } from "@/server/models";
 import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
+import { getTranslations } from "@/utils/getTranslations";
 
 export const GET = async (req: NextRequest) => {
     try {
@@ -26,12 +27,7 @@ export const GET = async (req: NextRequest) => {
                 $match: { orgId, createdAt: { $gte: startDate, $lte: endDate } },
             },
             {
-                $lookup: {
-                    from: "suppliers",
-                    as: "suppliers",
-                    localField: "supplier",
-                    foreignField: "_id",
-                },
+                $lookup: { from: "suppliers", as: "suppliers", localField: "supplier", foreignField: "_id" },
             },
             {
                 $unwind: "$suppliers",
@@ -39,12 +35,10 @@ export const GET = async (req: NextRequest) => {
             {
                 $project: {
                     _id: 1,
-                    supplier: "$suppliers.name",
-
                     total: 1,
                     paid: 1,
                     state: 1,
-
+                    supplier: "$suppliers.name",
                     pending: { $subtract: ["$total", "$paid"] },
                     createdAt: "$createdAt",
                 },
@@ -64,15 +58,16 @@ export const DELETE = async (req: NextRequest) => {
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
+        const text = await getTranslations("suppliers.show-bills.delete");
 
         const user = await clerkClient().users.getUser(userId);
-        if (!user) return json("Something Went Wrong", 400);
+        if (!user) return json(text("wrong"), 400);
 
         const { billId } = await req.json();
-        if (!billId) return json("Something Went Wrong.", 400);
+        if (!billId) return json(text("wrong"), 400);
 
         const bill = await SupplierBills.findById(billId);
-        if (!bill) return json("Something Went Wrong.", 400);
+        if (!bill) return json(text("wrong"), 400);
 
         // Return The Products To The Store From Supplier Ref
         await Promise.all([
@@ -93,7 +88,7 @@ export const DELETE = async (req: NextRequest) => {
 
         // Delete The Supplier Bill
         const deleted = await SupplierBills.deleteOne({ orgId, _id: billId });
-        if (!deleted.deletedCount) return json("Something Went Wrong.", 400);
+        if (!deleted.deletedCount) return json(text("wrong"), 400);
 
         // Create New Transaction
         await Transactions.updateOne(
@@ -121,7 +116,7 @@ export const DELETE = async (req: NextRequest) => {
         );
 
         // Response
-        return json("The Product Was Deleted Successfully.");
+        return json(text("success"));
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

@@ -5,6 +5,7 @@ import { Companies, Products } from "@/server/models";
 import { DBConnection } from "@/server/configs";
 import { editSchema } from "./schema";
 import { json } from "@/utils/response";
+import { getTranslations } from "@/utils/getTranslations";
 
 type ResponseType = {
     params: { productId: string };
@@ -16,17 +17,15 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
+        const text = await getTranslations("profile.product.get");
 
         const productId = res.params.productId;
 
         const product = await Products.findById(productId)
-            .populate({
-                path: "company",
-                select: ["_id", "name", "image"],
-            })
+            .populate({ path: "company", select: ["_id", "name", "image"] })
             .select(["-market.updatedAt", "-__v"]);
 
-        if (!product) return json("This Product Was Not Found.", 400);
+        if (!product) return json(text("not-found"), 400);
         return json(product);
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
@@ -40,6 +39,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
+        const text = await getTranslations("profile.product.put");
 
         const productId = res.params.productId;
 
@@ -59,7 +59,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
             },
         );
 
-        return json("The Product Was Successfully Updated.");
+        return json(text("success"));
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);
@@ -72,12 +72,13 @@ export const DELETE = async (req: NextRequest, res: ResponseType) => {
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
+        const text = await getTranslations("profile.product.delete");
 
         const productId = res.params.productId;
         const deleted = await Products.deleteOne({ _id: productId });
 
-        if (!deleted.deletedCount) return json("The Products Was Not Deleted.", 400);
-        return json("The Product Was Successfully Deleted,");
+        if (!deleted.deletedCount) return json(text("not-deleted"), 400);
+        return json(text("success"));
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

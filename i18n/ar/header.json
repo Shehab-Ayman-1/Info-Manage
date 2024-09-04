@@ -5,8 +5,8 @@
             "products": {
                 "heading": "المنتجات",
                 "market-and-store": "منتجات المتجر والمخزن",
-                "transfer": "تحويل منتجات",
-                "insufficient": "المنتجات الناقصه",
+                "transfer": "نقل منتجات",
+                "insufficient": "نواقص المنتجات",
                 "today-purchases": "كشف مشتريات اليوم",
                 "today-sales": "كشف مبيعات اليوم",
                 "add-category": "اضافه قسم جديد",
@@ -39,7 +39,7 @@
                 "heading": "الاحصائيات",
                 "sales": "المبيعات",
                 "profits": "الارباح",
-                "least-selling": "الاقل مبيعاً",
+                "least-selling": "المنتجات الاقل مبيعاً",
                 "product-movement": "حركة المنتج",
                 "best-selling-of-the-month": "الافضل مبيعاً في (الشهر)",
                 "best-selling-of-the-year": "الافضل مبيعاً في (العام)"

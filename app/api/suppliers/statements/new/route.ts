@@ -2,6 +2,7 @@ import { auth, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
 import { SupplierBills, Products, Suppliers, Transactions } from "@/server/models";
+import { getTranslations } from "@/utils/getTranslations";
 import { DBConnection } from "@/server/configs";
 import { getExpireAt } from "@/utils/expireAt";
 import { createSchema } from "./schema";
@@ -13,23 +14,24 @@ export const POST = async (req: NextRequest) => {
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
+        const text = await getTranslations("suppliers.new-statement.post");
 
         const user = await clerkClient().users.getUser(userId);
 
         const body = await req.json();
         const { supplierId, method, place, process, paid, products } = createSchema.parse(body);
 
-        // Check If The Products Total Costs Exist In The Locker ?
+        // Check If The Products Total Costs Exist In The Locker?
         const { lockerCash, lockerVisa } = await Transactions.getLockerCash(orgId);
         const productCosts = products.reduce((prev, cur) => prev + cur.total, 0);
 
         if (process === "all") {
-            if (method === "cash" && productCosts > lockerCash) return json("Locker Doesn't Have This Statement Cost.", 400);
-            if (method === "visa" && productCosts > lockerVisa) return json("Visa Doesn't Have This Statement Cost.", 400);
+            if (method === "cash" && productCosts > lockerCash) return json(text("not-exist-cash-statement"), 400);
+            if (method === "visa" && productCosts > lockerVisa) return json(text("not-exist-visa-statement"), 400);
         }
         if (process === "milestone") {
-            if (method === "cash" && paid > lockerCash) return json("Locker Doesn't Have This Paid Cost.", 400);
-            if (method === "visa" && paid > lockerVisa) return json("Visa Doesn't Have This Paid Cost.", 400);
+            if (method === "cash" && paid > lockerCash) return json(text("not-exist-cash-paid"), 400);
+            if (method === "visa" && paid > lockerVisa) return json(text("not-exist-visa-paid"), 400);
         }
 
         // Create Bill
@@ -87,13 +89,13 @@ export const POST = async (req: NextRequest) => {
                 return updated.modifiedCount;
             }),
         );
-        if (promise.includes(0)) return json("Some Of The Products Was Not Updated, Something Went Wrong.", 400);
+        if (promise.includes(0)) return json(text("not-updated-products"), 400);
 
         // Update Supplier Pending, purchaseSalary Prices
         await Suppliers.updateOne({ _id: supplierId }, { $inc: { pending: productCosts - paid } });
 
         // Response
-        return json("The Statement Was Successfully Created.");
+        return json(text("success"));
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

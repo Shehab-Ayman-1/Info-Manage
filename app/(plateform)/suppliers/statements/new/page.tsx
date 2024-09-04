@@ -60,9 +60,10 @@ const Suppliers = ({}: SuppliersProps) => {
     }, [products, setValue, processValue]);
 
     const onProcessChange = (value: string) => {
+        clearErrors("process");
         if (value === "milestone") {
             setValue("process", "milestone");
-            return setValue("paid", undefined);
+            return setValue("paid", "");
         }
 
         const productsTotalPrice = products.reduce((prev, cur) => prev + cur?.total, 0);

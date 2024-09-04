@@ -1,0 +1,16 @@
+{
+    "badges": {
+        "bronze": "برونزي",
+        "silver": "فضي",
+        "gold": "ذهبي",
+        "completed": "مكتمل",
+        "pending": "قيد الانتظار",
+        "restore": "مسترجع",
+        "withdraw": "سحب",
+        "deposit": "ايداع",
+        "cash": "كاش",
+        "visa": "فيزا",
+        "admin": "ادمن",
+        "member": "مستخدم"
+    }
+}

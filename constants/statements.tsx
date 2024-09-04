@@ -21,4 +21,5 @@ export const lockerMethods = [
 export const units = [
     { _id: "packet", value: "packet", title: "packet" },
     { _id: "liter", value: "liter", title: "liter" },
+    { _id: "kilo", value: "kilo", title: "kilo" },
 ];

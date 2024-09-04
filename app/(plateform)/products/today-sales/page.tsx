@@ -20,7 +20,7 @@ const TodaySales = () => {
 
     return (
         <TableForm
-            pageTitle="today-sales.heading"
+            pageTitle="pages.today-sales.heading"
             data={data}
             columns={columns}
             totalFor="totalSolds"

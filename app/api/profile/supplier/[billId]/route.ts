@@ -3,6 +3,7 @@ import { NextRequest } from "next/server";
 import { Types } from "mongoose";
 
 import { SupplierBills, Suppliers, Transactions } from "@/server/models";
+import { getTranslations } from "@/utils/getTranslations";
 import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
 
@@ -67,20 +68,21 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const user = await clerkClient().users.getUser(userId);
+        const text = await getTranslations("profile.supplier.put");
 
         const { amount } = await req.json();
         const { billId } = res.params;
 
         const bill = await SupplierBills.findById(billId);
-        if (!bill) return json("Something Went Wrong", 400);
-        if (bill.state === "completed") return json("This Bill Is Already Finished", 400);
+        if (!bill) return json(text("wrong"), 400);
+        if (bill.state === "completed") return json(text("already-completed"), 400);
 
         // Check If The Amount In The Locker Cash
         const { lockerCash } = await Transactions.getLockerCash(orgId);
-        if (amount > lockerCash) return json("This Amount Doesn't Exist In The Locker.", 400);
+        if (amount > lockerCash) return json(text("not-enough"), 400);
 
         // Update The Supplier Bill Salaries
-        if (amount > bill.total - bill.paid) return json("The Payment Amount Is Greater Than The Pending Amount.", 400);
+        if (amount > bill.total - bill.paid) return json(text("money-check"), 400);
         await SupplierBills.updateOne(
             { orgId, _id: billId },
             { $inc: { paid: amount }, state: bill.paid + amount >= bill.total ? "completed" : "pending" },
@@ -114,7 +116,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
             },
         );
 
-        return json("The Payment Was Successfully Done.");
+        return json(text("success"));
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

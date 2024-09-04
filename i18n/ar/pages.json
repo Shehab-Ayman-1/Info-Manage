@@ -6,11 +6,11 @@
         },
 
         "transfer": {
-            "heading": "كشف تحويل",
-            "transfer-to": "التحويل الي (المكان)",
+            "heading": "نقل منتج",
+            "transfer-to": "النقل الي (المكان)",
             "market": "الي المحل",
             "store": "الي المخزن",
-            "submit": "تحويل"
+            "submit": "نقل"
         },
 
         "add-category": {
@@ -32,7 +32,7 @@
         },
 
         "insufficient-products": {
-            "heading": "المنتجات الناقصه"
+            "heading": "نواقص المنتجات"
         },
 
         "today-purchases": {
@@ -58,7 +58,7 @@
         },
 
         "client-bills": {
-            "heading": "قائمة فواتير العملاء"
+            "heading": "عرض  فواتير العملاء"
         },
 
         "new-client-statement": {
@@ -79,7 +79,7 @@
         },
 
         "supplier-bills": {
-            "heading": "فواتير الموردين"
+            "heading": "عرض  فواتير الموردين"
         },
 
         "new-supplier-statement": {

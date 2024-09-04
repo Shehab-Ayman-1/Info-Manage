@@ -54,6 +54,7 @@ const Clients = ({}: ClientsProps) => {
     }, [products, setValue, processValue]);
 
     const onProcessChange = (value: string) => {
+        clearErrors("process");
         if (value === "milestone") {
             setValue("process", "milestone");
             return setValue("paid", "");

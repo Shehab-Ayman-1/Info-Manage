@@ -13,8 +13,14 @@
         "current-count": "Current Count",
         "count": "Count",
 
+        "market-count": "Market Count",
+        "store-count": "Store Count",
+
         "total-purchases": "Total Purchases",
         "purchase-price": "Purchase Price",
+
+        "total-selling": "Total Selling",
+        "selling-price": "Selling Price",
 
         "purchases": "Purchases",
         "last-sold": "Last Sold",
@@ -61,6 +67,8 @@
 
         "process": "Process",
         "method": "Method",
+
+        "solds": "Solds",
 
         "filter-by": {
             "category": "Category",

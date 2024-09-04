@@ -7,6 +7,5 @@ type I18nProviderProps = {
 
 export const I18nProvider = async ({ children }: I18nProviderProps) => {
     const messages = await getMessages();
-
     return <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>;
 };

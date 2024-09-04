@@ -1,3 +1,5 @@
+"use client";
+import { useTranslations } from "next-intl";
 import { Button } from "@/ui/button";
 
 type ControllersProps = {
@@ -8,23 +10,19 @@ type ControllersProps = {
 };
 
 export const Controllers = ({ previousPage, nextPage, getCanPreviousPage, getCanNextPage }: ControllersProps) => {
-    const canPreviousPage = getCanPreviousPage();
-    const canNextPage = getCanNextPage();
+    const text = useTranslations("public");
+    const prev = getCanPreviousPage();
+    const next = getCanNextPage();
 
-    if (!canPreviousPage && !canNextPage) return;
+    if (!prev && !next) return;
 
     return (
         <div className="flex-end w-full">
-            <Button
-                variant="outline"
-                className="text-xs text-primary sm:text-sm"
-                onClick={previousPage}
-                disabled={!canPreviousPage}
-            >
-                Previous
+            <Button variant="outline" className="text-xs text-primary sm:text-sm" onClick={previousPage} disabled={!prev}>
+                {text("previous")}
             </Button>
-            <Button variant="outline" className="text-xs text-primary sm:text-sm" onClick={nextPage} disabled={!canNextPage}>
-                Next
+            <Button variant="outline" className="text-xs text-primary sm:text-sm" onClick={nextPage} disabled={!next}>
+                {text("next")}
             </Button>
         </div>
     );

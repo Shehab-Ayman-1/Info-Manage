@@ -3,6 +3,7 @@ import { NextRequest } from "next/server";
 
 import { configsSchema } from "./schema";
 import { json } from "@/utils/response";
+import { getTranslations } from "@/utils/getTranslations";
 
 export const PUT = async (req: NextRequest) => {
     try {
@@ -10,6 +11,7 @@ export const PUT = async (req: NextRequest) => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const body = await req.json();
+        const text = await getTranslations("organizations.configs.put");
 
         if (body?.subscriptionExpiresAt && body?.additionalSubscriptionExpiresAt) {
             const subscriptionExpiresAt = new Date(body.subscriptionExpiresAt);
@@ -27,7 +29,7 @@ export const PUT = async (req: NextRequest) => {
             await clerkClient.organizations.updateOrganizationMetadata(organizationId, { publicMetadata });
         }
 
-        return json("The Organization Configs Was Successfully Updated.");
+        return json(text("success"));
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

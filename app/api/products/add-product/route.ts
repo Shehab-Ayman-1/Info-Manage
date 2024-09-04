@@ -6,6 +6,7 @@ import { Products, Suppliers } from "@/server/models";
 import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
 import { createSchema } from "./schema";
+import { getTranslations } from "@/utils/getTranslations";
 
 export const POST = async (req: NextRequest) => {
     const session = await mongoose.startSession();
@@ -15,6 +16,7 @@ export const POST = async (req: NextRequest) => {
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
+        const text = await getTranslations("products.add-product.post");
 
         const body = await req.json();
         const { supplierId, companyId, products } = createSchema.parse(body);
@@ -25,14 +27,14 @@ export const POST = async (req: NextRequest) => {
                 const product = await Products.findOne({
                     company: companyId,
                     $or: [{ name: _product.name }, { barcode: _product.barcode }],
-                }).session(session);
+                });
                 return product ? { isExist: false, name: product.name } : { isExist: true, ..._product };
             }),
         );
         const promiseResult = promise.filter((item) => !item?.isExist).map((item) => item.name);
         if (promiseResult.length) {
             await session.abortTransaction();
-            return json(`These Products Are Already Exists, ${promiseResult.join(" | ")}`, 400);
+            return json(`${text("products-exist")}, ${promiseResult.join(" | ")}`, 400);
         }
 
         const newProducts = promise
@@ -42,12 +44,12 @@ export const POST = async (req: NextRequest) => {
         const createdProducts = await Products.create(newProducts, { session });
 
         if (supplierId) {
-            const productsIds = createdProducts.map(({ _id }) => _id);
-            await Suppliers.updateMany({ orgId, _id: supplierId + 1 }, { $addToSet: { products: productsIds } }, { session });
+            const productIds = createdProducts.map(({ _id }) => _id);
+            await Suppliers.updateMany({ orgId, _id: supplierId }, { $addToSet: { products: productIds } }, { session });
         }
 
         await session.commitTransaction();
-        return json("The Product Was Successfully Created.");
+        return json(text("success"));
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         await session.abortTransaction();

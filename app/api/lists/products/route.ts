@@ -27,13 +27,14 @@ export const GET = async () => {
             {
                 $project: {
                     _id: 1,
-                    name: 1,
+                    name: { $concat: ["$name", " ||| ", "$barcode"] },
                     soldPrice: "$market.price",
                     purchasePrice: "$store.price",
                     company: { _id: "$company._id", name: "$company.name" },
                 },
             },
         ]);
+
 
         return json(products);
     } catch (error: any) {

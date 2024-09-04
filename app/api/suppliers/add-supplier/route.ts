@@ -1,10 +1,11 @@
 import { NextRequest } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 
+import { getTranslations } from "@/utils/getTranslations";
 import { DBConnection } from "@/server/configs";
 import { Suppliers } from "@/server/models";
-import { json } from "@/utils/response";
 import { createSchema } from "./schema";
+import { json } from "@/utils/response";
 
 export const POST = async (req: NextRequest) => {
     try {
@@ -12,6 +13,7 @@ export const POST = async (req: NextRequest) => {
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
+        const text = await getTranslations("suppliers.add-supplier.post");
 
         const { searchParams } = new URL(req.url);
         const process = searchParams.get("process");
@@ -23,11 +25,11 @@ export const POST = async (req: NextRequest) => {
 
         if (process === "new") {
             const supplier = await Suppliers.findOne({ orgId, name }).lean();
-            if (supplier) return json("This Supplier / Product(s) Are Already Exists", 400);
+            if (supplier) return json(text("already-exist"), 400);
             await Suppliers.create({ orgId, name, phone, products: productsIds });
         }
 
-        return json("The Supplier Was Successfully Added.");
+        return json(text("success"));
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

@@ -12,13 +12,12 @@
                 "description": "يجب اضافه كل حقول الادخال لاتمام عمليه الاضافه بنجاح",
                 "optional-barcode": "البار كود (اختياري)",
                 "minimum": "الحد الادني",
-                "unit": "الكمية",
-                "packet": "عبوة",
-                "liter": "لتر",
-                "market-count": "العدد في المحل",
-                "store-count": "العدد في المخزن",
-                "selling-price": "سعر البيع",
-                "purchase-price": "سعر البيع"
+                "selling-price": "سعر البيع"
+            },
+
+            "delete-dialog": {
+                "heading": "ازالة المنتج",
+                "description": "هل انت متاكد من ازالة هذا المنتج"
             }
         },
 

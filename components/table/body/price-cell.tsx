@@ -10,7 +10,7 @@ export const DollarCell = ({ row, name }: DollarCellProps) => {
     const formatted = new Intl.NumberFormat("es-US", {
         style: "currency",
         currency: "USD",
-        maximumFractionDigits: 0,
+        maximumFractionDigits: 2,
     }).format(price);
 
     return formatted;

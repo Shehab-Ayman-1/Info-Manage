@@ -17,7 +17,6 @@ export type NavLinkType = {
     additionalSubscriptions: AdditionalSubscription[];
 };
 
-// New Tabs
 export const productLists: NavLinkType[] = [
     {
         Icon: StoreIcon,

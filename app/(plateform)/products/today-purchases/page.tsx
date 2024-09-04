@@ -19,7 +19,7 @@ const TodayPurchases = () => {
 
     return (
         <TableForm
-            pageTitle="today-purchases.heading"
+            pageTitle="pages.today-purchases.heading"
             columns={columns}
             data={data}
             filterBy={["product"]}

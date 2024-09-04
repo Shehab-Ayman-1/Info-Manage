@@ -28,7 +28,6 @@ export const GET = async () => {
                 $group: {
                     _id: "$products.name",
                     product: { $first: "$products.name" },
-                    unit: { $first: "$products.unit" },
                     count: { $sum: "$products.count" },
                     totalPurchases: { $sum: "$total" },
                 },

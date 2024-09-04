@@ -3,6 +3,7 @@ import { NextRequest } from "next/server";
 import mongoose from "mongoose";
 
 import { ClientBills, Clients, Products, Transactions } from "@/server/models";
+import { getTranslations } from "@/utils/getTranslations";
 import { DBConnection } from "@/server/configs";
 import { getExpireAt } from "@/utils/expireAt";
 import { createSchema } from "./schema";
@@ -19,12 +20,13 @@ export const POST = async (req: NextRequest) => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const user = await clerkClient().users.getUser(userId);
+        const text = await getTranslations("clients.restore-statement.post");
 
         const body = await req.json();
         const { billBarcode, products } = createSchema.parse(body);
 
         const bill = await ClientBills.findOne({ orgId, type: "sale", barcode: billBarcode });
-        if (!bill) return json("The Client Bill Not Found.", 400);
+        if (!bill) return json(text("missing-bill"), 400);
 
         const productsTotalCosts = products.reduce((prev, cur) => prev + cur.total, 0);
         const billProducts = products.map(({ total, ...product }) => product);
@@ -37,14 +39,14 @@ export const POST = async (req: NextRequest) => {
 
         if (isUnableProducts) {
             await session.abortTransaction();
-            return json(`Some Products Count Is Not Exist In The Client Bill`, 400);
+            return json(text("product-not-exist"), 400);
         }
 
         // Check If The Locker Contain Restored Products Salary
         const { lockerCash } = await Transactions.getLockerCash(orgId);
         if (productsTotalCosts > lockerCash) {
             await session.abortTransaction();
-            return json("Locker Doesn't Exist The Restored Total Products Costs.", 400);
+            return json(text("locker-not-enough"), 400);
         }
 
         // Return The Products To The Market
@@ -77,11 +79,7 @@ export const POST = async (req: NextRequest) => {
 
         // Create New Transaction
         await Transactions.updateOne(
-            {
-                orgId,
-                method: "cash",
-                process: "withdraw",
-            },
+            { orgId, method: "cash", process: "withdraw" },
             {
                 $inc: { total: productsTotalCosts },
                 $push: {
@@ -109,7 +107,7 @@ export const POST = async (req: NextRequest) => {
 
         // Response
         await session.commitTransaction();
-        return json("The Statement Was Successfully Restored.");
+        return json(text("success"));
     } catch (error: any) {
         await session.abortTransaction();
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
@@ -128,19 +126,20 @@ export const DELETE = async (req: NextRequest) => {
 
         const { userId, orgId, orgSlug } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
+        const text = await getTranslations("clients.restore-statement.delete");
 
         const user = await clerkClient().users.getUser(userId);
         const organization = await clerkClient().organizations.getOrganization({ organizationId: orgId, slug: orgSlug });
 
         const { billBarcode } = await req.json();
-        if (!billBarcode) return json("Something Went Wrong.", 400);
+        if (!billBarcode) return json(text("wrong"), 400);
 
         const bill = await ClientBills.findOne({ orgId, barcode: billBarcode });
-        if (!bill) return json("Something Went Wrong.", 400);
+        if (!bill) return json(text("wrong"), 400);
 
         // Check If The Locker Contain The Bill Amount
         const { lockerCash } = await Transactions.getLockerCash(orgId);
-        if (bill.paid > lockerCash) return json("Locker Doen't Exist This Bill Cost.", 400);
+        if (bill.paid > lockerCash) return json(text("locker-not-enough"), 400);
 
         // Return The Bill Products To The Market Usign ProductId
         const promise = await Promise.all(
@@ -152,7 +151,7 @@ export const DELETE = async (req: NextRequest) => {
 
         if (promise.includes(0)) {
             await session.abortTransaction();
-            return json("Product(s) Not Return To The Market Again");
+            return json(text("wrong"), 400);
         }
 
         // Decreament The Client purchases Salary, pending, And Discounts
@@ -197,7 +196,7 @@ export const DELETE = async (req: NextRequest) => {
 
         // Response
         await session.commitTransaction();
-        return json("The Client Bill Was Successfully Deleted.");
+        return json(text("success"));
     } catch (error: any) {
         await session.abortTransaction();
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");

@@ -3,6 +3,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ProductType, schema } from "./schema";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { SubmitButton } from "@/components/public/submit-btn";
@@ -11,7 +12,6 @@ import { DialogForm } from "@/components/ui/dialog";
 import { useModel } from "@/hooks/useModel";
 import { Input } from "@/ui/input";
 import { units } from "@/constants";
-import { useTranslations } from "next-intl";
 
 type InsertAndUpdateDialogProps = {
     setProducts: Dispatch<SetStateAction<ProductType[]>>;
@@ -105,13 +105,13 @@ export const InsertAndUpdateDialog = ({ setProducts }: InsertAndUpdateDialogProp
                         {...register("min", { valueAsNumber: true })}
                     />
                     <ComboBox
-                        label="unit"
+                        label="choose-unit"
                         name="unit"
                         useTranslate={{
-                            label: "dialogs.add-product.insert-dialog",
-                            trigger: "dialogs.add-product.insert-dialog",
-                            name: "dialogs.add-product.insert-dialog",
-                            item: "dialogs.add-product.insert-dialog",
+                            label: "public",
+                            trigger: "public",
+                            name: "public",
+                            item: "public",
                             justPlaceholder: true,
                         }}
                         items={units}
@@ -125,14 +125,14 @@ export const InsertAndUpdateDialog = ({ setProducts }: InsertAndUpdateDialogProp
                     <Input
                         type="number"
                         placeholder="market-count"
-                        useTranslate={{ placeholder: "dialogs.add-product.insert-dialog" }}
+                        useTranslate={{ placeholder: "public" }}
                         error={errors?.marketCount}
                         {...register("marketCount", { valueAsNumber: true })}
                     />
                     <Input
                         type="number"
                         placeholder="store-count"
-                        useTranslate={{ placeholder: "dialogs.add-product.insert-dialog" }}
+                        useTranslate={{ placeholder: "public" }}
                         error={errors?.storeCount}
                         {...register("storeCount", { valueAsNumber: true })}
                     />
@@ -142,7 +142,7 @@ export const InsertAndUpdateDialog = ({ setProducts }: InsertAndUpdateDialogProp
                     <Input
                         type="number"
                         placeholder="purchase-price"
-                        useTranslate={{ placeholder: "dialogs.add-product.insert-dialog" }}
+                        useTranslate={{ placeholder: "public" }}
                         error={errors?.purchasePrice}
                         {...register("purchasePrice", { valueAsNumber: true })}
                     />

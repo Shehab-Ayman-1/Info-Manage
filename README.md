@@ -6,6 +6,8 @@
 
     - Change Text From [Bill -> invoice], [restore, refund]
 
+    - Update Bill
+
     - Think About
         -- البضائع السائله
         -- تفعيل خطه شرائح العملاء

@@ -7,6 +7,7 @@ import { DBConnection } from "@/server/configs";
 import { getExpireAt } from "@/utils/expireAt";
 import { createSchema } from "./schema";
 import { json } from "@/utils/response";
+import { getTranslations } from "@/utils/getTranslations";
 
 export const POST = async (req: NextRequest) => {
     const session = await mongoose.startSession();
@@ -17,6 +18,7 @@ export const POST = async (req: NextRequest) => {
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
+        const text = await getTranslations("suppliers.restore-statement.post");
 
         const user = await clerkClient().users.getUser(userId);
 
@@ -34,7 +36,7 @@ export const POST = async (req: NextRequest) => {
         const promiseValues = promise.filter((item) => item);
         if (promiseValues.length) {
             await session.abortTransaction();
-            return json(`Not Enough ${promiseValues.join(" | ")}`, 400);
+            return json(`${text("not-enough")} ${promiseValues.join(" | ")}`, 400);
         }
 
         // Create Bill
@@ -101,7 +103,7 @@ export const POST = async (req: NextRequest) => {
 
         if (updatePromise.includes(0)) {
             await session.abortTransaction();
-            return json("Something Went Wrong.", 400);
+            return json(text("wrong"), 400);
         }
 
         // Update Client Pending Prices
@@ -109,7 +111,7 @@ export const POST = async (req: NextRequest) => {
 
         // Response
         await session.commitTransaction();
-        return json("The Statement Was Successfully Restored.");
+        return json(text("success"));
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

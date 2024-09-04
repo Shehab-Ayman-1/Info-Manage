@@ -15,7 +15,7 @@ export const GET = async (req: NextRequest) => {
 
         const { searchParams } = new URL(req.url);
         const supplierId = searchParams.get("supplierId")!;
-        const place = searchParams.get("place") as "market" | "store";
+        const place = searchParams.get("place") as "all" | "market" | "store";
 
         const insufficients = await Suppliers.aggregate([
             {

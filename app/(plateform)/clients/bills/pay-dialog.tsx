@@ -22,7 +22,7 @@ export const PayDialog = ({}: PayDialogProps) => {
     const { type, data, onClose } = useModel();
     const text = useTranslations();
 
-    const { mutate, isPending } = useUpdate(`/api/clients/bills/${data?.billId}`, ["client-bills"]);
+    const { mutate, isPending } = useUpdate(`/api/profile/client/${data?.billId}`, ["client-bills"]);
     const { errors } = formState;
 
     if (type !== "pay-model") return;

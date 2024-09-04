@@ -5,6 +5,7 @@ import { DBConnection } from "@/server/configs";
 import { Products } from "@/server/models";
 import { editSchema } from "./schema";
 import { json } from "@/utils/response";
+import { getTranslations } from "@/utils/getTranslations";
 
 export const PUT = async (req: NextRequest) => {
     try {
@@ -12,16 +13,17 @@ export const PUT = async (req: NextRequest) => {
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
+        const text = await getTranslations("products.transfer-product.put");
 
         const body = await req.json();
         const { productId, place, count } = editSchema.parse(body);
 
         const product = await Products.findById(productId);
-        if (!product) return json("The Product Was Not Found.", 400);
+        if (!product) return json(text("not-found"), 400);
 
         const otherPlace = place === "market" ? "store" : "market";
         if (count > product[otherPlace].count)
-            return json(`Just Available [${product[otherPlace].count}] In The ${otherPlace}`, 400);
+            return json(`${text("just-available")} [${product[otherPlace].count}] ${text("in-the")} ${text(otherPlace)}`, 400);
 
         const updated = await Products.updateOne(
             { _id: productId },
@@ -32,9 +34,9 @@ export const PUT = async (req: NextRequest) => {
                 },
             },
         );
-        if (!updated.modifiedCount) return json("The Product Was Not Modified.", 400);
+        if (!updated.modifiedCount) return json(text("not-modified"), 400);
 
-        return json("The Product Was Transfer");
+        return json(text("success"));
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

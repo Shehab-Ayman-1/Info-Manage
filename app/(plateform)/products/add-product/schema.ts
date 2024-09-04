@@ -4,7 +4,7 @@ export const schema = z.object({
     randomId: z.string().optional(),
     name: z.string().min(1),
     barcode: z.string().optional(),
-    unit: z.enum(["packet", "liter"]),
+    unit: z.enum(["packet", "liter", "kilo"]),
     min: z.number().int().positive(),
     storeCount: z.number().int().min(0),
     marketCount: z.number().int().min(0),

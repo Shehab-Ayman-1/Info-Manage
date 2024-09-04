@@ -29,14 +29,14 @@ export const TableForm = <TData,>(props: TableFormProps<TData>) => {
     const { isAdmin } = useOrg();
 
     const onPrint = useReactToPrint({
-        onAfterPrint: () => setPagination((pagination) => ({ ...pagination, pageSize: 20 })),
+        onAfterPrint: () => setPagination((pagination) => ({ ...pagination, pageIndex: 0, pageSize: 20 })),
         content: () => document.getElementById("data-table"),
         documentTitle: pageTitle,
         pageStyle: "p-4 border border-slate-500",
     });
 
     const onPrintTrigger = () => {
-        setPagination((pagination) => ({ ...pagination, pageSize: 1e6 }));
+        setPagination((pagination) => ({ ...pagination, pageIndex: 0, pageSize: 1e6 }));
         setTimeout(onPrint, 0);
     };
 

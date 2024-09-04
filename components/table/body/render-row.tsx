@@ -1,6 +1,7 @@
 import { flexRender } from "@tanstack/react-table";
 
 import { TableCell, TableRow } from "@/ui/table";
+import { useTranslations } from "next-intl";
 import { cn } from "@/utils/shadcn";
 
 export type RenderCell = {
@@ -15,6 +16,7 @@ type RenderRowProps = {
 };
 
 export const RenderRow = ({ row, index, smallSize }: RenderRowProps) => {
+    const text = useTranslations();
     const visibleCells = row.getVisibleCells();
     const rowStyle = cn("border-none hover:bg-transparent", index % 2 === 0 && "bg-gradient-light");
 
@@ -22,15 +24,23 @@ export const RenderRow = ({ row, index, smallSize }: RenderRowProps) => {
         <TableRow className={rowStyle}>
             {visibleCells.map((cell: any) => {
                 const TDCell = flexRender(cell.column.columnDef.cell, cell.getContext());
+                const key = cell.row.original[cell.column.columnDef.accessorKey];
+
+                const product =
+                    typeof key === "string" && key.split(" ||| ") && key.split(" ||| ").length > 1 && key.split(" ||| ")[0];
+
+                const isPerson = cell.column.id === "client" || cell.column.id === "supplier";
+                const isUnknown = cell.row.original.client === "unknown" || cell.row.original.supplier === "unknown";
+
                 return (
                     <TableCell
                         key={cell.id}
                         className={cn(
                             "whitespace-nowrap px-0 text-center text-sm print:text-black",
-                            smallSize ? "py-0 sm:text-sm" : "py-4 sm:text-base",
+                            smallSize ? "py-0" : "py-4 sm:text-base",
                         )}
                     >
-                        {TDCell}
+                        {product ? product : isPerson && isUnknown ? text("public.unknown") : TDCell}
                     </TableCell>
                 );
             })}

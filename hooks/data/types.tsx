@@ -33,9 +33,9 @@ export type Companies = {
 
 export type Products = {
     data: (Item & {
-        purchasePrice: number;
-        soldPrice: number;
         company: Item;
+        soldPrice: number;
+        purchasePrice: number;
     })[];
     groups: Group[];
     isLoading: false | true;

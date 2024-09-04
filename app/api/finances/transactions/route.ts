@@ -17,6 +17,7 @@ export const GET = async (req: NextRequest) => {
 
         const startDate = new Date(date);
         startDate.setHours(0, 0, 0, 0);
+
         const endDate = new Date(date);
         endDate.setHours(23, 59, 59, 999);
 
@@ -37,6 +38,11 @@ export const GET = async (req: NextRequest) => {
                     reason: "$history.reason",
                     price: "$history.price",
                     createdAt: "$history.createdAt",
+                },
+            },
+            {
+                $sort: {
+                    createdAt: -1,
                 },
             },
         ]);

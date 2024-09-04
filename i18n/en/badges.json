@@ -1,0 +1,16 @@
+{
+    "badges": {
+        "bronze": "Bronze",
+        "silver": "Silver",
+        "gold": "Gold",
+        "completed": "Completed",
+        "pending": "Pending",
+        "restore": "Restore",
+        "withdraw": "Withdraw",
+        "deposit": "Deposit",
+        "cash": "Cash",
+        "visa": "Visa",
+        "admin": "Admin",
+        "member": "Member"
+    }
+}

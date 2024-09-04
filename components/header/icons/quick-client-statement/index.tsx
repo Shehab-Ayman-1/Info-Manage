@@ -1,8 +1,9 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { useKey } from "react-use";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -20,6 +21,7 @@ import { DeleteDialog } from "./delete-dialog";
 import { methods } from "@/constants";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
+import { Tooltip } from "@/components/ui/tooltip";
 
 const productSchema = z.array(
     z.object({
@@ -89,13 +91,15 @@ export const QuickClientStatement = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [product.productId]);
 
+    useKey((event) => event.ctrlKey && event.key === "Enter", handleInsertProduct);
     if (type !== "quick-client-statement-model") return;
 
-    const handleInsertProduct = () => {
+    function handleInsertProduct() {
         const prod = choosenProducts?.find((prod) => prod.productId === product.productId);
-
         if (prod) return toast.info("This Product Is Already Inserted.");
+
         if (!product.count || !product.soldPrice) return toast.info("Product Count & Sold Price Are Required.");
+        if (product.count < 0 || product.soldPrice < 0) return toast.info("Product Count & Sold Price Must Be Greater Then 0");
 
         const productList = productLists.data.find((prod) => prod._id === product.productId);
         if (!productList) return toast.info("Something Went Wrong.");
@@ -115,7 +119,7 @@ export const QuickClientStatement = () => {
 
         setValue("products", newProducts || [newProduct]);
         setProduct(() => defaultProduct);
-    };
+    }
 
     const onSubmit: SubmitHandler<StatementType> = (values) => {
         const filterProducts = values.products.map(({ company, name, ...product }) => product);
@@ -137,20 +141,20 @@ export const QuickClientStatement = () => {
                 <ComboBox
                     label="choose-method"
                     name="method"
+                    useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                     error={errors?.method}
                     items={methods}
                     setValue={setValue}
                     clearErrors={clearErrors}
-                    useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                 />
 
                 <ComboBox
                     label="choose-product"
                     name="productId"
+                    useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
                     groups={productLists.groups}
                     loading={productLists.isLoading}
                     onChange={(value) => setProduct((product) => ({ ...product, productId: value }))}
-                    useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
                 />
 
                 <div className="flex-between">
@@ -169,12 +173,14 @@ export const QuickClientStatement = () => {
                         onChange={(event) => setProduct((product) => ({ ...product, soldPrice: +event.target.value }))}
                     />
 
-                    <Button type="button" variant="outline" className="mx-auto flex py-12" onClick={handleInsertProduct}>
-                        {text("buttons.insert")}
-                    </Button>
+                    <Tooltip content="CTRL + ENTER">
+                        <Button type="button" variant="outline" className="mx-auto flex sm:py-12" onClick={handleInsertProduct}>
+                            {text("buttons.insert")}
+                        </Button>
+                    </Tooltip>
                 </div>
 
-                <p className="text-center text-xs text-rose-500">{errors.products && "No Products Was Selected."}</p>
+                {errors.products && <p className="text-center text-xs text-rose-500">No Products Was Selected.</p>}
                 {!!choosenProducts?.length && <DataTable columns={columns} data={choosenProducts} totalFor="total" smallSize />}
 
                 <SubmitButton text="submit" isPending={isPending} />

@@ -41,6 +41,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                             : "border-b border-b-primary",
                         className,
                     )}
+                    step="0.01"
                     ref={ref}
                     type={type}
                     name={name}

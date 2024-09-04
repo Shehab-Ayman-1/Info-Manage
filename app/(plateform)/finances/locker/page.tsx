@@ -24,7 +24,7 @@ const Locker = ({}: LockerProps) => {
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const values = data as CreateLockerSchema;
-        mutate(values, { onSuccess: () => router.push("/") });
+        mutate(values, { onSuccess: () => router.push("/finances/transactions") });
     };
 
     return (

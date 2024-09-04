@@ -155,13 +155,13 @@ function CommandTrigger({ useTranslate, selectedValue, label, open }: CommandTri
                 variant="ghost"
                 role="combobox"
                 aria-expanded={open}
-                className="flex-between w-full border-b border-b-primary !py-8 text-base text-slate-400"
+                className="flex-between mt-1 w-full border-b border-b-primary !py-8 text-base text-slate-400"
             >
                 {isNotCustomeTrigger
                     ? text(`${useTranslate.trigger}.${selectedValue || label}`)
                     : isCustomeTrigger
-                      ? selectedValue || text(`${useTranslate?.trigger}.${label}`)
-                      : selectedValue || label}
+                      ? selectedValue.split(" ||| ")?.[0] || text(`${useTranslate?.trigger}.${label}`)
+                      : selectedValue.split(" ||| ")?.[0] || label}
                 <ChevronsUpDownIcon className="mx-2 size-4 opacity-50" />
             </Button>
         </PopoverTrigger>
@@ -183,7 +183,7 @@ function CommandListItem({ useTranslate, selectedValue, value, title, onSelect }
     return (
         <CommandItem value={value} onSelect={onSelect} className="cursor-pointer text-lg capitalize leading-10">
             <CheckCheckIcon className={cn("mx-2 size-4 !text-green-500", hideIcon(value))} />
-            {useTranslate?.item ? text(`${useTranslate.item}.${title}`) : title}
+            {useTranslate?.item ? text(`${useTranslate.item}.${title}`) : title.split(" ||| ")?.[0]}
         </CommandItem>
     );
 }
@@ -193,7 +193,7 @@ function CommandLoading() {
 
     return (
         <CommandItem className="flex-start">
-            <Icons.spinner className="mr-2 size-6 animate-spin" />
+            <Icons.spinner className="mx-2 size-6 animate-spin" />
             {text("loading")}
         </CommandItem>
     );

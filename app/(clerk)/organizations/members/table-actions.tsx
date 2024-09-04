@@ -15,12 +15,12 @@ export const Actions = ({ row }: ActionsProps) => {
     const items = [
         {
             Icon: EditIcon,
-            text: "Edit",
-            onClick: (original: any) => onOpen("edit-model", {  ...original }),
+            text: "edit",
+            onClick: (original: any) => onOpen("edit-model", { ...original }),
         },
         {
             Icon: Trash2Icon,
-            text: "Delete",
+            text: "delete",
             className: { button: "cancel", icon: "cancel" },
             onClick: (original: any) => onOpen("delete-model", { userId: original.userId }),
         },

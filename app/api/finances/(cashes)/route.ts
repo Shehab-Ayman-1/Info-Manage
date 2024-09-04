@@ -14,11 +14,21 @@ export const GET = async () => {
         const { lockerCash, lockerVisa } = await Transactions.getLockerCash(orgId);
 
         const [productsCashes] = await Products.aggregate([
-            { $lookup: { from: "companies", localField: "company", foreignField: "_id", as: "company" } },
-            { $unwind: "$company" },
-            { $lookup: { from: "categories", localField: "company.category", foreignField: "_id", as: "company.category" } },
-            { $unwind: "$company.category" },
-            { $match: { "company.category.orgId": orgId } },
+            {
+                $lookup: { from: "companies", localField: "company", foreignField: "_id", as: "company" },
+            },
+            {
+                $unwind: "$company",
+            },
+            {
+                $lookup: { from: "categories", localField: "company.category", foreignField: "_id", as: "company.category" },
+            },
+            {
+                $unwind: "$company.category",
+            },
+            {
+                $match: { "company.category.orgId": orgId },
+            },
             {
                 $project: {
                     _id: 0,

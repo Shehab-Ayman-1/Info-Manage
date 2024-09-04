@@ -22,7 +22,7 @@ type RequestType = CreateCompanySchema;
 
 const Company = ({}: CompanyProps) => {
     const { formState, register, watch, setValue, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(createSchema) });
-    const { mutate, isPending: createPending } = useCreate<RequestType>("/api/products/add-company", []);
+    const { mutate, isPending } = useCreate<RequestType>("/api/products/add-company", []);
 
     const { categories, onReset } = useLists();
     const text = useTranslations();
@@ -50,7 +50,7 @@ const Company = ({}: CompanyProps) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <CardForm heading={text("pages.add-company.heading")} submitText={text("buttons.create")} disabled={createPending}>
+            <CardForm heading={text("pages.add-company.heading")} submitText={text("buttons.create")} disabled={isPending}>
                 <div className="relative mx-auto h-28 w-28 overflow-hidden rounded-[100%]">
                     <Image src={availableImageSrc ? image : "/overview.jpeg"} className="h-full w-full" alt="car" fill />
                 </div>

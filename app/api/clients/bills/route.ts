@@ -1,8 +1,8 @@
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
-import { ClientBills } from "@/server/models";
 import { DBConnection } from "@/server/configs";
+import { ClientBills } from "@/server/models";
 import { json } from "@/utils/response";
 
 export const GET = async (req: NextRequest) => {

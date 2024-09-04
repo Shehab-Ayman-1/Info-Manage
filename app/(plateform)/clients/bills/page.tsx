@@ -6,9 +6,9 @@ import { TableForm } from "@/components/page-structure/table-form";
 import { useGet } from "@/hooks/api/useGet";
 import { columns } from "./table-columns";
 
+import { UpdateDialog } from "./update-dialog";
 import { PayDialog } from "./pay-dialog";
 import { Input } from "@/ui/input";
-import { UpdateDialog } from "./update-dialog";
 
 type BillType = {
     _id: string;

@@ -3,6 +3,7 @@ import { NextRequest } from "next/server";
 import mongoose from "mongoose";
 
 import { ClientBills, Clients, Products, Transactions } from "@/server/models";
+import { getTranslations } from "@/utils/getTranslations";
 import { DBConnection } from "@/server/configs";
 import { getExpireAt } from "@/utils/expireAt";
 import { createSchema } from "./schema";
@@ -17,6 +18,7 @@ export const POST = async (req: NextRequest) => {
 
         const { userId, orgId, orgSlug } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
+        const text = await getTranslations("clients.new-statement.post");
 
         const user = await clerkClient().users.getUser(userId);
         const organization = await clerkClient().organizations.getOrganization({ organizationId: orgId, slug: orgSlug });
@@ -35,7 +37,7 @@ export const POST = async (req: NextRequest) => {
         const promiseValues = promise.filter((item) => item);
         if (promiseValues.length) {
             await session.abortTransaction();
-            return json(`Not Enough ${promiseValues.join(" | ")}`, 400);
+            return json(`${text("not-enough")} ${promiseValues.join(" | ")}`, 400);
         }
 
         // Create Bill
@@ -103,14 +105,7 @@ export const POST = async (req: NextRequest) => {
         const totalProfits = data.products.reduce((prev, cur) => prev + cur.count * (cur.soldPrice - cur.purchasePrice), 0);
         await Clients.updateOne(
             { orgId, _id: clientId },
-            {
-                $inc: {
-                    totalProfits,
-                    purchases: total,
-                    pending: total - paid,
-                    discounts: discount,
-                },
-            },
+            { $inc: { totalProfits, purchases: total, pending: total - paid, discounts: discount } },
             { session },
         );
 
@@ -121,7 +116,7 @@ export const POST = async (req: NextRequest) => {
 
         // Response
         await session.commitTransaction();
-        return json("The Statement Was Successfully Created.");
+        return json(text("success"));
     } catch (error: any) {
         await session.abortTransaction();
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");

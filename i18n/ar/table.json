@@ -13,11 +13,17 @@
         "current-count": "العدد الحالي",
         "count": "العدد",
 
+        "market-count": "عدد المحل",
+        "store-count": "عدد المخزن",
+
         "total-purchases": "اجمالي المشتريات",
         "purchase-price": "سعر الشراء",
 
         "purchases": "المشتريات",
         "last-sold": "اخر عملية بيع",
+
+        "total-selling": "اجمالي المبيعات",
+        "selling-price": "سعر البيع",
 
         "cash": "كاش",
         "visa": "فيزا",
@@ -26,7 +32,7 @@
         "price": "السعر",
 
         "pending": "المتبقي",
-        "total": "الاجمالي",
+        "total": "اجمالي",
 
         "actions": "المزيد",
         "print": "طباعه",
@@ -51,7 +57,7 @@
 
         "bronze-to": "البرونزيه الي",
         "silver-to": "الفضية الي",
-        "level": "الطبقه",
+        "level": "الشريحة",
 
         "state": "الحالة",
         "created-at": "تم الانشاء في",
@@ -62,6 +68,8 @@
         "process": "العملية",
         "method": "وسيلة الدفع",
 
+        "solds": "المبيعات",
+
         "filter-by": {
             "category": "القسم",
             "company": "الشركة",
@@ -69,7 +77,7 @@
             "barcode": "الباركود",
             "supplier": "المورد",
             "client": "العميل",
-            "level": "الطبقه",
+            "level": "الشريحة",
             "reason": "السبب"
         }
     }

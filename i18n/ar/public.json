@@ -34,11 +34,18 @@
         "choose-place": "اختار المكان",
         "place": "المكان",
 
+        "choose-unit": "اختر الكمية",
+        "unit": "الكمية",
+
         "old-supplier": "مورد قديم",
         "new-supplier": "مورد جديد",
 
         "by-milestone": "دفع بالتقسيط",
         "pay-all": "دفع كامل",
+
+        "packet": "عبوة",
+        "liter": "لتر",
+        "kilo": "كيلو",
 
         "count": "العدد",
         "price": "السعر",
@@ -46,11 +53,14 @@
         "purchase-price": "سعر الشراء",
         "sold-price": "سعر البيع",
 
-        "market-count": "العدد المحل",
-        "store-count": "العدد المخزن",
+        "market-count": "عدد المحل",
+        "store-count": "عدد المخزن",
 
         "loading": "تحميل ...",
         "search": "البحث ...",
+
+        "previous": "السابق",
+        "next": "التالي",
 
         "market": "المحل",
         "store": "المخزن",
@@ -72,6 +82,7 @@
         "open-insert-products-model": "اضافه منتج جديد",
 
         "print-receipt": "طباعه الفاتورة",
+        "unknown": "غير معروف",
 
         "restore": "مرتجع",
         "completed": "مكتمل",
