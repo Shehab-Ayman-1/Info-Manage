@@ -129,7 +129,7 @@ export const useLists = create<ListsType>((set, get) => ({
         isLoading: true,
         fetcher: async function (supplierId) {
             const { suppliers } = get();
-            if (!suppliers.data.length) await suppliers.fetcher?.();
+            if (!suppliers.data.length) await suppliers.fetcher();
 
             const supplier = suppliers?.data.find((supplier) => supplier._id === supplierId);
             if (!supplier) return;
@@ -143,7 +143,7 @@ export const useLists = create<ListsType>((set, get) => ({
         },
     },
 
-    onReset: async function (keys) {
+    onReset: async (keys) => {
         const { categories, companies, products, clients, suppliers } = get();
 
         if (keys.includes("categories")) {

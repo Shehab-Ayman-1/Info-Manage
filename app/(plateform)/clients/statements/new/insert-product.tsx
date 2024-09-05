@@ -43,11 +43,6 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
     const text = useTranslations();
 
     useEffect(() => {
-        (async () => await products.fetcher?.())();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    useEffect(() => {
         if (!selectedProductId) return;
 
         const product = products.data.find((product) => product._id === selectedProductId);

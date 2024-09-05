@@ -1,7 +1,7 @@
 "use client";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { z } from "zod";
@@ -38,10 +38,13 @@ const Product = ({}: ProductProps) => {
     const { companies, suppliers, onReset } = useLists();
     const text = useTranslations();
     const router = useRouter();
+    const mount = useRef(false);
 
     useEffect(() => {
-        (async () => await companies.fetcher?.())();
-        (async () => await suppliers.fetcher?.())();
+        if (mount.current) return;
+        (async () =>  companies.fetcher())();
+        (async () =>  suppliers.fetcher())();
+        mount.current = true;
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

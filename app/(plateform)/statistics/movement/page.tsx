@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useGetByQuery } from "@/hooks/api/useGetByQuery";
 import { useLists } from "@/hooks/data/useLists";
@@ -22,9 +22,12 @@ const Movement = () => {
     const { suppliers, productsBySupplier } = useLists();
     const [supplierId, setSupplierId] = useState("");
     const [productId, setProductId] = useState("");
+    const mount = useRef(false);
 
     useEffect(() => {
-        (async () => await suppliers.fetcher?.())();
+        if (mount.current) return;
+        (async () => suppliers.fetcher())();
+        mount.current = true;
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

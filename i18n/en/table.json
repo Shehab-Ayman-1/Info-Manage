@@ -1,6 +1,9 @@
 {
     "table": {
         "table-pagination": "Page {currentPaginationCount} Of {totalPaginationCount}",
+        "no-results": "No Results",
+
+        "category-name": "Category",
         "category": "Category",
 
         "company-name": "Company",

@@ -87,7 +87,9 @@ export const ComboBox = (props: ComboBoxProps) => {
                         />
 
                         <CommandList className="bg-gradient">
-                            {!loading && !items?.length && !groups?.length && <CommandEmpty>{text("no-results")}.</CommandEmpty>}
+                            {!loading && !items?.length && !groups?.length && (
+                                <CommandEmpty>{text("table.no-results")}.</CommandEmpty>
+                            )}
                             {loading && !items?.length && !groups?.length && <CommandLoading />}
 
                             {!!items?.length &&

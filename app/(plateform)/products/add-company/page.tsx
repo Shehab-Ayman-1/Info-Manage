@@ -4,7 +4,7 @@ import { CldUploadWidget } from "next-cloudinary";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 import { useCreate } from "@/hooks/api/useCreate";
@@ -27,12 +27,15 @@ const Company = ({}: CompanyProps) => {
     const { categories, onReset } = useLists();
     const text = useTranslations();
     const router = useRouter();
+    const mount = useRef(false);
 
     const { errors } = formState;
     const image: string = watch("image");
 
     useEffect(() => {
-        (async () => await categories.fetcher?.())();
+        if (mount.current) return;
+        (async () => categories.fetcher())();
+        mount.current = true;
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

@@ -1,6 +1,6 @@
 "use client";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
@@ -24,11 +24,6 @@ export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
 
     const { type, onClose } = useModel();
     const { products } = useLists();
-
-    useEffect(() => {
-        (async () => await products.fetcher?.())();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     if (type !== "insert-product-model") return;
 

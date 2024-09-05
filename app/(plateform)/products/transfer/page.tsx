@@ -2,7 +2,6 @@
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
-import { useEffect } from "react";
 
 import { useUpdate } from "@/hooks/api/useUpdate";
 import { useLists } from "@/hooks/data/useLists";
@@ -18,15 +17,10 @@ type TransferProps = {};
 const Transfer = ({}: TransferProps) => {
     const { formState, register, setValue, reset, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(editSchema) });
     const { mutate, isPending } = useUpdate<EditTransferSchema>("/api/products/transfer", ["market", "store"]);
-
-    const text = useTranslations();
     const { products } = useLists();
     const { errors } = formState;
 
-    useEffect(() => {
-        (async () => await products.fetcher?.())();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    const text = useTranslations();
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const { productId, place, count } = data as EditTransferSchema;

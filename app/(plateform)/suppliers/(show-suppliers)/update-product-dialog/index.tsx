@@ -36,10 +36,6 @@ export const UpdateProductsDialog = () => {
     const [supplierId, setSupplierId] = useState("");
 
     useEffect(() => {
-        (async () => productsLists.fetcher?.())();
-    }, [productsLists]);
-
-    useEffect(() => {
         if (!data?.products?.length || !data?.supplierId) return;
         setProducts(data.products);
         setSupplierId(data.supplierId);

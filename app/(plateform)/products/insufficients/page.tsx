@@ -1,7 +1,7 @@
 "use client";
 import { useGetByQuery } from "@/hooks/api/useGetByQuery";
 import { useLocale } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useLists } from "@/hooks/data/useLists";
 import { columns } from "./table-columns";
@@ -24,10 +24,14 @@ const Insufficients = () => {
     const [supplierId, setSupplierId] = useState("");
     const [place, setPlace] = useState("");
     const { suppliers } = useLists();
+
+    const mount = useRef(false);
     const locale = useLocale();
 
     useEffect(() => {
-        (async () => await suppliers.fetcher?.())();
+        if (mount.current) return;
+        (async () => suppliers.fetcher())();
+        mount.current = true;
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

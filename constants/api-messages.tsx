@@ -301,4 +301,154 @@ export const translations = {
             },
         },
     },
+    ge: {
+        wrong: "Etwas ist schief gelaufen.",
+        products: {
+            "add-category": {
+                post: {
+                    "category-exist": "Diese Kategorie existiert bereits.",
+                    success: "Kategorie wurde erfolgreich erstellt.",
+                },
+            },
+            "add-company": {
+                post: {
+                    "company-exist": "Dieses Unternehmen existiert bereits.",
+                    success: "Unternehmen wurde erfolgreich erstellt.",
+                },
+            },
+            "add-product": {
+                post: {
+                    "product-exists": "Diese Produkte existieren bereits.",
+                    success: "Das Produkt wurde erfolgreich erstellt.",
+                },
+            },
+            "transfer-product": {
+                put: {
+                    "not-found": "Das Produkt wurde nicht gefunden.",
+                    "not-modified": "Das Produkt wurde nicht geändert.",
+                    "just-available": "Nur verfügbar",
+                    "in-the": "Im",
+                    market: "Markt",
+                    store: "Lager",
+                    success: "Das Produkt wurde erfolgreich übertragen.",
+                },
+            },
+        },
+        clients: {
+            "show-clients": {
+                put: {
+                    success: "Die Kundeninformationen wurden erfolgreich aktualisiert.",
+                },
+                delete: {
+                    success: "Der Kunde wurde erfolgreich gelöscht.",
+                },
+            },
+            "add-client": {
+                post: {
+                    "already-exist": "Dieser Kunde existiert bereits.",
+                    success: "Der Kunde wurde erfolgreich erstellt.",
+                },
+            },
+            "new-statement": {
+                post: {
+                    "not-enough": "Nicht genug",
+                    success: "Die Erklärung wurde erfolgreich erstellt.",
+                },
+            },
+            "restore-statement": {
+                post: {
+                    "missing-bill": "Die Kundenrechnung wurde nicht gefunden.",
+                    "products-not-exist": "Einige Produktmengen existieren nicht in der Kundenrechnung.",
+                    "locker-not-enough": "Das Schließfach enthält nicht die wiederhergestellten Gesamtkosten der Produkte.",
+                    success: "Die Erklärung wurde erfolgreich wiederhergestellt.",
+                },
+                delete: {
+                    "locker-not-enough": "Das Schließfach enthält nicht die wiederhergestellten Gesamtkosten der Produkte.",
+                    success: "Die Erklärung wurde erfolgreich wiederhergestellt.",
+                },
+            },
+        },
+        finances: {
+            locker: {
+                post: {
+                    "locker-not-enough": "Das Schließfach enthält nicht genug.",
+                    success: "Die Transaktion wurde erfolgreich erstellt.",
+                },
+            },
+        },
+        organizations: {
+            configs: {
+                put: {
+                    success: "Die Organisationseinstellungen wurden erfolgreich aktualisiert.",
+                },
+            },
+        },
+        profile: {
+            product: {
+                get: {
+                    "not-found": "Dieses Produkt wurde nicht gefunden.",
+                },
+                put: {
+                    success: "Das Produkt wurde erfolgreich aktualisiert.",
+                },
+                delete: {
+                    "not-deleted": "Das Produkt wurde nicht gelöscht.",
+                    success: "Das Produkt wurde erfolgreich gelöscht.",
+                },
+            },
+            client: {
+                put: {
+                    "already-exist": "Diese Rechnung ist bereits abgeschlossen.",
+                    "salary-check": "Der Zahlungsbetrag ist höher als der ausstehende Betrag.",
+                    success: "Die Zahlung wurde erfolgreich durchgeführt.",
+                },
+            },
+            supplier: {
+                put: {
+                    "already-completed": "Diese Rechnung ist bereits abgeschlossen.",
+                    "not-enough": "Dieser Zahlungsbetrag ist nicht im Schließfach vorhanden.",
+                    "money-check": "Der Zahlungsbetrag ist höher als der ausstehende Betrag.",
+                    success: "Die Zahlung wurde erfolgreich durchgeführt.",
+                },
+            },
+        },
+        suppliers: {
+            "show-suppliers": {
+                put: {
+                    "missing-data": "Fehlende Daten.",
+                    success: "Der Lieferant wurde erfolgreich aktualisiert.",
+                },
+                delete: {
+                    success: "Der Lieferant wurde erfolgreich gelöscht.",
+                },
+            },
+            "show-bills": {
+                delete: {
+                    success: "Die Lieferantenrechnung wurde erfolgreich gelöscht.",
+                },
+            },
+            "add-supplier": {
+                put: {
+                    "not-exist": "Dieser Lieferant / Diese Produkte existieren bereits.",
+                    success: "Der Lieferant wurde erfolgreich hinzugefügt.",
+                },
+            },
+            "new-statement": {
+                post: {
+                    "not-exist-cash-statement": "Das Schließfach enthält nicht die Kosten dieser Erklärung.",
+                    "not-exist-visa-statement": "Visa enthält nicht die Kosten dieser Erklärung.",
+                    "not-exist-cash-paid": "Das Schließfach enthält nicht die bezahlten Kosten.",
+                    "not-exist-visa-paid": "Visa enthält nicht die bezahlten Kosten.",
+                    "not-updated-products": "Einige Produkte wurden nicht aktualisiert.",
+                    success: "Die Erklärung wurde erfolgreich erstellt.",
+                },
+            },
+            "restore-statement": {
+                post: {
+                    "not-enough": "Nicht genug",
+                    success: "Die Produkte wurden erfolgreich wiederhergestellt.",
+                },
+            },
+        },
+    },
 };

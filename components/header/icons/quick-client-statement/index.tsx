@@ -1,7 +1,7 @@
 "use client";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useKey } from "react-use";
 import { toast } from "sonner";
@@ -55,9 +55,12 @@ export const QuickClientStatement = () => {
     const choosenProducts = watch("products");
     const clientId = watch("clientId");
     const text = useTranslations();
+    const mount = useRef(false);
 
     useEffect(() => {
+        if (mount.current) return;
         (async () => clients.fetcher())();
+        mount.current = true;
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

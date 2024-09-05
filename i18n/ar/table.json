@@ -1,12 +1,15 @@
 {
     "table": {
         "table-pagination": "الصفحة {currentPaginationCount} من {totalPaginationCount}",
+        "no-results": "لا يوجد نتائج بحث",
+
+        "category-name": "القسم",
         "category": "القسم",
 
         "company-name": "الشركة",
         "company": "الشركة",
 
-        "product-name": "اسم المنتج",
+        "product-name": "المنتج",
         "product": "المنتج",
         "name": "المنتج",
 

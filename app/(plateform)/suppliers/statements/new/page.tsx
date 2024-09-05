@@ -1,7 +1,7 @@
 "use client";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
@@ -37,11 +37,14 @@ const Suppliers = ({}: SuppliersProps) => {
 
     const processValue = watch("process");
     const supplierId = watch("supplierId");
-    const router = useRouter();
     const text = useTranslations();
+    const router = useRouter();
+    const mount = useRef(false);
 
     useEffect(() => {
-        (async () => await suppliers.fetcher?.())();
+        if (mount.current) return;
+        (async () => suppliers.fetcher())();
+        mount.current = true;
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

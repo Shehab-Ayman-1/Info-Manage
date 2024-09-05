@@ -1,6 +1,6 @@
 "use client";
 import { Loader2Icon, SearchIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
@@ -21,9 +21,12 @@ export const Searchbar = ({}: SearchbarProps) => {
 
     const text = useTranslations("public");
     const router = useRouter();
+    const mount = useRef(false);
 
     useEffect(() => {
-        (async () => await products.fetcher())();
+        if (mount.current) return;
+        (async () => products.fetcher())();
+        mount.current = true;
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

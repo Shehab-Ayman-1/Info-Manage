@@ -40,11 +40,6 @@ const Clients = ({}: ClientsProps) => {
     const text = useTranslations();
     const router = useRouter();
 
-    useEffect(() => {
-        (async () => await clients.fetcher?.())();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
     // Auto Get Total Products Total Price
     useEffect(() => {
         if (processValue === "milestone") return;
