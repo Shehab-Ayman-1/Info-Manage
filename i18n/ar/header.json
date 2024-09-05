@@ -5,44 +5,44 @@
             "products": {
                 "heading": "المنتجات",
                 "market-and-store": "منتجات المتجر والمخزن",
-                "transfer": "نقل منتجات",
+                "transfer": "نقل المنتجات",
                 "insufficient": "نواقص المنتجات",
                 "today-purchases": "كشف مشتريات اليوم",
                 "today-sales": "كشف مبيعات اليوم",
-                "add-category": "اضافه قسم جديد",
-                "add-company": "اضافه شركه جديدة",
-                "add-product": "اضافه منتج جديد"
+                "add-category": "إضافة قسم جديد",
+                "add-company": "إضافة شركة جديدة",
+                "add-product": "إضافة منتج جديد"
             },
             "clients": {
                 "heading": "العملاء",
                 "clients-list": "قائمة العملاء",
                 "show-bills": "عرض الفواتير",
                 "new-statement": "فاتورة جديدة",
-                "restore-statement": "فاتورة مرتجع",
-                "add-client": "اضافه عميل جديد"
+                "restore-statement": "فاتورة مُرتجع",
+                "add-client": "إضافة عميل جديد"
             },
             "suppliers": {
                 "heading": "الموردين",
-                "suppliers-list": "قائمه الموردين",
+                "suppliers-list": "قائمة الموردين",
                 "show-bills": "عرض الفواتير",
                 "new-statement": "فاتورة جديدة",
                 "restore-statement": "فاتورة مرتجع",
-                "add-supplier": "اضافه مورد جديد"
+                "add-supplier": "إضافة مُورِد جديد"
             },
             "finances": {
                 "heading": "الماليات",
-                "cashes": "اجمالي الكاشات",
+                "cashes": "إجمالي النقد",
                 "transactions": "المعاملات",
-                "locker-withdraw-deposit": "سحب او ايداع من الخزنة"
+                "locker-withdraw-deposit": "سحب أو إيداع من أو إلى الخزنة"
             },
             "statistics": {
-                "heading": "الاحصائيات",
+                "heading": "الإحصائيات",
                 "sales": "المبيعات",
-                "profits": "الارباح",
-                "least-selling": "المنتجات الاقل مبيعاً",
+                "profits": "الأرباح",
+                "least-selling": "المنتجات الأقل مبيعًا",
                 "product-movement": "بيان حركة المنتج",
-                "best-selling-of-the-month": "الافضل مبيعاً في (الشهر)",
-                "best-selling-of-the-year": "الافضل مبيعاً في (العام)"
+                "best-selling-of-the-month": "الأفضل مبيعًا في (الشهر)",
+                "best-selling-of-the-year": "الأفضل مبيعًا في (العام)"
             }
         }
     },

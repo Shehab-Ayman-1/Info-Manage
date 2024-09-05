@@ -35,7 +35,6 @@ const Transactions = () => {
             pageTitle="pages.transactions.heading"
             columns={columns}
             data={data || []}
-            filterBy={["reason"]}
             navigate={[{ text: "new-transaction", to: "/finances/locker" }]}
         >
             <div className="mt-4 w-fit sm:mx-4">

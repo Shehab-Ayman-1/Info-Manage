@@ -39,7 +39,10 @@ const ClientBills = () => {
             data={data || []}
             totalFor="pending"
             filterBy={["client"]}
-            navigate={[{ text: "new-statement", to: "/clients/statements/new" }]}
+            navigate={[
+                { text: "new-statement", to: "/clients/statements/new" },
+                { text: "restore-statement", to: "/clients/statements/restore" },
+            ]}
         >
             <div className="mt-4 w-fit sm:mx-4">
                 <Input type="date" value={date} name="date" onChange={(event) => setDate(() => event.target.value)} />

@@ -23,10 +23,10 @@ export const Header = ({}: HeaderProps) => {
 
                 {!userId && (
                     <div className="">
-                        <Button variant="ghost">
+                        <Button type="button" variant="ghost">
                             <Link href="/sign-in">Login</Link>
                         </Button>
-                        <Button variant="outline">
+                        <Button type="button" variant="outline">
                             <Link href="/sign-up">Sign Up</Link>
                         </Button>
                     </div>

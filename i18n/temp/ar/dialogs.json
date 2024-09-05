@@ -1,0 +1,148 @@
+{
+    "dialogs": {
+        "quick-client-statement": {
+            "heading": "كشف حساب عميل سريع",
+            "description": "انشأء كسف حساب عميل بضغطه واحده"
+        },
+
+        "add-product": {
+            "insert-dialog": {
+                "insert-heading": "اضافه منتج",
+                "update-heading": "تعديل منتج",
+                "description": "يجب اضافه كل حقول الادخال لاتمام عمليه الاضافه بنجاح",
+                "optional-barcode": "البار كود (اختياري)",
+                "minimum": "الحد الادني",
+                "selling-price": "سعر البيع"
+            },
+
+            "delete-dialog": {
+                "heading": "ازالة المنتج",
+                "description": "هل انت متاكد من ازالة هذا المنتج"
+            }
+        },
+
+        "show-clients": {
+            "delete-dialog": {
+                "heading": "حذف العميل",
+                "description": "بعد حذف هذا العميل لا يمكنك استرجاعه مرة اخري."
+            },
+            "update-dialog": {
+                "heading": "تعديل العميل",
+                "description": "هل انت متأكد ، لن تتمكن من اعاده بيانات العميل مرة اخري."
+            }
+        },
+
+        "client-bills": {
+            "payment-dialog": {
+                "heading": "دفعه ماليه",
+                "description": "قم بعمل دفعه ماليه لتسديد جزء من الفاتورة بالتقسيط",
+                "payment-amount": "المبلغ المدفوع"
+            },
+            "update-dialog": {
+                "heading": "تعديل فاتورة العميل",
+                "description": "لا يمكنك استرجاع اي من البيانات التي سيتم تغيرها بمجرد التاكيد"
+            }
+        },
+
+        "new-client-statement": {
+            "insert-dialog": {
+                "heading": "اضافه منتج",
+                "description": "من فضلك ادخل كل حقول الادخال المطلوبه لاضافه المنتج."
+            },
+            "delete-dialog": {
+                "heading": "ازالة المنتج",
+                "description": "هل انت متاكد من ازالة هذا المنتج"
+            }
+        },
+
+        "restore-client-statement": {
+            "insert-dialog": {
+                "heading": "اضافه منتج",
+                "description": "من فضلك ادخل كل حقول الادخال المطلوبه لاضافه المنتج."
+            },
+            "remove-dialog": {
+                "heading": "ازالة المنتج",
+                "description": "هل انت متاكد من ازالة هذا المنتج"
+            },
+            "delete-dialog": {
+                "heading": "حذف فاتورة",
+                "description": "هل انت متاكد من حذف هذه الفاتورة نهائياً"
+            }
+        },
+
+        "show-suppliers": {
+            "delete-dialog": {
+                "heading": "حذف المورد",
+                "description": "هل انت متأكد من حذف هذا المورد ، لن تتمكن من استرجاع بياناته مرة اخري"
+            },
+            "update-supplier-dialog": {
+                "heading": "تعديل المورد",
+                "description": "هل انت متاكد من تعديل بيانات المورد ، لن تتمكن من استرجاع البيانات القديمة بعد التعديل"
+            },
+            "update-products-dialog": {
+                "heading": "تعديل المنتجات",
+                "description": "هل انت متاكد من تعديل المنتجات ، لن تتمكن من استرجاع البيانات القديمة بعد التعديل"
+            }
+        },
+
+        "add-supplier": {
+            "insert-dialog": {
+                "heading": "اضافه منتج",
+                "description": "من فضلك ادخل كل حقول الادخال المطلوبه لاضافه المنتج."
+            },
+            "delete-dialog": {
+                "heading": "ازالة المنتج",
+                "description": "هل انت متاكد من ازالة هذا المنتج"
+            }
+        },
+
+        "supplier-bills": {
+            "payment-dialog": {
+                "heading": "دفعه ماليه",
+                "description": "قم بعمل دفعه ماليه لتسديد جزء من الفاتورة بالتقسيط",
+                "payment-amount": "المبلغ المدفوع"
+            },
+            "delete-dialog": {
+                "heading": "حذف الفاتورة",
+                "description": "هل انت متاكد من حذف هذه الفاتورة"
+            }
+        },
+
+        "new-supplier-statement": {
+            "insert-dialog": {
+                "heading": "اضافه منتج",
+                "description": "من فضلك ادخل كل حقول الادخال المطلوبه لاضافه المنتج."
+            },
+            "delete-dialog": {
+                "heading": "ازالة المنتج",
+                "description": "هل انت متاكد من ازالة هذا المنتج"
+            }
+        },
+
+        "restore-supplier-statement": {
+            "insert-dialog": {
+                "heading": "اضافه منتج",
+                "description": "من فضلك ادخل كل حقول الادخال المطلوبه لاضافه المنتج."
+            },
+            "remove-dialog": {
+                "heading": "ازالة المنتج",
+                "description": "هل انت متاكد من ازالة هذا المنتج"
+            },
+            "delete-dialog": {
+                "heading": "حذف فاتورة",
+                "description": "هل انت متاكد من حذف هذه الفاتورة نهائياً"
+            }
+        },
+
+        "product-profile": {
+            "update-dialog": {
+                "heading": "تعديل المنتج",
+                "description": "هل انت متاكد من تعديل هذا المنتج"
+            },
+            "delete-dialog": {
+                "heading": "حذف المنتج",
+                "description": "هل انت متاكد من حذف المنتج نهائياً"
+            }
+        }
+    }
+}

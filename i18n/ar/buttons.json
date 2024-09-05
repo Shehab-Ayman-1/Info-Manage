@@ -1,23 +1,25 @@
 {
     "buttons": {
-        "new-statement": "كشف حساب جديد",
-        "new-transaction": "معاملة جديدة",
+        "new-statement": "كشف حساب عميل جديد",
+        "restore-statement": "كشف مرتجع",
+
+        "new-transaction": "مُعاملة جديدة",
         "market-products": "منتجات المحل",
 
         "open-bill-lists": "فتح قائمة الفواتير",
-        "transfer": "نقل منتجات",
+        "transfer": "نقل المنتجات",
 
-        "new-supplier": "مورد جديد",
+        "new-supplier": "مُورِد جديد",
         "new-client": "عميل جديد",
 
         "confirm": "تأكيد",
-        "cancel": "الغاء",
+        "cancel": "إلغاء",
 
-        "submit": "انشاء",
+        "submit": "إنشاء",
         "update": "تعديل",
 
-        "create": "انشاء",
-        "insert": "اضافه",
+        "create": "إنشاء",
+        "insert": "إضافة",
 
         "buy": "شراء",
         "sale": "بيع",
@@ -26,9 +28,9 @@
         "edit": "تعديل",
 
         "open": "فتح",
-        "pay": "دفعه ماليه",
+        "pay": "دَفعة مالية",
 
-        "print": "طباعه",
+        "print": "طباعة",
         "restore": "استرجاع",
 
         "edit-supplier": "تعديل المورد",

@@ -6,29 +6,29 @@
         },
 
         "transfer": {
-            "heading": "نقل منتج",
-            "transfer-to": "النقل الي (المكان)",
-            "market": "الي المحل",
-            "store": "الي المخزن",
+            "heading": "نقل المنتجات",
+            "transfer-to": "النقل إلى (المكان)",
+            "market": "إلى المحل",
+            "store": "إلى المخزن",
             "submit": "نقل"
         },
 
         "add-category": {
-            "heading": "اضافه قسم جديد",
+            "heading": "إضافة قسم جديد",
             "submit": "انشاء"
         },
 
         "add-company": {
-            "heading": "اضافه شركة جديدة",
+            "heading": "إضافة شركة جديدة",
             "submit": "انشاء",
             "upload-button": "تحميل صورة جديدة",
             "image-url": "ادخل رابط الصورة"
         },
 
         "add-product": {
-            "heading": "اضافه منتج جديد",
+            "heading": "إضافة منتج جديد",
             "submit": "انشاء",
-            "optional-supplier": "اسم المورد (اختياري)"
+            "optional-supplier": "اسم المُورِد (اختياري)"
         },
 
         "insufficient-products": {
@@ -44,17 +44,17 @@
         },
 
         "client-lists": {
-            "heading": "قائمه العملاء"
+            "heading": "قائمة العملاء"
         },
 
         "add-new-client": {
-            "heading": "اضافه عميل جديد",
+            "heading": "إضافة عميل جديد",
             "bronze-from": "البرونزية من ( 0 )",
-            "bronze-to": "البرونزية الي",
+            "bronze-to": "البرونزية إلى",
             "silver-from": "الفضية من",
-            "silver-to": "الفضية الي",
+            "silver-to": "الفضية إلى",
             "gold-from": "الذهبية من",
-            "gold-to": "الذهبية الي ( ما لا نهايه )"
+            "gold-to": "الذهبية إلى ( مفتوح )"
         },
 
         "client-bills": {
@@ -67,7 +67,7 @@
 
         "restore-client-statement": {
             "heading": "كشف استرجاع للعميل",
-            "cancel-bill-btn": "الغاء الفاتورة"
+            "cancel-bill-btn": "إلغاء الفاتورة"
         },
 
         "supplier-lists": {
@@ -75,7 +75,7 @@
         },
 
         "add-supplier": {
-            "heading": "اضافه مورد جديد"
+            "heading": "إضافة مورد جديد"
         },
 
         "supplier-bills": {
@@ -83,28 +83,28 @@
         },
 
         "new-supplier-statement": {
-            "heading": "كشف حساب مورد"
+            "heading": "كشف حساب مُورِد"
         },
 
         "restore-supplier-statement": {
-            "heading": "كشف استرجاع للمورد"
+            "heading": "كشف استرجاع للمُورِد"
         },
 
         "cashes": {
             "locker": {
                 "heading": "تفاصيل الخزنة",
-                "cash": "اجمالي الكاش",
-                "visa": "اجمالي الفيزا"
+                "cash": "إجمالي النقد",
+                "visa": "إجمالي الفيزا"
             },
             "market": {
                 "heading": "تفاصيل المحل",
-                "purchases": "الاجمالي حسب سعر الشراء",
-                "sales": "الاجمالي حسب سعر البيع"
+                "purchases": "الإجمالي حسب سعر الشراء",
+                "sales": "الإجمالي حسب سعر البيع"
             },
             "store": {
                 "heading": "تفاصيل المخزن",
-                "purchases": "الاجمالي حسب سعر الشراء",
-                "sales": "الاجمالي حسب سعر البيع"
+                "purchases": "الإجمالي حسب سعر الشراء",
+                "sales": "الإجمالي حسب سعر البيع"
             },
             "debts": {
                 "heading": "تفاصيل المديونيات",
@@ -118,10 +118,10 @@
         },
 
         "locker": {
-            "heading": "سحب او ايداع",
+            "heading": "سحب أو إيداع",
             "process": "العملية",
             "withdraw-from-locker": "سحب من الخزنة",
-            "deposit-to-locker": "ايداع الي الخزنة"
+            "deposit-to-locker": "إيداع إلى الخزنة"
         },
 
         "product-profile": {
@@ -129,19 +129,19 @@
         },
 
         "statistics": {
-            "track": "تتبع احصائياتك بكل سهولة",
+            "track": "تتبع إحصائياتك بكل سهولة",
             "sales": {
-                "heading": "احصائيات المبيعات",
+                "heading": "إحصائيات المبيعات",
                 "chart-1": "مبيعات هذا العام",
                 "chart-2": "مبيعات هذا الشهر"
             },
             "profits": {
-                "heading": "احصائيات الارباح",
-                "chart-1": "ارباح هذا العام",
-                "chart-2": "ارباح هذا الشهر"
+                "heading": "إحصائيات الأرباح",
+                "chart-1": "أرباح هذا العام",
+                "chart-2": "أرباح هذا الشهر"
             },
             "least-selling": {
-                "heading": "المنتجات الاقل مبيعاً"
+                "heading": "المنتجات الأقل مبيعًا"
             },
             "movement": {
                 "heading": "بيان حركة المنتج",
@@ -149,10 +149,10 @@
                 "chart-2": "المشتريات"
             },
             "best-selling-of-the-year": {
-                "heading": "الافضل مبيعاً في العام"
+                "heading": "الأفضل مبيعًا في العام"
             },
             "best-selling-of-the-month": {
-                "heading": "الافضل مبيعاً في الشهر"
+                "heading": "الأفضل مبيعًا في الشهر"
             }
         }
     }

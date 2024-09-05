@@ -9,7 +9,7 @@
         "company-name": "الشركة",
         "company": "الشركة",
 
-        "product-name": "المنتج",
+        "product-name": "اسم المنتج",
         "product": "المنتج",
         "name": "المنتج",
 
@@ -20,37 +20,37 @@
         "market-count": "عدد المحل",
         "store-count": "عدد المخزن",
 
-        "total-purchases": "اجمالي المشتريات",
+        "total-purchases": "إجمالي المشتريات",
         "purchase-price": "سعر الشراء",
 
         "purchases": "المشتريات",
-        "last-sold": "اخر عملية بيع",
+        "last-sold": "أخر عملية بيع",
 
-        "total-selling": "اجمالي المبيعات",
+        "total-selling": "إجمالي المبيعات",
         "selling-price": "سعر البيع",
 
-        "cash": "كاش",
+        "cash": "نقد",
         "visa": "فيزا",
 
         "costs": "التكاليف",
         "price": "السعر",
 
         "pending": "المتبقي",
-        "total": "اجمالي",
+        "total": "إجمالي",
 
         "actions": "المزيد",
-        "print": "طباعه",
+        "print": "طباعة",
 
         "total-needed": "الاجمالي المطلوب",
-        "minimum": "الحد الادني",
+        "minimum": "الحد الأدني",
 
-        "total-solds": "اجمالي المبيعات",
+        "total-solds": "إجمالي المبيعات",
         "sold-price": "سعر البيع",
 
-        "profits": "الارباح",
+        "profits": "الأرباح",
         "paid": "المدفوع",
 
-        "supplier": "المورد",
+        "supplier": "المُورِد",
         "client": "العميل",
 
         "barcode": "الباركود",
@@ -59,12 +59,12 @@
         "discounts": "الخصومات",
         "discount": "الخصم",
 
-        "bronze-to": "البرونزيه الي",
-        "silver-to": "الفضية الي",
+        "bronze-to": "البرونزيه إلى",
+        "silver-to": "الفضية إلى",
         "level": "الشريحة",
 
         "state": "الحالة",
-        "created-at": "تم الانشاء في",
+        "created-at": "تم الإنشاء في",
 
         "creator": "المستخدم",
         "reason": "السبب",
@@ -81,7 +81,7 @@
             "company": "الشركة",
             "product": "المنتج",
             "barcode": "الباركود",
-            "supplier": "المورد",
+            "supplier": "المُورِد",
             "client": "العميل",
             "level": "الشريحة",
             "reason": "السبب"

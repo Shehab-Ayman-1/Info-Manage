@@ -117,7 +117,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
         await Clients.updateLastRefreshDate({ orgId, clientId: bill.client, refreshAfter });
 
         // Create Transaction
-        const reason = "Client Bill Payment";
+
         await Transactions.updateOne(
             {
                 orgId,
@@ -132,7 +132,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
                         $each: [
                             {
                                 creator: user.fullName,
-                                reason,
+                                reason: "Client Bill Payment",
                                 price: amount,
                                 createdAt: new Date(),
                             },

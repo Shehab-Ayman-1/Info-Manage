@@ -39,7 +39,10 @@ const SupplierBills = () => {
             data={data || []}
             totalFor="pending"
             filterBy={["supplier"]}
-            navigate={[{ text: "new-statement", to: "/suppliers/statements/new" }]}
+            navigate={[
+                { text: "new-statement", to: "/suppliers/statements/new" },
+                { text: "restore-statement", to: "/suppliers/statements/restore" },
+            ]}
         >
             <div className="mt-4 w-fit sm:mx-4">
                 <Input type="date" value={date} name="date" onChange={(event) => setDate(() => event.target.value)} />

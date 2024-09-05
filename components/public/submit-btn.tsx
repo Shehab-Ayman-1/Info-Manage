@@ -13,12 +13,14 @@ type SubmitButtonProps = {
 
 export const SubmitButton = ({ text, isPending, className }: SubmitButtonProps) => {
     const t = useTranslations("buttons");
-    const ref = useRef<HTMLButtonElement>(null);
 
-    useKey(
-        (event) => !event.ctrlKey && event.key === "Enter",
-        () => ref.current?.click(),
-    );
+    const ref = useRef<HTMLButtonElement>(null);
+    const onClick = () => ref.current?.click();
+
+    const insert = (event: KeyboardEvent) => text === "insert" && !event.ctrlKey && event.key === "Enter";
+    const submit = (event: KeyboardEvent) => text !== "insert" && event.key === "Enter";
+
+    useKey((event) => insert(event) || submit(event), onClick);
 
     return (
         <Button

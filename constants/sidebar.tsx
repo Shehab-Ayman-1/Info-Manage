@@ -185,7 +185,7 @@ export const financeLists: NavLinkType[] = [
         href: "/finances/transactions",
         userRole: "org:admin",
         subscriptions: ["basic"],
-        additionalSubscriptions: [],
+        additionalSubscriptions: ["premium"],
     },
     {
         Icon: RocketIcon,

@@ -11,7 +11,7 @@ export const Logo = () => {
     const text = useTranslations("header");
 
     return (
-        <Button asChild variant="ghost" className="flex-start hover:bg-transparent">
+        <Button asChild type="button" variant="ghost" className="flex-start p-0 hover:bg-transparent">
             <Link href="/">
                 <Image
                     src={organization?.hasImage ? organization.imageUrl : "/logo.png"}

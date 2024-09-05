@@ -60,17 +60,15 @@ const BillProfile = ({ params }: BillProfileProps) => {
                     <h1 className={styleText}>
                         {text("public.client")}: {data.client.name}
                     </h1>
-                    {data.state !== "restore" && (
-                        <h1 className={styleText}>
-                            {text("public.barcode")}: {data.barcode.toLocaleString()}
-                        </h1>
-                    )}
+                    <h1 className={styleText}>
+                        {text("public.barcode")}: {data.barcode.toLocaleString()}
+                    </h1>
                     <h1 className={styleText}>
                         {text("table.created-at")}: {formatDate(data.createdAt, "dd / MM / yyyy")}
                     </h1>
                 </div>
 
-                <Button size="lg" className="w-fit gap-2 text-lg font-bold print:hidden" onClick={onPrint}>
+                <Button type="button" size="lg" className="w-fit gap-2 text-lg font-bold print:hidden" onClick={onPrint}>
                     <PrinterCheckIcon className="size-5 !text-white dark:!text-black" />
                     {text("public.print-receipt")}
                 </Button>

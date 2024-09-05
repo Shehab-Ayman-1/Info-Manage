@@ -58,7 +58,7 @@ export const Filter = <TData,>({ data, filterBy, getColumn }: FilterProps<TData>
             <Popover>
                 {filterBy.length > 1 && (
                     <PopoverTrigger>
-                        <Button asChild variant="outline">
+                        <Button asChild type="button" variant="outline">
                             <span>
                                 <MoreHorizontalIcon className="size-4 dark:!text-white dark:hover:!text-white" />
                             </span>

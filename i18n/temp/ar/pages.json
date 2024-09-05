@@ -1,0 +1,159 @@
+{
+    "pages": {
+        "products": {
+            "market": "منتجات المحل",
+            "store": "منتجات المخزن"
+        },
+
+        "transfer": {
+            "heading": "نقل منتج",
+            "transfer-to": "النقل الي (المكان)",
+            "market": "الي المحل",
+            "store": "الي المخزن",
+            "submit": "نقل"
+        },
+
+        "add-category": {
+            "heading": "اضافه قسم جديد",
+            "submit": "انشاء"
+        },
+
+        "add-company": {
+            "heading": "اضافه شركة جديدة",
+            "submit": "انشاء",
+            "upload-button": "تحميل صورة جديدة",
+            "image-url": "ادخل رابط الصورة"
+        },
+
+        "add-product": {
+            "heading": "اضافه منتج جديد",
+            "submit": "انشاء",
+            "optional-supplier": "اسم المورد (اختياري)"
+        },
+
+        "insufficient-products": {
+            "heading": "نواقص المنتجات"
+        },
+
+        "today-purchases": {
+            "heading": "كشف مشتريات اليوم"
+        },
+
+        "today-sales": {
+            "heading": "كشف مبيعات اليوم"
+        },
+
+        "client-lists": {
+            "heading": "قائمه العملاء"
+        },
+
+        "add-new-client": {
+            "heading": "اضافه عميل جديد",
+            "bronze-from": "البرونزية من ( 0 )",
+            "bronze-to": "البرونزية الي",
+            "silver-from": "الفضية من",
+            "silver-to": "الفضية الي",
+            "gold-from": "الذهبية من",
+            "gold-to": "الذهبية الي ( ما لا نهايه )"
+        },
+
+        "client-bills": {
+            "heading": "عرض  فواتير العملاء"
+        },
+
+        "new-client-statement": {
+            "heading": "كشف حساب للعميل"
+        },
+
+        "restore-client-statement": {
+            "heading": "كشف استرجاع للعميل",
+            "cancel-bill-btn": "الغاء الفاتورة"
+        },
+
+        "supplier-lists": {
+            "heading": "قائمة الموردين"
+        },
+
+        "add-supplier": {
+            "heading": "اضافه مورد جديد"
+        },
+
+        "supplier-bills": {
+            "heading": "عرض  فواتير الموردين"
+        },
+
+        "new-supplier-statement": {
+            "heading": "كشف حساب مورد"
+        },
+
+        "restore-supplier-statement": {
+            "heading": "كشف استرجاع للمورد"
+        },
+
+        "cashes": {
+            "locker": {
+                "heading": "تفاصيل الخزنة",
+                "cash": "اجمالي الكاش",
+                "visa": "اجمالي الفيزا"
+            },
+            "market": {
+                "heading": "تفاصيل المحل",
+                "purchases": "الاجمالي حسب سعر الشراء",
+                "sales": "الاجمالي حسب سعر البيع"
+            },
+            "store": {
+                "heading": "تفاصيل المخزن",
+                "purchases": "الاجمالي حسب سعر الشراء",
+                "sales": "الاجمالي حسب سعر البيع"
+            },
+            "debts": {
+                "heading": "تفاصيل المديونيات",
+                "clients": "مديونيات العملاء",
+                "suppliers": "مديونيات الموردين"
+            }
+        },
+
+        "transactions": {
+            "heading": "قائمة المعاملات"
+        },
+
+        "locker": {
+            "heading": "سحب او ايداع",
+            "process": "العملية",
+            "withdraw-from-locker": "سحب من الخزنة",
+            "deposit-to-locker": "ايداع الي الخزنة"
+        },
+
+        "product-profile": {
+            "heading": "عرض المنتج"
+        },
+
+        "statistics": {
+            "track": "تتبع احصائياتك بكل سهولة",
+            "sales": {
+                "heading": "احصائيات المبيعات",
+                "chart-1": "مبيعات هذا العام",
+                "chart-2": "مبيعات هذا الشهر"
+            },
+            "profits": {
+                "heading": "احصائيات الارباح",
+                "chart-1": "ارباح هذا العام",
+                "chart-2": "ارباح هذا الشهر"
+            },
+            "least-selling": {
+                "heading": "المنتجات الاقل مبيعاً"
+            },
+            "movement": {
+                "heading": "بيان حركة المنتج",
+                "chart-1": "المبيعات",
+                "chart-2": "المشتريات"
+            },
+            "best-selling-of-the-year": {
+                "heading": "الافضل مبيعاً في العام"
+            },
+            "best-selling-of-the-month": {
+                "heading": "الافضل مبيعاً في الشهر"
+            }
+        }
+    }
+}

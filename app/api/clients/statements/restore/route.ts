@@ -25,21 +25,24 @@ export const POST = async (req: NextRequest) => {
         const body = await req.json();
         const { billBarcode, products } = createSchema.parse(body);
 
-        const bill = await ClientBills.findOne({ orgId, type: "sale", barcode: billBarcode });
-        if (!bill) return json(text("missing-bill"), 400);
+        const bill = await ClientBills.findOne({ orgId, type: "sale", barcode: billBarcode }).session(session);
+        if (!bill) {
+            await session.abortTransaction();
+            return json(text("missing-bill"), 400);
+        }
 
         const productsTotalCosts = products.reduce((prev, cur) => prev + cur.total, 0);
         const billProducts = products.map(({ total, ...product }) => product);
 
         // Check If The Products Count Is Exist In The Bill Products
-        const isUnableProducts = products.some(({ count }) => {
-            const unableProducts = bill.products.filter((product) => count > product.count);
-            return unableProducts.length;
+        const isUnableProducts = products.some(({ productId, count }) => {
+            const product = bill.products.find((product) => productId === String(product.productId));
+            return count > (product?.count || 0);
         });
 
         if (isUnableProducts) {
             await session.abortTransaction();
-            return json(text("product-not-exist"), 400);
+            return json(text("products-not-exist"), 400);
         }
 
         // Check If The Locker Contain Restored Products Salary
@@ -50,11 +53,17 @@ export const POST = async (req: NextRequest) => {
         }
 
         // Return The Products To The Market
-        await Promise.all(
+        const promise = await Promise.all(
             products.map(async ({ productId, count }) => {
-                await Products.updateOne({ _id: productId }, { $inc: { "market.count": count } }, { session });
+                const updated = await Products.updateOne({ _id: productId }, { $inc: { "market.count": count } }, { session });
+                return updated.modifiedCount;
             }),
         );
+
+        if (promise.includes(0)) {
+            await session.abortTransaction();
+            return json("wrong", 400);
+        }
 
         // Create Client Bill
         const expireAt = await getExpireAt();
@@ -79,7 +88,11 @@ export const POST = async (req: NextRequest) => {
 
         // Create New Transaction
         await Transactions.updateOne(
-            { orgId, method: "cash", process: "withdraw" },
+            {
+                orgId,
+                method: "cash",
+                process: "withdraw",
+            },
             {
                 $inc: { total: productsTotalCosts },
                 $push: {
@@ -104,95 +117,6 @@ export const POST = async (req: NextRequest) => {
 
         // Update Client Level
         await Clients.updateLevel({ orgId, clientId: bill.client });
-
-        // Response
-        await session.commitTransaction();
-        return json(text("success"));
-    } catch (error: any) {
-        await session.abortTransaction();
-        const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
-        return json(errors || error.message, 400);
-    } finally {
-        session.endSession();
-    }
-};
-
-export const DELETE = async (req: NextRequest) => {
-    const session = await mongoose.startSession();
-
-    try {
-        await DBConnection();
-        session.startTransaction();
-
-        const { userId, orgId, orgSlug } = auth();
-        if (!userId || !orgId) return json("Unauthorized", 401);
-        const text = await getTranslations("clients.restore-statement.delete");
-
-        const user = await clerkClient().users.getUser(userId);
-        const organization = await clerkClient().organizations.getOrganization({ organizationId: orgId, slug: orgSlug });
-
-        const { billBarcode } = await req.json();
-        if (!billBarcode) return json(text("wrong"), 400);
-
-        const bill = await ClientBills.findOne({ orgId, barcode: billBarcode });
-        if (!bill) return json(text("wrong"), 400);
-
-        // Check If The Locker Contain The Bill Amount
-        const { lockerCash } = await Transactions.getLockerCash(orgId);
-        if (bill.paid > lockerCash) return json(text("locker-not-enough"), 400);
-
-        // Return The Bill Products To The Market Usign ProductId
-        const promise = await Promise.all(
-            bill.products.map(async ({ productId, count }) => {
-                const updated = await Products.updateOne({ _id: productId }, { $inc: { "market.count": count } }, { session });
-                return updated?.modifiedCount;
-            }),
-        );
-
-        if (promise.includes(0)) {
-            await session.abortTransaction();
-            return json(text("wrong"), 400);
-        }
-
-        // Decreament The Client purchases Salary, pending, And Discounts
-        await Clients.updateOne(
-            { orgId, _id: bill.client },
-            { $inc: { purchases: -bill.total, pending: -(bill.total - bill.paid), discounts: -bill.discount } },
-            { session },
-        );
-        await Clients.updateLevel({ orgId, clientId: bill.client });
-
-        const refreshAfter = +(organization?.publicMetadata?.refreshClientsPurchases as string)?.split(" ")[0];
-        await Clients.updateLastRefreshDate({ orgId, clientId: bill.client, refreshAfter });
-
-        // Delete The Bill
-        await ClientBills.deleteOne({ orgId, _id: bill._id }, { session });
-
-        // Create New Transaction
-        await Transactions.updateOne(
-            {
-                orgId,
-                method: "cash",
-                process: "withdraw",
-            },
-            {
-                $inc: { total: bill.paid },
-                $push: {
-                    history: {
-                        $slice: -100,
-                        $each: [
-                            {
-                                reason: "Canceled Client Bill",
-                                creator: user.fullName,
-                                price: bill.paid,
-                                createdAt: new Date(),
-                            },
-                        ],
-                    },
-                },
-            },
-            { session },
-        );
 
         // Response
         await session.commitTransaction();

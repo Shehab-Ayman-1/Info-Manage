@@ -1,16 +1,15 @@
 "use client";
-import { Loader2Icon, SearchIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { SearchIcon } from "lucide-react";
+import { useKey } from "react-use";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
 import { Tooltip } from "@/components/ui/tooltip";
 import { useLists } from "@/hooks/data/useLists";
 import { Products } from "@/hooks/data/types";
-import { Button } from "@/ui/button";
+import { ListItems } from "./listItems";
 import { Input } from "@/ui/input";
-import { useKey } from "react-use";
+import { Loading } from "./loading";
 
 type SearchbarProps = {};
 
@@ -19,8 +18,6 @@ export const Searchbar = ({}: SearchbarProps) => {
     const [open, setOpen] = useState(false);
     const { products } = useLists();
 
-    const text = useTranslations("public");
-    const router = useRouter();
     const mount = useRef(false);
 
     useEffect(() => {
@@ -37,12 +34,6 @@ export const Searchbar = ({}: SearchbarProps) => {
         setFilteredProducts(filtered);
     };
 
-    const onClick = (productId: string) => {
-        router.push(`/profile/product/${productId}`);
-        router.refresh();
-        setOpen(!open);
-    };
-
     const onOpen = () => setOpen(!open);
     useKey((event) => event.ctrlKey && event.key.toLowerCase() === "f", onOpen);
 
@@ -55,28 +46,11 @@ export const Searchbar = ({}: SearchbarProps) => {
             </PopoverTrigger>
 
             <PopoverContent align="end" className="w-auto rounded-xl border-none shadow-xl sm:w-[600px]">
-                <Input type="search" placeholder={text("search")} onChange={onChange} />
+                <Input type="search" placeholder="search" useTranslate={{ placeholder: "public" }} onChange={onChange} />
 
                 <div className="max-h-96 overflow-y-auto">
-                    {products.isLoading && (
-                        <h3 className="flex-start">
-                            <Loader2Icon className="size-6 animate-spin" />
-                            {text("loading")}
-                        </h3>
-                    )}
-
-                    {(filteredProducts || products.data).map((product) => (
-                        <Button
-                            key={product._id}
-                            size="lg"
-                            variant="ghost"
-                            className="flex-between w-full"
-                            onClick={() => onClick(product._id)}
-                        >
-                            <p className="text-xl">{product.name.split(" ||| ")?.[0]}</p>
-                            <p className="text-xl">{product.company.name}</p>
-                        </Button>
-                    ))}
+                    <Loading isLoading={products.isLoading} />
+                    <ListItems data={filteredProducts || products.data} setOpen={setOpen} />
                 </div>
             </PopoverContent>
         </Popover>

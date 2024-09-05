@@ -49,13 +49,19 @@ const Overview = ({}: OverviewProps) => {
                 <div className="flex-center flex-wrap">
                     <Button
                         asChild
+                        type="button"
                         size="lg"
                         variant="outline"
                         className="h-auto bg-transparent px-6 py-2 text-center text-xs sm:px-12 sm:py-4 sm:text-lg"
                     >
                         <Link href="/clients/statements/new">{text.rich("overview.client-statement", { br: () => <br /> })}</Link>
                     </Button>
-                    <Button asChild size="lg" className="h-auto px-6 py-2 text-center text-xs sm:px-12 sm:py-4 sm:text-lg">
+                    <Button
+                        asChild
+                        type="button"
+                        size="lg"
+                        className="h-auto px-6 py-2 text-center text-xs sm:px-12 sm:py-4 sm:text-lg"
+                    >
                         <Link href="/suppliers/statements/new">
                             {text.rich("overview.supplier-statement", { br: () => <br /> })}
                         </Link>

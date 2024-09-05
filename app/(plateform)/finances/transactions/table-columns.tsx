@@ -5,6 +5,7 @@ import { HeaderComponent } from "@/components/table/column-header";
 import { BadgeCell } from "@/components/table/body/level-cell";
 import { DollarCell } from "@/components/table/body/price-cell";
 import { DateCell } from "@/components/table/body/date-cell";
+import { TranslateReasonCell } from "@/components/table/body/translate-reason-cell";
 
 export const columns: ColumnDef<any>[] = [
     {
@@ -14,6 +15,7 @@ export const columns: ColumnDef<any>[] = [
     {
         accessorKey: "reason",
         header: HeaderComponent,
+        cell: ({ row }) => <TranslateReasonCell row={row} name="reason" />,
     },
     {
         accessorKey: "process",

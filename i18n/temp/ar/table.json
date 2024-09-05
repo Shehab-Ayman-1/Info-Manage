@@ -1,0 +1,90 @@
+{
+    "table": {
+        "table-pagination": "الصفحة {currentPaginationCount} من {totalPaginationCount}",
+        "no-results": "لا يوجد نتائج بحث",
+
+        "category-name": "القسم",
+        "category": "القسم",
+
+        "company-name": "الشركة",
+        "company": "الشركة",
+
+        "product-name": "المنتج",
+        "product": "المنتج",
+        "name": "المنتج",
+
+        "total-count": "العدد الكلي",
+        "current-count": "العدد الحالي",
+        "count": "العدد",
+
+        "market-count": "عدد المحل",
+        "store-count": "عدد المخزن",
+
+        "total-purchases": "اجمالي المشتريات",
+        "purchase-price": "سعر الشراء",
+
+        "purchases": "المشتريات",
+        "last-sold": "اخر عملية بيع",
+
+        "total-selling": "اجمالي المبيعات",
+        "selling-price": "سعر البيع",
+
+        "cash": "كاش",
+        "visa": "فيزا",
+
+        "costs": "التكاليف",
+        "price": "السعر",
+
+        "pending": "المتبقي",
+        "total": "اجمالي",
+
+        "actions": "المزيد",
+        "print": "طباعه",
+
+        "total-needed": "الاجمالي المطلوب",
+        "minimum": "الحد الادني",
+
+        "total-solds": "اجمالي المبيعات",
+        "sold-price": "سعر البيع",
+
+        "profits": "الارباح",
+        "paid": "المدفوع",
+
+        "supplier": "المورد",
+        "client": "العميل",
+
+        "barcode": "الباركود",
+        "phone": "الهاتف",
+
+        "discounts": "الخصومات",
+        "discount": "الخصم",
+
+        "bronze-to": "البرونزيه الي",
+        "silver-to": "الفضية الي",
+        "level": "الشريحة",
+
+        "state": "الحالة",
+        "created-at": "تم الانشاء في",
+
+        "creator": "المستخدم",
+        "reason": "السبب",
+
+        "process": "العملية",
+        "method": "وسيلة الدفع",
+
+        "solds": "المبيعات",
+        "needed": "المطلوب",
+
+        "filter-by": {
+            "heading": "البحث بواسطة",
+            "category": "القسم",
+            "company": "الشركة",
+            "product": "المنتج",
+            "barcode": "الباركود",
+            "supplier": "المورد",
+            "client": "العميل",
+            "level": "الشريحة",
+            "reason": "السبب"
+        }
+    }
+}

@@ -1,0 +1,91 @@
+{
+    "public": {
+        "choose-category": "اختار القسم",
+        "category-name": "اسم القسم",
+        "categoryId": "القسم",
+        "category": "القسم",
+
+        "choose-comany": "اختار الشركة",
+        "company-name": "اسم الشركة",
+        "companyId": "الشركة",
+        "company": "الشركة",
+
+        "choose-product": "اختار المنتج",
+        "product-name": "اسم المنتج",
+        "productId": "المنتج",
+        "product": "المنتج",
+
+        "choose-client": "اختار العميل",
+        "client-name": "اسم العميل",
+        "clientId": "اسم العميل",
+        "client": "العميل",
+
+        "choose-supplier": "اختار المورد",
+        "supplier-name": "اسم المورد",
+        "supplierId": "اسم المورد",
+        "supplier": "المورد",
+
+        "choose-method": "اختار وسيلة الدفع",
+        "method": "وسيلة الدفع",
+
+        "choose-process": "اختار نوع العملية",
+        "process": "العملية",
+
+        "choose-place": "اختار المكان",
+        "place": "المكان",
+
+        "choose-unit": "اختر الكمية",
+        "unit": "الكمية",
+
+        "old-supplier": "مورد قديم",
+        "new-supplier": "مورد جديد",
+
+        "by-milestone": "دفع بالتقسيط",
+        "pay-all": "دفع كامل",
+
+        "packet": "عبوة",
+        "liter": "لتر",
+        "kilo": "كيلو",
+
+        "count": "العدد",
+        "price": "السعر",
+
+        "purchase-price": "سعر الشراء",
+        "sold-price": "سعر البيع",
+
+        "market-count": "عدد المحل",
+        "store-count": "عدد المخزن",
+
+        "loading": "تحميل ...",
+        "search": "البحث ...",
+
+        "previous": "السابق",
+        "next": "التالي",
+
+        "market": "المحل",
+        "store": "المخزن",
+
+        "language": "اللغه",
+        "en": "انجليزي",
+        "ar": "عربي",
+
+        "cash": "كاش",
+        "visa": "فيزا",
+
+        "phone": "رقم الهاتف",
+        "barcode": "الباركود",
+
+        "bronze-to": "البرونزية الي",
+        "silver-to": "الفضية الي",
+
+        "discount": "الخصم",
+        "open-insert-products-model": "اضافه منتج جديد",
+
+        "print-receipt": "طباعه الفاتورة",
+        "unknown": "غير معروف",
+
+        "restore": "مرتجع",
+        "completed": "مكتمل",
+        "pending": "قيد الدفع"
+    }
+}

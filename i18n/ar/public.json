@@ -20,10 +20,10 @@
         "clientId": "اسم العميل",
         "client": "العميل",
 
-        "choose-supplier": "اختار المورد",
-        "supplier-name": "اسم المورد",
-        "supplierId": "اسم المورد",
-        "supplier": "المورد",
+        "choose-supplier": "اختار المُورِد",
+        "supplier-name": "اسم المُورِد",
+        "supplierId": "اسم المُورِد",
+        "supplier": "المُورِد",
 
         "choose-method": "اختار وسيلة الدفع",
         "method": "وسيلة الدفع",
@@ -45,7 +45,7 @@
 
         "packet": "عبوة",
         "liter": "لتر",
-        "kilo": "كيلو",
+        "kilo": "كم",
 
         "count": "العدد",
         "price": "السعر",
@@ -53,8 +53,8 @@
         "purchase-price": "سعر الشراء",
         "sold-price": "سعر البيع",
 
-        "market-count": "عدد المحل",
-        "store-count": "عدد المخزن",
+        "market-count": "العدد بالمحل",
+        "store-count": "العدد بالمخزن",
 
         "loading": "تحميل ...",
         "search": "البحث ...",
@@ -65,27 +65,45 @@
         "market": "المحل",
         "store": "المخزن",
 
-        "language": "اللغه",
-        "en": "انجليزي",
-        "ar": "عربي",
+        "language": "اللغة",
+        "en": "اللغة الإنجليزية",
+        "ar": "اللغة العربية",
 
-        "cash": "كاش",
+        "vodafone-cash": "فودافون كاش",
+        "cash": "نقد",
         "visa": "فيزا",
+
+        "withdraw": "سحب",
+        "deposit": "ايداع",
 
         "phone": "رقم الهاتف",
         "barcode": "الباركود",
 
-        "bronze-to": "البرونزية الي",
-        "silver-to": "الفضية الي",
+        "bronze-to": "البرونزية إلى",
+        "silver-to": "الفضية إلى",
 
         "discount": "الخصم",
-        "open-insert-products-model": "اضافه منتج جديد",
+        "open-insert-products-model": "إضافة منتج جديد",
 
-        "print-receipt": "طباعه الفاتورة",
+        "print-receipt": "طباعة الفاتورة",
         "unknown": "غير معروف",
 
-        "restore": "مرتجع",
-        "completed": "مكتمل",
-        "pending": "قيد الدفع"
+        "restore": "مُرتجع",
+        "completed": "مُكتمل",
+        "pending": "قيد الدفع",
+
+        "premium": "Premium",
+        "enterprise": "Enterprise",
+
+        "client-statement": "كشف حساب عميل",
+        "supplier-statement": "كشف حساب مورد",
+
+        "restored-client-statement": "كشف مرتجع عميل",
+        "restored-supplier-statement": "كشف مرتجع مورد",
+
+        "client-bill-payment": "دفعه ماليه من عميل",
+        "supplier-bill-payment": "دفعه ماليه من مورد",
+
+        "canceled-supplier-bill": "استرجاع فاتورة مورد"
     }
 }

@@ -2,7 +2,7 @@
 import type { UseFormClearErrors, UseFormSetValue } from "react-hook-form";
 import type { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 import { CheckCheckIcon, ChevronsUpDownIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/ui/command";
@@ -11,6 +11,8 @@ import { Button } from "@/ui/button";
 import { Icons } from "@/ui/icons";
 import { Label } from "@/ui/label";
 import { cn } from "@/utils/shadcn";
+import { useKey } from "react-use";
+import { Tooltip } from "./tooltip";
 
 type Item = {
     _id: string;
@@ -146,23 +148,53 @@ type CommandTriggerProps = {
 
 function CommandTrigger({ useTranslate, selectedValue, label, open }: CommandTriggerProps) {
     const text = useTranslations();
+    const ref = useRef<HTMLButtonElement>(null);
+
+    const productKeys = ["choose-product", "product-name", "productId", "product"];
+    const isProduct = productKeys.includes(label);
+
+    const onClick = () => {
+        if (!isProduct) return;
+        ref.current?.click();
+    };
+
+    useKey((event) => event.shiftKey, onClick);
 
     const isCustomeTrigger = useTranslate?.trigger && useTranslate?.customeTrigger;
     const isNotCustomeTrigger = useTranslate?.trigger && !useTranslate?.customeTrigger;
 
+    const NCT = text(`${useTranslate?.trigger}.${selectedValue || label}`);
+    const CT = selectedValue || text(`${useTranslate?.trigger}.${label}`);
+
+    if (isProduct) {
+        return (
+            <Tooltip content="Shift">
+                <PopoverTrigger ref={ref} asChild>
+                    <Button
+                        type="button"
+                        variant="ghost"
+                        role="combobox"
+                        aria-expanded={open}
+                        className="flex-between mt-1 w-full border-b border-b-primary !py-8 text-base text-slate-400"
+                    >
+                        {isNotCustomeTrigger ? NCT : isCustomeTrigger ? CT : selectedValue || label}
+                        <ChevronsUpDownIcon className="mx-2 size-4 opacity-50" />
+                    </Button>
+                </PopoverTrigger>
+            </Tooltip>
+        );
+    }
+
     return (
-        <PopoverTrigger asChild>
+        <PopoverTrigger ref={ref} asChild>
             <Button
+                type="button"
                 variant="ghost"
                 role="combobox"
                 aria-expanded={open}
                 className="flex-between mt-1 w-full border-b border-b-primary !py-8 text-base text-slate-400"
             >
-                {isNotCustomeTrigger
-                    ? text(`${useTranslate.trigger}.${selectedValue || label}`)
-                    : isCustomeTrigger
-                      ? selectedValue.split(" ||| ")?.[0] || text(`${useTranslate?.trigger}.${label}`)
-                      : selectedValue.split(" ||| ")?.[0] || label}
+                {isNotCustomeTrigger ? NCT : isCustomeTrigger ? CT : selectedValue || label}
                 <ChevronsUpDownIcon className="mx-2 size-4 opacity-50" />
             </Button>
         </PopoverTrigger>

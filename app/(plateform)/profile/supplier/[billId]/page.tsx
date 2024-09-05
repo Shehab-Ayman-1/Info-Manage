@@ -59,7 +59,7 @@ const BillProfile = ({ params }: BillProfileProps) => {
                         {text("table.created-at")}: {formatDate(data.createdAt, "dd / MM / yyyy")}
                     </h1>
                 </div>
-                <Button size="lg" className="w-fit gap-2 text-lg font-bold print:hidden" onClick={onPrint}>
+                <Button type="button" size="lg" className="w-fit gap-2 text-lg font-bold print:hidden" onClick={onPrint}>
                     <PrinterCheckIcon className="size-5 !text-white dark:!text-black" />
                     {text("public.print-receipt")}
                 </Button>

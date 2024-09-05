@@ -12,7 +12,7 @@ import { CardForm } from "@/components/page-structure/CardForm";
 import { SubmitButton } from "@/components/public/submit-btn";
 import { ComboBox } from "@/components/ui/comboBox";
 import { Input } from "@/ui/input";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 
 const Configs = () => {
     const resolver = zodResolver(configsSchema.omit({ organizationId: true }));
@@ -58,13 +58,15 @@ const Configs = () => {
                 <div className="flex-between">
                     <Input
                         type="number"
-                        placeholder="Bronze To"
+                        label="bronze-to"
+                        useTranslate={{ label: "public" }}
                         error={errors.bronzeTo}
                         {...register("bronzeTo", { valueAsNumber: true, value: organization?.publicMetadata.bronzeTo })}
                     />
                     <Input
                         type="number"
-                        placeholder="Silver To"
+                        label="silver-to"
+                        useTranslate={{ label: "public" }}
                         error={errors.silverTo}
                         {...register("silverTo", { valueAsNumber: true, value: organization?.publicMetadata.silverTo })}
                     />
@@ -72,8 +74,9 @@ const Configs = () => {
 
                 <div className="flex-between">
                     <ComboBox
-                        label="Remove Unnecessary Data After"
+                        label="remove-unnecessary-data"
                         name="removeUnnecessaryData"
+                        useTranslate={{ label: "organizations", name: "organizations" }}
                         setValue={setValue}
                         items={noOfMonths}
                         error={errors.removeUnnecessaryData}
@@ -81,66 +84,69 @@ const Configs = () => {
                         defaultValue={organization?.publicMetadata.removeUnnecessaryData as string}
                     />
                     <ComboBox
-                        label="Refresh Client Purchases After"
+                        label="refresh-client-purchases-after"
                         name="refreshClientsPurchases"
-                        setValue={setValue}
+                        useTranslate={{ label: "organizations", name: "organizations" }}
                         items={noOfMonths}
-                        error={errors.refreshClientsPurchases}
+                        setValue={setValue}
                         clearErrors={clearErrors}
+                        error={errors.refreshClientsPurchases}
                         defaultValue={organization?.publicMetadata.refreshClientsPurchases as string}
                     />
                 </div>
 
-                <h3 className="bg-gradient-light my-4 py-4 text-center font-bold text-primary sm:text-xl">Subscriptions</h3>
-
                 {isMe && (
-                    <div className="flex-between">
-                        <ComboBox
-                            label="Subscription"
-                            name="subscription"
-                            items={subscriptions}
-                            error={errors.subscription}
-                            setValue={setValue}
-                            clearErrors={clearErrors}
-                            defaultValue={organization?.publicMetadata.subscription as string}
-                        />
-                        <Input
-                            type="date"
-                            error={errors.subscriptionExpiresAt}
-                            {...register("subscriptionExpiresAt", {
-                                valueAsDate: true,
-                                value:
-                                    subscriptionExpiresAtMetadata &&
-                                    formatDate(subscriptionExpiresAtMetadata as string, "yyyy-MM-dd"),
-                            })}
-                        />
-                    </div>
+                    <Fragment>
+                        <h3 className="bg-gradient-light my-4 py-4 text-center font-bold text-primary sm:text-xl">
+                            Subscriptions
+                        </h3>
+
+                        <div className="flex-between">
+                            <ComboBox
+                                label="Subscription"
+                                name="subscription"
+                                items={subscriptions}
+                                error={errors.subscription}
+                                setValue={setValue}
+                                clearErrors={clearErrors}
+                                defaultValue={organization?.publicMetadata.subscription as string}
+                            />
+                            <Input
+                                type="date"
+                                error={errors.subscriptionExpiresAt}
+                                {...register("subscriptionExpiresAt", {
+                                    valueAsDate: true,
+                                    value:
+                                        subscriptionExpiresAtMetadata &&
+                                        formatDate(subscriptionExpiresAtMetadata as string, "yyyy-MM-dd"),
+                                })}
+                            />
+                        </div>
+
+                        <div className="">
+                            <ComboBox
+                                label={`Additional Subscription: ${additionalSubscriptions?.join(" | ") || ""}`}
+                                name="additionalSubscriptions"
+                                items={additionalSubscription}
+                                error={errors.additionalSubscription}
+                                onChange={onAdditionalChange}
+                                clearErrors={clearErrors}
+                            />
+                            <Input
+                                type="date"
+                                error={errors.additionalSubscriptionExpiresAt}
+                                {...register("additionalSubscriptionExpiresAt", {
+                                    valueAsDate: true,
+                                    value:
+                                        additionalExpiresAtMetadata &&
+                                        formatDate(additionalExpiresAtMetadata as string, "yyyy-MM-dd"),
+                                })}
+                            />
+                        </div>
+                    </Fragment>
                 )}
 
-                {isMe && (
-                    <div className="">
-                        <ComboBox
-                            label={`Additional Subscription: ${additionalSubscriptions?.join(" | ") || ""}`}
-                            name="additionalSubscriptions"
-                            items={additionalSubscription}
-                            error={errors.additionalSubscription}
-                            onChange={onAdditionalChange}
-                            clearErrors={clearErrors}
-                        />
-                        <Input
-                            type="date"
-                            error={errors.additionalSubscriptionExpiresAt}
-                            {...register("additionalSubscriptionExpiresAt", {
-                                valueAsDate: true,
-                                value:
-                                    additionalExpiresAtMetadata &&
-                                    formatDate(additionalExpiresAtMetadata as string, "yyyy-MM-dd"),
-                            })}
-                        />
-                    </div>
-                )}
-
-                <SubmitButton text="Update" isPending={isPending} />
+                <SubmitButton text="update" isPending={isPending} />
             </form>
         </CardForm>
     );

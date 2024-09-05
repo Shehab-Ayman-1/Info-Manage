@@ -77,7 +77,7 @@ export const POST = async (req: NextRequest) => {
                         $slice: -100,
                         $each: [
                             {
-                                reason: "Supplier Restore Statement",
+                                reason: "Restored Supplier Statement",
                                 creator: user.fullName,
                                 price: paid,
                                 createdAt: new Date(),

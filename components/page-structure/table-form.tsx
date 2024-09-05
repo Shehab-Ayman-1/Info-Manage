@@ -47,7 +47,7 @@ export const TableForm = <TData,>(props: TableFormProps<TData>) => {
                     <div className="flex flex-col gap-y-6">
                         <Heading title={pageTitle} />
                         {!!data?.length && (
-                            <Button size="lg" className="gap-2 text-lg font-bold" onClick={onPrintTrigger}>
+                            <Button type="button" size="lg" className="gap-2 text-lg font-bold" onClick={onPrintTrigger}>
                                 <PrinterCheckIcon className="size-5 !text-white dark:!text-black" />
                                 <span>{t("table.print")}</span>
                             </Button>
@@ -61,6 +61,7 @@ export const TableForm = <TData,>(props: TableFormProps<TData>) => {
                                 <Button
                                     key={index}
                                     asChild
+                                    type="button"
                                     size="lg"
                                     className="hidden w-full text-base font-bold sm:inline-flex"
                                 >

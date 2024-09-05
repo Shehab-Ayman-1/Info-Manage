@@ -21,7 +21,7 @@ export const columns: ColumnDef<any>[] = [
         header: HeaderComponent,
         cell: ({ row }) => {
             return (
-                <Button asChild variant="ghost" className="hover:bg-slate-300 hover:text-black">
+                <Button asChild type="button" variant="ghost" className="hover:bg-slate-300 hover:text-black">
                     <Link href={`/profile/product/${row.original._id}`}>{row.original.product}</Link>
                 </Button>
             );

@@ -83,6 +83,20 @@
 
         "restore": "Restore",
         "completed": "Completed",
-        "pending": "Pending"
+        "pending": "Pending",
+
+        "premium": "Premium",
+        "enterprise": "Enterprise",
+
+        "client-statement": "Client Statement",
+        "supplier-statement": "Supplier Statement",
+
+        "restored-client-statement": "Restored Client Statement",
+        "restored-supplier-statement": "Restored Supplier Statement",
+
+        "client-bill-payment": "Client Bill Payment",
+        "supplier-bill-payment": "Supplier Bill Payment",
+
+        "canceled-supplier-bill": "Canceled Supplier Bill"
     }
 }

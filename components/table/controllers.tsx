@@ -18,10 +18,22 @@ export const Controllers = ({ previousPage, nextPage, getCanPreviousPage, getCan
 
     return (
         <div className="flex-end w-full">
-            <Button variant="outline" className="text-xs text-primary sm:text-sm" onClick={previousPage} disabled={!prev}>
+            <Button
+                type="button"
+                variant="outline"
+                className="text-xs text-primary sm:text-sm"
+                onClick={previousPage}
+                disabled={!prev}
+            >
                 {text("previous")}
             </Button>
-            <Button variant="outline" className="text-xs text-primary sm:text-sm" onClick={nextPage} disabled={!next}>
+            <Button
+                type="button"
+                variant="outline"
+                className="text-xs text-primary sm:text-sm"
+                onClick={nextPage}
+                disabled={!next}
+            >
                 {text("next")}
             </Button>
         </div>

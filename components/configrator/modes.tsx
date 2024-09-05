@@ -19,12 +19,12 @@ export const Modes = () => {
         <div className="my-6">
             <h1 className="text-xl font-bold text-primary sm:text-2xl">Mode Toggler</h1>
             <SheetClose className="flex-between my-8 w-full !flex-nowrap">
-                <Button asChild className="w-full py-9" variant="outline" onClick={() => setTheme("light")}>
+                <Button asChild type="button" className="w-full py-9" variant="outline" onClick={() => setTheme("light")}>
                     <p>
                         Light <br /> Mode
                     </p>
                 </Button>
-                <Button asChild className="w-full py-9" onClick={() => setTheme("dark")}>
+                <Button asChild type="button" className="w-full py-9" onClick={() => setTheme("dark")}>
                     <p>
                         Dark <br /> Mode
                     </p>

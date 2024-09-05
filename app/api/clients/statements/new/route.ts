@@ -70,7 +70,11 @@ export const POST = async (req: NextRequest) => {
 
         // Add New Transaction
         await Transactions.updateOne(
-            { orgId, method, process: "deposit" },
+            {
+                orgId,
+                method,
+                process: "deposit",
+            },
             {
                 $inc: { total: paid },
                 $push: {

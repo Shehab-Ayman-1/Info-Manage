@@ -1,6 +1,8 @@
 {
     "buttons": {
         "new-statement": "Neuer Kontoauszug",
+        "restore-statement": "Zurückgegebene Anweisung",
+
         "new-transaction": "Neue Transaktion",
         "market-products": "Marktprodukte",
 

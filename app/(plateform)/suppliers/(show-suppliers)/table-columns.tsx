@@ -30,7 +30,7 @@ export const columns: ColumnDef<any>[] = [
                 {(row.original?.companies).map((company: any) => (
                     <Popover key={company._id}>
                         <PopoverTrigger asChild>
-                            <Button size="sm" className="">
+                            <Button type="button" size="sm">
                                 {company.name}
                             </Button>
                         </PopoverTrigger>

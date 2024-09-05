@@ -2,6 +2,7 @@
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -12,7 +13,6 @@ import { SubmitButton } from "@/components/public/submit-btn";
 import { ComboBox } from "@/components/ui/comboBox";
 import { DialogForm } from "@/components/ui/dialog";
 import { Input } from "@/ui/input";
-import { useTranslations } from "next-intl";
 
 const schema = z.object({
     productId: z.string().min(1),
@@ -44,13 +44,12 @@ export const InsertProduct = ({ billBarcode, setProducts }: InsertProductProps) 
         resolver: zodResolver(schema.omit({ company: true, name: true, total: true })),
     });
     const { data, isPending } = useGet<ProductResponse[]>(`/api/clients/statements/restore/${billBarcode}`, [billBarcode]);
-
     const { type, onClose } = useModel();
-    const text = useTranslations();
+    const { errors, isLoading } = formState;
 
     const productId = watch("productId");
-    const soldPrice = watch("soldPrice");
-    const { errors, isLoading } = formState;
+    const count = watch("count");
+    const text = useTranslations();
 
     useEffect(() => {
         if (!productId || !data) return;
@@ -58,10 +57,17 @@ export const InsertProduct = ({ billBarcode, setProducts }: InsertProductProps) 
         const product = data.find((product) => product.productId === productId);
         if (!product) return;
 
-        setValue("count", product.count);
         setValue("purchasePrice", product.purchasePrice);
+        clearErrors("purchasePrice");
+
         setValue("soldPrice", product.soldPrice);
-    }, [data, productId, setValue]);
+        clearErrors("soldPrice");
+
+        setValue("count", product.count);
+        clearErrors("count");
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [data, productId]);
 
     if (type !== "insert-bill-products-model") return;
 
@@ -109,6 +115,7 @@ export const InsertProduct = ({ billBarcode, setProducts }: InsertProductProps) 
                         label="count"
                         useTranslate={{ label: "public" }}
                         error={errors.count}
+                        disabled={!count}
                         {...register("count", { valueAsNumber: true })}
                     />
                     <Input
@@ -117,7 +124,7 @@ export const InsertProduct = ({ billBarcode, setProducts }: InsertProductProps) 
                         useTranslate={{ label: "public" }}
                         className="pointer-events-none opacity-50"
                         error={errors.soldPrice}
-                        {...register("soldPrice", { valueAsNumber: true, value: soldPrice })}
+                        {...register("soldPrice", { valueAsNumber: true })}
                     />
                 </div>
 

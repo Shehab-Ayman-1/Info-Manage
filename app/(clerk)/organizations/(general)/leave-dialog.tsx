@@ -21,10 +21,10 @@ export const LeaveDialog = ({}: LeaveDialogProps) => {
     return (
         <DialogForm heading="Leave Organization" description="You Can't Come Back After Leaving.">
             <div className="flex-end">
-                <Button variant="outline" className="text-black dark:text-white" onClick={onClose}>
+                <Button type="button" variant="outline" className="text-black dark:text-white" onClick={onClose}>
                     Cancel
                 </Button>
-                <Button variant="destructive" onClick={onConfirm}>
+                <Button type="button" variant="destructive" onClick={onConfirm}>
                     Confirm
                 </Button>
             </div>

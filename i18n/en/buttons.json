@@ -1,6 +1,8 @@
 {
     "buttons": {
         "new-statement": "New Statement",
+        "restore-statement": "Restore Statement",
+
         "new-transaction": "New Transaction",
         "market-products": "Market Products",
 

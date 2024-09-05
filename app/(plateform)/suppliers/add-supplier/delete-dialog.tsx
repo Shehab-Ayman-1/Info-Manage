@@ -28,10 +28,10 @@ export const DeleteDialog = ({ setProducts }: DeleteDialogProps) => {
             description={text("dialogs.add-supplier.delete-dialog.description")}
         >
             <div className="flex-end">
-                <Button variant="outline" className="text-black dark:text-white" onClick={onClose}>
+                <Button type="button" variant="outline" className="text-black dark:text-white" onClick={onClose}>
                     {text("buttons.cancel")}
                 </Button>
-                <Button variant="destructive" onClick={onClick}>
+                <Button type="button" variant="destructive" onClick={onClick}>
                     {text("buttons.confirm")}
                 </Button>
             </div>

@@ -24,10 +24,10 @@ export const DeleteDialog = () => {
             description={text("dialogs.show-suppliers.delete-dialog.description")}
         >
             <div className="flex-end">
-                <Button variant="outline" className="text-black dark:text-white" onClick={onClose}>
+                <Button type="button" variant="outline" className="text-black dark:text-white" onClick={onClose}>
                     {text("buttons.cancel")}
                 </Button>
-                <Button variant="destructive" onClick={onClick} disabled={isPending}>
+                <Button type="button" variant="destructive" onClick={onClick} disabled={isPending}>
                     {text("buttons.confirm")}
                 </Button>
             </div>

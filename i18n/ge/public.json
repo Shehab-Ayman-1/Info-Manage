@@ -83,6 +83,20 @@
 
         "restore": "Wiederherstellen",
         "completed": "Abgeschlossen",
-        "pending": "Ausstehend"
+        "pending": "Ausstehend",
+
+        "premium": "Premium",
+        "enterprise": "Enterprise",
+
+        "client-statement": "Kundenabrechnung",
+        "supplier-statement": "Lieferantenabrechnung",
+
+        "restored-client-statement": "Wiederhergestellte Kundenabrechnung",
+        "restored-supplier-statement": "Wiederhergestellte Lieferantenabrechnung",
+
+        "client-bill-payment": "Kundenrechnungszahlung",
+        "supplier-bill-payment": "Lieferantenrechnungszahlung",
+
+        "canceled-supplier-bill": "Stornierte Lieferantenrechnung"
     }
 }

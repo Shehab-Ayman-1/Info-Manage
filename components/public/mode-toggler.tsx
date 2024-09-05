@@ -19,7 +19,7 @@ export function ModeToggler() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button type="button" variant="ghost" size="icon">
                     {theme === "dark" ? <Moon className="size-6" /> : <Sun className="size-6" />}
                 </Button>
             </DropdownMenuTrigger>

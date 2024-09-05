@@ -50,7 +50,7 @@ export const UserButton = ({}: UserButtonProps) => {
 
                 <div className="flex flex-col sm:w-[400px]">
                     <PopoverClose asChild>
-                        <Button variant="ghost" className={btnStyle} onClick={() => onOpen("user")}>
+                        <Button type="button" variant="ghost" className={btnStyle} onClick={() => onOpen("user")}>
                             <SettingsIcon className="size-5 text-muted-foreground" />
                             Manage Account
                         </Button>
@@ -58,7 +58,7 @@ export const UserButton = ({}: UserButtonProps) => {
 
                     {isAdmin && (
                         <PopoverClose asChild>
-                            <Button variant="ghost" className={btnStyle} onClick={() => onOpen("organization")}>
+                            <Button type="button" variant="ghost" className={btnStyle} onClick={() => onOpen("organization")}>
                                 <LogOutIcon className="size-5 text-muted-foreground" />
                                 Manage Organization
                             </Button>
@@ -66,7 +66,7 @@ export const UserButton = ({}: UserButtonProps) => {
                     )}
 
                     <PopoverClose asChild>
-                        <Button variant="ghost" className={btnStyle} onClick={() => onOpen("signout")}>
+                        <Button type="button" variant="ghost" className={btnStyle} onClick={() => onOpen("signout")}>
                             <LogOutIcon className="size-5 text-muted-foreground" />
                             Sign Out
                         </Button>
