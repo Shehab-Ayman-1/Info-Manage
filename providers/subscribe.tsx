@@ -21,7 +21,10 @@ type SubscribeProvider = {
 
 const checkSubscription = (pathname: string, metadata: AdditionalSubscription[]) => {
     const checkSub = (link: NavLinkType) =>
-        link.href === pathname && metadata.find((sub) => link.additionalSubscriptions.includes(sub));
+        link.href === pathname &&
+        metadata.find((sub) => {
+            return !link.additionalSubscriptions.length ? true : link.additionalSubscriptions.includes(sub);
+        });
 
     const productExist = productLists.some(checkSub);
     const clientExist = clientLists.some(checkSub);
@@ -40,9 +43,12 @@ export const SubscribeProvider = ({ children }: SubscribeProvider) => {
     const router = useRouter();
 
     const metadata = organization?.publicMetadata?.additionalSubscriptions as ("premium" | "enterprise")[];
-    const isAdditionalSubscriptionAllowed = checkSubscription(pathname, metadata);
+    const isAdditionalSubscriptionAllowed = checkSubscription(pathname, metadata) || pathname.includes("/profile");
 
-    if (!isAdditionalSubscriptionAllowed) return router.push("/");
+    if (!isAdditionalSubscriptionAllowed) {
+        router.push("/");
+        return;
+    }
     if (isSubscribe) return children;
 
     return (

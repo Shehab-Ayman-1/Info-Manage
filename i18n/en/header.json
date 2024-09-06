@@ -11,7 +11,8 @@
                 "today-sales": "Today Sales Receipt",
                 "add-category": "Add New Category",
                 "add-company": "Add New Company",
-                "add-product": "Add New Product"
+                "add-product": "Add New Product",
+                "recycle-bin": "Recycle Bin"
             },
             "clients": {
                 "heading": "Clients",
@@ -19,7 +20,8 @@
                 "show-bills": "Show Bills",
                 "new-statement": "New Statement",
                 "restore-statement": "Restore Statement",
-                "add-client": "Add New Client"
+                "add-client": "Add New Client",
+                "recycle-bin": "Recycle Bin"
             },
             "suppliers": {
                 "heading": "Suppliers",
@@ -27,7 +29,8 @@
                 "show-bills": "Show Bills",
                 "new-statement": "New Statement",
                 "restore-statement": "Restore Statement",
-                "add-supplier": "Add New Supplier"
+                "add-supplier": "Add New Supplier",
+                "recycle-bin": "Recycle Bin"
             },
             "finances": {
                 "heading": "Finances",

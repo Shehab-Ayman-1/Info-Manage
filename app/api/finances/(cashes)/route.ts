@@ -27,7 +27,7 @@ export const GET = async () => {
                 $unwind: "$company.category",
             },
             {
-                $match: { "company.category.orgId": orgId },
+                $match: { "company.category.orgId": orgId, trash: false },
             },
             {
                 $project: {

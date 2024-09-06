@@ -43,6 +43,10 @@
             "heading": "Today Sales Receipt"
         },
 
+        "trash-products": {
+            "heading": "Trash Products"
+        },
+
         "client-lists": {
             "heading": "Client Lists"
         },

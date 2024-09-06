@@ -22,7 +22,7 @@ export const GET = async () => {
                 $lookup: { from: "categories", as: "company.category", localField: "company.category", foreignField: "_id" },
             },
             {
-                $match: { "company.category.orgId": orgId },
+                $match: { "company.category.orgId": orgId, trash: false },
             },
             {
                 $project: {

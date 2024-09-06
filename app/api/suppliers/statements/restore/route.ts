@@ -93,7 +93,7 @@ export const POST = async (req: NextRequest) => {
         const updatePromise = await Promise.all(
             products.map(async ({ productId, count }) => {
                 const updated = await Products.updateOne(
-                    { _id: productId },
+                    { _id: productId, trash: false },
                     { $inc: { [`${place}.count`]: -count } },
                     { session },
                 );

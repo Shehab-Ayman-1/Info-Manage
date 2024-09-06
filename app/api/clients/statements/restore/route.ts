@@ -55,7 +55,11 @@ export const POST = async (req: NextRequest) => {
         // Return The Products To The Market
         const promise = await Promise.all(
             products.map(async ({ productId, count }) => {
-                const updated = await Products.updateOne({ _id: productId }, { $inc: { "market.count": count } }, { session });
+                const updated = await Products.updateOne(
+                    { _id: productId, trash: false },
+                    { $inc: { "market.count": count } },
+                    { session },
+                );
                 return updated.modifiedCount;
             }),
         );

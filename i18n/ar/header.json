@@ -11,7 +11,8 @@
                 "today-sales": "كشف مبيعات اليوم",
                 "add-category": "إضافة قسم جديد",
                 "add-company": "إضافة شركة جديدة",
-                "add-product": "إضافة منتج جديد"
+                "add-product": "إضافة منتج جديد",
+                "recycle-bin": "سله المهملات"
             },
             "clients": {
                 "heading": "العملاء",
@@ -19,7 +20,8 @@
                 "show-bills": "عرض الفواتير",
                 "new-statement": "فاتورة جديدة",
                 "restore-statement": "فاتورة مُرتجع",
-                "add-client": "إضافة عميل جديد"
+                "add-client": "إضافة عميل جديد",
+                "recycle-bin": "سله المهملات"
             },
             "suppliers": {
                 "heading": "الموردين",
@@ -27,7 +29,8 @@
                 "show-bills": "عرض الفواتير",
                 "new-statement": "فاتورة جديدة",
                 "restore-statement": "فاتورة مرتجع",
-                "add-supplier": "إضافة مُورِد جديد"
+                "add-supplier": "إضافة مُورِد جديد",
+                "recycle-bin": "سله المهملات"
             },
             "finances": {
                 "heading": "الماليات",

@@ -98,7 +98,7 @@ export const POST = async (req: NextRequest) => {
         await Promise.all(
             data.products.map(async ({ productId, soldPrice, count }) => {
                 return await Products.updateOne(
-                    { _id: productId },
+                    { _id: productId, trash: false },
                     { "market.price": soldPrice, "market.updatedAt": new Date(), $inc: { "market.count": -count } },
                     { session },
                 );

@@ -9,11 +9,11 @@ import { NavLinkType } from "@/constants";
 import { Badge } from "@/ui/badge";
 import { cn } from "@/utils/shadcn";
 
-type ItemProps = NavLinkType & {
+type ListItemProps = NavLinkType & {
     heading: string;
 };
 
-export const Item = ({ heading, title, href, Icon, userRole, subscriptions, additionalSubscriptions }: ItemProps) => {
+export const ListItem = ({ heading, title, href, Icon, userRole, subscriptions, additionalSubscriptions }: ListItemProps) => {
     const { isAdditionalSubscribe } = useSubscription(additionalSubscriptions, subscriptions);
     const text = useTranslations("header.navbar");
     const { orgRole } = useAuth();
@@ -63,4 +63,4 @@ export const Item = ({ heading, title, href, Icon, userRole, subscriptions, addi
     );
 };
 
-Item.displayName = "Item";
+ListItem.displayName = "ListItem";

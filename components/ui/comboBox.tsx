@@ -133,7 +133,7 @@ export const ComboBox = (props: ComboBoxProps) => {
             </Popover>
 
             {error?.message && (
-                <p className="ml-1 text-xs text-rose-900 dark:text-rose-400 sm:text-sm">{error.message as string}</p>
+                <p className="mx-1 text-xs text-rose-900 dark:text-rose-400 sm:text-sm">{error.message as string}</p>
             )}
         </div>
     );

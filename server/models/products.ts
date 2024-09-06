@@ -3,11 +3,14 @@ import { Schema, models, model } from "mongoose";
 
 type TProduct = Document & {
     _id: string;
+
     company: any;
     name: string;
 
     barcode: string;
     unit: "packet" | "liter" | "kilo";
+
+    trash: boolean;
     min: number;
 
     market: { price: number; count: number; updatedAt: Date };
@@ -20,6 +23,8 @@ const schema = new Schema<TProduct>({
 
     barcode: { type: String, trim: true },
     unit: { type: String, required: true, trim: true, enum: ["packet", "liter", "kilo"] },
+
+    trash: { type: Boolean, default: false },
     min: { type: Number, required: true },
 
     market: {

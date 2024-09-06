@@ -4,6 +4,8 @@
 
     - Change Text From [Bill -> invoice], [restore, refund]
 
+    - Clients, And Suppliers Payment Way
+
     - Update Bill
 
     - Think About

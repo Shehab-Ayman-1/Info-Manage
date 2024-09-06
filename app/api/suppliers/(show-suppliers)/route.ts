@@ -45,7 +45,7 @@ export const GET = async () => {
                     products: {
                         $push: {
                             _id: "$products._id",
-                            name: "$products.name",
+                            name: { $concat: ["$products.barcode", " >> ", "$products.name"] },
                             company: "$products.company",
                             companyName: "$company.name",
                         },

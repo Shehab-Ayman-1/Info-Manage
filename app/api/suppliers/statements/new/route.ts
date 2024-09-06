@@ -83,7 +83,7 @@ export const POST = async (req: NextRequest) => {
         const promise = await Promise.all(
             products.map(async ({ productId, price, count }) => {
                 const updated = await Products.updateOne(
-                    { _id: productId },
+                    { _id: productId, trash: false },
                     { "store.price": price, $inc: { [placeCount]: count } },
                 );
                 return updated.modifiedCount;

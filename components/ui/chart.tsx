@@ -39,12 +39,12 @@ export const Chart = ({ Icon, title, className, data, configs }: ChartProps) => 
                         <CartesianGrid vertical={false} />
 
                         {data?.[0]?.month ? (
-                            <XAxisComponent dataKey="month" tickFormatter={(value) => value.slice(0, 3)} />
+                            <XAxis dataKey="month" tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
                         ) : (
-                            <XAxisComponent dataKey="day" />
+                            <XAxis dataKey="day" tickMargin={8} />
                         )}
 
-                        <ChartTooltip content={<ChartTooltipContent />} />
+                        <ChartTooltip cursor={false} offset={20} content={<ChartTooltipContent indicator="dot" />} />
 
                         <defs>
                             <linearGradient id="fillDesktop" x1="0" y1="0" x2="0" y2="1">
@@ -58,20 +58,18 @@ export const Chart = ({ Icon, title, className, data, configs }: ChartProps) => 
                         </defs>
 
                         <Area
-                            dataKey="chart_1"
-                            fillOpacity={0.4}
                             stackId="a"
                             type="bump"
+                            dataKey="chart_1"
                             fill="url(#fillMobile)"
                             stroke="var(--color-mobile)"
                             className="pointer-events-none"
                         />
 
                         <Area
-                            dataKey="chart_2"
-                            fillOpacity={0.4}
                             stackId="a"
                             type="bump"
+                            dataKey="chart_2"
                             fill="url(#fillDesktop)"
                             stroke="var(--color-desktop)"
                             className="pointer-events-none"
@@ -83,13 +81,14 @@ export const Chart = ({ Icon, title, className, data, configs }: ChartProps) => 
     );
 };
 
-type XAxisComponent = {
+type XAxisComponentType = {
     dataKey: string;
     tickFormatter?: (value: any, index: number) => string;
 };
 
-const XAxisComponent = ({ dataKey, tickFormatter }: XAxisComponent) => {
+function XAxisComponent({ dataKey, tickFormatter }: XAxisComponentType) {
+    console.log("run");
     return <XAxis dataKey={dataKey} tickMargin={8} tickFormatter={tickFormatter} />;
-};
+}
 
 XAxisComponent.displayName = "XAxisComponent";

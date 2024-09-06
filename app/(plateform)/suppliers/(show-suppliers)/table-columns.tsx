@@ -45,7 +45,7 @@ export const columns: ColumnDef<any>[] = [
                                             href={`/profile/product/${product._id}`}
                                             className="block w-full cursor-pointer rounded-md p-2 text-start text-lg hover:bg-primary-100 hover:text-black"
                                         >
-                                            {product.name}
+                                            {product.name.split(" >> ")[1]}
                                         </Link>
                                     );
                                 })}

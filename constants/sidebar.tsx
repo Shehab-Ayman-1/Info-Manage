@@ -1,4 +1,4 @@
-import { CalendarPlusIcon, HandCoinsIcon, ReceiptTextIcon, RocketIcon, SchoolIcon } from "lucide-react";
+import { CalendarPlusIcon, HandCoinsIcon, ReceiptTextIcon, RocketIcon, SchoolIcon, Trash2Icon } from "lucide-react";
 import { ArrowRightLeftIcon, BadgeDollarSignIcon, CalendarPlus2Icon } from "lucide-react";
 import { ShoppingCartIcon, TargetIcon, ThumbsDownIcon, UserCheck } from "lucide-react";
 import { BookKeyIcon, StoreIcon, UsersIcon } from "lucide-react";
@@ -82,6 +82,14 @@ export const productLists: NavLinkType[] = [
         subscriptions: ["basic"],
         additionalSubscriptions: [],
     },
+    {
+        Icon: Trash2Icon,
+        title: "recycle-bin",
+        href: "/products/trash",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium"],
+    },
 ];
 
 export const clientLists: NavLinkType[] = [
@@ -121,6 +129,14 @@ export const clientLists: NavLinkType[] = [
         Icon: UserCheck,
         title: "add-client",
         href: "/clients/add-client",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium"],
+    },
+    {
+        Icon: Trash2Icon,
+        title: "recycle-bin",
+        href: "/clients/trash",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: ["premium"],
@@ -167,6 +183,14 @@ export const supplierLists: NavLinkType[] = [
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: [],
+    },
+    {
+        Icon: Trash2Icon,
+        title: "recycle-bin",
+        href: "/suppliers/trash",
+        userRole: "org:admin",
+        subscriptions: ["basic"],
+        additionalSubscriptions: ["premium"],
     },
 ];
 

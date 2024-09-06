@@ -26,7 +26,7 @@ export const PUT = async (req: NextRequest) => {
             return json(`${text("just-available")} [${product[otherPlace].count}] ${text("in-the")} ${text(otherPlace)}`, 400);
 
         const updated = await Products.updateOne(
-            { _id: productId },
+            { _id: productId, trash: false },
             {
                 $inc: {
                     [place === "market" ? "market.count" : "store.count"]: count,

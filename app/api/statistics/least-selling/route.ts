@@ -25,7 +25,7 @@ export const GET = async () => {
                 $lookup: { from: "categories", localField: "company.category", as: "company.category", foreignField: "_id" },
             },
             {
-                $match: { "company.category.orgId": orgId, "market.updatedAt": { $lte: thisMonth } },
+                $match: { "company.category.orgId": orgId, "market.updatedAt": { $lte: thisMonth }, trash: false },
             },
             {
                 $project: {

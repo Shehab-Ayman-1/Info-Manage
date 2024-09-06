@@ -11,7 +11,8 @@
                 "today-sales": "Heutiger Verkaufsbeleg",
                 "add-category": "Neue Kategorie hinzufügen",
                 "add-company": "Neues Unternehmen hinzufügen",
-                "add-product": "Neues Produkt hinzufügen"
+                "add-product": "Neues Produkt hinzufügen",
+                "recycle-bin": "Papierkorb"
             },
             "clients": {
                 "heading": "Kunden",
@@ -19,7 +20,8 @@
                 "show-bills": "Rechnungen anzeigen",
                 "new-statement": "Neue Erklärung",
                 "restore-statement": "Erklärung wiederherstellen",
-                "add-client": "Neuen Kunden hinzufügen"
+                "add-client": "Neuen Kunden hinzufügen",
+                "recycle-bin": "Papierkorb"
             },
             "suppliers": {
                 "heading": "Lieferanten",
@@ -27,7 +29,8 @@
                 "show-bills": "Rechnungen anzeigen",
                 "new-statement": "Neue Erklärung",
                 "restore-statement": "Erklärung wiederherstellen",
-                "add-supplier": "Neuen Lieferanten hinzufügen"
+                "add-supplier": "Neuen Lieferanten hinzufügen",
+                "recycle-bin": "Papierkorb"
             },
             "finances": {
                 "heading": "Finanzen",

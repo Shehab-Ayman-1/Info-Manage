@@ -29,7 +29,7 @@ export const GET = async (req: NextRequest) => {
                 $unwind: "$company.category",
             },
             {
-                $match: { "company.category.orgId": orgId },
+                $match: { "company.category.orgId": orgId, trash: false },
             },
             {
                 $project: {

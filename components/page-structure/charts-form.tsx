@@ -6,8 +6,8 @@ import { Chart } from "@/components/ui/chart";
 import { ChartConfig } from "@/ui/chart";
 
 const configs = {
-    desktop: { label: "Purchases", color: "hsl(var(--chart-1))" },
-    mobile: { label: "Profits", color: "hsl(var(--chart-2))" },
+    desktop: { label: "Purchases", color: "hsl(var(--chart-2))" },
+    mobile: { label: "Profits", color: "hsl(var(--chart-1))" },
 } satisfies ChartConfig;
 
 type Data = {

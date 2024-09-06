@@ -26,6 +26,7 @@ export const POST = async (req: NextRequest) => {
             products.map(async (_product) => {
                 const product = await Products.findOne({
                     company: companyId,
+                    trash: false,
                     $or: [{ name: _product.name }, { barcode: _product.barcode }],
                 });
                 return product ? { isExist: false, name: product.name } : { isExist: true, ..._product };

@@ -38,7 +38,7 @@ const SelectTrigger = React.forwardRef<
                     <ChevronDown className="h-4 w-4 opacity-50" />
                 </SelectPrimitive.Icon>
             </SelectPrimitive.Trigger>
-            {error && <p className="ml-1 text-xs text-rose-900 dark:text-rose-400 sm:text-sm">{error}</p>}
+            {error && <p className="mx-1 text-xs text-rose-900 dark:text-rose-400 sm:text-sm">{error}</p>}
         </div>
     );
 });

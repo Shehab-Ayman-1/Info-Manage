@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
@@ -29,11 +29,19 @@ export const UpdateProductsDialog = () => {
     const { mutate, isPending } = useUpdate<RequestType>("/api/suppliers/products", ["suppliers"]);
     const text = useTranslations();
 
-    const { products: productsLists, onReset } = useLists();
+    const { products: productsLists, companies, onReset } = useLists();
     const { type, data, onClose } = useModel();
 
     const [products, setProducts] = useState<ProductType[]>([]);
     const [supplierId, setSupplierId] = useState("");
+    const mount = useRef(false);
+
+    useEffect(() => {
+        if (mount.current) return;
+        (async () => companies.fetcher())();
+        mount.current = true;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     useEffect(() => {
         if (!data?.products?.length || !data?.supplierId) return;
@@ -43,7 +51,19 @@ export const UpdateProductsDialog = () => {
 
     if (type !== "update-products-model") return;
 
-    const onChange = (productId: string) => {
+    const onCompanyChange = (companyId: string) => {
+        const company = productsLists.groups.find((product) => product._id === companyId);
+
+        company?.list.forEach((product) => {
+            setProducts((products) => {
+                const isExist = products.some((prod) => prod._id === product._id);
+                if (!isExist) return products.concat({ _id: product._id, name: product.title, companyName: company.label });
+                return products;
+            });
+        });
+    };
+
+    const onProductChange = (productId: string) => {
         const { _id, name, company } = productsLists.data.find((product) => product._id === productId)!;
 
         setProducts((products) => {
@@ -75,13 +95,24 @@ export const UpdateProductsDialog = () => {
             description={text("dialogs.show-suppliers.update-products-dialog.description")}
         >
             <form onSubmit={onSubmit}>
-                <ComboBox
-                    label="choose-product"
-                    name="productId"
-                    useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
-                    groups={productsLists.groups}
-                    onChange={onChange}
-                />
+                <div className="flex-between">
+                    <ComboBox
+                        label="choose-product"
+                        name="productId"
+                        useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
+                        groups={productsLists.groups}
+                        onChange={onProductChange}
+                    />
+
+                    <ComboBox
+                        label="choose-company"
+                        name="companyId"
+                        useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
+                        groups={companies.groups}
+                        onChange={onCompanyChange}
+                    />
+                </div>
+
                 {!!products.length && <DataTable columns={columns} data={products} smallSize />}
 
                 <Button type="submit" className="w-full" disabled={isPending}>

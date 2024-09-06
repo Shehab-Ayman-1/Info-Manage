@@ -1,11 +1,12 @@
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
+import mongoose from "mongoose";
 
-import { Companies, Products } from "@/server/models";
+import { Companies, Products, Suppliers } from "@/server/models";
+import { getTranslations } from "@/utils/getTranslations";
 import { DBConnection } from "@/server/configs";
 import { editSchema } from "./schema";
 import { json } from "@/utils/response";
-import { getTranslations } from "@/utils/getTranslations";
 
 type ResponseType = {
     params: { productId: string };
@@ -50,7 +51,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
         await Companies.updateOne({ _id: companyId }, { name: company, image });
 
         await Products.updateOne(
-            { _id: productId },
+            { _id: productId, trash: false },
             {
                 name,
                 barcode,
@@ -67,20 +68,32 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
 };
 
 export const DELETE = async (req: NextRequest, res: ResponseType) => {
+    const session = await mongoose.startSession();
     try {
         await DBConnection();
+        session.startTransaction();
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
         const text = await getTranslations("profile.product.delete");
 
         const productId = res.params.productId;
-        const deleted = await Products.deleteOne({ _id: productId });
+        const updateProduct = await Products.updateOne({ _id: productId }, { trash: true }, { session }).lean();
 
-        if (!deleted.deletedCount) return json(text("not-deleted"), 400);
+        if (!updateProduct?.modifiedCount) {
+            await session.abortTransaction();
+            return json(text("not-deleted"), 400);
+        }
+
+        await Suppliers.updateMany({ orgId, products: { $in: [productId] } }, { $pull: { products: productId } }, { session });
+        await session.commitTransaction();
+
         return json(text("success"));
     } catch (error: any) {
+        await session.abortTransaction();
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);
+    } finally {
+        session.endSession();
     }
 };

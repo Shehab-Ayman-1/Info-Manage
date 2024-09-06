@@ -19,7 +19,7 @@ export type Notify = {
 };
 
 export const Notifications = () => {
-    const { data, isPending } = useGet<Notify[]>("/api/notifications", []);
+    const { data, isPending } = useGet<Notify[]>("/api/notifications", ["notifications"]);
     const { additionalSubscription } = useSubscription(["premium"]);
 
     const [subscriptions, setSubscriptions] = useState<Notify[]>([]);

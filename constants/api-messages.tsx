@@ -33,6 +33,11 @@ export const translations = {
                     success: "The Product Was Successfully Transfer.",
                 },
             },
+            "trash-products": {
+                put: {
+                    success: "The Product Was Successfully Restored Again.",
+                },
+            },
         },
         clients: {
             "show-clients": {
@@ -128,6 +133,10 @@ export const translations = {
                 },
             },
             "add-supplier": {
+                post: {
+                    "already-exist": "This Supplier is Already Exist",
+                    success: "The Supplier Was Successfully Added.",
+                },
                 put: {
                     "not-exist": "This Supplier / Product(s) Are Already Exists",
                     success: "The Supplier Was Successfully Added.",
@@ -181,6 +190,11 @@ export const translations = {
                     market: "المحل",
                     store: "المخزن",
                     success: "لقد تم نقل المنتج بنجاح.",
+                },
+            },
+            "trash-products": {
+                put: {
+                    success: "لقد تم استرجاع المنتج مرة اخرة بنجاح.",
                 },
             },
         },
@@ -278,6 +292,10 @@ export const translations = {
                 },
             },
             "add-supplier": {
+                post: {
+                    "already-exist": "هذا المورد موجود بالفعل",
+                    success: "لقد تم اضافه المورد بنجاح.",
+                },
                 put: {
                     "already-exist": "هذا المورد او المنتجات موجوده بالفعل",
                     success: "لقد تم اضافة المورد بنجاح.",
@@ -331,6 +349,15 @@ export const translations = {
                     market: "Markt",
                     store: "Lager",
                     success: "Das Produkt wurde erfolgreich übertragen.",
+                },
+            },
+            "trash-products": {
+                post: {
+                    "already-exist": "Dieser Lieferant existiert bereits",
+                    success: "Der Lieferant wurde erfolgreich hinzugefügt.",
+                },
+                put: {
+                    success: "Das Produkt wurde erfolgreich wiederhergestellt",
                 },
             },
         },
