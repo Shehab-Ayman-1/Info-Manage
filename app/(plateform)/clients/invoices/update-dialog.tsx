@@ -10,12 +10,12 @@ export const UpdateDialog = ({}: UpdateDialogProps) => {
     const { type } = useModel();
     const text = useTranslations();
 
-    if (type !== "edit-bill-model") return;
+    if (type !== "edit-invoice-model") return;
 
     return (
         <DialogForm
-            heading={text("dialogs.client-bills.update-dialog.heading")}
-            description={text("dialogs.client-bills.update-dialog.description")}
+            heading={text("dialogs.client-invoices.update-dialog.heading")}
+            description={text("dialogs.client-invoices.update-dialog.description")}
         >
             UpdateDialog
         </DialogForm>

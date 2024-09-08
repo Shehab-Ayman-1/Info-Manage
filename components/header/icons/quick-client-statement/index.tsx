@@ -46,7 +46,7 @@ export const QuickClientStatement = () => {
     const { formState, watch, reset, setValue, clearErrors, handleSubmit } = useForm<StatementType>({
         resolver: zodResolver(schema),
     });
-    const { mutate, isPending } = useCreate<RequestType>("/api/clients/statements/new", ["client-bills"]);
+    const { mutate, isPending } = useCreate<RequestType>("/api/clients/statements/new", ["client-invoices"]);
     const [product, setProduct] = useState<ProductType[0]>(defaultProduct);
     const { clients, products: productLists } = useLists();
     const { type, onClose } = useModel();

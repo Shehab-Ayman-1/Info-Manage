@@ -61,7 +61,7 @@
             "gold-to": "الذهبية إلى ( مفتوح )"
         },
 
-        "client-bills": {
+        "client-invoices": {
             "heading": "عرض  فواتير العملاء"
         },
 
@@ -71,7 +71,7 @@
 
         "restore-client-statement": {
             "heading": "كشف استرجاع للعميل",
-            "cancel-bill-btn": "إلغاء الفاتورة"
+            "cancel-invoice-btn": "إلغاء الفاتورة"
         },
 
         "supplier-lists": {
@@ -82,7 +82,7 @@
             "heading": "إضافة مورد جديد"
         },
 
-        "supplier-bills": {
+        "supplier-invoices": {
             "heading": "عرض  فواتير الموردين"
         },
 

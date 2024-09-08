@@ -101,10 +101,10 @@
         "restored-client-statement": "كشف مرتجع عميل",
         "restored-supplier-statement": "كشف مرتجع مورد",
 
-        "client-bill-payment": "دفعه ماليه من عميل",
-        "supplier-bill-payment": "دفعه ماليه من مورد",
+        "client-invoice-payment": "دفعه ماليه من عميل",
+        "supplier-invoice-payment": "دفعه ماليه من مورد",
 
-        "canceled-supplier-bill": "استرجاع فاتورة مورد",
+        "canceled-supplier-invoice": "استرجاع فاتورة مورد",
         "trash-expiration": "يتم تفريغ المحذوفات بعد انتهاء الصلاحية ( 3 شهور )"
     }
 }

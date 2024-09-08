@@ -27,7 +27,7 @@ const schema = z.object({
 export type ProductType = z.infer<typeof schema>;
 
 type InsertProductProps = {
-    billBarcode: number;
+    invoiceBarcode: number;
     setProducts: Dispatch<SetStateAction<ProductType[]>>;
 };
 
@@ -39,11 +39,11 @@ type ProductResponse = {
     count: number;
 };
 
-export const InsertProduct = ({ billBarcode, setProducts }: InsertProductProps) => {
+export const InsertProduct = ({ invoiceBarcode, setProducts }: InsertProductProps) => {
     const { formState, register, setValue, watch, reset, clearErrors, handleSubmit } = useForm({
         resolver: zodResolver(schema.omit({ company: true, name: true, total: true })),
     });
-    const { data, isPending } = useGet<ProductResponse[]>(`/api/clients/statements/restore/${billBarcode}`, [billBarcode]);
+    const { data, isPending } = useGet<ProductResponse[]>(`/api/clients/statements/restore/${invoiceBarcode}`, [invoiceBarcode]);
     const { type, onClose } = useModel();
     const { errors, isLoading } = formState;
 
@@ -69,7 +69,7 @@ export const InsertProduct = ({ billBarcode, setProducts }: InsertProductProps) 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data, productId]);
 
-    if (type !== "insert-bill-products-model") return;
+    if (type !== "insert-invoice-products-model") return;
 
     const onSubmit: SubmitHandler<FieldValues> = (formState) => {
         const { productId, count, soldPrice, ...product } = formState as ProductType;

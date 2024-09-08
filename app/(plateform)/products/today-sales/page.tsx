@@ -13,7 +13,7 @@ type TodaySalesProps = {
 };
 
 const TodaySales = () => {
-    const { data, isPending, error } = useGet<TodaySalesProps[]>("/api/products/today-sales", ["client-bills"]);
+    const { data, isPending, error } = useGet<TodaySalesProps[]>("/api/products/today-sales", ["client-invoices"]);
 
     if (isPending) return <CardLoading />;
     if (error) return <h1>{error?.message}</h1>;

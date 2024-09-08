@@ -39,7 +39,7 @@
             }
         },
 
-        "client-bills": {
+        "client-invoices": {
             "payment-dialog": {
                 "heading": "دَفعة مالية",
                 "description": "قم بعمل دفعة مالية لتسديد جزء من الفاتورة بالتقسيط",
@@ -103,7 +103,7 @@
             }
         },
 
-        "supplier-bills": {
+        "supplier-invoices": {
             "payment-dialog": {
                 "heading": "دَفعة مالية",
                 "description": "قم بعمل دَفعة مالية لتسديد جزء من الفاتورة بالتقسيط",

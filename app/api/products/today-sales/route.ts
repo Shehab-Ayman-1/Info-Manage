@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 
 import { DBConnection } from "@/server/configs";
-import { ClientBills } from "@/server/models";
+import { ClientInvoices } from "@/server/models";
 import { json } from "@/utils/response";
 
 export const GET = async () => {
@@ -17,7 +17,7 @@ export const GET = async () => {
         const endOfDay = new Date();
         endOfDay.setHours(23, 59, 59, 999);
 
-        const sales = await ClientBills.aggregate([
+        const sales = await ClientInvoices.aggregate([
             {
                 $match: { orgId, createdAt: { $gte: startOfDay, $lte: endOfDay } },
             },

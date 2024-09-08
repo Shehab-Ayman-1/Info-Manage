@@ -9,7 +9,7 @@ import { Button } from "@/ui/button";
 type DeleteDialogProps = {};
 
 export const DeleteDialog = ({}: DeleteDialogProps) => {
-    const { mutate, isPending } = useDelete(`/api/suppliers/bills`, ["supplier-bills", "products"]);
+    const { mutate, isPending } = useDelete(`/api/suppliers/invoices`, ["supplier-invoices", "products"]);
     const { type, data, onClose } = useModel();
     const text = useTranslations();
 
@@ -21,8 +21,8 @@ export const DeleteDialog = ({}: DeleteDialogProps) => {
 
     return (
         <DialogForm
-            heading={text("dialogs.supplier-bills.delete-dialog.heading")}
-            description={text("dialogs.supplier-bills.delete-dialog.description")}
+            heading={text("dialogs.supplier-invoices.delete-dialog.heading")}
+            description={text("dialogs.supplier-invoices.delete-dialog.description")}
         >
             <div className="flex-end">
                 <Button type="button" variant="outline" className="w-fit text-black dark:text-white" onClick={onClose}>

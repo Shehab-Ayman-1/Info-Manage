@@ -62,8 +62,8 @@ export const translations = {
             },
             "restore-statement": {
                 post: {
-                    "missing-bill": "The Client Bill Not Found.",
-                    "products-not-exist": "Some Products Count Is Not Exist In The Client Bill",
+                    "missing-invoice": "The Client Invoice Not Found.",
+                    "products-not-exist": "Some Products Count Is Not Exist In The Client Invoice",
                     "locker-not-enough": "Locker Doesn't Exist The Restored Total Products Costs.",
                     success: "The Statement Was Successfully Restored.",
                 },
@@ -103,14 +103,14 @@ export const translations = {
             },
             client: {
                 put: {
-                    "already-exist": "This Bill Is Already Completed.",
+                    "already-exist": "This Invoice Is Already Completed.",
                     "salary-check": "The Payment Amount Is Greater Than The Pending Amount.",
                     success: "The Payment Was Successfully Done.",
                 },
             },
             supplier: {
                 put: {
-                    "already-completed": "This Bill Is Already Completed.",
+                    "already-completed": "This Invoice Is Already Completed.",
                     "not-enough": "This Payment Amount Doesn't Exist In The Locker Cash.",
                     "money-check": "The Payment Amount Is Greater Than The Pending Amount.",
                     success: "The Payment Was Successfully Done.",
@@ -127,9 +127,9 @@ export const translations = {
                     success: "The Supplier Was Successfully Deleted.",
                 },
             },
-            "show-bills": {
+            "show-invoices": {
                 delete: {
-                    success: "The Supplier Bill Was Successfully Deleted.",
+                    success: "The Supplier Invoice Was Successfully Deleted.",
                 },
             },
             "add-supplier": {
@@ -221,7 +221,7 @@ export const translations = {
             },
             "restore-statement": {
                 post: {
-                    "missing-bill": "لم يتم العثور علي فاتورة العميل.",
+                    "missing-invoice": "لم يتم العثور علي فاتورة العميل.",
                     "products-not-exist": "بعض المنتجات غير متوفر عددها في الفاتورة",
                     "locker-not-enough": "لا يتوفر المبلغ المسترد في الخزنة",
                     success: "لقد تم استرجاع الفاتورة بنجاح.",
@@ -286,7 +286,7 @@ export const translations = {
                     success: "لقد تم حذف المورد بنجاح.",
                 },
             },
-            "show-bills": {
+            "show-invoices": {
                 delete: {
                     success: "لقد تم حذف فاتورة المورد بنجاح",
                 },
@@ -384,7 +384,7 @@ export const translations = {
             },
             "restore-statement": {
                 post: {
-                    "missing-bill": "Die Kundenrechnung wurde nicht gefunden.",
+                    "missing-invoice": "Die Kundenrechnung wurde nicht gefunden.",
                     "products-not-exist": "Einige Produktmengen existieren nicht in der Kundenrechnung.",
                     "locker-not-enough": "Das Schließfach enthält nicht die wiederhergestellten Gesamtkosten der Produkte.",
                     success: "Die Erklärung wurde erfolgreich wiederhergestellt.",
@@ -449,7 +449,7 @@ export const translations = {
                     success: "Der Lieferant wurde erfolgreich gelöscht.",
                 },
             },
-            "show-bills": {
+            "show-invoices": {
                 delete: {
                     success: "Die Lieferantenrechnung wurde erfolgreich gelöscht.",
                 },

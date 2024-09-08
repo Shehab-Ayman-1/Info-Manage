@@ -12,18 +12,19 @@
                 "description": "Bitte füllen Sie alle erforderlichen Felder aus, um das Konto erfolgreich zu erstellen.",
                 "optional-barcode": "Barcode (optional)",
                 "minimum": "Mindestgrenze",
-                "unit": "Menge",
-                "packet": "Paket",
-                "liter": "Liter",
-                "market-count": "Marktanzahl",
-                "store-count": "Lageranzahl",
-                "selling-price": "Verkaufspreis",
-                "puchase-price": "Kaufpreis"
+                "selling-price": "Verkaufspreis"
             },
 
             "delete-dialog": {
                 "heading": "Produkt entfernen",
                 "description": "Sind Sie sicher, dass Sie dieses Produkt entfernen möchten?"
+            }
+        },
+
+        "trash": {
+            "restore-dialog": {
+                "heading": "Produkt wiederherstellen",
+                "description": "Sind Sie sicher, dass Sie das Produkt wieder auf den Markt bringen möchten?"
             }
         },
 
@@ -38,7 +39,7 @@
             }
         },
 
-        "client-bills": {
+        "client-invoices": {
             "payment-dialog": {
                 "heading": "Zahlungsbetrag",
                 "description": "Erstellen Sie eine neue Zahlungstransaktion",
@@ -102,7 +103,7 @@
             }
         },
 
-        "supplier-bills": {
+        "supplier-invoices": {
             "payment-dialog": {
                 "heading": "Zahlungsbetrag",
                 "description": "Erstellen Sie eine neue Zahlungstransaktion",
@@ -132,6 +133,10 @@
             },
             "remove-dialog": {
                 "heading": "Produkt entfernen",
+                "description": "Sind Sie sicher, dass Sie dieses Produkt entfernen möchten?"
+            },
+            "delete-dialog": {
+                "heading": "Rechnung löschen",
                 "description": "Sind Sie sicher, dass Sie dieses Produkt entfernen möchten?"
             }
         },

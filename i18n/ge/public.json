@@ -28,6 +28,9 @@
         "choose-method": "Methode wählen",
         "method": "Methode",
 
+        "choose-process": "Wählen Sie die Art des Vorgangs",
+        "process": "Operation",
+
         "choose-place": "Ort wählen",
         "place": "Ort",
 
@@ -66,8 +69,12 @@
         "en": "Englisch",
         "ar": "Arabisch",
 
+        "vodafone-cash": "Vodafone Bargeld",
         "cash": "Bargeld",
         "visa": "Visa",
+
+        "withdraw": "Abheben",
+        "deposit": "Einzahlen",
 
         "phone": "Telefonnummer",
         "barcode": "Barcode",
@@ -94,10 +101,10 @@
         "restored-client-statement": "Wiederhergestellte Kundenabrechnung",
         "restored-supplier-statement": "Wiederhergestellte Lieferantenabrechnung",
 
-        "client-bill-payment": "Kundenrechnungszahlung",
-        "supplier-bill-payment": "Lieferantenrechnungszahlung",
+        "client-invoice-payment": "Kundenrechnungszahlung",
+        "supplier-invoice-payment": "Lieferantenrechnungszahlung",
 
-        "canceled-supplier-bill": "Stornierte Lieferantenrechnung",
+        "canceled-supplier-invoice": "Stornierte Lieferantenrechnung",
         "trash-expiration": "Der Papierkorb entfernt den Müll automatisch nach dem Ablaufdatum von ( 3 Months )"
     }
 }

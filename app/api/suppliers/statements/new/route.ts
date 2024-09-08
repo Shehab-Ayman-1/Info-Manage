@@ -1,7 +1,7 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
-import { SupplierBills, Products, Suppliers, Transactions } from "@/server/models";
+import { SupplierInvoices, Products, Suppliers, Transactions } from "@/server/models";
 import { getTranslations } from "@/utils/getTranslations";
 import { DBConnection } from "@/server/configs";
 import { getExpireAt } from "@/utils/expireAt";
@@ -34,12 +34,12 @@ export const POST = async (req: NextRequest) => {
             if (method === "visa" && paid > lockerVisa) return json(text("not-exist-visa-paid"), 400);
         }
 
-        // Create Bill
-        const billProducts = products.map(({ name, count, price }) => ({ name, count, price }));
+        // Create Invoice
+        const invoiceProducts = products.map(({ name, count, price }) => ({ name, count, price }));
         const state = paid >= productCosts ? "completed" : "pending";
 
         const expireAt = await getExpireAt();
-        await SupplierBills.create({
+        await SupplierInvoices.create({
             orgId,
             barcode: Date.now(),
             type: "purchase",
@@ -48,7 +48,7 @@ export const POST = async (req: NextRequest) => {
             expireAt,
             supplier: supplierId,
             total: productCosts,
-            products: billProducts,
+            products: invoiceProducts,
             createdAt: new Date(),
         });
 

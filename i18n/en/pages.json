@@ -61,8 +61,8 @@
             "gold-to": "Gold To ( Unlimited )"
         },
 
-        "client-bills": {
-            "heading": "Client Bills List"
+        "client-invoices": {
+            "heading": "Client Invoices List"
         },
 
         "new-client-statement": {
@@ -71,7 +71,7 @@
 
         "restore-client-statement": {
             "heading": "Restore Client Statement",
-            "cancel-bill-btn": "Cancel Bill"
+            "cancel-invoice-btn": "Cancel Invoice"
         },
 
         "supplier-lists": {
@@ -82,8 +82,8 @@
             "heading": "Add New Supplier"
         },
 
-        "supplier-bills": {
-            "heading": "Supplier Bills"
+        "supplier-invoices": {
+            "heading": "Supplier Invoices"
         },
 
         "new-supplier-statement": {

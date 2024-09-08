@@ -95,8 +95,8 @@ export const clientLists: NavLinkType[] = [
     },
     {
         Icon: ReceiptTextIcon,
-        title: "show-bills",
-        href: "/clients/bills",
+        title: "show-invoices",
+        href: "/clients/invoices",
         userRole: "org:member",
         subscriptions: ["basic"],
         additionalSubscriptions: [],
@@ -138,8 +138,8 @@ export const supplierLists: NavLinkType[] = [
     },
     {
         Icon: ReceiptTextIcon,
-        title: "show-bills",
-        href: "/suppliers/bills",
+        title: "show-invoices",
+        href: "/suppliers/invoices",
         userRole: "org:member",
         subscriptions: ["basic"],
         additionalSubscriptions: [],

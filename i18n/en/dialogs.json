@@ -12,13 +12,7 @@
                 "description": "Please Fill All The Required Fields To Succefully Create The Account.",
                 "optional-barcode": "Barcode (Optional)",
                 "minimum": "Minimum Limit",
-                "unit": "Quantity",
-                "packet": "Packet",
-                "liter": "Liter",
-                "market-count": "Market Count",
-                "store-count": "Store Count",
-                "selling-price": "Selling Price",
-                "puchase-price": "Purchase Price"
+                "selling-price": "Selling Price"
             },
 
             "delete-dialog": {
@@ -45,15 +39,15 @@
             }
         },
 
-        "client-bills": {
+        "client-invoices": {
             "payment-dialog": {
                 "heading": "Payment Amount",
                 "description": "Make A New Payment Transaction",
                 "payment-amount": "Payment Amount"
             },
             "update-dialog": {
-                "heading": "Update Client Bill",
-                "description": "You Can't Return Any Changes On The Bill After Confirming."
+                "heading": "Update Client Invoice",
+                "description": "You Can't Return Any Changes On The Invoice After Confirming."
             }
         },
 
@@ -78,8 +72,8 @@
                 "description": "Are You Sure, You Want To Remove This Product"
             },
             "delete-dialog": {
-                "heading": "Delete Bill",
-                "description": "Are You Sure, You Want To Delete This Bill"
+                "heading": "Delete Invoice",
+                "description": "Are You Sure, You Want To Delete This Invoice"
             }
         },
 
@@ -109,15 +103,15 @@
             }
         },
 
-        "supplier-bills": {
+        "supplier-invoices": {
             "payment-dialog": {
                 "heading": "Payment Amount",
                 "description": "Make A New Payment Transaction",
                 "payment-amount": "Payment Amount"
             },
             "delete-dialog": {
-                "heading": "Delete Bill",
-                "description": "Are You Sure, You Want To Delete This Bill"
+                "heading": "Delete Invoice",
+                "description": "Are You Sure, You Want To Delete This Invoice"
             }
         },
 
@@ -139,6 +133,10 @@
             },
             "remove-dialog": {
                 "heading": "Remove Product",
+                "description": "Are You Sure, You Want To Remove This Product"
+            },
+            "delete-dialog": {
+                "heading": "Delete Invoice",
                 "description": "Are You Sure, You Want To Remove This Product"
             }
         },

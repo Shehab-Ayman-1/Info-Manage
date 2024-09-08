@@ -22,9 +22,9 @@ import { Input } from "@/ui/input";
 const RestoreClientStatement = () => {
     const resolver = zodResolver(createSchema.omit({ products: true }));
     const { formState, register, watch, setError, clearErrors, handleSubmit } = useForm({ resolver });
-    const billBarcode = watch("billBarcode");
+    const invoiceBarcode = watch("invoiceBarcode");
 
-    const { mutate, isPending } = useCreate<CreateClientType>("/api/clients/statements/restore", ["client-bills", billBarcode]);
+    const { mutate, isPending } = useCreate<CreateClientType>("/api/clients/statements/restore", ["client-invoices", invoiceBarcode]);
     const [products, setProducts] = useState<ProductType[]>([]);
     const { errors } = formState;
 
@@ -39,7 +39,7 @@ const RestoreClientStatement = () => {
         mutate({ ...values, products: filterProducts }, { onSuccess: () => router.push("/") });
     };
 
-    const showButtons = `${billBarcode}`.length > 12 || products.length;
+    const showButtons = `${invoiceBarcode}`.length > 12 || products.length;
 
     return (
         <CardForm heading={text("pages.restore-client-statement.heading")}>
@@ -48,20 +48,20 @@ const RestoreClientStatement = () => {
                     type="number"
                     placeholder="barcode"
                     useTranslate={{ placeholder: "public" }}
-                    error={errors.billBarcode}
-                    {...register("billBarcode", { valueAsNumber: true })}
+                    error={errors.invoiceBarcode}
+                    {...register("invoiceBarcode", { valueAsNumber: true })}
                 />
 
                 <AlertError root={errors?.root} />
 
-                {!!showButtons && <OpenModuleButton type="insert-bill-products-model" clearErrors={clearErrors} />}
+                {!!showButtons && <OpenModuleButton type="insert-invoice-products-model" clearErrors={clearErrors} />}
 
                 {!!products.length && <DataTable columns={columns} data={products} totalFor="total" smallSize />}
 
                 <SubmitButton text="restore" isPending={isPending} />
             </form>
 
-            {`${billBarcode}`.length > 12 && <InsertProduct billBarcode={billBarcode} setProducts={setProducts} />}
+            {`${invoiceBarcode}`.length > 12 && <InsertProduct invoiceBarcode={invoiceBarcode} setProducts={setProducts} />}
             <DeleteDialog setProducts={setProducts} />
         </CardForm>
     );

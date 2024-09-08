@@ -30,7 +30,7 @@ const Clients = ({}: ClientsProps) => {
         resolver: zodResolver(createSchema.omit({ products: true })),
     });
 
-    const { mutate, isPending } = useCreate<CreateClientType>("/api/clients/statements/new", ["client-bills"]);
+    const { mutate, isPending } = useCreate<CreateClientType>("/api/clients/statements/new", ["client-invoices"]);
     const [products, setProducts] = useState<ProductType[]>([]);
 
     const { clients } = useLists();

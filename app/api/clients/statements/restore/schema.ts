@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const createSchema = z.object({
-    billBarcode: z.number().min(1),
+    invoiceBarcode: z.number().min(1),
 
     products: z.array(
         z.object({

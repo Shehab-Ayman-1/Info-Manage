@@ -21,7 +21,7 @@ const BestSellingOfYear = () => {
             pageTitle="pages.statistics.best-selling-of-the-year.heading"
             data={data}
             columns={columns}
-            navigate={[{ text: "open-bill-lists", to: "/clients/bills" }]}
+            navigate={[{ text: "open-invoice-lists", to: "/clients/invoices" }]}
         />
     );
 };

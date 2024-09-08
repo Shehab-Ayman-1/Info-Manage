@@ -2,7 +2,7 @@ import { auth, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 import mongoose from "mongoose";
 
-import { ClientBills, Clients, Products, Transactions } from "@/server/models";
+import { ClientInvoices, Clients, Products, Transactions } from "@/server/models";
 import { getTranslations } from "@/utils/getTranslations";
 import { DBConnection } from "@/server/configs";
 import { getExpireAt } from "@/utils/expireAt";
@@ -23,20 +23,20 @@ export const POST = async (req: NextRequest) => {
         const text = await getTranslations("clients.restore-statement.post");
 
         const body = await req.json();
-        const { billBarcode, products } = createSchema.parse(body);
+        const { invoiceBarcode, products } = createSchema.parse(body);
 
-        const bill = await ClientBills.findOne({ orgId, type: "sale", barcode: billBarcode }).session(session);
-        if (!bill) {
+        const invoice = await ClientInvoices.findOne({ orgId, type: "sale", barcode: invoiceBarcode }).session(session);
+        if (!invoice) {
             await session.abortTransaction();
-            return json(text("missing-bill"), 400);
+            return json(text("missing-invoice"), 400);
         }
 
         const productsTotalCosts = products.reduce((prev, cur) => prev + cur.total, 0);
-        const billProducts = products.map(({ total, ...product }) => product);
+        const invoiceProducts = products.map(({ total, ...product }) => product);
 
-        // Check If The Products Count Is Exist In The Bill Products
+        // Check If The Products Count Is Exist In The Invoice Products
         const isUnableProducts = products.some(({ productId, count }) => {
-            const product = bill.products.find((product) => productId === String(product.productId));
+            const product = invoice.products.find((product) => productId === String(product.productId));
             return count > (product?.count || 0);
         });
 
@@ -69,17 +69,17 @@ export const POST = async (req: NextRequest) => {
             return json("wrong", 400);
         }
 
-        // Create Client Bill
+        // Create Client Invoice
         const expireAt = await getExpireAt();
-        await ClientBills.create(
+        await ClientInvoices.create(
             [
                 {
                     orgId,
-                    client: bill.client,
-                    barcode: billBarcode,
+                    client: invoice.client,
+                    barcode: invoiceBarcode,
                     paid: productsTotalCosts,
                     total: productsTotalCosts,
-                    products: billProducts,
+                    products: invoiceProducts,
                     discount: 0,
                     type: "restore",
                     state: "restore",
@@ -118,13 +118,13 @@ export const POST = async (req: NextRequest) => {
 
         // Update purchaseSalary Prices
         await Clients.updateOne(
-            { orgId, _id: bill.client, trash: false },
+            { orgId, _id: invoice.client, trash: false },
             { $inc: { purchases: -productsTotalCosts } },
             { session },
         );
 
         // Update Client Level
-        await Clients.updateLevel({ orgId, clientId: bill.client });
+        await Clients.updateLevel({ orgId, clientId: invoice.client });
 
         // Response
         await session.commitTransaction();

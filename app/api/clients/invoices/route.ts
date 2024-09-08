@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
 import { DBConnection } from "@/server/configs";
-import { ClientBills } from "@/server/models";
+import { ClientInvoices } from "@/server/models";
 import { json } from "@/utils/response";
 
 export const GET = async (req: NextRequest) => {
@@ -21,7 +21,7 @@ export const GET = async (req: NextRequest) => {
         const endDate = new Date(date);
         endDate.setHours(23, 59, 59, 999);
 
-        const bills = await ClientBills.aggregate([
+        const invoices = await ClientInvoices.aggregate([
             {
                 $match: { orgId, createdAt: { $gte: startDate, $lte: endDate } },
             },
@@ -50,7 +50,7 @@ export const GET = async (req: NextRequest) => {
             },
         ]);
 
-        return json(bills);
+        return json(invoices);
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

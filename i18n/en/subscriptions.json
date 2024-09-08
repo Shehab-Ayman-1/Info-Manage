@@ -24,13 +24,13 @@
                 "label": "Transfer Between Market & Store",
                 "description": "Transfer Products From The Market To The Store, And From The Store To The Market"
             },
-            "client-bills": {
-                "label": "Client Bills",
-                "description": "Show All The Client Bills, With The Ability To Open The Bill Details"
+            "client-invoices": {
+                "label": "Client Invoices",
+                "description": "Show All The Client Invoices, With The Ability To Open The Invoice Details"
             },
-            "supplier-bills": {
-                "label": "Supplier Bills",
-                "description": "Show All The Supplier Bills, With The Ability To Open The Bill Details"
+            "supplier-invoices": {
+                "label": "Supplier Invoices",
+                "description": "Show All The Supplier Invoices, With The Ability To Open The Invoice Details"
             },
             "quick-client-statement": {
                 "label": "Quick Client Statement",
@@ -64,7 +64,7 @@
             },
             "locker-transactions": {
                 "label": "Locker Transactions",
-                "description": "Show All The Transactions Done On The System Similar To Client Statement, Supplier Statement, Canceled Bill, And Bill Payments"
+                "description": "Show All The Transactions Done On The System Similar To Client Statement, Supplier Statement, Canceled Invoice, And Invoice Payments"
             },
             "supplier-details": {
                 "label": "Supplier Details",
@@ -80,7 +80,7 @@
             },
             "advanced-client-statement": {
                 "label": "Advanced Client Statement",
-                "description": "Create A New Client Statement With All The Details Of Client Name, Method (Cash - Process), Process (Pay All - Milestone), And The Discount On The Bill"
+                "description": "Create A New Client Statement With All The Details Of Client Name, Method (Cash - Process), Process (Pay All - Milestone), And The Discount On The Invoice"
             }
         },
         "enterprise": {

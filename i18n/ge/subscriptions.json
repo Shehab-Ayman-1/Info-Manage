@@ -24,11 +24,11 @@
                 "label": "Übertragung zwischen Markt & Lager",
                 "description": "Produkte vom Markt ins Lager und vom Lager in den Markt übertragen"
             },
-            "client-bills": {
+            "client-invoices": {
                 "label": "Kundenrechnungen",
                 "description": "Alle Kundenrechnungen anzeigen, mit der Möglichkeit, die Rechnungsdetails zu öffnen"
             },
-            "supplier-bills": {
+            "supplier-invoices": {
                 "label": "Lieferantenrechnungen",
                 "description": "Alle Lieferantenrechnungen anzeigen, mit der Möglichkeit, die Rechnungsdetails zu öffnen"
             },

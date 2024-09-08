@@ -163,8 +163,8 @@ function CommandTrigger({ useTranslate, selectedValue, label, open }: CommandTri
     const isCustomeTrigger = useTranslate?.trigger && useTranslate?.customeTrigger;
     const isNotCustomeTrigger = useTranslate?.trigger && !useTranslate?.customeTrigger;
 
-    const NCT = text(`${useTranslate?.trigger}.${selectedValue || label}`);
-    const CT = selectedValue || text(`${useTranslate?.trigger}.${label}`);
+    const NCT = isNotCustomeTrigger && text(`${useTranslate?.trigger}.${selectedValue || label}`);
+    const CT = isCustomeTrigger && (selectedValue || text(`${useTranslate?.trigger}.${label}`));
 
     if (isProduct) {
         return (
@@ -177,7 +177,7 @@ function CommandTrigger({ useTranslate, selectedValue, label, open }: CommandTri
                         aria-expanded={open}
                         className="flex-between mt-1 w-full border-b border-b-primary !py-8 text-base text-slate-400"
                     >
-                        {isNotCustomeTrigger ? NCT : isCustomeTrigger ? CT : selectedValue || label}
+                        {NCT || CT || selectedValue || label}
                         <ChevronsUpDownIcon className="mx-2 size-4 opacity-50" />
                     </Button>
                 </PopoverTrigger>

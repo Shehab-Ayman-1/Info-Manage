@@ -2,13 +2,13 @@ import { auth, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 import { Types } from "mongoose";
 
-import { ClientBills, Clients, Transactions } from "@/server/models";
+import { ClientInvoices, Clients, Transactions } from "@/server/models";
 import { getTranslations } from "@/utils/getTranslations";
 import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
 
 type ResponseType = {
-    params: { billId: string };
+    params: { invoiceId: string };
 };
 
 export const GET = async (req: NextRequest, res: ResponseType) => {
@@ -18,11 +18,11 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
 
-        const { billId } = res.params;
+        const { invoiceId } = res.params;
 
-        const [bill] = await ClientBills.aggregate([
+        const [invoice] = await ClientInvoices.aggregate([
             {
-                $match: { orgId, _id: new Types.ObjectId(billId) },
+                $match: { orgId, _id: new Types.ObjectId(invoiceId) },
             },
             {
                 $lookup: { from: "clients", localField: "client", foreignField: "_id", as: "client" },
@@ -58,7 +58,7 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
                     discount: { $first: "$discount" },
                     createdAt: { $first: "$createdAt" },
 
-                    billProfits: {
+                    invoiceProfits: {
                         $sum: {
                             $subtract: [
                                 { $multiply: ["$products.count", "$products.soldPrice"] },
@@ -80,7 +80,7 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
             },
         ]);
 
-        return json(bill);
+        return json(invoice);
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);
@@ -99,22 +99,22 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
         const organization = await clerkClient().organizations.getOrganization({ organizationId: orgId, slug: orgSlug });
 
         const { amount } = await req.json();
-        const { billId } = res.params;
+        const { invoiceId } = res.params;
 
-        const bill = await ClientBills.findById(billId);
-        if (!bill) return json(text("wrong"), 400);
-        if (bill.state === "completed") return json(text("already-exist"), 400);
+        const invoice = await ClientInvoices.findById(invoiceId);
+        if (!invoice) return json(text("wrong"), 400);
+        if (invoice.state === "completed") return json(text("already-exist"), 400);
 
-        // Update The Bill Salaries
-        if (amount > bill.total - bill.paid) return json(text("salary-check"), 400);
-        const state = bill.paid + amount >= bill.total ? "completed" : "pending";
-        await ClientBills.updateOne({ orgId, _id: billId }, { $inc: { paid: amount }, state });
+        // Update The Invoice Salaries
+        if (amount > invoice.total - invoice.paid) return json(text("salary-check"), 400);
+        const state = invoice.paid + amount >= invoice.total ? "completed" : "pending";
+        await ClientInvoices.updateOne({ orgId, _id: invoiceId }, { $inc: { paid: amount }, state });
 
         // Update The Client Salaries
-        await Clients.updateOne({ orgId, _id: bill.client, trash: false }, { $inc: { pending: -amount } });
+        await Clients.updateOne({ orgId, _id: invoice.client, trash: false }, { $inc: { pending: -amount } });
 
         const refreshAfter = +(organization?.publicMetadata?.refreshClientsPurchases as string)?.split(" ")[0];
-        await Clients.updateLastRefreshDate({ orgId, clientId: bill.client, refreshAfter });
+        await Clients.updateLastRefreshDate({ orgId, clientId: invoice.client, refreshAfter });
 
         // Create Transaction
 
@@ -132,7 +132,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
                         $each: [
                             {
                                 creator: user.fullName,
-                                reason: "Client Bill Payment",
+                                reason: "Client Invoice Payment",
                                 price: amount,
                                 createdAt: new Date(),
                             },

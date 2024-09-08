@@ -23,7 +23,7 @@
             "clients": {
                 "heading": "Clients",
                 "clients-list": "Clients Lists",
-                "show-bills": "Show Bills",
+                "show-invoices": "Show Invoices",
                 "new-statement": "New Statement",
                 "restore-statement": "Restore Statement",
                 "add-client": "Add New Client",
@@ -32,7 +32,7 @@
             "suppliers": {
                 "heading": "Suppliers",
                 "suppliers-list": "Suppliers List",
-                "show-bills": "Show Bills",
+                "show-invoices": "Show Invoices",
                 "new-statement": "New Statement",
                 "restore-statement": "Restore Statement",
                 "add-supplier": "Add New Supplier",

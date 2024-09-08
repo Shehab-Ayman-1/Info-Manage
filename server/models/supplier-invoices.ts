@@ -1,7 +1,7 @@
 import { Document, Model, InferSchemaType } from "mongoose";
 import { Schema, models, model } from "mongoose";
 
-type TSupplierBill = Document & {
+type TSupplierInvoice = Document & {
     _id: string;
     orgId: string;
 
@@ -24,7 +24,7 @@ type TSupplierBill = Document & {
     }[];
 };
 
-const schema = new Schema<TSupplierBill>({
+const schema = new Schema<TSupplierInvoice>({
     orgId: { type: String, required: true, trim: true },
 
     supplier: { type: Schema.Types.ObjectId, ref: "suppliers", required: true },
@@ -50,5 +50,6 @@ const schema = new Schema<TSupplierBill>({
 
 schema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
 
-export const SupplierBills = (models.supplier_bills as Model<TSupplierBill>) || model<TSupplierBill>("supplier_bills", schema);
-export type SupplierBillType = InferSchemaType<typeof schema>;
+export const SupplierInvoices =
+    (models.supplier_invoices as Model<TSupplierInvoice>) || model<TSupplierInvoice>("supplier_invoices", schema);
+export type SupplierInvoiceType = InferSchemaType<typeof schema>;

@@ -24,11 +24,11 @@
                 "label": "نقل من المخزن الي المحل",
                 "description": "نقل المنتجات من المخزن الي المحل والعكس"
             },
-            "client-bills": {
+            "client-invoices": {
                 "label": "فواتير العملاء",
                 "description": "عرض كل فواتير العملاء مع امكانيه فتح كل فاتورة"
             },
-            "supplier-bills": {
+            "supplier-invoices": {
                 "label": "فواتير الموردين",
                 "description": "عرض كل فواتير الموردين مع امكانيه عرض كل فاتورة"
             },

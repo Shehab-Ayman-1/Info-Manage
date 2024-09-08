@@ -28,6 +28,9 @@
         "choose-method": "Choose Method",
         "method": "Method",
 
+        "choose-process": "Choose Process",
+        "process": "Process",
+
         "choose-place": "Choose Place",
         "place": "Place",
 
@@ -37,12 +40,12 @@
         "old-supplier": "Old Supplier",
         "new-supplier": "New Supplier",
 
+        "by-milestone": "By Milestone",
+        "pay-all": "Pay All",
+
         "packet": "Packet",
         "liter": "Liter",
         "kilo": "Kilo",
-
-        "pay-all": "Pay All",
-        "by-milestone": "By Milestone",
 
         "count": "Count",
         "price": "Price",
@@ -66,8 +69,12 @@
         "en": "English",
         "ar": "Arabic",
 
+        "vodafone-cash": "Vodafone Cash",
         "cash": "Cash",
         "visa": "Visa",
+
+        "withdraw": "Withdraw",
+        "deposit": "Deposit",
 
         "phone": "Phone Number",
         "barcode": "Barcode",
@@ -94,10 +101,10 @@
         "restored-client-statement": "Restored Client Statement",
         "restored-supplier-statement": "Restored Supplier Statement",
 
-        "client-bill-payment": "Client Bill Payment",
-        "supplier-bill-payment": "Supplier Bill Payment",
+        "client-invoice-payment": "Client Invoice Payment",
+        "supplier-invoice-payment": "Supplier Invoice Payment",
 
-        "canceled-supplier-bill": "Canceled Supplier Bill",
+        "canceled-supplier-invoice": "Canceled Supplier Invoice",
         "trash-expiration": "Recycle Bin Automatically Remvoe The Trash After Expiration Date. ( 3 Months )"
     }
 }

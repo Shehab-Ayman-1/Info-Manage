@@ -23,7 +23,7 @@
             "clients": {
                 "heading": "العملاء",
                 "clients-list": "قائمة العملاء",
-                "show-bills": "عرض الفواتير",
+                "show-invoices": "عرض الفواتير",
                 "new-statement": "فاتورة جديدة",
                 "restore-statement": "فاتورة مُرتجع",
                 "add-client": "إضافة عميل جديد",
@@ -32,7 +32,7 @@
             "suppliers": {
                 "heading": "الموردين",
                 "suppliers-list": "قائمة الموردين",
-                "show-bills": "عرض الفواتير",
+                "show-invoices": "عرض الفواتير",
                 "new-statement": "فاتورة جديدة",
                 "restore-statement": "فاتورة مرتجع",
                 "add-supplier": "إضافة مُورِد جديد",

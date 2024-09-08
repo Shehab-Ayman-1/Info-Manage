@@ -29,7 +29,7 @@ const Suppliers = ({}: SuppliersProps) => {
     const { register, watch, setValue, setError, clearErrors, handleSubmit, formState } = useForm({
         resolver: zodResolver(createSchema.omit({ products: true })),
     });
-    const { mutate, isPending } = useCreate<CreateSupplierType>("/api/suppliers/statements/new", ["supplier-bills"]);
+    const { mutate, isPending } = useCreate<CreateSupplierType>("/api/suppliers/statements/new", ["supplier-invoices"]);
     const [products, setProducts] = useState<ProductType[]>([]);
 
     const { suppliers, productsBySupplier, onReset } = useLists();

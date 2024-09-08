@@ -2,7 +2,7 @@ import { auth, clerkClient } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 import mongoose from "mongoose";
 
-import { SupplierBills, Products, Suppliers, Transactions } from "@/server/models";
+import { SupplierInvoices, Products, Suppliers, Transactions } from "@/server/models";
 import { DBConnection } from "@/server/configs";
 import { getExpireAt } from "@/utils/expireAt";
 import { createSchema } from "./schema";
@@ -39,12 +39,12 @@ export const POST = async (req: NextRequest) => {
             return json(`${text("not-enough")} ${promiseValues.join(" | ")}`, 400);
         }
 
-        // Create Bill
+        // Create Invoice
         const productsTotalCosts = products.reduce((prev, cur) => prev + cur.total, 0);
-        const billProducts = products.map(({ productId, total, ...product }) => product);
+        const invoiceProducts = products.map(({ productId, total, ...product }) => product);
 
         const expireAt = await getExpireAt();
-        await SupplierBills.create(
+        await SupplierInvoices.create(
             [
                 {
                     orgId,
@@ -54,7 +54,7 @@ export const POST = async (req: NextRequest) => {
                     expireAt,
                     type: "restore",
                     state: "restore",
-                    products: billProducts,
+                    products: invoiceProducts,
                     total: productsTotalCosts,
                     createdAt: new Date(),
                 },

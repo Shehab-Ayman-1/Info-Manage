@@ -32,7 +32,7 @@
             }
         },
 
-        "client-bills": {
+        "client-invoices": {
             "payment-dialog": {
                 "heading": "دفعه ماليه",
                 "description": "قم بعمل دفعه ماليه لتسديد جزء من الفاتورة بالتقسيط",
@@ -96,7 +96,7 @@
             }
         },
 
-        "supplier-bills": {
+        "supplier-invoices": {
             "payment-dialog": {
                 "heading": "دفعه ماليه",
                 "description": "قم بعمل دفعه ماليه لتسديد جزء من الفاتورة بالتقسيط",

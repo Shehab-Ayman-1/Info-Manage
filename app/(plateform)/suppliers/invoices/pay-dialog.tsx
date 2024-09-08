@@ -22,7 +22,7 @@ export const PayDialog = ({}: PayDialogProps) => {
     const { type, data, onClose } = useModel();
     const text = useTranslations();
 
-    const { mutate, isPending } = useUpdate(`/api/profile/supplier/${data?.billId}`, ["supplier-bills"]);
+    const { mutate, isPending } = useUpdate(`/api/profile/supplier/${data?.invoiceId}`, ["supplier-invoices"]);
     const { errors } = formState;
 
     if (type !== "pay-model") return;
@@ -34,14 +34,14 @@ export const PayDialog = ({}: PayDialogProps) => {
 
     return (
         <DialogForm
-            heading={text("dialogs.supplier-bills.payment-dialog.heading")}
-            description={text("dialogs.supplier-bills.payment-dialog.description")}
+            heading={text("dialogs.supplier-invoices.payment-dialog.heading")}
+            description={text("dialogs.supplier-invoices.payment-dialog.description")}
         >
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Input
                     type="number"
                     placeholder="payment-amount"
-                    useTranslate={{ placeholder: "dialogs.client-bills.payment-dialog" }}
+                    useTranslate={{ placeholder: "dialogs.client-invoices.payment-dialog" }}
                     error={errors?.amount}
                     {...register("amount", { valueAsNumber: true })}
                 />

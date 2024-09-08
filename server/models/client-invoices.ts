@@ -1,7 +1,7 @@
 import { Document, Model, InferSchemaType } from "mongoose";
 import { Schema, models, model } from "mongoose";
 
-type TClientBill = Document & {
+type TClientInvoice = Document & {
     _id: string;
     orgId: string;
 
@@ -27,7 +27,7 @@ type TClientBill = Document & {
     }[];
 };
 
-const schema = new Schema<TClientBill>({
+const schema = new Schema<TClientInvoice>({
     orgId: { type: String, required: true, trim: true },
 
     client: { type: Schema.Types.ObjectId, ref: "clients", required: true },
@@ -55,5 +55,6 @@ const schema = new Schema<TClientBill>({
 
 schema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
 
-export const ClientBills = (models.client_bills as Model<TClientBill>) || model<TClientBill>("client_bills", schema);
-export type ClientBillType = InferSchemaType<typeof schema>;
+export const ClientInvoices =
+    (models.client_invoices as Model<TClientInvoice>) || model<TClientInvoice>("client_invoices", schema);
+export type ClientInvoiceType = InferSchemaType<typeof schema>;

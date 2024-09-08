@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 import { Types } from "mongoose";
 
-import { ClientBills, SupplierBills } from "@/server/models";
+import { ClientInvoices, SupplierInvoices } from "@/server/models";
 import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
 import { months } from "@/constants";
@@ -23,7 +23,7 @@ export const GET = async (req: NextRequest) => {
         const thisYear = new Date(`${year}-1-1`);
         const nextYear = new Date(`${year + 1}-1-1`);
 
-        const sales = await ClientBills.aggregate([
+        const sales = await ClientInvoices.aggregate([
             {
                 $match: {
                     orgId,
@@ -50,7 +50,7 @@ export const GET = async (req: NextRequest) => {
             },
         ]);
 
-        const purchases = await SupplierBills.aggregate([
+        const purchases = await SupplierInvoices.aggregate([
             {
                 $match: { orgId, type: "purchase", createdAt: { $gte: thisYear, $lt: nextYear } },
             },

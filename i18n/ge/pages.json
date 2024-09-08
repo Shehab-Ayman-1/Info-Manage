@@ -61,7 +61,7 @@
             "gold-to": "Gold bis (unbegrenzt)"
         },
 
-        "client-bills": {
+        "client-invoices": {
             "heading": "Kundenrechnungen"
         },
 
@@ -71,7 +71,7 @@
 
         "restore-client-statement": {
             "heading": "Kundenerklärung wiederherstellen",
-            "cancel-bill-btn": "Rechnung stornieren"
+            "cancel-invoice-btn": "Rechnung stornieren"
         },
 
         "supplier-lists": {
@@ -82,7 +82,7 @@
             "heading": "Neuen Lieferanten hinzufügen"
         },
 
-        "supplier-bills": {
+        "supplier-invoices": {
             "heading": "Lieferantenrechnungen"
         },
 
