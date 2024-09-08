@@ -7,7 +7,7 @@ import { columns } from "./table-columns";
 
 import { TableForm } from "@/components/page-structure/table-form";
 import { CardLoading } from "@/components/loading/card";
-import { RestoreDialog } from "./restore-dialog";
+import { RefundDialog } from "./refund-dialog";
 import { Alert } from "@/ui/alert";
 
 type TrashProductsType = {
@@ -38,7 +38,7 @@ const TrashProducts = () => {
                 <TriangleAlertIcon />
                 <span>{text("public.trash-expiration")}</span>
             </Alert>
-            <RestoreDialog />
+            <RefundDialog />
         </TableForm>
     );
 };

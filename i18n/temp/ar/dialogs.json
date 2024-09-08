@@ -55,7 +55,7 @@
             }
         },
 
-        "restore-client-statement": {
+        "refund-client-statement": {
             "insert-dialog": {
                 "heading": "اضافه منتج",
                 "description": "من فضلك ادخل كل حقول الادخال المطلوبه لاضافه المنتج."
@@ -119,7 +119,7 @@
             }
         },
 
-        "restore-supplier-statement": {
+        "refund-supplier-statement": {
             "insert-dialog": {
                 "heading": "اضافه منتج",
                 "description": "من فضلك ادخل كل حقول الادخال المطلوبه لاضافه المنتج."

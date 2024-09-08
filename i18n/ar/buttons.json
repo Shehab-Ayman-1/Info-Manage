@@ -1,7 +1,7 @@
 {
     "buttons": {
         "new-statement": "كشف حساب عميل جديد",
-        "restore-statement": "كشف مرتجع",
+        "refund-statement": "كشف مرتجع",
 
         "new-transaction": "مُعاملة جديدة",
         "market-products": "منتجات المحل",
@@ -31,7 +31,7 @@
         "pay": "دَفعة مالية",
 
         "print": "طباعة",
-        "restore": "استرجاع",
+        "refund": "استرجاع",
 
         "edit-supplier": "تعديل بيانات المورد",
         "edit-products": "تعديل المنتجات"

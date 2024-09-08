@@ -22,7 +22,7 @@
         },
 
         "trash": {
-            "restore-dialog": {
+            "refund-dialog": {
                 "heading": "Produkt wiederherstellen",
                 "description": "Sind Sie sicher, dass Sie das Produkt wieder auf den Markt bringen möchten?"
             }
@@ -62,7 +62,7 @@
             }
         },
 
-        "restore-client-statement": {
+        "refund-client-statement": {
             "insert-dialog": {
                 "heading": "Produkt einfügen",
                 "description": "Bitte füllen Sie alle erforderlichen Felder aus, um das neue Produkt einzufügen."
@@ -126,7 +126,7 @@
             }
         },
 
-        "restore-supplier-statement": {
+        "refund-supplier-statement": {
             "insert-dialog": {
                 "heading": "Produkt einfügen",
                 "description": "Bitte füllen Sie alle erforderlichen Felder aus, um das neue Produkt einzufügen."

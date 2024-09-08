@@ -41,7 +41,7 @@ const SupplierInvoices = () => {
             filterBy={["supplier"]}
             navigate={[
                 { text: "new-statement", to: "/suppliers/statements/new" },
-                { text: "restore-statement", to: "/suppliers/statements/restore" },
+                { text: "refund-statement", to: "/suppliers/statements/refund" },
             ]}
         >
             <div className="mt-4 w-fit sm:mx-4">

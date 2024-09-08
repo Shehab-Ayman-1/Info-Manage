@@ -42,9 +42,9 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
                             $cond: [{ $eq: ["$type", "sale"] }, "$products.count", 0],
                         },
                     },
-                    restoreCount: {
+                    refundCount: {
                         $sum: {
-                            $cond: [{ $eq: ["$type", "restore"] }, "$products.count", 0],
+                            $cond: [{ $eq: ["$type", "refund"] }, "$products.count", 0],
                         },
                     },
                 },
@@ -56,7 +56,7 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
                     productName: 1,
                     purchasePrice: 1,
                     soldPrice: 1,
-                    count: { $subtract: ["$saleCount", "$restoreCount"] },
+                    count: { $subtract: ["$saleCount", "$refundCount"] },
                 },
             },
         ]);

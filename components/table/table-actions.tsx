@@ -21,7 +21,7 @@ type TableActionsProps = {
 export const TableActions = ({ row, items }: TableActionsProps) => {
     const t = useTranslations("buttons");
 
-    const isRestore = (text: string) => row.original.state === "restore" && text === "pay";
+    const isRefund = (text: string) => row.original.state === "refund" && text === "pay";
 
     return (
         <DropdownMenu>
@@ -33,7 +33,7 @@ export const TableActions = ({ row, items }: TableActionsProps) => {
 
             <DropdownMenuContent align="end" className="min-w-36">
                 {items.map(({ Icon, text, className, onClick }) =>
-                    isRestore(text) ? null : (
+                    isRefund(text) ? null : (
                         <DropdownMenuItem
                             onClick={() => onClick(row?.original)}
                             key={text}

@@ -69,8 +69,8 @@
             "heading": "New Client Statement"
         },
 
-        "restore-client-statement": {
-            "heading": "Restore Client Statement",
+        "refund-client-statement": {
+            "heading": "Refund Client Statement",
             "cancel-invoice-btn": "Cancel Invoice"
         },
 
@@ -90,8 +90,8 @@
             "heading": "New Supplier Statement"
         },
 
-        "restore-supplier-statement": {
-            "heading": "Restore Supplier Statement"
+        "refund-supplier-statement": {
+            "heading": "Refund Supplier Statement"
         },
 
         "cashes": {

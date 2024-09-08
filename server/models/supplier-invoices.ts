@@ -8,8 +8,8 @@ type TSupplierInvoice = Document & {
     supplier: any;
     barcode: number;
 
-    state: "completed" | "pending" | "restore";
-    type: "purchase" | "restore";
+    state: "completed" | "pending" | "refund";
+    type: "purchase" | "refund";
 
     paid: number;
     total: number;
@@ -30,8 +30,8 @@ const schema = new Schema<TSupplierInvoice>({
     supplier: { type: Schema.Types.ObjectId, ref: "suppliers", required: true },
     barcode: { type: Number, required: true, default: Date.now() },
 
-    state: { type: String, required: true, trim: true, enum: ["completed", "pending", "restore"] },
-    type: { type: String, required: true, trim: true, enum: ["purchase", "restore"], default: "purchase" },
+    state: { type: String, required: true, trim: true, enum: ["completed", "pending", "refund"] },
+    type: { type: String, required: true, trim: true, enum: ["purchase", "refund"], default: "purchase" },
 
     paid: { type: Number, default: 0 },
     total: { type: Number, default: 0 },

@@ -15,8 +15,8 @@ export const TranslateCell = ({ row, name, isReason }: TranslateCellType) => {
     const reasons = [
         "client-statement",
         "supplier-statement",
-        "restored-client-statement",
-        "restored-supplier-statement",
+        "refundd-client-statement",
+        "refundd-supplier-statement",
         "client-invoice-payment",
         "supplier-invoice-payment",
         "canceled-supplier-invoice",

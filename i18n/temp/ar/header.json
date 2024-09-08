@@ -18,7 +18,7 @@
                 "clients-list": "قائمة العملاء",
                 "show-invoices": "عرض الفواتير",
                 "new-statement": "فاتورة جديدة",
-                "restore-statement": "فاتورة مرتجع",
+                "refund-statement": "فاتورة مرتجع",
                 "add-client": "اضافه عميل جديد"
             },
             "suppliers": {
@@ -26,7 +26,7 @@
                 "suppliers-list": "قائمه الموردين",
                 "show-invoices": "عرض الفواتير",
                 "new-statement": "فاتورة جديدة",
-                "restore-statement": "فاتورة مرتجع",
+                "refund-statement": "فاتورة مرتجع",
                 "add-supplier": "اضافه مورد جديد"
             },
             "finances": {

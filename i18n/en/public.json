@@ -88,7 +88,7 @@
         "print-receipt": "Print Receipt",
         "unknown": "unknown",
 
-        "restore": "Restore",
+        "refund": "Refund",
         "completed": "Completed",
         "pending": "Pending",
 
@@ -98,8 +98,8 @@
         "client-statement": "Client Statement",
         "supplier-statement": "Supplier Statement",
 
-        "restored-client-statement": "Restored Client Statement",
-        "restored-supplier-statement": "Restored Supplier Statement",
+        "refundd-client-statement": "Refundd Client Statement",
+        "refundd-supplier-statement": "Refundd Supplier Statement",
 
         "client-invoice-payment": "Client Invoice Payment",
         "supplier-invoice-payment": "Supplier Invoice Payment",

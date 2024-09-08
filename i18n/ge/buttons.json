@@ -1,7 +1,7 @@
 {
     "buttons": {
         "new-statement": "Neuer Kontoauszug",
-        "restore-statement": "Zurückgegebene Anweisung",
+        "refund-statement": "Zurückgegebene Anweisung",
 
         "new-transaction": "Neue Transaktion",
         "market-products": "Marktprodukte",
@@ -31,7 +31,7 @@
         "pay": "Zahlung",
 
         "print": "Drucken",
-        "restore": "Wiederherstellen",
+        "refund": "Wiederherstellen",
 
         "edit-supplier": "Lieferanteninfo bearbeiten",
         "edit-products": "Produkte bearbeiten"

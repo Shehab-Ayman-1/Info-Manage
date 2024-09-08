@@ -1,7 +1,7 @@
 {
     "buttons": {
         "new-statement": "New Statement",
-        "restore-statement": "Restore Statement",
+        "refund-statement": "Refund Statement",
 
         "new-transaction": "New Transaction",
         "market-products": "Market Products",
@@ -31,7 +31,7 @@
         "pay": "Payment",
 
         "print": "Print",
-        "restore": "Restore",
+        "refund": "Refund",
 
         "edit-supplier": "Edit Supplier Info",
         "edit-products": "Edit Products"

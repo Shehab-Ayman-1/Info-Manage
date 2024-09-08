@@ -1,5 +1,5 @@
 "use client";
-import { ArchiveRestore } from "lucide-react";
+import { ArchiveRefund } from "lucide-react";
 import { Row } from "@tanstack/react-table";
 
 import { TableActions } from "@/components/table/table-actions";
@@ -14,9 +14,9 @@ export const Actions = ({ row }: ActionsProps) => {
 
     const items = [
         {
-            Icon: ArchiveRestore,
-            text: "restore",
-            onClick: (original: any) => onOpen("restore-model", { _id: original._id, type: original.type }),
+            Icon: ArchiveRefund,
+            text: "refund",
+            onClick: (original: any) => onOpen("refund-model", { _id: original._id, type: original.type }),
         },
     ];
 

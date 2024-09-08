@@ -2,8 +2,6 @@
 
     - Add Profits To The Client Props And Set The Trophies  Depend On This Profits
 
-    - Change Text From [Bill -> invoice], [restore, refund]
-
     - Clients, And Suppliers Payment Way
 
     - Update Bill

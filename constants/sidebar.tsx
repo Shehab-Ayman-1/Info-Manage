@@ -111,8 +111,8 @@ export const clientLists: NavLinkType[] = [
     },
     {
         Icon: HandCoinsIcon,
-        title: "restore-statement",
-        href: "/clients/statements/restore",
+        title: "refund-statement",
+        href: "/clients/statements/refund",
         userRole: "org:member",
         subscriptions: ["basic"],
         additionalSubscriptions: [],
@@ -154,8 +154,8 @@ export const supplierLists: NavLinkType[] = [
     },
     {
         Icon: HandCoinsIcon,
-        title: "restore-statement",
-        href: "/suppliers/statements/restore",
+        title: "refund-statement",
+        href: "/suppliers/statements/refund",
         userRole: "org:admin",
         subscriptions: ["basic"],
         additionalSubscriptions: [],

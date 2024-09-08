@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 
-import { createSchema, RestoreSupplierType } from "@/app/api/suppliers/statements/restore/schema";
+import { createSchema, RefundSupplierType } from "@/app/api/suppliers/statements/refund/schema";
 import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { InsertProduct, ProductType } from "./insert-product";
 
@@ -30,7 +30,7 @@ const Clients = ({}: ClientsProps) => {
         resolver: zodResolver(createSchema.omit({ products: true })),
     });
 
-    const { mutate, isPending } = useCreate<RestoreSupplierType>("/api/suppliers/statements/restore", ["supplier-invoices"]);
+    const { mutate, isPending } = useCreate<RefundSupplierType>("/api/suppliers/statements/refund", ["supplier-invoices"]);
     const [products, setProducts] = useState<ProductType[]>([]);
 
     const { suppliers, productsBySupplier } = useLists();
@@ -76,7 +76,7 @@ const Clients = ({}: ClientsProps) => {
     };
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        const values = data as RestoreSupplierType;
+        const values = data as RefundSupplierType;
         if (!products?.length) return setError("root", { message: "No Products Was Selected." });
 
         const filterProducts = products.map(({ company, soldPrice, purchasePrice, ...product }) => ({
@@ -87,7 +87,7 @@ const Clients = ({}: ClientsProps) => {
     };
 
     return (
-        <CardForm heading={text("pages.restore-supplier-statement.heading")}>
+        <CardForm heading={text("pages.refund-supplier-statement.heading")}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex-between">
                     <ComboBox
@@ -146,7 +146,7 @@ const Clients = ({}: ClientsProps) => {
                 <OpenModuleButton type="insert-products-model" clearErrors={clearErrors} />
 
                 {!!products.length && <DataTable columns={columns} data={products} totalFor="total" smallSize />}
-                <SubmitButton text="restore" isPending={isPending} />
+                <SubmitButton text="refund" isPending={isPending} />
             </form>
 
             <InsertProduct setProducts={setProducts} />

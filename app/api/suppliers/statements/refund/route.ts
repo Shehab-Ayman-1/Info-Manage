@@ -18,7 +18,7 @@ export const POST = async (req: NextRequest) => {
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
-        const text = await getTranslations("suppliers.restore-statement.post");
+        const text = await getTranslations("suppliers.refund-statement.post");
 
         const user = await clerkClient().users.getUser(userId);
 
@@ -52,8 +52,8 @@ export const POST = async (req: NextRequest) => {
                     barcode: Date.now(),
                     paid,
                     expireAt,
-                    type: "restore",
-                    state: "restore",
+                    type: "refund",
+                    state: "refund",
                     products: invoiceProducts,
                     total: productsTotalCosts,
                     createdAt: new Date(),
@@ -77,7 +77,7 @@ export const POST = async (req: NextRequest) => {
                         $slice: -100,
                         $each: [
                             {
-                                reason: "Restored Supplier Statement",
+                                reason: "Refundd Supplier Statement",
                                 creator: user.fullName,
                                 price: paid,
                                 createdAt: new Date(),

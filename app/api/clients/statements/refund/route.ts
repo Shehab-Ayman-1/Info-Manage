@@ -20,7 +20,7 @@ export const POST = async (req: NextRequest) => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const user = await clerkClient().users.getUser(userId);
-        const text = await getTranslations("clients.restore-statement.post");
+        const text = await getTranslations("clients.refund-statement.post");
 
         const body = await req.json();
         const { invoiceBarcode, products } = createSchema.parse(body);
@@ -45,7 +45,7 @@ export const POST = async (req: NextRequest) => {
             return json(text("products-not-exist"), 400);
         }
 
-        // Check If The Locker Contain Restored Products Salary
+        // Check If The Locker Contain Refundd Products Salary
         const { lockerCash } = await Transactions.getLockerCash(orgId);
         if (productsTotalCosts > lockerCash) {
             await session.abortTransaction();
@@ -81,8 +81,8 @@ export const POST = async (req: NextRequest) => {
                     total: productsTotalCosts,
                     products: invoiceProducts,
                     discount: 0,
-                    type: "restore",
-                    state: "restore",
+                    type: "refund",
+                    state: "refund",
                     createdAt: new Date(),
                     expireAt,
                 },
@@ -104,7 +104,7 @@ export const POST = async (req: NextRequest) => {
                         $slice: -100,
                         $each: [
                             {
-                                reason: "Restored Client Statement",
+                                reason: "Refundd Client Statement",
                                 creator: user.fullName,
                                 price: productsTotalCosts,
                                 createdAt: new Date(),

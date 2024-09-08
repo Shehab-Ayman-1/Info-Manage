@@ -65,7 +65,7 @@
             "heading": "كشف حساب للعميل"
         },
 
-        "restore-client-statement": {
+        "refund-client-statement": {
             "heading": "كشف استرجاع للعميل",
             "cancel-invoice-btn": "الغاء الفاتورة"
         },
@@ -86,7 +86,7 @@
             "heading": "كشف حساب مورد"
         },
 
-        "restore-supplier-statement": {
+        "refund-supplier-statement": {
             "heading": "كشف استرجاع للمورد"
         },
 

@@ -8,8 +8,8 @@ type TClientInvoice = Document & {
     client: any;
     barcode: number;
 
-    state: "completed" | "pending" | "restore";
-    type: "sale" | "restore";
+    state: "completed" | "pending" | "refund";
+    type: "sale" | "refund";
 
     discount: number;
     paid: number;
@@ -33,8 +33,8 @@ const schema = new Schema<TClientInvoice>({
     client: { type: Schema.Types.ObjectId, ref: "clients", required: true },
     barcode: { type: Number, default: Date.now() },
 
-    state: { type: String, required: true, trim: true, enum: ["completed", "pending", "restore"] },
-    type: { type: String, required: true, trim: true, enum: ["sale", "restore"], default: "sale" },
+    state: { type: String, required: true, trim: true, enum: ["completed", "pending", "refund"] },
+    type: { type: String, required: true, trim: true, enum: ["sale", "refund"], default: "sale" },
 
     discount: { type: Number, default: 0 },
     total: { type: Number, default: 0 },

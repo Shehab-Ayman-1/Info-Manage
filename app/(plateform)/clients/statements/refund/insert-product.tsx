@@ -43,7 +43,7 @@ export const InsertProduct = ({ invoiceBarcode, setProducts }: InsertProductProp
     const { formState, register, setValue, watch, reset, clearErrors, handleSubmit } = useForm({
         resolver: zodResolver(schema.omit({ company: true, name: true, total: true })),
     });
-    const { data, isPending } = useGet<ProductResponse[]>(`/api/clients/statements/restore/${invoiceBarcode}`, [invoiceBarcode]);
+    const { data, isPending } = useGet<ProductResponse[]>(`/api/clients/statements/refund/${invoiceBarcode}`, [invoiceBarcode]);
     const { type, onClose } = useModel();
     const { errors, isLoading } = formState;
 
@@ -94,8 +94,8 @@ export const InsertProduct = ({ invoiceBarcode, setProducts }: InsertProductProp
 
     return (
         <DialogForm
-            heading={text("dialogs.restore-client-statement.insert-dialog.heading")}
-            description={text("dialogs.restore-client-statement.insert-dialog.description")}
+            heading={text("dialogs.refund-client-statement.insert-dialog.heading")}
+            description={text("dialogs.refund-client-statement.insert-dialog.description")}
         >
             <form onSubmit={handleSubmit(onSubmit)}>
                 <ComboBox

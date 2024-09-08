@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-import { createSchema, CreateClientType } from "@/app/api/clients/statements/restore/schema";
+import { createSchema, CreateClientType } from "@/app/api/clients/statements/refund/schema";
 import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { InsertProduct, ProductType } from "./insert-product";
 
@@ -19,12 +19,15 @@ import { DataTable } from "@/components/table";
 import { DeleteDialog } from "./delete-dialog";
 import { Input } from "@/ui/input";
 
-const RestoreClientStatement = () => {
+const RefundClientStatement = () => {
     const resolver = zodResolver(createSchema.omit({ products: true }));
     const { formState, register, watch, setError, clearErrors, handleSubmit } = useForm({ resolver });
     const invoiceBarcode = watch("invoiceBarcode");
 
-    const { mutate, isPending } = useCreate<CreateClientType>("/api/clients/statements/restore", ["client-invoices", invoiceBarcode]);
+    const { mutate, isPending } = useCreate<CreateClientType>("/api/clients/statements/refund", [
+        "client-invoices",
+        invoiceBarcode,
+    ]);
     const [products, setProducts] = useState<ProductType[]>([]);
     const { errors } = formState;
 
@@ -42,7 +45,7 @@ const RestoreClientStatement = () => {
     const showButtons = `${invoiceBarcode}`.length > 12 || products.length;
 
     return (
-        <CardForm heading={text("pages.restore-client-statement.heading")}>
+        <CardForm heading={text("pages.refund-client-statement.heading")}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Input
                     type="number"
@@ -58,7 +61,7 @@ const RestoreClientStatement = () => {
 
                 {!!products.length && <DataTable columns={columns} data={products} totalFor="total" smallSize />}
 
-                <SubmitButton text="restore" isPending={isPending} />
+                <SubmitButton text="refund" isPending={isPending} />
             </form>
 
             {`${invoiceBarcode}`.length > 12 && <InsertProduct invoiceBarcode={invoiceBarcode} setProducts={setProducts} />}
@@ -67,5 +70,5 @@ const RestoreClientStatement = () => {
     );
 };
 
-RestoreClientStatement.displayName = "RestoreClientStatement";
-export default RestoreClientStatement;
+RefundClientStatement.displayName = "RefundClientStatement";
+export default RefundClientStatement;

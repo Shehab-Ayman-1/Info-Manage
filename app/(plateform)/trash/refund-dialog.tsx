@@ -13,13 +13,13 @@ type RequestType = {
     type: "client" | "supplier" | "product";
 };
 
-export const RestoreDialog = () => {
+export const RefundDialog = () => {
     const { mutate, isPending } = useUpdate<RequestType>("/api/trash", ["trash"]);
     const { type, data, onClose } = useModel();
     const { onReset } = useLists();
     const text = useTranslations();
 
-    if (type !== "restore-model") return;
+    if (type !== "refund-model") return;
 
     const onClick = () => {
         if (!data?._id || !data?.type) return;
@@ -34,8 +34,8 @@ export const RestoreDialog = () => {
 
     return (
         <DialogForm
-            heading={text("dialogs.trash.restore-dialog.heading")}
-            description={text("dialogs.trash.restore-dialog.description")}
+            heading={text("dialogs.trash.refund-dialog.heading")}
+            description={text("dialogs.trash.refund-dialog.description")}
         >
             <div className="flex-end">
                 <Button type="button" variant="outline" className="text-black dark:text-white" onClick={onClose}>
@@ -49,4 +49,4 @@ export const RestoreDialog = () => {
     );
 };
 
-RestoreDialog.displayName = "RestoreDialog";
+RefundDialog.displayName = "RefundDialog";

@@ -41,7 +41,7 @@ const ClientInvoices = () => {
             filterBy={["client"]}
             navigate={[
                 { text: "new-statement", to: "/clients/statements/new" },
-                { text: "restore-statement", to: "/clients/statements/restore" },
+                { text: "refund-statement", to: "/clients/statements/refund" },
             ]}
         >
             <div className="mt-4 w-fit sm:mx-4">

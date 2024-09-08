@@ -22,8 +22,8 @@
         },
 
         "trash": {
-            "restore-dialog": {
-                "heading": "Restore Product",
+            "refund-dialog": {
+                "heading": "Refund Product",
                 "description": "Are You Sure You Want To Return The Product To The Market Again."
             }
         },
@@ -62,7 +62,7 @@
             }
         },
 
-        "restore-client-statement": {
+        "refund-client-statement": {
             "insert-dialog": {
                 "heading": "Insert Product",
                 "description": "Please Fill All The Required Fields To Insert The New Product."
@@ -126,7 +126,7 @@
             }
         },
 
-        "restore-supplier-statement": {
+        "refund-supplier-statement": {
             "insert-dialog": {
                 "heading": "Insert Product",
                 "description": "Please Fill All The Required Fields To Insert The New Product."

@@ -69,7 +69,7 @@
             "heading": "Neue Kundenerklärung"
         },
 
-        "restore-client-statement": {
+        "refund-client-statement": {
             "heading": "Kundenerklärung wiederherstellen",
             "cancel-invoice-btn": "Rechnung stornieren"
         },
@@ -90,7 +90,7 @@
             "heading": "Neue Lieferantenerklärung"
         },
 
-        "restore-supplier-statement": {
+        "refund-supplier-statement": {
             "heading": "Lieferantenerklärung wiederherstellen"
         },
 

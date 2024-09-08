@@ -22,7 +22,7 @@
         },
 
         "trash": {
-            "restore-dialog": {
+            "refund-dialog": {
                 "heading": "استرجاع المنتج",
                 "description": "هل انت متأكد من استرجاع المنتج الي المتجر مرة اخري ؟"
             }
@@ -62,7 +62,7 @@
             }
         },
 
-        "restore-client-statement": {
+        "refund-client-statement": {
             "insert-dialog": {
                 "heading": "إضافة منتج",
                 "description": "من فضلك ادخل كل حقول الإدخال المطلوبة لإضافة المنتج."
@@ -126,7 +126,7 @@
             }
         },
 
-        "restore-supplier-statement": {
+        "refund-supplier-statement": {
             "insert-dialog": {
                 "heading": "إضافه منتج",
                 "description": "من فضلك ادخل كل حقول الإدخال المطلوبة لاضافة المنتج."

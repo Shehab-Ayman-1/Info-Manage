@@ -25,7 +25,7 @@
                 "clients-list": "Clients Lists",
                 "show-invoices": "Show Invoices",
                 "new-statement": "New Statement",
-                "restore-statement": "Restore Statement",
+                "refund-statement": "Refund Statement",
                 "add-client": "Add New Client",
                 "recycle-bin": "Recycle Bin"
             },
@@ -34,7 +34,7 @@
                 "suppliers-list": "Suppliers List",
                 "show-invoices": "Show Invoices",
                 "new-statement": "New Statement",
-                "restore-statement": "Restore Statement",
+                "refund-statement": "Refund Statement",
                 "add-supplier": "Add New Supplier",
                 "recycle-bin": "Recycle Bin"
             },

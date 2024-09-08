@@ -88,7 +88,7 @@
         "print-receipt": "Beleg drucken",
         "unknown": "unbekannt",
 
-        "restore": "Wiederherstellen",
+        "refund": "Wiederherstellen",
         "completed": "Abgeschlossen",
         "pending": "Ausstehend",
 
@@ -98,8 +98,8 @@
         "client-statement": "Kundenabrechnung",
         "supplier-statement": "Lieferantenabrechnung",
 
-        "restored-client-statement": "Wiederhergestellte Kundenabrechnung",
-        "restored-supplier-statement": "Wiederhergestellte Lieferantenabrechnung",
+        "refundd-client-statement": "Wiederhergestellte Kundenabrechnung",
+        "refundd-supplier-statement": "Wiederhergestellte Lieferantenabrechnung",
 
         "client-invoice-payment": "Kundenrechnungszahlung",
         "supplier-invoice-payment": "Lieferantenrechnungszahlung",

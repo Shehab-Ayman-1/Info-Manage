@@ -25,7 +25,7 @@
                 "clients-list": "Kundenlisten",
                 "show-invoices": "Rechnungen anzeigen",
                 "new-statement": "Neue Erklärung",
-                "restore-statement": "Erklärung wiederherstellen",
+                "refund-statement": "Erklärung wiederherstellen",
                 "add-client": "Neuen Kunden hinzufügen",
                 "recycle-bin": "Papierkorb"
             },
@@ -34,7 +34,7 @@
                 "suppliers-list": "Lieferantenliste",
                 "show-invoices": "Rechnungen anzeigen",
                 "new-statement": "Neue Erklärung",
-                "restore-statement": "Erklärung wiederherstellen",
+                "refund-statement": "Erklärung wiederherstellen",
                 "add-supplier": "Neuen Lieferanten hinzufügen",
                 "recycle-bin": "Papierkorb"
             },

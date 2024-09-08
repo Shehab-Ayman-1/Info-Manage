@@ -82,8 +82,8 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
 
     return (
         <DialogForm
-            heading={text("dialogs.restore-supplier-statement.insert-dialog.heading")}
-            description={text("dialogs.restore-supplier-statement.insert-dialog.description")}
+            heading={text("dialogs.refund-supplier-statement.insert-dialog.heading")}
+            description={text("dialogs.refund-supplier-statement.insert-dialog.description")}
         >
             <form onSubmit={handleSubmit(onSubmit)}>
                 <ComboBox

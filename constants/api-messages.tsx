@@ -35,7 +35,7 @@ export const translations = {
             },
             trash: {
                 put: {
-                    success: "The Product Was Successfully Restored Again.",
+                    success: "The Product Was Successfully Refundd Again.",
                 },
             },
         },
@@ -60,16 +60,16 @@ export const translations = {
                     success: "The Statement Was Successfully Created.",
                 },
             },
-            "restore-statement": {
+            "refund-statement": {
                 post: {
                     "missing-invoice": "The Client Invoice Not Found.",
                     "products-not-exist": "Some Products Count Is Not Exist In The Client Invoice",
-                    "locker-not-enough": "Locker Doesn't Exist The Restored Total Products Costs.",
-                    success: "The Statement Was Successfully Restored.",
+                    "locker-not-enough": "Locker Doesn't Exist The Refundd Total Products Costs.",
+                    success: "The Statement Was Successfully Refundd.",
                 },
                 delete: {
-                    "locker-not-enough": "Locker Doesn't Exist The Restored Total Products Costs.",
-                    success: "The Statement Was Successfully Restored.",
+                    "locker-not-enough": "Locker Doesn't Exist The Refundd Total Products Costs.",
+                    success: "The Statement Was Successfully Refundd.",
                 },
             },
         },
@@ -152,10 +152,10 @@ export const translations = {
                     success: "The Statement Was Successfully Created.",
                 },
             },
-            "restore-statement": {
+            "refund-statement": {
                 post: {
                     "not-enough": "Not Enough",
-                    success: "The Products Was Successfully Restored.",
+                    success: "The Products Was Successfully Refundd.",
                 },
             },
         },
@@ -219,7 +219,7 @@ export const translations = {
                     success: "لقد تم انشاء الفاتورة بنجاح.",
                 },
             },
-            "restore-statement": {
+            "refund-statement": {
                 post: {
                     "missing-invoice": "لم يتم العثور علي فاتورة العميل.",
                     "products-not-exist": "بعض المنتجات غير متوفر عددها في الفاتورة",
@@ -311,7 +311,7 @@ export const translations = {
                     success: "لقد تم انشاء الفاتورة بنجاح.",
                 },
             },
-            "restore-statement": {
+            "refund-statement": {
                 post: {
                     "not-enough": "غير كافي",
                     success: "لقد تم استرجاع المنتجات بنجاح.",
@@ -382,7 +382,7 @@ export const translations = {
                     success: "Die Erklärung wurde erfolgreich erstellt.",
                 },
             },
-            "restore-statement": {
+            "refund-statement": {
                 post: {
                     "missing-invoice": "Die Kundenrechnung wurde nicht gefunden.",
                     "products-not-exist": "Einige Produktmengen existieren nicht in der Kundenrechnung.",
@@ -470,7 +470,7 @@ export const translations = {
                     success: "Die Erklärung wurde erfolgreich erstellt.",
                 },
             },
-            "restore-statement": {
+            "refund-statement": {
                 post: {
                     "not-enough": "Nicht genug",
                     success: "Die Produkte wurden erfolgreich wiederhergestellt.",

@@ -25,7 +25,7 @@
                 "clients-list": "قائمة العملاء",
                 "show-invoices": "عرض الفواتير",
                 "new-statement": "فاتورة جديدة",
-                "restore-statement": "فاتورة مُرتجع",
+                "refund-statement": "فاتورة مُرتجع",
                 "add-client": "إضافة عميل جديد",
                 "recycle-bin": "سله المهملات"
             },
@@ -34,7 +34,7 @@
                 "suppliers-list": "قائمة الموردين",
                 "show-invoices": "عرض الفواتير",
                 "new-statement": "فاتورة جديدة",
-                "restore-statement": "فاتورة مرتجع",
+                "refund-statement": "فاتورة مرتجع",
                 "add-supplier": "إضافة مُورِد جديد",
                 "recycle-bin": "سله المهملات"
             },
