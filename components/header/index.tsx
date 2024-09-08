@@ -3,8 +3,8 @@ import { useAuth } from "@clerk/nextjs";
 import Link from "next/link";
 
 import { Button } from "@/ui/button";
+import { NavLinks } from "./navLinks";
 import { NavIcons } from "./icons";
-import { NavLinks } from "./links";
 import { Logo } from "./logo";
 
 type HeaderProps = {};

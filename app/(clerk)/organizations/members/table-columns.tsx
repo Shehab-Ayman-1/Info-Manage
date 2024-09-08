@@ -21,7 +21,7 @@ export const columns: ColumnDef<any>[] = [
     {
         accessorKey: "createdAt",
         header: ({ column }) => <HeaderComponent column={column} smallSize />,
-        cell: ({ row }) => <DateCell row={row} />,
+        cell: ({ row }) => <DateCell row={row} name="createdAt" />,
     },
     {
         accessorKey: "actions",

@@ -78,6 +78,8 @@
         "deleted-name": "Deleted name",
         "type": "Type",
 
+        "expires-after": "Expires After",
+
         "filter-by": {
             "heading": "Filter By",
             "category": "Category",

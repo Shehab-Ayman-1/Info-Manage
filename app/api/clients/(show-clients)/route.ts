@@ -81,7 +81,10 @@ export const DELETE = async (req: NextRequest) => {
         const { clientId } = await req.json();
         if (!clientId) return json(text("wrong"), 400);
 
-        const updated = await Clients.updateOne({ orgId, _id: clientId }, { trash: true, trashedAt: new Date() });
+        const updated = await Clients.updateOne(
+            { orgId, _id: clientId, trash: false },
+            { trash: true, trashedAt: Date.now() + 1000 * 60 * 60 * 24 * 90 },
+        );
         if (!updated.modifiedCount) return json(text("wrong"), 400);
 
         return json(text("success"));

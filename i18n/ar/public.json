@@ -104,6 +104,7 @@
         "client-bill-payment": "دفعه ماليه من عميل",
         "supplier-bill-payment": "دفعه ماليه من مورد",
 
-        "canceled-supplier-bill": "استرجاع فاتورة مورد"
+        "canceled-supplier-bill": "استرجاع فاتورة مورد",
+        "trash-expiration": "يتم تفريغ المحذوفات بعد انتهاء الصلاحية ( 3 شهور )"
     }
 }

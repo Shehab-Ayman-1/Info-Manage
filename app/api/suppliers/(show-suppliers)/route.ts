@@ -92,7 +92,7 @@ export const DELETE = async (req: NextRequest) => {
 
         const updated = await Suppliers.updateOne(
             { orgId, _id: supplierId, trash: false },
-            { trash: true, trashedAt: new Date() },
+            { trash: true, trashedAt: Date.now() + 1000 * 60 * 60 * 24 * 90 },
         );
         if (!updated.modifiedCount) return json(text("wrong"), 400);
 

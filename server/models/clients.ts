@@ -42,7 +42,7 @@ const schema = new Schema<TClient>({
     purchases: { type: Number, default: 0 },
 });
 
-schema.index({ trashedAt: 1 }, { expireAfterSeconds: 60 * 60 * 24 * 90 });
+schema.index({ trashedAt: 1 }, { expireAfterSeconds: 0 });
 
 type FilterQuery = {
     orgId: string;
@@ -90,5 +90,5 @@ type ClientsModel = Model<TClient> & {
     updateLastRefreshDate: (filterQuery: LastRefreshDate) => Promise<undefined>;
 };
 
-export const Clients = (models.clients as ClientsModel) || model("clients", schema);
+export const Clients = (models.clients as ClientsModel) || model<TClient>("clients", schema);
 export type ClientType = InferSchemaType<typeof schema>;

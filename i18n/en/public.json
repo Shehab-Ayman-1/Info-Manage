@@ -97,6 +97,7 @@
         "client-bill-payment": "Client Bill Payment",
         "supplier-bill-payment": "Supplier Bill Payment",
 
-        "canceled-supplier-bill": "Canceled Supplier Bill"
+        "canceled-supplier-bill": "Canceled Supplier Bill",
+        "trash-expiration": "Recycle Bin Automatically Remvoe The Trash After Expiration Date. ( 3 Months )"
     }
 }

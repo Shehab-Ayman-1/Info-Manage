@@ -75,7 +75,10 @@ export const DELETE = async (req: NextRequest, res: ResponseType) => {
         const text = await getTranslations("profile.product.delete");
 
         const productId = res.params.productId;
-        const updateProduct = await Products.updateOne({ _id: productId }, { trash: true, trashedAt: new Date() });
+        const updateProduct = await Products.updateOne(
+            { _id: productId, trash: false },
+            { trash: true, trashedAt: Date.now() + 1000 * 60 * 60 * 24 * 90 },
+        );
 
         if (!updateProduct?.modifiedCount) return json(text("not-deleted"), 400);
         return json(text("success"));

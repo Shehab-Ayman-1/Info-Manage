@@ -26,7 +26,7 @@ export const NavLinks = ({}: NavLinksProps) => {
     };
 
     return (
-        <nav className="flex-between !hidden xl:!flex">
+        <nav className="flex-between !hidden lg:!flex">
             {navLinks.map((nav, index) => (
                 <HoverCard
                     key={nav.heading}

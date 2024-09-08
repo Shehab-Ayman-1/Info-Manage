@@ -27,7 +27,7 @@ const schema = new Schema<TSupplier>({
     pending: { type: Number, default: 0 },
     products: [{ type: Schema.Types.ObjectId, ref: "products", required: true }],
 });
-schema.index({ trashedAt: 1 }, { expireAfterSeconds: 60 * 60 * 24 * 90 });
+schema.index({ trashedAt: 1 }, { expireAfterSeconds: 0 });
 
 export const Suppliers = (models.suppliers as Model<TSupplier>) || model<TSupplier>("suppliers", schema);
 export type SupplierType = InferSchemaType<typeof schema>;

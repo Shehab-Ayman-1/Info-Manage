@@ -5,8 +5,8 @@ import { LoaderCircleIcon } from "lucide-react";
 import { QuickClientStatement } from "./quick-client-statement";
 import { UserButton } from "./user/user-button";
 import { OrgSwitcher } from "./user/switcher";
-import { MenuHover } from "./menu-hover";
 import { Searchbar } from "./searchbar";
+import { Menu } from "./menu";
 
 type NavlinksProps = {};
 
@@ -17,7 +17,7 @@ export const NavIcons = ({}: NavlinksProps) => {
 
     return (
         <div className="flex-end">
-            <MenuHover />
+            <Menu />
 
             <Searchbar />
 

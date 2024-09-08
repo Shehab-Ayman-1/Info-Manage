@@ -97,6 +97,7 @@
         "client-bill-payment": "Kundenrechnungszahlung",
         "supplier-bill-payment": "Lieferantenrechnungszahlung",
 
-        "canceled-supplier-bill": "Stornierte Lieferantenrechnung"
+        "canceled-supplier-bill": "Stornierte Lieferantenrechnung",
+        "trash-expiration": "Der Papierkorb entfernt den Müll automatisch nach dem Ablaufdatum von ( 3 Months )"
     }
 }

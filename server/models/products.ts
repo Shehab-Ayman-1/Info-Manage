@@ -41,7 +41,7 @@ const schema = new Schema<TProduct>({
         count: { type: Number, required: true },
     },
 });
-schema.index({ trashedAt: 1 }, { expireAfterSeconds: 60 * 60 * 24 * 90 });
+schema.index({ trashedAt: 1 }, { expireAfterSeconds: 0 });
 
 export const Products = (models.products as Model<TProduct>) || model<TProduct>("products", schema);
 export type ProductType = InferSchemaType<typeof schema>;

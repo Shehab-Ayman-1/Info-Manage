@@ -33,6 +33,7 @@ export const GET = async () => {
                 $project: {
                     _id: 1,
                     type: "product",
+                    expiresAfter: "$trashedAt",
                     deletedName: { $concat: ["$company.category.name", " >> ", "$company.name", " >> ", "$name"] },
                 },
             },
@@ -47,6 +48,7 @@ export const GET = async () => {
                     _id: 1,
                     type: "client",
                     deletedName: "$name",
+                    expiresAfter: "$trashedAt",
                 },
             },
         ]);
@@ -60,6 +62,7 @@ export const GET = async () => {
                     _id: 1,
                     type: "supplier",
                     deletedName: "$name",
+                    expiresAfter: "$trashedAt",
                 },
             },
         ]);

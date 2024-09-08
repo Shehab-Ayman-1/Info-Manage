@@ -1,17 +1,17 @@
 "use client";
 import { CreditCardIcon, MoreHorizontalIcon, ReceiptTextIcon, Trash2Icon } from "lucide-react";
+import { PopoverClose } from "@radix-ui/react-popover";
 import { useTranslations } from "next-intl";
 import { useKey } from "react-use";
+import { useRef } from "react";
 import Link from "next/link";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
 import { Tooltip } from "@/components/ui/tooltip";
 import { useModel } from "@/hooks/useModel";
 import { Notifications } from "./notifications";
-import { useRef } from "react";
-import { PopoverClose } from "@radix-ui/react-popover";
 
-export const MenuHover = () => {
+export const Menu = () => {
     const { onOpen } = useModel();
     const text = useTranslations();
 
@@ -27,7 +27,7 @@ export const MenuHover = () => {
         <Popover>
             <PopoverTrigger ref={triggerRef}>
                 <Tooltip content="Tab">
-                    <MoreHorizontalIcon onMouseEnter={onOpenMenu} />
+                    <MoreHorizontalIcon />
                 </Tooltip>
             </PopoverTrigger>
 
@@ -68,4 +68,4 @@ export const MenuHover = () => {
     );
 };
 
-MenuHover.displayName = "MenuHover";
+Menu.displayName = "Menu";

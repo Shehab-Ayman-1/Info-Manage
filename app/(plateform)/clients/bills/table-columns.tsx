@@ -40,7 +40,7 @@ export const columns: ColumnDef<any>[] = [
     {
         accessorKey: "createdAt",
         header: HeaderComponent,
-        cell: ({ row }) => <DateCell row={row} time />,
+        cell: ({ row }) => <DateCell row={row} name="createdAt" time />,
     },
     {
         accessorKey: "actions",

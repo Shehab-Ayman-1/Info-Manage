@@ -16,6 +16,6 @@ export const columns: ColumnDef<any>[] = [
     {
         accessorKey: "lastSold",
         header: HeaderComponent,
-        cell: ({ row }) => <DateCell row={row} />,
+        cell: ({ row }) => <DateCell name="lastSold" row={row} />,
     },
 ];
