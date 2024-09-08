@@ -2,13 +2,14 @@
 import { Row } from "@tanstack/react-table";
 import { useTranslations } from "next-intl";
 
-type TranslateReasonCellType = {
+type TranslateCellType = {
     row: Row<any>;
     name: string;
+    isReason?: boolean;
 };
 
-export const TranslateReasonCell = ({ row, name }: TranslateReasonCellType) => {
-    const text = useTranslations("public");
+export const TranslateCell = ({ row, name, isReason }: TranslateCellType) => {
+    const text = useTranslations();
     const value = row.original[name].toLowerCase().replaceAll(" ", "-");
 
     const reasons = [
@@ -21,7 +22,8 @@ export const TranslateReasonCell = ({ row, name }: TranslateReasonCellType) => {
         "canceled-supplier-bill",
     ];
 
-    return reasons.includes(value) ? text(value) : value;
+    const reasonText = reasons.includes(value) ? text(`public.${value}`) : value;
+    return isReason ? reasonText : text(`table.${value}`);
 };
 
-TranslateReasonCell.displayName = "TranslateReasonCell";
+TranslateCell.displayName = "TranslateCell";

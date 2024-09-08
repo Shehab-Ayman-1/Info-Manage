@@ -21,7 +21,7 @@
             }
         },
 
-        "trash-products": {
+        "trash": {
             "restore-dialog": {
                 "heading": "استرجاع المنتج",
                 "description": "هل انت متأكد من استرجاع المنتج الي المتجر مرة اخري ؟"

@@ -1,6 +1,13 @@
 {
     "header": {
         "brand": "Info Manage",
+        "icons": {
+            "searchbar": "Search bar",
+            "notifications": "Notifications",
+            "quick-statement": "Quick Client Statement",
+            "subscriptions": "Subscriptions",
+            "recycle-bin": "Recycle Bin"
+        },
         "navbar": {
             "products": {
                 "heading": "Products",
@@ -11,8 +18,7 @@
                 "today-sales": "Today Sales Receipt",
                 "add-category": "Add New Category",
                 "add-company": "Add New Company",
-                "add-product": "Add New Product",
-                "recycle-bin": "Recycle Bin"
+                "add-product": "Add New Product"
             },
             "clients": {
                 "heading": "Clients",

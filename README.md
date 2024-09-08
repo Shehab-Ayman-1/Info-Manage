@@ -6,6 +6,8 @@
 
     - Clients, And Suppliers Payment Way
 
+    - Add Recycle Bin To The Clients And Suppliers
+
     - Update Bill
 
     - Think About

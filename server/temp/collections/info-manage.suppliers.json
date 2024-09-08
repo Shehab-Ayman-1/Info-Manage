@@ -6,23 +6,9 @@
         "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
         "name": "عبدالرحمن مجدي",
         "phone": "01124693041",
-        "pending": 0,
+        "pendingCosts": -4,
+        "trash": false,
         "products": [
-            {
-                "$oid": "66c4978d637a4b4964c8d318"
-            },
-            {
-                "$oid": "66c4978e637a4b4964c8d319"
-            },
-            {
-                "$oid": "66c4978e637a4b4964c8d31a"
-            },
-            {
-                "$oid": "66c4978e637a4b4964c8d31b"
-            },
-            {
-                "$oid": "66c48e034dea0b6243d85cbd"
-            },
             {
                 "$oid": "66c48e034dea0b6243d85cbb"
             },
@@ -30,13 +16,28 @@
                 "$oid": "66c48e034dea0b6243d85cbc"
             },
             {
+                "$oid": "66c48e034dea0b6243d85cbd"
+            },
+            {
+                "$oid": "66c4978e637a4b4964c8d31a"
+            },
+            {
                 "$oid": "66c98e899f469e4b77a8f69c"
             },
             {
                 "$oid": "66caef9dcbfc51c9248e6e01"
+            },
+            {
+                "$oid": "66d893ba96f16d0f67134f2b"
+            },
+            {
+                "$oid": "66c4978d637a4b4964c8d318"
             }
         ],
-        "__v": 0
+        "__v": 0,
+        "pending": {
+            "$numberDouble": "-0.0"
+        }
     },
     {
         "_id": {
@@ -45,7 +46,8 @@
         "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
         "name": "كريم أحمد",
         "phone": "01224693030",
-        "pending": 0,
+        "pendingCosts": 0,
+        "trash": false,
         "products": [
             {
                 "$oid": "66c4893e65584cdb267c4e8e"
@@ -57,16 +59,11 @@
                 "$oid": "66c4893e65584cdb267c4e8a"
             },
             {
-                "$oid": "66c4871c65584cdb267c4e7e"
-            },
-            {
                 "$oid": "66c4893e65584cdb267c4e8c"
-            },
-            {
-                "$oid": "66c4893e65584cdb267c4e8b"
             }
         ],
-        "__v": 0
+        "__v": 0,
+        "pending": 1782
     },
     {
         "_id": {
@@ -75,10 +72,14 @@
         "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
         "name": "كريم علي",
         "phone": "01124698040",
-        "pending": 0,
+        "pendingCosts": 0,
+        "trash": false,
         "products": [
             {
-                "$oid": "66c48bae517e24cadc0d3e69"
+                "$oid": "66c48bae517e24cadc0d3e64"
+            },
+            {
+                "$oid": "66c48bae517e24cadc0d3e65"
             },
             {
                 "$oid": "66c48bae517e24cadc0d3e66"
@@ -87,16 +88,48 @@
                 "$oid": "66c48bae517e24cadc0d3e67"
             },
             {
-                "$oid": "66c48bae517e24cadc0d3e64"
-            },
-            {
                 "$oid": "66c48bae517e24cadc0d3e68"
             },
             {
-                "$oid": "66c48bae517e24cadc0d3e65"
+                "$oid": "66c48bae517e24cadc0d3e69"
             },
             {
                 "$oid": "66c8855eabd33ce2c69996e1"
+            },
+            {
+                "$oid": "66d893ba96f16d0f67134f2b"
+            }
+        ],
+        "__v": 0,
+        "pending": 0
+    },
+    {
+        "_id": {
+            "$oid": "66da67c47198e58bb4d6ee17"
+        },
+        "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+        "name": "هشام محمد",
+        "phone": "01234567890",
+        "pending": 0,
+        "trash": false,
+        "products": [
+            {
+                "$oid": "66c4978d637a4b4964c8d318"
+            },
+            {
+                "$oid": "66c4978e637a4b4964c8d319"
+            },
+            {
+                "$oid": "66c4978e637a4b4964c8d31a"
+            },
+            {
+                "$oid": "66c8855eabd33ce2c69996e1"
+            },
+            {
+                "$oid": "66caef9dcbfc51c9248e6e01"
+            },
+            {
+                "$oid": "66d893ba96f16d0f67134f2b"
             }
         ],
         "__v": 0

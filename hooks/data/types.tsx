@@ -65,6 +65,8 @@ export type ProductsBySupplier = {
     fetcher: (supplierId: string) => Promise<void>;
 };
 
+export type ListKeys = "categories" | "companies" | "products" | "suppliers" | "clients";
+
 export type ListsType = {
     categories: Categories;
     companies: Companies;
@@ -72,7 +74,7 @@ export type ListsType = {
     clients: Clients;
     suppliers: Suppliers;
     productsBySupplier: ProductsBySupplier;
-    onReset: (keys: ("categories" | "companies" | "products" | "suppliers" | "clients")[]) => void;
+    onReset: (keys: ListKeys[]) => void;
 };
 
 export type SetType = (

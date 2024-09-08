@@ -35,12 +35,12 @@ export const Searchbar = ({}: SearchbarProps) => {
     };
 
     const onOpen = () => setOpen(!open);
-    useKey((event) => event.ctrlKey && event.key.toLowerCase() === "f", onOpen);
+    useKey((event) => event.ctrlKey && event.key.toLowerCase() === "q", onOpen);
 
     return (
         <Popover open={open} onOpenChange={onOpen}>
             <PopoverTrigger>
-                <Tooltip content="CTRL + F">
+                <Tooltip content="CTRL + Q">
                     <SearchIcon className="hover:text-slate-500" />
                 </Tooltip>
             </PopoverTrigger>

@@ -92,7 +92,7 @@ export const POST = async (req: NextRequest) => {
         if (promise.includes(0)) return json(text("not-updated-products"), 400);
 
         // Update Supplier Pending, purchaseSalary Prices
-        await Suppliers.updateOne({ _id: supplierId }, { $inc: { pending: productCosts - paid } });
+        await Suppliers.updateOne({ _id: supplierId, trash: false }, { $inc: { pending: productCosts - paid } });
 
         // Response
         return json(text("success"));

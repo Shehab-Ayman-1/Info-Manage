@@ -33,7 +33,7 @@ export const translations = {
                     success: "The Product Was Successfully Transfer.",
                 },
             },
-            "trash-products": {
+            trash: {
                 put: {
                     success: "The Product Was Successfully Restored Again.",
                 },
@@ -192,7 +192,7 @@ export const translations = {
                     success: "لقد تم نقل المنتج بنجاح.",
                 },
             },
-            "trash-products": {
+            trash: {
                 put: {
                     success: "لقد تم استرجاع المنتج مرة اخرة بنجاح.",
                 },
@@ -351,7 +351,7 @@ export const translations = {
                     success: "Das Produkt wurde erfolgreich übertragen.",
                 },
             },
-            "trash-products": {
+            trash: {
                 post: {
                     "already-exist": "Dieser Lieferant existiert bereits",
                     success: "Der Lieferant wurde erfolgreich hinzugefügt.",

@@ -75,6 +75,9 @@
         "solds": "المبيعات",
         "needed": "المطلوب",
 
+        "deleted-name": "اسم المحذوف",
+        "type": "النوع",
+
         "filter-by": {
             "heading": "البحث بواسطة",
             "category": "القسم",

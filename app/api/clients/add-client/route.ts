@@ -18,7 +18,7 @@ export const POST = async (req: NextRequest) => {
         const body = await req.json();
         const { name, phone, bronzeTo, silverTo } = createSchema.parse(body);
 
-        const client = await Clients.findOne({ orgId, name });
+        const client = await Clients.findOne({ orgId, name, trash: false });
         if (client) return json(text("already-exist"), 400);
 
         await Clients.create({ orgId, name, phone, bronzeTo, silverTo });

@@ -17,14 +17,14 @@ type TrashProductsType = {
 };
 
 const TrashProducts = () => {
-    const { data, isPending, error } = useGet<TrashProductsType[]>("/api/products/trash", ["trash-products"]);
+    const { data, isPending, error } = useGet<TrashProductsType[]>("/api/trash", ["trash"]);
 
     if (isPending) return <CardLoading />;
     if (error) return <h1>{error?.message}</h1>;
 
     return (
         <TableForm
-            pageTitle="pages.trash-products.heading"
+            pageTitle="pages.trash.heading"
             columns={columns}
             data={data}
             navigate={[{ text: "new-statement", to: "/clients/statements/new" }]}

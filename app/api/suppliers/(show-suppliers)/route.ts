@@ -1,11 +1,11 @@
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
+import { getTranslations } from "@/utils/getTranslations";
 import { DBConnection } from "@/server/configs";
 import { Suppliers } from "@/server/models";
 import { editSchema } from "./schema";
 import { json } from "@/utils/response";
-import { getTranslations } from "@/utils/getTranslations";
 
 export const GET = async () => {
     try {
@@ -16,7 +16,7 @@ export const GET = async () => {
 
         const suppliers = await Suppliers.aggregate([
             {
-                $match: { orgId },
+                $match: { orgId, trash: false },
             },
             {
                 $lookup: { from: "products", as: "products", localField: "products", foreignField: "_id" },
@@ -71,7 +71,7 @@ export const PUT = async (req: NextRequest) => {
         const body = await req.json();
         const { supplierId, name, phone } = editSchema.parse(body);
 
-        await Suppliers.updateOne({ orgId, _id: supplierId }, { name, phone });
+        await Suppliers.updateOne({ orgId, _id: supplierId, trash: false }, { name, phone });
         return json(text("success"));
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
@@ -90,8 +90,11 @@ export const DELETE = async (req: NextRequest) => {
         const { supplierId } = await req.json();
         if (!supplierId) return json(text("wrong"), 400);
 
-        const deleted = await Suppliers.deleteOne({ orgId, _id: supplierId });
-        if (!deleted.deletedCount) return json(text("wrong"), 400);
+        const updated = await Suppliers.updateOne(
+            { orgId, _id: supplierId, trash: false },
+            { trash: true, trashedAt: new Date() },
+        );
+        if (!updated.modifiedCount) return json(text("wrong"), 400);
 
         return json(text("success"));
     } catch (error: any) {

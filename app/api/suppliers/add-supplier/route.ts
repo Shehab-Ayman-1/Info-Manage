@@ -21,10 +21,11 @@ export const POST = async (req: NextRequest) => {
         const body = await req.json();
         const { name, phone, supplierId, productsIds } = createSchema.parse(body);
 
-        if (process === "old") await Suppliers.updateMany({ orgId, _id: supplierId }, { $addToSet: { products: productsIds } });
+        if (process === "old")
+            await Suppliers.updateMany({ orgId, _id: supplierId, trash: false }, { $addToSet: { products: productsIds } });
 
         if (process === "new") {
-            const supplier = await Suppliers.findOne({ orgId, name }).lean();
+            const supplier = await Suppliers.findOne({ orgId, name, trash: false }).lean();
             if (supplier) return json(text("already-exist"), 400);
             await Suppliers.create({ orgId, name, phone, products: productsIds });
         }

@@ -17,7 +17,7 @@ export const PUT = async (req: NextRequest) => {
         const { supplierId, productsIds } = await req.json();
         if (!supplierId || !productsIds.length) return json(text("missing-data"), 400);
 
-        await Suppliers.updateOne({ orgId, _id: supplierId }, { products: productsIds });
+        await Suppliers.updateOne({ orgId, _id: supplierId, trash: false }, { products: productsIds });
         return json(text("success"));
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");

@@ -111,7 +111,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
         await ClientBills.updateOne({ orgId, _id: billId }, { $inc: { paid: amount }, state });
 
         // Update The Client Salaries
-        await Clients.updateOne({ orgId, _id: bill.client }, { $inc: { pending: -amount } });
+        await Clients.updateOne({ orgId, _id: bill.client, trash: false }, { $inc: { pending: -amount } });
 
         const refreshAfter = +(organization?.publicMetadata?.refreshClientsPurchases as string)?.split(" ")[0];
         await Clients.updateLastRefreshDate({ orgId, clientId: bill.client, refreshAfter });

@@ -72,7 +72,7 @@ export const DELETE = async (req: NextRequest) => {
         // Return The Products To The Store From Supplier Ref
         await Promise.all([
             bill.products.map(async ({ name, count }) => {
-                const supplier = await Suppliers.findOne({ orgId, _id: bill.supplier }).populate({
+                const supplier = await Suppliers.findOne({ orgId, _id: bill.supplier, trash: false }).populate({
                     path: "products",
                     match: { name },
                     justOne: true,
@@ -84,7 +84,10 @@ export const DELETE = async (req: NextRequest) => {
 
         // Decreament The Supplier pending
         if (bill.total - bill.paid > 0)
-            await Suppliers.updateOne({ orgId, _id: bill.supplier }, { $inc: { pending: -(bill.total - bill.paid) } });
+            await Suppliers.updateOne(
+                { orgId, _id: bill.supplier, trash: false },
+                { $inc: { pending: -(bill.total - bill.paid) } },
+            );
 
         // Delete The Supplier Bill
         const deleted = await SupplierBills.deleteOne({ orgId, _id: billId });

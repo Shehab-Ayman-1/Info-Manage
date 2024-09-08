@@ -8,11 +8,14 @@ type TClient = Document & {
     name: string;
     phone: string;
 
-    level: "bronze" | "silver" | "gold";
     bronzeTo: number;
     silverTo: number;
 
+    level: "bronze" | "silver" | "gold";
     lastRefreshDate: Date;
+
+    trash: boolean;
+    trashedAt: Date;
 
     discounts: number;
     purchases: number;
@@ -24,7 +27,7 @@ const schema = new Schema<TClient>({
     name: { type: String, required: true, trim: true },
 
     level: { type: String, enum: ["bronze", "silver", "gold"], default: "bronze" },
-    phone: { type: String, required: [true, "Phone Number Is Required Field"], trim: true },
+    phone: { type: String, required: true, trim: true },
 
     bronzeTo: { type: Number, required: true },
     silverTo: { type: Number, required: true },
@@ -32,9 +35,14 @@ const schema = new Schema<TClient>({
     lastRefreshDate: { type: Date, default: new Date() },
     discounts: { type: Number, default: 0 },
 
+    trash: { type: Boolean, default: false },
+    trashedAt: { type: Date, default: null },
+
     pending: { type: Number, default: 0 },
     purchases: { type: Number, default: 0 },
 });
+
+schema.index({ trashedAt: 1 }, { expireAfterSeconds: 60 * 60 * 24 * 90 });
 
 type FilterQuery = {
     orgId: string;
@@ -47,21 +55,21 @@ type LastRefreshDate = FilterQuery & {
 
 schema.statics.updateLevel = async function ({ orgId, clientId }) {
     const Clients = this;
-    const client: ClientType = await Clients.findOne({ orgId, _id: clientId });
+    const client: ClientType = await Clients.findOne({ orgId, _id: clientId, trash: false });
     if (client.level === "gold") return 0;
 
     let level = "bronze";
     if (client.purchases >= client.bronzeTo) level = "silver";
     if (client.purchases >= client.silverTo) level = "gold";
 
-    const updated = await Clients.updateOne({ orgId, _id: clientId }, { level });
+    const updated = await Clients.updateOne({ orgId, _id: clientId, trash: false }, { level });
     return updated.modifiedCount;
 };
 
 schema.statics.updateLastRefreshDate = async function ({ orgId, clientId, refreshAfter = 3 }) {
     const Clients = this;
 
-    const client: ClientType = await Clients.findOne({ orgId, _id: clientId });
+    const client: ClientType = await Clients.findOne({ orgId, _id: clientId, trash: false });
     if (!client) throw new Error("Something Went Wrong.");
 
     const currentDate = new Date();

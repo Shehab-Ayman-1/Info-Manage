@@ -16,7 +16,7 @@ export const Actions = ({ row }: ActionsProps) => {
         {
             Icon: ArchiveRestore,
             text: "restore",
-            onClick: (original: any) => onOpen("restore-model", { productId: original._id }),
+            onClick: (original: any) => onOpen("restore-model", { _id: original._id, type: original.type }),
         },
     ];
 

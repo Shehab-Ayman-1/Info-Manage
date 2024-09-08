@@ -54,7 +54,9 @@ export const GET = async () => {
         ]);
 
         const [clientDebts] = await Clients.aggregate([
-            { $match: { orgId } },
+            {
+                $match: { orgId, trash: false },
+            },
             {
                 $group: {
                     _id: null,
@@ -64,7 +66,7 @@ export const GET = async () => {
         ]);
 
         const [supplierDebts] = await Suppliers.aggregate([
-            { $match: { orgId } },
+            { $match: { orgId, trash: false } },
             {
                 $group: {
                     _id: null,

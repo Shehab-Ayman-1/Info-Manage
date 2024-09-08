@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { BellIcon } from "lucide-react";
 
 import { useSubscription } from "@/hooks/useSubscription";
@@ -21,6 +22,7 @@ export type Notify = {
 export const Notifications = () => {
     const { data, isPending } = useGet<Notify[]>("/api/notifications", ["notifications"]);
     const { additionalSubscription } = useSubscription(["premium"]);
+    const text = useTranslations();
 
     const [subscriptions, setSubscriptions] = useState<Notify[]>([]);
 
@@ -36,16 +38,19 @@ export const Notifications = () => {
 
     return (
         <Popover>
-            <PopoverTrigger className="relative">
-                {!!subscriptions.length && (
-                    <span className="flex-center absolute -right-1 -top-2 block size-4 rounded-full bg-red-500 text-xs leading-none text-white">
-                        {subscriptions.length}
-                    </span>
-                )}
-                <BellIcon className="hover:text-slate-500" />
+            <PopoverTrigger className="group flex cursor-pointer items-center gap-2 rounded-md p-2 text-start text-lg hover:bg-primary-100 hover:text-black">
+                <div className="relative">
+                    {!!subscriptions.length && (
+                        <span className="flex-center absolute -right-1 -top-2 block size-4 rounded-full bg-red-500 text-xs leading-none text-white">
+                            {subscriptions.length}
+                        </span>
+                    )}
+                    <BellIcon className="group-hover:text-black" />
+                </div>
+                {text("header.icons.notifications")}
             </PopoverTrigger>
 
-            <PopoverContent align="end" className="bg-gradient w-auto md:min-w-96">
+            <PopoverContent align="start" side="left" className="bg-gradient w-auto md:min-w-96">
                 <NotifyLists data={subscriptions} />
                 {!isPending && <NotifyLists data={data!} />}
             </PopoverContent>

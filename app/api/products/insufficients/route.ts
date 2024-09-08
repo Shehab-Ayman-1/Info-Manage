@@ -19,7 +19,8 @@ export const GET = async (req: NextRequest) => {
 
         const insufficients = await Suppliers.aggregate([
             {
-                $match: supplierId === "all" ? { orgId } : { orgId, _id: new Types.ObjectId(supplierId) },
+                $match:
+                    supplierId === "all" ? { orgId, trash: false } : { orgId, trash: false, _id: new Types.ObjectId(supplierId) },
             },
             {
                 $unwind: "$products",

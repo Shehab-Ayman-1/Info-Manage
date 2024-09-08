@@ -1,17 +1,10 @@
 "use client";
-import { AlertTriangleIcon, Loader2Icon } from "lucide-react";
 import { ClerkLoaded, ClerkLoading, useOrganization } from "@clerk/nextjs";
+import { AlertTriangleIcon, Loader2Icon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
-import {
-    productLists,
-    clientLists,
-    supplierLists,
-    financeLists,
-    statisticsLinks,
-    NavLinkType,
-    AdditionalSubscription,
-} from "@/constants";
+import { productLists, clientLists, supplierLists, financeLists, statisticsLinks } from "@/constants";
+import { NavLinkType, AdditionalSubscription } from "@/constants";
 import { useSubscription } from "@/hooks/useSubscription";
 import { Alert } from "@/ui/alert";
 
@@ -42,8 +35,11 @@ export const SubscribeProvider = ({ children }: SubscribeProvider) => {
     const pathname = usePathname();
     const router = useRouter();
 
+    const ignoreRoutes = ["/profile", "/trash"];
+    const ignorePath = ignoreRoutes.some((route) => pathname.includes(route));
+
     const metadata = organization?.publicMetadata?.additionalSubscriptions as ("premium" | "enterprise")[];
-    const isAdditionalSubscriptionAllowed = checkSubscription(pathname, metadata) || pathname.includes("/profile");
+    const isAdditionalSubscriptionAllowed = checkSubscription(pathname, metadata) || ignorePath;
 
     if (!isAdditionalSubscriptionAllowed) {
         router.push("/");

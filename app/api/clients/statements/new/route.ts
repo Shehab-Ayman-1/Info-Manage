@@ -108,7 +108,7 @@ export const POST = async (req: NextRequest) => {
         // Update Client Pending, purchaseSalary Prices
         const totalProfits = data.products.reduce((prev, cur) => prev + cur.count * (cur.soldPrice - cur.purchasePrice), 0);
         await Clients.updateOne(
-            { orgId, _id: clientId },
+            { orgId, _id: clientId, trash: false },
             { $inc: { totalProfits, purchases: total, pending: total - paid, discounts: discount } },
             { session },
         );

@@ -117,7 +117,11 @@ export const POST = async (req: NextRequest) => {
         );
 
         // Update purchaseSalary Prices
-        await Clients.updateOne({ orgId, _id: bill.client }, { $inc: { purchases: -productsTotalCosts } }, { session });
+        await Clients.updateOne(
+            { orgId, _id: bill.client, trash: false },
+            { $inc: { purchases: -productsTotalCosts } },
+            { session },
+        );
 
         // Update Client Level
         await Clients.updateLevel({ orgId, clientId: bill.client });

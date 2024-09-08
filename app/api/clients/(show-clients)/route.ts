@@ -16,7 +16,7 @@ export const GET = async () => {
 
         const clients = await Clients.aggregate([
             {
-                $match: { orgId, name: { $ne: "unknown" } },
+                $match: { orgId, name: { $ne: "unknown" }, trash: false },
             },
             {
                 $project: {
@@ -54,7 +54,7 @@ export const PUT = async (req: NextRequest) => {
         const body = await req.json();
         const { clientId, name, phone, bronzeTo, silverTo } = editSchema.parse(body);
 
-        const updated = await Clients.updateOne({ orgId, _id: clientId }, { name, phone, bronzeTo, silverTo });
+        const updated = await Clients.updateOne({ orgId, _id: clientId, trash: false }, { name, phone, bronzeTo, silverTo });
         if (!updated.modifiedCount) return json(text("wrong"), 400);
 
         await Clients.updateLevel({ orgId, clientId });
@@ -81,8 +81,8 @@ export const DELETE = async (req: NextRequest) => {
         const { clientId } = await req.json();
         if (!clientId) return json(text("wrong"), 400);
 
-        const deleted = await Clients.deleteOne({ orgId, _id: clientId });
-        if (!deleted.deletedCount) return json(text("wrong"), 400);
+        const updated = await Clients.updateOne({ orgId, _id: clientId }, { trash: true, trashedAt: new Date() });
+        if (!updated.modifiedCount) return json(text("wrong"), 400);
 
         return json(text("success"));
     } catch (error: any) {

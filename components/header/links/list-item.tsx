@@ -24,8 +24,8 @@ export const ListItem = ({ heading, title, href, Icon, userRole, subscriptions, 
         <Link
             href={isAdmin && isAdditionalSubscribe ? href : "/"}
             className={cn(
-                "flex-between group cursor-pointer whitespace-nowrap border-none p-4 focus-visible:border-none",
-                isAdmin && isAdditionalSubscribe && "hover:bg-primary-50 dark:hover:bg-slate-800",
+                "flex-between group whitespace-nowrap rounded-md p-4",
+                isAdmin && isAdditionalSubscribe && "group hover:bg-primary-100",
                 (!isAdmin || !isAdditionalSubscribe) && "pointer-events-none",
             )}
         >
@@ -33,17 +33,13 @@ export const ListItem = ({ heading, title, href, Icon, userRole, subscriptions, 
                 <Icon
                     className={cn(
                         "size-4 sm:size-5",
-                        isAdmin && isAdditionalSubscribe
-                            ? "!text-slate-600 dark:!text-slate-300"
-                            : "!text-slate-400 dark:!text-slate-500",
+                        isAdmin && isAdditionalSubscribe ? "group-hover:text-black" : "!text-slate-400 dark:!text-slate-500",
                     )}
                 />
                 <h3
                     className={cn(
                         "text-sm font-bold sm:text-base",
-                        isAdmin && isAdditionalSubscribe
-                            ? "!text-slate-600 dark:!text-slate-300"
-                            : "!text-slate-400 dark:!text-slate-500",
+                        isAdmin && isAdditionalSubscribe ? "group-hover:text-black" : "!text-slate-400 dark:!text-slate-500",
                     )}
                 >
                     {text(`${heading}.${title}`)}

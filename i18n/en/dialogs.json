@@ -27,7 +27,7 @@
             }
         },
 
-        "trash-products": {
+        "trash": {
             "restore-dialog": {
                 "heading": "Restore Product",
                 "description": "Are You Sure You Want To Return The Product To The Market Again."

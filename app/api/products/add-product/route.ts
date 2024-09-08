@@ -46,7 +46,11 @@ export const POST = async (req: NextRequest) => {
 
         if (supplierId) {
             const productIds = createdProducts.map(({ _id }) => _id);
-            await Suppliers.updateMany({ orgId, _id: supplierId }, { $addToSet: { products: productIds } }, { session });
+            await Suppliers.updateMany(
+                { orgId, _id: supplierId, trash: false },
+                { $addToSet: { products: productIds } },
+                { session },
+            );
         }
 
         await session.commitTransaction();

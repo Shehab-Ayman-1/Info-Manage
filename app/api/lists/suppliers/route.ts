@@ -12,28 +12,21 @@ export const GET = async () => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const suppliers = await Suppliers.aggregate([
-            { $match: { orgId } },
+            { $match: { orgId, trash: false } },
             {
-                $lookup: {
-                    from: "products",
-                    as: "products",
-                    localField: "products",
-                    foreignField: "_id",
-                },
+                $lookup: { from: "products", as: "products", localField: "products", foreignField: "_id" },
             },
             {
                 $unwind: "$products",
             },
             {
-                $lookup: {
-                    from: "companies",
-                    as: "products.company",
-                    localField: "products.company",
-                    foreignField: "_id",
-                },
+                $lookup: { from: "companies", as: "products.company", localField: "products.company", foreignField: "_id" },
             },
             {
                 $unwind: "$products.company",
+            },
+            {
+                $match: { "products.trash": false },
             },
             {
                 $group: {

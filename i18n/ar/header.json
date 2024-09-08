@@ -1,6 +1,13 @@
 {
     "header": {
         "brand": "منظومتي",
+        "icons": {
+            "searchbar": "صندوق البحث",
+            "notifications": "الاشعارات",
+            "quick-statement": "كشف حساب عميل سريع",
+            "subscriptions": "الاشتراكات",
+            "recycle-bin": "سله المهملات"
+        },
         "navbar": {
             "products": {
                 "heading": "المنتجات",
@@ -11,8 +18,7 @@
                 "today-sales": "كشف مبيعات اليوم",
                 "add-category": "إضافة قسم جديد",
                 "add-company": "إضافة شركة جديدة",
-                "add-product": "إضافة منتج جديد",
-                "recycle-bin": "سله المهملات"
+                "add-product": "إضافة منتج جديد"
             },
             "clients": {
                 "heading": "العملاء",

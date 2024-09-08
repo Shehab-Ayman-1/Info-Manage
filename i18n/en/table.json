@@ -75,6 +75,9 @@
         "solds": "Solds",
         "needed": "Needed",
 
+        "deleted-name": "Deleted name",
+        "type": "Type",
+
         "filter-by": {
             "heading": "Filter By",
             "category": "Category",

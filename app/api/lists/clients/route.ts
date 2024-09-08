@@ -11,11 +11,11 @@ export const GET = async () => {
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
 
-        const clients = await Clients.find({ orgId }).select(["_id", "name"]);
+        const clients = await Clients.find({ orgId, trash: false }).select(["_id", "name"]);
 
         const unknown = clients.find((client) => client.name === "unknown");
         if (!unknown) {
-            const client = await Clients.create({ orgId, name: "unknown", phone: "01234567890", bronzeTo: 1, silverTo: 1,  });
+            const client = await Clients.create({ orgId, name: "unknown", phone: "01234567890", bronzeTo: 1, silverTo: 1 });
             clients.push(client);
         }
 
