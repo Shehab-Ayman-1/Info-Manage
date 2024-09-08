@@ -18,7 +18,7 @@ export const TableFooter = ({ colsLen, smallSize, totalFor, total }: TableFooter
 
     return (
         <TableRow className="bg-gradient-heavy">
-            <TableCell colSpan={colsLen} className={cn("font-bold text-black", smallSize ? "py-2 text-base" : "text-xl")}>
+            <TableCell colSpan={colsLen} className={cn("font-bold text-white", smallSize ? "py-2 text-base" : "text-xl")}>
                 <div className="flex-around">
                     <p className="">
                         {text("total")} {name}

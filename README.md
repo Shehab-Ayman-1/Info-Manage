@@ -1,12 +1,19 @@
+# Papers(30), Water(10), Coffee(15), Juice(30) = 85
+
 # TODO:
 
-    - Add Profits To The Client Props And Set The Trophies  Depend On This Profits
+    - في نواقص المنتجات قم باضافه عمود جديد به تحديد للمنتج مع اضافه عدد له ثم قم بعمل كشف حساب بالمنتجات المختارة
 
-    - Clients, And Suppliers Payment Way
+    - يوجد مشكله في تفاصيل فواتير المرجع للموردين
 
-    - Update Bill
+    - سد مديونيات العملاء والموردين حسب المتبقي من كلاً منهما وليس علي الفاتورة
+
+    - امكانية تعديل الحد الادني في تعديل بروفايل المنتج
+
+    - كشف حساب مشتريات اليومي بيجيب فواتير المرتجع
 
     - Think About
+        -- قم باضافه الارباح لكل عميل وقم بعمل الخصومات والهدايا بنائاً علي الارباح وليس المشتريات
         -- البضائع السائله
         -- تفعيل خطه شرائح العملاء
         -- الربط بين اكثر من فرع
@@ -19,40 +26,3 @@
         -- Advanced Aggregation
         -- Advanced Queres
         -- Plugins
-
-```ts
-    const { user, setActive, openUserProfile, organization, getOrganization, createOrganization, client, frontendApi, ...rest } = useClerk();
-
-    const { isLoaded, setActive, createOrganization, userInvitations, userMemberships, userSuggestions } = useOrganizationList();
-
-    const { isLoaded, userId, has, orgId, orgRole, orgSlug, sessionId, actor, getToken, isSignedIn, signOut } = useAuth();
-
-    const { sessions, isLoaded, setActive } = useSessionList();
-
-    const { session, isLoaded, isSignedIn } = useSession();
-
-    const { signUp, isLoaded, setActive ,} = useSignUp();
-
-    const { signIn, isLoaded, setActive } = useSignIn();
-
-    const { user, isLoaded, isSignedIn } = useUser();
-```
-
-```ts
-    const transaction = {
-        _id: string,
-        orgId: string,
-        creator: string,
-        method: 'cash' | 'visa',
-        process: 'withdraw' | 'deposit',
-        total: number,
-        history: [
-            {
-                _id: string,
-                reason: string,
-                price: number,
-                createdAt: Date
-            }
-        ]
-    }
-```

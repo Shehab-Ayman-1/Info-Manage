@@ -38,8 +38,8 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
                     supplier: { $first: "$supplier.name" },
                     paid: { $first: "$paid" },
                     total: { $first: "$total" },
-                    discount: { $first: "$discount" },
                     state: { $first: "$state" },
+                    discount: { $first: "$discount" },
                     createdAt: { $first: "$createdAt" },
                     products: {
                         $push: {

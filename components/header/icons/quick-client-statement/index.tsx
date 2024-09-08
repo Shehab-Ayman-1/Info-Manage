@@ -16,12 +16,12 @@ import { CreateClientType, createSchema } from "@/app/api/clients/statements/new
 import { SubmitButton } from "@/components/public/submit-btn";
 import { ComboBox } from "@/components/ui/comboBox";
 import { DialogForm } from "@/components/ui/dialog";
+import { Tooltip } from "@/components/ui/tooltip";
 import { DataTable } from "@/components/table";
 import { DeleteDialog } from "./delete-dialog";
 import { methods } from "@/constants";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
-import { Tooltip } from "@/components/ui/tooltip";
 
 const productSchema = z.array(
     z.object({

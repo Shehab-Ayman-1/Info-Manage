@@ -6,7 +6,6 @@ import Image from "next/image";
 import { ActiveOrg } from "@/utils/activeOrg";
 import { Providers } from "@/providers";
 
-import { Configrator } from "@/components/configrator";
 import { Sidebar } from "@/components/sidebar";
 import { Icons } from "@/ui/icons";
 import "./sass/index.scss";
@@ -42,7 +41,6 @@ const Layout = async ({ children }: LayoutProps) => {
                         <Sidebar />
                         {children}
                         <Image src="/overview.jpeg" alt="overview" fill className="!fixed -z-10 opacity-5" />
-                        <Configrator />
                     </ClerkLoaded>
                 </Providers>
             </body>
@@ -54,10 +52,7 @@ function NotSignedIn({ children }: LayoutProps) {
     return (
         <html lang="en" suppressHydrationWarning>
             <body className="bg-gradient min-h-screen">
-                <Providers>
-                    <Configrator />
-                    {children}
-                </Providers>
+                <Providers>{children}</Providers>
             </body>
         </html>
     );
