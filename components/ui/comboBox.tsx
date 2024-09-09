@@ -92,6 +92,7 @@ export const ComboBox = (props: ComboBoxProps) => {
                             {!loading && !items?.length && !groups?.length && (
                                 <CommandEmpty>{text("table.no-results")}.</CommandEmpty>
                             )}
+
                             {loading && !items?.length && !groups?.length && <CommandLoading />}
 
                             {!!items?.length &&
@@ -166,38 +167,30 @@ function CommandTrigger({ useTranslate, selectedValue, label, open }: CommandTri
     const NCT = isNotCustomeTrigger && text(`${useTranslate?.trigger}.${selectedValue || label}`);
     const CT = isCustomeTrigger && (selectedValue || text(`${useTranslate?.trigger}.${label}`));
 
-    if (isProduct) {
+    const RenderButton = () => {
         return (
-            <Tooltip content="Shift">
-                <PopoverTrigger ref={ref} asChild>
-                    <Button
-                        type="button"
-                        variant="ghost"
-                        role="combobox"
-                        aria-expanded={open}
-                        className="flex-between mt-1 w-full border-b border-b-primary !py-8 text-base text-slate-400"
-                    >
-                        {NCT || CT || selectedValue || label}
-                        <ChevronsUpDownIcon className="mx-2 size-4 opacity-50" />
-                    </Button>
-                </PopoverTrigger>
-            </Tooltip>
+            <PopoverTrigger asChild ref={ref}>
+                <Button
+                    type="button"
+                    variant="ghost"
+                    className={cn(
+                        "flex-between mt-1 w-full border-b border-b-primary !py-8 text-base",
+                        selectedValue ? "text-slate-700 dark:text-slate-200" : "text-slate-500",
+                    )}
+                >
+                    {NCT || CT || selectedValue || label}
+                    <ChevronsUpDownIcon className="mx-2 size-4 opacity-50" />
+                </Button>
+            </PopoverTrigger>
         );
-    }
+    };
+
+    if (!isProduct) return <RenderButton />;
 
     return (
-        <PopoverTrigger ref={ref} asChild>
-            <Button
-                type="button"
-                variant="ghost"
-                role="combobox"
-                aria-expanded={open}
-                className="flex-between mt-1 w-full border-b border-b-primary !py-8 text-base text-slate-400"
-            >
-                {isNotCustomeTrigger ? NCT : isCustomeTrigger ? CT : selectedValue || label}
-                <ChevronsUpDownIcon className="mx-2 size-4 opacity-50" />
-            </Button>
-        </PopoverTrigger>
+        <Tooltip content="Shift">
+            <RenderButton />
+        </Tooltip>
     );
 }
 
@@ -210,13 +203,15 @@ type CommandListItemProps = {
 };
 
 function CommandListItem({ useTranslate, selectedValue, value, title, onSelect }: CommandListItemProps) {
-    const hideIcon = (value: string) => (selectedValue === value ? "opacity-100" : "opacity-0");
+    const hideIcon = selectedValue === value ? "opacity-100" : "opacity-0";
     const text = useTranslations();
+
+    const item = useTranslate?.item ? text(`${useTranslate.item}.${title}`) : title.split(" ||| ")?.[0];
 
     return (
         <CommandItem value={value} onSelect={onSelect} className="cursor-pointer text-lg capitalize leading-10">
-            <CheckCheckIcon className={cn("mx-2 size-4 !text-green-500", hideIcon(value))} />
-            {useTranslate?.item ? text(`${useTranslate.item}.${title}`) : title.split(" ||| ")?.[0]}
+            <CheckCheckIcon className={cn("mx-2 size-4 !text-green-500", hideIcon)} />
+            {item}
         </CommandItem>
     );
 }

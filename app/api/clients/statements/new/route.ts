@@ -92,7 +92,7 @@ export const POST = async (req: NextRequest) => {
                 },
             },
             { session },
-        ).session(session);
+        );
 
         // Update Products Price By The Current Prices, And Dec The Count From The Market
         await Promise.all(

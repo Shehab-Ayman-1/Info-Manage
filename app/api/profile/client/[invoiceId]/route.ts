@@ -31,13 +31,19 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
                 $unwind: "$client",
             },
             {
-                $unwind: "$products",
+                $unwind: {
+                    path: "$products",
+                    preserveNullAndEmptyArrays: true,
+                },
             },
             {
                 $lookup: { from: "products", localField: "products.productId", foreignField: "_id", as: "products.source" },
             },
             {
-                $unwind: "$products.source",
+                $unwind: {
+                    path: "$products.source",
+                    preserveNullAndEmptyArrays: true,
+                },
             },
             {
                 $lookup: {
@@ -80,7 +86,9 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
             },
         ]);
 
-        return json(invoice);
+        console.log(invoice);
+
+        return json(!invoice.products[0].total ? { ...invoice, products: [] } : invoice);
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);
@@ -117,7 +125,6 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
         await Clients.updateLastRefreshDate({ orgId, clientId: invoice.client, refreshAfter });
 
         // Create Transaction
-
         await Transactions.updateOne(
             {
                 orgId,

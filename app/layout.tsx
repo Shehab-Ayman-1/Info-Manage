@@ -30,7 +30,7 @@ const Layout = async ({ children }: LayoutProps) => {
 
     return (
         <html suppressHydrationWarning lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
-            <body className="bg-gradient relative min-h-screen w-full max-w-[100vw] overflow-x-auto">
+            <body className="bg-gradient relative min-h-screen w-full max-w-[100vw] overflow-x-hidden">
                 <Providers>
                     <ClerkLoading>
                         <Icons.spinner className="fixed left-[calc(50%-32px)] top-[calc(50%-32px)] size-16 animate-spin" />

@@ -1,5 +1,5 @@
 "use client";
-import { EditIcon, Trash2Icon } from "lucide-react";
+import { BadgeDollarSignIcon, EditIcon, Trash2Icon } from "lucide-react";
 import { Row } from "@tanstack/react-table";
 
 import { TableActions } from "@/components/table/table-actions";
@@ -17,6 +17,11 @@ export const Actions = ({ row }: ActionsProps) => {
             Icon: EditIcon,
             text: "edit",
             onClick: (original: any) => onOpen("update-model", { client: original }),
+        },
+        {
+            Icon: BadgeDollarSignIcon,
+            text: "pay",
+            onClick: (original: any) => onOpen("payment-model", { client: original }),
         },
         {
             Icon: Trash2Icon,

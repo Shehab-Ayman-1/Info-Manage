@@ -11,6 +11,7 @@
         "cash": "Bargeld",
         "visa": "Visa",
         "admin": "Admin",
-        "member": "Mitglied"
+        "member": "Mitglied",
+        "payment": "Zahlung"
     }
 }

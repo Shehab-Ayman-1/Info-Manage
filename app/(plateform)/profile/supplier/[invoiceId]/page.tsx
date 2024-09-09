@@ -62,18 +62,21 @@ const InvoiceProfile = ({ params }: InvoiceProfileProps) => {
                     </h1>
                 </div>
                 <Button type="button" size="lg" className="w-fit gap-2 text-lg font-bold print:hidden" onClick={onPrint}>
-                    <PrinterCheckIcon className="size-5 !text-white dark:!text-black" />
+                    <PrinterCheckIcon className="size-5 !text-white" />
                     {text("public.print-receipt")}
                 </Button>
             </div>
 
-            <div className="my-4 rounded-md bg-white px-4 shadow-md dark:bg-black">
-                <DataTable columns={columns} data={data.products} totalFor="total" />
-            </div>
+            {!!data.products.length && (
+                <div className="my-4 rounded-md bg-white px-4 shadow-md dark:bg-black">
+                    <DataTable columns={columns} data={data.products} totalFor="total" />
+                </div>
+            )}
 
             <div className="flex-around flex-wrap md:flex-nowrap">
                 <h1 className={styleText}>
-                    {text("table.total")}: ( ${data.total} )
+                    {text("table.total")} {data.state === "payment" ? text("table.pending") : text("table.costs")}: ( $
+                    {data.total} )
                 </h1>
                 <h1 className={styleText}>
                     {text("table.paid")}: ( ${data.paid} )

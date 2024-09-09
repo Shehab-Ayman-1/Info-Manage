@@ -88,9 +88,11 @@
         "print-receipt": "Beleg drucken",
         "unknown": "unbekannt",
 
-        "refund": "Wiederherstellen",
-        "completed": "Abgeschlossen",
-        "pending": "Ausstehend",
+        "completed": "abgeschlossen",
+        "pending": "anhängig",
+
+        "payment": "Zahlung",
+        "refund": "Erstattung",
 
         "premium": "Premium",
         "enterprise": "Enterprise",
@@ -103,6 +105,9 @@
 
         "client-invoice-payment": "Kundenrechnungszahlung",
         "supplier-invoice-payment": "Lieferantenrechnungszahlung",
+
+        "client-payment": "Zahlung an Kunden",
+        "supplier-payment": "Lieferantenzahlung",
 
         "canceled-supplier-invoice": "Stornierte Lieferantenrechnung",
         "trash-expiration": "Der Papierkorb entfernt den Müll automatisch nach dem Ablaufdatum von ( 3 Months )"

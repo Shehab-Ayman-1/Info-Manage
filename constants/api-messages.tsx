@@ -42,6 +42,7 @@ export const translations = {
         clients: {
             "show-clients": {
                 put: {
+                    "greater-payment-amount": "Payment Amount Is Greater Than The Client Pending Amount.",
                     success: "The Client Info Was Successfully Updated.",
                 },
                 delete: {
@@ -120,6 +121,7 @@ export const translations = {
         suppliers: {
             "show-suppliers": {
                 put: {
+                    "greater-payment-amount": "Payment Amount Is Greater Than The Client Pending Amount.",
                     "missing-data": "Missing Data.",
                     success: "The Supplier Was Successfully Updated.",
                 },
@@ -201,6 +203,7 @@ export const translations = {
         clients: {
             "show-clients": {
                 put: {
+                    "greater-payment-amount": "المبلغ المدفوع اكبر من المبلغ المتبقي علي العميل.",
                     success: "لقد تم تعديل بيانات العميل بنجاح",
                 },
                 delete: {
@@ -279,6 +282,7 @@ export const translations = {
         suppliers: {
             "show-suppliers": {
                 put: {
+                    "greater-payment-amount": "المبلغ المدفوع اكبر من المبلغ المتبقي علي العميل.",
                     "missing-data": "بعض البيانات مفقوده.",
                     success: "لقد تم تعديل المورد بنجاح.",
                 },
@@ -364,6 +368,7 @@ export const translations = {
         clients: {
             "show-clients": {
                 put: {
+                    "greater-payment-amount": "Zahlungsbetrag ist größer als der ausstehende Betrag des Kunden.",
                     success: "Die Kundeninformationen wurden erfolgreich aktualisiert.",
                 },
                 delete: {
@@ -442,6 +447,7 @@ export const translations = {
         suppliers: {
             "show-suppliers": {
                 put: {
+                    "greater-payment-amount": "Zahlungsbetrag ist größer als der ausstehende Betrag des Kunden.",
                     "missing-data": "Fehlende Daten.",
                     success: "Der Lieferant wurde erfolgreich aktualisiert.",
                 },

@@ -1,8 +1,8 @@
+import { useTranslations } from "next-intl";
 import * as React from "react";
 
 import { cn } from "@/utils/shadcn";
 import { Label } from "./label";
-import { useTranslations } from "next-intl";
 
 type UseTranslate = {
     label?: string;
@@ -34,8 +34,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 <input
                     {...props}
                     className={cn(
-                        "flex w-full rounded-md bg-transparent p-4 text-sm text-slate-900 dark:text-slate-200",
-                        "placeholder:py-2 placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 sm:text-lg",
+                        "flex w-full rounded-md bg-transparent p-4 text-sm",
+                        "text-slate-700 placeholder:text-slate-500 dark:text-slate-200",
+                        "placeholder:py-2 disabled:cursor-not-allowed disabled:opacity-50 sm:text-lg",
                         error
                             ? "border-b-rose-400 bg-rose-50/50 dark:border-b-rose-200 dark:bg-rose-400/30"
                             : "border-b border-b-primary",

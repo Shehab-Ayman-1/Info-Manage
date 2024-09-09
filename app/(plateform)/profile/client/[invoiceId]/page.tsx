@@ -50,6 +50,7 @@ const InvoiceProfile = ({ params }: InvoiceProfileProps) => {
 
     if (isPending) return <ProfileLoading />;
     if (error) return <h1>{error.message}</h1>;
+    if (!data) return;
 
     const styleText = "mb-4 text-xl font-semibold";
 
@@ -68,19 +69,22 @@ const InvoiceProfile = ({ params }: InvoiceProfileProps) => {
                     </h1>
                 </div>
 
-                <Button type="button" size="lg" className="w-fit gap-2 text-lg font-bold print:hidden" onClick={onPrint}>
-                    <PrinterCheckIcon className="size-5 !text-white dark:!text-black" />
+                <Button type="button" size="lg" className="mb-4 w-fit gap-2 text-lg font-bold print:hidden" onClick={onPrint}>
+                    <PrinterCheckIcon className="size-5 !text-white" />
                     {text("public.print-receipt")}
                 </Button>
             </div>
 
-            <div className="my-4 rounded-md px-4 shadow-md">
-                <DataTable columns={columns} data={data.products} totalFor="total" />
-            </div>
+            {data.state !== "payment" && (
+                <div className="my-4 rounded-md px-4 shadow-md">
+                    <DataTable columns={columns} data={data.products} totalFor="total" />
+                </div>
+            )}
 
             <div className="flex-around flex-wrap md:flex-nowrap">
                 <h1 className={styleText}>
-                    {text("table.total")}: ( ${data.total} )
+                    {text("table.total")} {data.state === "payment" ? text("table.pending") : text("table.costs")}: ( $
+                    {data.total} )
                 </h1>
                 <h1 className={styleText}>
                     {text("table.paid")}: ( ${data.paid} )
@@ -91,15 +95,19 @@ const InvoiceProfile = ({ params }: InvoiceProfileProps) => {
             </div>
 
             <div className="flex-around flex-wrap md:flex-nowrap">
-                <h1 className={styleText}>
-                    {text("table.discount")}: ( ${data.discount} )
-                </h1>
+                {data.state !== "payment" && (
+                    <h1 className={styleText}>
+                        {text("table.discount")}: ( ${data.discount} )
+                    </h1>
+                )}
                 <h1 className={styleText}>
                     {text("table.state")}: ( {text(`public.${data.state}`)} )
                 </h1>
-                <h1 className={cn(styleText, "print:hidden")}>
-                    {text("table.profits")}: ( ${data.invoiceProfits} )
-                </h1>
+                {data.state !== "payment" && (
+                    <h1 className={cn(styleText, "print:hidden")}>
+                        {text("table.profits")}: ( ${data.invoiceProfits} )
+                    </h1>
+                )}
             </div>
 
             <ClerkLoaded>

@@ -20,6 +20,8 @@ export const TranslateCell = ({ row, name, isReason }: TranslateCellType) => {
         "client-invoice-payment",
         "supplier-invoice-payment",
         "canceled-supplier-invoice",
+        "client-payment",
+        "supplier-payment",
     ];
 
     const reasonText = reasons.includes(value) ? text(`public.${value}`) : value;

@@ -40,7 +40,7 @@ export const NavLinks = ({}: NavLinksProps) => {
                         <ChevronDownIcon className="mt-1 size-4 hover:text-slate-700" />
                     </HoverCardTrigger>
 
-                    <HoverCardContent sideOffset={-1} className="bg-white shadow-xl dark:border-slate-600">
+                    <HoverCardContent sideOffset={-1} className="bg-white shadow-xl dark:border-slate-600 dark:bg-black">
                         <ListItems links={nav.links} heading={nav.heading} index={index} onOpen={onOpen} />
                     </HoverCardContent>
                 </HoverCard>

@@ -34,15 +34,13 @@ export const GET = async (req: NextRequest) => {
             {
                 $project: {
                     _id: 1,
-                    client: "$client.name",
-
                     total: 1,
                     paid: 1,
                     state: 1,
                     discount: 1,
-
-                    pending: { $subtract: ["$total", "$paid"] },
+                    client: "$client.name",
                     createdAt: "$createdAt",
+                    pending: { $subtract: ["$total", "$paid"] },
                 },
             },
             {

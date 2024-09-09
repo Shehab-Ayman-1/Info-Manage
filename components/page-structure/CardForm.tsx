@@ -1,9 +1,10 @@
 "use client";
+import { useKey } from "react-use";
+import { useRef } from "react";
+
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/ui/card";
 import { Button } from "@/ui/button";
 import { cn } from "@/utils/shadcn";
-import { useRef } from "react";
-import { useKey } from "react-use";
 
 type CardFormProps = {
     submitText?: string;
@@ -22,7 +23,7 @@ export const CardForm = ({ heading, submitText, disabled, children, onSubmit }: 
             <CardContent className="">
                 <CardHeader
                     className={cn(
-                        "bg-gradient-heavy w-[80%] rounded-lg text-center font-bold text-white !shadow-xl dark:text-black",
+                        "bg-gradient-heavy w-[80%] rounded-lg text-center font-bold text-white !shadow-xl",
                         "mx-auto -mt-8 mb-6 sm:-mt-[4.5rem] sm:!py-10",
                     )}
                 >

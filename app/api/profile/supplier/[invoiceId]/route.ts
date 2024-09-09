@@ -19,6 +19,7 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const { invoiceId } = res.params;
+
         const [invoice] = await SupplierInvoices.aggregate([
             {
                 $match: { orgId, _id: new Types.ObjectId(invoiceId) },
@@ -30,7 +31,10 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
                 $unwind: "$supplier",
             },
             {
-                $unwind: "$products",
+                $unwind: {
+                    path: "$products",
+                    preserveNullAndEmptyArrays: true,
+                },
             },
             {
                 $group: {
@@ -53,7 +57,7 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
             },
         ]);
 
-        return json(invoice);
+        return json(!invoice.products[0].total ? { ...invoice, products: [] } : invoice);
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

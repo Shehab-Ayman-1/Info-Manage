@@ -1,11 +1,12 @@
 "use client";
+import { useGet } from "@/hooks/api/useGet";
+import { columns } from "./table-columns";
+
 import { TableForm } from "@/components/page-structure/table-form";
 import { CardLoading } from "@/components/loading/card";
-import { useGet } from "@/hooks/api/useGet";
-
 import { UpdateDialog } from "./update-dialog";
 import { DeleteDialog } from "./delete-dialog";
-import { columns } from "./table-columns";
+import { PaymentDialog } from "./pay-dialog";
 import { ClientType } from "./schema";
 
 const ClientList = () => {
@@ -20,11 +21,12 @@ const ClientList = () => {
             data={data}
             columns={columns}
             totalFor="pending"
-            filterBy={["client", "level"]}
+            filterBy={["client"]}
             navigate={[{ text: "new-client", to: "/clients/add-client" }]}
         >
             <UpdateDialog />
             <DeleteDialog />
+            <PaymentDialog />
         </TableForm>
     );
 };

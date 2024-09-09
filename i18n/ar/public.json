@@ -88,9 +88,11 @@
         "print-receipt": "طباعة الفاتورة",
         "unknown": "غير معروف",
 
-        "refund": "مُرتجع",
-        "completed": "مُكتمل",
-        "pending": "قيد الدفع",
+        "completed": "مكتمل",
+        "pending": "انتظار",
+
+        "payment": "دفعه ماليه",
+        "refund": "مرتجع",
 
         "premium": "Premium",
         "enterprise": "Enterprise",
@@ -103,6 +105,9 @@
 
         "client-invoice-payment": "دفعه ماليه من عميل",
         "supplier-invoice-payment": "دفعه ماليه من مورد",
+
+        "client-payment": "دفعه ماليه من عميل",
+        "supplier-payment": "دفعه ماليه من مورد",
 
         "canceled-supplier-invoice": "استرجاع فاتورة مورد",
         "trash-expiration": "يتم تفريغ المحذوفات بعد انتهاء الصلاحية ( 3 شهور )"

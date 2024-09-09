@@ -88,9 +88,11 @@
         "print-receipt": "Print Receipt",
         "unknown": "unknown",
 
-        "refund": "Refund",
         "completed": "Completed",
         "pending": "Pending",
+
+        "payment": "Payment",
+        "refund": "Refund",
 
         "premium": "Premium",
         "enterprise": "Enterprise",
@@ -103,6 +105,9 @@
 
         "client-invoice-payment": "Client Invoice Payment",
         "supplier-invoice-payment": "Supplier Invoice Payment",
+
+        "client-payment": "Client Payment",
+        "supplier-payment": "Supplier Payment",
 
         "canceled-supplier-invoice": "Canceled Supplier Invoice",
         "trash-expiration": "Recycle Bin Automatically Remvoe The Trash After Expiration Date. ( 3 Months )"

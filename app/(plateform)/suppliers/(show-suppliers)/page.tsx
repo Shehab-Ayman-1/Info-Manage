@@ -9,6 +9,7 @@ import { UpdateProductsDialog } from "./update-product-dialog";
 import { UpdateDialog } from "./update-dialog";
 import { DeleteDialog } from "./delete-dialog";
 import { SupplierType } from "./types";
+import { PaymentDialog } from "./pay-dialog";
 
 const Suppliers = () => {
     const { data, isPending, error } = useGet<SupplierType[]>("/api/suppliers", ["suppliers"]);
@@ -27,6 +28,7 @@ const Suppliers = () => {
         >
             <UpdateDialog />
             <DeleteDialog />
+            <PaymentDialog />
             <UpdateProductsDialog />
         </TableForm>
     );
