@@ -44,7 +44,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
         const productId = res.params.productId;
 
         const body = await req.json();
-        const { name, barcode, purchasePrice, salePrice, marketCount, storeCount, companyId, company, image } =
+        const { name, barcode, purchasePrice, min, salePrice, marketCount, storeCount, companyId, company, image } =
             editSchema.parse(body);
 
         await Companies.updateOne({ _id: companyId }, { name: company, image });
@@ -54,6 +54,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
             {
                 name,
                 barcode,
+                min,
                 market: { price: purchasePrice, count: marketCount },
                 store: { price: salePrice, count: storeCount },
             },

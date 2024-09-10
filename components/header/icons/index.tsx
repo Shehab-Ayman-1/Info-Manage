@@ -21,11 +21,11 @@ export const NavIcons = ({}: NavlinksProps) => {
         <div className="flex-end">
             <Menu />
 
-            <Configrator />
+            <Searchbar />
 
             <Notifications />
 
-            <Searchbar />
+            <Configrator />
 
             {isMe && <OrgSwitcher />}
 

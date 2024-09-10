@@ -15,8 +15,9 @@ type ListItemProps = NavLinkType & {
 
 export const ListItem = ({ heading, title, href, Icon, userRole, subscriptions, additionalSubscriptions }: ListItemProps) => {
     const { isAdditionalSubscribe } = useSubscription(additionalSubscriptions, subscriptions);
-    const text = useTranslations("header.navbar");
     const { orgRole } = useAuth();
+    
+    const text = useTranslations("header.navbar");
 
     const isAdmin = orgRole === "org:admin" || orgRole === userRole;
 

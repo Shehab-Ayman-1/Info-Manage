@@ -45,7 +45,7 @@ export const POST = async (req: NextRequest) => {
             return json(text("products-not-exist"), 400);
         }
 
-        // Check If The Locker Contain Refundd Products Salary
+        // Check If The Locker Contain Refund Products Salary
         const { lockerCash } = await Transactions.getLockerCash(orgId);
         if (productsTotalCosts > lockerCash) {
             await session.abortTransaction();
@@ -104,7 +104,7 @@ export const POST = async (req: NextRequest) => {
                         $slice: -100,
                         $each: [
                             {
-                                reason: "Refundd Client Statement",
+                                reason: "Refund Client Statement",
                                 creator: user.fullName,
                                 price: productsTotalCosts,
                                 createdAt: new Date(),

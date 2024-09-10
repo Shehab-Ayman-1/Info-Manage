@@ -19,7 +19,7 @@ export const GET = async () => {
 
         const sales = await ClientInvoices.aggregate([
             {
-                $match: { orgId, createdAt: { $gte: startOfDay, $lte: endOfDay } },
+                $match: { orgId, type: "sale", createdAt: { $gte: startOfDay, $lte: endOfDay } },
             },
             {
                 $unwind: "$products",

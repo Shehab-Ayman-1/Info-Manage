@@ -79,6 +79,7 @@
         "type": "النوع",
 
         "expires-after": "انتهاء الصلاحية",
+        "check": "تحديد",
 
         "filter-by": {
             "heading": "البحث بواسطة",

@@ -18,8 +18,8 @@ export const POST = async (req: NextRequest) => {
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
-        const text = await getTranslations("suppliers.refund-statement.post");
 
+        const text = await getTranslations("suppliers.refund-statement.post");
         const user = await clerkClient().users.getUser(userId);
 
         const body = await req.json();
@@ -63,7 +63,6 @@ export const POST = async (req: NextRequest) => {
         );
 
         // Create New Transaction
-
         await Transactions.updateOne(
             {
                 orgId,
@@ -77,7 +76,7 @@ export const POST = async (req: NextRequest) => {
                         $slice: -100,
                         $each: [
                             {
-                                reason: "Refundd Supplier Statement",
+                                reason: "Refund Supplier Statement",
                                 creator: user.fullName,
                                 price: paid,
                                 createdAt: new Date(),

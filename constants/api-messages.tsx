@@ -35,7 +35,7 @@ export const translations = {
             },
             trash: {
                 put: {
-                    success: "The Product Was Successfully Refundd Again.",
+                    success: "The Product Was Successfully Refund Again.",
                 },
             },
         },
@@ -65,12 +65,12 @@ export const translations = {
                 post: {
                     "missing-invoice": "The Client Invoice Not Found.",
                     "products-not-exist": "Some Products Count Is Not Exist In The Client Invoice",
-                    "locker-not-enough": "Locker Doesn't Exist The Refundd Total Products Costs.",
-                    success: "The Statement Was Successfully Refundd.",
+                    "locker-not-enough": "Locker Doesn't Exist The Refund Total Products Costs.",
+                    success: "The Statement Was Successfully Refund.",
                 },
                 delete: {
-                    "locker-not-enough": "Locker Doesn't Exist The Refundd Total Products Costs.",
-                    success: "The Statement Was Successfully Refundd.",
+                    "locker-not-enough": "Locker Doesn't Exist The Refund Total Products Costs.",
+                    success: "The Statement Was Successfully Refund.",
                 },
             },
         },
@@ -157,7 +157,7 @@ export const translations = {
             "refund-statement": {
                 post: {
                     "not-enough": "Not Enough",
-                    success: "The Products Was Successfully Refundd.",
+                    success: "The Products Was Successfully Refund.",
                 },
             },
         },

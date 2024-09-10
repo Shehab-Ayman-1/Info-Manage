@@ -10,7 +10,14 @@ export const Languages = () => {
     const locale = useLocale();
 
     const onChange = (lang: string) => {
-        document.cookie = `NEXT_LOCALE=${lang};`;
+        const cookie = document.cookie.split("; ").find((cookie) => cookie.startsWith("NEXT_LOCALE"));
+        if (!cookie) {
+            document.cookie = `NEXT_LOCALE=${lang}; path=/;`;
+        } else {
+            document.cookie = `NEXT_LOCALE=${lang}; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
+            document.cookie = `NEXT_LOCALE=${lang}; path=/;`;
+        }
+
         router.refresh();
     };
 

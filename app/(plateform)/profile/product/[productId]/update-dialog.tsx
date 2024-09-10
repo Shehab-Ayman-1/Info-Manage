@@ -21,7 +21,7 @@ type UpdateDialogProps = {
 
 export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
     const { mutate, isPending } = useUpdate<EditProfileSchema>(`/api/profile/product/${productId}`, [productId, "products"]);
-    const { company, name, barcode, market, store } = data;
+    const { company, name, barcode, min, market, store } = data;
 
     const { formState, register, watch, handleSubmit } = useForm<EditProfileSchema>({
         resolver: zodResolver(editSchema),
@@ -31,6 +31,7 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
             image: company.image,
             name,
             barcode,
+            min,
             purchasePrice: market.price,
             salePrice: store.price,
             marketCount: market.count,
@@ -40,6 +41,7 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
 
     const { type, onClose } = useModel();
     const { onReset } = useLists();
+
     const { errors } = formState;
     const text = useTranslations();
 
@@ -75,14 +77,7 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
 
                 <hr className="my-4 dark:border-slate-500" />
 
-                <div className="flex-between">
-                    <Input
-                        type="text"
-                        label="company"
-                        useTranslate={{ label: "public" }}
-                        error={errors?.company}
-                        {...register("company")}
-                    />
+                <div className="">
                     <Input
                         type="url"
                         label="image-url"
@@ -95,10 +90,27 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
                 <div className="flex-between">
                     <Input
                         type="text"
+                        label="company"
+                        useTranslate={{ label: "public" }}
+                        error={errors?.company}
+                        {...register("company")}
+                    />
+                    <Input
+                        type="text"
                         label="product"
                         useTranslate={{ label: "public" }}
                         error={errors?.name}
                         {...register("name")}
+                    />
+                </div>
+
+                <div className="flex-between">
+                    <Input
+                        type="text"
+                        label="minimum"
+                        useTranslate={{ label: "table" }}
+                        error={errors?.min}
+                        {...register("min", { valueAsNumber: true })}
                     />
                     <Input
                         type="text"

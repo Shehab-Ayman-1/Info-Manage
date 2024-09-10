@@ -79,6 +79,7 @@
         "type": "Type",
 
         "expires-after": "Expires After",
+        "check": "Check",
 
         "filter-by": {
             "heading": "Filter By",

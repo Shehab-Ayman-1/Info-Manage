@@ -18,9 +18,9 @@ const schema = z.object({
     productId: z.string().min(1),
     company: z.string().min(1),
     name: z.string().min(1),
-    count: z.number().int().positive(),
+    count: z.number().positive(),
     total: z.number().positive(),
-    soldPrice: z.number().positive(),
+    soldPrice: z.number().min(0),
     purchasePrice: z.number().min(0),
 });
 
@@ -49,13 +49,13 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
         if (!product) return;
 
         setValue("purchasePrice", product.purchasePrice);
-        setValue("soldPrice", product.soldPrice);
+        setValue("soldPrice", product.purchasePrice);
     }, [selectedProductId, productsBySupplier, setValue]);
 
     if (type !== "insert-products-model") return;
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        const { productId, count, soldPrice, ...product } = data as ProductType;
+        const { productId, count, purchasePrice, ...product } = data as ProductType;
         const { name, company } = productsBySupplier.data.find((product) => product._id === productId)!;
 
         setProducts((products) => {
@@ -65,15 +65,8 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
                 return products;
             }
 
-            return products.concat({
-                ...product,
-                productId,
-                name,
-                count,
-                soldPrice,
-                company: company.name,
-                total: count * soldPrice,
-            });
+            const p = { ...product, productId, name, count, purchasePrice, company: company.name, total: count * purchasePrice };
+            return products.concat(p);
         });
 
         reset();
@@ -107,9 +100,9 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
                     />
                     <Input
                         type="number"
-                        label="sold-price"
+                        label="purchase-price"
                         useTranslate={{ label: "public" }}
-                        error={errors.soldPrice}
+                        error={errors.purchasePrice}
                         {...register("soldPrice", { valueAsNumber: true })}
                     />
                 </div>

@@ -3,18 +3,17 @@ import { cookies } from "next/headers";
 
 export default getRequestConfig(async () => {
     const cookie = cookies().get("NEXT_LOCALE")?.value;
-    const locale = cookie || "ar";
+    const locale = cookie || "en";
 
     const files = [
         "header",
-        "overview",
         "pages",
         "public",
         "buttons",
         "dialogs",
         "table",
         "badges",
-        "footer",
+        "overview",
         "subscriptions",
         "organizations",
     ];

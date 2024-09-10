@@ -100,8 +100,8 @@
         "client-statement": "Client Statement",
         "supplier-statement": "Supplier Statement",
 
-        "refundd-client-statement": "Refundd Client Statement",
-        "refundd-supplier-statement": "Refundd Supplier Statement",
+        "refundd-client-statement": "Refund Client Statement",
+        "refundd-supplier-statement": "Refund Supplier Statement",
 
         "client-invoice-payment": "Client Invoice Payment",
         "supplier-invoice-payment": "Supplier Invoice Payment",

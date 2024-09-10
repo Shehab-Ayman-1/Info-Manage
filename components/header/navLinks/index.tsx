@@ -35,12 +35,15 @@ export const NavLinks = ({}: NavLinksProps) => {
                     open={open.state && open.index === index}
                     onOpenChange={() => onOpen(index)}
                 >
-                    <HoverCardTrigger className="flex cursor-pointer items-center gap-1 py-2 hover:text-slate-500">
+                    <HoverCardTrigger className="group flex cursor-pointer items-center gap-1 py-2 hover:text-primary">
                         {text(`${nav.heading}.heading`)}
-                        <ChevronDownIcon className="mt-1 size-4 hover:text-slate-700" />
+                        <ChevronDownIcon className="mt-1 size-4 group-hover:text-primary" />
                     </HoverCardTrigger>
 
-                    <HoverCardContent sideOffset={-1} className="bg-white shadow-xl dark:border-slate-600 dark:bg-black">
+                    <HoverCardContent
+                        sideOffset={-1}
+                        className="min-w-max bg-white shadow-xl dark:border-slate-600 dark:bg-black"
+                    >
                         <ListItems links={nav.links} heading={nav.heading} index={index} onOpen={onOpen} />
                     </HoverCardContent>
                 </HoverCard>

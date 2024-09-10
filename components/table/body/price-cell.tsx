@@ -11,6 +11,7 @@ export const DollarCell = ({ row, name }: DollarCellProps) => {
         style: "currency",
         currency: "USD",
         maximumFractionDigits: 2,
+        trailingZeroDisplay: "stripIfInteger",
     }).format(price);
 
     return formatted;

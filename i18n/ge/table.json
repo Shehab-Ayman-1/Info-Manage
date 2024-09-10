@@ -79,6 +79,7 @@
         "type": "Typ",
 
         "expires-after": "Läuft ab nach",
+        "check": "Einstellen",
 
         "filter-by": {
             "heading": "Filtern nach",

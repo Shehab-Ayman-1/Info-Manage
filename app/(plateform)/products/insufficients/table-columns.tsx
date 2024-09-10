@@ -4,6 +4,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { HeaderComponent } from "@/components/table/column-header";
 import { NumberCell } from "@/components/table/body/number-cell";
 import { DollarCell } from "@/components/table/body/price-cell";
+import { CheckboxCell } from "@/components/table/body/checkbox";
 
 export const columns: ColumnDef<any>[] = [
     {
@@ -37,5 +38,10 @@ export const columns: ColumnDef<any>[] = [
         accessorKey: "totalNeeded",
         header: HeaderComponent,
         cell: ({ row }) => <DollarCell row={row} name="totalNeeded" />,
+    },
+    {
+        accessorKey: "check",
+        header: HeaderComponent,
+        cell: ({ row }) => <CheckboxCell row={row} />,
     },
 ];

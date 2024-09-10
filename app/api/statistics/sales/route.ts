@@ -31,9 +31,14 @@ export const GET = async () => {
             },
             {
                 $project: {
-                    _id: 0,
+                    _id: 1,
                     month: { $arrayElemAt: [months, { $subtract: ["$_id", 1] }] },
                     chart_1: "$total",
+                },
+            },
+            {
+                $sort: {
+                    _id: 1,
                 },
             },
         ]);
@@ -60,7 +65,9 @@ export const GET = async () => {
                 },
             },
             {
-                $sort: { day: 1 },
+                $sort: {
+                    day: 1,
+                },
             },
         ]);
 

@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 
-import { DBConnection } from "@/server/configs";
 import { SupplierInvoices } from "@/server/models";
+import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
 
 export const GET = async () => {
@@ -19,7 +19,7 @@ export const GET = async () => {
 
         const purchases = await SupplierInvoices.aggregate([
             {
-                $match: { orgId, createdAt: { $gte: startOfDay, $lte: endOfDay } },
+                $match: { orgId, type: "purchase", createdAt: { $gte: startOfDay, $lte: endOfDay } },
             },
             {
                 $unwind: "$products",

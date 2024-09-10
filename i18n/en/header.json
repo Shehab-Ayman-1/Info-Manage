@@ -1,4 +1,5 @@
 {
+    "footer": "Create With ❤️ By Shehab Ayman",
     "header": {
         "brand": "Info Manage",
         "icons": {
@@ -23,21 +24,19 @@
             },
             "clients": {
                 "heading": "Clients",
-                "clients-list": "Clients Lists",
-                "show-invoices": "Show Invoices",
+                "clients-list": "Clients List",
+                "show-invoices": "Invoices List",
                 "new-statement": "New Statement",
                 "refund-statement": "Refund Statement",
-                "add-client": "Add New Client",
-                "recycle-bin": "Recycle Bin"
+                "add-client": "Add New Client"
             },
             "suppliers": {
                 "heading": "Suppliers",
                 "suppliers-list": "Suppliers List",
-                "show-invoices": "Show Invoices",
+                "show-invoices": "Invoices List",
                 "new-statement": "New Statement",
                 "refund-statement": "Refund Statement",
-                "add-supplier": "Add New Supplier",
-                "recycle-bin": "Recycle Bin"
+                "add-supplier": "Add New Supplier"
             },
             "finances": {
                 "heading": "Finances",
@@ -51,8 +50,8 @@
                 "profits": "Profits",
                 "least-selling": "Least Selling Products",
                 "product-movement": "Product Movement",
-                "best-selling-of-the-month": "Best Selling Of The (Month)",
-                "best-selling-of-the-year": "Best Selling Of The (Year)"
+                "best-selling-of-the-month": "Best Selling Of The ( Month )",
+                "best-selling-of-the-year": "Best Selling Of The ( Year )"
             }
         }
     },
