@@ -20,6 +20,7 @@ const BestSellingOfYear = () => {
         <TableForm
             pageTitle="pages.statistics.best-selling-of-the-year.heading"
             data={data}
+            isPending={isPending}
             columns={columns}
             navigate={[{ text: "open-invoice-lists", to: "/clients/invoices" }]}
         />

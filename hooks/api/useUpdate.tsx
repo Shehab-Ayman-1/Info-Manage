@@ -21,12 +21,10 @@ export const useUpdate = <RequestType,>(apiUrl: string, revalidateQueryKeys?: st
     const query = useMutation<string, Error, RequestType>({
         mutationFn: (variables) => updateData<RequestType>(apiUrl, variables),
         onSuccess: (data) => {
-            toast.success(data);
             revalidateQueryKeys?.forEach((key) => queryClient.invalidateQueries({ queryKey: [key] }));
+            toast.success(data);
         },
-        onError: (error) => {
-            toast.error(error.message);
-        },
+        onError: (error) => toast.error(error.message),
     });
 
     return query;

@@ -19,7 +19,7 @@ export type Product = {
 };
 
 const Market = () => {
-    const { mutate, data, error } = useGetByQuery<Product[]>("/api/products");
+    const { data, isPending, error, mutate } = useGetByQuery<Product[]>("/api/products");
     const [location, setLocation] = useState("market");
 
     useEffect(() => {
@@ -34,6 +34,7 @@ const Market = () => {
             pageTitle={location === "market" ? "pages.products.market" : "pages.products.store"}
             columns={columns}
             data={data || []}
+            isPending={isPending}
             filterBy={["barcode", "product", "company", "category"]}
             navigate={[
                 { text: "new-statement", to: "/clients/statements/new" },

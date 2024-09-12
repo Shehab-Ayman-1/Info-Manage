@@ -21,12 +21,10 @@ export const useCreate = <RequestType,>(apiUrl: string, revalidateQueryKeys?: st
     const mutation = useMutation<string, Error, RequestType>({
         mutationFn: (variables) => createData<RequestType>(apiUrl, variables),
         onSuccess: (data) => {
-            toast.success(data);
             revalidateQueryKeys?.forEach((key) => queryClient.invalidateQueries({ queryKey: [key] }));
+            toast.success(data);
         },
-        onError: (error) => {
-            toast.error(error.message);
-        },
+        onError: (error) => toast.error(error.message),
     });
 
     return mutation;

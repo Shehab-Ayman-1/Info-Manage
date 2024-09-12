@@ -42,8 +42,8 @@ const Product = ({}: ProductProps) => {
 
     useEffect(() => {
         if (mount.current) return;
-        (async () =>  companies.fetcher())();
-        (async () =>  suppliers.fetcher())();
+        (async () => companies.fetcher())();
+        (async () => suppliers.fetcher())();
         mount.current = true;
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -103,7 +103,9 @@ const Product = ({}: ProductProps) => {
                 />
 
                 <OpenModuleButton type="insert-products-model" clearErrors={clearErrors} />
+
                 {!!products.length && <DataTable columns={columns} data={products} smallSize />}
+
                 <SubmitButton text="create" isPending={isPending} />
             </form>
 

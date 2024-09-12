@@ -3,10 +3,15 @@ import { ColumnDef } from "@tanstack/react-table";
 
 import { HeaderComponent } from "@/components/table/column-header";
 import { NumberCell } from "@/components/table/body/number-cell";
+import { CheckCell } from "@/components/table/body/check-cell";
 import { DollarCell } from "@/components/table/body/price-cell";
-import { CheckboxCell } from "@/components/table/body/checkbox";
 
 export const columns: ColumnDef<any>[] = [
+    {
+        accessorKey: "check",
+        header: HeaderComponent,
+        cell: ({ row }) => <CheckCell row={row} type="insufficient-products" />,
+    },
     {
         accessorKey: "company",
         header: HeaderComponent,
@@ -16,32 +21,23 @@ export const columns: ColumnDef<any>[] = [
         header: HeaderComponent,
     },
     {
-        accessorKey: "barcode",
+        accessorKey: "minimum",
         header: HeaderComponent,
+        cell: ({ row }) => <NumberCell row={row} name="minimum" showUnit />,
     },
     {
-        accessorKey: "price",
+        accessorKey: "soldPrice",
         header: HeaderComponent,
-        cell: ({ row }) => <DollarCell row={row} name="price" />,
+        cell: ({ row }) => <DollarCell row={row} name="soldPrice" />,
+    },
+    {
+        accessorKey: "purchasePrice",
+        header: HeaderComponent,
+        cell: ({ row }) => <DollarCell row={row} name="purchasePrice" />,
     },
     {
         accessorKey: "currentCount",
         header: HeaderComponent,
         cell: ({ row }) => <NumberCell row={row} name="currentCount" showUnit />,
-    },
-    {
-        accessorKey: "minimum",
-        header: HeaderComponent,
-        cell: ({ row }) => <NumberCell row={row} name="minimum" />,
-    },
-    {
-        accessorKey: "totalNeeded",
-        header: HeaderComponent,
-        cell: ({ row }) => <DollarCell row={row} name="totalNeeded" />,
-    },
-    {
-        accessorKey: "check",
-        header: HeaderComponent,
-        cell: ({ row }) => <CheckboxCell row={row} />,
     },
 ];

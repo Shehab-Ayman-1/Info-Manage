@@ -22,7 +22,7 @@ type InvoiceType = {
 
 const dateFormate = formatDate(new Date(), "yyyy-MM-dd");
 const SupplierInvoices = () => {
-    const { mutate, data, error } = useGetByQuery<InvoiceType[]>("/api/suppliers/invoices", ["supplier-invoices"]);
+    const { data, isPending, error, mutate } = useGetByQuery<InvoiceType[]>("/api/suppliers/invoices", ["supplier-invoices"]);
     const [date, setDate] = useState(dateFormate);
 
     useEffect(() => {
@@ -37,6 +37,7 @@ const SupplierInvoices = () => {
             pageTitle="pages.supplier-invoices.heading"
             columns={columns}
             data={data || []}
+            isPending={isPending}
             totalFor="pending"
             filterBy={["supplier"]}
             navigate={[

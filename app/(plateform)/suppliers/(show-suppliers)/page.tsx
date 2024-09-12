@@ -22,6 +22,7 @@ const Suppliers = () => {
             pageTitle="pages.supplier-lists.heading"
             columns={columns}
             data={data}
+            isPending={isPending}
             totalFor="pending"
             filterBy={["supplier"]}
             navigate={[{ text: "new-supplier", to: "/suppliers/add-supplier" }]}

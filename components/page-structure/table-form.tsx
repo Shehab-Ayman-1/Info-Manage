@@ -13,20 +13,22 @@ import { useOrg } from "@/hooks/useOrg";
 import { Button } from "@/ui/button";
 
 type TableFormProps<TData> = {
-    pageTitle: string;
-    navigate?: { to: string; text: string }[];
-    filterBy?: string[];
     data: TData[];
-    columns: ColumnDef<any>[];
+    pageTitle: string;
     totalFor?: string;
+    filterBy?: string[];
+    isPending?: boolean;
     children?: React.ReactNode;
+    columns: ColumnDef<any>[];
+    navigate?: { to: string; text: string }[];
 };
 
 export const TableForm = <TData,>(props: TableFormProps<TData>) => {
-    const { pageTitle, navigate, filterBy, columns, data, totalFor, children } = props;
+    const { pageTitle, navigate, filterBy, isPending, columns, data, totalFor, children } = props;
+
     const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 20 });
-    const t = useTranslations();
     const { isAdmin } = useOrg();
+    const t = useTranslations();
 
     const onPrint = useReactToPrint({
         onAfterPrint: () => setPagination((pagination) => ({ ...pagination, pageIndex: 0, pageSize: 20 })),
@@ -79,6 +81,7 @@ export const TableForm = <TData,>(props: TableFormProps<TData>) => {
                         data={data}
                         filterBy={filterBy}
                         totalFor={totalFor}
+                        isPending={isPending}
                         pagination={pagination}
                         setPagination={setPagination}
                     />

@@ -18,12 +18,8 @@ export const useGetByQuery = <ResponseType,>(apiUrl: string, revalidateQueryKeys
 
     const mutation = useMutation<ResponseType, Error, string>({
         mutationFn: (queries) => getData<ResponseType>(apiUrl, queries),
-        onSuccess: () => {
-            revalidateQueryKeys?.forEach((query) => queryClient.invalidateQueries({ queryKey: [query] }));
-        },
-        onError: (error) => {
-            toast.error(error.message);
-        },
+        onSuccess: () => revalidateQueryKeys?.forEach((query) => queryClient.invalidateQueries({ queryKey: [query] })),
+        onError: (error) => toast.error(error.message),
     });
 
     return mutation;

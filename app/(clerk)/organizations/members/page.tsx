@@ -25,7 +25,7 @@ type TData = {
 
 const Members = () => {
     const [data, setData] = useState<TData[]>([]);
-    const { organization } = useOrganization();
+    const { organization, isLoaded } = useOrganization();
     const { onOpen } = useModel();
 
     useEffect(() => {
@@ -54,7 +54,7 @@ const Members = () => {
 
     return (
         <CardForm heading="Members">
-            <DataTable columns={columns} data={data} smallSize />
+            <DataTable columns={columns} data={data} isPending={isLoaded} smallSize />
 
             <Button
                 type="button"

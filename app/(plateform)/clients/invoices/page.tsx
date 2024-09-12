@@ -23,7 +23,7 @@ type InvoiceType = {
 const dateFormate = formatDate(new Date(), "yyyy-MM-dd");
 const ClientInvoices = () => {
     const [date, setDate] = useState(dateFormate);
-    const { data, error, refetch } = useGet<InvoiceType[]>(`/api/clients/invoices?date=${date}`, ["client-invoices"]);
+    const { data, isPending, error, refetch } = useGet<InvoiceType[]>(`/api/clients/invoices?date=${date}`, ["client-invoices"]);
 
     useEffect(() => {
         refetch();
@@ -36,6 +36,7 @@ const ClientInvoices = () => {
             pageTitle="pages.client-invoices.heading"
             columns={columns}
             data={data || []}
+            isPending={isPending}
             totalFor="pending"
             filterBy={["client"]}
             navigate={[

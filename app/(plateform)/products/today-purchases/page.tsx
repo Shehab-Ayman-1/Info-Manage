@@ -22,6 +22,7 @@ const TodayPurchases = () => {
             pageTitle="pages.today-purchases.heading"
             columns={columns}
             data={data}
+            isPending={isPending}
             filterBy={["product"]}
             totalFor="totalPurchases"
             navigate={[{ text: "new-statement", to: "/suppliers/statements/new" }]}

@@ -1,13 +1,14 @@
 "use client";
-import { useGetByQuery } from "@/hooks/api/useGetByQuery";
-import { useLocale } from "next-intl";
 import { useEffect, useRef, useState } from "react";
+import { useLocale } from "next-intl";
 
+import { useGetByQuery } from "@/hooks/api/useGetByQuery";
 import { useLists } from "@/hooks/data/useLists";
 import { columns } from "./table-columns";
 
 import { TableForm } from "@/components/page-structure/table-form";
 import { ComboBox } from "@/components/ui/comboBox";
+import { StatementDialog } from "./statement-dialog";
 import { place as places } from "@/constants";
 
 type InsufficientsProps = {
@@ -20,10 +21,13 @@ type InsufficientsProps = {
 };
 
 const Insufficients = () => {
-    const { mutate, data, error } = useGetByQuery<InsufficientsProps[]>("/api/products/insufficients");
     const [supplierId, setSupplierId] = useState("");
     const [place, setPlace] = useState("");
     const { suppliers } = useLists();
+
+    const { data, isPending, error, mutate } = useGetByQuery<InsufficientsProps[]>(`/api/products/insufficients`, [
+        "insufficients",
+    ]);
 
     const mount = useRef(false);
     const locale = useLocale();
@@ -37,7 +41,7 @@ const Insufficients = () => {
 
     useEffect(() => {
         if (!supplierId || !place) return;
-        mutate(`place=${place}&supplierId=${supplierId}`);
+        mutate(`supplierId=${supplierId}&place=${place}`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [place, supplierId]);
 
@@ -48,6 +52,7 @@ const Insufficients = () => {
             pageTitle="pages.insufficient-products.heading"
             columns={columns}
             data={data || []}
+            isPending={isPending}
             totalFor="totalNeeded"
             navigate={[{ text: "new-statement", to: "/suppliers/statements/new" }]}
         >
@@ -68,6 +73,14 @@ const Insufficients = () => {
                     onChange={(value) => setPlace(value)}
                 />
             </div>
+
+            {supplierId !== "all" && <StatementDialog supplierId={supplierId} place={place} mutateGetQuery={mutate} />}
+
+            {supplierId === "all" && (
+                <p className="mt-4 text-center text-base text-rose-500 dark:text-rose-400">
+                    Can Not Create New Statement With All Suppliers Choosen
+                </p>
+            )}
         </TableForm>
     );
 };

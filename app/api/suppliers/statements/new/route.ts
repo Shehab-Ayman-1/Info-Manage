@@ -53,7 +53,6 @@ export const POST = async (req: NextRequest) => {
         });
 
         // Make Transaction
-
         await Transactions.updateOne(
             {
                 orgId,
@@ -82,6 +81,7 @@ export const POST = async (req: NextRequest) => {
         const placeCount = place === "market" ? "market.count" : "store.count";
         const promise = await Promise.all(
             products.map(async ({ productId, price, count }) => {
+                console.log(productId);
                 const updated = await Products.updateOne(
                     { _id: productId, trash: false },
                     { "store.price": price, $inc: { [placeCount]: count } },

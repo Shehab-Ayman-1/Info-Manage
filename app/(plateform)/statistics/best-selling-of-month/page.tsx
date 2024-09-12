@@ -11,7 +11,7 @@ import { Input } from "@/ui/input";
 type BestSellingOfMonthProps = {};
 
 const BestSellingOfMonth = ({}: BestSellingOfMonthProps) => {
-    const { mutate, data, error } = useGetByQuery<BestSellingOfMonthProps[]>("/api/statistics/best-selling-of-month");
+    const { data, isPending, error, mutate } = useGetByQuery<BestSellingOfMonthProps[]>("/api/statistics/best-selling-of-month");
     const [month, setMonth] = useState(formatDate(new Date(), "yyyy-MM"));
 
     useEffect(() => {
@@ -26,6 +26,7 @@ const BestSellingOfMonth = ({}: BestSellingOfMonthProps) => {
         <TableForm
             pageTitle="pages.statistics.best-selling-of-the-month.heading"
             data={data || []}
+            isPending={isPending}
             columns={columns}
             navigate={[{ text: "open-invoice-lists", to: "/clients/invoices" }]}
         >

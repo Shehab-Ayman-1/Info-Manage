@@ -21,6 +21,7 @@ const LeastSelling = () => {
             pageTitle="pages.statistics.least-selling.heading"
             columns={columns}
             data={data}
+            isPending={isPending}
             filterBy={["product"]}
             navigate={[{ text: "market-products", to: "/products" }]}
         />

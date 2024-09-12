@@ -32,6 +32,7 @@ const TrashProducts = () => {
             pageTitle="pages.trash.heading"
             columns={columns}
             data={data}
+            isPending={isPending}
             navigate={[{ text: "new-statement", to: "/clients/statements/new" }]}
         >
             <Alert variant="warning" className="mx-auto w-fit">

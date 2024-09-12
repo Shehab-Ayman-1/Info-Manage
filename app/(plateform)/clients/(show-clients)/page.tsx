@@ -20,6 +20,7 @@ const ClientList = () => {
             pageTitle="pages.client-lists.heading"
             data={data}
             columns={columns}
+            isPending={isPending}
             totalFor="pending"
             filterBy={["client"]}
             navigate={[{ text: "new-client", to: "/clients/add-client" }]}

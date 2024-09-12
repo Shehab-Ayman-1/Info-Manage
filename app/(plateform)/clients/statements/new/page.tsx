@@ -127,7 +127,8 @@ const Clients = ({}: ClientsProps) => {
                 <AlertError root={errors?.root} />
                 <OpenModuleButton type="insert-products-model" clearErrors={clearErrors} />
 
-                {!!products.length && <DataTable columns={columns} data={products} smallSize totalFor="total" />}
+                {!!products.length && <DataTable columns={columns} data={products} totalFor="total" smallSize />}
+
                 <SubmitButton text="buy" isPending={isPending} />
             </form>
 

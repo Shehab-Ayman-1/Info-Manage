@@ -1,8 +1,8 @@
 "use client";
 import { FieldValues, UseFormClearErrors } from "react-hook-form";
 import { useTranslations } from "next-intl";
-import { useKey } from "react-use";
 import { PlusIcon } from "lucide-react";
+import { useKey } from "react-use";
 
 import { Tooltip } from "@/components/ui/tooltip";
 import { useModel } from "@/hooks/useModel";
@@ -10,7 +10,7 @@ import { Button } from "@/ui/button";
 
 type OpenModuleButtonProps = {
     type?: string;
-    clearErrors: UseFormClearErrors<FieldValues>;
+    clearErrors?: UseFormClearErrors<FieldValues>;
 };
 
 export const OpenModuleButton = ({ type, clearErrors }: OpenModuleButtonProps) => {
@@ -18,7 +18,7 @@ export const OpenModuleButton = ({ type, clearErrors }: OpenModuleButtonProps) =
     const { onOpen } = useModel();
 
     const onInsert = () => {
-        clearErrors("root");
+        clearErrors?.("root");
         onOpen(type);
     };
 

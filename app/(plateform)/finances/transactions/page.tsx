@@ -19,7 +19,7 @@ type TransactionType = {
 
 const dateFormate = formatDate(new Date(), "yyyy-MM-dd");
 const Transactions = () => {
-    const { mutate, data, error } = useGetByQuery<TransactionType[]>("/api/finances/transactions");
+    const { data, isPending, error, mutate } = useGetByQuery<TransactionType[]>("/api/finances/transactions");
     const [date, setDate] = useState(dateFormate);
 
     useEffect(() => {
@@ -35,6 +35,7 @@ const Transactions = () => {
             pageTitle="pages.transactions.heading"
             columns={columns}
             data={data || []}
+            isPending={isPending}
             navigate={[{ text: "new-transaction", to: "/finances/locker" }]}
         >
             <div className="mt-4 w-fit sm:mx-4">

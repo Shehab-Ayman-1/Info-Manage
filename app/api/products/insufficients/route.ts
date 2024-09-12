@@ -45,14 +45,12 @@ export const GET = async (req: NextRequest) => {
                     _id: 1,
                     company: "$product.company.name",
                     product: "$product.name",
-                    barcode: "$product.barcode",
+                    productId: "$product._id",
                     unit: "$product.unit",
                     minimum: "$product.min",
-                    price: `$product.${place}.price`,
+                    soldPrice: "$product.market.price",
+                    purchasePrice: "$product.store.price",
                     currentCount: `$product.${place}.count`,
-                    totalNeeded: {
-                        $multiply: [`$product.${place}.price`, { $subtract: ["$product.min", `$product.${place}.count`] }],
-                    },
                 },
             },
         ]);
