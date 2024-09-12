@@ -78,8 +78,11 @@
         "deleted-name": "Deleted name",
         "type": "Type",
 
-        "expires-after": "Expires After",
         "check": "Check",
+        "buy": "Buy",
+
+        "expires-after": "Expires After",
+        "transfer": "Transfer",
 
         "filter-by": {
             "heading": "Filter By",

@@ -1,6 +1,7 @@
 "use client";
 import { useOrganization, useUser } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Fragment, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { formatDate } from "date-fns";
 
@@ -12,7 +13,6 @@ import { CardForm } from "@/components/page-structure/CardForm";
 import { SubmitButton } from "@/components/public/submit-btn";
 import { ComboBox } from "@/components/ui/comboBox";
 import { Input } from "@/ui/input";
-import { Fragment, useEffect } from "react";
 
 const Configs = () => {
     const resolver = zodResolver(configsSchema.omit({ organizationId: true }));

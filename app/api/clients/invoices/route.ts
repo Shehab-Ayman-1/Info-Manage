@@ -13,12 +13,13 @@ export const GET = async (req: NextRequest) => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const { searchParams } = new URL(req.url);
-        const date = searchParams.get("date")!;
+        const from = searchParams.get("startDate")!;
+        const to = searchParams.get("endDate")!;
 
-        const startDate = new Date(date);
+        const startDate = new Date(from);
         startDate.setHours(0, 0, 0, 0);
 
-        const endDate = new Date(date);
+        const endDate = new Date(to);
         endDate.setHours(23, 59, 59, 999);
 
         const invoices = await ClientInvoices.aggregate([

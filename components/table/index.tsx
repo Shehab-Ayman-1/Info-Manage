@@ -19,6 +19,7 @@ type DataTableProps<TData, TValue> = {
     filterBy?: string[];
     isPending?: boolean;
     smallSize?: boolean;
+    selectedSubmitButtons?: string[];
     columns: ColumnDef<TData, TValue>[];
     pagination?: { pageIndex: number; pageSize: number };
     setPagination?: Dispatch<SetStateAction<{ pageIndex: number; pageSize: number }>>;
@@ -31,8 +32,9 @@ export const DataTable = <TData, TValue>({
     isPending,
     smallSize,
     columns,
-    pagination = { pageIndex: 0, pageSize: 1e6 },
     setPagination,
+    selectedSubmitButtons,
+    pagination = { pageIndex: 0, pageSize: 1e6 },
 }: DataTableProps<TData, TValue>) => {
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [sorting, setSorting] = useState<SortingState>([]);
@@ -106,7 +108,7 @@ export const DataTable = <TData, TValue>({
                 />
             </CardFooter>
 
-            <SelectedItems items={selectedItems.rows} />
+            <SelectedItems items={selectedItems.rows} selectedSubmitButtons={selectedSubmitButtons} />
         </Card>
     );
 };

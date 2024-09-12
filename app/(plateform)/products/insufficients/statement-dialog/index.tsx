@@ -30,9 +30,10 @@ export const StatementDialog = ({ supplierId, place, mutateGetQuery }: Statement
     const { type, data, onClose } = useModel();
     const { errors } = formState;
 
-    const products = data?.items?.map((item: any) => ({ ...item, total: item.count * item.purchasePrice }));
     const processValue = watch("process");
     const text = useTranslations();
+
+    const products = data?.items?.map((item: any) => ({ ...item, total: item.count * item.purchasePrice }));
 
     // Auto Get Total Products Total Price
     useEffect(() => {
@@ -44,7 +45,7 @@ export const StatementDialog = ({ supplierId, place, mutateGetQuery }: Statement
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [products, processValue]);
 
-    if (type !== "insufficient-products" || !products) return;
+    if (type !== "selected-buy-model" || !products) return;
 
     const onProcessChange = (value: string) => {
         clearErrors("process");
@@ -118,7 +119,7 @@ export const StatementDialog = ({ supplierId, place, mutateGetQuery }: Statement
                     />
                 )}
 
-                {!!products.length && <DataTable columns={columns} data={products} totalFor="total" smallSize />}
+                {!!products.length && <DataTable columns={columns} data={products} totalFor="total" />}
 
                 <SubmitButton text="buy" isPending={supplierId === "all" || isPending} />
             </form>

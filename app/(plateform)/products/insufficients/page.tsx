@@ -7,9 +7,11 @@ import { useLists } from "@/hooks/data/useLists";
 import { columns } from "./table-columns";
 
 import { TableForm } from "@/components/page-structure/table-form";
+import { AlertError } from "@/components/ui/alert-error";
 import { ComboBox } from "@/components/ui/comboBox";
 import { StatementDialog } from "./statement-dialog";
 import { place as places } from "@/constants";
+import { TransferDialog } from "./transfer-dialog";
 
 type InsufficientsProps = {
     _id: string;
@@ -53,8 +55,12 @@ const Insufficients = () => {
             columns={columns}
             data={data || []}
             isPending={isPending}
+            selectedSubmitButtons={["buy", "transfer"]}
             totalFor="totalNeeded"
-            navigate={[{ text: "new-statement", to: "/suppliers/statements/new" }]}
+            navigate={[
+                { text: "new-statement", to: "/suppliers/statements/new" },
+                { text: "transfer", to: "/products/transfer" },
+            ]}
         >
             <div className="flex-between">
                 <ComboBox
@@ -75,12 +81,9 @@ const Insufficients = () => {
             </div>
 
             {supplierId !== "all" && <StatementDialog supplierId={supplierId} place={place} mutateGetQuery={mutate} />}
+            <TransferDialog place={place} mutateGetQuery={mutate} />
 
-            {supplierId === "all" && (
-                <p className="mt-4 text-center text-base text-rose-500 dark:text-rose-400">
-                    Can Not Create New Statement With All Suppliers Choosen
-                </p>
-            )}
+            {supplierId === "all" && <AlertError root={{ message: "Can Not Create New Statement With All Suppliers Choosen" }} />}
         </TableForm>
     );
 };

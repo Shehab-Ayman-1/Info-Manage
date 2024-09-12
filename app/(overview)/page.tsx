@@ -7,8 +7,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { useSubscription } from "@/hooks/useSubscription";
-import { Tooltip } from "@/components/ui/tooltip";
 import { useModel } from "@/hooks/useModel";
+
+import { Tooltip } from "@/components/ui/tooltip";
 import { Button } from "@/ui/button";
 import { Alert } from "@/ui/alert";
 

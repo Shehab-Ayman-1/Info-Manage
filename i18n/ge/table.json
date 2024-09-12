@@ -78,8 +78,11 @@
         "deleted-name": "Gelöschter Name",
         "type": "Typ",
 
-        "expires-after": "Läuft ab nach",
         "check": "Einstellen",
+        "buy": "Kaufen",
+
+        "expires-after": "Läuft ab nach",
+        "transfer": "Überweisen",
 
         "filter-by": {
             "heading": "Filtern nach",

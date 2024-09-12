@@ -1,14 +1,14 @@
 "use client";
 import { ClerkLoading, ClerkLoaded, useUser } from "@clerk/nextjs";
-import { LoaderCircleIcon } from "lucide-react";
+import { CreditCardIcon, LoaderCircleIcon } from "lucide-react";
+import Link from "next/link";
 
 import { QuickClientStatement } from "./quick-client-statement";
 import { UserButton } from "./user/user-button";
 import { OrgSwitcher } from "./user/switcher";
-import { Searchbar } from "./searchbar";
-import { Menu } from "./menu";
-import { Configrator } from "./configrator";
 import { Notifications } from "./notifications";
+import { Configrator } from "./configrator";
+import { Searchbar } from "./searchbar";
 
 type NavlinksProps = {};
 
@@ -19,13 +19,15 @@ export const NavIcons = ({}: NavlinksProps) => {
 
     return (
         <div className="flex-end">
-            <Menu />
-
             <Searchbar />
 
             <Notifications />
 
             <Configrator />
+
+            <Link href="/subscription">
+                <CreditCardIcon className="cursor-pointer hover:text-slate-600" />
+            </Link>
 
             {isMe && <OrgSwitcher />}
 

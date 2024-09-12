@@ -78,8 +78,11 @@
         "deleted-name": "اسم المحذوف",
         "type": "النوع",
 
-        "expires-after": "انتهاء الصلاحية",
         "check": "تحديد",
+        "buy": "شراء",
+
+        "expires-after": "انتهاء الصلاحية",
+        "transfer": "نقل",
 
         "filter-by": {
             "heading": "البحث بواسطة",

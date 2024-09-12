@@ -39,6 +39,7 @@ export const Configrator = ({}: ConfigratorProps) => {
                 <Themes setTheme={setTheme} />
 
                 <Modes />
+
                 <Languages />
             </SheetContent>
         </Sheet>

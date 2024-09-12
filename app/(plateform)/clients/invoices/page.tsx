@@ -1,13 +1,13 @@
 "use client";
+import { DateRange } from "react-day-picker";
 import { useEffect, useState } from "react";
-import { formatDate } from "date-fns";
 
 import { TableForm } from "@/components/page-structure/table-form";
+import { DatePickerWithRange } from "@/components/ui/calender";
+import { PayDialog } from "./pay-dialog";
+
 import { useGet } from "@/hooks/api/useGet";
 import { columns } from "./table-columns";
-
-import { PayDialog } from "./pay-dialog";
-import { Input } from "@/ui/input";
 
 type InvoiceType = {
     _id: string;
@@ -20,14 +20,18 @@ type InvoiceType = {
     createdAt: Date;
 };
 
-const dateFormate = formatDate(new Date(), "yyyy-MM-dd");
 const ClientInvoices = () => {
-    const [date, setDate] = useState(dateFormate);
-    const { data, isPending, error, refetch } = useGet<InvoiceType[]>(`/api/clients/invoices?date=${date}`, ["client-invoices"]);
+    const [date, setDate] = useState<DateRange | undefined>({ from: new Date(), to: undefined });
+    const { data, isPending, error, refetch } = useGet<InvoiceType[]>(
+        `/api/clients/invoices?startDate=${date?.from}&endDate=${date?.to}`,
+        ["client-invoices"],
+    );
 
     useEffect(() => {
+        if (!date) return;
         refetch();
-    }, [date, refetch]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [date]);
 
     if (error) return <h1>{error?.message}</h1>;
 
@@ -45,7 +49,7 @@ const ClientInvoices = () => {
             ]}
         >
             <div className="mt-4 w-fit sm:mx-4">
-                <Input type="date" value={date} name="date" onChange={(event) => setDate(() => event.target.value)} />
+                <DatePickerWithRange date={date} setDate={setDate} />
             </div>
             <PayDialog />
         </TableForm>

@@ -18,8 +18,8 @@ export const SubmitButton = ({ text, isPending, className }: SubmitButtonProps) 
     const ref = useRef<HTMLButtonElement>(null);
     const onClick = () => ref.current?.click();
 
-    const insert = (event: KeyboardEvent) => text === "insert" && !event.ctrlKey && event.key === "Enter";
-    const submit = (event: KeyboardEvent) => text !== "insert" && event.key === "Enter";
+    const insert = (event: KeyboardEvent) => text !== "insert" && event.ctrlKey && event.key === "Enter";
+    const submit = (event: KeyboardEvent) => text === "insert" && event.key === "Enter";
 
     useKey((event) => insert(event) || submit(event), onClick);
 

@@ -21,7 +21,7 @@ type TrashProductsType = {
 };
 
 const TrashProducts = () => {
-    const { data, isPending, error } = useGet<TrashProductsType[]>("/api/trash", ["trash"]);
+    const { data, isPending, error } = useGet<TrashProductsType[]>("/api/recycle-bin", ["recycle-bin"]);
     const text = useTranslations();
 
     if (isPending) return <CardLoading />;

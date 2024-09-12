@@ -35,8 +35,8 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
         resolver: zodResolver(schema.omit({ company: true, name: true, total: true })),
     });
 
-    const { errors, isLoading } = formState;
-    const { type, onClose } = useModel();
+    const { isLoading } = formState;
+    const { type } = useModel();
     const { products } = useLists();
 
     const selectedProductId = watch("productId");
@@ -75,7 +75,6 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
         });
 
         reset();
-        onClose();
     };
 
     return (
@@ -90,7 +89,6 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
                     useTranslate={{ label: "public", trigger: "public", name: "public", customeTrigger: true }}
                     loading={products.isLoading}
                     groups={products.groups}
-                    error={errors?.productId}
                     setValue={setValue}
                     clearErrors={clearErrors}
                 />
@@ -100,14 +98,12 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
                         type="number"
                         label="count"
                         useTranslate={{ label: "public" }}
-                        error={errors.count}
-                        {...register("count", { valueAsNumber: true })}
+                        {...register("count", { valueAsNumber: true, value: 1 })}
                     />
                     <Input
                         type="number"
                         label="sold-price"
                         useTranslate={{ label: "public" }}
-                        error={errors.soldPrice}
                         {...register("soldPrice", { valueAsNumber: true })}
                     />
                 </div>

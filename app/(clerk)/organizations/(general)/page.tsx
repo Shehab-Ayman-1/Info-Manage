@@ -1,8 +1,8 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useOrganization } from "@clerk/nextjs";
-import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import Image from "next/image";
@@ -79,6 +79,7 @@ const OrganizationsLists = () => {
                 </div>
 
                 <Input placeholder="Name" error={errors.name} {...register("name", { value: organization.name })} />
+
                 <Input placeholder="Slug" error={errors.slug} {...register("slug", { value: organization.slug })} disabled />
 
                 <Button
@@ -90,7 +91,7 @@ const OrganizationsLists = () => {
                     Leave Organization
                 </Button>
 
-                <SubmitButton text="Update" isPending={false} />
+                <SubmitButton text="update" isPending={false} />
             </form>
 
             <LeaveDialog />

@@ -1,6 +1,7 @@
 "use client";
 import { Row } from "@tanstack/react-table";
 import { useTranslations } from "next-intl";
+import { reasons } from "@/constants/finances";
 
 type TranslateCellType = {
     row: Row<any>;
@@ -10,21 +11,9 @@ type TranslateCellType = {
 
 export const TranslateCell = ({ row, name, isReason }: TranslateCellType) => {
     const text = useTranslations();
-    const value = row.original[name].toLowerCase().replaceAll(" ", "-");
+    const value = row.original[name].toLowerCase();
 
-    const reasons = [
-        "client-statement",
-        "supplier-statement",
-        "refundd-client-statement",
-        "refundd-supplier-statement",
-        "client-invoice-payment",
-        "supplier-invoice-payment",
-        "canceled-supplier-invoice",
-        "client-payment",
-        "supplier-payment",
-    ];
-
-    const reasonText = reasons.includes(value) ? text(`public.${value}`) : value;
+    const reasonText = reasons.includes(value) ? text(`public.${value.replaceAll(" ", "-")}`) : value;
     return isReason ? reasonText : text(`table.${value}`);
 };
 

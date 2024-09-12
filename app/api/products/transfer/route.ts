@@ -1,11 +1,11 @@
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
+import { getTranslations } from "@/utils/getTranslations";
 import { DBConnection } from "@/server/configs";
 import { Products } from "@/server/models";
 import { editSchema } from "./schema";
 import { json } from "@/utils/response";
-import { getTranslations } from "@/utils/getTranslations";
 
 export const PUT = async (req: NextRequest) => {
     try {

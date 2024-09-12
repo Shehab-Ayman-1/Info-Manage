@@ -20,11 +20,12 @@ type TableFormProps<TData> = {
     isPending?: boolean;
     children?: React.ReactNode;
     columns: ColumnDef<any>[];
+    selectedSubmitButtons?: string[];
     navigate?: { to: string; text: string }[];
 };
 
 export const TableForm = <TData,>(props: TableFormProps<TData>) => {
-    const { pageTitle, navigate, filterBy, isPending, columns, data, totalFor, children } = props;
+    const { pageTitle, navigate, filterBy, isPending, columns, data, totalFor, selectedSubmitButtons, children } = props;
 
     const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 20 });
     const { isAdmin } = useOrg();
@@ -84,6 +85,7 @@ export const TableForm = <TData,>(props: TableFormProps<TData>) => {
                         isPending={isPending}
                         pagination={pagination}
                         setPagination={setPagination}
+                        selectedSubmitButtons={selectedSubmitButtons}
                     />
                 </CardFooter>
             </CardContent>

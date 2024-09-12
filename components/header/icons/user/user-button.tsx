@@ -1,6 +1,6 @@
 "use client";
+import { Building2Icon, LogOutIcon, Trash2Icon, UserRoundCogIcon } from "lucide-react";
 import { useAuth, useClerk, useUser } from "@clerk/nextjs";
-import { LogOutIcon, SettingsIcon } from "lucide-react";
 import { PopoverClose } from "@radix-ui/react-popover";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -23,6 +23,7 @@ export const UserButton = ({}: UserButtonProps) => {
         if (method === "organization") return router.push("/organizations");
         if (method === "user") return openUserProfile({ routing: "virtual" });
         if (method === "signout") return signOut({ redirectUrl: "/" });
+        if (method === "recycle-bin") return router.push("/recycle-bin");
     };
 
     const isAdmin = has?.({ role: "org:admin" });
@@ -51,7 +52,7 @@ export const UserButton = ({}: UserButtonProps) => {
                 <div className="flex flex-col sm:w-[400px]">
                     <PopoverClose asChild>
                         <Button type="button" variant="ghost" className={btnStyle} onClick={() => onOpen("user")}>
-                            <SettingsIcon className="size-5 text-muted-foreground" />
+                            <UserRoundCogIcon className="size-5 text-muted-foreground" />
                             Manage Account
                         </Button>
                     </PopoverClose>
@@ -59,11 +60,20 @@ export const UserButton = ({}: UserButtonProps) => {
                     {isAdmin && (
                         <PopoverClose asChild>
                             <Button type="button" variant="ghost" className={btnStyle} onClick={() => onOpen("organization")}>
-                                <LogOutIcon className="size-5 text-muted-foreground" />
+                                <Building2Icon className="size-5 text-muted-foreground" />
                                 Manage Organization
                             </Button>
                         </PopoverClose>
                     )}
+
+                    <Separator />
+
+                    <PopoverClose asChild>
+                        <Button type="button" variant="ghost" className={btnStyle} onClick={() => onOpen("recycle-bin")}>
+                            <Trash2Icon className="size-5 text-muted-foreground" />
+                            Recycle Bin
+                        </Button>
+                    </PopoverClose>
 
                     <PopoverClose asChild>
                         <Button type="button" variant="ghost" className={btnStyle} onClick={() => onOpen("signout")}>

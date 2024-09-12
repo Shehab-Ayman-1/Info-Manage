@@ -7,21 +7,28 @@ import { Button } from "@/ui/button";
 
 type SelectedItemsType = {
     items: Row<any>[];
+    selectedSubmitButtons?: string[];
 };
 
-export const SelectedItems = ({ items }: SelectedItemsType) => {
+export const SelectedItems = ({ items, selectedSubmitButtons }: SelectedItemsType) => {
     const { onOpen } = useModel();
-    const text = useTranslations();
-    if (!items.length) return;
+    const txt = useTranslations();
+
+    if (!items.length || !selectedSubmitButtons) return;
 
     return (
-        <Button
-            type="button"
-            className="flex-center mt-4 w-full text-base font-bold"
-            onClick={() => onOpen(items[0]?.original?.modelType, { items: items.map((item) => item.original) })}
-        >
-            {text("buttons.buy")}
-        </Button>
+        <div className="flex-between">
+            {selectedSubmitButtons.map((text) => (
+                <Button
+                    key={text}
+                    type="button"
+                    className="flex-center mt-4 w-full text-base font-bold"
+                    onClick={() => onOpen(`selected-${text}-model`, { items: items.map((item) => item.original) })}
+                >
+                    {txt(`buttons.${text}`)}
+                </Button>
+            ))}
+        </div>
     );
 };
 

@@ -139,7 +139,7 @@ export const QuickClientStatement = () => {
             heading={text("dialogs.quick-client-statement.heading")}
             description={text("dialogs.quick-client-statement.description")}
         >
-            <form onSubmit={handleSubmit(onSubmit)} className="max-w-xl overflow-x-auto">
+            <form onSubmit={handleSubmit(onSubmit)} className="overflow-x-auto">
                 <ComboBox
                     label="choose-method"
                     name="method"

@@ -39,7 +39,9 @@ const Layout = async ({ children }: LayoutProps) => {
                     <ClerkLoaded>
                         <ActiveOrg orgId={org.id} />
                         <Sidebar />
+
                         {children}
+
                         <Image src="/overview.jpeg" alt="overview" fill className="!fixed -z-10 opacity-5" />
                     </ClerkLoaded>
                 </Providers>

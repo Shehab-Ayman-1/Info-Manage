@@ -100,8 +100,8 @@
         "client-statement": "كشف حساب عميل",
         "supplier-statement": "كشف حساب مورد",
 
-        "refundd-client-statement": "كشف مرتجع عميل",
-        "refundd-supplier-statement": "كشف مرتجع مورد",
+        "refund-client-statement": "كشف مرتجع عميل",
+        "refund-supplier-statement": "كشف مرتجع مورد",
 
         "client-invoice-payment": "دفعه ماليه من عميل",
         "supplier-invoice-payment": "دفعه ماليه من مورد",

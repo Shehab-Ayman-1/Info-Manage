@@ -22,9 +22,15 @@ export const useUpdate = <RequestType,>(apiUrl: string, revalidateQueryKeys?: st
         mutationFn: (variables) => updateData<RequestType>(apiUrl, variables),
         onSuccess: (data) => {
             revalidateQueryKeys?.forEach((key) => queryClient.invalidateQueries({ queryKey: [key] }));
+            const audio = document.querySelector(".success-audio") as HTMLAudioElement;
             toast.success(data);
+            audio?.play();
         },
-        onError: (error) => toast.error(error.message),
+        onError: (error) => {
+            const audio = document.querySelector(".failor-audio") as HTMLAudioElement;
+            toast.error(error.message);
+            audio?.play();
+        },
     });
 
     return query;

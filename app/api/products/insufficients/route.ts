@@ -50,7 +50,8 @@ export const GET = async (req: NextRequest) => {
                     minimum: "$product.min",
                     soldPrice: "$product.market.price",
                     purchasePrice: "$product.store.price",
-                    currentCount: `$product.${place}.count`,
+                    marketCount: "$product.market.count",
+                    storeCount: "$product.store.count",
                 },
             },
         ]);

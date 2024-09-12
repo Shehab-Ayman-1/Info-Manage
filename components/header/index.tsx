@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/ui/button";
 import { NavLinks } from "./navLinks";
 import { NavIcons } from "./icons";
+import { Audio } from "./audio";
 import { Logo } from "./logo";
 
 type HeaderProps = {};
@@ -16,6 +17,8 @@ export const Header = ({}: HeaderProps) => {
         <header className="bg-gradient relative !z-50 w-full rounded-xl border border-slate-400 p-4 shadow-md contrast-[85%] dark:border-slate-600 dark:contrast-[115%]">
             <div className="flex-between m-auto w-full max-w-screen-xl">
                 <Logo />
+
+                <Audio />
 
                 {userId && <NavLinks />}
 

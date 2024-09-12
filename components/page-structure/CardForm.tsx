@@ -19,7 +19,7 @@ export const CardForm = ({ heading, submitText, disabled, children, onSubmit }: 
     useKey("Enter", () => ref.current?.click());
 
     return (
-        <Card className="bg-gradient mx-auto mt-8 w-full max-w-2xl border-slate-400 shadow-lg dark:border-slate-600">
+        <Card className="bg-gradient mx-auto mt-8 w-full max-w-3xl border-slate-400 shadow-lg dark:border-slate-600">
             <CardContent className="">
                 <CardHeader
                     className={cn(

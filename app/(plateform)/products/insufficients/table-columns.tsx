@@ -10,7 +10,7 @@ export const columns: ColumnDef<any>[] = [
     {
         accessorKey: "check",
         header: HeaderComponent,
-        cell: ({ row }) => <CheckCell row={row} type="insufficient-products" />,
+        cell: ({ row }) => <CheckCell row={row} />,
     },
     {
         accessorKey: "company",
@@ -26,6 +26,16 @@ export const columns: ColumnDef<any>[] = [
         cell: ({ row }) => <NumberCell row={row} name="minimum" showUnit />,
     },
     {
+        accessorKey: "marketCount",
+        header: HeaderComponent,
+        cell: ({ row }) => <NumberCell row={row} name="marketCount" showUnit />,
+    },
+    {
+        accessorKey: "storeCount",
+        header: HeaderComponent,
+        cell: ({ row }) => <NumberCell row={row} name="storeCount" showUnit />,
+    },
+    {
         accessorKey: "soldPrice",
         header: HeaderComponent,
         cell: ({ row }) => <DollarCell row={row} name="soldPrice" />,
@@ -34,10 +44,5 @@ export const columns: ColumnDef<any>[] = [
         accessorKey: "purchasePrice",
         header: HeaderComponent,
         cell: ({ row }) => <DollarCell row={row} name="purchasePrice" />,
-    },
-    {
-        accessorKey: "currentCount",
-        header: HeaderComponent,
-        cell: ({ row }) => <NumberCell row={row} name="currentCount" showUnit />,
     },
 ];

@@ -90,6 +90,7 @@ const Clients = ({}: ClientsProps) => {
                         items={methods}
                         setValue={setValue}
                         clearErrors={clearErrors}
+                        defaultValue="cash"
                     />
                 </div>
 
@@ -101,6 +102,7 @@ const Clients = ({}: ClientsProps) => {
                         items={process}
                         error={errors?.process}
                         onChange={onProcessChange}
+                        defaultValue="pay-all"
                     />
 
                     <div className="flex-between w-full">

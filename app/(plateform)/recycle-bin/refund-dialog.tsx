@@ -14,7 +14,7 @@ type RequestType = {
 };
 
 export const RefundDialog = () => {
-    const { mutate, isPending } = useUpdate<RequestType>("/api/trash", ["trash"]);
+    const { mutate, isPending } = useUpdate<RequestType>("/api/recycle-bin", ["recycle-bin"]);
     const { type, data, onClose } = useModel();
     const { onReset } = useLists();
     const text = useTranslations();

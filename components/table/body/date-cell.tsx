@@ -15,10 +15,10 @@ type DateCellProps = {
 
 export const DateCell = ({ row, name, time, ago, noPrint }: DateCellProps) => {
     const locale = useLocale();
-    const date = row.original[name];
+    const date = row.original[name] as Date;
     if (!date) return;
 
-    const timeDuration = formatDate(date, "hh:mm:ss a");
+    const timeDuration = `${formatDate(date, "dd / MM")} >> ${formatDate(date, "hh:mm a")}`;
     const dateDuration = formatDate(date, "dd / MM / yyyy");
     const agoDuration = formatDistanceToNow(date, { locale: locale === "ar" ? ar : enUS });
 

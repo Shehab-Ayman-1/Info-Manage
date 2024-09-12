@@ -1,0 +1,1313 @@
+[{
+  "_id": {
+    "$oid": "66d20e7242d43ebb44058222"
+  },
+  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "method": "cash",
+  "process": "withdraw",
+  "total": 10246,
+  "history": [
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 16,
+      "createdAt": {
+        "$date": "2024-09-01T18:10:22.075Z"
+      },
+      "_id": {
+        "$oid": "66d4ae0e3a25c87202fb446f"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-01T18:53:13.007Z"
+      },
+      "_id": {
+        "$oid": "66d4b819a451d9eeaf793c1c"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-01T19:01:19.418Z"
+      },
+      "_id": {
+        "$oid": "66d4b9ffa451d9eeaf793c31"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-01T20:05:26.853Z"
+      },
+      "_id": {
+        "$oid": "66d4c907a451d9eeaf793c5d"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 1500,
+      "createdAt": {
+        "$date": "2024-09-01T21:51:15.466Z"
+      },
+      "_id": {
+        "$oid": "66d4e1d3a451d9eeaf793cd0"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 616,
+      "createdAt": {
+        "$date": "2024-09-02T03:10:48.729Z"
+      },
+      "_id": {
+        "$oid": "66d52cb8f7c8a069a73678c5"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 430,
+      "createdAt": {
+        "$date": "2024-09-02T03:12:42.389Z"
+      },
+      "_id": {
+        "$oid": "66d52d2af7c8a069a73678d4"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "مصاريف نسرية",
+      "price": 20,
+      "createdAt": {
+        "$date": "2024-09-02T11:22:26.447Z"
+      },
+      "_id": {
+        "$oid": "66d59ff2f8d3372d50686aec"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 1000,
+      "createdAt": {
+        "$date": "2024-09-02T18:58:45.654Z"
+      },
+      "_id": {
+        "$oid": "66d60ae5775853dd41714760"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 10,
+      "createdAt": {
+        "$date": "2024-09-03T14:40:22.596Z"
+      },
+      "_id": {
+        "$oid": "66d71fd618fb1f301bae1b48"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "مصاريف نسرية",
+      "price": 10,
+      "createdAt": {
+        "$date": "2024-09-03T21:13:36.806Z"
+      },
+      "_id": {
+        "$oid": "66d77c0023d95d1dd6a25294"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 10,
+      "createdAt": {
+        "$date": "2024-09-03T23:31:10.056Z"
+      },
+      "_id": {
+        "$oid": "66d79c3e23d95d1dd6a25336"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 10,
+      "createdAt": {
+        "$date": "2024-09-03T23:59:23.750Z"
+      },
+      "_id": {
+        "$oid": "66d7a2db23d95d1dd6a25346"
+      }
+    },
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "Restored Client Statement",
+      "price": 100,
+      "createdAt": {
+        "$date": "2024-09-04T16:15:15.762Z"
+      },
+      "_id": {
+        "$oid": "66d887931b0f167a9e18be44"
+      }
+    },
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "Restored Client Statement",
+      "price": 35,
+      "createdAt": {
+        "$date": "2024-09-04T16:21:09.371Z"
+      },
+      "_id": {
+        "$oid": "66d888f51b0f167a9e18be60"
+      }
+    },
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "Restored Client Statement",
+      "price": 30,
+      "createdAt": {
+        "$date": "2024-09-04T16:22:29.064Z"
+      },
+      "_id": {
+        "$oid": "66d889451b0f167a9e18be72"
+      }
+    },
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "Restored Client Statement",
+      "price": 70,
+      "createdAt": {
+        "$date": "2024-09-04T16:22:56.557Z"
+      },
+      "_id": {
+        "$oid": "66d889601b0f167a9e18be81"
+      }
+    },
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "Supplier Statement",
+      "price": 60,
+      "createdAt": {
+        "$date": "2024-09-04T17:24:33.429Z"
+      },
+      "_id": {
+        "$oid": "66d897d17cbf440697bf9d3e"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-05T13:36:46.142Z"
+      },
+      "_id": {
+        "$oid": "66d9b3ee7f19790458b42c81"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-05T13:37:25.043Z"
+      },
+      "_id": {
+        "$oid": "66d9b4157f19790458b42c91"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-05T13:46:20.720Z"
+      },
+      "_id": {
+        "$oid": "66d9b62c7f19790458b42cbe"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-05T13:46:40.542Z"
+      },
+      "_id": {
+        "$oid": "66d9b6407f19790458b42ccb"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-05T13:48:19.182Z"
+      },
+      "_id": {
+        "$oid": "66d9b6a37f19790458b42cdc"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-05T13:50:39.257Z"
+      },
+      "_id": {
+        "$oid": "66d9b72f7f19790458b42cf0"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-05T13:50:56.948Z"
+      },
+      "_id": {
+        "$oid": "66d9b7417f19790458b42cfe"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-05T14:19:31.878Z"
+      },
+      "_id": {
+        "$oid": "66d9bdf37f19790458b42d22"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-05T14:19:49.339Z"
+      },
+      "_id": {
+        "$oid": "66d9be057f19790458b42d2f"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-05T14:20:01.864Z"
+      },
+      "_id": {
+        "$oid": "66d9be117f19790458b42d3c"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-05T14:24:29.585Z"
+      },
+      "_id": {
+        "$oid": "66d9bf1d7f19790458b42d4f"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 10,
+      "createdAt": {
+        "$date": "2024-09-05T14:34:25.322Z"
+      },
+      "_id": {
+        "$oid": "66d9c1717f19790458b42d77"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Client Statement",
+      "price": 3,
+      "createdAt": {
+        "$date": "2024-09-05T14:35:21.459Z"
+      },
+      "_id": {
+        "$oid": "66d9c1a97f19790458b42d8a"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 120,
+      "createdAt": {
+        "$date": "2024-09-08T14:28:51.058Z"
+      },
+      "_id": {
+        "$oid": "66ddb4a3c817da1e21473947"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Payment",
+      "price": 82,
+      "createdAt": {
+        "$date": "2024-09-08T20:33:32.030Z"
+      },
+      "_id": {
+        "$oid": "66de0a1c75e58003490ec62a"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Payment",
+      "price": 200,
+      "createdAt": {
+        "$date": "2024-09-08T20:38:28.164Z"
+      },
+      "_id": {
+        "$oid": "66de0b4475e58003490ec642"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 10,
+      "createdAt": {
+        "$date": "2024-09-08T21:05:01.332Z"
+      },
+      "_id": {
+        "$oid": "66de117d75e58003490ec655"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Payment",
+      "price": 90,
+      "createdAt": {
+        "$date": "2024-09-08T21:07:40.779Z"
+      },
+      "_id": {
+        "$oid": "66de121c75e58003490ec66c"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Refund Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-09T09:09:12.643Z"
+      },
+      "_id": {
+        "$oid": "66debb38473b0ece709f06be"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Payment",
+      "price": 1500,
+      "createdAt": {
+        "$date": "2024-09-09T11:35:23.898Z"
+      },
+      "_id": {
+        "$oid": "66dedd7c473b0ece709f072e"
+      }
+    },
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "Supplier Statement",
+      "price": 85,
+      "createdAt": {
+        "$date": "2024-09-10T09:58:14.687Z"
+      },
+      "_id": {
+        "$oid": "66e018360e513013a6b1f9cf"
+      }
+    },
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "Supplier Invoice Payment",
+      "price": 128,
+      "createdAt": {
+        "$date": "2024-09-10T11:38:17.735Z"
+      },
+      "_id": {
+        "$oid": "66e02fa91cea1f13926c3f2f"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 690,
+      "createdAt": {
+        "$date": "2024-09-11T10:04:31.180Z"
+      },
+      "_id": {
+        "$oid": "66e16b2f98410af3b8e57b13"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 690,
+      "createdAt": {
+        "$date": "2024-09-11T10:04:54.860Z"
+      },
+      "_id": {
+        "$oid": "66e16b4798410af3b8e57b1b"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 131,
+      "createdAt": {
+        "$date": "2024-09-11T10:05:23.262Z"
+      },
+      "_id": {
+        "$oid": "66e16b6398410af3b8e57b2a"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 131,
+      "createdAt": {
+        "$date": "2024-09-11T10:06:59.077Z"
+      },
+      "_id": {
+        "$oid": "66e16bc398410af3b8e57b35"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 69,
+      "createdAt": {
+        "$date": "2024-09-12T07:58:45.408Z"
+      },
+      "_id": {
+        "$oid": "66e29f3598410af3b8e57b47"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 5,
+      "createdAt": {
+        "$date": "2024-09-12T08:04:13.111Z"
+      },
+      "_id": {
+        "$oid": "66e2a07d98410af3b8e57b57"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 5,
+      "createdAt": {
+        "$date": "2024-09-12T08:06:34.174Z"
+      },
+      "_id": {
+        "$oid": "66e2a10a98410af3b8e57b66"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 5,
+      "createdAt": {
+        "$date": "2024-09-12T08:26:42.350Z"
+      },
+      "_id": {
+        "$oid": "66e2a5c298410af3b8e57b76"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 80,
+      "createdAt": {
+        "$date": "2024-09-12T08:27:03.705Z"
+      },
+      "_id": {
+        "$oid": "66e2a5d798410af3b8e57b82"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 30,
+      "createdAt": {
+        "$date": "2024-09-12T08:49:32.153Z"
+      },
+      "_id": {
+        "$oid": "66e2ab1c98410af3b8e57b99"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-12T11:10:36.297Z"
+      },
+      "_id": {
+        "$oid": "66e2cc2c98410af3b8e57bb7"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-12T11:11:12.786Z"
+      },
+      "_id": {
+        "$oid": "66e2cc5098410af3b8e57bc1"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-12T11:11:40.081Z"
+      },
+      "_id": {
+        "$oid": "66e2cc6c98410af3b8e57bcc"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-12T11:14:32.572Z"
+      },
+      "_id": {
+        "$oid": "66e2cd1898410af3b8e57bd8"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 16,
+      "createdAt": {
+        "$date": "2024-09-12T11:14:47.822Z"
+      },
+      "_id": {
+        "$oid": "66e2cd2898410af3b8e57be2"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 112,
+      "createdAt": {
+        "$date": "2024-09-12T11:16:13.723Z"
+      },
+      "_id": {
+        "$oid": "66e2cd7d98410af3b8e57bed"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 60,
+      "createdAt": {
+        "$date": "2024-09-12T12:32:16.209Z"
+      },
+      "_id": {
+        "$oid": "66e2df501793dda0aa579475"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-12T12:33:37.007Z"
+      },
+      "_id": {
+        "$oid": "66e2dfa11793dda0aa579481"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-12T12:37:15.059Z"
+      },
+      "_id": {
+        "$oid": "66e2e07b1793dda0aa57948c"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-12T12:37:55.582Z"
+      },
+      "_id": {
+        "$oid": "66e2e0a31793dda0aa579496"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-12T12:38:11.655Z"
+      },
+      "_id": {
+        "$oid": "66e2e0b31793dda0aa5794a1"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-12T12:38:21.698Z"
+      },
+      "_id": {
+        "$oid": "66e2e0bd1793dda0aa5794ab"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 125,
+      "createdAt": {
+        "$date": "2024-09-12T13:23:07.269Z"
+      },
+      "_id": {
+        "$oid": "66e2eb3b8205ca9dfc817cc6"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 1000,
+      "createdAt": {
+        "$date": "2024-09-12T13:30:51.555Z"
+      },
+      "_id": {
+        "$oid": "66e2ed0b8205ca9dfc817cd3"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Refund Client Statement",
+      "price": 60,
+      "createdAt": {
+        "$date": "2024-09-12T15:09:31.459Z"
+      },
+      "_id": {
+        "$oid": "66e3042b627b6a848d16d5e9"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Payment",
+      "price": 404,
+      "createdAt": {
+        "$date": "2024-09-12T15:13:36.802Z"
+      },
+      "_id": {
+        "$oid": "66e30521627b6a848d16d5fe"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "مصاريف نسرية",
+      "price": 22,
+      "createdAt": {
+        "$date": "2024-09-12T21:02:26.165Z"
+      },
+      "_id": {
+        "$oid": "66e356e21b4cfb61da1a6f37"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66d20e7242d43ebb44058223"
+  },
+  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "method": "visa",
+  "process": "withdraw",
+  "total": 1202,
+  "history": [
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "Supplier Statement",
+      "price": 800,
+      "createdAt": {
+        "$date": "2024-09-10T11:34:13.499Z"
+      },
+      "_id": {
+        "$oid": "66e02eb5fcf6c6c9d6e44061"
+      }
+    },
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "Supplier Statement",
+      "price": 372,
+      "createdAt": {
+        "$date": "2024-09-10T11:37:10.500Z"
+      },
+      "_id": {
+        "$oid": "66e02f661cea1f13926c3f1d"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Supplier Statement",
+      "price": 30,
+      "createdAt": {
+        "$date": "2024-09-12T08:55:45.960Z"
+      },
+      "_id": {
+        "$oid": "66e2ac9298410af3b8e57ba3"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66d20e7242d43ebb44058224"
+  },
+  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "method": "cash",
+  "process": "deposit",
+  "total": 12480,
+  "history": [
+    {
+      "creator": "shehab ayman",
+      "reason": "First Commit",
+      "price": 10000,
+      "createdAt": {
+        "$date": "2024-08-30T18:24:50.473Z"
+      },
+      "_id": {
+        "$oid": "66d20e7242d43ebb4405822a"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 16,
+      "createdAt": {
+        "$date": "2024-08-30T18:25:25.643Z"
+      },
+      "_id": {
+        "$oid": "66d20e9542d43ebb44058231"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-08-31T20:34:35.514Z"
+      },
+      "_id": {
+        "$oid": "66d37e5bccd0a0c0bfea01e0"
+      }
+    },
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "إيداع بنكي",
+      "price": 1000,
+      "createdAt": {
+        "$date": "2024-09-01T13:29:49.404Z"
+      },
+      "_id": {
+        "$oid": "66d46c4d0179b26a20e25bdf"
+      }
+    },
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "Restored Supplier Statement",
+      "price": 24,
+      "createdAt": {
+        "$date": "2024-09-01T13:47:44.949Z"
+      },
+      "_id": {
+        "$oid": "66d470811a238323941bc609"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 24,
+      "createdAt": {
+        "$date": "2024-09-01T18:10:48.593Z"
+      },
+      "_id": {
+        "$oid": "66d4ae283a25c87202fb4478"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 16,
+      "createdAt": {
+        "$date": "2024-09-02T10:11:52.097Z"
+      },
+      "_id": {
+        "$oid": "66d58f684ff4f7c607267428"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 220,
+      "createdAt": {
+        "$date": "2024-09-02T10:30:03.245Z"
+      },
+      "_id": {
+        "$oid": "66d593ab4ff4f7c607267453"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-02T18:54:50.915Z"
+      },
+      "_id": {
+        "$oid": "66d609fb0380dbe272fce953"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 9,
+      "createdAt": {
+        "$date": "2024-09-02T19:19:21.896Z"
+      },
+      "_id": {
+        "$oid": "66d60fba40cf0878e2aa80a5"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 16,
+      "createdAt": {
+        "$date": "2024-09-03T14:43:09.645Z"
+      },
+      "_id": {
+        "$oid": "66d7207d18fb1f301bae1b52"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Supplier Statement",
+      "price": 2,
+      "createdAt": {
+        "$date": "2024-09-04T00:44:39.327Z"
+      },
+      "_id": {
+        "$oid": "66d7ad7723d95d1dd6a25356"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 16,
+      "createdAt": {
+        "$date": "2024-09-04T00:52:21.819Z"
+      },
+      "_id": {
+        "$oid": "66d7af4682cc8730edf78206"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 16,
+      "createdAt": {
+        "$date": "2024-09-04T00:52:36.918Z"
+      },
+      "_id": {
+        "$oid": "66d7af5523d95d1dd6a2535f"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Canceled Supplier Bill",
+      "price": 10,
+      "createdAt": {
+        "$date": "2024-09-04T03:22:55.546Z"
+      },
+      "_id": {
+        "$oid": "66d7d28ffc56a1d7818d5c74"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 14,
+      "createdAt": {
+        "$date": "2024-09-04T03:46:48.616Z"
+      },
+      "_id": {
+        "$oid": "66d7d828097000c38841b02b"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 40,
+      "createdAt": {
+        "$date": "2024-09-04T07:54:48.093Z"
+      },
+      "_id": {
+        "$oid": "66d812481783f9556467f448"
+      }
+    },
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "Client Statement",
+      "price": 190,
+      "createdAt": {
+        "$date": "2024-09-04T15:23:25.612Z"
+      },
+      "_id": {
+        "$oid": "66d87b6da7f4e4141292ba5f"
+      }
+    },
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "Restored Supplier Statement",
+      "price": 396,
+      "createdAt": {
+        "$date": "2024-09-04T17:45:37.969Z"
+      },
+      "_id": {
+        "$oid": "66d89cc225e52b6711a91ce4"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 16,
+      "createdAt": {
+        "$date": "2024-09-05T00:29:43.229Z"
+      },
+      "_id": {
+        "$oid": "66d8fb7707316fcab9ec59ae"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 69,
+      "createdAt": {
+        "$date": "2024-09-05T14:26:22.904Z"
+      },
+      "_id": {
+        "$oid": "66d9bf8f7f19790458b42d5c"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 16,
+      "createdAt": {
+        "$date": "2024-09-05T15:14:47.254Z"
+      },
+      "_id": {
+        "$oid": "66d9cae77f19790458b42d9d"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 16,
+      "createdAt": {
+        "$date": "2024-09-06T16:23:26.544Z"
+      },
+      "_id": {
+        "$oid": "66db2c7e0ec46c63451fbd74"
+      }
+    },
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "Client Statement",
+      "price": 60,
+      "createdAt": {
+        "$date": "2024-09-06T19:42:19.994Z"
+      },
+      "_id": {
+        "$oid": "66db5b1c2d57d5160a3c5c80"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Refundd Supplier Statement",
+      "price": 2,
+      "createdAt": {
+        "$date": "2024-09-08T10:59:03.585Z"
+      },
+      "_id": {
+        "$oid": "66dd837daa30f546bab6ec78"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Payment",
+      "price": 10,
+      "createdAt": {
+        "$date": "2024-09-08T20:03:15.901Z"
+      },
+      "_id": {
+        "$oid": "66de0304dd0d6fcecd030dc6"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Refundd Supplier Statement",
+      "price": 2,
+      "createdAt": {
+        "$date": "2024-09-08T20:12:12.100Z"
+      },
+      "_id": {
+        "$oid": "66de051cdd0d6fcecd030dda"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 5,
+      "createdAt": {
+        "$date": "2024-09-08T23:44:19.985Z"
+      },
+      "_id": {
+        "$oid": "66de36d475e58003490ec708"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Payment",
+      "price": 10,
+      "createdAt": {
+        "$date": "2024-09-08T23:46:47.179Z"
+      },
+      "_id": {
+        "$oid": "66de376775e58003490ec717"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Payment",
+      "price": 5,
+      "createdAt": {
+        "$date": "2024-09-08T23:53:53.363Z"
+      },
+      "_id": {
+        "$oid": "66de391175e58003490ec736"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 10,
+      "createdAt": {
+        "$date": "2024-09-09T00:20:25.382Z"
+      },
+      "_id": {
+        "$oid": "66de3f4975e58003490ec78f"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Payment",
+      "price": 35,
+      "createdAt": {
+        "$date": "2024-09-09T00:21:19.958Z"
+      },
+      "_id": {
+        "$oid": "66de3f8075e58003490ec7a0"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Payment",
+      "price": 50,
+      "createdAt": {
+        "$date": "2024-09-09T00:23:19.762Z"
+      },
+      "_id": {
+        "$oid": "66de3ff775e58003490ec7ae"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Refund Supplier Statement",
+      "price": 10,
+      "createdAt": {
+        "$date": "2024-09-09T08:29:22.373Z"
+      },
+      "_id": {
+        "$oid": "66deb1e2473b0ece709f0669"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Refund Supplier Statement",
+      "price": 35,
+      "createdAt": {
+        "$date": "2024-09-09T08:31:03.897Z"
+      },
+      "_id": {
+        "$oid": "66deb248473b0ece709f0678"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 18,
+      "createdAt": {
+        "$date": "2024-09-12T14:49:55.001Z"
+      },
+      "_id": {
+        "$oid": "66e2ff93627b6a848d16d57d"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 8,
+      "createdAt": {
+        "$date": "2024-09-12T14:54:33.147Z"
+      },
+      "_id": {
+        "$oid": "66e300a9627b6a848d16d58c"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 68,
+      "createdAt": {
+        "$date": "2024-09-12T15:00:23.537Z"
+      },
+      "_id": {
+        "$oid": "66e30207627b6a848d16d5ac"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 10,
+      "createdAt": {
+        "$date": "2024-09-12T15:00:44.112Z"
+      },
+      "_id": {
+        "$oid": "66e3021c627b6a848d16d5bc"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66d20e7242d43ebb44058225"
+  },
+  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "method": "visa",
+  "process": "deposit",
+  "total": 18098,
+  "history": [
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "إيداع بنكي",
+      "price": 3000,
+      "createdAt": {
+        "$date": "2024-09-01T13:33:43.953Z"
+      },
+      "_id": {
+        "$oid": "66d46d380179b26a20e25be3"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Client Statement",
+      "price": 4,
+      "createdAt": {
+        "$date": "2024-09-03T14:44:00.472Z"
+      },
+      "_id": {
+        "$oid": "66d720b018fb1f301bae1b5d"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "Restored Supplier Statement",
+      "price": 2,
+      "createdAt": {
+        "$date": "2024-09-04T01:49:58.539Z"
+      },
+      "_id": {
+        "$oid": "66d7bcc6fc56a1d7818d5bd0"
+      }
+    },
+    {
+      "creator": "shehab ayman",
+      "reason": "مصاريف نسرية",
+      "price": 12,
+      "createdAt": {
+        "$date": "2024-09-04T03:46:13.634Z"
+      },
+      "_id": {
+        "$oid": "66d7d807097000c38841b023"
+      }
+    },
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "Client Statement",
+      "price": 80,
+      "createdAt": {
+        "$date": "2024-09-04T16:30:03.731Z"
+      },
+      "_id": {
+        "$oid": "66d88b0b3abf8b6bfc9b7040"
+      }
+    },
+    {
+      "creator": "Mahmoud Mohamed",
+      "reason": "إيداع بنكي",
+      "price": 15000,
+      "createdAt": {
+        "$date": "2024-09-04T17:46:06.379Z"
+      },
+      "_id": {
+        "$oid": "66d89cde25e52b6711a91ce9"
+      }
+    }
+  ],
+  "__v": 0
+}]

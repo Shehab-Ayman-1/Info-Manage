@@ -100,8 +100,8 @@
         "client-statement": "Kundenabrechnung",
         "supplier-statement": "Lieferantenabrechnung",
 
-        "refundd-client-statement": "Wiederhergestellte Kundenabrechnung",
-        "refundd-supplier-statement": "Wiederhergestellte Lieferantenabrechnung",
+        "refund-client-statement": "Wiederhergestellte Kundenabrechnung",
+        "refund-supplier-statement": "Wiederhergestellte Lieferantenabrechnung",
 
         "client-invoice-payment": "Kundenrechnungszahlung",
         "supplier-invoice-payment": "Lieferantenrechnungszahlung",

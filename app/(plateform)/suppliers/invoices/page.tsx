@@ -1,14 +1,14 @@
 "use client";
+import { DateRange } from "react-day-picker";
 import { useEffect, useState } from "react";
-import { formatDate } from "date-fns";
-
-import { useGetByQuery } from "@/hooks/api/useGetByQuery";
-import { columns } from "./table-columns";
 
 import { TableForm } from "@/components/page-structure/table-form";
+import { DatePickerWithRange } from "@/components/ui/calender";
+import { useGetByQuery } from "@/hooks/api/useGetByQuery";
+
 import { DeleteDialog } from "./delete-dialog";
+import { columns } from "./table-columns";
 import { PayDialog } from "./pay-dialog";
-import { Input } from "@/ui/input";
 
 type InvoiceType = {
     _id: string;
@@ -20,13 +20,12 @@ type InvoiceType = {
     createdAt: Date;
 };
 
-const dateFormate = formatDate(new Date(), "yyyy-MM-dd");
 const SupplierInvoices = () => {
     const { data, isPending, error, mutate } = useGetByQuery<InvoiceType[]>("/api/suppliers/invoices", ["supplier-invoices"]);
-    const [date, setDate] = useState(dateFormate);
+    const [date, setDate] = useState<DateRange | undefined>({ from: new Date(), to: undefined });
 
     useEffect(() => {
-        mutate(`date=${date}`);
+        mutate(`startDate=${date?.from}&endDate=${date?.to}`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [date]);
 
@@ -46,8 +45,9 @@ const SupplierInvoices = () => {
             ]}
         >
             <div className="mt-4 w-fit sm:mx-4">
-                <Input type="date" value={date} name="date" onChange={(event) => setDate(() => event.target.value)} />
+                <DatePickerWithRange date={date} setDate={setDate} />
             </div>
+
             <DeleteDialog />
             <PayDialog />
         </TableForm>

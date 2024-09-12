@@ -8,16 +8,14 @@ import { Checkbox } from "@/ui/checkbox";
 
 type CheckCellType = {
     row: Row<any>;
-    type: string;
 };
 
-export const CheckCell = ({ row, type }: CheckCellType) => {
+export const CheckCell = ({ row }: CheckCellType) => {
     const [item, setItem] = useState({ checked: false, count: 0 });
     const text = useTranslations();
 
     const onBlur = () => {
         row.original.count = item.count;
-        row.original.modelType = type;
         row.toggleSelected(!!item.checked);
     };
 
@@ -34,7 +32,7 @@ export const CheckCell = ({ row, type }: CheckCellType) => {
     return (
         <div className="flex-center">
             <Checkbox
-                checked={row.getIsSelected()}
+                checked={item.checked}
                 onCheckedChange={onCheck}
                 className={row.index % 2 === 0 ? "border-black" : "border-white"}
             />
@@ -44,8 +42,8 @@ export const CheckCell = ({ row, type }: CheckCellType) => {
                     onBlur={onBlur}
                     value={item.count || ""}
                     placeholder={text("public.count")}
-                    onChange={(event) => setItem({ checked: item.checked, count: +event.target.value })}
-                    className="w-20 rounded-md border border-slate-500 bg-white p-1 text-black dark:bg-black dark:text-white"
+                    onChange={(event) => setItem((item) => ({ ...item, count: +event.target.value }))}
+                    className="w-16 rounded-md border border-slate-500 bg-white p-1 text-xs text-black dark:bg-black dark:text-white"
                 />
             )}
         </div>
