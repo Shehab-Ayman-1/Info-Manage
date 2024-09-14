@@ -79,6 +79,7 @@
         "type": "Typ",
 
         "check": "Einstellen",
+        "checked-count": "Anzahl der geprüften",
         "buy": "Kaufen",
 
         "expires-after": "Läuft ab nach",

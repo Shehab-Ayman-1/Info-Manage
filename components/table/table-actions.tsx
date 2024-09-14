@@ -26,8 +26,8 @@ export const TableActions = ({ row, items }: TableActionsProps) => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild className="print:hidden">
-                <Button type="button" variant="ghost" className="flex-center m-auto dark:hover:!text-primary">
-                    <MoreHorizontalIcon className="size-8 !text-rose-500" />
+                <Button type="button" variant="ghost" size="icon" className="mx-auto">
+                    <MoreHorizontalIcon className="!text-rose-500" />
                 </Button>
             </DropdownMenuTrigger>
 

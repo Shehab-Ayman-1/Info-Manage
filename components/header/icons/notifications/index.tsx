@@ -43,7 +43,7 @@ export const Notifications = () => {
                             {subscriptions.length}
                         </span>
                     )}
-                    <BellIcon className="hover:text-slate-500" />
+                    <BellIcon className="hover:text-primary" />
                 </div>
             </PopoverTrigger>
 

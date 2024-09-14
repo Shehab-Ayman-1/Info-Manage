@@ -5,27 +5,26 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
-import { createSchema, CreateClientType } from "@/app/api/clients/statements/new/schema";
-import { OpenModuleButton } from "@/components/public/openModuleButton";
-import { InsertProduct, ProductType } from "./insert-product";
-
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
 import { methods, process } from "@/constants";
 import { columns } from "./table-columns";
 
+import { RemoveItemFromTable } from "@/widgets/public/remove-item-from-table";
+import { InsertProductToTable } from "@/widgets/public/insert-product-to-table";
+import { ProductType } from "@/widgets/public/insert-product-to-table";
+
+import { createSchema, CreateClientType } from "@/app/api/clients/statements/new/schema";
+import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { CardForm } from "@/components/page-structure/CardForm";
 import { SubmitButton } from "@/components/public/submit-btn";
 import { AlertError } from "@/components/ui/alert-error";
 import { ComboBox } from "@/components/ui/comboBox";
 import { DataTable } from "@/components/table";
-import { DeleteDialog } from "./delete-dialog";
 import { Input } from "@/ui/input";
 import { cn } from "@/utils/shadcn";
 
-type ClientsProps = {};
-
-const Clients = ({}: ClientsProps) => {
+const Clients = () => {
     const { formState, register, watch, setValue, setError, clearErrors, handleSubmit } = useForm({
         resolver: zodResolver(createSchema.omit({ products: true })),
     });
@@ -34,7 +33,7 @@ const Clients = ({}: ClientsProps) => {
     const [products, setProducts] = useState<ProductType[]>([]);
 
     const { clients } = useLists();
-    const { errors } = formState;
+    const { isSubmitted, errors } = formState;
 
     const processValue = watch("process");
     const text = useTranslations();
@@ -79,6 +78,7 @@ const Clients = ({}: ClientsProps) => {
                         loading={clients.isLoading}
                         items={clients.lists}
                         error={errors?.clientId}
+                        isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
                     />
@@ -88,6 +88,7 @@ const Clients = ({}: ClientsProps) => {
                         useTranslate={{ label: "public", trigger: "public", name: "public", item: "public" }}
                         error={errors?.method}
                         items={methods}
+                        isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
                         defaultValue="cash"
@@ -101,6 +102,7 @@ const Clients = ({}: ClientsProps) => {
                         useTranslate={{ label: "public", trigger: "public", name: "public", item: "public" }}
                         items={process}
                         error={errors?.process}
+                        isSubmitted={isSubmitted}
                         onChange={onProcessChange}
                         defaultValue="pay-all"
                     />
@@ -127,15 +129,23 @@ const Clients = ({}: ClientsProps) => {
                 </div>
 
                 <AlertError root={errors?.root} />
-                <OpenModuleButton type="insert-products-model" clearErrors={clearErrors} />
+                <OpenModuleButton type="new-client-statement-insert-product-model" clearErrors={clearErrors} />
 
                 {!!products.length && <DataTable columns={columns} data={products} totalFor="total" smallSize />}
-
                 <SubmitButton text="buy" isPending={isPending} />
             </form>
 
-            <InsertProduct setProducts={setProducts} />
-            <DeleteDialog setProducts={setProducts} />
+            <InsertProductToTable
+                dialogType="new-client-statement-insert-product-model"
+                price={{ type: "soldPrice", both: true }}
+                setProducts={setProducts}
+            />
+
+            <RemoveItemFromTable
+                dialogType="new-client-statement-delete-model"
+                filterKeys={{ id: "productId", data: "productId" }}
+                setItems={setProducts}
+            />
         </CardForm>
     );
 };

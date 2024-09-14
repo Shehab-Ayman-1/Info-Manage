@@ -18,7 +18,7 @@ const schema = z.object({
     productId: z.string().min(1),
     company: z.string().min(1),
     name: z.string().min(1),
-    count: z.number().int().positive(),
+    count: z.number().positive(),
     total: z.number().positive(),
     soldPrice: z.number().positive(),
     purchasePrice: z.number().min(0),
@@ -45,7 +45,7 @@ export const InsertProduct = ({ invoiceBarcode, setProducts }: InsertProductProp
     });
     const { data, isPending } = useGet<ProductResponse[]>(`/api/clients/statements/refund/${invoiceBarcode}`, [invoiceBarcode]);
     const { type, onClose } = useModel();
-    const { errors, isLoading } = formState;
+    const { isSubmitted, errors } = formState;
 
     const productId = watch("productId");
     const count = watch("count");
@@ -69,7 +69,7 @@ export const InsertProduct = ({ invoiceBarcode, setProducts }: InsertProductProp
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data, productId]);
 
-    if (type !== "insert-invoice-products-model") return;
+    if (type !== "refund-client-statement-insert-dialog-model") return;
 
     const onSubmit: SubmitHandler<FieldValues> = (formState) => {
         const { productId, count, soldPrice, ...product } = formState as ProductType;
@@ -103,6 +103,7 @@ export const InsertProduct = ({ invoiceBarcode, setProducts }: InsertProductProp
                     name="productId"
                     useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
                     loading={isPending}
+                    isSubmitted={isSubmitted}
                     items={productLists || []}
                     error={errors?.productId}
                     setValue={setValue}
@@ -128,7 +129,7 @@ export const InsertProduct = ({ invoiceBarcode, setProducts }: InsertProductProp
                     />
                 </div>
 
-                <SubmitButton text="insert" isPending={isLoading} />
+                <SubmitButton text="insert" isPending={false} />
             </form>
         </DialogForm>
     );

@@ -11,26 +11,21 @@ import { DataTable } from "@/components/table";
 import { place as places } from "@/constants";
 
 type TransferDialogType = {
-    mutateGetQuery: any;
     place: string;
 };
 
-export const TransferDialog = ({ place, mutateGetQuery }: TransferDialogType) => {
+export const TransferDialog = ({ place }: TransferDialogType) => {
     const { mutate, isPending } = useUpdate("/api/products/transfer", ["products"]);
     const [location, setLocation] = useState(place);
-    const { type, data } = useModel();
+    const { type, data, onClose } = useModel();
 
     const products = data?.items;
-
     if (type !== "selected-transfer-model" || !products) return;
 
     const onSubmit = (event: FormEvent) => {
         event.preventDefault();
-        const transferProducts = products.map((product: any) => ({ _id: product.productId, count: product.count }));
-        mutate(
-            { products: transferProducts, place: location },
-            { onSuccess: () => mutateGetQuery(`supplierId=${products[0]._id}&place=${place}`) },
-        );
+        const transferProducts = products.map((product: any) => ({ _id: product.productId, count: product.checkedCount }));
+        mutate({ products: transferProducts, place: location }, { onSuccess: onClose });
     };
 
     return (
@@ -46,7 +41,6 @@ export const TransferDialog = ({ place, mutateGetQuery }: TransferDialogType) =>
                 />
 
                 {!!products.length && <DataTable columns={columns} data={products} />}
-
                 <SubmitButton text="transfer" isPending={isPending} />
             </form>
         </DialogForm>

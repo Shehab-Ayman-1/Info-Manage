@@ -30,7 +30,7 @@ export const Configrator = ({}: ConfigratorProps) => {
     return (
         <Sheet>
             <SheetTrigger>
-                <SettingsIcon className="cursor-pointer hover:text-slate-600" />
+                <SettingsIcon className="cursor-pointer hover:text-primary" />
             </SheetTrigger>
 
             <SheetContent>

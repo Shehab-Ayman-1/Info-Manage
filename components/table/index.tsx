@@ -6,12 +6,12 @@ import { ColumnFiltersState, SortingState, getSortedRowModel } from "@tanstack/r
 
 import { Card, CardContent, CardFooter, CardHeader } from "@/ui/card";
 import { PaginationCount } from "./pagination-count";
+import { SelectedItems } from "./selected-items";
 import { Controllers } from "./controllers";
 import { THeader } from "./table-header";
 import { TBody } from "./table-body";
 import { Table } from "@/ui/table";
 import { Filter } from "./filter";
-import { SelectedItems } from "./selected-items";
 
 type DataTableProps<TData, TValue> = {
     data: TData[];

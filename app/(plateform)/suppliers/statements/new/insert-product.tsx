@@ -18,7 +18,7 @@ const schema = z.object({
     productId: z.string().min(1),
     company: z.string().min(1),
     name: z.string().min(1),
-    count: z.number().int().positive(),
+    count: z.number().positive(),
     price: z.number().positive(),
     total: z.number().positive(),
 });
@@ -37,7 +37,7 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
     const { productsBySupplier } = useLists();
     const { type, onClose } = useModel();
 
-    const { errors, isLoading } = formState;
+    const { isSubmitted, errors } = formState;
     const selectedProductId = watch("productId");
     const text = useTranslations();
 
@@ -78,6 +78,7 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
                     loading={productsBySupplier.isLoading}
                     groups={productsBySupplier.groups}
                     error={errors.productId}
+                    isSubmitted={isSubmitted}
                     setValue={setValue}
                     clearErrors={clearErrors}
                 />
@@ -99,7 +100,7 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
                     />
                 </div>
 
-                <SubmitButton text="buy" isPending={isLoading} />
+                <SubmitButton text="buy" isPending={false} />
             </form>
         </DialogForm>
     );

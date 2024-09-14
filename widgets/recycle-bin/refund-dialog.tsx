@@ -19,7 +19,7 @@ export const RefundDialog = () => {
     const { onReset } = useLists();
     const text = useTranslations();
 
-    if (type !== "refund-model") return;
+    if (type !== "recycle-bin-refund-model") return;
 
     const onClick = () => {
         if (!data?._id || !data?.type) return;

@@ -18,7 +18,7 @@ const Configs = () => {
     const resolver = zodResolver(configsSchema.omit({ organizationId: true }));
     const { formState, watch, register, setValue, clearErrors, handleSubmit } = useForm({ resolver });
     const { mutate, isPending } = useUpdate<EditConfigsSchema>("/api/organizations/configs");
-    const { errors } = formState;
+    const { isSubmitted, errors } = formState;
 
     const { organization } = useOrganization();
     const { user } = useUser();
@@ -77,9 +77,10 @@ const Configs = () => {
                         label="remove-unnecessary-data"
                         name="removeUnnecessaryData"
                         useTranslate={{ label: "organizations", name: "organizations" }}
-                        setValue={setValue}
                         items={noOfMonths}
                         error={errors.removeUnnecessaryData}
+                        isSubmitted={isSubmitted}
+                        setValue={setValue}
                         clearErrors={clearErrors}
                         defaultValue={organization?.publicMetadata.removeUnnecessaryData as string}
                     />
@@ -88,6 +89,7 @@ const Configs = () => {
                         name="refreshClientsPurchases"
                         useTranslate={{ label: "organizations", name: "organizations" }}
                         items={noOfMonths}
+                        isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
                         error={errors.refreshClientsPurchases}
@@ -107,6 +109,7 @@ const Configs = () => {
                                 name="subscription"
                                 items={subscriptions}
                                 error={errors.subscription}
+                                isSubmitted={isSubmitted}
                                 setValue={setValue}
                                 clearErrors={clearErrors}
                                 defaultValue={organization?.publicMetadata.subscription as string}
@@ -129,6 +132,7 @@ const Configs = () => {
                                 name="additionalSubscriptions"
                                 items={additionalSubscription}
                                 error={errors.additionalSubscription}
+                                isSubmitted={isSubmitted}
                                 onChange={onAdditionalChange}
                                 clearErrors={clearErrors}
                             />

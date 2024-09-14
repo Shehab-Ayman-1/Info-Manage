@@ -7,7 +7,7 @@ import { columns } from "./table-columns";
 
 import { TableForm } from "@/components/page-structure/table-form";
 import { CardLoading } from "@/components/loading/card";
-import { RefundDialog } from "./refund-dialog";
+import { RefundDialog } from "../../../widgets/recycle-bin/refund-dialog";
 import { Alert } from "@/ui/alert";
 
 type TrashProductsType = {

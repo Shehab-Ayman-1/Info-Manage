@@ -1,12 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import { TableForm } from "@/components/page-structure/table-form";
-import { useGetByQuery } from "@/hooks/api/useGetByQuery";
+import { useGet } from "@/hooks/api/useGet";
 import { place } from "@/constants";
 
+import { TableForm } from "@/components/page-structure/table-form";
 import { ComboBox } from "@/components/ui/comboBox";
 import { columns } from "./table-columns";
+import { TransferDialog } from "./transfer-dialog";
 
 export type Product = {
     _id: string;
@@ -19,11 +20,11 @@ export type Product = {
 };
 
 const Market = () => {
-    const { data, isPending, error, mutate } = useGetByQuery<Product[]>("/api/products");
     const [location, setLocation] = useState("market");
+    const { data, isPending, error, refetch } = useGet<Product[]>(`/api/products?place=${location}`, ["products"]);
 
     useEffect(() => {
-        mutate(`place=${location}`);
+        refetch();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]);
 
@@ -45,11 +46,12 @@ const Market = () => {
                 <ComboBox
                     label="choose-place"
                     name="place"
+                    useTranslate={{ label: "public", trigger: "public", item: "public", name: "public" }}
                     items={place}
                     defaultValue="market"
-                    useTranslate={{ label: "public", trigger: "public", item: "public", name: "public" }}
                     onChange={(value) => setLocation(value)}
                 />
+                <TransferDialog place={location} />
             </div>
         </TableForm>
     );

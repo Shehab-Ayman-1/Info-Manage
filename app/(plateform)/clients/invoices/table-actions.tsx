@@ -1,10 +1,9 @@
 "use client";
-import { BadgeDollarSignIcon, EyeIcon } from "lucide-react";
 import { Row } from "@tanstack/react-table";
 import { useRouter } from "next/navigation";
+import { EyeIcon } from "lucide-react";
 
 import { TableActions } from "@/components/table/table-actions";
-import { useModel } from "@/hooks/useModel";
 import { useOrg } from "@/hooks/useOrg";
 
 type ActionsProps = {
@@ -14,18 +13,12 @@ type ActionsProps = {
 export const Actions = ({ row }: ActionsProps) => {
     const router = useRouter();
     const { isAdmin } = useOrg();
-    const { onOpen } = useModel();
 
     const items = [
         {
             Icon: EyeIcon,
             text: "open",
             onClick: (original: any) => router.push(`/profile/client/${original._id}`),
-        },
-        {
-            Icon: BadgeDollarSignIcon,
-            text: "pay",
-            onClick: (original: any) => onOpen("pay-model", { invoiceId: original._id }),
         },
     ];
 

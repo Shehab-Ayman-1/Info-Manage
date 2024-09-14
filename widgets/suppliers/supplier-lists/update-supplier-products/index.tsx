@@ -25,7 +25,7 @@ type RequestType = {
     productsIds: string[];
 };
 
-export const UpdateProductsDialog = () => {
+export const UpdateSupplierProducts = () => {
     const { mutate, isPending } = useUpdate<RequestType>("/api/suppliers/products", ["suppliers"]);
     const text = useTranslations();
 
@@ -49,7 +49,7 @@ export const UpdateProductsDialog = () => {
         setSupplierId(data.supplierId);
     }, [data]);
 
-    if (type !== "update-products-model") return;
+    if (type !== "suppliers-update-supplier-products-model") return;
 
     const onCompanyChange = (companyId: string) => {
         const company = productsLists.groups.find((product) => product._id === companyId);
@@ -125,4 +125,4 @@ export const UpdateProductsDialog = () => {
     );
 };
 
-UpdateProductsDialog.displayName = "UpdateProductsDialog";
+UpdateSupplierProducts.displayName = "UpdateSupplierProducts";

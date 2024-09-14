@@ -1,7 +1,7 @@
 "use client";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Fragment, useEffect, useRef, useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
@@ -38,7 +38,7 @@ const Supplier = ({}: SupplierProps) => {
 
     const { mutate, isPending } = useCreate(`/api/suppliers/add-supplier?process=${process}`, ["suppliers"]);
     const { suppliers, onReset } = useLists();
-    const { errors } = formState;
+    const { isSubmitted, errors } = formState;
 
     const text = useTranslations();
     const router = useRouter();
@@ -74,6 +74,7 @@ const Supplier = ({}: SupplierProps) => {
                 label="choose-process"
                 name="process"
                 useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
+                isSubmitted={isSubmitted}
                 items={processes}
                 onChange={onProcess}
             />
@@ -87,6 +88,7 @@ const Supplier = ({}: SupplierProps) => {
                         loading={suppliers.isLoading}
                         items={suppliers.lists}
                         error={errors?.supplierId}
+                        isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
                     />

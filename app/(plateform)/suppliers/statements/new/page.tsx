@@ -33,7 +33,7 @@ const Suppliers = ({}: SuppliersProps) => {
     const [products, setProducts] = useState<ProductType[]>([]);
 
     const { suppliers, productsBySupplier, onReset } = useLists();
-    const { errors } = formState;
+    const { isSubmitted, errors } = formState;
 
     const processValue = watch("process");
     const supplierId = watch("supplierId");
@@ -100,6 +100,7 @@ const Suppliers = ({}: SuppliersProps) => {
                         loading={suppliers.isLoading}
                         items={suppliers.lists}
                         error={errors?.supplierId}
+                        isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
                     />
@@ -109,7 +110,9 @@ const Suppliers = ({}: SuppliersProps) => {
                         useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                         error={errors?.place}
                         items={place}
+                        isSubmitted={isSubmitted}
                         setValue={setValue}
+                        clearErrors={clearErrors}
                     />
                 </div>
 
@@ -120,7 +123,9 @@ const Suppliers = ({}: SuppliersProps) => {
                         useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                         error={errors?.method}
                         items={methods}
+                        isSubmitted={isSubmitted}
                         setValue={setValue}
+                        clearErrors={clearErrors}
                     />
                     <ComboBox
                         label="choose-process"
@@ -128,7 +133,9 @@ const Suppliers = ({}: SuppliersProps) => {
                         useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                         error={errors?.process}
                         items={process}
+                        isSubmitted={isSubmitted}
                         onChange={onProcessChange}
+                        clearErrors={clearErrors}
                     />
                 </div>
 

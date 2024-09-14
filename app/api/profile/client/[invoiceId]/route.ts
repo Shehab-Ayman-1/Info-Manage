@@ -1,9 +1,8 @@
-import { auth, clerkClient } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 import { Types } from "mongoose";
 
-import { ClientInvoices, Clients, Transactions } from "@/server/models";
-import { getTranslations } from "@/utils/getTranslations";
+import { ClientInvoices } from "@/server/models";
 import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
 
@@ -89,67 +88,6 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
         console.log(invoice);
 
         return json(!invoice.products[0].total ? { ...invoice, products: [] } : invoice);
-    } catch (error: any) {
-        const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
-        return json(errors || error.message, 400);
-    }
-};
-
-export const PUT = async (req: NextRequest, res: ResponseType) => {
-    try {
-        await DBConnection();
-
-        const { userId, orgId, orgSlug } = auth();
-        if (!userId || !orgId) return json("Unauthorized", 401);
-        const text = await getTranslations("profile.client.put");
-
-        const user = await clerkClient().users.getUser(userId);
-        const organization = await clerkClient().organizations.getOrganization({ organizationId: orgId, slug: orgSlug });
-
-        const { amount } = await req.json();
-        const { invoiceId } = res.params;
-
-        const invoice = await ClientInvoices.findById(invoiceId);
-        if (!invoice) return json(text("wrong"), 400);
-        if (invoice.state === "completed") return json(text("already-exist"), 400);
-
-        // Update The Invoice Salaries
-        if (amount > invoice.total - invoice.paid) return json(text("salary-check"), 400);
-        const state = invoice.paid + amount >= invoice.total ? "completed" : "pending";
-        await ClientInvoices.updateOne({ orgId, _id: invoiceId }, { $inc: { paid: amount }, state });
-
-        // Update The Client Salaries
-        await Clients.updateOne({ orgId, _id: invoice.client, trash: false }, { $inc: { pending: -amount } });
-
-        const refreshAfter = +(organization?.publicMetadata?.refreshClientsPurchases as string)?.split(" ")[0];
-        await Clients.updateLastRefreshDate({ orgId, clientId: invoice.client, refreshAfter });
-
-        // Create Transaction
-        await Transactions.updateOne(
-            {
-                orgId,
-                method: "cash",
-                process: "deposit",
-            },
-            {
-                $inc: { total: amount },
-                $push: {
-                    history: {
-                        $slice: -100,
-                        $each: [
-                            {
-                                creator: user.fullName,
-                                reason: "Client Invoice Payment",
-                                price: amount,
-                                createdAt: new Date(),
-                            },
-                        ],
-                    },
-                },
-            },
-        );
-
-        return json(text("success"));
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

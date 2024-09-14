@@ -22,12 +22,13 @@ export const translations = {
                     success: "The Product Was Successfully Created.",
                 },
             },
-            "transfer-product": {
+            "transfer-products": {
                 put: {
                     "not-found": "The Product Was Not Found.",
                     "not-modified": "The Product Was Not Modified.",
                     "just-available": "Just Available",
                     "in-the": "In The",
+                    of: "Of",
                     market: "Market",
                     store: "Store",
                     success: "The Product Was Successfully Transfer.",
@@ -183,12 +184,13 @@ export const translations = {
                     success: "لقد تم انشاء المنتج بنجاح.",
                 },
             },
-            "transfer-product": {
+            "transfer-products": {
                 put: {
                     "not-found": "هذا المنتج غير موجود.",
                     "not-modified": "لم يتم تعديل المنتج",
                     "just-available": "متاح فقط",
                     "in-the": "في",
+                    of: "من",
                     market: "المحل",
                     store: "المخزن",
                     success: "لقد تم نقل المنتج بنجاح.",
@@ -344,12 +346,13 @@ export const translations = {
                     success: "Das Produkt wurde erfolgreich erstellt.",
                 },
             },
-            "transfer-product": {
+            "transfer-products": {
                 put: {
                     "not-found": "Das Produkt wurde nicht gefunden.",
                     "not-modified": "Das Produkt wurde nicht geändert.",
                     "just-available": "Nur verfügbar",
                     "in-the": "Im",
+                    of: "von",
                     market: "Markt",
                     store: "Lager",
                     success: "Das Produkt wurde erfolgreich übertragen.",

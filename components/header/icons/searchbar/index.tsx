@@ -41,7 +41,7 @@ export const Searchbar = ({}: SearchbarProps) => {
         <Popover open={open} onOpenChange={onOpen}>
             <PopoverTrigger>
                 <Tooltip content="CTRL + Q">
-                    <SearchIcon className="hover:text-slate-500" />
+                    <SearchIcon className="hover:text-primary" />
                 </Tooltip>
             </PopoverTrigger>
 

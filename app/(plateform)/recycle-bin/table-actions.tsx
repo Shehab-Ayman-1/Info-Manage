@@ -16,7 +16,7 @@ export const Actions = ({ row }: ActionsProps) => {
         {
             Icon: ArchiveRestoreIcon,
             text: "refund",
-            onClick: (original: any) => onOpen("refund-model", { _id: original._id, type: original.type }),
+            onClick: (original: any) => onOpen("recycle-bin-refund-model", { _id: original._id, type: original.type }),
         },
     ];
 

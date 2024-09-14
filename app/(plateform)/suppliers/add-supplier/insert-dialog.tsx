@@ -1,7 +1,7 @@
 "use client";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { Dispatch, SetStateAction } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Dispatch, SetStateAction } from "react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
@@ -19,10 +19,10 @@ type InsertDialogProps = {
 
 export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
     const { formState, setValue, reset, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(schema) });
-    const { errors, isLoading } = formState;
+    const { isSubmitted, errors } = formState;
     const text = useTranslations();
 
-    const { type, onClose } = useModel();
+    const { type } = useModel();
     const { products } = useLists();
 
     if (type !== "insert-product-model") return;
@@ -41,7 +41,6 @@ export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
         });
 
         reset();
-        onClose();
     };
 
     return (
@@ -57,10 +56,11 @@ export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
                     loading={products.isLoading}
                     groups={products.groups}
                     error={errors?.productId}
+                    isSubmitted={isSubmitted}
                     setValue={setValue}
                     clearErrors={clearErrors}
                 />
-                <SubmitButton text="insert" isPending={isLoading} />
+                <SubmitButton text="insert" isPending={false} />
             </form>
         </DialogForm>
     );

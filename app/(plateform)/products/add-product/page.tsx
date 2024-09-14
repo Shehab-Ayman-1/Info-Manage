@@ -6,20 +6,19 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { z } from "zod";
 
-import { CreateProductSchema } from "@/app/api/products/add-product/schema";
-import { OpenModuleButton } from "@/components/public/openModuleButton";
-import { InsertAndUpdateDialog } from "./insert-update-dialog";
-import { ProductType } from "./schema";
-
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
 import { columns } from "./table-columns";
 
+import { RemoveItemFromTable } from "@/widgets/public/remove-item-from-table";
+import { CreateProductSchema } from "@/app/api/products/add-product/schema";
+import { InsertDialog } from "@/widgets/products/add-products/insert-product";
+import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { CardForm } from "@/components/page-structure/CardForm";
 import { SubmitButton } from "@/components/public/submit-btn";
 import { ComboBox } from "@/components/ui/comboBox";
 import { DataTable } from "@/components/table";
-import { DeleteDialog } from "./delete-dialog";
+import { ProductType } from "./schema";
 
 const schema = z.object({
     companyId: z.string().min(1),
@@ -30,7 +29,7 @@ type ProductProps = {};
 
 const Product = ({}: ProductProps) => {
     const { formState, setValue, setError, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(schema) });
-    const { errors } = formState;
+    const { isSubmitted, errors } = formState;
 
     const { mutate, isPending } = useCreate<CreateProductSchema>("/api/products/add-product", ["market", "store"]);
     const [products, setProducts] = useState<ProductType[]>([]);
@@ -81,6 +80,7 @@ const Product = ({}: ProductProps) => {
                     loading={companies.isLoading}
                     groups={companies.groups}
                     error={errors.companyId}
+                    isSubmitted={isSubmitted}
                     setValue={setValue}
                     clearErrors={clearErrors}
                 />
@@ -98,6 +98,7 @@ const Product = ({}: ProductProps) => {
                     loading={suppliers.isLoading}
                     items={suppliers.lists}
                     error={errors.supplierId}
+                    isSubmitted={isSubmitted}
                     setValue={setValue}
                     clearErrors={clearErrors}
                 />
@@ -109,8 +110,14 @@ const Product = ({}: ProductProps) => {
                 <SubmitButton text="create" isPending={isPending} />
             </form>
 
-            <InsertAndUpdateDialog setProducts={setProducts} />
-            <DeleteDialog setProducts={setProducts} />
+            <InsertDialog setProducts={setProducts} />
+
+            <RemoveItemFromTable
+                setItems={setProducts}
+                dialogType="add-product-remove-item-model"
+                filterKeys={{ id: "randomId", data: "productId" }}
+            />
+
             <p className="text-center text-sm text-rose-900">{errors?.root?.message}</p>
         </CardForm>
     );

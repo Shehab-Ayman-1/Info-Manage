@@ -28,7 +28,7 @@ const productSchema = z.array(
         productId: z.string().min(1),
         company: z.string().min(1),
         name: z.string().min(1),
-        count: z.number().int().positive(),
+        count: z.number().positive(),
         total: z.number().positive(),
         soldPrice: z.number().positive(),
         purchasePrice: z.number().min(0),
@@ -41,7 +41,7 @@ export type StatementType = z.infer<typeof schema>;
 type ProductType = z.infer<typeof productSchema>;
 type RequestType = Omit<StatementType, "products"> & Pick<CreateClientType, "products">;
 
-const defaultProduct = { productId: "", name: "", company: "", count: 0, purchasePrice: 0, soldPrice: 0, total: 0 };
+const defaultProduct = { productId: "", name: "", company: "", count: 1, purchasePrice: 0, soldPrice: 0, total: 0 };
 export const QuickClientStatement = () => {
     const { formState, watch, reset, setValue, clearErrors, handleSubmit } = useForm<StatementType>({
         resolver: zodResolver(schema),
@@ -50,7 +50,7 @@ export const QuickClientStatement = () => {
     const [product, setProduct] = useState<ProductType[0]>(defaultProduct);
     const { clients, products: productLists } = useLists();
     const { type, onClose } = useModel();
-    const { errors } = formState;
+    const { isSubmitted, errors } = formState;
 
     const choosenProducts = watch("products");
     const clientId = watch("clientId");
@@ -146,6 +146,7 @@ export const QuickClientStatement = () => {
                     useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                     error={errors?.method}
                     items={methods}
+                    isSubmitted={isSubmitted}
                     setValue={setValue}
                     clearErrors={clearErrors}
                 />
@@ -156,7 +157,9 @@ export const QuickClientStatement = () => {
                     useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
                     groups={productLists.groups}
                     loading={productLists.isLoading}
+                    isSubmitted={isSubmitted}
                     onChange={(value) => setProduct((product) => ({ ...product, productId: value }))}
+                    clearErrors={clearErrors}
                 />
 
                 <div className="flex-between">

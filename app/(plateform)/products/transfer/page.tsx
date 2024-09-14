@@ -2,64 +2,79 @@
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 
 import { useUpdate } from "@/hooks/api/useUpdate";
-import { useLists } from "@/hooks/data/useLists";
-import { place } from "@/constants";
+import { place as places } from "@/constants";
 
+import { InsertProductToTable, ProductType } from "@/widgets/public/insert-product-to-table";
 import { editSchema, EditTransferSchema } from "@/app/api/products/transfer/schema";
+import { RemoveItemFromTable } from "@/widgets/public/remove-item-from-table";
+import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { CardForm } from "@/components/page-structure/CardForm";
+import { SubmitButton } from "@/components/public/submit-btn";
 import { ComboBox } from "@/components/ui/comboBox";
-import { Input } from "@/ui/input";
+import { DataTable } from "@/components/table";
+import { columns } from "./table-columns";
 
-type TransferProps = {};
-
-const Transfer = ({}: TransferProps) => {
-    const { formState, register, setValue, reset, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(editSchema) });
+const Transfer = () => {
+    const { formState, setValue, watch, reset, clearErrors, handleSubmit } = useForm({
+        resolver: zodResolver(editSchema.pick({ place: true })),
+    });
     const { mutate, isPending } = useUpdate<EditTransferSchema>("/api/products/transfer", ["market", "store"]);
-    const { products } = useLists();
-    const { errors } = formState;
+    const [products, setProducts] = useState<ProductType[]>([]);
+    const { isSubmitted, errors } = formState;
 
+    const place = watch("place");
     const text = useTranslations();
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        const { productId, place, count } = data as EditTransferSchema;
-        mutate({ productId, place, count }, { onSuccess: () => reset() });
+        const { place } = data as EditTransferSchema;
+
+        const filterProducts = products.map(({ productId, count }) => ({ _id: productId, count }));
+        mutate(
+            { products: filterProducts, place },
+            {
+                onSuccess: () => {
+                    reset();
+                    setProducts([]);
+                },
+            },
+        );
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <CardForm heading={text("pages.transfer.heading")} submitText={text("pages.transfer.submit")} disabled={isPending}>
-                <div className="flex-between">
-                    <ComboBox
-                        label="choose-product"
-                        name="productId"
-                        useTranslate={{ label: "public", name: "public", trigger: "public", customeTrigger: true }}
-                        loading={products.isLoading}
-                        groups={products.groups}
-                        error={errors.productId}
-                        setValue={setValue}
-                        clearErrors={clearErrors}
-                    />
-                    <ComboBox
-                        label="transfer-to"
-                        name="place"
-                        useTranslate={{ label: "pages.transfer", trigger: "pages.transfer", name: "public", item: "public" }}
-                        error={errors.place}
-                        items={place}
-                        setValue={setValue}
-                    />
-                </div>
-
-                <Input
-                    type="number"
-                    label="count"
-                    useTranslate={{ label: "public" }}
-                    error={errors.count}
-                    {...register("count", { valueAsNumber: true })}
+        <CardForm heading={text("pages.transfer.heading")}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <ComboBox
+                    label="transfer-to"
+                    name="place"
+                    useTranslate={{ label: "pages.transfer", trigger: "pages.transfer", name: "public", item: "public" }}
+                    error={errors.place}
+                    items={places}
+                    isSubmitted={isSubmitted}
+                    setValue={setValue}
+                    clearErrors={clearErrors}
                 />
-            </CardForm>
-        </form>
+
+                <OpenModuleButton type="transfer-insert-model" clearErrors={clearErrors} />
+
+                {!!products?.length && <DataTable columns={columns} data={products} smallSize />}
+
+                <SubmitButton text="transfer" isPending={isPending} />
+            </form>
+
+            <InsertProductToTable
+                dialogType="transfer-insert-model"
+                price={{ type: place === "market" ? "soldPrice" : "purchasePrice", both: false }}
+                setProducts={setProducts}
+            />
+            <RemoveItemFromTable
+                dialogType="transfer-remove-model"
+                filterKeys={{ id: "productId", data: "productId" }}
+                setItems={setProducts}
+            />
+        </CardForm>
     );
 };
 

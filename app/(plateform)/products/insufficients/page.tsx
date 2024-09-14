@@ -6,12 +6,12 @@ import { useGetByQuery } from "@/hooks/api/useGetByQuery";
 import { useLists } from "@/hooks/data/useLists";
 import { columns } from "./table-columns";
 
+import { StatementDialog } from "@/widgets/products/insufficients/statement-dialog";
+import { TransferDialog } from "@/widgets/products/insufficients/transfer-dialog";
 import { TableForm } from "@/components/page-structure/table-form";
 import { AlertError } from "@/components/ui/alert-error";
 import { ComboBox } from "@/components/ui/comboBox";
-import { StatementDialog } from "./statement-dialog";
 import { place as places } from "@/constants";
-import { TransferDialog } from "./transfer-dialog";
 
 type InsufficientsProps = {
     _id: string;
@@ -55,7 +55,7 @@ const Insufficients = () => {
             columns={columns}
             data={data || []}
             isPending={isPending}
-            selectedSubmitButtons={["buy", "transfer"]}
+            selectedSubmitButtons={supplierId === "all" ? ["transfer"] : ["buy", "transfer"]}
             totalFor="totalNeeded"
             navigate={[
                 { text: "new-statement", to: "/suppliers/statements/new" },

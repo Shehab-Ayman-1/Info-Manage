@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const place = {
     price: z.number().positive(),
-    count: z.number().int().min(0),
+    count: z.number().min(0),
     updatedAt: z.date().optional(),
 };
 

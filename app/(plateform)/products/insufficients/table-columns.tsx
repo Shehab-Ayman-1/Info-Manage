@@ -9,40 +9,40 @@ import { DollarCell } from "@/components/table/body/price-cell";
 export const columns: ColumnDef<any>[] = [
     {
         accessorKey: "check",
-        header: HeaderComponent,
+        header: ({ column }) => <HeaderComponent column={column} smallSize noPrint />,
         cell: ({ row }) => <CheckCell row={row} />,
     },
     {
         accessorKey: "company",
-        header: HeaderComponent,
+        header: ({ column }) => <HeaderComponent column={column} smallSize />,
     },
     {
         accessorKey: "product",
-        header: HeaderComponent,
+        header: ({ column }) => <HeaderComponent column={column} smallSize />,
     },
     {
         accessorKey: "minimum",
-        header: HeaderComponent,
+        header: ({ column }) => <HeaderComponent column={column} smallSize />,
         cell: ({ row }) => <NumberCell row={row} name="minimum" showUnit />,
     },
     {
         accessorKey: "marketCount",
-        header: HeaderComponent,
+        header: ({ column }) => <HeaderComponent column={column} smallSize />,
         cell: ({ row }) => <NumberCell row={row} name="marketCount" showUnit />,
     },
     {
         accessorKey: "storeCount",
-        header: HeaderComponent,
+        header: ({ column }) => <HeaderComponent column={column} smallSize />,
         cell: ({ row }) => <NumberCell row={row} name="storeCount" showUnit />,
     },
     {
         accessorKey: "soldPrice",
-        header: HeaderComponent,
+        header: ({ column }) => <HeaderComponent column={column} smallSize />,
         cell: ({ row }) => <DollarCell row={row} name="soldPrice" />,
     },
     {
         accessorKey: "purchasePrice",
-        header: HeaderComponent,
+        header: ({ column }) => <HeaderComponent column={column} smallSize />,
         cell: ({ row }) => <DollarCell row={row} name="purchasePrice" />,
     },
 ];

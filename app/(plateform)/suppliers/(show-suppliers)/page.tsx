@@ -5,11 +5,11 @@ import { CardLoading } from "@/components/loading/card";
 import { useGet } from "@/hooks/api/useGet";
 import { columns } from "./table-columns";
 
-import { UpdateProductsDialog } from "./update-product-dialog";
-import { UpdateDialog } from "./update-dialog";
-import { DeleteDialog } from "./delete-dialog";
+import { UpdateSupplierProducts } from "@/widgets/suppliers/supplier-lists/update-supplier-products";
+import { DeleteItemByRequest } from "@/widgets/public/delete-item-by-request";
+import { UpdateSupplier } from "@/widgets/suppliers/supplier-lists/update-supplier";
+import { PaymentDialog } from "@/widgets/public/payment-dialog";
 import { SupplierType } from "./types";
-import { PaymentDialog } from "./pay-dialog";
 
 const Suppliers = () => {
     const { data, isPending, error } = useGet<SupplierType[]>("/api/suppliers", ["suppliers"]);
@@ -30,10 +30,23 @@ const Suppliers = () => {
                 { text: "new-statement", to: "/suppliers/statements/new" },
             ]}
         >
-            <UpdateDialog />
-            <DeleteDialog />
-            <PaymentDialog />
-            <UpdateProductsDialog />
+            <UpdateSupplierProducts />
+
+            <UpdateSupplier />
+
+            <DeleteItemByRequest
+                apiUrl="/api/suppliers"
+                dialogType="suppliers-delete-model"
+                queryKeys={["suppliers"]}
+                requestKeys={{ senderId: "supplierId", dataId: "supplierId" }}
+            />
+
+            <PaymentDialog
+                apiUrl="/api/suppliers"
+                dataId="supplierId"
+                dialogType="suppliers-payment-model"
+                queryKeys={["suppliers"]}
+            />
         </TableForm>
     );
 };

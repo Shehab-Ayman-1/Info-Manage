@@ -38,7 +38,7 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
     const { productsBySupplier } = useLists();
     const { type, onClose } = useModel();
 
-    const { errors, isLoading } = formState;
+    const { isSubmitted, errors } = formState;
     const selectedProductId = watch("productId");
     const text = useTranslations();
 
@@ -86,6 +86,7 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
                     loading={productsBySupplier.isLoading}
                     groups={productsBySupplier.groups}
                     error={errors?.productId}
+                    isSubmitted={isSubmitted}
                     setValue={setValue}
                     clearErrors={clearErrors}
                 />
@@ -107,7 +108,7 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
                     />
                 </div>
 
-                <SubmitButton text="insert" isPending={isLoading} />
+                <SubmitButton text="insert" isPending={false} />
             </form>
         </DialogForm>
     );

@@ -13,8 +13,8 @@ export const editSchema = z.object({
     purchasePrice: z.number().min(0),
     salePrice: z.number().min(0),
 
-    marketCount: z.number().int().min(0),
-    storeCount: z.number().int().min(0),
+    marketCount: z.number().min(0),
+    storeCount: z.number().min(0),
 });
 
 export type EditProfileSchema = z.infer<typeof editSchema>;

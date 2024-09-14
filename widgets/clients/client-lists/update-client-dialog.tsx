@@ -12,9 +12,7 @@ import { DialogForm } from "@/components/ui/dialog";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
 
-type UpdateDialogProps = {};
-
-export const UpdateDialog = ({}: UpdateDialogProps) => {
+export const UpdateDialog = () => {
     const { formState, register, setValue, handleSubmit } = useForm({ resolver: zodResolver(editSchema) });
     const { mutate, isPending } = useUpdate<EditSchemaType>("/api/clients", ["clients"]);
     const { type, data, onClose } = useModel();
@@ -22,7 +20,7 @@ export const UpdateDialog = ({}: UpdateDialogProps) => {
     const { errors } = formState;
 
     useEffect(() => {
-        if (type !== "update-model" || !data.client) return;
+        if (type !== "client-lists-update-model" || !data.client) return;
         setValue("clientId", data.client._id);
         setValue("name", data.client.client);
         setValue("phone", data.client.phone);
@@ -30,7 +28,7 @@ export const UpdateDialog = ({}: UpdateDialogProps) => {
         setValue("silverTo", data.client.silverTo);
     }, [type, data, setValue]);
 
-    if (type !== "update-model") return;
+    if (type !== "client-lists-update-model") return;
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const values = data as EditSchemaType;

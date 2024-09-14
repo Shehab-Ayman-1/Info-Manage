@@ -6,7 +6,7 @@ export const createSchema = z.object({
     products: z.array(
         z.object({
             productId: z.string().min(1),
-            count: z.number().int().positive(),
+            count: z.number().positive(),
             purchasePrice: z.number().positive(),
             soldPrice: z.number().positive(),
             total: z.number().positive(),

@@ -35,7 +35,7 @@ export const SubscribeProvider = ({ children }: SubscribeProvider) => {
     const pathname = usePathname();
     const router = useRouter();
 
-    const ignoreRoutes = ["/profile", "/trash"];
+    const ignoreRoutes = ["/profile", "/recycle-bin"];
     const ignorePath = ignoreRoutes.some((route) => pathname.includes(route));
 
     const metadata = organization?.publicMetadata?.additionalSubscriptions as ("premium" | "enterprise")[];

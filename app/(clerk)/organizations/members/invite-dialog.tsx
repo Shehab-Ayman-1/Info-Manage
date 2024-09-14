@@ -21,7 +21,8 @@ export const InviteDialog = () => {
     const { formState, register, setValue, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(schema) });
     const { organization } = useOrganization();
     const { type, onClose } = useModel();
-    const { errors, isLoading } = formState;
+    const { isSubmitted, errors } = formState;
+
     if (type !== "invite-model") return;
 
     const onSubmit = async ({ emailAddress, role }: any) => {
@@ -42,10 +43,11 @@ export const InviteDialog = () => {
                     name="role"
                     items={roles}
                     error={errors.role}
+                    isSubmitted={isSubmitted}
                     setValue={setValue}
                     clearErrors={clearErrors}
                 />
-                <SubmitButton text="Invite" isPending={isLoading} />
+                <SubmitButton text="Invite" isPending={false} />
             </form>
         </DialogForm>
     );

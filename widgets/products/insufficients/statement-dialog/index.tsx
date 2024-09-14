@@ -28,18 +28,18 @@ export const StatementDialog = ({ supplierId, place, mutateGetQuery }: Statement
     });
     const { mutate, isPending } = useCreate("/api/suppliers/statements/new", ["insufficients"]);
     const { type, data, onClose } = useModel();
-    const { errors } = formState;
+    const { isSubmitted, errors } = formState;
 
     const processValue = watch("process");
     const text = useTranslations();
 
-    const products = data?.items?.map((item: any) => ({ ...item, total: item.count * item.purchasePrice }));
+    const products = data?.items?.map((item: any) => ({ ...item, total: item.checkedCount * item.purchasePrice }));
 
     // Auto Get Total Products Total Price
     useEffect(() => {
         if (processValue === "milestone" || !products) return;
 
-        const productsTotalPrice = products.reduce((prev: number, cur: any) => prev + cur?.purchasePrice * cur?.count, 0);
+        const productsTotalPrice = products.reduce((prev: number, cur: any) => prev + cur?.purchasePrice * cur?.checkedCount, 0);
         setValue("paid", productsTotalPrice || "");
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -66,11 +66,11 @@ export const StatementDialog = ({ supplierId, place, mutateGetQuery }: Statement
             paid: values.paid,
             method: values.method,
             process: values.process,
-            products: products.map(({ productId, product, count, purchasePrice, total }: any) => ({
+            products: products.map(({ productId, product, checkedCount, purchasePrice, total }: any) => ({
                 productId,
                 name: product,
                 price: purchasePrice,
-                count,
+                count: checkedCount,
                 total,
             })),
         };
@@ -88,7 +88,7 @@ export const StatementDialog = ({ supplierId, place, mutateGetQuery }: Statement
             heading={text("dialogs.new-supplier-statement.insert-dialog.heading")}
             description={text("dialogs.new-supplier-statement.insert-dialog.description")}
         >
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className="overflow-hidden">
                 <div className="flex-between">
                     <ComboBox
                         label="choose-method"
@@ -96,6 +96,7 @@ export const StatementDialog = ({ supplierId, place, mutateGetQuery }: Statement
                         useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                         error={errors?.method}
                         items={methods}
+                        isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
                     />
@@ -105,7 +106,9 @@ export const StatementDialog = ({ supplierId, place, mutateGetQuery }: Statement
                         useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                         error={errors?.process}
                         items={process}
+                        isSubmitted={isSubmitted}
                         onChange={onProcessChange}
+                        clearErrors={clearErrors}
                     />
                 </div>
 
@@ -119,8 +122,7 @@ export const StatementDialog = ({ supplierId, place, mutateGetQuery }: Statement
                     />
                 )}
 
-                {!!products.length && <DataTable columns={columns} data={products} totalFor="total" />}
-
+                {!!products.length && <DataTable columns={columns} data={products} totalFor="total" smallSize />}
                 <SubmitButton text="buy" isPending={supplierId === "all" || isPending} />
             </form>
         </DialogForm>

@@ -16,24 +16,24 @@ export const Actions = ({ row }: ActionsProps) => {
         {
             Icon: EditIcon,
             text: "edit-supplier",
-            onClick: (original: any) => onOpen("update-model", { supplier: original }),
+            onClick: (original: any) => onOpen("suppliers-update-info-model", { supplier: original }),
         },
         {
             Icon: EditIcon,
             text: "edit-products",
             onClick: (original: any) =>
-                onOpen("update-products-model", { supplierId: original._id, products: original.products }),
+                onOpen("suppliers-update-supplier-products-model", { supplierId: original._id, products: original.products }),
         },
         {
             Icon: BadgeDollarSignIcon,
             text: "pay",
-            onClick: (original: any) => onOpen("payment-model", { supplier: original }),
+            onClick: (original: any) => onOpen("suppliers-payment-model", { supplierId: original._id }),
         },
         {
             Icon: Trash2Icon,
             text: "delete",
             className: { button: "cancel", icon: "cancel" },
-            onClick: (original: any) => onOpen("delete-model", { supplierId: original._id }),
+            onClick: (original: any) => onOpen("suppliers-delete-model", { supplierId: original._id }),
         },
     ];
 

@@ -18,7 +18,7 @@ const Locker = ({}: LockerProps) => {
     const { formState, register, setValue, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(createSchema) });
     const { mutate, isPending } = useCreate("/api/finances/locker", ["transactions"]);
 
-    const { errors } = formState;
+    const { isSubmitted, errors } = formState;
     const router = useRouter();
     const text = useTranslations();
 
@@ -47,6 +47,7 @@ const Locker = ({}: LockerProps) => {
                         useTranslate={{ label: "public", name: "public", trigger: "pages.locker", item: "pages.locker" }}
                         error={errors?.process}
                         items={lockerMethods}
+                        isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
                     />
@@ -56,6 +57,7 @@ const Locker = ({}: LockerProps) => {
                         useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                         error={errors?.method}
                         items={methods}
+                        isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
                     />

@@ -46,7 +46,7 @@ export const TableForm = <TData,>(props: TableFormProps<TData>) => {
     return (
         <Card className="">
             <CardContent>
-                <CardHeader className="flex-between px-0 sm:flex-row sm:p-4">
+                <CardHeader className="flex items-start justify-between px-0 sm:flex-row sm:p-4">
                     <div className="flex flex-col gap-y-6">
                         <Heading title={pageTitle} />
                         {!!data?.length && (

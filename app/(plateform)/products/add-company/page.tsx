@@ -29,7 +29,7 @@ const Company = ({}: CompanyProps) => {
     const router = useRouter();
     const mount = useRef(false);
 
-    const { errors } = formState;
+    const { isSubmitted, errors } = formState;
     const image: string = watch("image");
 
     useEffect(() => {
@@ -81,6 +81,7 @@ const Company = ({}: CompanyProps) => {
                     loading={categories.isLoading}
                     items={categories.lists}
                     error={errors?.categoryId}
+                    isSubmitted={isSubmitted}
                     setValue={setValue}
                     clearErrors={clearErrors}
                 />

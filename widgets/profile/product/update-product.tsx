@@ -7,36 +7,25 @@ import Image from "next/image";
 import { useUpdate } from "@/hooks/api/useUpdate";
 import { useLists } from "@/hooks/data/useLists";
 import { useModel } from "@/hooks/useModel";
-import { ProductProfileType } from "./page";
 
 import { editSchema, EditProfileSchema } from "@/app/api/profile/product/[productId]/schema";
+import { ProductProfileType } from "@/app/(plateform)/profile/product/[productId]/page";
 import { SubmitButton } from "@/components/public/submit-btn";
 import { DialogForm } from "@/components/ui/dialog";
 import { Input } from "@/ui/input";
 
-type UpdateDialogProps = {
+type UpdateProductProps = {
     productId: string;
     data: ProductProfileType;
 };
 
-export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
-    const { mutate, isPending } = useUpdate<EditProfileSchema>(`/api/profile/product/${productId}`, [productId, "products"]);
+export const UpdateProduct = ({ productId, data }: UpdateProductProps) => {
     const { company, name, barcode, min, market, store } = data;
 
+    const { mutate, isPending } = useUpdate<EditProfileSchema>(`/api/profile/product/${productId}`, [productId, "products"]);
     const { formState, register, watch, handleSubmit } = useForm<EditProfileSchema>({
         resolver: zodResolver(editSchema),
-        defaultValues: {
-            companyId: company._id,
-            company: company.name,
-            image: company.image,
-            name,
-            barcode,
-            min,
-            purchasePrice: market.price,
-            salePrice: store.price,
-            marketCount: market.count,
-            storeCount: store.count,
-        },
+        defaultValues: { companyId: company._id },
     });
 
     const { type, onClose } = useModel();
@@ -83,7 +72,7 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
                         label="image-url"
                         useTranslate={{ label: "pages.add-company" }}
                         error={errors?.image}
-                        {...register("image")}
+                        {...register("image", { value: company.image })}
                     />
                 </div>
 
@@ -93,14 +82,14 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
                         label="company"
                         useTranslate={{ label: "public" }}
                         error={errors?.company}
-                        {...register("company")}
+                        {...register("company", { value: company.name })}
                     />
                     <Input
                         type="text"
                         label="product"
                         useTranslate={{ label: "public" }}
                         error={errors?.name}
-                        {...register("name")}
+                        {...register("name", { value: name })}
                     />
                 </div>
 
@@ -110,14 +99,14 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
                         label="minimum"
                         useTranslate={{ label: "table" }}
                         error={errors?.min}
-                        {...register("min", { valueAsNumber: true })}
+                        {...register("min", { value: min, valueAsNumber: true })}
                     />
                     <Input
                         type="text"
                         label="barcode"
                         useTranslate={{ label: "public" }}
                         error={errors?.barcode}
-                        {...register("barcode")}
+                        {...register("barcode", { value: barcode })}
                     />
                 </div>
 
@@ -129,14 +118,14 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
                         label="purchase-price"
                         useTranslate={{ label: "public" }}
                         error={errors?.purchasePrice}
-                        {...register("purchasePrice", { valueAsNumber: true })}
+                        {...register("purchasePrice", { value: store.price, valueAsNumber: true })}
                     />
                     <Input
                         type="number"
                         label="sold-price"
                         useTranslate={{ label: "public" }}
                         error={errors?.salePrice}
-                        {...register("salePrice", { valueAsNumber: true })}
+                        {...register("salePrice", { value: market.price, valueAsNumber: true })}
                     />
                 </div>
 
@@ -146,14 +135,14 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
                         label="market-count"
                         useTranslate={{ label: "public" }}
                         error={errors?.marketCount}
-                        {...register("marketCount", { valueAsNumber: true })}
+                        {...register("marketCount", { value: market.count, valueAsNumber: true })}
                     />
                     <Input
                         type="number"
                         label="store-count"
                         useTranslate={{ label: "public" }}
                         error={errors?.storeCount}
-                        {...register("storeCount", { valueAsNumber: true })}
+                        {...register("storeCount", { value: store.count, valueAsNumber: true })}
                     />
                 </div>
 
@@ -163,4 +152,4 @@ export const UpdateDialog = ({ productId, data }: UpdateDialogProps) => {
     );
 };
 
-UpdateDialog.displayName = "UpdateDialog";
+UpdateProduct.displayName = "UpdateProduct";

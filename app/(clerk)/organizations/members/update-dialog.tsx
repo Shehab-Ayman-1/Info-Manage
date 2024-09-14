@@ -13,7 +13,7 @@ export const UpdateDialog = () => {
     const { organization } = useOrganization();
     const { type, data } = useModel();
 
-    const { errors, isLoading } = formState;
+    const { isSubmitted, errors } = formState;
     if (type !== "edit-model") return;
 
     const onSubmit = async ({ role }: any) => {
@@ -31,12 +31,13 @@ export const UpdateDialog = () => {
                 <ComboBox
                     label="Role"
                     name="role"
+                    isSubmitted={isSubmitted}
                     error={errors.role}
                     items={roles}
                     setValue={setValue}
                     clearErrors={clearErrors}
                 />
-                <SubmitButton text="Update" isPending={isLoading} />
+                <SubmitButton text="update" isPending={false} />
             </form>
         </DialogForm>
     );

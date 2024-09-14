@@ -18,7 +18,7 @@ const schema = z.object({
     productId: z.string().min(1),
     company: z.string().min(1),
     name: z.string().min(1),
-    count: z.number().int().positive(),
+    count: z.number().positive(),
     total: z.number().positive(),
     soldPrice: z.number().positive(),
     purchasePrice: z.number().min(0),
@@ -26,18 +26,20 @@ const schema = z.object({
 
 export type ProductType = z.infer<typeof schema>;
 
-type InsertProductProps = {
+type InsertProductToTableProps = {
+    price: { type: string; both: boolean };
+    dialogType: string;
     setProducts: Dispatch<SetStateAction<ProductType[]>>;
 };
 
-export const InsertProduct = ({ setProducts }: InsertProductProps) => {
+export const InsertProductToTable = ({ price, dialogType, setProducts }: InsertProductToTableProps) => {
     const { formState, register, setValue, watch, reset, clearErrors, handleSubmit } = useForm({
-        resolver: zodResolver(schema.omit({ company: true, name: true, total: true })),
+        resolver: zodResolver(schema.pick({ productId: true, count: true, soldPrice: true, purchasePrice: true })),
     });
 
-    const { isLoading } = formState;
-    const { type } = useModel();
+    const { isSubmitted, errors } = formState;
     const { products } = useLists();
+    const { type } = useModel();
 
     const selectedProductId = watch("productId");
     const text = useTranslations();
@@ -47,13 +49,15 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
 
         const product = products.data.find((product) => product._id === selectedProductId);
         setValue("purchasePrice", product?.purchasePrice);
+
         setValue("soldPrice", product?.soldPrice);
+        setValue("count", 1);
     }, [selectedProductId, products, setValue]);
 
-    if (type !== "insert-products-model") return;
+    if (type !== dialogType) return;
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        const { productId, count, soldPrice, ...product } = data as ProductType;
+        const { productId, count, soldPrice, purchasePrice, ...product } = data as ProductType;
         const { name, company } = products.data.find((product) => product._id === productId)!;
 
         setProducts((products) => {
@@ -63,15 +67,34 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
                 return products;
             }
 
-            return products.concat({
-                ...product,
-                productId,
-                name,
-                count,
-                soldPrice,
-                company: company.name,
-                total: count * soldPrice,
-            });
+            let newProduct;
+            if (price.type === "soldPrice" && !price.both)
+                newProduct = { ...product, productId, name, count, soldPrice, company: company.name, total: count * soldPrice };
+
+            if (price.type === "purchasePrice" && !price.both)
+                newProduct = {
+                    ...product,
+                    productId,
+                    name,
+                    count,
+                    purchasePrice,
+                    company: company.name,
+                    total: count * purchasePrice,
+                };
+
+            if (price.both)
+                newProduct = {
+                    ...product,
+                    productId,
+                    name,
+                    count,
+                    soldPrice,
+                    purchasePrice,
+                    company: company.name,
+                    total: count * (price.type === "soldPrice" ? soldPrice : purchasePrice),
+                };
+
+            return products.concat(newProduct as ProductType);
         });
 
         reset();
@@ -89,6 +112,8 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
                     useTranslate={{ label: "public", trigger: "public", name: "public", customeTrigger: true }}
                     loading={products.isLoading}
                     groups={products.groups}
+                    error={errors.productId}
+                    isSubmitted={isSubmitted}
                     setValue={setValue}
                     clearErrors={clearErrors}
                 />
@@ -98,20 +123,20 @@ export const InsertProduct = ({ setProducts }: InsertProductProps) => {
                         type="number"
                         label="count"
                         useTranslate={{ label: "public" }}
-                        {...register("count", { valueAsNumber: true, value: 1 })}
+                        {...register("count", { valueAsNumber: true })}
                     />
                     <Input
                         type="number"
-                        label="sold-price"
+                        label={price.type === "soldPrice" ? "sold-price" : "purchase-price"}
                         useTranslate={{ label: "public" }}
                         {...register("soldPrice", { valueAsNumber: true })}
                     />
                 </div>
 
-                <SubmitButton text="insert" isPending={isLoading} />
+                <SubmitButton text="insert" isPending={false} />
             </form>
         </DialogForm>
     );
 };
 
-InsertProduct.displayName = "InsertProduct";
+InsertProductToTable.displayName = "InsertProductToTable";

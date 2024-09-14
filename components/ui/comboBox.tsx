@@ -1,17 +1,17 @@
 "use client";
 import type { UseFormClearErrors, UseFormSetValue } from "react-hook-form";
-import type { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
+import { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 import { CheckCheckIcon, ChevronsUpDownIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { useKey } from "react-use";
 
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
 import { Button } from "@/ui/button";
+import { cn } from "@/utils/shadcn";
 import { Icons } from "@/ui/icons";
 import { Label } from "@/ui/label";
-import { cn } from "@/utils/shadcn";
-import { useKey } from "react-use";
 import { Tooltip } from "./tooltip";
 
 type Item = {
@@ -40,6 +40,7 @@ type ComboBoxProps = {
     onChange?: (value: string) => void;
     clearErrors?: UseFormClearErrors<any>;
 
+    isSubmitted?: boolean;
     defaultValue?: string;
     useTranslate?: UseTranslate;
 
@@ -48,11 +49,17 @@ type ComboBoxProps = {
 };
 
 export const ComboBox = (props: ComboBoxProps) => {
-    const { label, name, loading, error, items, groups, defaultValue, useTranslate, setValue, clearErrors, onChange } = props;
+    const { label, name, loading, error, items, groups, isSubmitted } = props;
+    const { defaultValue, useTranslate, setValue, clearErrors, onChange } = props;
+
     const [selectedValue, setSelectedValue] = useState(defaultValue || "");
     const [open, setOpen] = useState(false);
 
     const text = useTranslations();
+
+    useEffect(() => {
+        setSelectedValue(defaultValue || "");
+    }, [isSubmitted]);
 
     useEffect(() => {
         if (!defaultValue) return;
@@ -88,7 +95,7 @@ export const ComboBox = (props: ComboBoxProps) => {
                             placeholder={`${text("public.search")} ${useTranslate?.name ? text(`${useTranslate.name}.${name}`) : name}`}
                         />
 
-                        <CommandList className="bg-gradient">
+                        <CommandList>
                             {!loading && !items?.length && !groups?.length && (
                                 <CommandEmpty>{text("table.no-results")}.</CommandEmpty>
                             )}
@@ -170,17 +177,29 @@ function CommandTrigger({ useTranslate, selectedValue, label, open }: CommandTri
     const RenderButton = () => {
         return (
             <PopoverTrigger asChild ref={ref}>
-                <Button
-                    type="button"
-                    variant="ghost"
-                    className={cn(
-                        "flex-between mt-1 w-full border-b border-b-primary !py-8 text-base",
-                        selectedValue ? "text-slate-700 dark:text-slate-200" : "text-slate-500",
-                    )}
-                >
-                    {NCT || CT || selectedValue || label}
-                    <ChevronsUpDownIcon className="mx-2 size-4 opacity-50" />
-                </Button>
+                <div className="group relative">
+                    <Button
+                        type="button"
+                        variant="ghost"
+                        data-open={open}
+                        className={cn(
+                            "flex-between peer mt-1 w-full border-b border-b-primary !py-8 text-base shadow-inner hover:bg-transparent",
+                            open ? "shadow-slate-700 dark:shadow-slate-300" : "shadow-slate-400 dark:shadow-slate-600",
+                            selectedValue ? "text-slate-700 dark:text-slate-200" : "text-slate-500",
+                        )}
+                    >
+                        {NCT || CT || selectedValue || label}
+                        <ChevronsUpDownIcon className="mx-2 size-4 opacity-50" />
+                    </Button>
+
+                    <span
+                        className={cn(
+                            "absolute bottom-0 left-1/2 h-1 w-0 -translate-x-1/2 bg-primary",
+                            "transition-all duration-500 ease-in-out group-focus-within:w-full",
+                            open && "w-full",
+                        )}
+                    />
+                </div>
             </PopoverTrigger>
         );
     };
@@ -203,14 +222,15 @@ type CommandListItemProps = {
 };
 
 function CommandListItem({ useTranslate, selectedValue, value, title, onSelect }: CommandListItemProps) {
-    const hideIcon = selectedValue === value ? "opacity-100" : "opacity-0";
     const text = useTranslations();
 
     const item = useTranslate?.item ? text(`${useTranslate.item}.${title}`) : title.split(" ||| ")?.[0];
 
     return (
-        <CommandItem value={value} onSelect={onSelect} className="cursor-pointer text-lg capitalize leading-10">
-            <CheckCheckIcon className={cn("mx-2 size-4 !text-green-500", hideIcon)} />
+        <CommandItem value={value} onSelect={onSelect} className="group text-lg capitalize leading-10">
+            <CheckCheckIcon
+                className={cn("mx-2 size-4 !text-green-500", selectedValue === value ? "opacity-100" : "opacity-0")}
+            />
             {item}
         </CommandItem>
     );

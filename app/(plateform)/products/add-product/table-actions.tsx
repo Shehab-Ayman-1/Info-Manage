@@ -22,7 +22,7 @@ export const Actions = ({ row }: ActionsProps) => {
             Icon: Trash2Icon,
             text: "delete",
             className: { button: "cancel", icon: "cancel" },
-            onClick: (original: any) => onOpen("delete-model", { productId: original.randomId }),
+            onClick: (original: any) => onOpen("add-product-remove-item-model", { productId: original.randomId }),
         },
     ];
 

@@ -2,10 +2,10 @@
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ProductType, schema } from "./schema";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
+import { ProductType, schema } from "@/app/(plateform)/products/add-product/schema";
 import { SubmitButton } from "@/components/public/submit-btn";
 import { ComboBox } from "@/components/ui/comboBox";
 import { DialogForm } from "@/components/ui/dialog";
@@ -13,14 +13,14 @@ import { useModel } from "@/hooks/useModel";
 import { Input } from "@/ui/input";
 import { units } from "@/constants";
 
-type InsertAndUpdateDialogProps = {
+type InsertDialogProps = {
     setProducts: Dispatch<SetStateAction<ProductType[]>>;
 };
 
-export const InsertAndUpdateDialog = ({ setProducts }: InsertAndUpdateDialogProps) => {
+export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
     const { formState, register, reset, setValue, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(schema) });
     const { type, data, onClose } = useModel();
-    const { errors, isLoading } = formState;
+    const { isSubmitted, errors } = formState;
     const text = useTranslations();
 
     useEffect(() => {
@@ -116,6 +116,7 @@ export const InsertAndUpdateDialog = ({ setProducts }: InsertAndUpdateDialogProp
                         }}
                         items={units}
                         error={errors.unit}
+                        isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
                     />
@@ -155,10 +156,10 @@ export const InsertAndUpdateDialog = ({ setProducts }: InsertAndUpdateDialogProp
                     />
                 </div>
 
-                <SubmitButton text="insert" isPending={isLoading} />
+                <SubmitButton text="insert" isPending={false} />
             </form>
         </DialogForm>
     );
 };
 
-InsertAndUpdateDialog.displayName = "InsertAndUpdateDialog";
+InsertDialog.displayName = "InsertDialog";

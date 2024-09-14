@@ -12,23 +12,25 @@ import { DialogForm } from "@/components/ui/dialog";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
 
-type UpdateDialogProps = {};
+type UpdateSupplierProps = {};
 
-export const UpdateDialog = ({}: UpdateDialogProps) => {
+export const UpdateSupplier = ({}: UpdateSupplierProps) => {
     const { mutate, isPending } = useUpdate<EditSchemaType>("/api/suppliers", ["suppliers"]);
     const { formState, register, setValue, handleSubmit } = useForm({ resolver: zodResolver(editSchema) });
+
     const { type, data, onClose } = useModel();
-    const text = useTranslations();
     const { errors } = formState;
 
+    const text = useTranslations();
+
     useEffect(() => {
-        if (type !== "update-model" || !data.supplier) return;
+        if (type !== "suppliers-update-info-model" || !data.supplier) return;
         setValue("supplierId", data.supplier._id);
         setValue("name", data.supplier.supplier);
         setValue("phone", data.supplier.phone);
     }, [type, data, setValue]);
 
-    if (type !== "update-model") return;
+    if (type !== "suppliers-update-info-model") return;
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const values = data as EditSchemaType;
@@ -64,4 +66,4 @@ export const UpdateDialog = ({}: UpdateDialogProps) => {
     );
 };
 
-UpdateDialog.displayName = "UpdateDialog";
+UpdateSupplier.displayName = "UpdateSupplier";

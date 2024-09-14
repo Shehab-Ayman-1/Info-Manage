@@ -32,8 +32,8 @@ export const RenderRow = ({ row, index, smallSize }: RenderRowProps) => {
                     <TableCell
                         key={cell.id}
                         className={cn(
-                            "whitespace-nowrap px-0 text-center text-sm print:text-black",
-                            smallSize ? "py-0" : "py-4 sm:text-base",
+                            "whitespace-nowrap px-1 text-center text-sm print:text-black",
+                            smallSize ? "py-1" : "py-4 sm:text-base",
                         )}
                     >
                         {isPerson && isUnknown ? text("public.unknown") : TDCell}

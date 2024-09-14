@@ -26,7 +26,7 @@ export const NavIcons = ({}: NavlinksProps) => {
             <Configrator />
 
             <Link href="/subscription">
-                <CreditCardIcon className="cursor-pointer hover:text-slate-600" />
+                <CreditCardIcon className="cursor-pointer hover:text-primary" />
             </Link>
 
             {isMe && <OrgSwitcher />}

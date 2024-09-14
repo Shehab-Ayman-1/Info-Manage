@@ -24,6 +24,7 @@ export const POST = async (req: NextRequest) => {
         const organization = await clerkClient().organizations.getOrganization({ organizationId: orgId, slug: orgSlug });
 
         const body = await req.json();
+        console.log(body);
         const { clientId, method, discount, process, ...data } = createSchema.parse(body);
 
         // Check If The Products Count Is Exist In The Market

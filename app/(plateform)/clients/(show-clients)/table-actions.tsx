@@ -16,18 +16,18 @@ export const Actions = ({ row }: ActionsProps) => {
         {
             Icon: EditIcon,
             text: "edit",
-            onClick: (original: any) => onOpen("update-model", { client: original }),
+            onClick: (original: any) => onOpen("client-lists-update-model", { client: original }),
         },
         {
             Icon: BadgeDollarSignIcon,
             text: "pay",
-            onClick: (original: any) => onOpen("payment-model", { client: original }),
+            onClick: (original: any) => onOpen("client-lists-payment-model", { clientId: original._id }),
         },
         {
             Icon: Trash2Icon,
             text: "delete",
             className: { button: "cancel", icon: "cancel" },
-            onClick: (original: any) => onOpen("delete-model", { clientId: original._id }),
+            onClick: (original: any) => onOpen("client-lists-delete-model", { clientId: original._id }),
         },
     ];
 

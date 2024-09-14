@@ -79,6 +79,7 @@
         "type": "Type",
 
         "check": "Check",
+        "checked-count": "Checked Count",
         "buy": "Buy",
 
         "expires-after": "Expires After",

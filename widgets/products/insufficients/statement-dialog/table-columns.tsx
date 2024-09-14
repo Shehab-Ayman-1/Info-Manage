@@ -15,9 +15,9 @@ export const columns: ColumnDef<any>[] = [
         header: ({ column }) => <HeaderComponent column={column} smallSize />,
     },
     {
-        accessorKey: "count",
+        accessorKey: "checkedCount",
         header: ({ column }) => <HeaderComponent column={column} smallSize />,
-        cell: ({ row }) => <NumberCell row={row} name="count" />,
+        cell: ({ row }) => <NumberCell row={row} name="checkedCount" />,
     },
     {
         accessorKey: "purchasePrice",

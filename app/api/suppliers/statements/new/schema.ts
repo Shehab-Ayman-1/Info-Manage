@@ -11,7 +11,7 @@ export const createSchema = z.object({
         z.object({
             productId: z.string().min(1),
             name: z.string().min(1),
-            count: z.number().int().positive(),
+            count: z.number().positive(),
             price: z.number().positive(),
             total: z.number().positive(),
         }),

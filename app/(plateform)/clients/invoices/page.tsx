@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 import { TableForm } from "@/components/page-structure/table-form";
 import { DatePickerWithRange } from "@/components/ui/calender";
-import { PayDialog } from "./pay-dialog";
 
 import { useGet } from "@/hooks/api/useGet";
 import { columns } from "./table-columns";
@@ -51,7 +50,6 @@ const ClientInvoices = () => {
             <div className="mt-4 w-fit sm:mx-4">
                 <DatePickerWithRange date={date} setDate={setDate} />
             </div>
-            <PayDialog />
         </TableForm>
     );
 };

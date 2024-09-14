@@ -2,11 +2,12 @@
 import { useGet } from "@/hooks/api/useGet";
 import { columns } from "./table-columns";
 
+import { DeleteItemByRequest } from "@/widgets/public/delete-item-by-request";
+import { UpdateDialog } from "@/widgets/clients/client-lists/update-client-dialog";
+import { PaymentDialog } from "@/widgets/public/payment-dialog";
+
 import { TableForm } from "@/components/page-structure/table-form";
 import { CardLoading } from "@/components/loading/card";
-import { UpdateDialog } from "./update-dialog";
-import { DeleteDialog } from "./delete-dialog";
-import { PaymentDialog } from "./pay-dialog";
 import { ClientType } from "./schema";
 
 const ClientList = () => {
@@ -26,8 +27,20 @@ const ClientList = () => {
             navigate={[{ text: "new-client", to: "/clients/add-client" }]}
         >
             <UpdateDialog />
-            <DeleteDialog />
-            <PaymentDialog />
+
+            <DeleteItemByRequest
+                apiUrl="/api/clients"
+                dialogType="client-lists-delete-model"
+                queryKeys={["clients"]}
+                requestKeys={{ senderId: "clientId", dataId: "clientId" }}
+            />
+
+            <PaymentDialog
+                dataId="clientId"
+                apiUrl="/api/clients"
+                queryKeys={["clients"]}
+                dialogType="client-lists-payment-model"
+            />
         </TableForm>
     );
 };

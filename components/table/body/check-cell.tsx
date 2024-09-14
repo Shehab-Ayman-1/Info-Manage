@@ -15,7 +15,7 @@ export const CheckCell = ({ row }: CheckCellType) => {
     const text = useTranslations();
 
     const onBlur = () => {
-        row.original.count = item.count;
+        row.original.checkedCount = item.count;
         row.toggleSelected(!!item.checked);
     };
 
@@ -31,11 +31,7 @@ export const CheckCell = ({ row }: CheckCellType) => {
 
     return (
         <div className="flex-center">
-            <Checkbox
-                checked={item.checked}
-                onCheckedChange={onCheck}
-                className={row.index % 2 === 0 ? "border-black" : "border-white"}
-            />
+            <Checkbox checked={item.checked} onCheckedChange={onCheck} className="border-primary mix-blend-exclusion" />
             {item.checked && (
                 <input
                     type="number"

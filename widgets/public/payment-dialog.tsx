@@ -11,21 +11,26 @@ import { DialogForm } from "@/components/ui/dialog";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
 
-type PaymentDialogProps = {};
-
 const schema = z.object({
     amount: z.number().min(1),
 });
 
-export const PaymentDialog = ({}: PaymentDialogProps) => {
+type PaymentDialogType = {
+    apiUrl: string;
+    dataId: string;
+    dialogType: string;
+    queryKeys: string[];
+};
+
+export const PaymentDialog = ({ apiUrl, dataId, dialogType, queryKeys }: PaymentDialogType) => {
     const { formState, register, handleSubmit } = useForm({ resolver: zodResolver(schema) });
     const { type, data, onClose } = useModel();
     const text = useTranslations();
 
-    const { mutate, isPending } = useUpdate(`/api/clients/${data?.client?._id}`, ["clients"]);
+    const { mutate, isPending } = useUpdate(`${apiUrl}/${data?.[dataId]}`, queryKeys);
     const { errors } = formState;
 
-    if (type !== "payment-model") return;
+    if (type !== dialogType) return;
 
     const onSubmit: SubmitHandler<FieldValues> = (values) => {
         const { amount } = values as z.infer<typeof schema>;

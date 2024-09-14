@@ -6,16 +6,34 @@ import { useModel } from "@/hooks/useModel";
 
 import { DialogForm } from "@/components/ui/dialog";
 import { Button } from "@/ui/button";
+import { useRouter } from "next/navigation";
 
-export const DeleteDialog = () => {
-    const { mutate, isPending } = useDelete("/api/clients", ["clients"]);
+type DeleteItemByRequestType = {
+    apiUrl: string;
+    dialogType: string;
+    queryKeys: string[];
+    navigate?: string;
+    requestKeys: { senderId: string; dataId: string };
+};
+
+export const DeleteItemByRequest = ({ apiUrl, queryKeys, dialogType, navigate, requestKeys }: DeleteItemByRequestType) => {
+    const { mutate, isPending } = useDelete(apiUrl, queryKeys);
     const { type, data, onClose } = useModel();
     const text = useTranslations("");
+    const router = useRouter();
 
-    if (type !== "delete-model") return;
+    if (type !== dialogType) return;
 
     const onClick = () => {
-        mutate({ clientId: data.clientId }, { onSuccess: onClose });
+        mutate(
+            { [requestKeys.senderId]: data?.[requestKeys.dataId] },
+            {
+                onSuccess: () => {
+                    onClose();
+                    navigate && router.push(navigate);
+                },
+            },
+        );
     };
 
     return (
@@ -35,4 +53,4 @@ export const DeleteDialog = () => {
     );
 };
 
-DeleteDialog.displayName = "DeleteDialog";
+DeleteItemByRequest.displayName = "DeleteItemByRequest";

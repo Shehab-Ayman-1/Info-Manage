@@ -5,18 +5,17 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-import { createSchema, CreateClientType } from "@/app/api/clients/statements/refund/schema";
-import { OpenModuleButton } from "@/components/public/openModuleButton";
-import { InsertProduct, ProductType } from "./insert-product";
-
 import { useCreate } from "@/hooks/api/useCreate";
 import { columns } from "./table-columns";
 
+import { createSchema, CreateClientType } from "@/app/api/clients/statements/refund/schema";
+import { RemoveItemFromTable } from "@/widgets/public/remove-item-from-table";
+import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { CardForm } from "@/components/page-structure/CardForm";
 import { SubmitButton } from "@/components/public/submit-btn";
+import { InsertProduct, ProductType } from "./insert-product";
 import { AlertError } from "@/components/ui/alert-error";
 import { DataTable } from "@/components/table";
-import { DeleteDialog } from "./delete-dialog";
 import { Input } from "@/ui/input";
 
 const RefundClientStatement = () => {
@@ -57,7 +56,13 @@ const RefundClientStatement = () => {
 
                 <AlertError root={errors?.root} />
 
-                {!!showButtons && <OpenModuleButton type="insert-invoice-products-model" clearErrors={clearErrors} />}
+                {!!showButtons && (
+                    <OpenModuleButton
+                        type="refund-client-statement-insert-dialog-model"
+                        data={{ invoiceBarcode }}
+                        clearErrors={clearErrors}
+                    />
+                )}
 
                 {!!products.length && <DataTable columns={columns} data={products} totalFor="total" smallSize />}
 
@@ -65,7 +70,12 @@ const RefundClientStatement = () => {
             </form>
 
             {`${invoiceBarcode}`.length > 12 && <InsertProduct invoiceBarcode={invoiceBarcode} setProducts={setProducts} />}
-            <DeleteDialog setProducts={setProducts} />
+
+            <RemoveItemFromTable
+                dialogType="refund-client-statement-remove-dialog-model"
+                filterKeys={{ id: "productId", data: "productId" }}
+                setItems={setProducts}
+            />
         </CardForm>
     );
 };

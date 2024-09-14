@@ -34,7 +34,7 @@ const Clients = ({}: ClientsProps) => {
     const [products, setProducts] = useState<ProductType[]>([]);
 
     const { suppliers, productsBySupplier } = useLists();
-    const { errors } = formState;
+    const { isSubmitted, errors } = formState;
 
     const processValue = watch("process");
     const supplierId = watch("supplierId");
@@ -97,6 +97,7 @@ const Clients = ({}: ClientsProps) => {
                         loading={suppliers.isLoading}
                         items={suppliers.lists}
                         error={errors.supplierId}
+                        isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
                     />
@@ -106,6 +107,7 @@ const Clients = ({}: ClientsProps) => {
                         useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                         error={errors.method}
                         items={methods}
+                        isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
                     />
@@ -118,7 +120,9 @@ const Clients = ({}: ClientsProps) => {
                         useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                         items={process}
                         error={errors.process}
+                        isSubmitted={isSubmitted}
                         onChange={onProcessChange}
+                        clearErrors={clearErrors}
                     />
                     <div className="flex-between w-full">
                         <ComboBox
@@ -127,6 +131,7 @@ const Clients = ({}: ClientsProps) => {
                             useTranslate={{ label: "public", name: "public", trigger: "public", item: "public" }}
                             items={place}
                             error={errors.place}
+                            isSubmitted={isSubmitted}
                             setValue={setValue}
                             clearErrors={clearErrors}
                         />

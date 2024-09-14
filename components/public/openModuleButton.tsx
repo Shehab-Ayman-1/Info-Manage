@@ -10,16 +10,17 @@ import { Button } from "@/ui/button";
 
 type OpenModuleButtonProps = {
     type?: string;
+    data?: any;
     clearErrors?: UseFormClearErrors<FieldValues>;
 };
 
-export const OpenModuleButton = ({ type, clearErrors }: OpenModuleButtonProps) => {
+export const OpenModuleButton = ({ type, data, clearErrors }: OpenModuleButtonProps) => {
     const text = useTranslations("public");
     const { onOpen } = useModel();
 
     const onInsert = () => {
         clearErrors?.("root");
-        onOpen(type);
+        onOpen(type, data);
     };
 
     useKey((event) => event.ctrlKey && event.key === "i", onInsert);

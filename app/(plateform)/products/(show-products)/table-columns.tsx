@@ -1,13 +1,19 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
+import Link from "next/link";
 
 import { HeaderComponent } from "@/components/table/column-header";
 import { NumberCell } from "@/components/table/body/number-cell";
+import { CheckCell } from "@/components/table/body/check-cell";
 import { DollarCell } from "@/components/table/body/price-cell";
-import Link from "next/link";
 import { Button } from "@/ui/button";
 
 export const columns: ColumnDef<any>[] = [
+    {
+        accessorKey: "check",
+        header: HeaderComponent,
+        cell: ({ row }) => <CheckCell row={row} />,
+    },
     {
         accessorKey: "category",
         header: HeaderComponent,

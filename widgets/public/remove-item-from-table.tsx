@@ -1,24 +1,25 @@
 "use client";
 import type { Dispatch, SetStateAction } from "react";
-import type { ProductType } from "./schema";
 import { useTranslations } from "next-intl";
 
 import { DialogForm } from "@/components/ui/dialog";
 import { useModel } from "@/hooks/useModel";
 import { Button } from "@/ui/button";
 
-type DeleteDialogProps = {
-    setProducts: Dispatch<SetStateAction<ProductType[]>>;
+type RemoveItemFromTableProps = {
+    dialogType: string;
+    filterKeys: { id: string; data: string };
+    setItems: Dispatch<SetStateAction<any[]>>;
 };
 
-export const DeleteDialog = ({ setProducts }: DeleteDialogProps) => {
+export const RemoveItemFromTable = ({ dialogType, filterKeys, setItems }: RemoveItemFromTableProps) => {
     const { type, data, onClose } = useModel();
     const text = useTranslations();
 
-    if (type !== "delete-model") return;
+    if (type !== dialogType) return;
 
     const onClick = () => {
-        setProducts((products) => products.filter((product) => product?.randomId !== data.productId));
+        setItems((items) => items.filter((item) => item?.[filterKeys.id] !== data?.[filterKeys.data]));
         onClose();
     };
 
@@ -39,4 +40,4 @@ export const DeleteDialog = ({ setProducts }: DeleteDialogProps) => {
     );
 };
 
-DeleteDialog.displayName = "DeleteDialog";
+RemoveItemFromTable.displayName = "RemoveItemFromTable";

@@ -23,9 +23,9 @@ export const HeaderComponent = <T,>({ column, noPrint, smallSize }: HeaderCompon
             variant="ghost"
             onClick={() => column.toggleSorting(isAsc)}
             className={cn(
-                "group !p-0 font-bold text-white hover:bg-transparent hover:text-white print:text-black",
-                "text-sm sm:text-base print:text-xs",
-                smallSize && "sm:!text-sm",
+                "group text-white hover:bg-transparent hover:text-white print:text-black",
+                "text-sm font-bold print:text-xs",
+                smallSize ? "p-1" : "p-4 sm:text-base",
                 noPrint && "print:hidden",
             )}
         >
