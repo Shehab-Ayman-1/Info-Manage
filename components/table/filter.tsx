@@ -58,7 +58,7 @@ export const Filter = <TData,>({ data, filterBy, getColumn }: FilterProps<TData>
             <Popover>
                 {filterBy.length > 1 && (
                     <PopoverTrigger>
-                        <Button asChild type="button" variant="outline">
+                        <Button asChild type="button" variant="outline" size="icon">
                             <span>
                                 <MoreHorizontalIcon className="size-4 dark:!text-white dark:hover:!text-white" />
                             </span>
@@ -79,7 +79,7 @@ export const Filter = <TData,>({ data, filterBy, getColumn }: FilterProps<TData>
                 </PopoverContent>
             </Popover>
 
-            <div className="relative w-full">
+            <div className="relative w-[19rem] ltr:mr-auto rtl:ml-auto">
                 <Input
                     value={value || ""}
                     onChange={onInputChange}

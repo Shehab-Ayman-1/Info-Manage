@@ -81,6 +81,7 @@ const Clients = () => {
                         isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
+                        isSmallContent
                     />
                     <ComboBox
                         label="choose-method"
@@ -92,6 +93,7 @@ const Clients = () => {
                         setValue={setValue}
                         clearErrors={clearErrors}
                         defaultValue="cash"
+                        isSmallContent
                     />
                 </div>
 
@@ -105,6 +107,7 @@ const Clients = () => {
                         isSubmitted={isSubmitted}
                         onChange={onProcessChange}
                         defaultValue="pay-all"
+                        isSmallContent
                     />
 
                     <div className="flex-between w-full">

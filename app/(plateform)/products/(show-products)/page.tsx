@@ -43,7 +43,7 @@ const Market = () => {
                 { text: "transfer", to: "/products/transfer" },
             ]}
         >
-            <div className="max-w-64 sm:mx-4">
+            <div className="max-w-[22rem] sm:mx-4">
                 <ComboBox
                     label="choose-place"
                     name="place"
@@ -51,6 +51,7 @@ const Market = () => {
                     items={place}
                     defaultValue="market"
                     onChange={(value) => setLocation(value)}
+                    isSmallContent
                 />
                 <TransferDialog place={location} />
             </div>

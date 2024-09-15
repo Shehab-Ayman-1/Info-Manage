@@ -50,6 +50,7 @@ const Locker = ({}: LockerProps) => {
                         isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
+                        isSmallContent
                     />
                     <ComboBox
                         label="method"
@@ -60,6 +61,7 @@ const Locker = ({}: LockerProps) => {
                         isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
+                        isSmallContent
                     />
                 </div>
             </CardForm>

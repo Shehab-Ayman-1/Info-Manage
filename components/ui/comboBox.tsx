@@ -33,24 +33,25 @@ type ComboBoxProps = {
     name: string;
     label: string;
 
-    loading?: boolean;
     error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>> | undefined;
+    loading?: boolean;
+    isSmallContent?: boolean;
 
-    setValue?: UseFormSetValue<any>;
     onChange?: (value: string) => void;
+    setValue?: UseFormSetValue<any>;
     clearErrors?: UseFormClearErrors<any>;
 
+    useTranslate?: UseTranslate;
     isSubmitted?: boolean;
     defaultValue?: string;
-    useTranslate?: UseTranslate;
 
-    items?: Item[];
     groups?: { _id: string; label: string; list: Item[] }[];
+    items?: Item[];
 };
 
 export const ComboBox = (props: ComboBoxProps) => {
     const { label, name, loading, error, items, groups, isSubmitted } = props;
-    const { defaultValue, useTranslate, setValue, clearErrors, onChange } = props;
+    const { defaultValue, useTranslate, isSmallContent, setValue, clearErrors, onChange } = props;
 
     const [selectedValue, setSelectedValue] = useState(defaultValue || "");
     const [open, setOpen] = useState(false);
@@ -90,7 +91,7 @@ export const ComboBox = (props: ComboBoxProps) => {
                 <CommandTrigger open={open} label={label} selectedValue={selectedValue} useTranslate={useTranslate} />
 
                 <PopoverContent className="p-0" align="start">
-                    <Command className="sm:w-[520px]">
+                    <Command className={isSmallContent ? "w-[calc(100vw-50px)] sm:w-[22rem]" : "sm:w-[45rem]"}>
                         <CommandInput
                             placeholder={`${text("public.search")} ${useTranslate?.name ? text(`${useTranslate.name}.${name}`) : name}`}
                         />

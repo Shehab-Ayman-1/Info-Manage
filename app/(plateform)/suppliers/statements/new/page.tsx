@@ -112,6 +112,7 @@ const Suppliers = ({}: SuppliersProps) => {
                         isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
+                        isSmallContent
                     />
                     <ComboBox
                         label="choose-place"
@@ -123,6 +124,7 @@ const Suppliers = ({}: SuppliersProps) => {
                         setValue={setValue}
                         clearErrors={clearErrors}
                         defaultValue="store"
+                        isSmallContent
                     />
                 </div>
 
@@ -137,6 +139,7 @@ const Suppliers = ({}: SuppliersProps) => {
                         setValue={setValue}
                         clearErrors={clearErrors}
                         defaultValue="cash"
+                        isSmallContent
                     />
                     <ComboBox
                         label="choose-process"
@@ -148,6 +151,7 @@ const Suppliers = ({}: SuppliersProps) => {
                         onChange={onProcessChange}
                         clearErrors={clearErrors}
                         defaultValue="pay-all"
+                        isSmallContent
                     />
                 </div>
 

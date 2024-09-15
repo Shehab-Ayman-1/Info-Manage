@@ -8,10 +8,10 @@ import { columns } from "./table-columns";
 import { TableForm } from "@/components/page-structure/table-form";
 import { Input } from "@/ui/input";
 
-type BestSellingOfMonthProps = {};
+type ResponseType = {};
 
-const BestSellingOfMonth = ({}: BestSellingOfMonthProps) => {
-    const { data, isPending, error, mutate } = useGetByQuery<BestSellingOfMonthProps[]>("/api/statistics/best-selling-of-month");
+const BestSellingOfMonth = () => {
+    const { data, isPending, error, mutate } = useGetByQuery<ResponseType[]>("/api/statistics/best-selling-of-month");
     const [month, setMonth] = useState(formatDate(new Date(), "yyyy-MM"));
 
     useEffect(() => {
@@ -30,7 +30,9 @@ const BestSellingOfMonth = ({}: BestSellingOfMonthProps) => {
             columns={columns}
             navigate={[{ text: "open-invoice-lists", to: "/clients/invoices" }]}
         >
-            <Input type="month" className="w-fit" value={month} onChange={(event) => setMonth(event.target.value)} />
+            <div className="w-fit">
+                <Input type="month" value={month} onChange={(event) => setMonth(event.target.value)} />
+            </div>
         </TableForm>
     );
 };

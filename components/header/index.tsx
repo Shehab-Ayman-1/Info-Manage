@@ -14,7 +14,7 @@ export const Header = ({}: HeaderProps) => {
     const { userId } = useAuth();
 
     return (
-        <header className="bg-gradient relative !z-50 w-full rounded-xl border border-slate-400 p-4 shadow-md contrast-[85%] dark:border-slate-600 dark:contrast-[115%]">
+        <header className="relative !z-50 w-full rounded-xl border border-slate-400 bg-white p-4 shadow-md dark:border-slate-600 dark:bg-black">
             <div className="flex-between m-auto w-full max-w-screen-xl">
                 <Logo />
 

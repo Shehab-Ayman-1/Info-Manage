@@ -119,6 +119,7 @@ export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
                         isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
+                        isSmallContent
                     />
                 </div>
 

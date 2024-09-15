@@ -100,6 +100,7 @@ const Clients = ({}: ClientsProps) => {
                         isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
+                        isSmallContent
                     />
                     <ComboBox
                         label="choose-method"
@@ -111,6 +112,7 @@ const Clients = ({}: ClientsProps) => {
                         setValue={setValue}
                         clearErrors={clearErrors}
                         defaultValue="cash"
+                        isSmallContent
                     />
                 </div>
 
@@ -125,6 +127,7 @@ const Clients = ({}: ClientsProps) => {
                         onChange={onProcessChange}
                         clearErrors={clearErrors}
                         defaultValue="pay-all"
+                        isSmallContent
                     />
                     <div className="flex-between w-full">
                         <ComboBox
@@ -137,6 +140,7 @@ const Clients = ({}: ClientsProps) => {
                             setValue={setValue}
                             clearErrors={clearErrors}
                             defaultValue="market"
+                            isSmallContent
                         />
                         {processValue === "milestone" && (
                             <Input

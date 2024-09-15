@@ -12,11 +12,12 @@ type SubscriptionCardProps = {
     heading: "basic" | "premium" | "enterprise";
     costs: { month: number; year: number; life: number } | { month: number; halfYear: number; year: number };
     features: string[];
+    className?: string;
 };
 
 type Cost = keyof SubscriptionCardProps["costs"];
 
-export const SubscriptionCard = ({ heading, costs, features }: SubscriptionCardProps) => {
+export const SubscriptionCard = ({ heading, costs, features, className }: SubscriptionCardProps) => {
     const text = useTranslations("subscriptions");
     const { organization } = useOrganization();
 
@@ -29,7 +30,8 @@ export const SubscriptionCard = ({ heading, costs, features }: SubscriptionCardP
         <Card
             className={cn(
                 "relative w-full max-w-sm rounded-md border-none p-4 shadow-md dark:shadow-slate-500",
-                isSubscribe ? "bg-green-50 dark:bg-green-900/30" : "bg-primary-50 dark:bg-slate-900",
+                isSubscribe ? "bg-green-50/50 dark:bg-green-900/30" : "bg-primary-50 dark:bg-slate-900",
+                className,
             )}
         >
             <div className="">
