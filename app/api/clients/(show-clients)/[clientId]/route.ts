@@ -13,6 +13,7 @@ type ResponseType = {
 
 export const PUT = async (req: NextRequest, res: ResponseType) => {
     const session = await mongoose.startSession();
+    
     try {
         await DBConnection();
         session.startTransaction();

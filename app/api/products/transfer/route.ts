@@ -72,5 +72,7 @@ export const PUT = async (req: NextRequest) => {
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);
+    } finally {
+        session.endSession();
     }
 };

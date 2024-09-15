@@ -10,6 +10,7 @@ import { getTranslations } from "@/utils/getTranslations";
 
 export const POST = async (req: NextRequest) => {
     const session = await mongoose.startSession();
+    
     try {
         await DBConnection();
         session.startTransaction();

@@ -15,24 +15,56 @@ export const ProfileLoading = ({}: ProfileLoadingProps) => {
                 <Skeleton className="h-10 w-10 rounded-md" />
             </div>
 
-            <div className="my-4">
-                <Skeleton className="h-10" />
-                <Skeleton className="mt-4 h-10" />
+            <hr className="my-4 dark:border-slate-500" />
+
+            <div className="flex-between">
+                <div className="w-full">
+                    <Skeleton className="mt-4 h-5 w-1/4" />
+                    <Skeleton className="mt-4 h-10 w-full" />
+                </div>
+
+                <div className="w-full">
+                    <Skeleton className="mt-4 h-5 w-1/4" />
+                    <Skeleton className="mt-4 h-10 w-full" />
+                </div>
             </div>
 
             <div className="flex-between">
-                <Skeleton className="mt-4 h-10 w-full" />
-                <Skeleton className="mt-4 h-10 w-full" />
+                <div className="w-full">
+                    <Skeleton className="mt-4 h-5 w-1/4" />
+                    <Skeleton className="mt-4 h-10 w-full" />
+                </div>
+
+                <div className="w-full">
+                    <Skeleton className="mt-4 h-5 w-1/4" />
+                    <Skeleton className="mt-4 h-10 w-full" />
+                </div>
+            </div>
+
+            <hr className="my-4 dark:border-slate-500" />
+
+            <div className="flex-between">
+                <div className="w-full">
+                    <Skeleton className="mt-4 h-5 w-1/4" />
+                    <Skeleton className="mt-4 h-10 w-full" />
+                </div>
+
+                <div className="w-full">
+                    <Skeleton className="mt-4 h-5 w-1/4" />
+                    <Skeleton className="mt-4 h-10 w-full" />
+                </div>
             </div>
 
             <div className="flex-between">
-                <Skeleton className="mt-4 h-10 w-full" />
-                <Skeleton className="mt-4 h-10 w-full" />
-            </div>
+                <div className="w-full">
+                    <Skeleton className="mt-4 h-5 w-1/4" />
+                    <Skeleton className="mt-4 h-10 w-full" />
+                </div>
 
-            <div className="flex-between">
-                <Skeleton className="mt-4 h-10 w-full" />
-                <Skeleton className="mt-4 h-10 w-full" />
+                <div className="w-full">
+                    <Skeleton className="mt-4 h-5 w-1/4" />
+                    <Skeleton className="mt-4 h-10 w-full" />
+                </div>
             </div>
         </CardForm>
     );

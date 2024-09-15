@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { useGet } from "@/hooks/api/useGet";
 import { place } from "@/constants";
 
+import { TransferDialog } from "@/widgets/products/insufficients/transfer-dialog";
 import { TableForm } from "@/components/page-structure/table-form";
 import { ComboBox } from "@/components/ui/comboBox";
 import { columns } from "./table-columns";
-import { TransferDialog } from "./transfer-dialog";
 
 export type Product = {
     _id: string;
@@ -36,6 +36,7 @@ const Market = () => {
             columns={columns}
             data={data || []}
             isPending={isPending}
+            selectedSubmitButtons={["transfer"]}
             filterBy={["barcode", "product", "company", "category"]}
             navigate={[
                 { text: "new-statement", to: "/clients/statements/new" },

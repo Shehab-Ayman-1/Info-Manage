@@ -11,7 +11,7 @@ import { DataTable } from "@/components/table";
 import { place as places } from "@/constants";
 
 type TransferDialogType = {
-    mutateGetQuery: any;
+    mutateGetQuery?: any;
     place: string;
 };
 
@@ -25,10 +25,18 @@ export const TransferDialog = ({ place, mutateGetQuery }: TransferDialogType) =>
 
     const onSubmit = (event: FormEvent) => {
         event.preventDefault();
-        const transferProducts = products.map((product: any) => ({ _id: product.productId, count: product.checkedCount }));
+        const transferProducts = products.map(({ _id, productId, checkedCount }: any) => ({
+            _id: productId || _id,
+            count: checkedCount,
+        }));
         mutate(
             { products: transferProducts, place: location },
-            { onSuccess: () => mutateGetQuery(`supplierId=${products[0]._id}&place=${place}`) },
+            {
+                onSuccess: () => {
+                    mutateGetQuery?.(`supplierId=${products[0]._id}&place=${place}`);
+                    setTimeout(() => window.location.reload(), 500);
+                },
+            },
         );
     };
 
