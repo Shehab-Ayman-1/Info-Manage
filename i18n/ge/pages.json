@@ -110,6 +110,11 @@
                 "purchases": "Gesamtbetrag nach Einkaufspreis",
                 "sales": "Gesamtbetrag nach Verkaufspreis"
             },
+            "receipts": {
+                "heading": "Details zu Belegen",
+                "purchases": "Gesamtzahl der heutigen Einkäufe",
+                "sales": "Gesamtzahl der heutigen Verkäufe"
+            },
             "debts": {
                 "heading": "Details der Schulden",
                 "clients": "Kundenschulden",

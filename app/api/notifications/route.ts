@@ -1,8 +1,8 @@
 import { auth } from "@clerk/nextjs/server";
 
+import { mainReasons } from "@/constants/finances";
 import { DBConnection } from "@/server/configs";
 import { Transactions } from "@/server/models";
-import { reasons } from "@/constants/finances";
 import { json } from "@/utils/response";
 
 export const GET = async () => {
@@ -12,12 +12,6 @@ export const GET = async () => {
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
 
-        const capitalizeReasons = reasons.map((reason) => {
-            const words = reason.split("-");
-            const capitalize = words.map((word) => word.charAt(0).toUpperCase() + word.slice(1));
-            return capitalize.join(" ");
-        });
-
         const notifies = await Transactions.aggregate([
             {
                 $match: { orgId },
@@ -26,7 +20,7 @@ export const GET = async () => {
                 $unwind: "$history",
             },
             {
-                $match: { "history.reason": { $nin: capitalizeReasons } },
+                $match: { "history.reason": { $nin: mainReasons } },
             },
             {
                 $sort: { "history.createdAt": -1 },

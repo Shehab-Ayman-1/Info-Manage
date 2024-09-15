@@ -25,6 +25,9 @@
         "supplierId": "Supplier Name",
         "supplier": "Supplier",
 
+        "choose-receipt": "Choose Receipt",
+        "receipt": "Receipt",
+
         "choose-method": "Choose Method",
         "method": "Method",
 
@@ -36,6 +39,9 @@
 
         "choose-unit": "Choose Quantity",
         "unit": "Quantity",
+
+        "sales": "Sales",
+        "purchases": "Purchases",
 
         "old-supplier": "Old Supplier",
         "new-supplier": "New Supplier",
@@ -66,6 +72,8 @@
         "store": "Store",
 
         "language": "Language",
+        "all": "All",
+
         "en": "English",
         "ar": "Arabic",
 

@@ -3,7 +3,6 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
-import { toast } from "sonner";
 import { z } from "zod";
 
 import { useLists } from "@/hooks/data/useLists";
@@ -61,15 +60,17 @@ export const InsertProductToTable = ({ price, dialogType, setProducts }: InsertP
         const { name, company } = products.data.find((product) => product._id === productId)!;
 
         setProducts((products) => {
-            const exist = products.find((item) => item.productId === productId);
-            if (exist) {
-                toast.info("This Product Is Already Exist");
-                return products;
-            }
-
             let newProduct;
             if (price.type === "soldPrice" && !price.both)
-                newProduct = { ...product, productId, name, count, soldPrice, company: company.name, total: count * soldPrice };
+                newProduct = {
+                    ...product,
+                    productId,
+                    name,
+                    count,
+                    soldPrice,
+                    company: company.name,
+                    total: count * soldPrice,
+                };
 
             if (price.type === "purchasePrice" && !price.both)
                 newProduct = {
@@ -94,7 +95,19 @@ export const InsertProductToTable = ({ price, dialogType, setProducts }: InsertP
                     total: count * (price.type === "soldPrice" ? soldPrice : purchasePrice),
                 };
 
-            return products.concat(newProduct as ProductType);
+            const existProduct = products.find((product) => product.productId === productId);
+            if (!existProduct) return products.concat(newProduct as ProductType);
+
+            const updatedProduct = {
+                ...existProduct,
+                soldPrice: soldPrice,
+                purchasePrice: purchasePrice,
+                count: existProduct.count + count,
+                total: existProduct.total! + count * (price.type === "soldPrice" ? soldPrice : purchasePrice),
+            };
+
+            const sliceProducts = products.map((product) => (product.productId === productId ? updatedProduct : product));
+            return sliceProducts;
         });
 
         reset();

@@ -13,6 +13,8 @@ type SubscribeProvider = {
 };
 
 const checkSubscription = (pathname: string, metadata: AdditionalSubscription[]) => {
+    if (!metadata) return;
+
     const checkSub = (link: NavLinkType) =>
         link.href === pathname &&
         metadata.find((sub) => {

@@ -25,6 +25,9 @@
         "supplierId": "Lieferantenname",
         "supplier": "Lieferant",
 
+        "choose-receipt": "Wählen Sie Quittung",
+        "receipt": "Quittung",
+
         "choose-method": "Methode wählen",
         "method": "Methode",
 
@@ -36,6 +39,9 @@
 
         "choose-unit": "Menge wählen",
         "unit": "Menge",
+
+        "sales": "Verkäufe",
+        "purchases": "Käufe",
 
         "old-supplier": "Alter Lieferant",
         "new-supplier": "Neuer Lieferant",
@@ -66,6 +72,8 @@
         "store": "Lager",
 
         "language": "Sprache",
+        "all": "All",
+
         "en": "Englisch",
         "ar": "Arabisch",
 

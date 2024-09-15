@@ -24,12 +24,14 @@ export const GET = async (req: NextRequest) => {
 
         const transactions = await Transactions.aggregate([
             {
-                $match: { orgId, "history.createdAt": { $gte: startDate, $lte: endDate } },
+                $match: { orgId },
             },
             {
                 $unwind: "$history",
             },
-
+            {
+                $match: { "history.createdAt": { $gte: startDate, $lte: endDate } },
+            },
             {
                 $project: {
                     _id: 1,

@@ -1,32 +1,43 @@
 "use client";
-import { useGet } from "@/hooks/api/useGet";
-import { columns } from "./table-columns";
-
 import { TableForm } from "@/components/page-structure/table-form";
-import { CardLoading } from "@/components/loading/card";
+import { DataTable } from "@/components/table";
+import { useGet } from "@/hooks/api/useGet";
+
+import { columns as transactionColumns } from "./table-transactions-columns";
+import { columns as productColumns } from "./table-products-columns";
 
 type TodayPurchasesProps = {
-    product: string;
-    count: string;
-    totalPurchases: number;
+    products: {
+        product: string;
+        count: string;
+        totalCosts: number;
+    }[];
+    transactions: {
+        creator: string;
+        reason: string;
+        price: number;
+        method: "cash" | "visa";
+    }[];
 };
 
 const TodayPurchases = () => {
-    const { data, isPending, error } = useGet<TodayPurchasesProps[]>("/api/products/today-purchases", ["supplier-invoices"]);
+    const { data, isPending, error } = useGet<TodayPurchasesProps>(`/api/products/today-purchases`, ["today-purchases"]);
 
-    if (isPending) return <CardLoading />;
     if (error) return <h1>{error?.message}</h1>;
 
     return (
         <TableForm
             pageTitle="pages.today-purchases.heading"
-            columns={columns}
-            data={data}
+            columns={transactionColumns}
             isPending={isPending}
-            filterBy={["product"]}
-            totalFor="totalPurchases"
+            totalFor="costs"
+            data={data?.transactions || []}
             navigate={[{ text: "new-statement", to: "/suppliers/statements/new" }]}
-        />
+        >
+            <div className="sm:px-4">
+                <DataTable data={data?.products || []} columns={productColumns} isPending={isPending} totalFor="costs" />
+            </div>
+        </TableForm>
     );
 };
 

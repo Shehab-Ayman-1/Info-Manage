@@ -9,6 +9,7 @@ export const CashesLoading = ({}: CashesLoadingProps) => {
             <Skeleton className="h-36 w-full max-w-sm rounded-md p-4" />
             <Skeleton className="h-36 w-full max-w-sm rounded-md p-4" />
             <Skeleton className="h-36 w-full max-w-sm rounded-md p-4" />
+            <Skeleton className="h-36 w-full max-w-sm rounded-md p-4" />
         </div>
     );
 };

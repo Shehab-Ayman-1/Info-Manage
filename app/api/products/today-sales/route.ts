@@ -1,8 +1,9 @@
 import { auth } from "@clerk/nextjs/server";
 
 import { DBConnection } from "@/server/configs";
-import { ClientInvoices } from "@/server/models";
+import { ClientInvoices, Transactions } from "@/server/models";
 import { json } from "@/utils/response";
+import { mainReasons } from "@/constants/finances";
 
 export const GET = async () => {
     try {
@@ -11,15 +12,15 @@ export const GET = async () => {
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
 
-        const startOfDay = new Date();
-        startOfDay.setHours(0, 0, 0, 0);
+        const startDate = new Date();
+        startDate.setHours(0, 0, 0, 0);
 
-        const endOfDay = new Date();
-        endOfDay.setHours(23, 59, 59, 999);
+        const endDate = new Date();
+        endDate.setHours(23, 59, 59, 999);
 
-        const sales = await ClientInvoices.aggregate([
+        const products = await ClientInvoices.aggregate([
             {
-                $match: { orgId, type: "sale", createdAt: { $gte: startOfDay, $lte: endOfDay } },
+                $match: { orgId, type: "sale", createdAt: { $gte: startDate, $lte: endDate } },
             },
             {
                 $unwind: "$products",
@@ -34,19 +35,50 @@ export const GET = async () => {
                 $group: {
                     _id: "$products.productId",
                     product: { $first: "$products.source.name" },
-                    count: { $sum: "$products.count" },
                     unit: { $first: "$products.source.unit" },
-                    totalSolds: { $sum: "$total" },
+                    count: { $sum: "$products.count" },
+                    costs: {
+                        $sum: {
+                            $multiply: ["$products.count", "$products.soldPrice"],
+                        },
+                    },
                     profits: {
                         $sum: {
-                            $subtract: ["$total", { $multiply: ["$products.count", "$products.purchasePrice"] }],
+                            $subtract: [
+                                { $multiply: ["$products.count", "$products.soldPrice"] },
+                                { $multiply: ["$products.count", "$products.purchasePrice"] },
+                            ],
                         },
                     },
                 },
             },
         ]);
 
-        return json(sales);
+        const transactions = await Transactions.aggregate([
+            {
+                $match: { orgId, process: "deposit" },
+            },
+            {
+                $unwind: "$history",
+            },
+            {
+                $match: {
+                    "history.reason": { $nin: mainReasons },
+                    "history.createdAt": { $gte: startDate, $lte: endDate },
+                },
+            },
+            {
+                $project: {
+                    _id: 1,
+                    method: 1,
+                    creator: "$history.creator",
+                    reason: "$history.reason",
+                    costs: "$history.price",
+                },
+            },
+        ]);
+
+        return json({ products, transactions });
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

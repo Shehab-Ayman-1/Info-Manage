@@ -19,6 +19,10 @@ type CashesProps = {
         purchasePrice: number;
         sellingPrice: number;
     };
+    receipts: {
+        purchases: number;
+        sales: number;
+    };
     debts: {
         clients: number;
         suppliers: number;
@@ -34,7 +38,7 @@ const Cashes = () => {
     if (error) return <h3>{error?.message}</h3>;
     if (!data) return;
 
-    const { locker, market, store, debts } = data;
+    const { locker, market, store, receipts, debts } = data;
 
     return (
         <div className="flex-between mt-4 !flex-wrap">
@@ -62,6 +66,15 @@ const Cashes = () => {
                 items={[
                     { title: text("pages.cashes.store.purchases"), value: store.purchasePrice },
                     { title: text("pages.cashes.store.sales"), value: store.sellingPrice },
+                ]}
+            />
+
+            <CashCard
+                heading={text("pages.cashes.receipts.heading")}
+                isAdditionalSubscribe={isAdditionalSubscribe}
+                items={[
+                    { title: text("pages.cashes.receipts.purchases"), value: receipts.purchases },
+                    { title: text("pages.cashes.receipts.sales"), value: receipts.sales },
                 ]}
             />
 

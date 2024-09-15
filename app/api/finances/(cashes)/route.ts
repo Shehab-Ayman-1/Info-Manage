@@ -1,8 +1,9 @@
 import { auth } from "@clerk/nextjs/server";
 
-import { Clients, Products, Suppliers, Transactions } from "@/server/models";
+import { ClientInvoices, Clients, Products, SupplierInvoices, Suppliers, Transactions } from "@/server/models";
 import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
+import { mainReasons } from "@/constants/finances";
 
 export const GET = async () => {
     try {
@@ -10,6 +11,12 @@ export const GET = async () => {
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
+
+        const startDate = new Date();
+        startDate.setHours(0, 0, 0, 0);
+
+        const endDate = new Date();
+        endDate.setHours(23, 59, 59, 999);
 
         const { lockerCash, lockerVisa } = await Transactions.getLockerCash(orgId);
 
@@ -75,10 +82,61 @@ export const GET = async () => {
             },
         ]);
 
+        const [salesReceipt] = await ClientInvoices.aggregate([
+            {
+                $match: { orgId, type: "sale", createdAt: { $gte: startDate, $lte: endDate } },
+            },
+            {
+                $unwind: "$products",
+            },
+            {
+                $group: {
+                    _id: null,
+                    sales: { $sum: { $multiply: ["$products.count", "$products.soldPrice"] } },
+                },
+            },
+        ]);
+
+        const [purchasesReceipt] = await SupplierInvoices.aggregate([
+            {
+                $match: { orgId, type: "purchase", createdAt: { $gte: startDate, $lte: endDate } },
+            },
+            {
+                $unwind: "$products",
+            },
+            {
+                $group: {
+                    _id: null,
+                    purchases: { $sum: { $multiply: ["$products.count", "$products.price"] } },
+                },
+            },
+        ]);
+
+        const [todayWithdrawTransaction] = await Transactions.aggregate([
+            {
+                $match: { orgId, process: "withdraw" },
+            },
+            {
+                $unwind: "$history",
+            },
+            {
+                $match: {
+                    "history.reason": { $nin: mainReasons },
+                    "history.createdAt": { $gte: startDate, $lte: endDate },
+                },
+            },
+            {
+                $group: {
+                    _id: null,
+                    total: { $sum: "$history.price" },
+                },
+            },
+        ]);
+
         const data = {
             locker: {
-                cash: lockerCash,
-                visa: lockerVisa,
+                cash: lockerCash || 0,
+                visa: lockerVisa || 0,
             },
             market: {
                 purchasePrice: productsCashes?.marketPurchasePrice || 0,
@@ -91,6 +149,10 @@ export const GET = async () => {
             debts: {
                 clients: clientDebts?.pending || 0,
                 suppliers: supplierDebts?.pending || 0,
+            },
+            receipts: {
+                purchases: (purchasesReceipt?.purchases || 0) - (todayWithdrawTransaction?.total || 0),
+                sales: salesReceipt?.sales || 0,
             },
         };
 

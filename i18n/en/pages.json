@@ -114,6 +114,11 @@
                 "heading": "Details Of Debts",
                 "clients": "Client Debts",
                 "suppliers": "Supplier Debts"
+            },
+            "receipts": {
+                "heading": "Details Of Today Receipts",
+                "purchases": "Total Of Today Purchases",
+                "sales": "Total Of Today Selling"
             }
         },
 
