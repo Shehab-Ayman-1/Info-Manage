@@ -25,13 +25,13 @@ export const Actions = ({ row }: ActionsProps) => {
         {
             Icon: BadgeDollarSignIcon,
             text: "pay",
-            onClick: (original: any) => onOpen("pay-model", { invoiceId: original._id }),
+            onClick: (original: any) => onOpen("supplier-invoices-payment-model", { invoiceId: original._id }),
         },
         {
             Icon: Trash2Icon,
             text: "delete",
             className: { button: "cancel", icon: "cancel" },
-            onClick: (original: any) => onOpen("delete-model", { invoiceId: original._id }),
+            onClick: (original: any) => onOpen("supplier-invoices-delete-model", { invoiceId: original._id }),
         },
     ];
 

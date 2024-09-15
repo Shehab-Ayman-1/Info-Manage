@@ -5,19 +5,19 @@ import { Dispatch, SetStateAction } from "react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
+import { schema, SupplierType } from "@/app/(plateform)/suppliers/add-supplier/schema";
 import { useLists } from "@/hooks/data/useLists";
 import { useModel } from "@/hooks/useModel";
-import { schema, SupplierType } from "./schema";
 
 import { SubmitButton } from "@/components/public/submit-btn";
 import { ComboBox } from "@/components/ui/comboBox";
 import { DialogForm } from "@/components/ui/dialog";
 
-type InsertDialogProps = {
+type InsertProductProps = {
     setProducts: Dispatch<SetStateAction<SupplierType[]>>;
 };
 
-export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
+export const InsertProduct = ({ setProducts }: InsertProductProps) => {
     const { formState, setValue, reset, clearErrors, handleSubmit } = useForm({ resolver: zodResolver(schema) });
     const { isSubmitted, errors } = formState;
     const text = useTranslations();
@@ -25,7 +25,7 @@ export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
     const { type } = useModel();
     const { products } = useLists();
 
-    if (type !== "insert-product-model") return;
+    if (type !== "add-supplier-insert-model") return;
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const values = data as SupplierType;
@@ -66,4 +66,4 @@ export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
     );
 };
 
-InsertDialog.displayName = "InsertDialog";
+InsertProduct.displayName = "InsertProduct";

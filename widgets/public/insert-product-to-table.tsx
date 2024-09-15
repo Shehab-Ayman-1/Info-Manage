@@ -29,7 +29,7 @@ export type ProductType = z.infer<typeof schema>;
 type InsertProductToTableProps = {
     price: { type: string; both: boolean };
     dialogType: string;
-    setProducts: Dispatch<SetStateAction<ProductType[]>>;
+    setProducts: Dispatch<SetStateAction<any[]>>;
 };
 
 export const InsertProductToTable = ({ price, dialogType, setProducts }: InsertProductToTableProps) => {

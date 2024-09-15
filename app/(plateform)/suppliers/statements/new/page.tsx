@@ -17,10 +17,11 @@ import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
 import { columns } from "./table-columns";
 
-import { InsertProduct, ProductType } from "./insert-product";
+import { RemoveItemFromTable } from "@/widgets/public/remove-item-from-table";
+import { InsertProductToTable } from "@/widgets/public/insert-product-to-table";
+import { ProductType } from "@/widgets/public/insert-product-to-table";
 import { SubmitButton } from "@/components/public/submit-btn";
 import { ComboBox } from "@/components/ui/comboBox";
-import { DeleteDialog } from "./delete-dialog";
 import { Input } from "@/ui/input";
 
 type SuppliersProps = {};
@@ -78,8 +79,16 @@ const Suppliers = ({}: SuppliersProps) => {
         if (!products?.length) return setError("root", { message: "No Products Was Selected." });
         const values = data as CreateSupplierType;
 
+        const supplierProducts = products.map(({ productId, name, count, total, purchasePrice }) => ({
+            productId,
+            name,
+            count,
+            total,
+            price: purchasePrice,
+        }));
+
         mutate(
-            { ...values, products },
+            { ...values, products: supplierProducts },
             {
                 onSuccess: () => {
                     router.push("/");
@@ -113,6 +122,7 @@ const Suppliers = ({}: SuppliersProps) => {
                         isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
+                        defaultValue="store"
                     />
                 </div>
 
@@ -126,6 +136,7 @@ const Suppliers = ({}: SuppliersProps) => {
                         isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
+                        defaultValue="cash"
                     />
                     <ComboBox
                         label="choose-process"
@@ -136,6 +147,7 @@ const Suppliers = ({}: SuppliersProps) => {
                         isSubmitted={isSubmitted}
                         onChange={onProcessChange}
                         clearErrors={clearErrors}
+                        defaultValue="pay-all"
                     />
                 </div>
 
@@ -150,14 +162,23 @@ const Suppliers = ({}: SuppliersProps) => {
                 )}
 
                 <AlertError root={errors?.root} />
-                <OpenModuleButton type="insert-product-model" clearErrors={clearErrors} />
+                <OpenModuleButton type="new-supplier-statement-insert-model" clearErrors={clearErrors} />
 
                 {!!products.length && <DataTable columns={columns} data={products} totalFor="total" smallSize />}
                 <SubmitButton text="buy" isPending={isPending} />
             </form>
 
-            <InsertProduct setProducts={setProducts} />
-            <DeleteDialog setProducts={setProducts} />
+            <InsertProductToTable
+                dialogType="new-supplier-statement-insert-model"
+                price={{ type: "purchasePrice", both: true }}
+                setProducts={setProducts}
+            />
+
+            <RemoveItemFromTable
+                dialogType="new-supplier-statement-remove-model"
+                filterKeys={{ id: "productId", data: "productId" }}
+                setItems={setProducts}
+            />
         </CardForm>
     );
 };

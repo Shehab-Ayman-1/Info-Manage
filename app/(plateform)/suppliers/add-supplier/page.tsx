@@ -9,6 +9,8 @@ import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
 import { columns } from "./table-columns";
 
+import { RemoveItemFromTable } from "@/widgets/public/remove-item-from-table";
+import { InsertProduct } from "@/widgets/suppliers/add-supplier/insert-product";
 import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { createSchema } from "@/app/api/suppliers/add-supplier/schema";
 import { CardForm } from "@/components/page-structure/CardForm";
@@ -16,8 +18,6 @@ import { CardForm } from "@/components/page-structure/CardForm";
 import { SubmitButton } from "@/components/public/submit-btn";
 import { ComboBox } from "@/components/ui/comboBox";
 import { DataTable } from "@/components/table";
-import { DeleteDialog } from "./delete-dialog";
-import { InsertDialog } from "./insert-dialog";
 import { SupplierType } from "./schema";
 import { Input } from "@/ui/input";
 
@@ -115,7 +115,7 @@ const Supplier = ({}: SupplierProps) => {
 
                 {process && (
                     <Fragment>
-                        <OpenModuleButton type="insert-product-model" clearErrors={clearErrors} />
+                        <OpenModuleButton type="add-supplier-insert-model" clearErrors={clearErrors} />
                         {!!products.length && <DataTable columns={columns} data={products} smallSize />}
                         <SubmitButton text="create" isPending={isPending} />
                     </Fragment>
@@ -124,8 +124,13 @@ const Supplier = ({}: SupplierProps) => {
                 <p className="text-center text-sm text-rose-900">{errors?.root?.message}</p>
             </form>
 
-            <InsertDialog setProducts={setProducts} />
-            <DeleteDialog setProducts={setProducts} />
+            <InsertProduct setProducts={setProducts} />
+
+            <RemoveItemFromTable
+                dialogType="add-supplier-remove-model"
+                filterKeys={{ id: "randomId", data: "productId" }}
+                setItems={setProducts}
+            />
         </CardForm>
     );
 };

@@ -21,9 +21,9 @@ export const columns: ColumnDef<any>[] = [
         cell: ({ row }) => <NumberCell row={row} name="count" />,
     },
     {
-        accessorKey: "price",
+        accessorKey: "purchasePrice",
         header: ({ column }) => <HeaderComponent column={column} smallSize />,
-        cell: ({ row }) => <DollarCell row={row} name="price" />,
+        cell: ({ row }) => <DollarCell row={row} name="purchasePrice" />,
     },
     {
         accessorKey: "total",

@@ -6,9 +6,9 @@ import { TableForm } from "@/components/page-structure/table-form";
 import { DatePickerWithRange } from "@/components/ui/calender";
 import { useGetByQuery } from "@/hooks/api/useGetByQuery";
 
-import { DeleteDialog } from "./delete-dialog";
+import { DeleteItemByRequest } from "@/widgets/public/delete-item-by-request";
+import { PaymentDialog } from "@/widgets/public/payment-dialog";
 import { columns } from "./table-columns";
-import { PayDialog } from "./pay-dialog";
 
 type InvoiceType = {
     _id: string;
@@ -48,8 +48,18 @@ const SupplierInvoices = () => {
                 <DatePickerWithRange date={date} setDate={setDate} />
             </div>
 
-            <DeleteDialog />
-            <PayDialog />
+            <DeleteItemByRequest
+                dialogType="supplier-invoices-delete-model"
+                apiUrl="/api/suppliers/invoices"
+                queryKeys={["supplier-invoices", "products"]}
+                requestKeys={{ senderId: "invoiceId", dataId: "invoiceId" }}
+            />
+            <PaymentDialog
+                dialogType="supplier-invoices-payment-model"
+                apiUrl="/api/profile/supplier"
+                dataId="invoiceId"
+                queryKeys={["supplier-invoices"]}
+            />
         </TableForm>
     );
 };

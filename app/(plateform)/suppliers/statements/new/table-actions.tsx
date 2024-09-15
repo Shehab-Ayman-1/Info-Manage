@@ -17,7 +17,7 @@ export const Actions = ({ row }: ActionsProps) => {
             Icon: Trash2Icon,
             text: "delete",
             className: { button: "cancel", icon: "cancel" },
-            onClick: (original: any) => onOpen("delete-model", { productId: original.productId }),
+            onClick: (original: any) => onOpen("new-supplier-statement-remove-model", { productId: original.productId }),
         },
     ];
 

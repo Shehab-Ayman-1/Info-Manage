@@ -1,25 +1,25 @@
 "use client";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-
-import { createSchema, RefundSupplierType } from "@/app/api/suppliers/statements/refund/schema";
-import { OpenModuleButton } from "@/components/public/openModuleButton";
-import { InsertProduct, ProductType } from "./insert-product";
 
 import { useCreate } from "@/hooks/api/useCreate";
 import { useLists } from "@/hooks/data/useLists";
+
+import { createSchema, RefundSupplierType } from "@/app/api/suppliers/statements/refund/schema";
+import { OpenModuleButton } from "@/components/public/openModuleButton";
 import { methods, place, process } from "@/constants";
 import { columns } from "./table-columns";
 
+import { InsertProductToTable, ProductType } from "@/widgets/public/insert-product-to-table";
+import { RemoveItemFromTable } from "@/widgets/public/remove-item-from-table";
 import { CardForm } from "@/components/page-structure/CardForm";
 import { SubmitButton } from "@/components/public/submit-btn";
 import { AlertError } from "@/components/ui/alert-error";
 import { ComboBox } from "@/components/ui/comboBox";
 import { DataTable } from "@/components/table";
-import { DeleteDialog } from "./delete-dialog";
 import { Input } from "@/ui/input";
 import { cn } from "@/utils/shadcn";
 
@@ -110,6 +110,7 @@ const Clients = ({}: ClientsProps) => {
                         isSubmitted={isSubmitted}
                         setValue={setValue}
                         clearErrors={clearErrors}
+                        defaultValue="cash"
                     />
                 </div>
 
@@ -123,6 +124,7 @@ const Clients = ({}: ClientsProps) => {
                         isSubmitted={isSubmitted}
                         onChange={onProcessChange}
                         clearErrors={clearErrors}
+                        defaultValue="pay-all"
                     />
                     <div className="flex-between w-full">
                         <ComboBox
@@ -134,6 +136,7 @@ const Clients = ({}: ClientsProps) => {
                             isSubmitted={isSubmitted}
                             setValue={setValue}
                             clearErrors={clearErrors}
+                            defaultValue="market"
                         />
                         {processValue === "milestone" && (
                             <Input
@@ -148,14 +151,23 @@ const Clients = ({}: ClientsProps) => {
                 </div>
 
                 <AlertError root={errors?.root} />
-                <OpenModuleButton type="insert-products-model" clearErrors={clearErrors} />
+                <OpenModuleButton type="refund-supplier-statement-insert-model" clearErrors={clearErrors} />
 
                 {!!products.length && <DataTable columns={columns} data={products} totalFor="total" smallSize />}
                 <SubmitButton text="refund" isPending={isPending} />
             </form>
 
-            <InsertProduct setProducts={setProducts} />
-            <DeleteDialog setProducts={setProducts} />
+            <InsertProductToTable
+                dialogType="refund-supplier-statement-insert-model"
+                price={{ type: "purchasePrice", both: true }}
+                setProducts={setProducts}
+            />
+
+            <RemoveItemFromTable
+                dialogType="refund-supplier-statement-remove-model"
+                filterKeys={{ id: "productId", data: "productId" }}
+                setItems={setProducts}
+            />
         </CardForm>
     );
 };
