@@ -21,10 +21,18 @@ export const GET = async (req: NextRequest) => {
         const nextMonth = new Date(new Date(month).setMonth(selectedMonth));
 
         const products = await ClientInvoices.aggregate([
-            { $match: { orgId, type: "sale", createdAt: { $gte: thisMonth, $lt: nextMonth } } },
-            { $unwind: "$products" },
-            { $lookup: { from: "products", as: "products.source", localField: "products.productId", foreignField: "_id" } },
-            { $unwind: "$products.source" },
+            {
+                $match: { orgId, type: "sale", createdAt: { $gte: thisMonth, $lt: nextMonth } },
+            },
+            {
+                $unwind: "$products",
+            },
+            {
+                $lookup: { from: "products", as: "products.source", localField: "products.productId", foreignField: "_id" },
+            },
+            {
+                $unwind: "$products.source",
+            },
             {
                 $lookup: {
                     from: "companies",
@@ -46,13 +54,15 @@ export const GET = async (req: NextRequest) => {
             {
                 $project: {
                     _id: 0,
+                    totalCount: 1,
                     product: "$_id.name",
                     company: { $arrayElemAt: ["$_id.company", 0] },
-                    totalCount: 1,
                 },
             },
             {
-                $sort: { totalCount: -1 },
+                $sort: {
+                    totalCount: -1,
+                },
             },
             {
                 $limit: 10,

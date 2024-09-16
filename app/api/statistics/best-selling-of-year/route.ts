@@ -17,10 +17,18 @@ export const GET = async (req: NextRequest) => {
         const nextYear = new Date(`${+year + 1}-1-1`);
 
         const products = await ClientInvoices.aggregate([
-            { $match: { orgId, type: "sale", createdAt: { $gte: thisYear, $lt: nextYear } } },
-            { $unwind: "$products" },
-            { $lookup: { from: "products", localField: "products.productId", as: "products.source", foreignField: "_id" } },
-            { $unwind: "$products.source" },
+            {
+                $match: { orgId, type: "sale", createdAt: { $gte: thisYear, $lt: nextYear } },
+            },
+            {
+                $unwind: "$products",
+            },
+            {
+                $lookup: { from: "products", localField: "products.productId", as: "products.source", foreignField: "_id" },
+            },
+            {
+                $unwind: "$products.source",
+            },
             {
                 $lookup: {
                     from: "companies",
@@ -42,13 +50,15 @@ export const GET = async (req: NextRequest) => {
             {
                 $project: {
                     _id: 0,
+                    totalCount: 1,
                     product: "$_id.name",
                     company: { $arrayElemAt: ["$_id.company", 0] },
-                    totalCount: 1,
                 },
             },
             {
-                $sort: { totalCount: -1 },
+                $sort: {
+                    totalCount: -1,
+                },
             },
             {
                 $limit: 10,

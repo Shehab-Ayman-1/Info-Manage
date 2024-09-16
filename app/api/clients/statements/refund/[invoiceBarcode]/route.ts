@@ -20,7 +20,7 @@ export const GET = async (req: NextRequest, res: ResponseType) => {
 
         const clientInvoices = await ClientInvoices.aggregate([
             {
-                $match: { orgId, barcode: +invoiceBarcode },
+                $match: { orgId, type: "sale", barcode: +invoiceBarcode },
             },
             {
                 $unwind: "$products",

@@ -24,7 +24,6 @@ export const POST = async (req: NextRequest) => {
         const organization = await clerkClient().organizations.getOrganization({ organizationId: orgId, slug: orgSlug });
 
         const body = await req.json();
-        console.log(body);
         const { clientId, method, discount, process, ...data } = createSchema.parse(body);
 
         // Check If The Products Count Is Exist In The Market
@@ -42,13 +41,12 @@ export const POST = async (req: NextRequest) => {
         }
 
         // Create Invoice
-        const productsTotalCosts = data.products.reduce((prev, cur) => prev + cur.total, 0);
+        const productsCost = data.products.reduce((prev, cur) => prev + cur.total, 0);
         const paid = process === "all" ? data.paid - discount : data.paid;
 
-        const state = paid >= productsTotalCosts - discount ? "completed" : "pending";
         const invoiceProducts = data.products.map(({ total, ...product }) => product);
+        const total = productsCost - discount;
 
-        const total = productsTotalCosts - discount;
         const expireAt = await getExpireAt();
         await ClientInvoices.create(
             [
@@ -56,12 +54,12 @@ export const POST = async (req: NextRequest) => {
                     orgId,
                     client: clientId,
                     barcode: Date.now(),
+                    state: paid >= total ? "completed" : "pending",
                     type: "sale",
                     paid,
                     total,
                     discount,
                     expireAt,
-                    state,
                     products: invoiceProducts,
                     createdAt: new Date(),
                 },

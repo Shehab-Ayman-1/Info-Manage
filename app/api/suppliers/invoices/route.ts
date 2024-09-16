@@ -5,6 +5,7 @@ import { SupplierInvoices, Products, Suppliers, Transactions } from "@/server/mo
 import { DBConnection } from "@/server/configs";
 import { json } from "@/utils/response";
 import { getTranslations } from "@/utils/getTranslations";
+import mongoose from "mongoose";
 
 export const GET = async (req: NextRequest) => {
     try {
@@ -54,8 +55,10 @@ export const GET = async (req: NextRequest) => {
 };
 
 export const DELETE = async (req: NextRequest) => {
+    const session = await mongoose.startSession();
     try {
         await DBConnection();
+        session.startTransaction();
 
         const { userId, orgId } = auth();
         if (!userId || !orgId) return json("Unauthorized", 401);
@@ -67,19 +70,24 @@ export const DELETE = async (req: NextRequest) => {
         const { invoiceId } = await req.json();
         if (!invoiceId) return json(text("wrong"), 400);
 
-        const invoice = await SupplierInvoices.findById(invoiceId);
-        if (!invoice) return json(text("wrong"), 400);
+        const invoice = await SupplierInvoices.findById(invoiceId).session(session);
+        if (!invoice) {
+            await session.abortTransaction();
+            return json(text("wrong"), 400);
+        }
 
         // Return The Products To The Store From Supplier Ref
         await Promise.all([
             invoice.products.map(async ({ name, count }) => {
-                const supplier = await Suppliers.findOne({ orgId, _id: invoice.supplier, trash: false }).populate({
-                    path: "products",
-                    match: { name },
-                    justOne: true,
-                });
+                const supplier = await Suppliers.findOne({ orgId, _id: invoice.supplier, trash: false })
+                    .populate({
+                        path: "products",
+                        match: { name },
+                        justOne: true,
+                    })
+                    .session(session);
                 const productId = (supplier?.products as any)._id;
-                await Products.updateOne({ _id: productId, trash: false }, { $inc: { "store.count": -count } });
+                await Products.updateOne({ _id: productId, trash: false }, { $inc: { "store.count": -count } }, { session });
             }),
         ]);
 
@@ -88,19 +96,19 @@ export const DELETE = async (req: NextRequest) => {
             await Suppliers.updateOne(
                 { orgId, _id: invoice.supplier, trash: false },
                 { $inc: { pending: -(invoice.total - invoice.paid) } },
+                { session },
             );
 
         // Delete The Supplier Invoice
-        const deleted = await SupplierInvoices.deleteOne({ orgId, _id: invoiceId });
-        if (!deleted.deletedCount) return json(text("wrong"), 400);
+        const deleted = await SupplierInvoices.deleteOne({ orgId, _id: invoiceId }, { session });
+        if (!deleted.deletedCount) {
+            await session.abortTransaction();
+            return json(text("wrong"), 400);
+        }
 
         // Create New Transaction
         await Transactions.updateOne(
-            {
-                orgId,
-                method: "cash",
-                process: "deposit",
-            },
+            { orgId, method: "cash", process: "deposit" },
             {
                 $inc: { total: invoice.paid },
                 $push: {
@@ -117,12 +125,17 @@ export const DELETE = async (req: NextRequest) => {
                     },
                 },
             },
+            { session },
         );
 
         // Response
+        await session.commitTransaction();
         return json(text("success"));
     } catch (error: any) {
+        await session.abortTransaction();
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);
+    } finally {
+        session.endSession();
     }
 };

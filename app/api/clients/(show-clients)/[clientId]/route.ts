@@ -55,7 +55,7 @@ export const PUT = async (req: NextRequest, res: ResponseType) => {
                     orgId,
                     client: clientId,
                     barcode: Date.now(),
-                    state: "payment",
+                    state: "completed",
                     type: "payment",
                     discount: 0,
                     total: client.pending,

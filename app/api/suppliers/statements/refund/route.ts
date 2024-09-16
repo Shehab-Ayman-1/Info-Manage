@@ -40,7 +40,7 @@ export const POST = async (req: NextRequest) => {
         }
 
         // Create Invoice
-        const productsTotalCosts = products.reduce((prev, cur) => prev + cur.total, 0);
+        const productsCost = products.reduce((prev, cur) => prev + cur.total, 0);
         const invoiceProducts = products.map(({ productId, total, ...product }) => product);
 
         const expireAt = await getExpireAt();
@@ -52,10 +52,10 @@ export const POST = async (req: NextRequest) => {
                     barcode: Date.now(),
                     paid,
                     expireAt,
+                    state: paid >= productsCost ? "completed" : "pending",
                     type: "refund",
-                    state: "refund",
                     products: invoiceProducts,
-                    total: productsTotalCosts,
+                    total: productsCost,
                     createdAt: new Date(),
                 },
             ],
@@ -108,7 +108,7 @@ export const POST = async (req: NextRequest) => {
         // Update Client Pending Prices
         await Suppliers.updateOne(
             { orgId, _id: supplierId, trash: false },
-            { $inc: { pending: -(productsTotalCosts - paid) } },
+            { $inc: { pending: -(productsCost - paid) } },
             { session },
         );
 

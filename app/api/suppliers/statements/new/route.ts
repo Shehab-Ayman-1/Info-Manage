@@ -36,16 +36,15 @@ export const POST = async (req: NextRequest) => {
 
         // Create Invoice
         const invoiceProducts = products.map(({ name, count, price }) => ({ name, count, price }));
-        const state = paid >= productCosts ? "completed" : "pending";
-
         const expireAt = await getExpireAt();
+
         await SupplierInvoices.create({
             orgId,
             barcode: Date.now(),
-            type: "purchase",
             paid,
-            state,
             expireAt,
+            state: paid >= productCosts ? "completed" : "pending",
+            type: "purchase",
             supplier: supplierId,
             total: productCosts,
             products: invoiceProducts,
