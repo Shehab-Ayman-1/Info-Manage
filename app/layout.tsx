@@ -54,7 +54,7 @@ const Layout = async ({ children }: LayoutProps) => {
 
 function NotSignedIn({ children }: LayoutProps) {
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html suppressHydrationWarning lang="en" data-theme-color="orange">
             <body className="bg-gradient min-h-screen">
                 <Providers>{children}</Providers>
             </body>

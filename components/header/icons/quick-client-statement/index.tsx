@@ -136,8 +136,8 @@ export const QuickClientStatement = () => {
 
     return (
         <DialogForm
-            heading={text("dialogs.quick-client-statement.heading")}
-            description={text("dialogs.quick-client-statement.description")}
+            heading={text("widgets.quick-client-statement.heading")}
+            description={text("widgets.quick-client-statement.description")}
         >
             <form onSubmit={handleSubmit(onSubmit)} className="overflow-x-auto">
                 <ComboBox

@@ -94,8 +94,8 @@ export const InsertProduct = ({ invoiceBarcode, setProducts }: InsertProductProp
 
     return (
         <DialogForm
-            heading={text("dialogs.refund-client-statement.insert-dialog.heading")}
-            description={text("dialogs.refund-client-statement.insert-dialog.description")}
+            heading={text("widgets.insert-dialog.heading")}
+            description={text("widgets.insert-dialog.description")}
         >
             <form onSubmit={handleSubmit(onSubmit)}>
                 <ComboBox
