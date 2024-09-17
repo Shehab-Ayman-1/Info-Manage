@@ -38,10 +38,7 @@ export const UpdateSupplier = ({}: UpdateSupplierProps) => {
     };
 
     return (
-        <DialogForm
-            heading={text("dialogs.show-suppliers.update-supplier-dialog.heading")}
-            description={text("dialogs.show-suppliers.update-supplier-dialog.description")}
-        >
+        <DialogForm heading={text("widgets.update-dialog.heading")} description={text("widgets.update-dialog.description")}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Input
                     type="text"

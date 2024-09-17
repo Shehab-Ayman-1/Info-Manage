@@ -23,8 +23,7 @@ export const TBody = <TData,>({ rowModel, colsLen, totalFor, isPending, smallSiz
 
             {!rowModel.rows?.length && !isPending && <NoResults colSpan={colsLen} />}
 
-            {!!rowModel.rows?.length &&
-                rowModel.rows.map((row, index) => <RenderRow key={row.id} row={row} index={index} smallSize={smallSize} />)}
+            {!!rowModel.rows?.length && rowModel.rows.map((row) => <RenderRow key={row.id} row={row} smallSize={smallSize} />)}
 
             {!!totalFor && !!total && <TableFooter colsLen={colsLen} smallSize={smallSize} totalFor={totalFor} total={total} />}
         </TableBody>

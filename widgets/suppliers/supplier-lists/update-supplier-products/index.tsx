@@ -90,10 +90,7 @@ export const UpdateSupplierProducts = () => {
     };
 
     return (
-        <DialogForm
-            heading={text("dialogs.show-suppliers.update-products-dialog.heading")}
-            description={text("dialogs.show-suppliers.update-products-dialog.description")}
-        >
+        <DialogForm heading={text("widgets.update-dialog.heading")} description={text("widgets.update-dialog.description")}>
             <form onSubmit={onSubmit}>
                 <div className="flex-between">
                     <ComboBox

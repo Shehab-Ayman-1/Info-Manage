@@ -2,11 +2,13 @@
 import { useOrganization } from "@clerk/nextjs";
 import { CheckCheckIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/ui/tooltip";
 import { Badge } from "@/ui/badge";
 import { Card } from "@/ui/card";
 import { cn } from "@/utils/shadcn";
+import { animate } from "@/constants";
 
 type SubscriptionCardProps = {
     heading: "basic" | "premium" | "enterprise";
@@ -34,17 +36,21 @@ export const SubscriptionCard = ({ heading, costs, features, className }: Subscr
                 className,
             )}
         >
-            <div className="">
+            <motion.div {...animate("opacity")}>
                 {isSubscribe && <Badge className="absolute right-2 top-2 bg-green-800 text-white">Active</Badge>}
                 <h2 className="mt-4 text-center text-2xl font-bold sm:text-4xl">{heading.toUpperCase()}</h2>
-            </div>
+            </motion.div>
 
             <div className="flex-between my-4 !flex-wrap sm:my-8">
                 {Object.keys(costs).map((cost) => (
-                    <p key={cost} className="text-center text-base text-slate-600 dark:text-slate-300">
+                    <motion.p
+                        key={cost}
+                        {...animate("opacity")}
+                        className="text-center text-base text-slate-600 dark:text-slate-300"
+                    >
                         ${costs[cost as Cost].toLocaleString()} /{" "}
                         {cost === "halfYear" ? text("durations.half-year") : text(`durations.${cost}`)}
-                    </p>
+                    </motion.p>
                 ))}
             </div>
 
@@ -54,9 +60,11 @@ export const SubscriptionCard = ({ heading, costs, features, className }: Subscr
                 <TooltipProvider>
                     {features.map((feature, index) => (
                         <Tooltip key={index}>
-                            <TooltipTrigger className="flex-start my-8 whitespace-nowrap text-xs sm:text-base">
-                                <CheckCheckIcon className="size-4 !text-green-500 sm:size-6" />
-                                {text(`${heading}.${feature}.label`)}
+                            <TooltipTrigger asChild className="flex-start w-fit whitespace-nowrap py-4 text-xs sm:text-base">
+                                <motion.div {...animate("opacity")} whileHover={{ scale: 1.1 }}>
+                                    <CheckCheckIcon className="size-4 !text-green-500 sm:size-6" />
+                                    {text(`${heading}.${feature}.label`)}
+                                </motion.div>
                             </TooltipTrigger>
                             <TooltipContent>{text(`${heading}.${feature}.description`)}</TooltipContent>
                         </Tooltip>

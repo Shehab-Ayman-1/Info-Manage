@@ -2,6 +2,7 @@
 import { useOrganization, ClerkLoaded } from "@clerk/nextjs";
 import { AlertTriangleIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 import { useKey } from "react-use";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,6 +13,7 @@ import { useModel } from "@/hooks/useModel";
 import { Tooltip } from "@/components/ui/tooltip";
 import { Button } from "@/ui/button";
 import { Alert } from "@/ui/alert";
+import { animate } from "@/constants";
 
 type OverviewProps = {};
 
@@ -34,26 +36,26 @@ const Overview = ({}: OverviewProps) => {
                 )}
             </ClerkLoaded>
 
-            <div className="relative h-[200px] w-[200px] sm:h-[300px] sm:w-[300px]">
+            <motion.div {...animate("opacity")} className="relative h-[200px] w-[200px] sm:h-[300px] sm:w-[300px]">
                 <Image
-                    src={organization?.hasImage ? organization.imageUrl : "/logo.png"}
+                    src={organization?.hasImage ? organization.imageUrl : "/images/logo.png"}
                     className="h-auto w-auto"
                     alt="logo"
                     priority
                     fill
                 />
-            </div>
+            </motion.div>
 
-            <h1 className="text-gradient text-4xl font-extrabold text-primary sm:text-6xl">
+            <motion.h1 {...animate("opacity")} className="text-gradient text-4xl font-extrabold text-primary sm:text-6xl">
                 {organization?.name || text("header.brand")}
-            </h1>
+            </motion.h1>
 
-            <p className="text-center text-xs text-slate-500 sm:text-base">
+            <motion.p {...animate("opacity")} className="text-center text-xs text-slate-500 sm:text-base">
                 {text.rich("overview.description", { br: () => <br /> })}
-            </p>
+            </motion.p>
 
             {!!organization && (
-                <div className="flex-center flex-wrap">
+                <motion.div {...animate("opacity")} className="flex-center flex-wrap">
                     <Tooltip content="CTRL + M">
                         <Button
                             type="button"
@@ -76,7 +78,7 @@ const Overview = ({}: OverviewProps) => {
                             {text.rich("overview.supplier-statement", { br: () => <br /> })}
                         </Link>
                     </Button>
-                </div>
+                </motion.div>
             )}
         </div>
     );

@@ -2,6 +2,7 @@
 import { TableForm } from "@/components/page-structure/table-form";
 import { DateRange } from "react-day-picker";
 import { useEffect, useState } from "react";
+import { addDays } from "date-fns";
 
 import { DatePickerWithRange } from "@/components/ui/calender";
 import { useGetByQuery } from "@/hooks/api/useGetByQuery";
@@ -19,7 +20,7 @@ type TransactionType = {
 
 const Transactions = () => {
     const { data, isPending, error, mutate } = useGetByQuery<TransactionType[]>("/api/finances/transactions");
-    const [date, setDate] = useState<DateRange | undefined>({ from: new Date(), to: undefined });
+    const [date, setDate] = useState<DateRange | undefined>({ from: new Date(), to: addDays(new Date(), 1) });
 
     useEffect(() => {
         if (!date) return;

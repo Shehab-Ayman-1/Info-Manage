@@ -24,10 +24,7 @@ export const RemoveItemFromTable = ({ dialogType, filterKeys, setItems }: Remove
     };
 
     return (
-        <DialogForm
-            heading={text("dialogs.add-product.delete-dialog.heading")}
-            description={text("dialogs.add-product.delete-dialog.description")}
-        >
+        <DialogForm heading={text("widgets.remove-dialog.heading")} description={text("widgets.remove-dialog.description")}>
             <div className="flex-end">
                 <Button type="button" variant="outline" className="text-black dark:text-white" onClick={onClose}>
                     {text("buttons.cancel")}

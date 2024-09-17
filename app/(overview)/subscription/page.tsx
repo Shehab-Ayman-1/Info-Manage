@@ -1,8 +1,9 @@
 "use client";
 import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 import { Fragment } from "react";
 
-import { basics, premium, enterprise } from "@/constants";
+import { basics, premium, enterprise, animate } from "@/constants";
 import { SubscriptionCard } from "./card";
 
 const Subscription = () => {
@@ -10,7 +11,10 @@ const Subscription = () => {
 
     return (
         <Fragment>
-            <h1 className="mb-8 text-2xl font-bold text-primary sm:text-4xl">{text("heading")}</h1>
+            <motion.h1 {...animate("opacity")} className="mb-8 text-2xl font-bold text-primary sm:text-4xl">
+                {text("heading")}
+            </motion.h1>
+
             <div className="grid grow grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 xl:grid-cols-3">
                 <SubscriptionCard
                     heading="basic"

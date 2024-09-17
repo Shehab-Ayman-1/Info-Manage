@@ -3,15 +3,18 @@ import { CircleFadingArrowUpIcon, Clock5Icon, CreditCardIcon, HandCoinsIcon } fr
 import { useLocale, useTranslations } from "next-intl";
 import { formatDistanceToNow } from "date-fns";
 import { enUS, ar } from "date-fns/locale";
+import { motion } from "framer-motion";
 
 import { cn } from "@/utils/shadcn";
-import { Notify } from ".";
+import { Notify } from "./index";
+import { animate } from "@/constants";
 
 type NotifyItem = {
     notify: Notify;
+    index: number;
 };
 
-export const NotifyItem = ({ notify }: NotifyItem) => {
+export const NotifyItem = ({ notify, index }: NotifyItem) => {
     const text = useTranslations("public");
     const locale = useLocale();
 
@@ -19,8 +22,9 @@ export const NotifyItem = ({ notify }: NotifyItem) => {
     const subscriptionColor = isSubscription && "text-amber-800 dark:text-amber-300";
 
     return (
-        <div
-            key={notify._id}
+        <motion.div
+            {...animate("opacity")}
+            transition={{ duration: index / 10 }}
             className="flex-start cursor-pointer rounded-md px-4 py-2 hover:bg-primary-100 dark:hover:bg-slate-600"
         >
             {notify.method === "vodafone-cash" && <CircleFadingArrowUpIcon className={cn("size-8", subscriptionColor)} />}
@@ -43,7 +47,7 @@ export const NotifyItem = ({ notify }: NotifyItem) => {
                     <p>{formatDistanceToNow(notify.createdAt || Date.now(), { locale: locale === "ar" ? ar : enUS })}</p>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

@@ -1,7 +1,9 @@
-import { flexRender } from "@tanstack/react-table";
+import { flexRender, Row } from "@tanstack/react-table";
+import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 
 import { TableCell, TableRow } from "@/ui/table";
-import { useTranslations } from "next-intl";
+import { animate } from "@/constants";
 import { cn } from "@/utils/shadcn";
 
 export type RenderCell = {
@@ -10,15 +12,14 @@ export type RenderCell = {
 };
 
 type RenderRowProps = {
-    row: any;
-    index: number;
+    row: Row<any>;
     smallSize?: boolean;
 };
 
-export const RenderRow = ({ row, index, smallSize }: RenderRowProps) => {
+export const RenderRow = ({ row, smallSize }: RenderRowProps) => {
     const text = useTranslations();
     const visibleCells = row.getVisibleCells();
-    const rowStyle = cn("border-none hover:bg-transparent", index % 2 === 0 && "bg-gradient-light");
+    const rowStyle = cn("border-none hover:bg-transparent", row.index % 2 === 0 && "bg-gradient-light");
 
     return (
         <TableRow className={rowStyle}>
@@ -36,7 +37,9 @@ export const RenderRow = ({ row, index, smallSize }: RenderRowProps) => {
                             smallSize ? "py-1" : "py-4 sm:text-base",
                         )}
                     >
-                        {isPerson && isUnknown ? text("public.unknown") : TDCell}
+                        <motion.span {...animate("opacity")} transition={{ duration: row.index / 10 }}>
+                            {isPerson && isUnknown ? text("public.unknown") : TDCell}
+                        </motion.span>
                     </TableCell>
                 );
             })}

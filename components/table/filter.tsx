@@ -4,8 +4,10 @@ import { MoreHorizontalIcon } from "lucide-react";
 import { useOnClickOutside } from "usehooks-ts";
 import { Column } from "@tanstack/react-table";
 import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 
 import { Popover, PopoverTrigger, PopoverContent } from "@/ui/popover";
+import { animate } from "@/constants";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
 import { cn } from "@/utils/shadcn";
@@ -67,19 +69,20 @@ export const Filter = <TData,>({ data, filterBy, getColumn }: FilterProps<TData>
                 )}
 
                 <PopoverContent align="start">
-                    {filterBy.map((item) => (
-                        <PopoverClose
-                            key={item}
-                            onClick={() => onOptionChange(item)}
-                            className="block w-full cursor-pointer rounded-md p-2 text-start text-lg hover:bg-primary-100 hover:text-black"
-                        >
-                            {text(`filter-by.${item}`)}
-                        </PopoverClose>
+                    {filterBy.map((item, index) => (
+                        <motion.div key={item} {...animate("translate")} transition={{ duration: index / 5 }}>
+                            <PopoverClose
+                                onClick={() => onOptionChange(item)}
+                                className="block w-full cursor-pointer rounded-md p-2 text-start text-lg hover:bg-primary-100 hover:text-black"
+                            >
+                                {text(`filter-by.${item}`)}
+                            </PopoverClose>
+                        </motion.div>
                     ))}
                 </PopoverContent>
             </Popover>
 
-            <div className="relative w-[19rem] ltr:mr-auto rtl:ml-auto">
+            <motion.div {...animate("opacity")} className="relative w-[19rem] ltr:mr-auto rtl:ml-auto">
                 <Input
                     value={value || ""}
                     onChange={onInputChange}
@@ -100,7 +103,7 @@ export const Filter = <TData,>({ data, filterBy, getColumn }: FilterProps<TData>
                         </h3>
                     ))}
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };

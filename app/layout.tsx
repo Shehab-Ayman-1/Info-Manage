@@ -6,8 +6,8 @@ import Image from "next/image";
 import { ActiveOrg } from "@/utils/activeOrg";
 import { Providers } from "@/providers";
 
+import { AppLoading } from "@/components/loading/app-loading";
 import { Sidebar } from "@/components/sidebar";
-import { Icons } from "@/ui/icons";
 import "./sass/index.scss";
 
 export const metadata = {
@@ -30,10 +30,12 @@ const Layout = async ({ children }: LayoutProps) => {
 
     return (
         <html suppressHydrationWarning lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
-            <body className="bg-gradient relative min-h-screen w-full max-w-[100vw] overflow-x-hidden">
+            <body className="bg-gradient relative min-h-screen w-full overflow-x-hidden">
                 <Providers>
                     <ClerkLoading>
-                        <Icons.spinner className="fixed left-[calc(50%-32px)] top-[calc(50%-32px)] size-16 animate-spin" />
+                        <div className="fixed left-1/2 -translate-x-1/2">
+                            <AppLoading />
+                        </div>
                     </ClerkLoading>
 
                     <ClerkLoaded>
@@ -42,7 +44,7 @@ const Layout = async ({ children }: LayoutProps) => {
 
                         {children}
 
-                        <Image src="/overview.jpeg" alt="overview" fill className="!fixed -z-10 opacity-5" />
+                        <Image src="/images/overview.jpeg" alt="overview" fill className="!fixed -z-10 opacity-5" />
                     </ClerkLoaded>
                 </Providers>
             </body>

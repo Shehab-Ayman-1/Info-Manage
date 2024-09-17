@@ -1,6 +1,7 @@
 "use client";
 import { useModel } from "@/hooks/useModel";
 import { FormEvent, useState } from "react";
+import { useTranslations } from "next-intl";
 import { columns } from "./table-columns";
 
 import { SubmitButton } from "@/components/public/submit-btn";
@@ -19,6 +20,7 @@ export const TransferDialog = ({ place, mutateGetQuery }: TransferDialogType) =>
     const { mutate, isPending } = useUpdate("/api/products/transfer", ["products"]);
     const [location, setLocation] = useState(place);
     const { type, data } = useModel();
+    const text = useTranslations();
 
     const products = data?.items;
     if (type !== "selected-transfer-model" || !products) return;
@@ -41,7 +43,7 @@ export const TransferDialog = ({ place, mutateGetQuery }: TransferDialogType) =>
     };
 
     return (
-        <DialogForm heading="Transfer Products" description="Transfer Products From Market To The Store">
+        <DialogForm heading={text("widgets.update-dialog.heading")} description={text("widgets.update-dialog.description")}>
             <form onSubmit={onSubmit} className="overflow-hidden">
                 <ComboBox
                     label="transfer-to"

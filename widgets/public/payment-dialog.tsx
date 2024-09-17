@@ -38,15 +38,12 @@ export const PaymentDialog = ({ apiUrl, dataId, dialogType, queryKeys }: Payment
     };
 
     return (
-        <DialogForm
-            heading={text("dialogs.client-invoices.payment-dialog.heading")}
-            description={text("dialogs.client-invoices.payment-dialog.description")}
-        >
+        <DialogForm heading={text("widgets.payment-dialog.heading")} description={text("widgets.payment-dialog.description")}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Input
                     type="number"
                     placeholder="payment-amount"
-                    useTranslate={{ placeholder: "dialogs.client-invoices.payment-dialog" }}
+                    useTranslate={{ placeholder: "public" }}
                     error={errors?.amount}
                     {...register("amount", { valueAsNumber: true })}
                 />

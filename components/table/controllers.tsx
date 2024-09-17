@@ -1,6 +1,8 @@
 "use client";
 import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 import { Button } from "@/ui/button";
+import { animate } from "@/constants";
 
 type ControllersProps = {
     previousPage: () => void;
@@ -17,7 +19,7 @@ export const Controllers = ({ previousPage, nextPage, getCanPreviousPage, getCan
     if (!prev && !next) return;
 
     return (
-        <div className="flex-end w-full">
+        <motion.div {...animate("opacity")} className="flex-end w-full">
             <Button
                 type="button"
                 variant="outline"
@@ -36,6 +38,6 @@ export const Controllers = ({ previousPage, nextPage, getCanPreviousPage, getCan
             >
                 {text("next")}
             </Button>
-        </div>
+        </motion.div>
     );
 };

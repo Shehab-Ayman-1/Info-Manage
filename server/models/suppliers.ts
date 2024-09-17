@@ -8,11 +8,11 @@ type TSupplier = Document & {
     name: string;
     phone: string;
 
+    products: string[];
+    pending: number;
+
     trash: boolean;
     trashedAt: Date;
-
-    pending: number;
-    products: string[];
 };
 
 const schema = new Schema<TSupplier>({
@@ -21,11 +21,11 @@ const schema = new Schema<TSupplier>({
     name: { type: String, required: true, trim: true },
     phone: { type: String, required: true, trim: true },
 
+    products: [{ type: Schema.Types.ObjectId, ref: "products", required: true }],
+    pending: { type: Number, default: 0 },
+
     trash: { type: Boolean, default: false },
     trashedAt: { type: Date, default: null },
-
-    pending: { type: Number, default: 0 },
-    products: [{ type: Schema.Types.ObjectId, ref: "products", required: true }],
 });
 schema.index({ trashedAt: 1 }, { expireAfterSeconds: 0 });
 

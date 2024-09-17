@@ -1,0 +1,36 @@
+{
+    "widgets": {
+        "quick-client-statement": {
+            "heading": "Schnelle Client-Erklärung",
+            "description": "Erstellen eines neuen Kundenauszugs mit einem Klick"
+        },
+        "insert-dialog": {
+            "heading": "Widget einfügen",
+            "description": "Sie können diese Aktion nach der Bestätigung nicht rückgängig machen"
+        },
+        "update-dialog": {
+            "heading": "Widget Aktualisieren",
+            "description": "Sie können diese Aktion nach der Bestätigung nicht rückgängig machen"
+        },
+        "delete-dialog": {
+            "heading": "Widget löschen",
+            "description": "Sie können diese Aktion nach der Bestätigung nicht rückgängig machen"
+        },
+        "remove-dialog": {
+            "heading": "Widget entfernen",
+            "description": "Sie können diese Aktion nach der Bestätigung nicht rückgängig machen"
+        },
+        "payment-dialog": {
+            "heading": "Zahlungs-Widget",
+            "description": "Sie können diese Aktion nach der Bestätigung nicht rückgängig machen"
+        },
+        "refund-dialog": {
+            "heading": "Rückerstattungs-Widget",
+            "description": "Sie können diese Aktion nach der Bestätigung nicht rückgängig machen"
+        },
+        "transfer-dialog": {
+            "heading": "Widget Übertragen",
+            "description": "Sie können diese Aktion nach der Bestätigung nicht rückgängig machen"
+        }
+    }
+}

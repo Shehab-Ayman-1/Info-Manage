@@ -84,6 +84,8 @@ const config = {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
                 "caret-blink": "caret-blink 1.25s ease-out infinite",
+                box: "box 5s linear 1",
+                truck: "truck 5s linear 1",
             },
         },
     },

@@ -55,7 +55,7 @@ const Company = ({}: CompanyProps) => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <CardForm heading={text("pages.add-company.heading")} submitText={text("buttons.create")} disabled={isPending}>
                 <div className="relative mx-auto h-28 w-28 overflow-hidden rounded-[100%]">
-                    <Image src={availableImageSrc ? image : "/overview.jpeg"} className="h-full w-full" alt="car" fill />
+                    <Image src={availableImageSrc ? image : "/images/overview.jpeg"} className="h-full w-full" alt="car" fill />
                 </div>
 
                 <CldUploadWidget uploadPreset="info-manage" onSuccess={onUpload}>

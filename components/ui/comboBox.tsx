@@ -4,6 +4,7 @@ import { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 import { CheckCheckIcon, ChevronsUpDownIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 import { useKey } from "react-use";
 
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/ui/command";
@@ -13,6 +14,7 @@ import { cn } from "@/utils/shadcn";
 import { Icons } from "@/ui/icons";
 import { Label } from "@/ui/label";
 import { Tooltip } from "./tooltip";
+import { animate } from "@/constants";
 
 type Item = {
     _id: string;
@@ -60,7 +62,7 @@ export const ComboBox = (props: ComboBoxProps) => {
 
     useEffect(() => {
         setSelectedValue(defaultValue || "");
-    }, [isSubmitted]);
+    }, [isSubmitted, defaultValue]);
 
     useEffect(() => {
         if (!defaultValue) return;
@@ -224,15 +226,16 @@ type CommandListItemProps = {
 
 function CommandListItem({ useTranslate, selectedValue, value, title, onSelect }: CommandListItemProps) {
     const text = useTranslations();
-
     const item = useTranslate?.item ? text(`${useTranslate.item}.${title}`) : title.split(" ||| ")?.[0];
 
     return (
-        <CommandItem value={value} onSelect={onSelect} className="group text-lg capitalize leading-10">
-            <CheckCheckIcon
-                className={cn("mx-2 size-4 !text-green-500", selectedValue === value ? "opacity-100" : "opacity-0")}
-            />
-            {item}
+        <CommandItem asChild value={value} onSelect={onSelect} className="group text-lg capitalize leading-10">
+            <motion.div {...animate("opacity")}>
+                <CheckCheckIcon
+                    className={cn("mx-2 size-4 !text-green-500", selectedValue === value ? "opacity-100" : "opacity-0")}
+                />
+                {item}
+            </motion.div>
         </CommandItem>
     );
 }

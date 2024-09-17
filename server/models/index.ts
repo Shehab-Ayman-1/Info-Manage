@@ -6,3 +6,4 @@ export * from "./suppliers";
 export * from "./transactions";
 export * from "./client-invoices";
 export * from "./supplier-invoices";
+export * from "./statistics";

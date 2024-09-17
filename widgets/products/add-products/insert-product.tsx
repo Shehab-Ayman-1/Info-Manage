@@ -73,11 +73,9 @@ export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
 
     return (
         <DialogForm
-            description={text("dialogs.add-product.insert-dialog.description")}
+            description={text("widgets.update-dialog.description")}
             heading={
-                type === "edit-products-model"
-                    ? text("dialogs.add-product.insert-dialog.update-heading")
-                    : text("dialogs.add-product.insert-dialog.insert-heading")
+                type === "edit-products-model" ? text("widgets.update-dialog.heading") : text("widgets.insert-dialog.heading")
             }
         >
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -90,7 +88,7 @@ export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
                     />
                     <Input
                         placeholder="optional-barcode"
-                        useTranslate={{ placeholder: "dialogs.add-product.insert-dialog" }}
+                        useTranslate={{ placeholder: "public" }}
                         error={errors?.barcode}
                         {...register("barcode")}
                     />
@@ -100,7 +98,7 @@ export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
                     <Input
                         type="number"
                         placeholder="minimum"
-                        useTranslate={{ placeholder: "dialogs.add-product.insert-dialog" }}
+                        useTranslate={{ placeholder: "public" }}
                         error={errors?.min}
                         {...register("min", { valueAsNumber: true })}
                     />
@@ -151,7 +149,7 @@ export const InsertDialog = ({ setProducts }: InsertDialogProps) => {
                     <Input
                         type="number"
                         placeholder="selling-price"
-                        useTranslate={{ placeholder: "dialogs.add-product.insert-dialog" }}
+                        useTranslate={{ placeholder: "public" }}
                         error={errors?.sellingPrice}
                         {...register("sellingPrice", { valueAsNumber: true })}
                     />

@@ -12,7 +12,9 @@ export const GET = async () => {
         if (!userId || !orgId) return json("Unauthorized", 401);
 
         const suppliers = await Suppliers.aggregate([
-            { $match: { orgId, trash: false } },
+            {
+                $match: { orgId, trash: false },
+            },
             {
                 $lookup: { from: "products", as: "products", localField: "products", foreignField: "_id" },
             },
@@ -47,6 +49,12 @@ export const GET = async () => {
                 },
             },
         ]);
+
+        const unknown = suppliers.some((supplier) => supplier.name === "unknown");
+        if (!unknown) {
+            const supplier = await Suppliers.create({ orgId, name: "unknown", phone: "01234567890", products: [] });
+            suppliers.push(supplier);
+        }
 
         return json(suppliers);
     } catch (error: any) {

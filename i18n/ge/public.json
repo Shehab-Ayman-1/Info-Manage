@@ -105,6 +105,12 @@
         "premium": "Premium",
         "enterprise": "Enterprise",
 
+        "optional-barcode": "Barcode (Optional)",
+        "payment-amount": "Zahlungsbetrag",
+
+        "minimum": "Mindestgrenze",
+        "selling-price": "Verkaufspreis",
+
         "client-statement": "Kundenabrechnung",
         "supplier-statement": "Lieferantenabrechnung",
 

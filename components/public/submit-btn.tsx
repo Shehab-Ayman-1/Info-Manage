@@ -1,8 +1,6 @@
-import { Loader2Icon } from "lucide-react";
-import { useTranslations } from "next-intl";
-
 import { Button } from "@/ui/button";
 import { cn } from "@/utils/shadcn";
+import Image from "next/image";
 
 type SubmitButtonProps = {
     text: string;
@@ -11,49 +9,34 @@ type SubmitButtonProps = {
 };
 
 export const SubmitButton = ({ text, isPending, className }: SubmitButtonProps) => {
-    const t = useTranslations("buttons");
-
     return (
         <Button
             size="lg"
             type="submit"
-            disabled={isPending}
-            className={cn("my-4 w-full text-base font-bold sm:text-lg", className)}
+            className={cn(
+                "group relative my-4 w-full overflow-hidden text-base font-bold sm:text-lg",
+                isPending && "pointer-events-none",
+                className,
+            )}
         >
-            {!isPending && t(text)}
+            {!isPending && text}
 
             {isPending && (
-                <div className="flex-center">
-                    <Loader2Icon className="inline-block animate-spin" />
-                    <div className="flex gap-1 text-sm">
-                        <span className="animate-ping delay-0 ease-in-out" style={{ animationDuration: "2s" }}>
-                            L
-                        </span>
-                        <span className="animate-ping delay-75 ease-in-out" style={{ animationDuration: "2s" }}>
-                            o
-                        </span>
-                        <span className="animate-ping delay-100 ease-in-out" style={{ animationDuration: "2s" }}>
-                            a
-                        </span>
-                        <span className="animate-ping delay-150 ease-in-out" style={{ animationDuration: "2s" }}>
-                            d
-                        </span>
-                        <span className="animate-ping delay-200 ease-in-out" style={{ animationDuration: "2s" }}>
-                            i
-                        </span>
-                        <span className="animate-ping delay-300 ease-in-out" style={{ animationDuration: "2s" }}>
-                            g
-                        </span>
-                        <span className="animate-ping delay-500 ease-in-out" style={{ animationDuration: "2s" }}>
-                            .
-                        </span>
-                        <span className="animate-ping delay-700 ease-in-out" style={{ animationDuration: "2s" }}>
-                            .
-                        </span>
-                        <span className="animate-ping delay-1000 ease-in-out" style={{ animationDuration: "2s" }}>
-                            .
-                        </span>
-                    </div>
+                <div className="">
+                    <Image
+                        src="/images/box.png"
+                        alt="box"
+                        width={20}
+                        height={20}
+                        className="animate-box absolute -bottom-8 left-[30%] transition-all"
+                    />
+                    <Image
+                        src="/images/truck.png"
+                        alt="truck"
+                        width={50}
+                        height={10}
+                        className="animate-truck absolute -right-16 transition-all"
+                    />
                 </div>
             )}
         </Button>

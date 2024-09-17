@@ -1,4 +1,6 @@
-import { NavLinkType } from "@/constants";
+import { motion } from "framer-motion";
+
+import { animate, NavLinkType } from "@/constants";
 import { ListItem } from "./list-item";
 
 type ListItemsType = {
@@ -20,11 +22,11 @@ export const ListItems = ({ links, heading, index, onOpen }: ListItemsType) => {
         "recycle-bin",
     ];
 
-    return links.map((link) => (
-        <div key={link.title} onClick={() => onOpen(index)}>
+    return links.map((link, index) => (
+        <motion.div key={link.title} {...animate("translate")} transition={{ duration: index / 7 }} onClick={() => onOpen(index)}>
             {seperateBefore.includes(link.title) && <hr className="border-slate-500" />}
             <ListItem heading={heading} {...link} />
-        </div>
+        </motion.div>
     ));
 };
 

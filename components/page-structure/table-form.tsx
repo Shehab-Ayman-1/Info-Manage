@@ -3,6 +3,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { useReactToPrint } from "react-to-print";
 import { PrinterCheckIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -10,6 +11,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/ui/card";
 import { Heading } from "@/components/public/heading";
 import { DataTable } from "@/components/table";
 import { useOrg } from "@/hooks/useOrg";
+import { animate } from "@/constants";
 import { Button } from "@/ui/button";
 
 type TableFormProps<TData> = {
@@ -50,10 +52,12 @@ export const TableForm = <TData,>(props: TableFormProps<TData>) => {
                     <div className="flex flex-col gap-y-6">
                         <Heading title={pageTitle} />
                         {!!data?.length && (
-                            <Button type="button" size="lg" className="gap-2 text-lg font-bold" onClick={onPrintTrigger}>
-                                <PrinterCheckIcon className="size-5 !text-white" />
-                                <span>{t("table.print")}</span>
-                            </Button>
+                            <motion.div {...animate("opacity")}>
+                                <Button type="button" size="lg" className="gap-2 text-lg font-bold" onClick={onPrintTrigger}>
+                                    <PrinterCheckIcon className="size-5 !text-white" />
+                                    <span>{t("table.print")}</span>
+                                </Button>
+                            </motion.div>
                         )}
                     </div>
 
@@ -61,15 +65,16 @@ export const TableForm = <TData,>(props: TableFormProps<TData>) => {
                         {navigate &&
                             isAdmin &&
                             navigate.map(({ text, to }, index) => (
-                                <Button
-                                    key={index}
-                                    asChild
-                                    type="button"
-                                    size="lg"
-                                    className="hidden w-full text-base font-bold sm:inline-flex"
-                                >
-                                    <Link href={to}>{t(`buttons.${text}`)}</Link>
-                                </Button>
+                                <motion.div key={index} {...animate("opacity")} transition={{ duration: index + 1 }}>
+                                    <Button
+                                        asChild
+                                        size="lg"
+                                        type="button"
+                                        className="hidden w-full text-base font-bold sm:inline-flex"
+                                    >
+                                        <Link href={to}>{t(`buttons.${text}`)}</Link>
+                                    </Button>
+                                </motion.div>
                             ))}
                     </div>
                 </CardHeader>

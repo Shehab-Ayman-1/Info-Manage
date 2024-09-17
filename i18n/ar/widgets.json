@@ -1,0 +1,43 @@
+{
+    "widgets": {
+        "quick-client-statement": {
+            "heading": "كشف حساب سريع",
+            "description": "قم بعمل كشف حساب سريع للعميل بضغطه واحده"
+        },
+
+        "insert-dialog": {
+            "heading": "عملية اضافه",
+            "description": "لا يمكنك الرجوع مرة اخري بعد تأكيد هذه العملية."
+        },
+
+        "update-dialog": {
+            "heading": "عملية تعديل",
+            "description": "لا يمكنك الرجوع مرة اخري بعد تأكيد هذه العملية."
+        },
+
+        "delete-dialog": {
+            "heading": "عملية حذف",
+            "description": "لا يمكنك الرجوع مرة اخري بعد تأكيد هذه العملية."
+        },
+
+        "remove-dialog": {
+            "heading": "عملية ازالة",
+            "description": "لا يمكنك الرجوع مرة اخري بعد تأكيد هذه العملية."
+        },
+
+        "payment-dialog": {
+            "heading": "عملية دفع",
+            "description": "لا يمكنك الرجوع مرة اخري بعد تأكيد هذه العملية."
+        },
+
+        "refund-dialog": {
+            "heading": "عملية استرجاع",
+            "description": "لا يمكنك الرجوع مرة اخري بعد تأكيد هذه العملية."
+        },
+
+        "transfer-dialog": {
+            "heading": "عملية تحويل",
+            "description": "لا يمكنك الرجوع مرة اخري بعد تأكيد هذه العملية."
+        }
+    }
+}

@@ -49,14 +49,11 @@ export const UpdateProduct = ({ productId, data }: UpdateProductProps) => {
     };
 
     return (
-        <DialogForm
-            heading={text("dialogs.product-profile.update-dialog.heading")}
-            description={text("dialogs.product-profile.update-dialog.description")}
-        >
+        <DialogForm heading={text("widgets.update-dialog.heading")} description={text("widgets.update-dialog.description")}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mx-auto h-28 w-28 overflow-hidden rounded-[100%]">
                     <Image
-                        src={availableImageSrc ? image : "/overview.jpeg"}
+                        src={availableImageSrc ? image : "/images/overview.jpeg"}
                         alt="car"
                         width={50}
                         height={50}

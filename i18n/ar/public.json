@@ -105,6 +105,12 @@
         "premium": "Premium",
         "enterprise": "Enterprise",
 
+        "optional-barcode": "البار كود (اختياري)",
+        "payment-amount": "المبلغ المدفوع",
+
+        "minimum": "الحد الادني",
+        "selling-price": "سعر البيع",
+
         "client-statement": "كشف حساب عميل",
         "supplier-statement": "كشف حساب مورد",
 

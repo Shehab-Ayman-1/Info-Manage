@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { cn } from "@/utils/shadcn";
+import { animate } from "@/constants";
 
 const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(({ className, ...props }, ref) => (
     <div className="relative w-full overflow-auto">
@@ -29,6 +30,7 @@ TableFooter.displayName = "TableFooter";
 const TableRow = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTMLTableRowElement>>(
     ({ className, ...props }, ref) => (
         <tr
+            {...animate("translate")}
             ref={ref}
             className={cn("border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted", className)}
             {...props}

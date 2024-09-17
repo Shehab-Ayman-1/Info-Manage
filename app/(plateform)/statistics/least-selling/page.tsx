@@ -1,13 +1,13 @@
 "use client";
 import { CardLoading } from "@/components/loading/card";
+import { DateRange } from "react-day-picker";
+import { addDays, subDays } from "date-fns";
+import { useEffect, useState } from "react";
 
 import { TableForm } from "@/components/page-structure/table-form";
+import { DatePickerWithRange } from "@/components/ui/calender";
 import { useGet } from "@/hooks/api/useGet";
 import { columns } from "./table-columns";
-import { useEffect, useState } from "react";
-import { subDays } from "date-fns";
-import { DateRange } from "react-day-picker";
-import { DatePickerWithRange } from "@/components/ui/calender";
 
 type LeastSellingType = {
     product: string;
@@ -15,7 +15,7 @@ type LeastSellingType = {
 };
 
 const LeastSelling = () => {
-    const [date, setDate] = useState<DateRange | undefined>({ from: subDays(new Date(), 30), to: new Date() });
+    const [date, setDate] = useState<DateRange | undefined>({ from: subDays(new Date(), 30), to: addDays(new Date(), 1) });
     const { data, isPending, error, refetch } = useGet<LeastSellingType[]>(
         `/api/statistics/least-selling?startDate=${date?.from}&endDate=${date?.to}`,
         ["least-selling"],

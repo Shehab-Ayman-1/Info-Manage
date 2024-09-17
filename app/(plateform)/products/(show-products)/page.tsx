@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 import { useGet } from "@/hooks/api/useGet";
 import { place } from "@/constants";
@@ -8,6 +9,7 @@ import { TransferDialog } from "@/widgets/products/insufficients/transfer-dialog
 import { TableForm } from "@/components/page-structure/table-form";
 import { ComboBox } from "@/components/ui/comboBox";
 import { columns } from "./table-columns";
+import { animate } from "@/constants";
 
 export type Product = {
     _id: string;
@@ -43,7 +45,7 @@ const Market = () => {
                 { text: "transfer", to: "/products/transfer" },
             ]}
         >
-            <div className="max-w-[22rem] sm:mx-4">
+            <motion.div {...animate("opacity")} className="max-w-[22rem] sm:mx-4">
                 <ComboBox
                     label="choose-place"
                     name="place"
@@ -54,7 +56,7 @@ const Market = () => {
                     isSmallContent
                 />
                 <TransferDialog place={location} />
-            </div>
+            </motion.div>
         </TableForm>
     );
 };

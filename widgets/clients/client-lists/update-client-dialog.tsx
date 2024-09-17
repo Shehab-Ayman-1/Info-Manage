@@ -36,10 +36,7 @@ export const UpdateDialog = () => {
     };
 
     return (
-        <DialogForm
-            heading={text("dialogs.show-clients.update-dialog.heading")}
-            description={text("dialogs.show-clients.update-dialog.description")}
-        >
+        <DialogForm heading={text("widgets.update-dialog.heading")} description={text("widgets.update-dialog.description")}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Input
                     placeholder="client-name"

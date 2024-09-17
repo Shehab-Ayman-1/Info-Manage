@@ -113,7 +113,7 @@ const InvoiceProfile = ({ params }: InvoiceProfileProps) => {
             <ClerkLoaded>
                 <div className="flex-center mt-10 w-full flex-col">
                     <Image
-                        src={organization?.hasImage ? organization.imageUrl : "/logo.png"}
+                        src={organization?.hasImage ? organization.imageUrl : "/images/logo.png"}
                         alt="logo"
                         width={84}
                         height={84}

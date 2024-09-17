@@ -105,6 +105,12 @@
         "premium": "Premium",
         "enterprise": "Enterprise",
 
+        "optional-barcode": "Barcode (Optional)",
+        "payment-amount": "Payment Amount",
+
+        "minimum": "Minimum Limit",
+        "selling-price": "Selling Price",
+
         "client-statement": "Client Statement",
         "supplier-statement": "Supplier Statement",
 

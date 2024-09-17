@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "STV";
-    src: url("/stv.ttf") format("truetype");
+    src: url("/fonts/stv.ttf") format("truetype");
 }
 
 ::-webkit-scrollbar {
@@ -20,4 +20,36 @@
 ::selection {
     @apply bg-primary text-white;
     text-shadow: 1px 1px black;
+}
+
+// ================================
+@keyframes box {
+    0% {
+        @apply -bottom-8 left-[43%];
+    }
+    30% {
+        @apply bottom-7;
+    }
+    50%,
+    60% {
+        @apply bottom-3 left-[43%];
+    }
+    100% {
+        @apply bottom-3 left-[calc(102%)];
+    }
+}
+
+@keyframes truck {
+    0% {
+        @apply -right-16;
+    }
+
+    50%,
+    60% {
+        @apply right-1/2;
+    }
+
+    100% {
+        @apply -right-16;
+    }
 }

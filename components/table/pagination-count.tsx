@@ -1,5 +1,7 @@
 "use client";
 import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
+import { animate } from "@/constants";
 
 type PaginationCountProps = {
     totalPaginationCount: number;
@@ -11,9 +13,9 @@ export const PaginationCount = ({ totalPaginationCount, currentPaginationCount }
     if (totalPaginationCount <= 1) return;
 
     return (
-        <h3 className="whitespace-nowrap text-primary">
+        <motion.h3 {...animate("translate")} className="whitespace-nowrap text-primary">
             {text("table-pagination", { currentPaginationCount, totalPaginationCount })}
-        </h3>
+        </motion.h3>
     );
 };
 

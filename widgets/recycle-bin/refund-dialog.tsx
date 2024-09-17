@@ -33,10 +33,7 @@ export const RefundDialog = () => {
     };
 
     return (
-        <DialogForm
-            heading={text("dialogs.trash.refund-dialog.heading")}
-            description={text("dialogs.trash.refund-dialog.description")}
-        >
+        <DialogForm heading={text("widgets.refund-dialog.heading")} description={text("widgets.refund-dialog.description")}>
             <div className="flex-end">
                 <Button type="button" variant="outline" className="text-black dark:text-white" onClick={onClose}>
                     {text("buttons.cancel")}

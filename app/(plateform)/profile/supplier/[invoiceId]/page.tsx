@@ -95,7 +95,7 @@ const InvoiceProfile = ({ params }: InvoiceProfileProps) => {
             <ClerkLoaded>
                 <div className="flex-center mt-10 w-full flex-col">
                     <Image
-                        src={organization?.hasImage ? organization.imageUrl : "/logo.png"}
+                        src={organization?.hasImage ? organization.imageUrl : "/images/logo.png"}
                         className="mx-auto block rounded-[100%]"
                         alt="logo"
                         width={84}

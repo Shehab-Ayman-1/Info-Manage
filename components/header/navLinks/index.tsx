@@ -1,9 +1,10 @@
 "use client";
-import { useTranslations } from "next-intl";
 import { ChevronDownIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 import { useState } from "react";
 
-import { clientLists, financeLists, productLists, statisticsLinks, supplierLists } from "@/constants";
+import { animate, clientLists, financeLists, productLists, statisticsLinks, supplierLists } from "@/constants";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/ui/hover-card";
 import { ListItems } from "./list-items";
 
@@ -35,9 +36,11 @@ export const NavLinks = ({}: NavLinksProps) => {
                     open={open.state && open.index === index}
                     onOpenChange={() => onOpen(index)}
                 >
-                    <HoverCardTrigger className="group flex cursor-pointer items-center gap-1 py-2 hover:text-primary">
-                        {text(`${nav.heading}.heading`)}
-                        <ChevronDownIcon className="mt-1 size-4 group-hover:text-primary" />
+                    <HoverCardTrigger asChild className="group flex cursor-pointer items-center gap-1 py-2 hover:text-primary">
+                        <motion.div {...animate("opacity")} transition={{ duration: index / 2 }}>
+                            {text(`${nav.heading}.heading`)}
+                            <ChevronDownIcon className="mt-1 size-4 group-hover:text-primary" />
+                        </motion.div>
                     </HoverCardTrigger>
 
                     <HoverCardContent

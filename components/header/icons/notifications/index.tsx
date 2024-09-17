@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { BellIcon } from "lucide-react";
+import { motion } from "framer-motion";
 
 import { useSubscription } from "@/hooks/useSubscription";
 import { useGet } from "@/hooks/api/useGet";
@@ -8,6 +9,7 @@ import { useGet } from "@/hooks/api/useGet";
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
 import { subscriptionNotifies } from "@/constants";
 import { NotifyLists } from "./notifyLists";
+import { animate } from "@/constants";
 
 export type Notify = {
     _id: string;
@@ -37,14 +39,14 @@ export const Notifications = () => {
     return (
         <Popover>
             <PopoverTrigger className="cursor-pointer">
-                <div className="relative">
+                <motion.div {...animate("opacity")} transition={{ duration: 1 }} className="relative">
                     {!!subscriptions.length && (
                         <span className="flex-center absolute -right-1 -top-2 block size-4 rounded-full bg-red-500 text-xs leading-none text-white">
                             {subscriptions.length}
                         </span>
                     )}
                     <BellIcon className="hover:text-primary" />
-                </div>
+                </motion.div>
             </PopoverTrigger>
 
             <PopoverContent align="start" side="left" className="w-auto shadow-xl md:min-w-96">

@@ -1,6 +1,7 @@
 "use client";
 import { DateRange } from "react-day-picker";
 import { useEffect, useState } from "react";
+import { addDays } from "date-fns";
 
 import { TableForm } from "@/components/page-structure/table-form";
 import { DatePickerWithRange } from "@/components/ui/calender";
@@ -20,7 +21,7 @@ type InvoiceType = {
 };
 
 const ClientInvoices = () => {
-    const [date, setDate] = useState<DateRange | undefined>({ from: new Date(), to: undefined });
+    const [date, setDate] = useState<DateRange | undefined>({ from: new Date(), to: addDays(new Date(), 1) });
     const { data, isPending, error, refetch } = useGet<InvoiceType[]>(
         `/api/clients/invoices?startDate=${date?.from}&endDate=${date?.to}`,
         ["client-invoices"],

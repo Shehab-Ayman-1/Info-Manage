@@ -1,0 +1,43 @@
+{
+    "widgets": {
+        "quick-client-statement": {
+            "heading": "Quick Client Statement",
+            "description": "Create A New Client Statement With One Click"
+        },
+
+        "insert-dialog": {
+            "heading": "Insert Widget",
+            "description": "You Can't Undo This Action After Confirm."
+        },
+
+        "update-dialog": {
+            "heading": "Update Widget",
+            "description": "You Can't Undo This Action After Confirm."
+        },
+
+        "delete-dialog": {
+            "heading": "Delete Widget",
+            "description": "You Can't Undo This Action After Confirm."
+        },
+
+        "remove-dialog": {
+            "heading": "Remove Widget",
+            "description": "You Can't Undo This Action After Confirm."
+        },
+
+        "payment-dialog": {
+            "heading": "Payment Widget",
+            "description": "You Can't Undo This Action After Confirm."
+        },
+
+        "refund-dialog": {
+            "heading": "Refund Widget",
+            "description": "You Can't Undo This Action After Confirm."
+        },
+
+        "transfer-dialog": {
+            "heading": "Transfer Widget",
+            "description": "You Can't Undo This Action After Confirm."
+        }
+    }
+}

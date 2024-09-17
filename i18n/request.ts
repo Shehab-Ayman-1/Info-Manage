@@ -10,7 +10,7 @@ export default getRequestConfig(async () => {
         "pages",
         "public",
         "buttons",
-        "dialogs",
+        "widgets",
         "table",
         "badges",
         "overview",

@@ -115,8 +115,8 @@ export const InsertProductToTable = ({ price, dialogType, setProducts }: InsertP
 
     return (
         <DialogForm
-            heading={text("dialogs.new-client-statement.insert-dialog.heading")}
-            description={text("dialogs.new-client-statement.insert-dialog.description")}
+            heading={text("widgets.insert-dialog.heading")}
+            description={text("widgets.insert-dialog.description")}
         >
             <form onSubmit={handleSubmit(onSubmit)}>
                 <ComboBox

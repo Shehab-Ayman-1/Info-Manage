@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { SearchIcon } from "lucide-react";
+import { motion } from "framer-motion";
 import { useKey } from "react-use";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
@@ -8,8 +9,9 @@ import { Tooltip } from "@/components/ui/tooltip";
 import { useLists } from "@/hooks/data/useLists";
 import { Products } from "@/hooks/data/types";
 import { ListItems } from "./listItems";
-import { Input } from "@/ui/input";
 import { Loading } from "./loading";
+import { Input } from "@/ui/input";
+import { animate } from "@/constants";
 
 type SearchbarProps = {};
 
@@ -41,7 +43,9 @@ export const Searchbar = ({}: SearchbarProps) => {
         <Popover open={open} onOpenChange={onOpen}>
             <PopoverTrigger>
                 <Tooltip content="CTRL + Q">
-                    <SearchIcon className="hover:text-primary" />
+                    <motion.span {...animate("opacity")} transition={{ duration: 0.5 }}>
+                        <SearchIcon className="hover:text-primary" />
+                    </motion.span>
                 </Tooltip>
             </PopoverTrigger>
 

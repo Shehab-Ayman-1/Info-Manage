@@ -37,10 +37,7 @@ export const DeleteItemByRequest = ({ apiUrl, queryKeys, dialogType, navigate, r
     };
 
     return (
-        <DialogForm
-            heading={text("dialogs.show-clients.delete-dialog.heading")}
-            description={text("dialogs.show-clients.delete-dialog.description")}
-        >
+        <DialogForm heading={text("widgets.delete-dialog.heading")} description={text("widgets.delete-dialog.description")}>
             <div className="flex-end">
                 <Button type="button" variant="outline" className="text-black dark:text-white" onClick={onClose}>
                     {text("buttons.cancel")}
