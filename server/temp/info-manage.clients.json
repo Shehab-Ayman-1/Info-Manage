@@ -1,0 +1,137 @@
+[{
+  "_id": {
+    "$oid": "66e73e12ccf3fac0d1ae6ce8"
+  },
+  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "name": "unknown",
+  "level": "bronze",
+  "phone": "01234567890",
+  "bronzeTo": 1,
+  "silverTo": 1,
+  "lastRefreshDate": {
+    "$date": "2024-09-15T20:00:31.934Z"
+  },
+  "discounts": 0,
+  "trash": false,
+  "trashedAt": null,
+  "pending": 0,
+  "purchases": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66c5162796b71b80e99c3c53"
+  },
+  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "name": "unknown",
+  "level": "gold",
+  "bronzeTo": 1,
+  "silverTo": 1,
+  "trash": false,
+  "lastRefreshDate": {
+    "$date": "2024-09-02T10:07:37.943Z"
+  },
+  "discounts": 0,
+  "pendingCosts": 0,
+  "purchasesSalary": 1491,
+  "__v": 0,
+  "pending": 0,
+  "purchases": 703,
+  "phone": "01111111111"
+},
+{
+  "_id": {
+    "$oid": "66c594e2f4ae496dab7a60e4"
+  },
+  "orgId": "org_2kOJJaiuXpCX5bj1d3sQLzUUogN",
+  "name": "unknown",
+  "level": "bronze",
+  "bronzeTo": 1,
+  "silverTo": 1,
+  "trash": false,
+  "lastRefreshDate": {
+    "$date": "2024-08-21T07:18:55.958Z"
+  },
+  "discounts": 0,
+  "pendingCosts": 0,
+  "purchasesSalary": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66c88717dea2bec869f410b0"
+  },
+  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "name": "سامر سامي",
+  "level": "bronze",
+  "phone": "01124693048",
+  "bronzeTo": 10000,
+  "trash": false,
+  "silverTo": 20000,
+  "lastRefreshDate": {
+    "$date": "2024-09-02T16:13:51.340Z"
+  },
+  "discounts": 35,
+  "pendingCosts": 0,
+  "purchasesSalary": 95,
+  "__v": 0,
+  "pending": 0,
+  "purchases": -211
+},
+{
+  "_id": {
+    "$oid": "66d7733e23d95d1dd6a2527e"
+  },
+  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "name": "يوسف السيد",
+  "level": "bronze",
+  "phone": "01234567890",
+  "bronzeTo": 10000,
+  "trash": false,
+  "silverTo": 20000,
+  "lastRefreshDate": {
+    "$date": "2024-09-03T17:56:47.960Z"
+  },
+  "discounts": 0,
+  "pending": 0,
+  "purchases": 72,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66d89b3e25e52b6711a91cd4"
+  },
+  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "name": "رحاب الأمير",
+  "level": "bronze",
+  "phone": "01236987456",
+  "bronzeTo": 10000,
+  "trash": false,
+  "silverTo": 20000,
+  "lastRefreshDate": {
+    "$date": "2024-09-04T17:39:07.338Z"
+  },
+  "discounts": 0,
+  "pending": 0,
+  "purchases": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66da677b7198e58bb4d6ee12"
+  },
+  "orgId": "org_2kOPuzNIVrwtgkueOzINWKvU80e",
+  "name": "هشام محمد",
+  "level": "bronze",
+  "phone": "12345678890",
+  "bronzeTo": 10000,
+  "trash": false,
+  "silverTo": 20000,
+  "lastRefreshDate": {
+    "$date": "2024-09-06T01:17:22.703Z"
+  },
+  "discounts": 0,
+  "pending": 0,
+  "purchases": 0,
+  "__v": 0
+}]
