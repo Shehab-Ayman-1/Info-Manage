@@ -2,6 +2,7 @@
 import { ChartsForm } from "@/components/page-structure/charts-form";
 import { CardLoading } from "@/components/loading/card";
 import { useGet } from "@/hooks/api/useGet";
+import { columns } from "./table-columns";
 
 type Data = {
     month: string;
@@ -11,6 +12,13 @@ type Data = {
 type ProfitsType = {
     year: Data[];
     month: Data[];
+    monthlyInvoicements: {
+        _id: string;
+        client: string;
+        state: string;
+        profits: number;
+        createdAt: string;
+    }[];
 };
 
 const Profits = () => {
@@ -25,7 +33,12 @@ const Profits = () => {
         <ChartsForm
             heading="pages.statistics.profits.heading"
             chart1={{ heading: "pages.statistics.profits.chart-1", data: year }}
-            chart2={{ heading: "pages.statistics.profits.chart-2", data: month }}
+            chart2={{
+                heading: "pages.statistics.profits.chart-2",
+                data: month,
+                invoicements: data.monthlyInvoicements,
+                columns: columns,
+            }}
         />
     );
 };

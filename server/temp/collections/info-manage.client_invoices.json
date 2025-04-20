@@ -9,11 +9,12 @@
         },
         "barcode": 814101494,
         "state": "completed",
+        "type": "sale",
         "paid": 160,
         "total": 160,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-20T18:18:21.185Z"
+            "$date": "2024-09-10T18:18:21.185Z"
         },
         "expireAt": {
             "$date": "2025-08-20T18:21:07.630Z"
@@ -43,11 +44,12 @@
         },
         "barcode": 139229187,
         "state": "completed",
+        "type": "sale",
         "paid": 24,
         "total": 24,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-20T19:20:32.970Z"
+            "$date": "2024-09-11T19:20:32.970Z"
         },
         "expireAt": {
             "$date": "2025-08-20T22:18:28.778Z"
@@ -88,11 +90,12 @@
         },
         "barcode": 362181504,
         "state": "completed",
+        "type": "sale",
         "paid": 800,
         "total": 800,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-21T18:34:47.735Z"
+            "$date": "2024-09-12T18:34:47.735Z"
         },
         "expireAt": {
             "$date": "2025-08-21T18:40:51.729Z"
@@ -122,11 +125,12 @@
         },
         "barcode": 341111583,
         "state": "completed",
+        "type": "sale",
         "paid": 800,
         "total": 800,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-21T18:42:41.076Z"
+            "$date": "2024-09-13T18:42:41.076Z"
         },
         "expireAt": {
             "$date": "2025-08-21T18:57:35.928Z"
@@ -156,11 +160,12 @@
         },
         "barcode": 581520529,
         "state": "completed",
+        "type": "sale",
         "paid": 400,
         "total": 400,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-21T18:42:41.076Z"
+            "$date": "2024-09-14T18:42:41.076Z"
         },
         "expireAt": {
             "$date": "2025-08-21T19:01:31.895Z"
@@ -190,11 +195,12 @@
         },
         "barcode": 962573717,
         "state": "completed",
+        "type": "sale",
         "paid": 83,
         "total": 83,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-22T13:05:27.609Z"
+            "$date": "2024-09-15T13:05:27.609Z"
         },
         "expireAt": {
             "$date": "2025-08-22T20:34:11.122Z"
@@ -257,11 +263,12 @@
         },
         "barcode": 320438019,
         "state": "completed",
+        "type": "sale",
         "paid": 40,
         "total": 40,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-22T13:05:27.609Z"
+            "$date": "2024-09-22T13:05:27.609Z"
         },
         "expireAt": {
             "$date": "2025-08-22T20:41:27.057Z"
@@ -302,11 +309,12 @@
         },
         "barcode": 518098555,
         "state": "completed",
+        "type": "sale",
         "paid": 16,
         "total": 16,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-22T23:17:20.966Z"
+            "$date": "2024-09-22T23:17:20.966Z"
         },
         "expireAt": {
             "$date": "2025-08-22T23:19:37.180Z"
@@ -336,11 +344,12 @@
         },
         "barcode": 344728821,
         "state": "completed",
+        "type": "sale",
         "paid": 16,
         "total": 16,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-22T23:17:20.966Z"
+            "$date": "2024-09-22T23:17:20.966Z"
         },
         "expireAt": {
             "$date": "2025-08-22T23:19:56.737Z"
@@ -370,11 +379,12 @@
         },
         "barcode": 697898625,
         "state": "completed",
+        "type": "sale",
         "paid": 48,
         "total": 48,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-22T23:17:20.966Z"
+            "$date": "2024-09-22T23:17:20.966Z"
         },
         "expireAt": {
             "$date": "2025-08-22T23:23:09.756Z"
@@ -415,11 +425,12 @@
         },
         "barcode": 676100663,
         "state": "completed",
+        "type": "sale",
         "paid": 75,
         "total": 75,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-24T12:49:55.302Z"
+            "$date": "2024-09-24T12:49:55.302Z"
         },
         "expireAt": {
             "$date": "2025-08-24T12:53:30.414Z"
@@ -449,11 +460,12 @@
         },
         "barcode": 853910615,
         "state": "completed",
+        "type": "sale",
         "paid": 1600,
         "total": 1600,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-24T12:49:55.302Z"
+            "$date": "2024-09-24T12:49:55.302Z"
         },
         "expireAt": {
             "$date": "2025-08-24T13:00:17.880Z"
@@ -483,11 +495,12 @@
         },
         "barcode": 551541173,
         "state": "completed",
+        "type": "sale",
         "paid": 800,
         "total": 800,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-24T12:49:55.302Z"
+            "$date": "2024-09-24T12:49:55.302Z"
         },
         "expireAt": {
             "$date": "2025-08-24T13:03:39.609Z"
@@ -517,11 +530,12 @@
         },
         "barcode": 170437969,
         "state": "completed",
+        "type": "sale",
         "paid": 90,
         "total": 90,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-24T13:03:47.945Z"
+            "$date": "2024-09-24T13:03:47.945Z"
         },
         "expireAt": {
             "$date": "2025-08-24T13:08:09.166Z"
@@ -551,11 +565,12 @@
         },
         "barcode": 208977576,
         "state": "completed",
+        "type": "sale",
         "paid": 7200,
         "total": 7200,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-24T07:14:25.052Z"
+            "$date": "2024-09-24T07:14:25.052Z"
         },
         "expireAt": {
             "$date": "2025-05-24T07:17:01.121Z"
@@ -585,11 +600,12 @@
         },
         "barcode": 554646706,
         "state": "completed",
+        "type": "sale",
         "paid": 61,
         "total": 61,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-24T07:35:37.421Z"
+            "$date": "2024-09-24T07:35:37.421Z"
         },
         "expireAt": {
             "$date": "2025-05-24T07:36:47.685Z"
@@ -630,11 +646,12 @@
         },
         "barcode": 108996510,
         "state": "completed",
+        "type": "sale",
         "paid": 150,
         "total": 150,
         "discount": 10,
         "createdAt": {
-            "$date": "2024-08-25T06:58:01.149Z"
+            "$date": "2024-09-25T06:58:01.149Z"
         },
         "expireAt": {
             "$date": "2025-05-25T07:04:27.213Z"
@@ -664,11 +681,12 @@
         },
         "barcode": 46848497,
         "state": "completed",
+        "type": "sale",
         "paid": 145,
         "total": 145,
         "discount": 5,
         "createdAt": {
-            "$date": "2024-08-25T07:13:44.623Z"
+            "$date": "2024-09-25T07:13:44.623Z"
         },
         "expireAt": {
             "$date": "2024-11-25T07:13:47.728Z"
@@ -698,11 +716,12 @@
         },
         "barcode": 750433220,
         "state": "completed",
+        "type": "sale",
         "paid": 5,
         "total": 5,
         "discount": 35,
         "createdAt": {
-            "$date": "2024-08-25T07:13:44.623Z"
+            "$date": "2024-09-25T07:13:44.623Z"
         },
         "expireAt": {
             "$date": "2024-11-25T07:18:40.321Z"
@@ -732,11 +751,12 @@
         },
         "barcode": 631401486,
         "state": "completed",
+        "type": "sale",
         "paid": 5,
         "total": 5,
         "discount": 5,
         "createdAt": {
-            "$date": "2024-08-25T07:28:44.758Z"
+            "$date": "2024-09-25T07:28:44.758Z"
         },
         "expireAt": {
             "$date": "2024-11-25T07:34:18.700Z"
@@ -766,11 +786,12 @@
         },
         "barcode": 124907782,
         "state": "completed",
+        "type": "sale",
         "paid": 8,
         "total": 8,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-27T12:14:18.811Z"
+            "$date": "2024-09-27T12:14:18.811Z"
         },
         "expireAt": {
             "$date": "2024-11-27T16:13:46.023Z"
@@ -800,11 +821,12 @@
         },
         "barcode": 700836177,
         "state": "completed",
+        "type": "sale",
         "paid": 8,
         "total": 8,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-27T12:14:18.811Z"
+            "$date": "2024-09-27T12:14:18.811Z"
         },
         "expireAt": {
             "$date": "2024-11-27T16:14:16.749Z"
@@ -834,11 +856,12 @@
         },
         "barcode": 824336244,
         "state": "completed",
+        "type": "sale",
         "paid": 8,
         "total": 8,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-27T12:14:18.811Z"
+            "$date": "2024-09-27T12:14:18.811Z"
         },
         "expireAt": {
             "$date": "2024-11-27T16:16:31.729Z"
@@ -868,11 +891,12 @@
         },
         "barcode": 978936909,
         "state": "completed",
+        "type": "sale",
         "paid": 8,
         "total": 8,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-27T12:14:18.811Z"
+            "$date": "2024-09-27T12:14:18.811Z"
         },
         "expireAt": {
             "$date": "2024-11-27T16:32:02.963Z"
@@ -902,11 +926,12 @@
         },
         "barcode": 244298583,
         "state": "completed",
+        "type": "sale",
         "paid": 8,
         "total": 8,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-27T15:35:59.201Z"
+            "$date": "2024-09-27T15:35:59.201Z"
         },
         "expireAt": {
             "$date": "2024-11-27T16:35:59.200Z"
@@ -936,11 +961,12 @@
         },
         "barcode": 706219444,
         "state": "completed",
+        "type": "sale",
         "paid": 8,
         "total": 8,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-27T15:36:31.517Z"
+            "$date": "2024-09-27T15:36:31.517Z"
         },
         "expireAt": {
             "$date": "2024-11-27T16:36:31.517Z"
@@ -970,11 +996,12 @@
         },
         "barcode": 642080412,
         "state": "completed",
+        "type": "sale",
         "paid": 8,
         "total": 8,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-27T15:37:32.899Z"
+            "$date": "2024-09-27T15:37:32.899Z"
         },
         "expireAt": {
             "$date": "2024-11-27T15:37:42.467Z"
@@ -1004,11 +1031,12 @@
         },
         "barcode": 820494667,
         "state": "completed",
+        "type": "sale",
         "paid": 8,
         "total": 8,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-27T15:42:32.955Z"
+            "$date": "2024-09-27T15:42:32.955Z"
         },
         "expireAt": {
             "$date": "2024-11-27T16:42:32.954Z"
@@ -1038,11 +1066,12 @@
         },
         "barcode": 113288041,
         "state": "completed",
+        "type": "sale",
         "paid": 8,
         "total": 8,
         "discount": 0,
         "createdAt": {
-            "$date": "2024-08-28T13:01:38.494Z"
+            "$date": "2024-09-28T13:01:38.494Z"
         },
         "expireAt": {
             "$date": "2024-11-28T14:01:38.494Z"
@@ -1076,6 +1105,7 @@
         },
         "state": "completed",
         "type": "sale",
+        "type": "sale",
         "discount": 0,
         "total": 8,
         "paid": 8,
@@ -1083,7 +1113,7 @@
             "$date": "2024-11-28T22:37:52.305Z"
         },
         "createdAt": {
-            "$date": "2024-08-28T21:37:52.306Z"
+            "$date": "2024-09-28T21:37:52.306Z"
         },
         "products": [
             {

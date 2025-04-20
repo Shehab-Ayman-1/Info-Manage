@@ -43,8 +43,7 @@ const Layout = async ({ children }: LayoutProps) => {
                         <Sidebar />
 
                         {children}
-
-                        <Image src="/images/overview.jpeg" alt="overview" fill className="!fixed -z-10 opacity-5" />
+                        <Image fill src="/images/overview.jpeg" alt="overview" className="!fixed -z-10 opacity-5" />
                     </ClerkLoaded>
                 </Providers>
             </body>

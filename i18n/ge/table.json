@@ -80,7 +80,12 @@
 
         "check": "Einstellen",
         "checked-count": "Anzahl der geprüften",
+
+        "sales": "Verkäufe",
         "buy": "Kaufen",
+
+        "month": "Monat",
+        "day": "Tag",
 
         "expires-after": "Läuft ab nach",
         "transfer": "Überweisen",

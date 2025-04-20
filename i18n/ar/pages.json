@@ -28,7 +28,7 @@
         "add-product": {
             "heading": "إضافة منتج جديد",
             "submit": "انشاء",
-            "optional-supplier": "اسم المُورِد (اختياري)"
+            "optional-supplier": "اسم المورد (اختياري)"
         },
 
         "insufficient-products": {
@@ -87,11 +87,11 @@
         },
 
         "new-supplier-statement": {
-            "heading": "كشف حساب مُورِد"
+            "heading": "كشف حساب مورد"
         },
 
         "refund-supplier-statement": {
-            "heading": "كشف استرجاع للمُورِد"
+            "heading": "كشف استرجاع للمورد"
         },
 
         "cashes": {

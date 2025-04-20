@@ -114,10 +114,7 @@ export const InsertProductToTable = ({ price, dialogType, setProducts }: InsertP
     };
 
     return (
-        <DialogForm
-            heading={text("widgets.insert-dialog.heading")}
-            description={text("widgets.insert-dialog.description")}
-        >
+        <DialogForm heading={text("widgets.insert-dialog.heading")} description={text("widgets.insert-dialog.description")}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <ComboBox
                     label="choose-product"
@@ -142,7 +139,7 @@ export const InsertProductToTable = ({ price, dialogType, setProducts }: InsertP
                         type="number"
                         label={price.type === "soldPrice" ? "sold-price" : "purchase-price"}
                         useTranslate={{ label: "public" }}
-                        {...register("soldPrice", { valueAsNumber: true })}
+                        {...register(price.type, { valueAsNumber: true })}
                     />
                 </div>
 

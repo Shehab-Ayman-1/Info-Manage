@@ -27,9 +27,6 @@ export const GET = async () => {
                 },
             },
             {
-                $sort: { _id: 1 },
-            },
-            {
                 $project: {
                     _id: 1,
                     month: { $arrayElemAt: [months, { $subtract: ["$_id", 1] }] },
@@ -53,25 +50,51 @@ export const GET = async () => {
             },
             {
                 $group: {
-                    _id: { $dayOfMonth: "$createdAt" },
+                    _id: {
+                        $subtract: [{ $dayOfMonth: "$createdAt" }, { $mod: [{ $dayOfMonth: "$createdAt" }, 5] }],
+                    },
                     total: { $sum: "$total" },
+                },
+            },
+            {
+                $sort: {
+                    _id: 1,
                 },
             },
             {
                 $project: {
                     _id: 0,
-                    day: "$_id",
+                    day: { $concat: [{ $toString: { $subtract: ["$_id", 5] } }, " - ", { $toString: "$_id" }] },
                     chart_2: "$total",
-                },
-            },
-            {
-                $sort: {
-                    day: 1,
                 },
             },
         ]);
 
-        return json({ year: byYear, month: byMonth });
+        const monthlyInvoicements = await ClientInvoices.aggregate([
+            {
+                $match: { orgId, type: "sale", createdAt: { $gte: thisMonth, $lt: nextMonth } },
+            },
+            {
+                $lookup: { from: "clients", as: "client", localField: "client", foreignField: "_id" },
+            },
+            {
+                $unwind: "$client",
+            },
+            {
+                $group: {
+                    _id: "$_id",
+                    client: { $first: "$client.name" },
+                    state: { $first: "$state" },
+                    total: { $first: "$total" },
+                    createdAt: { $first: "$createdAt" },
+                },
+            },
+            {
+                $sort: { _id: 1 },
+            },
+        ]);
+
+        return json({ year: byYear, month: byMonth, monthlyInvoicements });
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

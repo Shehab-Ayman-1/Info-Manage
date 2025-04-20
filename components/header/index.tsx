@@ -2,6 +2,7 @@
 import { useAuth } from "@clerk/nextjs";
 import Link from "next/link";
 
+import { QuickClientStatement } from "@/widgets/clients/quick-statement";
 import { Button } from "@/ui/button";
 import { NavLinks } from "./navLinks";
 import { NavIcons } from "./icons";
@@ -17,11 +18,10 @@ export const Header = ({}: HeaderProps) => {
         <header className="relative !z-50 w-full rounded-xl border border-slate-400 bg-white p-4 shadow-md dark:border-slate-600 dark:bg-black">
             <div className="flex-between m-auto w-full max-w-screen-xl">
                 <Logo />
-
                 <Audio />
+                <QuickClientStatement />
 
                 {userId && <NavLinks />}
-
                 {userId && <NavIcons />}
 
                 {!userId && (

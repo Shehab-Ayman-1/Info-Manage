@@ -1,25 +1,25 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { SearchIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useKey } from "react-use";
 
-import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
+import { Popover, PopoverTrigger, PopoverContent } from "@/ui/popover";
 import { Tooltip } from "@/components/ui/tooltip";
 import { useLists } from "@/hooks/data/useLists";
-import { Products } from "@/hooks/data/types";
+import { animate } from "@/constants";
+import { Input } from "@/ui/input";
+
 import { ListItems } from "./listItems";
 import { Loading } from "./loading";
-import { Input } from "@/ui/input";
-import { animate } from "@/constants";
 
 type SearchbarProps = {};
 
 export const Searchbar = ({}: SearchbarProps) => {
-    const [filteredProducts, setFilteredProducts] = useState<Products["data"]>();
+    const [searchText, setSearchText] = useState("");
     const [open, setOpen] = useState(false);
-    const { products } = useLists();
 
+    const { products } = useLists();
     const mount = useRef(false);
 
     useEffect(() => {
@@ -29,12 +29,9 @@ export const Searchbar = ({}: SearchbarProps) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const onChange = (event: any) => {
-        const filtered = products.data.filter(
-            (product) => product.company.name.includes(event.target.value) || product.name.includes(event.target.value),
-        );
-        setFilteredProducts(filtered);
-    };
+    const filteredProducts = useMemo(() => {
+        return products.data.filter((product) => product.company.name.includes(searchText) || product.name.includes(searchText));
+    }, [searchText, products.data]);
 
     const onOpen = () => setOpen(!open);
     useKey((event) => event.ctrlKey && event.key.toLowerCase() === "q", onOpen);
@@ -50,7 +47,12 @@ export const Searchbar = ({}: SearchbarProps) => {
             </PopoverTrigger>
 
             <PopoverContent align="end" className="w-auto rounded-xl border-none shadow-xl sm:w-[600px]">
-                <Input type="search" placeholder="search" useTranslate={{ placeholder: "public" }} onChange={onChange} />
+                <Input
+                    type="search"
+                    placeholder="search"
+                    useTranslate={{ placeholder: "public" }}
+                    onChange={(event) => setSearchText(event.target.value)}
+                />
 
                 <div className="max-h-96 overflow-y-auto">
                     <Loading isLoading={products.isLoading} />

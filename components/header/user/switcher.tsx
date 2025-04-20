@@ -20,7 +20,7 @@ export const OrgSwitcher = ({}: OrgSwitcherProps) => {
             appearance={{
                 elements: {
                     organizationSwitcherTrigger: {
-                        color: theme === "dark" ? "white !important" : "black",
+                        color: theme === "dark" || theme === "system" ? "white" : "black",
                         "&:hover": { color: theme === "dark" ? "whitesmoke" : "gray" },
                         "&:focus": { color: theme === "dark" ? "whitesmoke" : "gray" },
                     },

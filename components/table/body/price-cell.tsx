@@ -6,7 +6,7 @@ type DollarCellProps = {
 };
 
 export const DollarCell = ({ row, name }: DollarCellProps) => {
-    const price: number = row.getValue(name);
+    const price: number = row.original?.[name] || row.getValue(name);
     const formatted = new Intl.NumberFormat("es-US", {
         style: "currency",
         currency: "USD",

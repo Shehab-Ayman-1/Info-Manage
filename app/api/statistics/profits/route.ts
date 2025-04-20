@@ -61,7 +61,9 @@ export const GET = async () => {
             },
             {
                 $group: {
-                    _id: { $dayOfMonth: "$createdAt" },
+                    _id: {
+                        $subtract: [{ $dayOfMonth: "$createdAt" }, { $mod: [{ $dayOfMonth: "$createdAt" }, 5] }],
+                    },
                     soldPrices: {
                         $sum: { $multiply: ["$products.soldPrice", "$products.count"] },
                     },
@@ -71,20 +73,54 @@ export const GET = async () => {
                 },
             },
             {
-                $project: {
-                    _id: 0,
-                    day: "$_id",
-                    chart_2: { $subtract: ["$soldPrices", "$purchasePrices"] },
+                $sort: {
+                    _id: 1,
                 },
             },
             {
-                $sort: {
-                    day: 1,
+                $project: {
+                    _id: 0,
+                    day: { $concat: [{ $toString: { $subtract: ["$_id", 5] } }, " - ", { $toString: "$_id" }] },
+                    chart_2: { $subtract: ["$soldPrices", "$purchasePrices"] },
                 },
             },
         ]);
 
-        return json({ year: byYear, month: byMonth });
+        const monthlyInvoicements = await ClientInvoices.aggregate([
+            {
+                $match: { orgId, type: "sale", createdAt: { $gte: thisMonth, $lt: nextMonth } },
+            },
+            {
+                $lookup: { from: "clients", as: "client", localField: "client", foreignField: "_id" },
+            },
+            {
+                $unwind: "$client",
+            },
+            {
+                $unwind: "$products",
+            },
+            {
+                $group: {
+                    _id: "$_id",
+                    client: { $first: "$client.name" },
+                    state: { $first: "$state" },
+                    createdAt: { $first: "$createdAt" },
+                    profits: {
+                        $sum: {
+                            $subtract: [
+                                { $multiply: ["$products.count", "$products.soldPrice"] },
+                                { $multiply: ["$products.count", "$products.purchasePrice"] },
+                            ],
+                        },
+                    },
+                },
+            },
+            {
+                $sort: { _id: 1 },
+            },
+        ]);
+
+        return json({ year: byYear, month: byMonth, monthlyInvoicements });
     } catch (error: any) {
         const errors = error?.issues?.map((issue: any) => issue.message).join(" | ");
         return json(errors || error.message, 400);

@@ -76,7 +76,7 @@ const InvoiceProfile = ({ params }: InvoiceProfileProps) => {
             </div>
 
             {data.state !== "payment" && (
-                <div className="my-4 rounded-md px-4 shadow-md">
+                <div className="my-4 rounded-xl bg-white px-4 shadow-md dark:bg-black">
                     <DataTable columns={columns} data={data.products} isPending={isPending} totalFor="total" />
                 </div>
             )}

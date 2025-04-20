@@ -40,7 +40,7 @@ const Members = () => {
                     role: member.role.slice(4),
                     createdAt: member.createdAt,
                     user: {
-                        fullName: member.publicUserData.firstName + " " + member.publicUserData.lastName,
+                        fullName: `${member.publicUserData.firstName} ${member.publicUserData.lastName}`,
                         image: member.publicUserData.imageUrl,
                         email: member.publicUserData.identifier,
                     },
@@ -54,7 +54,7 @@ const Members = () => {
 
     return (
         <CardForm heading="Members">
-            <DataTable columns={columns} data={data} isPending={isLoaded} smallSize />
+            <DataTable columns={columns} data={data} isPending={!isLoaded} smallSize />
 
             <Button
                 type="button"

@@ -9,12 +9,12 @@ import { useKey } from "react-use";
 
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/ui/popover";
+import { animate } from "@/constants";
 import { Button } from "@/ui/button";
 import { cn } from "@/utils/shadcn";
 import { Icons } from "@/ui/icons";
 import { Label } from "@/ui/label";
 import { Tooltip } from "./tooltip";
-import { animate } from "@/constants";
 
 type Item = {
     _id: string;
@@ -52,8 +52,8 @@ type ComboBoxProps = {
 };
 
 export const ComboBox = (props: ComboBoxProps) => {
-    const { label, name, loading, error, items, groups, isSubmitted } = props;
     const { defaultValue, useTranslate, isSmallContent, setValue, clearErrors, onChange } = props;
+    const { label, name, loading, error, items, groups, isSubmitted } = props;
 
     const [selectedValue, setSelectedValue] = useState(defaultValue || "");
     const [open, setOpen] = useState(false);
@@ -106,11 +106,12 @@ export const ComboBox = (props: ComboBoxProps) => {
                             {loading && !items?.length && !groups?.length && <CommandLoading />}
 
                             {!!items?.length &&
-                                items.map((item) => (
+                                items.map((item, index) => (
                                     <CommandListItem
                                         key={item._id}
                                         title={item.title}
                                         value={item.title}
+                                        index={index}
                                         useTranslate={useTranslate}
                                         selectedValue={selectedValue}
                                         onSelect={() => onSelect(item)}
@@ -126,11 +127,12 @@ export const ComboBox = (props: ComboBoxProps) => {
                                             </h3>
                                         )}
 
-                                        {group.list.map((list) => (
+                                        {group.list.map((list, index) => (
                                             <CommandListItem
                                                 key={list._id}
                                                 title={list.title}
                                                 value={list.title}
+                                                index={index}
                                                 useTranslate={useTranslate}
                                                 selectedValue={selectedValue}
                                                 onSelect={() => onSelect(list)}
@@ -216,21 +218,22 @@ function CommandTrigger({ useTranslate, selectedValue, label, open }: CommandTri
     );
 }
 
-type CommandListItemProps = {
-    useTranslate?: UseTranslate;
-    selectedValue: string;
-    value: string;
+type CommandListItemType = {
     title: string;
+    value: string;
+    index: number;
+    selectedValue: string;
+    useTranslate?: UseTranslate;
     onSelect: (value: string) => void;
 };
 
-function CommandListItem({ useTranslate, selectedValue, value, title, onSelect }: CommandListItemProps) {
+function CommandListItem({ title, value, index, selectedValue, useTranslate, onSelect }: CommandListItemType) {
     const text = useTranslations();
     const item = useTranslate?.item ? text(`${useTranslate.item}.${title}`) : title.split(" ||| ")?.[0];
 
     return (
         <CommandItem asChild value={value} onSelect={onSelect} className="group text-lg capitalize leading-10">
-            <motion.div {...animate("opacity")}>
+            <motion.div {...animate("opacity")} transition={{ duration: index / 10 }}>
                 <CheckCheckIcon
                     className={cn("mx-2 size-4 !text-green-500", selectedValue === value ? "opacity-100" : "opacity-0")}
                 />

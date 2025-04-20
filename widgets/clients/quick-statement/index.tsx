@@ -49,7 +49,7 @@ export const QuickClientStatement = () => {
     const { mutate, isPending } = useCreate<RequestType>("/api/clients/statements/new", ["client-invoices"]);
     const [product, setProduct] = useState<ProductType[0]>(defaultProduct);
     const { clients, products: productLists } = useLists();
-    const { type, onClose } = useModel();
+    const { type, onOpen, onClose } = useModel();
     const { isSubmitted, errors } = formState;
 
     const choosenProducts = watch("products");
@@ -94,6 +94,11 @@ export const QuickClientStatement = () => {
     }, [product.productId]);
 
     useKey((event) => event.ctrlKey && event.key === "Enter", handleInsertProduct);
+    useKey(
+        (event) => event.ctrlKey && event.key.toLowerCase() === "m",
+        () => onOpen("quick-client-statement-model"),
+    );
+
     if (type !== "quick-client-statement-model") return;
 
     function handleInsertProduct() {
@@ -149,6 +154,7 @@ export const QuickClientStatement = () => {
                     isSubmitted={isSubmitted}
                     setValue={setValue}
                     clearErrors={clearErrors}
+                    defaultValue="cash"
                 />
 
                 <ComboBox

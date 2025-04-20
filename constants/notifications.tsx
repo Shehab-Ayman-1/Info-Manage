@@ -1,4 +1,4 @@
-import { Notify } from "@/components/header/icons/notifications";
+import { Notify } from "@/components/header/notifications";
 
 export const subscriptionNotifies: Notify[] = [
     {

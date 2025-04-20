@@ -3,7 +3,6 @@ import { ClerkLoading, ClerkLoaded, useUser } from "@clerk/nextjs";
 import { CreditCardIcon, LoaderCircleIcon } from "lucide-react";
 import Link from "next/link";
 
-import { QuickClientStatement } from "./quick-client-statement";
 import { UserButton } from "./user/user-button";
 import { OrgSwitcher } from "./user/switcher";
 import { Notifications } from "./notifications";
@@ -20,9 +19,7 @@ export const NavIcons = ({}: NavlinksProps) => {
     return (
         <div className="flex-end">
             <Searchbar />
-
             <Notifications />
-
             <Configrator />
 
             <Link href="/subscription">
@@ -40,8 +37,6 @@ export const NavIcons = ({}: NavlinksProps) => {
                     <UserButton />
                 </ClerkLoaded>
             </div>
-
-            <QuickClientStatement />
         </div>
     );
 };

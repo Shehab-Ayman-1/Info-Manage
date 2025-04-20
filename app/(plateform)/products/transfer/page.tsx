@@ -25,13 +25,13 @@ const Transfer = () => {
     const [products, setProducts] = useState<ProductType[]>([]);
     const { isSubmitted, errors } = formState;
 
-    const place = watch("place");
     const text = useTranslations();
+    const place = watch("place");
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const { place } = data as EditTransferSchema;
-
         const filterProducts = products.map(({ productId, count }) => ({ _id: productId, count }));
+
         mutate(
             { products: filterProducts, place },
             {
@@ -58,9 +58,7 @@ const Transfer = () => {
                 />
 
                 <OpenModuleButton type="transfer-insert-model" clearErrors={clearErrors} />
-
                 {!!products?.length && <DataTable columns={columns} data={products} smallSize />}
-
                 <SubmitButton text="transfer" isPending={isPending} />
             </form>
 

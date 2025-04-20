@@ -22,10 +22,11 @@ export type Product = {
 };
 
 const Market = () => {
-    const [location, setLocation] = useState("market");
-    const { data, isPending, error, refetch } = useGet<Product[]>(`/api/products?place=${location}`, ["products"]);
+    const [location, setLocation] = useState("");
+    const { data, isPending, error, refetch } = useGet<Product[]>(`/api/products?place=${location || "market"}`, ["products"]);
 
     useEffect(() => {
+        if (!location) return;
         refetch();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]);

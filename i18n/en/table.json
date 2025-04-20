@@ -80,7 +80,12 @@
 
         "check": "Check",
         "checked-count": "Checked Count",
+
+        "sales": "Sales",
         "buy": "Buy",
+
+        "month": "Month",
+        "day": "Day",
 
         "expires-after": "Expires After",
         "transfer": "Transfer",

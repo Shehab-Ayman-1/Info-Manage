@@ -28,12 +28,14 @@ export const GET = async (req: NextRequest) => {
                 $match: {
                     orgId,
                     type: "sale",
-                    "products.productId": new Types.ObjectId(productId),
-                    createdAt: { $gte: thisYear, $lt: nextYear },
+                    createdAt: { $gte: thisYear, $lte: nextYear },
                 },
             },
             {
                 $unwind: "$products",
+            },
+            {
+                $match: { "products.productId": new Types.ObjectId(productId) },
             },
             {
                 $group: {

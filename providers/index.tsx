@@ -1,8 +1,8 @@
 import { ClerkProvider } from "@clerk/nextjs";
 
+import { QueryProvider } from "./query";
 import { Toaster } from "@/ui/sonner";
 import { DarkTheme } from "./theme";
-import { QueryProvider } from "./query";
 import { I18nProvider } from "./i18n";
 
 type ProvidersProps = {

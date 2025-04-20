@@ -50,7 +50,7 @@
         "profits": "الأرباح",
         "paid": "المدفوع",
 
-        "supplier": "المُورِد",
+        "supplier": "المورد",
         "client": "العميل",
 
         "barcode": "الباركود",
@@ -80,7 +80,12 @@
 
         "check": "تحديد",
         "checked-count": "العدد المحدد",
+
+        "sales": "مبيعات",
         "buy": "شراء",
+
+        "month": "الشهر",
+        "day": "اليوم",
 
         "expires-after": "انتهاء الصلاحية",
         "transfer": "نقل",
@@ -91,7 +96,7 @@
             "company": "الشركة",
             "product": "المنتج",
             "barcode": "الباركود",
-            "supplier": "المُورِد",
+            "supplier": "المورد",
             "client": "العميل",
             "level": "الشريحة",
             "reason": "السبب"
